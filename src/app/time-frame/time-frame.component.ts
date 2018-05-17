@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimeFrameComponent implements OnInit {
 
+  today: Date = new Date();
   constructor() { }
 
   ngOnInit() {

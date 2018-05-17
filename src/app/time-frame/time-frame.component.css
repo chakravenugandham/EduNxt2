@@ -1,0 +1,15 @@
+.time-frame{
+    padding: 12px 36px;
+    box-shadow: 1px 1px #CCC;
+    background-color: #FFF;
+}
+.time-frame ul {
+    margin: 0;
+}
+.time-frame ul li{
+    margin-right: 22px;
+}
+.selectDate, .selectCourse select{
+    border: 1px solid #007bff;
+    padding: 6px 4px;
+}

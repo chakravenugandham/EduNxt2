@@ -1,3 +1,21 @@
-<p>
-  time-frame works!
-</p>
+<div class="time-frame">
+  <div class="">
+    <ul class="list-inline">
+      <li class="list-inline-item"> <b> Select Time Frame </b></li>
+      <li class="list-inline-item selectDate"> {{ today | date }} - {{ today | date }} </li>
+      <li class="list-inline-item">Select course</li>
+      <li class="list-inline-item selectCourse">
+        <select name="selectCourse">
+          <option value="">All Courses</option>
+          <option value="">Bio Science</option>
+          <option value="">Molecular Chemistry</option>
+        </select>
+      </li>
+      <div class="float-right">
+        <li class="list-inline-item">Save This View</li>
+        <li class="list-inline-item">Email this report</li>
+        <li class="list-inline-item">Download this report</li>
+      </div>
+    </ul>
+  </div>
+</div>

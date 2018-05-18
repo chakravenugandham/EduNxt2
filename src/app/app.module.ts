@@ -2,12 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from "@angular/common/http";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TimeFrameComponent } from './time-frame/time-frame.component';
 import { LdDashboardComponent } from './ld-dashboard/ld-dashboard.component';
-import { LearningActivityWidgetComponent } from './ld-dashboard/learning-activity-widget/learning-activity-widget.component';
+import { ActiveUsersComponentComponent } from './active-users-component/active-users-component.component';
+import { LearnerEngagementComponentComponent } from './learner-engagement-component/learner-engagement-component.component';
+import { LearnerPeaceComponentComponent } from './learner-peace-component/learner-peace-component.component';
+import { FeedBackComponentComponent } from './feed-back-component/feed-back-component.component';
 
 @NgModule({
   declarations: [
@@ -15,11 +19,15 @@ import { LearningActivityWidgetComponent } from './ld-dashboard/learning-activit
     HeaderComponent,
     TimeFrameComponent,
     LdDashboardComponent,
-    LearningActivityWidgetComponent
+    ActiveUsersComponentComponent,
+    LearnerEngagementComponentComponent,
+    LearnerPeaceComponentComponent,
+    FeedBackComponentComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

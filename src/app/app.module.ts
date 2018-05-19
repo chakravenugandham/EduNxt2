@@ -8,10 +8,37 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TimeFrameComponent } from './time-frame/time-frame.component';
 import { LdDashboardComponent } from './ld-dashboard/ld-dashboard.component';
-import { ActiveUsersComponentComponent } from './active-users-component/active-users-component.component';
-import { LearnerEngagementComponentComponent } from './learner-engagement-component/learner-engagement-component.component';
-import { LearnerPeaceComponentComponent } from './learner-peace-component/learner-peace-component.component';
-import { FeedBackComponentComponent } from './feed-back-component/feed-back-component.component';
+import { ActivityWidgetComponent } from "./ld-dashboard/activity-widget/activity-widget.component";
+import { UsersComponent } from './ld-dashboard/activity-widget/users/users.component';
+import { EngagementComponent } from './ld-dashboard/activity-widget/engagement/engagement.component';
+import { PaceComponent } from './ld-dashboard/activity-widget/pace/pace.component';
+import { FeedbackComponent } from './ld-dashboard/activity-widget/feedback/feedback.component';
+import { ActiveUserWidgetComponent } from './ld-dashboard/active-user-widget/active-user-widget.component';
+import { ActiveUsersComponent } from './ld-dashboard/active-user-widget/active-users/active-users.component';
+import { ModeOfDeliveryComponent } from './ld-dashboard/active-user-widget/mode-of-delivery/mode-of-delivery.component';
+import { LocationComponent } from './ld-dashboard/active-user-widget/location/location.component';
+import { LearnersTrackWidgetComponent } from './ld-dashboard/learners-track-widget/learners-track-widget.component';
+import { LearnerPaceComponent } from './ld-dashboard/learners-track-widget/learner-pace/learner-pace.component';
+import { LearnerPerformanceComponent } from './ld-dashboard/learners-track-widget/learner-performance/learner-performance.component';
+import { LearnersPerformanceWidgetComponent } from './ld-dashboard/learners-performance-widget/learners-performance-widget.component';
+import { PerformanceComponent } from './ld-dashboard/learners-performance-widget/performance/performance.component';
+import { ProgressComponent } from './ld-dashboard/learners-performance-widget/progress/progress.component';
+import { ScoresDistributionWidgetComponent } from './ld-dashboard/scores-distribution-widget/scores-distribution-widget.component';
+import { TestScoresComponent } from './ld-dashboard/scores-distribution-widget/test-scores/test-scores.component';
+import { QuizComponent } from './ld-dashboard/scores-distribution-widget/quiz/quiz.component';
+import { AssignmentComponent } from './ld-dashboard/scores-distribution-widget/assignment/assignment.component';
+import { OrgPerformanceWidgetComponent } from './ld-dashboard/org-performance-widget/org-performance-widget.component';
+import { TeamsComponent } from './ld-dashboard/org-performance-widget/teams/teams.component';
+import { TrainersComponent } from './ld-dashboard/org-performance-widget/trainers/trainers.component';
+import { LearnersComponent } from './ld-dashboard/org-performance-widget/learners/learners.component';
+import { ContentPerformanceWidgetComponent } from './ld-dashboard/content-performance-widget/content-performance-widget.component';
+import { ContentConsumptionComponent } from './ld-dashboard/content-performance-widget/content-consumption/content-consumption.component';
+import { NotificationPerformanceWidgetComponent } from './ld-dashboard/notification-performance-widget/notification-performance-widget.component';
+import { ScheduledDeliveredComponent } from './ld-dashboard/notification-performance-widget/scheduled-delivered/scheduled-delivered.component';
+import { SeenRespondedComponent } from './ld-dashboard/notification-performance-widget/seen-responded/seen-responded.component';
+import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/org-interest-widget.component';
+import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
+import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +46,37 @@ import { FeedBackComponentComponent } from './feed-back-component/feed-back-comp
     HeaderComponent,
     TimeFrameComponent,
     LdDashboardComponent,
-    ActiveUsersComponentComponent,
-    LearnerEngagementComponentComponent,
-    LearnerPeaceComponentComponent,
-    FeedBackComponentComponent
+    ActivityWidgetComponent,
+    UsersComponent,
+    EngagementComponent,
+    PaceComponent,
+    FeedbackComponent,
+    ActiveUserWidgetComponent,
+    ActiveUsersComponent,
+    ModeOfDeliveryComponent,
+    LocationComponent,
+    LearnersTrackWidgetComponent,
+    LearnerPaceComponent,
+    LearnerPerformanceComponent,
+    LearnersPerformanceWidgetComponent,
+    PerformanceComponent,
+    ProgressComponent,
+    ScoresDistributionWidgetComponent,
+    TestScoresComponent,
+    QuizComponent,
+    AssignmentComponent,
+    OrgPerformanceWidgetComponent,
+    TeamsComponent,
+    TrainersComponent,
+    LearnersComponent,
+    ContentPerformanceWidgetComponent,
+    ContentConsumptionComponent,
+    NotificationPerformanceWidgetComponent,
+    ScheduledDeliveredComponent,
+    SeenRespondedComponent,
+    OrgInterestWidgetComponent,
+    OrgInterestComponent,
+    AttentionNeedWidgetComponent
   ],
   imports: [
     BrowserModule,

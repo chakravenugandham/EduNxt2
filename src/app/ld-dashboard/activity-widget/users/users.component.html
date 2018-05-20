@@ -1,18 +1,17 @@
 <div class="widget-block">
   <div class="userImages">
-    <img src="/assets/img/batman.jpg" alt="">
-    <img src="/assets/img/captain.jpg" alt="">
-    <img src="/assets/img/emma.jpg" alt="">
-    <img src="/assets/img/captain.jpg" alt="">
-    <img src="/assets/img/emma.jpg" alt="">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="batman">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="batman">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="batman">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="batman">
   </div>
   <div>
     <div>
-      <div class="bigNumber float-left">{{activeUsers}}</div>
+      <div class="bigNumber float-left">{{userData.activeUsers}}</div>
       <div class="small">
         <div class="">
           <span class="changeNumber">
-            <i class="fas fa-arrow-up"></i> {{userChange}} </span> Users </div>
+            <i class="fas fa-arrow-up"></i> {{userData.changeInUsers}} </span> Users </div>
         <div class="">since last month</div>
       </div>
     </div>
@@ -21,11 +20,11 @@
   <br>
   <div>
     <div>
-      <div class="bigNumber float-left">{{peopleCurrentlyEnrolled}}</div>
+      <div class="bigNumber float-left">{{userData.peopleCurrentlyEnrolled}}</div>
       <div class="">
         <div class="">
           <span class="changeNumber">
-            <i class="fas fa-arrow-up"></i> {{usersSinceLastMonth}} </span> Users </div>
+            <i class="fas fa-arrow-up"></i> {{userData.usersSinceLastMonth}} </span> Users </div>
         <div class="">since last month</div>
       </div>
     </div>

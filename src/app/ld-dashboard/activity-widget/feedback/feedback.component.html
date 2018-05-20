@@ -7,11 +7,11 @@
       </div>
       <div class="col-md-6">
         <div>
-          <div class="bigNumber float-left">60%</div>
+          <div class="bigNumber float-left"> {{feedbackDataElement.learnerSatisfaction}} %</div>
           <div class="small">
             <div class="">
               <span class="changeNumber">
-                <i class="fas fa-arrow-up"></i> by 5% </span> Users </div>
+                <i class="fas fa-arrow-up"></i> by {{feedbackDataElement.learnerSatisfactionChange}} % </span> Users </div>
           </div>
         </div>
         <div class="boldText">Learner Satisfaction</div>
@@ -22,22 +22,22 @@
     <div class="row">
       <div class="col-md-6">
         <div>
-          <div class="bigNumber float-left text-danger">4.5</div>
+          <div class="bigNumber float-left text-danger"> {{feedbackDataElement.trainerRating}} </div>
           <div class="small">
             <div class="">
               <span class="changeNumber">
-                <i class="fas fa-arrow-up"></i> by 0.2% </span> Users </div>
+                <i class="fas fa-arrow-up"></i> by {{feedbackDataElement.trainerRatingChange}} % </span> Users </div>
           </div>
         </div>
         <div class="boldText">Trainer Rating</div>
       </div>
       <div class="col-md-6">
         <div>
-          <div class="bigNumber float-left">4.6</div>
+          <div class="bigNumber float-left"> {{feedbackDataElement.contentRating}} </div>
           <div class="small">
             <div class="">
               <span class="changeNumber">
-                <i class="fas fa-arrow-up"></i> by 5% </span> Users </div>
+                <i class="fas fa-arrow-up"></i> by {{feedbackDataElement.contentRatingChange}} % </span> Users </div>
           </div>
         </div>
         <div class="boldText">Content Rating</div>

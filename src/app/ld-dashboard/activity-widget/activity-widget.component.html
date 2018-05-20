@@ -3,15 +3,20 @@
 </div>
 <div class="row">
   <div class="col-md-3">
-    <app-users></app-users>
+    <app-users 
+    *ngFor="let userData of activeUsers"
+    [userElement]="userData"></app-users>
   </div>
   <div class="col-md-3">
-    <app-engagement></app-engagement>
+    <app-engagement *ngFor="let engagementData of learnerEngagement"
+    [engageData]="engagementData"></app-engagement>
   </div>
   <div class="col-md-3">
-    <app-pace></app-pace>
+    <app-pace *ngFor="let paceData of learnerPace"
+    [paceDataElement]="paceData"></app-pace>
   </div>
   <div class="col-md-3">
-    <app-feedback></app-feedback>
+    <app-feedback *ngFor="let feedbackData of feedback"
+    [feedbackDataElement]="feedbackData"></app-feedback>
   </div>
 </div>

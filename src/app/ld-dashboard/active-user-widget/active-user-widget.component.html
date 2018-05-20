@@ -1,6 +1,19 @@
-<div>
-    <div class="widget-heading">
-        How active are the users?
+<div class="widget-heading">
+    How active are the users?
+</div>
+<div class="widget-block">
+    <div class="headingText">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{active:activeUser}" (click)="activeUsersFn()">Active Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{active:modeDelivery}" (click)="modeDeliveryFn()">Mode of Delivery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="{active:!activeUser && !modeDelivery}" (click)="locationFn()">Location</a>
+            </li>
+        </ul>
     </div>
     <app-active-users></app-active-users>
 </div>

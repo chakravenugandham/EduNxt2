@@ -2,5 +2,17 @@
     <div class="widget-heading">
         Are my learners on track?
     </div>
-    <app-learner-pace></app-learner-pace>
+    <div class="widget-block">
+        <div class="headingText">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{active:learnerPace}" (click)="learnerPaceFn()">Learner Pace</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{active:!learnerPace}" (click)="learnerPerfFn()">Learner Performance</a>
+                </li>
+            </ul>
+        </div>
+        <app-learner-pace></app-learner-pace>
+    </div>
 </div>

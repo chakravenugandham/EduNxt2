@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
 
+  testScore:boolean = true;
   constructor() { }
 
   ngOnInit() {

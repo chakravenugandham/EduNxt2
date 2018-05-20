@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveUserWidgetComponent implements OnInit {
 
+  activeUser:boolean = true;
   constructor() { }
 
   ngOnInit() {

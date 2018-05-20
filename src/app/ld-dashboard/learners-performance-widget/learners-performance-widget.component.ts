@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearnersPerformanceWidgetComponent implements OnInit {
 
+  performance:boolean = true;
   constructor() { }
 
   ngOnInit() {

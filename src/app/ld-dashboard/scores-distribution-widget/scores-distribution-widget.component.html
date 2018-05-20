@@ -2,5 +2,20 @@
     <div class="widget-heading">
         How are scores distributed?
     </div>
-    <app-test-scores></app-test-scores>
+    <div class="widget-block">
+        <div class="headingText">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{active:testScore}" (click)="testScoreFn()">Test Scores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{active:quizScore}" (click)="quizScoreFn()">Quizzes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{active:!testScore && !quizScore}" (click)="assignmentFn()">Assignments</a>
+                </li>
+            </ul>
+        </div>
+        <app-test-scores></app-test-scores>
+    </div>
 </div>

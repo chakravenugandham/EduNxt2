@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
 
+  trainers:boolean = true;
   constructor() { }
 
   ngOnInit() {

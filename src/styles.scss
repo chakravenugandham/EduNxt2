@@ -23,7 +23,7 @@
 }
 .headingText{
     font-weight: 600;
-    border-left: 6px solid orange;
+    border-left: 8px solid #FFD630;
     margin-bottom: 12px;
     margin-left: -18px;
     padding-left: 12px;
@@ -32,4 +32,17 @@
     background-color: tomato;
     color: #FFF;
     border-radius: 50%;
+}
+.headingText .nav .nav-link{
+    padding: 4px;
+}
+.headingText .nav-item a{
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+    padding: 6px;
+}
+.headingText .nav-item .active{
+    font-weight: 700;
+    border-bottom: 1px solid #FFD630;
 }

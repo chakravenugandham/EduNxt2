@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import "d3-3";
+//import "d3-3";
+import  * as d3 from "d3";
 
 @Component({
   selector: 'app-engagement',

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2376 -380 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Arrows_up_down);
+      }
+
+      .cls-2 {
+        fill: #5584ff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-Arrows_up_down">
+      <rect x="-2376" y="-380" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Arrows_up_down" data-name="Arrows up &amp; down" class="cls-1">
+    <rect class="cls-3" x="-2376" y="-380" width="64" height="64"/>
+    <g id="Group_5801" data-name="Group 5801" transform="translate(-3237 -596.375)">
+      <path id="Path_1452" data-name="Path 1452" class="cls-2" d="M399.3,1933.965H386.5l12.8-18.365,12.243,18.365Z" transform="translate(493.5 -1699.226)"/>
+      <path id="Path_1453" data-name="Path 1453" class="cls-2" d="M399.3,1923.9h12.243L399.3,1941.709,386.5,1923.9Z" transform="translate(493.5 -1661.334)"/>
+    </g>
+  </g>
+</svg>

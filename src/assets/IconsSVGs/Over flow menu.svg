@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2376 -452 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Over_flow_menu);
+      }
+
+      .cls-2 {
+        fill: #5584ff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-Over_flow_menu">
+      <rect x="-2376" y="-452" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Over_flow_menu" data-name="Over flow menu" class="cls-1">
+    <rect class="cls-3" x="-2376" y="-452" width="64" height="64"/>
+    <g id="Group_5803" data-name="Group 5803" transform="translate(-3157.3 -476.525)">
+      <path id="Path_674" data-name="Path 674" class="cls-2" d="M965.143,1031.285h0a6.785,6.785,0,0,1-6.843-6.843h0a6.784,6.784,0,0,1,6.843-6.843h0a6.784,6.784,0,0,1,6.843,6.843h0C972.388,1028.468,969.168,1031.285,965.143,1031.285Z" transform="translate(-152 -993.075)"/>
+      <path id="Path_675" data-name="Path 675" class="cls-2" d="M965.143,1037.586h0a6.785,6.785,0,0,1-6.843-6.843h0a6.784,6.784,0,0,1,6.843-6.843h0a6.784,6.784,0,0,1,6.843,6.843h0C972.388,1034.365,969.168,1037.586,965.143,1037.586Z" transform="translate(-152 -974.017)"/>
+      <path id="Path_676" data-name="Path 676" class="cls-2" d="M965.143,1043.785h0a6.784,6.784,0,0,1-6.843-6.843h0a6.784,6.784,0,0,1,6.843-6.843h0a6.784,6.784,0,0,1,6.843,6.843h0C972.388,1040.967,969.168,1043.785,965.143,1043.785Z" transform="translate(-152 -955.26)"/>
+    </g>
+  </g>
+</svg>

@@ -29,10 +29,11 @@
     margin-bottom: 12px;
     margin-left: -18px;
     padding-left: 12px;
+    color: #262626;
 }
 
 .headingText i {
-    color: tomato;
+    color: #FF4E00;
     border-radius: 50%;
 }
 
@@ -42,7 +43,7 @@
 
 .headingText .nav-item a {
     font-size: 13px;
-    color: #333;
+    color: #262626;
     font-weight: 500;
     padding: 6px;
 }
@@ -53,20 +54,22 @@
 }
 
 .boldText {
-    //font-size: 13px !important;
-    //font-weight: 500;
-    margin-top: -20px;
-    font-size: 13px;
+    font-size: 13px !important;
     font-weight: bold;
+    color: #707070;
+}
+
+.font-color {
+    color: #707070;
 }
 
 .bigNumber {
     font-size: 26px;
     font-weight: 600;
-    color: #2196F1;
+    color: #5584FF;
     margin-right: 12px;
 }
 
 .changeNumber {
-    color: limegreen;
+    color: #23B14D;
 }

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2304 -308 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Cancel);
+      }
+
+      .cls-2 {
+        fill: #5584ff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-Cancel">
+      <rect x="-2304" y="-308" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Cancel" class="cls-1">
+    <rect class="cls-3" x="-2304" y="-308" width="64" height="64"/>
+    <g id="Group_5794" data-name="Group 5794" transform="translate(-3233.6 -1399.3)">
+      <g id="Group_1084" data-name="Group 1084" transform="translate(929.6 1091.3)">
+        <g id="Group_1083" data-name="Group 1083">
+          <path id="Path_672" data-name="Path 672" class="cls-2" d="M961.6,1155.3a32,32,0,1,0-32-32A32.094,32.094,0,0,0,961.6,1155.3Zm0-59.6a27.6,27.6,0,1,1-27.6,27.6A27.655,27.655,0,0,1,961.6,1095.7Z" transform="translate(-929.6 -1091.3)"/>
+          <path id="Path_673" data-name="Path 673" class="cls-2" d="M935.05,1120.65a2,2,0,0,0,3.2,0l8.8-8.8,8.8,8.8a2,2,0,0,0,3.2,0,2.433,2.433,0,0,0,0-3.2l-8.8-8.8,8.8-8.8a2.263,2.263,0,0,0-3.2-3.2l-8.8,8.8-8.8-8.8a2.263,2.263,0,0,0-3.2,3.2l8.8,8.8-8.8,8.8A2.433,2.433,0,0,0,935.05,1120.65Z" transform="translate(-915.05 -1077.05)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

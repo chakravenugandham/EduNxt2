@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2520 -308 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Forward_Arrow);
+      }
+
+      .cls-2 {
+        fill: #5584ff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-Forward_Arrow">
+      <rect x="-2520" y="-308" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Forward_Arrow" data-name="Forward Arrow" class="cls-1">
+    <rect class="cls-3" x="-2520" y="-308" width="64" height="64"/>
+    <g id="Group_5796" data-name="Group 5796" transform="translate(-3287 -2278)">
+      <path id="Path_788" data-name="Path 788" class="cls-2" d="M844.5,2168.9a31.791,31.791,0,0,0-31.7,31.7,31.5,31.5,0,0,0,63,0C875.8,2183.562,861.931,2168.9,844.5,2168.9Zm0,58.64A26.943,26.943,0,1,1,871.44,2200.6,26.971,26.971,0,0,1,844.5,2227.541Z" transform="translate(-44.8 -198.9)"/>
+      <path id="Path_789" data-name="Path 789" class="cls-2" d="M822.814,2173.491a2.058,2.058,0,0,0-1.585-.792,3.009,3.009,0,0,0-1.585.792,2.412,2.412,0,0,0,0,3.17l12.679,12.678-12.679,12.679a2.242,2.242,0,0,0,3.17,3.17l14.264-14.265a1.98,1.98,0,0,0,0-3.169Z" transform="translate(-26.287 -187.643)"/>
+    </g>
+  </g>
+</svg>

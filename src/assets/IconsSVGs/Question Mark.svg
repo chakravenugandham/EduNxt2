@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2592 -452 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-Question_Mark);
+      }
+
+      .cls-2 {
+        fill: #f7776c;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        font-size: 46px;
+        font-family: Muli-Bold, Muli;
+        font-weight: 700;
+      }
+    </style>
+    <clipPath id="clip-Question_Mark">
+      <rect x="-2592" y="-452" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="Question_Mark" data-name="Question Mark" class="cls-1">
+    <rect class="cls-4" x="-2592" y="-452" width="64" height="64"/>
+    <g id="Group_5792" data-name="Group 5792" transform="translate(-4433.6 -852.563)">
+      <path id="Path_666" data-name="Path 666" class="cls-2" d="M1873.6,463.3h0c-17.6,0-32-14.017-32-31.149h0c0-17.132,14.4-31.149,32-31.149h0c17.6,0,32,14.017,32,31.149h0C1905.6,449.67,1891.2,463.3,1873.6,463.3Z" transform="translate(0 1.265)"/>
+      <text id="_" data-name="?" class="cls-3" transform="translate(1861.333 446.563)"><tspan x="0" y="0">?</tspan></text>
+    </g>
+  </g>
+</svg>

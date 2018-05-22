@@ -1,9 +1,13 @@
 <div class="time-frame">
   <div class="">
     <ul class="list-inline">
-      <li class="list-inline-item"> <b> Select Time Frame </b></li>
+      <li class="list-inline-item select-time-frame">
+        <b> Select Time Frame </b>
+      </li>
       <li class="list-inline-item selectDate"> {{ today | date }} - {{ today | date }} </li>
-      <li class="list-inline-item">Select course</li>
+      <li class="list-inline-item select-time-frame">
+        <b>Select course</b>
+      </li>
       <li class="list-inline-item selectCourse">
         <select name="selectCourse">
           <option value="">All Courses</option>
@@ -12,9 +16,24 @@
         </select>
       </li>
       <div class="float-right">
-        <li class="list-inline-item">Save This View</li>
-        <li class="list-inline-item">Email this report</li>
-        <li class="list-inline-item">Download this report</li>
+        <li class="list-inline-item">
+          <span>
+            <img src="../../assets/IconsSVGs/SAve.svg">
+          </span>
+          <span class="font-color p-l-5">Save this view</span>
+        </li>
+        <li class="list-inline-item">
+          <span>
+            <img src="../../assets/IconsSVGs/mail.svg">
+          </span>
+          <span class="font-color p-l-5">Email this report</span>
+        </li>
+        <li class="list-inline-item">
+          <span>
+            <img src="../../assets/IconsSVGs/Download.svg">
+          </span>
+          <span class="font-color p-l-5">Download this report</span>
+        </li>
       </div>
     </ul>
   </div>

@@ -8,8 +8,8 @@ export class ActivityService {
 
   constructor(private http: HttpClient) { }
 
-  url: string = "https://api.myjson.com/bins/o83wu";
-  getActivityData(){
+  url: string = "http://192.168.239.38:3000/api/v1/learning-activities";
+  getActivityData() {
     return this.http.get(this.url);
   }
 }

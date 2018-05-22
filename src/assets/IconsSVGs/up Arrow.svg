@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2520 -236 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-up_Arrow);
+      }
+
+      .cls-2 {
+        fill: #23b14d;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-up_Arrow">
+      <rect x="-2520" y="-236" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="up_Arrow" data-name="up Arrow" class="cls-1">
+    <rect class="cls-3" x="-2520" y="-236" width="64" height="64"/>
+    <g id="Group_1664" data-name="Group 1664" transform="translate(-4241.65 -979.8)">
+      <g id="Group_1568" data-name="Group 1568" transform="translate(1721.65 743.8)">
+        <g id="Group_1567" data-name="Group 1567">
+          <path id="Path_1015" data-name="Path 1015" class="cls-2" d="M1784.848,774.2l-29.692-29.6a2.01,2.01,0,0,0-3.21,0l-29.693,29.6a2.428,2.428,0,0,0,0,3.2,2.01,2.01,0,0,0,3.21,0l26.082-26v54a2.407,2.407,0,0,0,4.814,0v-54l26.082,26a2.447,2.447,0,0,0,3.21,0C1785.65,776.6,1785.65,775,1784.848,774.2Z" transform="translate(-1721.65 -743.8)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

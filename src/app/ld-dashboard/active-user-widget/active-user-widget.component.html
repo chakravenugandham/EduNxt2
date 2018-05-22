@@ -1,19 +1,27 @@
-<div class="widget-heading">
-    How active are the users?
+<div class="widget-heading row">
+  <p>How active are the users?</p>
 </div>
 <div class="widget-block">
-    <div class="headingText">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" [ngClass]="{active:activeUser}" (click)="activeUsersFn()">Active Users</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [ngClass]="{active:modeDelivery}" (click)="modeDeliveryFn()">Mode of Delivery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [ngClass]="{active:!activeUser && !modeDelivery}" (click)="locationFn()">Location</a>
-            </li>
-        </ul>
-    </div>
-    <app-active-users></app-active-users>
+  <div class="headingText">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{active:activeUser}" (click)="activeUsersFn()">Active Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{active:modeDelivery}" (click)="modeDeliveryFn()">Mode of Delivery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{active:!activeUser && !modeDelivery}" (click)="locationFn()">Location</a>
+      </li>
+      <span class="float-right">
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </span>
+    </ul>
+    <!-- <ul class="float-right">
+      <li>
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </li>
+    </ul> -->
+  </div>
+  <app-active-users></app-active-users>
 </div>

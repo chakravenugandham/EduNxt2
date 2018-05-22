@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2304 -452 64 64">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-calender);
+      }
+
+      .cls-2 {
+        fill: #5584ff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-calender">
+      <rect x="-2304" y="-452" width="64" height="64"/>
+    </clipPath>
+  </defs>
+  <g id="calender" class="cls-1">
+    <rect class="cls-3" x="-2304" y="-452" width="64" height="64"/>
+    <g id="Group_5802" data-name="Group 5802" transform="translate(-2867 -762.1)">
+      <g id="Group_1051" data-name="Group 1051" transform="translate(563 310.1)">
+        <path id="Path_650" data-name="Path 650" class="cls-2" d="M565.765,374.1H624.63a2.376,2.376,0,0,0,2.37-2.577V317.4a2.389,2.389,0,0,0-2.37-2.577H613.568v-2.148a2.379,2.379,0,1,0-4.741,0v2.148H581.568v-2.148a2.379,2.379,0,1,0-4.74,0v2.148H565.37A2.376,2.376,0,0,0,563,317.4v54.121a2.96,2.96,0,0,0,2.765,2.577Zm1.975-54.121h9.086v1.288a2.379,2.379,0,1,0,4.741,0v-1.288h27.26v1.288a2.379,2.379,0,1,0,4.741,0v-1.288h8.691v6.443H567.74v-6.443Zm0,11.168h54.519v38.228H568.135V331.147Zm0,0" transform="translate(-563 -310.1)"/>
+        <path id="Path_651" data-name="Path 651" class="cls-2" d="M601.165,317.6h-32.4a2.586,2.586,0,0,0,0,5.154h32a2.376,2.376,0,0,0,2.37-2.577c0-1.718-.79-2.577-1.975-2.577Zm0,0" transform="translate(-552.968 -285.385)"/>
+        <path id="Path_652" data-name="Path 652" class="cls-2" d="M584.968,320.3h-16.2a2.376,2.376,0,0,0-2.37,2.577q0,2.577,2.37,2.577h16.2a2.586,2.586,0,0,0,0-5.154Zm0,0" transform="translate(-552.968 -276.488)"/>
+      </g>
+    </g>
+  </g>
+</svg>

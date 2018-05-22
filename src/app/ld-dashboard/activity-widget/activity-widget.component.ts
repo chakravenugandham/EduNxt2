@@ -24,7 +24,7 @@ export class ActivityWidgetComponent implements OnInit {
         this.learnerEngagement.push(respose.data.learnerEngagement);
         this.learnerPace.push(respose.data.learnerPace);
         this.feedback.push(respose.data.feedback);
-        //console.log("respose", respose.data);
+        console.log("respose", respose.data);
       });
   }
 

@@ -1,16 +1,24 @@
-.header-class{
+.header-class {
     border: 0;
 }
-.header-menu{
+
+.header-text {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.header-menu {
     padding: 12px 36px;
 }
-.welcome-user{
+
+.welcome-user {
     height: 82px;
     padding: 12px 36px;
-    color: #FFF !important;
-    background-color: #5584FF;
+    color: #E9E9E9 !important;
+    background-color: #0146F9;
 }
-.welcome-user img{
+
+.welcome-user img {
     height: 60px;
     width: 60px;
     border: 1px solid #FFF;

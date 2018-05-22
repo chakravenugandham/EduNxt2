@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-active-user-widget',
   templateUrl: './active-user-widget.component.html',
-  styleUrls: ['./active-user-widget.component.css']
+  styleUrls: ['./active-user-widget.component.scss']
 })
 export class ActiveUserWidgetComponent implements OnInit {
 
-  activeUser:boolean = true;
+  activeUser: boolean = true;
   constructor() { }
 
   ngOnInit() {

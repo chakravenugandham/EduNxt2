@@ -1,48 +1,72 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
-
-.row{
+.row {
     margin: 0;
     padding: 0;
 }
+
 .row [class*="col-"] {
     margin: 0;
     padding: 0;
 }
 
-.dashbord{
+.dashbord {
     background-color: #EEF2F5;
     padding: 16px 36px;
 }
-.widget-block{
+
+.widget-block {
     background-color: #fff;
     margin: 6px;
     padding: 18px;
     border: 1px solid #afcbe1;
     box-shadow: 1px 1px #CCC;
 }
-.headingText{
+
+.headingText {
     font-weight: 600;
     border-left: 8px solid #FFD630;
     margin-bottom: 12px;
     margin-left: -18px;
     padding-left: 12px;
 }
-.headingText i{
-    background-color: tomato;
-    color: #FFF;
+
+.headingText i {
+    color: tomato;
     border-radius: 50%;
 }
-.headingText .nav .nav-link{
+
+.headingText .nav .nav-link {
     padding: 4px;
 }
-.headingText .nav-item a{
+
+.headingText .nav-item a {
     font-size: 13px;
     color: #333;
     font-weight: 500;
     padding: 6px;
 }
-.headingText .nav-item .active{
+
+.headingText .nav-item .active {
     font-weight: 700;
     border-bottom: 1px solid #FFD630;
+}
+
+.boldText {
+    //font-size: 13px !important;
+    //font-weight: 500;
+    margin-top: -20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.bigNumber {
+    font-size: 26px;
+    font-weight: 600;
+    color: #2196F1;
+    margin-right: 12px;
+}
+
+.changeNumber {
+    color: limegreen;
 }

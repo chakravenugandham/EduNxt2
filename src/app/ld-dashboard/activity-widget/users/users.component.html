@@ -4,6 +4,9 @@
       <li class="nav-item">
         <a class="nav-link active">Active Users</a>
       </li>
+      <li class="pull-right">
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </li>
     </ul>
   </div>
   <div class="userImages">
@@ -12,29 +15,20 @@
     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="batman">
     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="batman">
   </div>
-  <div>
-    <div>
-      <div class="bigNumber float-left">{{userData.activeUsers}}</div>
-      <div class="small">
-        <div class="">
-          <span class="changeNumber">
-            <i class="fas fa-arrow-up"></i> {{userData.changeInUsers}} </span> Users </div>
-        <div class="">since last month</div>
+  <div class="row">
+    <div class="col-md-8 col-sm-8 col-xs-8">
+      <div>
+        <span class="bigNumber float-left">{{userData.activeUsers}}</span>
+        <span class="small">
+          <i class="fas fa-arrow-up changeNumber"></i> {{userData.changeInUsers}} Users </span>
+        <p class="m-t-5">since last month</p>
+        <p class="boldText">People are currently active</p>
+      </div>
+      <div>
+        <span class="bigNumber float-left">{{userData.peopleCurrentlyEnrolled}}</span>
+        <span class="small">
+          <i class="fas fa-arrow-up changeNumber"></i> {{userData.usersSinceLastMonth}} Users </span>
+        <p class="m-t-5">since last month</p>
+        <p class="boldText">People are currently enrolled</p>
       </div>
     </div>
-    <div class="boldText">People are currently active</div>
-  </div>
-  <br>
-  <div>
-    <div>
-      <div class="bigNumber float-left">{{userData.peopleCurrentlyEnrolled}}</div>
-      <div class="">
-        <div class="">
-          <span class="changeNumber">
-            <i class="fas fa-arrow-up"></i> {{userData.usersSinceLastMonth}} </span> Users </div>
-        <div class="">since last month</div>
-      </div>
-    </div>
-    <div class="boldText">People are currently enrolled</div>
-  </div>
-</div>

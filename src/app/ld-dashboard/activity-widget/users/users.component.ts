@@ -3,12 +3,12 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
 
-  @Input('userElement') userData: {activeUsers:number, changeInUsers:number, peopleCurrentlyEnrolled:number, usersSinceLastMonth:number};
-  
+  @Input('userElement') userData: { activeUsers: number, changeInUsers: number, peopleCurrentlyEnrolled: number, usersSinceLastMonth: number };
+
   constructor() { }
 
   ngOnInit() {

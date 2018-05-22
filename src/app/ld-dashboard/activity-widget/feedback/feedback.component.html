@@ -4,49 +4,43 @@
       <li class="nav-item">
         <a class="nav-link active">Feedback</a>
       </li>
+      <li>
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </li>
     </ul>
   </div>
-  <div class="row">
-    <div class="col-md-6 feedback-emoji">
-      <i *ngIf="happy" class="far fa-smile fa-7x"></i>
-      <i *ngIf="!happy" class="far fa-meh fa-7x"></i>
+  <div class="row p-t-35">
+    <div class="col-md-5 col-sm-5 col-xs-5 feedback-emoji">
+      <i *ngIf="happy" class="far fa-smile fa-5x"></i>
+      <i *ngIf="!happy" class="far fa-meh fa-5x"></i>
     </div>
-    <div class="col-md-6">
-      <div>
-        <div class="bigNumber float-left"> {{feedbackDataElement.learnerSatisfaction}} %</div>
-        <div class="small">
-          <div class="">
-            <span class="changeNumber">
-              <i class="fas fa-arrow-up"></i> by {{feedbackDataElement.learnerSatisfactionChange}} % </span> Users </div>
-        </div>
+    <div class="col-md-7 col-sm-7 col-xs-7">
+      <div class="m-t-0">
+        <span class="bigNumber float-left">{{feedbackDataElement.learnerSatisfaction}}%</span>
+        <span>
+          <i class="fas fa-arrow-up changeNumber"></i> by {{feedbackDataElement.learnerSatisfactionChange}}%
+        </span>
+        <p class="boldText m-t-15">Learner Satisfaction</p>
       </div>
-      <div class="boldText">Learner Satisfaction</div>
     </div>
   </div>
-  <br>
-  <br>
-  <div class="row">
-    <div class="col-md-6">
-      <div>
-        <div class="bigNumber float-left text-danger"> {{feedbackDataElement.trainerRating}} </div>
-        <div class="small">
-          <div class="">
-            <span class="changeNumber">
-              <i class="fas fa-arrow-up"></i> by {{feedbackDataElement.trainerRatingChange}} % </span> Users </div>
-        </div>
+  <div class="row p-t-35">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="m-t-0">
+        <span class="bigNumber text-danger float-left">{{feedbackDataElement.trainerRating}}</span>
+        <span>
+          <i class="fas fa-arrow-up changeNumber"></i> by {{feedbackDataElement.trainerRatingChange}}%
+        </span>
+        <p class="boldText m-t-15">Trainer Rating</p>
       </div>
-      <div class="boldText">Trainer Rating</div>
     </div>
-    <div class="col-md-6">
-      <div>
-        <div class="bigNumber float-left"> {{feedbackDataElement.contentRating}} </div>
-        <div class="small">
-          <div class="">
-            <span class="changeNumber">
-              <i class="fas fa-arrow-up"></i> by {{feedbackDataElement.contentRatingChange}} % </span> Users </div>
-        </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <div class="m-t-0">
+        <span class="bigNumber float-left m-r-0">{{feedbackDataElement.contentRating}}</span>
+        <span>
+          <i class="fas fa-arrow-up changeNumber"></i> by {{feedbackDataElement.contentRatingChange}}%</span>
+        <p class="boldText m-t-15">Content Rating</p>
       </div>
-      <div class="boldText">Content Rating</div>
     </div>
   </div>
 </div>

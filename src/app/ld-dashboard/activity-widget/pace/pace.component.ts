@@ -3,10 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-pace',
   templateUrl: './pace.component.html',
-  styleUrls: ['./pace.component.css']
+  styleUrls: ['./pace.component.scss']
 })
 export class PaceComponent implements OnInit {
-  @Input() paceDataElement:{behindSchedule:number, haventStarted:number};
+  @Input() paceDataElement: { behindSchedule: number, haventStarted: number };
 
   constructor() { }
 

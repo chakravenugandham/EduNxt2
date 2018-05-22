@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NvD3Module } from 'ng2-nvd3';
+
+// d3 and nvd3 should be included somewhere
+import 'd3';
+import 'nvd3';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -80,6 +85,7 @@ import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widg
   ],
   imports: [
     BrowserModule,
+    NvD3Module,
     HttpClientModule,
     AngularFontAwesomeModule
   ],

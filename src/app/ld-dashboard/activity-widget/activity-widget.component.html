@@ -5,15 +5,16 @@
 </div>
 <div class="row">
   <div class="col-md-3">
-    <app-users *ngFor="let userData of activeUsers" [userElement]="userData"></app-users>
+    <app-users [userElement]="resposeData.activeUsers"></app-users>
+  </div>
+
+  <div class="col-md-3">
+    <app-engagement [engageData]="resposeData.learnerEngagement"></app-engagement>
   </div>
   <div class="col-md-3">
-    <app-engagement *ngFor="let engagementData of learnerEngagement" [engageData]="engagementData"></app-engagement>
+    <app-pace [paceDataElement]="resposeData.learnerPace"></app-pace>
   </div>
   <div class="col-md-3">
-    <app-pace *ngFor="let paceData of learnerPace" [paceDataElement]="paceData"></app-pace>
-  </div>
-  <div class="col-md-3">
-    <app-feedback *ngFor="let feedbackData of feedback" [feedbackDataElement]="feedbackData"></app-feedback>
+    <app-feedback [feedbackDataElement]="resposeData.feedback"></app-feedback>
   </div>
 </div>

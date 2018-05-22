@@ -12,19 +12,18 @@ export class ActivityWidgetComponent implements OnInit {
 
   constructor(private getData: ActivityService) { }
 
-  activeUsers = [];
-  learnerEngagement = [];
-  learnerPace = [];
-  feedback = [];
+  resposeData = {
+    activeUsers: '',
+    learnerEngagement: '',
+    learnerPace: '',
+    feedback: ''
+  };
 
   getDataFromService() {
     this.getData.getActivityData()
       .subscribe((respose: any) => {
-        this.activeUsers.push(respose.data.activeUsers);
-        this.learnerEngagement.push(respose.data.learnerEngagement);
-        this.learnerPace.push(respose.data.learnerPace);
-        this.feedback.push(respose.data.feedback);
-        console.log("respose", respose.data);
+        this.resposeData = respose.data;
+        console.log("respose activeUsers", respose.data.activeUsers);
       });
   }
 

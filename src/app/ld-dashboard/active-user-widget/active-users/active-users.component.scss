@@ -216,10 +216,6 @@
     stroke-width: 0px;
 }
 
-.nvd3 .nv-legend .nv-disabled rect {
-    /*fill-opacity: 0;*/
-}
-
 .nvd3 .nv-check-box .nv-box {
     fill-opacity: 0;
     stroke-width: 2;
@@ -678,9 +674,9 @@ svg.nvd3-svg {
     pointer-events: none;
     display: none;
 }
+
 /****
-Interactive Layer
-*/
+Interactive Layer */
 
 .nvd3 .nv-interactiveGuideLine {
     pointer-events: none;
@@ -688,4 +684,17 @@ Interactive Layer
 
 .nvd3 line.nv-guideline {
     stroke: #ccc;
+    .activity-user-score img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        border: 1px solid #FFF;
+        margin-left: -12px;
+    }
+    .activity-user-score img:first-child {
+        margin-left: 0;
+    }
+    .fa-user-friends {
+        color: #ff5722;
+    }
 }

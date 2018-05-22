@@ -18,23 +18,28 @@
 .widget-block {
     background-color: #fff;
     margin: 6px;
-    padding: 18px;
+    padding: 10px;
     border: 1px solid #afcbe1;
     box-shadow: 1px 1px #CCC;
+    font-size: 0.7em;
 }
 
 .headingText {
     font-weight: 600;
     border-left: 8px solid #FFD630;
     margin-bottom: 12px;
-    margin-left: -18px;
+    margin-left: -10px;
     padding-left: 12px;
     color: #262626;
+    position: relative;
 }
 
 .headingText i {
-    color: #FF4E00;
+    color: #FF5722;
     border-radius: 50%;
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }
 
 .headingText .nav .nav-link {

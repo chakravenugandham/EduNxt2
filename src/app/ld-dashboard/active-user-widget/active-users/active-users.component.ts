@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./active-users.component.scss']
 })
 export class ActiveUsersComponent implements OnInit {
-
-  constructor() { }
-
+  public lineData;
+  constructor() {
+  }
   ngOnInit() {
   }
 

@@ -1,21 +1,21 @@
 <div>
-    <div class="widget-heading">
-        How is my organization performing?
+  <div class="widget-heading">
+    <p>How is my organization performing?</p>
+  </div>
+  <div class="widget-block">
+    <div class="headingText">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{active:teams}" (click)="activeUsersFn()">Teams</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{active:trainers}" (click)="modeDeliveryFn()">Trainers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{active:!teams && !trainers}" (click)="locationFn()">Learners</a>
+        </li>
+      </ul>
     </div>
-    <div class="widget-block">
-        <div class="headingText">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" [ngClass]="{active:teams}" (click)="activeUsersFn()">Teams</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [ngClass]="{active:trainers}" (click)="modeDeliveryFn()">Trainers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [ngClass]="{active:!teams && !trainers}" (click)="locationFn()">Learners</a>
-                </li>
-            </ul>
-        </div>
-        <app-teams></app-teams>
-    </div>
+    <app-teams></app-teams>
+  </div>
 </div>

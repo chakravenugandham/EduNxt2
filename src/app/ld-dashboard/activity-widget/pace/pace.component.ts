@@ -39,7 +39,7 @@ export class PaceComponent implements OnInit {
             var chart = nv.models.pieChart()
               .x(function (d) { return d.label })
               .y(function (d) { return d.value })
-              .color(['#39EA37', '#F77F6C','#5584FF','#FFD630'])
+              .color(['#39EA37', '#F77F6C', '#5584FF', '#FFD630'])
               .height(200)
               .showLabels(false)
               .labelsOutside(false)
@@ -56,7 +56,7 @@ export class PaceComponent implements OnInit {
 
             d3.select("#piechart svg")
               .attr("width", 180)
-              .attr("height",160)
+              .attr("height", 160)
               .attr("style", "padding-left:0; padding-top:0;margin-top:-20px;")
               .datum(chartData)
               .call(chart);

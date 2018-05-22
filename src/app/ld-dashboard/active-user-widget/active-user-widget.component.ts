@@ -11,6 +11,7 @@ export class ActiveUserWidgetComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

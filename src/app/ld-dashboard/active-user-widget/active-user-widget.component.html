@@ -23,5 +23,7 @@
       </li>
     </ul> -->
   </div>
-  <app-active-users></app-active-users>
+  <app-active-users *ngIf="activeUser"></app-active-users>
+  <app-mode-of-delivery *ngIf="modeDelivery"></app-mode-of-delivery>
+  <app-location *ngIf="!activeUser && !modeDelivery"></app-location>
 </div>

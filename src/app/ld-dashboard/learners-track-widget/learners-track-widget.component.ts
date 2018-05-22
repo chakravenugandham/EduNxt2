@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class LearnersTrackWidgetComponent implements OnInit {
 
   learnerPace: boolean = true;
+  learnerPaceFn(){
+    this.learnerPace = true;
+  }
+  learnerPerfFn(){
+    this.learnerPace = false;
+  }
   constructor() { }
 
   ngOnInit() {

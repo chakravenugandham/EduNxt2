@@ -36,11 +36,11 @@ export class PaceComponent implements OnInit {
           }];
 
           var w = 260;
-          var h = 140;
+          var h = 130;
 
           var arc = d3.arc()
-            .innerRadius(70)
-            .outerRadius(60)
+            .innerRadius(40)
+            .outerRadius(55)
 
           var svg = d3.select("#piechart")
             .append("svg")

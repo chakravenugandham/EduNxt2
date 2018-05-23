@@ -1,22 +1,58 @@
-<div class="widget-heading row">
-  <p>How active are the users?</p>
+<div class="widget-heading clearfix">
+  <p class="float-left">How active are the users?</p>
+  <p class="float-right p-r-6">
+    <i class="fa fa-question-circle" aria-hidden="true"></i>
+  </p>
 </div>
 <div class="widget-block">
-  <div class="headingText">
-    <ul class="nav">
+  <div class="headingText clearfix">
+    <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{active:activeUser}" (click)="activeUsersFn()">Active Users</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:activeUser}" (click)="activeUsersFn()">Active Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{active:modeDelivery}" (click)="modeDeliveryFn()">Mode of Delivery</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:modeDelivery}" (click)="modeDeliveryFn()">Mode of Delivery</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{active:!activeUser && !modeDelivery}" (click)="locationFn()">Location</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:!activeUser && !modeDelivery}" (click)="locationFn()">Location</a>
       </li>
-      <span class="float-right">
+    </ul>
+    <div class="float-right">
+      <span>
         <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
-    </ul>
+      <ng-template #popcontent>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/SAve.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Save this view</b>
+            </span>
+          </li>
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/mail.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Email this report</b>
+            </span>
+          </li>
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/Download.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Download this report</b>
+            </span>
+          </li>
+        </ul>
+      </ng-template>
+      <span class="p-l-20" placement="right" [ngbPopover]="popcontent">
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      </span>
+    </div>
   </div>
   <app-active-users *ngIf="activeUser"></app-active-users>
   <app-mode-of-delivery *ngIf="modeDelivery"></app-mode-of-delivery>

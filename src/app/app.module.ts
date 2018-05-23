@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NvD3Module } from 'ng2-nvd3';
 
 // d3 and nvd3 should be included somewhere
@@ -44,6 +45,7 @@ import { SeenRespondedComponent } from './ld-dashboard/notification-performance-
 import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/org-interest-widget.component';
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
+import { PopoverComponent } from './popover/popover.component';
 
 @NgModule({
   declarations: [
@@ -81,12 +83,14 @@ import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widg
     SeenRespondedComponent,
     OrgInterestWidgetComponent,
     OrgInterestComponent,
-    AttentionNeedWidgetComponent
+    AttentionNeedWidgetComponent,
+    PopoverComponent
   ],
   imports: [
     BrowserModule,
     NvD3Module,
     HttpClientModule,
+    NgbModule.forRoot(),
     AngularFontAwesomeModule
   ],
   providers: [],

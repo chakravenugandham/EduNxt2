@@ -2,7 +2,7 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
 .mainBody {
-    font-size: 16px !important;
+    font-size: 14px !important;
     font-family: "Muli";
 }
 
@@ -69,7 +69,7 @@
 
 .headingText .nav-item a {
     //font-size: 13px;
-    font-size: 20px;
+    font-size: 16px;
     color: #262626;
     font-weight: 500;
     padding: 6px;
@@ -104,4 +104,28 @@
 .small-font {
     padding-top: 7px !important;
     font-size: 12px;
+}
+
+.org-performance, .content-perform {
+    table tr {
+        border-bottom: 2px dotted #ddd;
+        .userName{
+            vertical-align: middle;
+            padding-left: 4px;
+        }
+      }
+      table tr td{
+          padding: 18px 12px;
+          vertical-align: middle;
+      }
+      table tr th img {
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+      }
+}
+.content-perform{
+    table tbody tr th{
+        color: #5584FF;
+    }
 }

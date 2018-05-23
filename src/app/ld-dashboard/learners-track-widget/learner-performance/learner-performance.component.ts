@@ -15,14 +15,14 @@ export class LearnerPerformanceComponent implements OnInit {
     var h = 200;
 
     var arc = d3.arc()
-      .innerRadius(70)
-      .outerRadius(60)
+      .innerRadius(90)
+      .outerRadius(100)
 
     var svg = d3.select("#learnerPerformanceBig")
       .append("svg")
       .attr("width", w)
       .attr("height", h);
-      //.attr("style", "margin:0 auto;");
+    //.attr("style", "margin:0 auto;");
 
     var g = svg.append("g")
       .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")")

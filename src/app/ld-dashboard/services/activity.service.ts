@@ -9,8 +9,15 @@ export class ActivityService {
   constructor(private http: HttpClient) { }
 
   //url: string = "http://192.168.239.38:3000/api/v1/learning-activities";
-  url: string = "https://api.myjson.com/bins/o83wu";
-  getActivityData() {
-    return this.http.get(this.url);
+  //url: string = "https://api.myjson.com/bins/o83wu";
+  getActivityData(urlparam) {
+    const url = this.baseURL + this.urls[urlparam];
+    return this.http.get(url);
+  }
+
+
+  baseURL: string = 'http://192.168.239.38:3000/api/v1/';
+  urls = {
+    'DASHBOARD': 'learning-activities'
   }
 }

@@ -45,7 +45,6 @@ import { SeenRespondedComponent } from './ld-dashboard/notification-performance-
 import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/org-interest-widget.component';
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
-import { PopoverComponent } from './popover/popover.component';
 
 @NgModule({
   declarations: [
@@ -83,8 +82,7 @@ import { PopoverComponent } from './popover/popover.component';
     SeenRespondedComponent,
     OrgInterestWidgetComponent,
     OrgInterestComponent,
-    AttentionNeedWidgetComponent,
-    PopoverComponent
+    AttentionNeedWidgetComponent
   ],
   imports: [
     BrowserModule,

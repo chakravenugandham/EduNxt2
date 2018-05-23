@@ -15,31 +15,45 @@
       <i *ngIf="!happy" class="far fa-meh fa-5x"></i>
     </div>
     <div class="col-md-7 col-sm-7 col-xs-7">
-      <div class="m-t-0">
+      <div>
         <span class="bigNumber float-left">{{feedbackDataElement.learnerSatisfaction}}%</span>
-        <span>
-          <i class="fas fa-arrow-up changeNumber"></i> by {{feedbackDataElement.learnerSatisfactionChange}}%
-        </span>
-        <p class="boldText m-t-15">Learner Satisfaction</p>
+        <p class="small-font">
+          <span>
+            <i class="fas fa-arrow-up changeNumber"></i>
+          </span>
+          <span> by</span>
+          <span class="changeNumber"> {{feedbackDataElement.learnerSatisfactionChange}}%
+          </span>
+        </p>
+        <p class="boldText">Learner Satisfaction</p>
       </div>
     </div>
   </div>
   <div class="row p-t-35">
     <div class="col-md-6 col-sm-6 col-xs-6">
-      <div class="m-t-0">
+      <div>
         <span class="bigNumber danger-class float-left">{{feedbackDataElement.trainerRating}}</span>
-        <span>
-          <i class="fas fa-arrow-down danger-class"></i> by {{feedbackDataElement.trainerRatingChange}}%
-        </span>
-        <p class="boldText m-t-15">Trainer Rating</p>
+        <p class="small-font">
+          <span>
+            <i class="fas fa-arrow-down danger-class"></i>
+          </span>
+          <span>by</span>
+          <span class="danger-class"> {{feedbackDataElement.trainerRatingChange}}%</span>
+        </p>
+        <p class="boldText">Trainer Rating</p>
       </div>
     </div>
     <div class="col-md-6 col-sm-6 col-xs-6">
-      <div class="m-t-0">
-        <span class="bigNumber float-left m-r-0">{{feedbackDataElement.contentRating}}</span>
-        <span>
-          <i class="fas fa-arrow-up changeNumber"></i> by {{feedbackDataElement.contentRatingChange}}%</span>
-        <p class="boldText m-t-15">Content Rating</p>
+      <div>
+        <span class="bigNumber float-left">{{feedbackDataElement.contentRating}}</span>
+        <p class="small-font">
+          <span>
+            <i class="fas fa-arrow-up changeNumber"></i>
+          </span>
+          <span> by</span>
+          <span class="changeNumber"> {{feedbackDataElement.contentRatingChange}}%</span>
+        </p>
+        <p class="boldText">Content Rating</p>
       </div>
     </div>
   </div>

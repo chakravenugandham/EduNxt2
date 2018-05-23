@@ -40,6 +40,7 @@
     position: absolute;
     right: 8px;
     top: 8px;
+    font-size: 20px;
 }
 
 .headingText .nav .nav-link {
@@ -77,4 +78,9 @@
 
 .changeNumber {
     color: #23B14D;
+}
+
+.small-font {
+    padding-top: 7px !important;
+    font-size: 12px;
 }

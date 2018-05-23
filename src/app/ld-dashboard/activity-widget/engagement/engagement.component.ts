@@ -23,7 +23,6 @@ export class EngagementComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (resp: any) => {
-          console.log(resp);
           this.data.peopleChange = resp.data.learnerEngagement.peopleChange;
           this.data.peopleCompletedTraining = resp.data.learnerEngagement.peopleCompletedTraining;
           var chartData = [];
@@ -45,11 +44,9 @@ export class EngagementComponent implements OnInit {
             .endAngle(function (d) {
 
               if (<any>d == 50) {
-                console.log(90 * Math.PI / 180);
                 return 0;
               }
               else if (<any>d > 50) {
-                console.log((<any>d - 50) * 1.8 * Math.PI / 180);
                 return (<any>d - 50) * 1.8 * Math.PI / 180;
               }
               else if (<any>d < 50) {
@@ -71,7 +68,6 @@ export class EngagementComponent implements OnInit {
             .enter()
             .append("g")
             .attr("transform", function (d, i) {
-              console.log(d, i);
               return "translate(" + (i * 50 + 50) + ",100)";
             });
 

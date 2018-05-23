@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import * as d3 from "d3v4";
 
 @Component({
   selector: 'app-pace',
@@ -17,7 +18,6 @@ export class PaceComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (resp: any) => {
-          console.log(resp);
           var chartData = [{
             "label": "BehindSchedule",
             "value": resp.data.learnerPace.behindSchedule
@@ -34,37 +34,33 @@ export class PaceComponent implements OnInit {
             "label": "HaventStarted",
             "value": resp.data.learnerPace.haventStarted
           }];
-          //Donut chart example
-          nv.addGraph(function () {
-            var chart = nv.models.pieChart()
-              .x(function (d) { return d.label })
-              .y(function (d) { return d.value })
-              .color(['#39EA37', '#F77F6C', '#5584FF', '#FFD630'])
-              .height(200)
-              .showLabels(false)
-              .labelsOutside(false)
-              .growOnHover(false)
-              .donut(true)
-              .padAngle(0)
-              .cornerRadius(0)
-              .donutRatio(0.75)
-              .startAngle(function (d) { return d.startAngle - Math.PI / 2; })
-              .endAngle(function (d) { return d.endAngle - Math.PI / 2; }).showLegend(false);
-            ;
-            chart.tooltip.enabled(false);
 
+          var w = 260;
+          var h = 140;
 
-            d3.select("#piechart svg")
-              .attr("width", 180)
-              .attr("height", 160)
-              .attr("style", "padding-left:0; padding-top:0;margin-top:-20px;")
-              .datum(chartData)
-              .call(chart);
+          var arc = d3.arc()
+            .innerRadius(70)
+            .outerRadius(60)
 
-            var svgc = d3.select("#piechart svg");
+          var svg = d3.select("#piechart")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
 
-            return chart;
-          });
+          var g = svg.append("g")
+            .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")")
+
+          var data = [{ color: '#F77F6C', type: 'classA', number: 30 }, { color: '#5584FF', type: 'classB', number: 25 }, { color: '#23B14D', type: 'classC', number: 35 }, { color: '#FFD630', type: 'classD', number: 25 }];
+
+          var arcs = d3.pie().value(function (d) { return d.number; })(data);
+
+          var arcPath = g.selectAll("path")
+            .data(arcs)
+            .enter()
+
+          arcPath.append("path")
+            .style("fill", function (d, i) { return d.data.color; })
+            .attr("d", arc)
         })
   }
 }

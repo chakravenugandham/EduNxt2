@@ -8,6 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class ActiveUserWidgetComponent implements OnInit {
 
   activeUser: boolean = true;
+  modeDelivery: boolean = false;
+  activeUsersFn(){
+    this.activeUser = true;
+    this.modeDelivery = false;
+  }
+  modeDeliveryFn(){
+    this.activeUser = false;
+    this.modeDelivery = true;
+
+  }
+  locationFn(){
+    this.activeUser = false;
+    this.modeDelivery = false;
+  }
   constructor() { }
 
   ngOnInit() {

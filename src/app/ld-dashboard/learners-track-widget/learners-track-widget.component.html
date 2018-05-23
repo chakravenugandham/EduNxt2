@@ -13,6 +13,7 @@
                 </li>
             </ul>
         </div>
-        <app-learner-pace></app-learner-pace>
+        <app-learner-pace *ngIf="learnerPace"></app-learner-pace>
+        <app-learner-performance *ngIf="!learnerPace"></app-learner-performance>
     </div>
 </div>

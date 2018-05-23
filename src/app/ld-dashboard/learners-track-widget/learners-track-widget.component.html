@@ -53,4 +53,9 @@
   </div>
   <app-learner-pace *ngIf="learnerPace"></app-learner-pace>
   <app-learner-performance *ngIf="!learnerPace"></app-learner-performance>
+
+  <!-- <div class=""><a routerLink="/learnerTrackFullView">View Details</a></div> -->
+  <div>
+    <span class="text-success" (click)="routetoFullview()">View Details</span>
+  </div>
 </div>

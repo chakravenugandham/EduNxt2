@@ -10,6 +10,9 @@ import { NvD3Module } from 'ng2-nvd3';
 import 'd3';
 import 'nvd3';
 
+//modules
+import { RoutingModule } from './routing.module';
+
 //services
 import { ActivityService } from "../app/ld-dashboard/services/activity.service";
 
@@ -48,6 +51,7 @@ import { SeenRespondedComponent } from './ld-dashboard/notification-performance-
 import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/org-interest-widget.component';
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
+import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
 
 @NgModule({
   declarations: [
@@ -85,14 +89,16 @@ import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widg
     SeenRespondedComponent,
     OrgInterestWidgetComponent,
     OrgInterestComponent,
-    AttentionNeedWidgetComponent
+    AttentionNeedWidgetComponent,
+    LearnerTrackFullviewComponent
   ],
   imports: [
     BrowserModule,
     NvD3Module,
     HttpClientModule,
     NgbModule.forRoot(),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    RoutingModule
   ],
   providers: [
     ActivityService

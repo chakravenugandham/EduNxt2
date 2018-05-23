@@ -11,7 +11,6 @@ import 'nvd3';
 
 //services
 import { ActivityService } from "../app/ld-dashboard/services/activity.service";
-//import { ApiService } from "../app/ld-dashboard/services/api.service";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -95,7 +94,6 @@ import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widg
   ],
   providers: [
     ActivityService
-    //ApiService
   ],
   bootstrap: [AppComponent]
 })

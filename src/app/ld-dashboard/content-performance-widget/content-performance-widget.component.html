@@ -1,15 +1,52 @@
-<div>
-  <div class="widget-heading">
-    How is my content performing?
-  </div>
-  <div class="widget-block">
-    <div class="headingText">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" class="active">Content Consumption</a>
-        </li>
-      </ul>
+<div class="widget-heading clearfix">
+  <p class="float-left">How is my content performing?</p>
+  <p class="float-right p-r-6">
+    <i class="fa fa-question-circle" aria-hidden="true"></i>
+  </p>
+</div>
+<div class="widget-block">
+  <div class="headingText clearfix">
+    <ul class="nav float-left">
+      <li class="nav-item">
+        <a class="nav-link" class="active">Content Consumption</a>
+      </li>
+    </ul>
+    <div class="float-right">
+      <span>
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </span>
+      <ng-template #popcontent>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/SAve.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Save this view</b>
+            </span>
+          </li>
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/mail.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Email this report</b>
+            </span>
+          </li>
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/Download.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Download this report</b>
+            </span>
+          </li>
+        </ul>
+      </ng-template>
+      <span class="p-l-20" placement="left" [ngbPopover]="popcontent">
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      </span>
     </div>
-    <app-content-consumption></app-content-consumption>
   </div>
+  <app-content-consumption></app-content-consumption>
 </div>

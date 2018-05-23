@@ -11,10 +11,11 @@
       </span>
     </div>
   </div>
-  <div class="row p-t-35">
+  <div class="row p-t-20">
     <div class="col-md-5 col-sm-5 col-xs-5 feedback-emoji">
-      <i *ngIf="happy" class="far fa-smile fa-5x"></i>
-      <i *ngIf="!happy" class="far fa-meh fa-5x"></i>
+      <img src="/assets/IconsSVGs/happy_emoji.svg" alt="happy" *ngIf="feedbackDataElement.learnerSatisfaction > 75">
+      <img src="/assets/IconsSVGs/meh_emoji.svg" alt="meh" *ngIf="feedbackDataElement.learnerSatisfaction >= 50">
+      <img src="/assets/IconsSVGs/angry_emoji.svg" alt="angry" *ngIf="feedbackDataElement.learnerSatisfaction <= 50">
     </div>
     <div class="col-md-7 col-sm-7 col-xs-7">
       <div>
@@ -31,7 +32,7 @@
       </div>
     </div>
   </div>
-  <div class="row p-t-35">
+  <div class="row p-t-20">
     <div class="col-md-6 col-sm-6 col-xs-6">
       <div>
         <span class="bigNumber danger-class float-left">{{feedbackDataElement.trainerRating}}</span>

@@ -63,7 +63,7 @@ export class EngagementComponent implements OnInit {
 
           var svg = d3.select("#donut-chart").append("svg")
             .attr("width", 300)
-            .attr("height", 150)
+            .attr("height", 130)
             .attr("style", "padding-left:30%; padding-top:5%;");
 
           var charts = svg.selectAll("g")

@@ -1,5 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
+
+.mainBody{
+    font-size: 13px !important;
+}
 .row {
     margin: 0;
     padding: 0;
@@ -23,6 +27,16 @@
     box-shadow: 1px 1px #CCC;
     font-size: 0.7em;
 }
+.activity-widgets .widget-block{
+    height: 280px;
+    padding: 10px 20px;
+}
+.activity-widgets .headingText{
+    margin-left: -20px;
+}
+.activity-widgets .boldText{
+    margin-bottom: 0;
+}
 
 .headingText {
     font-weight: 600;
@@ -34,12 +48,13 @@
     position: relative;
 }
 
+
 .headingText i {
     color: #FF5722;
     border-radius: 50%;
     right: 8px;
     top: 8px;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .headingText .nav .nav-link {

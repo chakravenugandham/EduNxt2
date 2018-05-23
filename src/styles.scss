@@ -24,7 +24,7 @@
 .widget-block {
     background-color: #fff;
     margin: 6px;
-    padding: 10px; // border: 1px solid #afcbe1;
+    padding: 10px 20px; // border: 1px solid #afcbe1;
     box-shadow: 1px 1px #CCC;
     font-size: 0.7em;
 }
@@ -49,7 +49,7 @@
     font-weight: 600;
     border-left: 8px solid #FFD630;
     margin-bottom: 12px;
-    margin-left: -10px;
+    margin-left: -20px;
     padding-left: 12px;
     color: #262626;
     position: relative;
@@ -118,6 +118,9 @@
           padding: 18px 12px;
           vertical-align: middle;
       }
+      table tr th{
+          font-size: 1.2em;
+      }
       table tr th img {
         height: 24px;
         width: 24px;
@@ -127,5 +130,6 @@
 .content-perform{
     table tbody tr th{
         color: #5584FF;
+        width: 152px;
     }
 }

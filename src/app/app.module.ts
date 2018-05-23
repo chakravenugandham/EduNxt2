@@ -9,6 +9,10 @@ import { NvD3Module } from 'ng2-nvd3';
 import 'd3';
 import 'nvd3';
 
+//services
+import { ActivityService } from "../app/ld-dashboard/services/activity.service";
+//import { ApiService } from "../app/ld-dashboard/services/api.service";
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TimeFrameComponent } from './time-frame/time-frame.component';
@@ -89,7 +93,10 @@ import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widg
     HttpClientModule,
     AngularFontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    ActivityService
+    //ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

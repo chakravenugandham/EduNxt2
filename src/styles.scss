@@ -2,7 +2,7 @@
 @import "~font-awesome/css/font-awesome.min.css";
 
 .mainBody{
-    font-size: 13px !important;
+    font-size: 16px !important;
 }
 .row {
     margin: 0;
@@ -23,7 +23,7 @@
     background-color: #fff;
     margin: 6px;
     padding: 10px;
-    border: 1px solid #afcbe1;
+    // border: 1px solid #afcbe1;
     box-shadow: 1px 1px #CCC;
     font-size: 0.7em;
 }
@@ -33,6 +33,9 @@
 }
 .activity-widgets .headingText{
     margin-left: -20px;
+    .nav-item a{
+        font-weight: 700;
+    }
 }
 .activity-widgets .boldText{
     margin-bottom: 0;
@@ -48,7 +51,6 @@
     position: relative;
 }
 
-
 .headingText i {
     color: #FF5722;
     border-radius: 50%;
@@ -63,7 +65,8 @@
 }
 
 .headingText .nav-item a {
-    font-size: 13px;
+    //font-size: 13px;
+    font-size: 20px;
     color: #262626;
     font-weight: 500;
     padding: 6px;
@@ -76,7 +79,7 @@
 
 .boldText {
     font-size: 13px !important;
-    font-weight: bold;
+    font-weight: 500;
     color: #707070;
 }
 

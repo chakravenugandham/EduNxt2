@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+//import { observable } from "rxjs";
+import { Response } from "@angular/http";
+
+import { ActiveUsersService } from "../../ld-dashboard/services/active-users.service";
 
 @Component({
   selector: 'app-active-user-widget',
@@ -7,25 +11,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActiveUserWidgetComponent implements OnInit {
 
+  constructor(private activeService: ActiveUsersService) { }
+
   activeUser: boolean = true;
   modeDelivery: boolean = false;
-  activeUsersFn(){
+  activeUsersFn() {
     this.activeUser = true;
     this.modeDelivery = false;
   }
-  modeDeliveryFn(){
+  modeDeliveryFn() {
     this.activeUser = false;
     this.modeDelivery = true;
 
   }
-  locationFn(){
+  locationFn() {
     this.activeUser = false;
     this.modeDelivery = false;
   }
-  constructor() { }
 
-  ngOnInit() {
+  resposeData = {
+    activeUserData: '',
+    locationData: ''
+  };
+  userInfo = [{
+    L_D_UserId: 1,
+    CourseId: 1
+  }]
 
+  getActiveUsersData() {
+    this.activeService.getActiveUsers(this.userInfo)
+    .subscribe((respose: Response) => {
+      this.resposeData = respose.json();
+      //this.resposeData.activeUserData = respose.json().data;
+      console.log("respose getActiveUsers", this.resposeData);
+    });
   }
 
+  getLocationData() {
+    // this.activeService.getLocationData(this.userInfo)
+    // .subscribe((respose: any) => {
+    //   this.resposeData.locationData = respose.data;
+    //   console.log("respose getActiveUsers", this.resposeData.locationData);
+    // });
+  }
+  ngOnInit() {
+    this.getActiveUsersData();
+    this.getLocationData();
+  }
 }

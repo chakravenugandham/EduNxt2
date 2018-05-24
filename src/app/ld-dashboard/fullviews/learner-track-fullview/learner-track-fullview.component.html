@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard learner-track-fullview">
 
   <div class="widget-heading row">
     <p>
@@ -6,14 +6,143 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <div class="widget-block">
-        <svg></svg>
+      <div class="widget-block text-center">
+        <app-learner-pace></app-learner-pace>
       </div>
     </div>
     <div class="col-md-6">
       <div class="widget-block">
-        <svg></svg>
+        <app-learner-performance></app-learner-performance>
       </div>
     </div>
+  </div>
+  <div class="widget-block">
+    <b>Display data for </b>
+    <span class="paceDataSelect">
+      <select name="paceDataSelect" id="paceDataSelect">
+        <option value="Ahead of Schedule">Ahead of Schedule</option>
+        <option value="On Track">On Track</option>
+        <option value="Behind Schedule">Behind Schedule</option>
+        <option value="Haven't Started">Haven't Started</option>
+      </select>
+    </span>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Learner Name</th>
+          <th scope="col">Sl. No.</th>
+          <th scope="col">Course Name</th>
+          <th scope="col">Team</th>
+          <th scope="col">Batch</th>
+          <th scope="col">Team Leader</th>
+          <th scope="col">Score in course</th>
+          <th scope="col">Score Avg.</th>
+          <th scope="col">Highest Score</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <span>
+              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
+            </span>
+            <span class="userName"> Riddle</span>
+          </th>
+          <td class="">1235-4333-4356</td>
+          <td class="">Communication 101</td>
+          <td class="">Sales</td>
+          <td class="">Batch 1</td>
+          <td class="">Count Dooku</td>
+          <td class="">89%</td>
+          <td class="">73%</td>
+          <td class="">83%</td>
+          <td class="text-primary">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+            <span>Congratulate</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span>
+              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
+            </span>
+            <span class="userName"> Riddle</span>
+          </th>
+          <td class="">1235-4333-4356</td>
+          <td class="">Communication 101</td>
+          <td class="">Sales</td>
+          <td class="">Batch 1</td>
+          <td class="">Count Dooku</td>
+          <td class="">89%</td>
+          <td class="">73%</td>
+          <td class="">83%</td>
+          <td class="text-primary">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+            <span>Congratulate</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span>
+              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
+            </span>
+            <span class="userName"> Riddle</span>
+          </th>
+          <td class="">1235-4333-4356</td>
+          <td class="">Communication 101</td>
+          <td class="">Sales</td>
+          <td class="">Batch 1</td>
+          <td class="">Count Dooku</td>
+          <td class="">89%</td>
+          <td class="">73%</td>
+          <td class="">83%</td>
+          <td class="text-primary">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+            <span>Congratulate</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span>
+              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
+            </span>
+            <span class="userName"> Riddle</span>
+          </th>
+          <td class="">1235-4333-4356</td>
+          <td class="">Communication 101</td>
+          <td class="">Sales</td>
+          <td class="">Batch 1</td>
+          <td class="">Count Dooku</td>
+          <td class="">89%</td>
+          <td class="">73%</td>
+          <td class="">83%</td>
+          <td class="text-primary">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+            <span>Congratulate</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span>
+              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
+            </span>
+            <span class="userName"> Riddle</span>
+          </th>
+          <td class="">1235-4333-4356</td>
+          <td class="">Communication 101</td>
+          <td class="">Sales</td>
+          <td class="">Batch 1</td>
+          <td class="">Count Dooku</td>
+          <td class="">89%</td>
+          <td class="">73%</td>
+          <td class="">83%</td>
+          <td class="text-primary">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+            <span>Congratulate</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

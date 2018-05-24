@@ -13,65 +13,17 @@
       </tr>
     </thead>
     <tbody>
-
-      <tr>
-        <th scope="row">Understanding Communication</th>
-        <td>Shashank Kumar</td>
-        <td>31412</td>
+      <tr *ngFor="let content of contentData">
+        <th scope="row"> {{content.ContentName}} </th>
+        <td> {{content.Author}} </td>
+        <td> {{content.Views}} </td>
         <td>
           <span>
             <i class="far fa-star"></i>
           </span>
-          <span>4.56</span>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Writing for Social Media</th>
-        <td>Shashank Kumar</td>
-        <td>31412</td>
-        <td>
-          <span>
-            <i class="far fa-star"></i>
-          </span>
-          <span>4.56</span>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Communication Design</th>
-        <td>Shashank Kumar</td>
-        <td>31412</td>
-        <td>
-          <span>
-            <i class="far fa-star"></i>
-          </span>
-          <span>4.56</span>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Writing for Service Design</th>
-        <td>Shashank Kumar</td>
-        <td>31412</td>
-        <td>
-          <span>
-            <i class="far fa-star"></i>
-          </span>
-          <span>4.56</span>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Quiz on Principles of Management</th>
-        <td>Shashank Kumar</td>
-        <td>31412</td>
-        <td>
-          <span>
-            <i class="far fa-star"></i>
-          </span>
-          <span>4.56</span>
+          <span> {{content.AvgRating}} </span>
         </td>
       </tr>
     </tbody>
   </table>
-  <!-- <div>
-      <svg></svg>
-    </div> -->
 </div>

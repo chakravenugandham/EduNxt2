@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { observable } from "rxjs";
-import { Response } from "@angular/http";
 
 import { ActiveUsersService } from "../../ld-dashboard/services/active-users.service";
 
@@ -40,11 +38,11 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   getActiveUsersData() {
     this.activeService.getActiveUsers(this.userInfo)
-    .subscribe((respose: Response) => {
-      this.resposeData = respose.json();
-      //this.resposeData.activeUserData = respose.json().data;
-      console.log("respose getActiveUsers", this.resposeData);
-    });
+      .subscribe((respose: any) => {
+        //this.resposeData = respose.json();
+        this.resposeData.activeUserData = respose.data;
+        console.log("respose getActiveUsers", this.resposeData);
+      });
   }
 
   getLocationData() {

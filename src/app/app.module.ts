@@ -13,6 +13,9 @@ import 'nvd3';
 //modules
 import { RoutingModule } from './routing.module';
 
+//constants
+import { Images } from "./imageConstants";
+
 //services
 import { ActivityService } from "../app/ld-dashboard/services/activity.service";
 

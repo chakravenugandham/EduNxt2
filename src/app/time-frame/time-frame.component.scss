@@ -26,10 +26,20 @@
     }
 }
 
+.calender-span {
+    //border-left: 1px solid #0146F9;
+    //margin-left:10px;
+    .calender {
+        padding-left: 10px;
+        height: 30px;
+        width: 30px;
+    }
+}
+
 .select-time-frame {
     color: #262626 !important;
 }
 
-.p-l-5{
+.p-l-5 {
     padding-left: 5px;
 }

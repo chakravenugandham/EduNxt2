@@ -4,7 +4,13 @@
       <li class="list-inline-item select-time-frame">
         <b> Select Time Frame </b>
       </li>
-      <li class="list-inline-item selectDate"> {{ today | date }} - {{ today | date }} </li>
+      <li class="list-inline-item selectDate">
+        <!-- <span> {{ today | date }} - {{ today | date }}</span> -->
+        <span class="calender-span">
+          <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+          <!-- <img src="../../assets/IconsSVGs/calender.svg" class="calender"> -->
+        </span>
+      </li>
       <li class="list-inline-item select-time-frame">
         <b>Select course</b>
       </li>
@@ -16,19 +22,19 @@
         </select>
       </li>
       <div class="float-right">
-        <li class="list-inline-item">
+        <li class="list-inline-item cursor-pointer">
           <span>
             <img src="../../assets/IconsSVGs/SAve.svg">
           </span>
           <span class="font-color p-l-5">Save this view</span>
         </li>
-        <li class="list-inline-item">
+        <li class="list-inline-item cursor-pointer">
           <span>
             <img src="../../assets/IconsSVGs/mail.svg">
           </span>
           <span class="font-color p-l-5">Email this report</span>
         </li>
-        <li class="list-inline-item">
+        <li class="list-inline-item cursor-pointer">
           <span>
             <img src="../../assets/IconsSVGs/Download.svg">
           </span>

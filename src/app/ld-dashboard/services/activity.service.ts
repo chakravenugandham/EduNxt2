@@ -16,8 +16,8 @@ export class ActivityService {
   }
 
 
-  baseURL: string = 'http://192.168.239.38:3000/api/v1/';
-  urls = {
-    'DASHBOARD': 'learning-activities'
-  }
+  // baseURL: string = 'http://192.168.239.38:3000/api/v1/';
+  // urls = {
+  //   'DASHBOARD': 'learning-activities'
+  // }
 }

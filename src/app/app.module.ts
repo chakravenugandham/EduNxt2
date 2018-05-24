@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -12,6 +12,9 @@ import 'nvd3';
 
 //modules
 import { RoutingModule } from './routing.module';
+
+//constants
+import { Images } from "./imageConstants";
 
 //services
 import { ActivityService } from "../app/ld-dashboard/services/activity.service";

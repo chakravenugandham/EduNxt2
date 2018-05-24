@@ -1,49 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 import { ActiveUsersService } from "../../ld-dashboard/services/active-users.service";
-import { AnonymousSubject } from 'rxjs/internal/Subject';
 
 @Component({
-  selector: 'app-active-user-widget',
-  templateUrl: './active-user-widget.component.html',
-  styleUrls: ['./active-user-widget.component.scss']
+  selector: "app-active-user-widget",
+  templateUrl: "./active-user-widget.component.html",
+  styleUrls: ["./active-user-widget.component.scss"]
 })
 export class ActiveUserWidgetComponent implements OnInit {
-
-  constructor(private activeService: ActiveUsersService) { }
+  constructor(private activeService: ActiveUsersService) {}
 
   activeUser: boolean = true;
   modeDelivery: boolean = false;
+
   activeUsersFn() {
     this.activeUser = true;
     this.modeDelivery = false;
   }
+
   modeDeliveryFn() {
     this.activeUser = false;
     this.modeDelivery = true;
-
   }
+
   locationFn() {
     this.activeUser = false;
     this.modeDelivery = false;
   }
 
   resposeData = {
-    activeUserData: '',
-    locationData: ''
+    activeUserData: "",
+    locationData: ""
   };
-  userInfo = [{
-    L_D_UserId: 1,
-    CourseId: 1
-  }]
+
+  userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
 
   getActiveUsersData() {
-    this.activeService.getActiveUsers(this.userInfo)
-    .subscribe((respose: any) => {
-      //this.resposeData = respose.json();
-      this.resposeData.activeUserData = respose.data;
-      console.log("respose getActiveUsers", this.resposeData);
-    });
+    this.activeService
+      .getActiveUsers(this.userInfo)
+      .subscribe((respose: any) => {
+        this.resposeData.activeUserData = respose.data;
+        console.log("respose getActiveUsers", this.resposeData);
+      });
   }
 
   getLocationData() {

@@ -2,134 +2,167 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
 .mainBody {
-    font-size: 14px !important;
-    // font-family: "Muli";
+  font-size: 14px !important;
+  // font-family: "Muli";
 }
 
 .row {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .row [class*="col-"] {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .dashboard {
-    background-color: #EEF2F5;
-    padding: 16px 36px;
+  background-color: #eef2f5;
+  padding: 16px 36px;
 }
 
 .widget-block {
-    background-color: #fff;
-    margin: 6px;
-    padding: 10px 20px; // border: 1px solid #afcbe1;
-    box-shadow: 1px 1px #CCC;
-    font-size: 0.7em;
+  background-color: #fff;
+  margin: 6px;
+  padding: 10px 20px; // border: 1px solid #afcbe1;
+  box-shadow: 1px 1px #ccc;
+  font-size: 0.7em;
 }
 
 .activity-widgets .widget-block {
-    height: 280px;
-    padding: 10px 20px;
+  height: 280px;
+  padding: 10px 20px;
 }
 
 .activity-widgets .headingText {
-    margin-left: -20px;
-    .nav-item a {
-        font-weight: 700;
-    }
+  margin-left: -20px;
+  .nav-item a {
+    font-weight: 700;
+  }
 }
 
 .activity-widgets .boldText {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .headingText {
-    font-weight: 600;
-    border-left: 8px solid #FFD630;
-    margin-bottom: 12px;
-    margin-left: -20px;
-    padding-left: 12px;
-    color: #262626;
-    position: relative;
+  font-weight: 600;
+  border-left: 8px solid #ffd630;
+  margin-bottom: 12px;
+  margin-left: -20px;
+  padding-left: 12px;
+  color: #262626;
+  position: relative;
 }
 
 .headingText i {
-    color: #FF5722;
-    border-radius: 50%;
-    right: 8px;
-    top: 8px;
-    font-size: 14px;
+  color: #ff5722;
+  border-radius: 50%;
+  right: 8px;
+  top: 8px;
+  font-size: 14px;
 }
 
 .headingText .nav .nav-link {
-    padding: 4px;
+  padding: 4px;
 }
 
 .headingText .nav-item a {
-    //font-size: 13px;
-    font-size: 16px;
-    color: #262626;
-    font-weight: 500;
-    padding: 6px;
+  //font-size: 13px;
+  font-size: 16px;
+  color: #262626;
+  font-weight: 500;
+  padding: 6px;
 }
 
 .headingText .nav-item .active {
-    font-weight: 700;
-    border-bottom: 1px solid #FFD630;
+  font-weight: 700;
+  border-bottom: 1px solid #ffd630;
 }
 
 .boldText {
-    font-size: 13px !important;
-    font-weight: 500;
-    color: #707070;
+  font-size: 13px !important;
+  font-weight: 500;
+  color: #707070;
 }
 
 .font-color {
-    color: #707070;
+  color: #707070;
 }
 
 .bigNumber {
-    font-size: 26px;
-    font-weight: 600;
-    color: #5584FF;
-    margin-right: 12px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #5584ff;
+  margin-right: 12px;
 }
 
 .changeNumber {
-    color: #23B14D;
+  color: #23b14d;
 }
 
 .small-font {
-    padding-top: 7px !important;
-    font-size: 12px;
+  padding-top: 7px !important;
+  font-size: 12px;
 }
 
-.org-performance, .content-perform {
-    table tr {
-        border-bottom: 2px dotted #ddd;
-        .userName{
-            vertical-align: middle;
-            padding-left: 4px;
-        }
-      }
-      table tr td{
-          padding: 18px 12px;
-          vertical-align: middle;
-      }
-      table tr th{
-          font-size: 1.2em;
-      }
-      table tr th img {
-        height: 24px;
-        width: 24px;
-        border-radius: 50%;
-      }
-}
-.content-perform{
-    table tbody tr th{
-        color: #5584FF;
-        width: 152px;
+.org-performance,
+.content-perform,
+.learner-track-fullview {
+  table tr {
+    border-bottom: 2px dotted #ddd;
+    .userName {
+      vertical-align: middle;
+      padding-left: 4px;
     }
+  }
+  table tr td {
+    padding: 18px 12px;
+    vertical-align: middle;
+  }
+  table tr th {
+    font-size: 1.2em;
+  }
+  table tr th img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+  }
+}
+.content-perform {
+  table tbody tr th {
+    color: #5584ff;
+    width: 152px;
+  }
+}
+
+.org-performanace {
+  .search-org-user {
+    position: relative;
+    margin-left: 12px;
+    input {
+      padding: 6px;
+      padding-left: 36px;
+      border: 1px solid #2196f3a8;
+      width: 280px;
+    }
+    .serach-icon {
+      position: absolute;
+      left: 12px;
+      top: 8px;
+      i {
+        color: #2196f3a8;
+        font-size: 16px;
+      }
+    }
+  }
+}
+.org-performanace input::placeholder {
+  color: #2196f3a8;
+  font-size: 10px;
+}
+
+.learner-track-fullview select{
+    padding: 4px;
+    border: 1px solid lightblue;
 }

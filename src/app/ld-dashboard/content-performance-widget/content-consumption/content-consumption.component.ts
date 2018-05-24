@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ContentConsumptionService } from "../../../ld-dashboard/services/content-consumption.service";
+
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-content-consumption",
@@ -14,11 +15,11 @@ export class ContentConsumptionComponent implements OnInit {
 
   userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
 
-  constructor(private contentService: ContentConsumptionService) {}
+  constructor(private contentService: LdDashboardService) {}
 
   getDataFromService() {
     console.log("check2");
-    this.contentService.getData(this.userInfo).subscribe((res: any) => {
+    this.contentService.getContentData(this.userInfo).subscribe((res: any) => {
       this.contentData = res.data;
       console.log("content consumption data", this.contentData);
     });

@@ -16,9 +16,6 @@ import { RoutingModule } from './routing.module';
 //constants
 import { Images } from "./imageConstants";
 
-//services
-import { ActivityService } from "../app/ld-dashboard/services/activity.service";
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TimeFrameComponent } from './time-frame/time-frame.component';
@@ -103,9 +100,7 @@ import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-
     AngularFontAwesomeModule,
     RoutingModule
   ],
-  providers: [
-    ActivityService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

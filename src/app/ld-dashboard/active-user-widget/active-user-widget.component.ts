@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActiveUsersService } from "../../ld-dashboard/services/active-users.service";
+import { AnonymousSubject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-active-user-widget',

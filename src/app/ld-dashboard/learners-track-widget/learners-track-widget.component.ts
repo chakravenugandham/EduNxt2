@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Router, Route } from "@angular/router";
 
 @Component({
-  selector: 'app-learners-track-widget',
-  templateUrl: './learners-track-widget.component.html',
-  styleUrls: ['./learners-track-widget.component.scss']
+  selector: "app-learners-track-widget",
+  templateUrl: "./learners-track-widget.component.html",
+  styleUrls: ["./learners-track-widget.component.scss"]
 })
 export class LearnersTrackWidgetComponent implements OnInit {
-
   learnerPace: boolean = true;
-  learnerPaceFn(){
+  learnerPaceFn() {
     this.learnerPace = true;
   }
-  learnerPerfFn(){
+  learnerPerfFn() {
     this.learnerPace = false;
   }
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  routetoFullview() {
+    this.router.navigate(["learnerTrackFullView"]);
   }
-
 }

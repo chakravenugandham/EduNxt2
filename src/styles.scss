@@ -2,8 +2,8 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
 .mainBody {
-    font-size: 16px !important;
-    font-family: "Muli";
+    font-size: 14px !important;
+    // font-family: "Muli";
 }
 
 .row {
@@ -16,7 +16,7 @@
     padding: 0;
 }
 
-.dashbord {
+.dashboard {
     background-color: #EEF2F5;
     padding: 16px 36px;
 }
@@ -24,7 +24,7 @@
 .widget-block {
     background-color: #fff;
     margin: 6px;
-    padding: 10px; // border: 1px solid #afcbe1;
+    padding: 10px 20px; // border: 1px solid #afcbe1;
     box-shadow: 1px 1px #CCC;
     font-size: 0.7em;
 }
@@ -49,7 +49,7 @@
     font-weight: 600;
     border-left: 8px solid #FFD630;
     margin-bottom: 12px;
-    margin-left: -10px;
+    margin-left: -20px;
     padding-left: 12px;
     color: #262626;
     position: relative;
@@ -69,7 +69,7 @@
 
 .headingText .nav-item a {
     //font-size: 13px;
-    font-size: 20px;
+    font-size: 16px;
     color: #262626;
     font-weight: 500;
     padding: 6px;
@@ -104,4 +104,32 @@
 .small-font {
     padding-top: 7px !important;
     font-size: 12px;
+}
+
+.org-performance, .content-perform {
+    table tr {
+        border-bottom: 2px dotted #ddd;
+        .userName{
+            vertical-align: middle;
+            padding-left: 4px;
+        }
+      }
+      table tr td{
+          padding: 18px 12px;
+          vertical-align: middle;
+      }
+      table tr th{
+          font-size: 1.2em;
+      }
+      table tr th img {
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+      }
+}
+.content-perform{
+    table tbody tr th{
+        color: #5584FF;
+        width: 152px;
+    }
 }

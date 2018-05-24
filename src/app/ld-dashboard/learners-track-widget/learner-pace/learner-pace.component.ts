@@ -15,8 +15,8 @@ export class LearnerPaceComponent implements OnInit {
     var h = 200;
 
     var arc = d3.arc()
-      .innerRadius(70)
-      .outerRadius(60)
+      .innerRadius(90)
+      .outerRadius(100)
 
     var svg = d3.select("#learnerPaceBig")
       .append("svg")

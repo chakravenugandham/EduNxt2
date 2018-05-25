@@ -5,29 +5,34 @@ import { Observable } from 'rxjs';
 import * as d3 from "d3";
 
 @Component({
-  selector: 'app-engagement',
-  templateUrl: './engagement.component.html',
-  styleUrls: ['./engagement.component.scss']
+  selector: 'app-timespent',
+  templateUrl: './timespent.component.html',
+  styleUrls: ['./timespent.component.scss']
 })
-export class EngagementComponent implements OnInit {
-  @Input() engageData: { peopleChange: number, peopleCompletedTraining: number };
+export class TimespentComponent implements OnInit {
+
+  @Input() timeData: { timeSpent: number, expected: number, hoursSpent: number, totalHours: number };
 
   data: any = {
-    peopleChange: Number,
-    peopleCompletedTraining: Number
+    timeSpent: Number, expected: Number, hoursSpent: Number, totalHours: Number
   }
+
   constructor(private http: HttpClient) { }
+
   ngOnInit() {
     let url = 'http://192.168.239.38:3000/api/v1/learning-activities';
     //let url = 'https://api.myjson.com/bins/p8176';
     this.http.get(url)
       .subscribe(
         (resp: any) => {
-          this.data.peopleChange = resp.data.learnerEngagement.peopleChange;
-          this.data.peopleCompletedTraining = resp.data.learnerEngagement.peopleCompletedTraining;
+          console.log(resp.data);
+          this.data.timeSpent = resp.data.usersTrained.timeSpent;
+          this.data.expected = resp.data.usersTrained.expected;
+          this.data.hoursSpent = resp.data.usersTrained.hoursSpent;
+          this.data.totalHours = resp.data.usersTrained.totalHours;
           var chartData = [];
-          //console.log(this.peopleChange, this.data.peopleCompletedTraining);
-          chartData.push(resp.data.learnerEngagement.peopleCompletedTraining);
+
+          chartData.push(resp.data.usersTrained.timeSpent);
           //Donut chart example
 
           var backgroundArc = d3.svg.arc()
@@ -72,13 +77,24 @@ export class EngagementComponent implements OnInit {
               return "translate(" + (i * 50 + 50) + ",100)";
             });
 
-          charts.append("path")
-            .attr("d", <any>backgroundArc)
-            .attr("fill", "#E9E9E9")
+          if (this.data.timeSpent > 50) {
+            charts.append("path")
+              .attr("d", <any>mainArc)
+              .attr("fill", "#5A8BFE")
 
-          charts.append("path")
-            .attr("d", <any>mainArc)
-            .attr("fill", "#5A8BFE")
+          }
+          else if (this.data.timeSpent < 50) {
+            charts.append("path")
+              .attr("d", <any>mainArc)
+              .attr("fill", "#5A8BFE")
+          }
+
+          else {
+            charts.append("path")
+              .attr("d", <any>backgroundArc)
+              .attr("fill", "#E9E9E9")
+          }
+
         }
       )
   }

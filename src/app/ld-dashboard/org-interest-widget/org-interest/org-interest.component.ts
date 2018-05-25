@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrgInterestService } from "../../../ld-dashboard/services/org-interest.service";
 
 @Component({
   selector: 'app-org-interest',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./org-interest.component.scss']
 })
 export class OrgInterestComponent implements OnInit {
+  orgData = [];
+  constructor(private orgInterestService: OrgInterestService) { }
 
-  constructor() { }
-
+  getDataFromService() {
+    this.orgInterestService.getData().subscribe((res: any) => {
+      this.orgData = res.data;
+      console.log("org interest data", this.orgData);
+    });
+  }
   ngOnInit() {
+    this.getDataFromService()
+
   }
 
 }

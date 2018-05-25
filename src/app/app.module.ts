@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +19,7 @@ import { Images } from "./imageConstants";
 
 //services
 import { ActivityService } from "../app/ld-dashboard/services/activity.service";
+import { OrgInterestService } from "../app/ld-dashboard/services/org-interest.service";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -104,7 +106,8 @@ import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-
     RoutingModule
   ],
   providers: [
-    ActivityService
+    ActivityService,
+    OrgInterestService
   ],
   bootstrap: [AppComponent]
 })

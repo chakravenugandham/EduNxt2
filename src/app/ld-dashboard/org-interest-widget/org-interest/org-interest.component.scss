@@ -1,9 +1,12 @@
 .card-block {
     background-color: #fff;
     margin: 6px;
-    padding: 10px 20px; // border: 1px solid #afcbe1;
+    padding: 10px 20px;
+    border: 1px solid #afcbe1;
     box-shadow: 1px 1px #CCC;
-    font-size: 0.7em;
+    .nop {
+        color: #5584FF;
+    }
 }
 
 .widget-heading {

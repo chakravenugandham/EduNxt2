@@ -1,6 +1,41 @@
 <div>
-    Organization's Interests
-    <div>
-      <svg></svg>
+  <p style="font-weight:bold;">
+    <b>Most watched topics and interests</b>
+  </p>
+  <div class="row">
+    <div class="widget-heading col-md-6">
+      <div class="heading clearfix">
+        <p class="float-left">
+          <b>Top Interests</b>
+        </p>
+        <p class="float-right p-r-6">
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </p>
+      </div>
+      <div *ngFor="let orgInterestData of orgData">
+        <div class="card-block">
+          <p>
+            {{orgInterestData.Name}}
+          </p>
+          <p class="nop">
+            {{orgInterestData.NumberOfPeople}}
+          </p>
+          <p>
+            <span class="changeNumber">{{orgInterestData.NumberOfPeopleSinceLastMonth}}</span>
+            <span>Hits since last month</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="widget-heading clearfix col-md-6">
+      <div>
+        <p class="float-left">
+          <b>Popular Topics</b>
+        </p>
+        <p class="float-right p-r-6">
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </p>
+      </div>
     </div>
   </div>
+</div>

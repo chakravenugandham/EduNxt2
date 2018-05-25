@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
     "@ng-bootstrap/ng-bootstrap": "^2.0.0",
+    "@types/jquery": "3.2.12",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
@@ -30,13 +31,13 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "moment": "2.19.1",
-    "@types/jquery": "3.2.12",
     "ng2-daterangepicker": "^2.0.12",
     "ng2-nvd3": "^2.0.0",
     "nvd3": "^1.8.6",
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
     "socket.io": "^2.1.1",
+    "underscore": "^1.9.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import * as d3 from "d3v4";
+import * as _ from "underscore";
 
 @Component({
   selector: "app-active-users",
@@ -10,24 +11,22 @@ export class ActiveUsersComponent implements OnInit {
   public lineData;
   constructor() {}
   ngOnInit() {
-    let w = 480;
-    //let w = d3.select("#activeUserGraph").width();
-    console.log("w", w);
-    let h = 200;
-    let p = 90;
+    var w = 520;
+    var h = 240;
+    var p = 40;
 
-    let dataSet = [
-      [1518307200000, 30, 40,38,49],
-      [1518393600000, 35, 55,42,59],
-      [1518480000000, 40, 60,48,69],
-      [1518566400000, 45, 65,52,72],
-      [1518652800000, 50, 70,58,78],
-      [1518739200000, 55, 75,62,82],
-      [1518825600000, 60, 80,68,89]
+    var dataSet = [
+      [1518307200000, 300, 400],
+      [1518393600000, 350, 550],
+      [1518480000000, 400, 600],
+      [1518566400000, 450, 650],
+      [1518652800000, 500, 700],
+      [1518739200000, 550, 750],
+      [1518825600000, 600, 800]
     ];
 
     // create xScale
-    let xScale = d3
+    var xScale = d3
       .scaleTime()
       .domain(
         d3.extent(dataSet, function(d) {
@@ -37,17 +36,17 @@ export class ActiveUsersComponent implements OnInit {
       .range([p, w - p / 2]);
 
     // create yScale
-    let yMax = d3.max(dataSet, function(d) {
-      let max = d[1] > d[2] ? d[1] : d[2];
+    var yMax = d3.max(dataSet, function(d) {
+      var max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
-    let yScale = d3
+    var yScale = d3
       .scaleLinear()
-      .domain([0, yMax + 20])
+      .domain([0, yMax + 200])
       .range([h - p, 15]);
 
     // create SVG
-    let svg = d3
+    var svg = d3
       .select("#activeUserGraph")
       .append("svg")
       .attr("width", w)
@@ -98,7 +97,7 @@ export class ActiveUsersComponent implements OnInit {
       );
 
     //d3 line generator
-    let line1 = d3
+    var line = d3
       .line()
       .x(function(d) {
         return xScale(d[0]);
@@ -107,13 +106,13 @@ export class ActiveUsersComponent implements OnInit {
         return yScale(d[1]);
       });
 
-    svg
+    var path = svg
       .append("path")
-      .datum(dataSet) // Binds data to the line
-      .attr("class", "line1") // Assign a class for styling
-      .attr("d", line1); // Calls the line generator
+      .datum(dataSet)
+      .attr("class", "line1")
+      .attr("d", line);
 
-    let line2 = d3
+    var line2 = d3
       .line()
       .x(function(d) {
         return xScale(d[0]);
@@ -128,35 +127,85 @@ export class ActiveUsersComponent implements OnInit {
       .attr("class", "line2") // Assign a class for styling
       .attr("d", line2); // Calls the line generator
 
-      let line3 = d3
-      .line()
-      .x(function(d) {
+    var dataPoints = {};
+    //Creating dots
+    svg
+      .selectAll("circles")
+      .data(dataSet)
+      .enter()
+      .append("circle")
+      .attr("r", 3)
+      .attr("cx", function(d) {
+        var key = xScale(d[0]);
+        dataPoints[key] = dataPoints[key] || [];
+        dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .y(function(d) {
-        return yScale(d[3]);
-      });
+      .attr("cy", function(d) {
+        return yScale(d[1]);
+      })
+      .attr("fill", "white")
+      .style("opacity", "0.5");
 
     svg
-      .append("path")
-      .datum(dataSet) // Binds data to the line
-      .attr("class", "line3") // Assign a class for styling
-      .attr("d", line3); // Calls the line generator
-  
-
-  let line4 = d3
-      .line()
-      .x(function(d) {
+      .selectAll("circles")
+      .data(dataSet)
+      .enter()
+      .append("circle")
+      .attr("r", 3)
+      .attr("cx", function(d) {
+        var key = xScale(d[0]);
+        dataPoints[key] = dataPoints[key] || [];
+        dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .y(function(d) {
-        return yScale(d[4]);
-      });
+      .attr("cy", function(d) {
+        return yScale(d[2]);
+      })
+      .attr("fill", "white")
+      .style("opacity", "0.5");
 
-    svg
-      .append("path")
-      .datum(dataSet) // Binds data to the line
-      .attr("class", "line4") // Assign a class for styling
-      .attr("d", line4); // Calls the line generator
-    }
+    //vertical line
+    var vertline = svg
+      .append("line")
+      .attr("class", "vertline")
+      .attr("x1", 0)
+      .attr("x2", 0)
+      .attr("y1", 0)
+      .attr("y2", h - p)
+      .attr("stroke", "black")
+      .attr("stroke-width", 1)
+      .attr("opacity", "0");
+
+    svg.on("mousemove", function() {
+      let mouseX = d3.event.pageX;
+      vertline.attr("opacity", "1");
+      var keys = _.keys(dataPoints).sort();
+      var epsilon = (keys[1] - keys[0]) / 2;
+      var nearest = _.find(keys, function(a) {
+        return Math.abs(a - mouseX) <= epsilon;
+      });
+      if (nearest) {
+        vertline.attr("x1", nearest).attr("x2", nearest);
+        d3
+          .select(".ttip-date")
+          .html(d3.timeFormat("%d %b")(new Date(dataPoints[nearest][0][0])));
+        d3
+          .select(".ttip-learners")
+          .html(dataPoints[nearest][0][1] + " Active Learner");
+        d3
+          .select(".ttip-faculty")
+          .html(dataPoints[nearest][0][2] + " Active Faculty");
+        var tooltip = d3.select(".tool-tip");
+        tooltip.style("visibility", "visible");
+        tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
+      }
+    });
+
+    svg.on("mouseout", function() {
+      vertline.attr("opacity", "0");
+      var tooltip = d3.select(".tool-tip");
+      tooltip.style("visibility", "hidden");
+    });
+  }
 }

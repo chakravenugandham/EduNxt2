@@ -18,7 +18,6 @@ export class ContentConsumptionComponent implements OnInit {
   constructor(private contentService: LdDashboardService) {}
 
   getDataFromService() {
-    console.log("check2");
     this.contentService.getContentData(this.userInfo).subscribe((res: any) => {
       this.contentData = res.data;
       console.log("content consumption data", this.contentData);

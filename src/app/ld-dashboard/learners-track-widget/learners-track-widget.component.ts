@@ -21,4 +21,15 @@ export class LearnersTrackWidgetComponent implements OnInit {
   routetoFullview() {
     this.router.navigate(["learnerTrackFullView"]);
   }
+
+  filterArray = [];
+  i = 0;
+  addFilter() {
+    this.i += 1;
+    this.filterArray.push("Batch"+this.i);
+    
+  }
+  removeFilter(i){
+    console.log("removable filter index",i);
+  }
 }

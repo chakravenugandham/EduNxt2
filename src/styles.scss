@@ -190,18 +190,6 @@
     fill: none;
     opacity: 0.8;
   }
-  .line3 {
-    stroke: #fca104c4;
-    stroke-width: 6px;
-    fill: none;
-    opacity: 0.8;
-  }
-  .line4 {
-    stroke: #5584ffb5;
-    stroke-width: 6px;
-    fill: none;
-    opacity: 0.8;
-  }
   .y-axis path {
     stroke-width: 0 !important;
   }
@@ -214,13 +202,12 @@
   .axis line {
     fill: none;
     stroke: #707070;
-    stroke-width: 1;
     shape-rendering: crispEdges;
   }
   .axis text {
     font-family: sans-serif;
     font-size: 11px;
-    color: #eaeaea;
+    fill: darkgray;
   }
   .grid line {
     stroke: #707070;
@@ -235,14 +222,23 @@
     position: absolute;
     z-index: 10;
     visibility: hidden;
-    background-color: black;
-    color: white;
+    background-color: white;
+    pointer-events: none;
+    color: black;
     border-radius: 5px;
+    border: solid 1px #e9e9e9;
     font-size: 12px;
     font-family: "Source Sans Pro", sans-serif;
+    width: 150px;
+  }
+  .tool-tip table {
+    width: 100%;
   }
   .ttip-div {
     padding: 5px;
     width: 70px;
+  }
+  .vertline {
+    fill: #707070;
   }
 }

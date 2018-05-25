@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NvD3Module } from 'ng2-nvd3';
+import { Daterangepicker } from 'ng2-daterangepicker';
 
 // d3 and nvd3 should be included somewhere
 import 'd3';
@@ -57,6 +58,7 @@ import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/o
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
+import { MpDatepickerRangeComponent } from './mp-datepicker-range/mp-datepicker-range.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,8 @@ import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-
     OrgInterestWidgetComponent,
     OrgInterestComponent,
     AttentionNeedWidgetComponent,
-    LearnerTrackFullviewComponent
+    LearnerTrackFullviewComponent,
+    MpDatepickerRangeComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +106,8 @@ import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-
     HttpClientModule,
     NgbModule.forRoot(),
     AngularFontAwesomeModule,
-    RoutingModule
+    RoutingModule,
+    Daterangepicker
   ],
   providers: [
     ActivityService,

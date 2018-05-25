@@ -55,20 +55,4 @@
   <app-learner-performance *ngIf="!learnerPace"></app-learner-performance>
 
   <!-- <div class=""><a routerLink="/learnerTrackFullView">View Details</a></div> -->
-  <div class="filterComponent">
-    <ul>
-      <li class="list-inline-item filter" (click)="addFilter()">
-        <span>Add Filter</span>
-        <i class="fas fa-plus-circle"></i>
-      </li>
-      <span *ngIf="filterArray">
-        <li class="list-inline-item" *ngFor="let filet of filterArray; let i = index">
-          <span>{{filterArray[0]}}</span>
-          <i class="far fa-times-circle" (click)="removeFilter(i)"></i>
-        </li>
-      </span>
-    </ul>
-    <div class="viewDetails">
-      <span class="text-primary" style="cursor: pointer;" (click)="routetoFullview()"> View Details</span>
-    </div>
-  </div>
+  <app-filter-widget></app-filter-widget>

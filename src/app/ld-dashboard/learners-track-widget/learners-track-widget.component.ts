@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, Route } from "@angular/router";
 
 @Component({
   selector: "app-learners-track-widget",
@@ -14,22 +13,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPerfFn() {
     this.learnerPace = false;
   }
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  routetoFullview() {
-    this.router.navigate(["learnerTrackFullView"]);
-  }
-
-  filterArray = [];
-  i = 0;
-  addFilter() {
-    this.i += 1;
-    this.filterArray.push("Batch"+this.i);
-    
-  }
-  removeFilter(i){
-    console.log("removable filter index",i);
-  }
 }

@@ -59,6 +59,7 @@ import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/co
 import { FooterComponent } from './footer/footer.component';
 import { TimespentComponent } from './ld-dashboard/activity-widget/timespent/timespent.component';
 import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrained/userstrained.component';
+import { FilterWidgetComponent } from './ld-dashboard/shared/filter-widget/filter-widget.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrain
     ContentConsumptionFullviewComponent,
     FooterComponent,
     TimespentComponent,
-    UserstrainedComponent
+    UserstrainedComponent,
+    FilterWidgetComponent
   ],
   imports: [
     BrowserModule,

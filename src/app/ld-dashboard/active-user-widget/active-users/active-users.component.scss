@@ -1,15 +1,71 @@
 .activity-user-score img {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 1px solid #FFF;
-    margin-left: -12px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  margin-left: -12px;
 }
 
 .activity-user-score img:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .fa-user-friends {
-    color: #ff5722;
+  color: #ff5722;
+}
+
+.line1 {
+  stroke: #fca104;
+  stroke-width: 6px;
+  fill: none;
+  opacity: 0.8;
+}
+.line2 {
+  stroke: #5584ff;
+  stroke-width: 6px;
+  fill: none;
+  opacity: 0.8;
+}
+.y-axis path {
+  stroke-width: 0 !important;
+}
+.axis path {
+  fill: none;
+  stroke: #707070;
+  stroke-width: 2;
+  shape-rendering: crispEdges;
+}
+.axis line {
+  fill: none;
+  stroke: #707070;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+  color: #eaeaea;
+}
+.grid line {
+  stroke: #707070;
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+  stroke-dasharray: 5, 5;
+}
+.grid path {
+  stroke-width: 0;
+}
+.tool-tip {
+  position: absolute;
+  z-index: 10;
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+.ttip-div {
+  padding: 5px;
+  width: 70px;
 }

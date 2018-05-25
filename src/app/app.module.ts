@@ -18,10 +18,6 @@ import { RoutingModule } from './routing.module';
 //constants
 import { Images } from "./imageConstants";
 
-//services
-import { ActivityService } from "../app/ld-dashboard/services/activity.service";
-import { OrgInterestService } from "../app/ld-dashboard/services/org-interest.service";
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TimeFrameComponent } from './time-frame/time-frame.component';
@@ -59,6 +55,8 @@ import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-int
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
 import { MpDatepickerRangeComponent } from './mp-datepicker-range/mp-datepicker-range.component';
+import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +96,9 @@ import { MpDatepickerRangeComponent } from './mp-datepicker-range/mp-datepicker-
     OrgInterestComponent,
     AttentionNeedWidgetComponent,
     LearnerTrackFullviewComponent,
-    MpDatepickerRangeComponent
+    MpDatepickerRangeComponent,
+    ContentConsumptionFullviewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -109,10 +109,7 @@ import { MpDatepickerRangeComponent } from './mp-datepicker-range/mp-datepicker-
     RoutingModule,
     Daterangepicker
   ],
-  providers: [
-    ActivityService,
-    OrgInterestService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

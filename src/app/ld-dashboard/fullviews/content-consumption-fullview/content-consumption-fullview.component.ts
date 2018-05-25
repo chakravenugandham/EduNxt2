@@ -3,12 +3,11 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
-  selector: "app-content-consumption",
-  templateUrl: "./content-consumption.component.html",
-  styleUrls: ["./content-consumption.component.scss"]
+  selector: "app-content-consumption-fullview",
+  templateUrl: "./content-consumption-fullview.component.html",
+  styleUrls: ["./content-consumption-fullview.component.css"]
 })
-export class ContentConsumptionComponent implements OnInit {
-  //url = "192.168.239.38:3000/api/v1/content-consumption";
+export class ContentConsumptionFullviewComponent implements OnInit {
   url = "https://api.myjson.com/bins/tp29m";
 
   contentData = [];

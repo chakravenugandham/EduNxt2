@@ -2,8 +2,8 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
 .mainBody {
-    //font-size: 14px !important;
-    font-family: "Muli";
+  //font-size: 14px !important;
+  font-family: "Muli";
 }
 
 .row {
@@ -17,12 +17,13 @@
 }
 
 .dashboard {
-    background-color: #eef2f5;
-    padding: 16px 36px;
+  background-color: #eef2f5;
+  padding: 16px 36px;
 }
 
 .widget-block {
-    background-color: #fff;  margin: 6px;
+  background-color: #fff;
+  margin: 6px;
   padding: 10px 20px; // border: 1px solid #afcbe1;
   box-shadow: 1px 1px #ccc;
   font-size: 0.7em;
@@ -97,7 +98,7 @@
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .changeNumber {
@@ -111,7 +112,8 @@
 
 .org-performance,
 .content-perform,
-.learner-track-fullview {
+.learner-track-fullview,
+.content-fullview {
   table tr {
     border-bottom: 2px dotted #ddd;
     .userName {
@@ -132,7 +134,8 @@
     border-radius: 50%;
   }
 }
-.content-perform {
+.content-perform,
+.content-fullview {
   table tbody tr th {
     color: #5584ff;
     width: 152px;
@@ -165,7 +168,81 @@
   font-size: 10px;
 }
 
-.learner-track-fullview select{
-    padding: 4px;
-    border: 1px solid lightblue;
+.learner-track-fullview select {
+  padding: 4px;
+  border: 1px solid lightblue;
+}
+.learnerPaceText {
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+#activeUserGraph {
+  .line1 {
+    stroke: #fca104;
+    stroke-width: 6px;
+    fill: none;
+    opacity: 0.8;
+  }
+  .line2 {
+    stroke: #5584ff;
+    stroke-width: 6px;
+    fill: none;
+    opacity: 0.8;
+  }
+  .line3 {
+    stroke: #fca104c4;
+    stroke-width: 6px;
+    fill: none;
+    opacity: 0.8;
+  }
+  .line4 {
+    stroke: #5584ffb5;
+    stroke-width: 6px;
+    fill: none;
+    opacity: 0.8;
+  }
+  .y-axis path {
+    stroke-width: 0 !important;
+  }
+  .axis path {
+    fill: none;
+    stroke: #707070;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+  }
+  .axis line {
+    fill: none;
+    stroke: #707070;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+  .axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+    color: #eaeaea;
+  }
+  .grid line {
+    stroke: #707070;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 5, 5;
+  }
+  .grid path {
+    stroke-width: 0;
+  }
+  .tool-tip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  .ttip-div {
+    padding: 5px;
+    width: 70px;
+  }
 }

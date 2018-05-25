@@ -1,15 +1,19 @@
 .activity-user-score img {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
-    border: 1px solid #FFF;
-    margin-left: -12px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  margin-left: -12px;
 }
 
 .activity-user-score img:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .fa-user-friends {
-    color: #ff5722;
+  color: #ff5722;
+}
+
+#activeUserGraph{
+  margin-top: 20px;
 }

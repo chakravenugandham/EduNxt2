@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { ActiveUsersService } from "../../ld-dashboard/services/active-users.service";
+import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
   selector: "app-active-user-widget",
@@ -8,7 +8,7 @@ import { ActiveUsersService } from "../../ld-dashboard/services/active-users.ser
   styleUrls: ["./active-user-widget.component.scss"]
 })
 export class ActiveUserWidgetComponent implements OnInit {
-  constructor(private activeService: ActiveUsersService) {}
+  constructor(private getData: LdDashboardService) {}
 
   activeUser: boolean = true;
   modeDelivery: boolean = false;
@@ -36,8 +36,8 @@ export class ActiveUserWidgetComponent implements OnInit {
   userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
 
   getActiveUsersData() {
-    this.activeService
-      .getActiveUsers(this.userInfo)
+    this.getData
+      .getActiveUsersData(this.userInfo)
       .subscribe((respose: any) => {
         this.resposeData.activeUserData = respose.data;
         console.log("respose getActiveUsers", this.resposeData);
@@ -45,7 +45,7 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
 
   getLocationData() {
-    // this.activeService.getLocationData(this.userInfo)
+    // this.getData.getLocationData(this.userInfo)
     // .subscribe((respose: any) => {
     //   this.resposeData.locationData = respose.data;
     //   console.log("respose getActiveUsers", this.resposeData.locationData);

@@ -57,6 +57,8 @@ import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-
 import { MpDatepickerRangeComponent } from './mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
 import { FooterComponent } from './footer/footer.component';
+import { TimespentComponent } from './ld-dashboard/activity-widget/timespent/timespent.component';
+import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrained/userstrained.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,9 @@ import { FooterComponent } from './footer/footer.component';
     LearnerTrackFullviewComponent,
     MpDatepickerRangeComponent,
     ContentConsumptionFullviewComponent,
-    FooterComponent
+    FooterComponent,
+    TimespentComponent,
+    UserstrainedComponent
   ],
   imports: [
     BrowserModule,

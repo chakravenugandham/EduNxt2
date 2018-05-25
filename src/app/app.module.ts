@@ -53,6 +53,8 @@ import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/o
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
+import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,9 @@ import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-
     OrgInterestWidgetComponent,
     OrgInterestComponent,
     AttentionNeedWidgetComponent,
-    LearnerTrackFullviewComponent
+    LearnerTrackFullviewComponent,
+    ContentConsumptionFullviewComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

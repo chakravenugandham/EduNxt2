@@ -10,22 +10,24 @@ export class ActiveUsersComponent implements OnInit {
   public lineData;
   constructor() {}
   ngOnInit() {
-    var w = 550;
-    var h = 200;
-    var p = 90;
+    let w = 480;
+    //let w = d3.select("#activeUserGraph").width();
+    console.log("w", w);
+    let h = 200;
+    let p = 90;
 
-    var dataSet = [
-      [1518307200000, 30, 40],
-      [1518393600000, 35, 55],
-      [1518480000000, 40, 60],
-      [1518566400000, 45, 65],
-      [1518652800000, 50, 70],
-      [1518739200000, 55, 75],
-      [1518825600000, 60, 80]
+    let dataSet = [
+      [1518307200000, 30, 40,38,49],
+      [1518393600000, 35, 55,42,59],
+      [1518480000000, 40, 60,48,69],
+      [1518566400000, 45, 65,52,72],
+      [1518652800000, 50, 70,58,78],
+      [1518739200000, 55, 75,62,82],
+      [1518825600000, 60, 80,68,89]
     ];
 
     // create xScale
-    var xScale = d3
+    let xScale = d3
       .scaleTime()
       .domain(
         d3.extent(dataSet, function(d) {
@@ -35,17 +37,17 @@ export class ActiveUsersComponent implements OnInit {
       .range([p, w - p / 2]);
 
     // create yScale
-    var yMax = d3.max(dataSet, function(d) {
-      var max = d[1] > d[2] ? d[1] : d[2];
+    let yMax = d3.max(dataSet, function(d) {
+      let max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
-    var yScale = d3
+    let yScale = d3
       .scaleLinear()
       .domain([0, yMax + 20])
       .range([h - p, 15]);
 
     // create SVG
-    var svg = d3
+    let svg = d3
       .select("#activeUserGraph")
       .append("svg")
       .attr("width", w)
@@ -96,7 +98,7 @@ export class ActiveUsersComponent implements OnInit {
       );
 
     //d3 line generator
-    var line = d3
+    let line1 = d3
       .line()
       .x(function(d) {
         return xScale(d[0]);
@@ -109,9 +111,9 @@ export class ActiveUsersComponent implements OnInit {
       .append("path")
       .datum(dataSet) // Binds data to the line
       .attr("class", "line1") // Assign a class for styling
-      .attr("d", line); // Calls the line generator
+      .attr("d", line1); // Calls the line generator
 
-    var line2 = d3
+    let line2 = d3
       .line()
       .x(function(d) {
         return xScale(d[0]);
@@ -125,5 +127,36 @@ export class ActiveUsersComponent implements OnInit {
       .datum(dataSet) // Binds data to the line
       .attr("class", "line2") // Assign a class for styling
       .attr("d", line2); // Calls the line generator
-  }
+
+      let line3 = d3
+      .line()
+      .x(function(d) {
+        return xScale(d[0]);
+      })
+      .y(function(d) {
+        return yScale(d[3]);
+      });
+
+    svg
+      .append("path")
+      .datum(dataSet) // Binds data to the line
+      .attr("class", "line3") // Assign a class for styling
+      .attr("d", line3); // Calls the line generator
+  
+
+  let line4 = d3
+      .line()
+      .x(function(d) {
+        return xScale(d[0]);
+      })
+      .y(function(d) {
+        return yScale(d[4]);
+      });
+
+    svg
+      .append("path")
+      .datum(dataSet) // Binds data to the line
+      .attr("class", "line4") // Assign a class for styling
+      .attr("d", line4); // Calls the line generator
+    }
 }

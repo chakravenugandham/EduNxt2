@@ -22,6 +22,7 @@
 }
 
 .widget-block {
+  position: relative;
   background-color: #fff;
   margin: 6px;
   padding: 10px 20px; // border: 1px solid #afcbe1;
@@ -39,6 +40,10 @@
   .nav-item a {
     font-weight: 700;
   }
+}
+
+.row .col-md-6 .widget-block{
+  height: 460px;
 }
 
 .activity-widgets .boldText {

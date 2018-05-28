@@ -11,11 +11,12 @@
         <b>Select course</b>
       </li>
       <li class="list-inline-item selectCourse">
-        <select name="selectCourse">
-          <option value="">All Courses</option>
-          <option value="">Bio Science</option>
-          <option value="">Molecular Chemistry</option>
-        </select>
+        <div ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-outline-primary" ngbDropdownToggle>All Courses</button>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <button class="dropdown-item" *ngFor="let courses of coursesData">{{courses.CourseName}}</button>
+          </div>
+        </div>
       </li>
       <div class="float-right">
         <li class="list-inline-item cursor-pointer">

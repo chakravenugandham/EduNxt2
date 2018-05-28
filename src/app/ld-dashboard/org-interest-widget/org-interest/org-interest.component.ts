@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrgInterestService } from "../../../ld-dashboard/services/org-interest.service";
+import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: 'app-org-interest',
@@ -8,12 +8,11 @@ import { OrgInterestService } from "../../../ld-dashboard/services/org-interest.
 })
 export class OrgInterestComponent implements OnInit {
   orgData = [];
-  constructor(private orgInterestService: OrgInterestService) { }
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
-    this.orgInterestService.getData().subscribe((res: any) => {
+    this.getData.getOrgInterestData(this.orgData).subscribe((res: any) => {
       this.orgData = res.data;
-      console.log("org interest data", this.orgData);
     });
   }
   ngOnInit() {

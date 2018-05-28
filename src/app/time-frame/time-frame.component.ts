@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+import { LdDashboardService } from "../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: 'app-time-frame',
@@ -7,12 +7,18 @@ import * as $ from 'jquery';
   styleUrls: ['./time-frame.component.scss']
 })
 export class TimeFrameComponent implements OnInit {
-
+  coursesData = [];
   today: Date = new Date();
 
-  constructor() { }
+  getDataFromService() {
+    this.getData.getCoursesData().subscribe((res: any) => {
+      this.coursesData = res.data;
+    })
+  }
+  constructor(private getData: LdDashboardService) { }
 
   ngOnInit() {
+    this.getDataFromService();
   }
 
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./org-interest-widget.component.scss']
 })
 export class OrgInterestWidgetComponent implements OnInit {
-
+  routePath: string = "orgInterestFullView";
   constructor() { }
 
   ngOnInit() {

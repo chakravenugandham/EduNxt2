@@ -60,6 +60,11 @@ import { FooterComponent } from './footer/footer.component';
 import { TimespentComponent } from './ld-dashboard/activity-widget/timespent/timespent.component';
 import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrained/userstrained.component';
 import { FilterWidgetComponent } from './ld-dashboard/shared/filter-widget/filter-widget.component';
+import { LearnerPerformanceFullviewComponent } from './ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component';
+import { ScoresDistributionFullviewComponent } from './ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component';
+import { OrgPerformanceFullviewComponent } from './ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component';
+import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
+import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +109,12 @@ import { FilterWidgetComponent } from './ld-dashboard/shared/filter-widget/filte
     FooterComponent,
     TimespentComponent,
     UserstrainedComponent,
-    FilterWidgetComponent
+    FilterWidgetComponent,
+    LearnerPerformanceFullviewComponent,
+    ScoresDistributionFullviewComponent,
+    OrgPerformanceFullviewComponent,
+    NotificationPerformanceFullviewComponent,
+    OrgInterestFullviewComponent
   ],
   imports: [
     BrowserModule,

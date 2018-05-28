@@ -13,6 +13,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPerfFn() {
     this.learnerPace = false;
   }
+  routePath:string = "learnerTrackFullView";
   constructor() {}
 
   ngOnInit() {}

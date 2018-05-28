@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Router, Route } from "@angular/router";
 
 @Component({
@@ -8,6 +8,7 @@ import { Router, Route } from "@angular/router";
 })
 export class FilterWidgetComponent implements OnInit {
   filterArray = [];
+  @Input() routePath: string;
   constructor(private router: Router) {}
   ngOnInit() {}
 
@@ -17,10 +18,10 @@ export class FilterWidgetComponent implements OnInit {
   }
   removeFilter(i) {
     console.log("removable filter index", i);
-    this.filterArray.splice(i,1);
+    this.filterArray.splice(i, 1);
     console.log("filterArray", this.filterArray);
   }
   routetoFullview() {
-    this.router.navigate(["learnerTrackFullView"]);
+    this.router.navigate([this.routePath]);
   }
 }

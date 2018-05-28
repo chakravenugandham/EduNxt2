@@ -5,13 +5,10 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 @Component({
   selector: "app-content-consumption-fullview",
   templateUrl: "./content-consumption-fullview.component.html",
-  styleUrls: ["./content-consumption-fullview.component.css"]
+  styleUrls: ["./content-consumption-fullview.component.scss"]
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
-  url = "https://api.myjson.com/bins/tp29m";
-
   contentData = [];
-
   userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
 
   constructor(private contentService: LdDashboardService) {}

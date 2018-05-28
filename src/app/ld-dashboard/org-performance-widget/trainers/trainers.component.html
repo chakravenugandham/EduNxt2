@@ -9,124 +9,58 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th scope="col">Trainer Name</th>
-          <th scope="col">Trainings Conducted</th>
-          <th scope="col">People Trained</th>
-          <th scope="col">Avg. Rating</th>
-          <th scope="col">Actions</th>
+          <th scope="col">
+            <span>Trainer Name</span>
+            <span>
+              <img src="../../../../assets/IconsSVGs/Arrows up _ down.svg" height="5px" width="5px">
+            </span>
+          </th>
+          <th scope="col">Trainings Conducted
+            <span>
+              <img src="../../../../assets/IconsSVGs/Arrows up _ down.svg" height="5px" width="5px">
+            </span>
+          </th>
+          <th scope="col">People Trained
+            <span>
+              <img src="../../../../assets/IconsSVGs/Arrows up _ down.svg" height="5px" width="5px">
+            </span>
+          </th>
+          <th scope="col">Avg. Rating
+            <span>
+              <img src="../../../../assets/IconsSVGs/Arrows up _ down.svg" height="5px" width="5px">
+            </span>
+          </th>
+          <th scope="col">Actions
+            <span>
+              <img src="../../../../assets/IconsSVGs/Arrows up _ down.svg" height="5px" width="5px">
+            </span>
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">
+        <tr *ngFor="let tableData of trainersData">
+          <td scope="row">
             <span>
               <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
             </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="text-danger">24</td>
-          <td class="text-danger">130</td>
+            <span class="userName">{{tableData.TrainerName}}</span>
+          </td>
+          <td class="text-danger">{{tableData.TrainingsConducted}}</td>
+          <td class="text-danger">{{tableData.PeopleTrained}}</td>
           <td class="text-danger">
             <span>
               <i class="far fa-star"></i>
             </span>
-            <span>2.3</span>
+            <span>{{tableData.AvgRating}}</span>
           </td>
           <td class="text-danger">
             <span>
               <i class="fas fa-exclamation-triangle"></i>
             </span>
-            <span>Follow up</span>
+            <span>{{tableData.ActionMessage}}</span>
           </td>
         </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="text-danger">24</td>
-          <td class="text-danger">130</td>
-          <td class="text-danger">
-            <span>
-              <i class="far fa-star"></i>
-            </span>
-            <span>2.3</span>
-          </td>
-          <td class="text-danger">
-            <span>
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-            <span>Follow up</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="text-danger">24</td>
-          <td class="text-danger">130</td>
-          <td class="text-danger">
-            <span>
-              <i class="far fa-star"></i>
-            </span>
-            <span>2.3</span>
-          </td>
-          <td class="text-danger">
-            <span>
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-            <span>Follow up</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="text-danger">24</td>
-          <td class="text-danger">130</td>
-          <td class="text-danger">
-            <span>
-              <i class="far fa-star"></i>
-            </span>
-            <span>2.3</span>
-          </td>
-          <td class="text-danger">
-            <span>
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-            <span>Follow up</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="text-danger">24</td>
-          <td class="text-danger">130</td>
-          <td class="text-danger">
-            <span>
-              <i class="far fa-star"></i>
-            </span>
-            <span>2.3</span>
-          </td>
-          <td class="text-danger">
-            <span>
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-            <span>Follow up</span>
-          </td>
-        </tr>
+
       </tbody>
     </table>
   </div>

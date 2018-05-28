@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: 'app-trainers',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trainers.component.scss']
 })
 export class TrainersComponent implements OnInit {
-
-  constructor() { }
+  trainersData = [];
+  constructor(private getData: LdDashboardService) { }
+  getDataFromService() {
+    this.getData.getTrainersData(this.trainersData).subscribe((res: any) => {
+      this.trainersData = res.data;
+      console.log(this.trainersData);
+    })
+  }
 
   ngOnInit() {
+    this.getDataFromService();
   }
 
 }

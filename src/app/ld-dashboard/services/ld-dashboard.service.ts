@@ -32,4 +32,19 @@ export class LdDashboardService {
     return this.http.post(url, userInfo, { headers: this.headers });
   }
 
+  getOrgInterestData(userInfo: any[]) {
+    let url = this.baseURL + "organization-interests";
+    return this.http.post(url, userInfo, { headers: this.headers });
+  }
+
+  getCoursesData() {
+    let url = this.baseURL + "courses-dropdown";
+    return this.http.get(url);
+  }
+
+  getTrainersData(userInfo: any) {
+    let url = this.baseURL + "trainer-leaderboard";
+    return this.http.post(url, userInfo, { headers: this.headers });
+  }
+
 }

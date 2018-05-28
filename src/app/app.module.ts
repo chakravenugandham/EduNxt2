@@ -15,12 +15,10 @@ import 'nvd3';
 //modules
 import { RoutingModule } from './routing.module';
 
-//constants
-import { Images } from "./imageConstants";
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { TimeFrameComponent } from './time-frame/time-frame.component';
+import { HeaderComponent } from './common/header/header.component';
+import { TimeFrameComponent } from './common/time-frame/time-frame.component';
 import { LdDashboardComponent } from './ld-dashboard/ld-dashboard.component';
 import { ActivityWidgetComponent } from "./ld-dashboard/activity-widget/activity-widget.component";
 import { UsersComponent } from './ld-dashboard/activity-widget/users/users.component';
@@ -54,9 +52,9 @@ import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/o
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
-import { MpDatepickerRangeComponent } from './mp-datepicker-range/mp-datepicker-range.component';
+import { MpDatepickerRangeComponent } from './common/mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './common/footer/footer.component';
 import { TimespentComponent } from './ld-dashboard/activity-widget/timespent/timespent.component';
 import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrained/userstrained.component';
 import { FilterWidgetComponent } from './ld-dashboard/shared/filter-widget/filter-widget.component';

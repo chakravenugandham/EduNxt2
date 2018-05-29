@@ -8,7 +8,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./active-user-widget.component.scss"]
 })
 export class ActiveUserWidgetComponent implements OnInit {
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   activeUser: boolean = true;
   modeDelivery: boolean = false;
@@ -28,7 +28,7 @@ export class ActiveUserWidgetComponent implements OnInit {
     this.modeDelivery = false;
   }
 
-  resposeData = {
+  responseData = {
     activeUserData: "",
     locationData: ""
   };
@@ -38,9 +38,9 @@ export class ActiveUserWidgetComponent implements OnInit {
   getActiveUsersData() {
     this.getData
       .getActiveUsersData(this.userInfo)
-      .subscribe((respose: any) => {
-        this.resposeData.activeUserData = respose.data;
-        console.log("respose getActiveUsers", this.resposeData);
+      .subscribe((response: any) => {
+        this.responseData.activeUserData = response.data;
+        console.log("respose getActiveUsers", this.responseData);
       });
   }
 

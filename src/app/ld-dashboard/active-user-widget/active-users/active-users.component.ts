@@ -1,29 +1,37 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as d3 from "d3v4";
 import * as _ from "underscore";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-active-users",
   templateUrl: "./active-users.component.html",
   styleUrls: ["./active-users.component.scss"]
 })
-export class ActiveUsersComponent implements OnInit {
+export class ActiveUsersComponent implements OnInit, OnChanges {
   public lineData;
+
+  @Input() usersData;
+
   constructor() { }
-  ngOnInit() {
+
+  usersChartRender(dataSet) {
+    d3.select('#activeUserGraph svg').remove();
     var w = 520;
     var h = 240;
     var p = 40;
 
-    var dataSet = [
-      [1518307200000, 300, 400],
-      [1518393600000, 350, 550],
-      [1518480000000, 400, 600],
-      [1518566400000, 450, 650],
-      [1518652800000, 500, 700],
-      [1518739200000, 550, 750],
-      [1518825600000, 600, 800]
-    ];
+    //var dataSet = this.chartData;
+    //console.log(this.chartData);
+    // [1518307200000, 300, 400],
+    // [1518393600000, 350, 550],
+    // [1518480000000, 400, 600],
+    // [1518566400000, 450, 650],
+    // [1518652800000, 500, 700],
+    // [1518739200000, 550, 750],
+    // [1518825600000, 600, 800]
+
+    //);
 
     // create xScale
     var xScale = d3
@@ -36,7 +44,7 @@ export class ActiveUsersComponent implements OnInit {
       .range([p, w - p / 2]);
 
     // create yScale
-    var yMax = d3.max(dataSet, function(d) {
+    var yMax = d3.max(dataSet, function (d) {
       var max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
@@ -135,13 +143,13 @@ export class ActiveUsersComponent implements OnInit {
       .enter()
       .append("circle")
       .attr("r", 3)
-      .attr("cx", function(d) {
+      .attr("cx", function (d) {
         var key = xScale(d[0]);
         dataPoints[key] = dataPoints[key] || [];
         dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .attr("cy", function(d) {
+      .attr("cy", function (d) {
         return yScale(d[1]);
       })
       .attr("fill", "white")
@@ -153,13 +161,13 @@ export class ActiveUsersComponent implements OnInit {
       .enter()
       .append("circle")
       .attr("r", 3)
-      .attr("cx", function(d) {
+      .attr("cx", function (d) {
         var key = xScale(d[0]);
         dataPoints[key] = dataPoints[key] || [];
         dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .attr("cy", function(d) {
+      .attr("cy", function (d) {
         return yScale(d[2]);
       })
       .attr("fill", "white")
@@ -177,12 +185,12 @@ export class ActiveUsersComponent implements OnInit {
       .attr("stroke-width", 1)
       .attr("opacity", "0");
 
-    svg.on("mousemove", function() {
+    svg.on("mousemove", function () {
       let mouseX = d3.event.pageX;
       vertline.attr("opacity", "1");
       var keys = _.keys(dataPoints).sort();
       var epsilon = (keys[1] - keys[0]) / 2;
-      var nearest = _.find(keys, function(a) {
+      var nearest = _.find(keys, function (a) {
         return Math.abs(a - mouseX) <= epsilon;
       });
       if (nearest) {
@@ -202,10 +210,27 @@ export class ActiveUsersComponent implements OnInit {
       }
     });
 
-    svg.on("mouseout", function() {
+    svg.on("mouseout", function () {
       vertline.attr("opacity", "0");
       var tooltip = d3.select(".tool-tip");
       tooltip.style("visibility", "hidden");
     });
+  }
+  chartData = [];
+  ngOnChanges(changes: any) {
+
+    if (changes.usersData && this.chartData) {
+      for (var i = 0; i < this.usersData.length; i++) {
+        var date = new Date(this.usersData[i].date);
+        var timeStamp = date.getTime();
+        //console.log();
+        this.chartData.push([timeStamp, this.usersData[i].activeLearners, this.usersData[i].activeFacultiesAndAdmins]);
+      }
+      this.usersChartRender(this.chartData);
+      //console.log("chartdata", this.chartData);
+    }
+  }
+  ngOnInit() {
+
   }
 }

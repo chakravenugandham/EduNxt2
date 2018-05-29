@@ -12,7 +12,6 @@ export class TrainersComponent implements OnInit {
   getDataFromService() {
     this.getData.getTrainersData(this.trainersData).subscribe((res: any) => {
       this.trainersData = res.data;
-      console.log(this.trainersData);
     })
   }
 

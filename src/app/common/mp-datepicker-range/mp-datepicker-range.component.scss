@@ -1,8 +1,12 @@
-.selectDate,
-.selectCourse select {
+.selectDate {
     border: 1px solid #0146F9;
-    padding: 6px 4px;
     color: #0146F9;
+    .uneditable-input {
+        border-right: 1px solid #0146F9;
+    }
+    .calender-img {
+        padding: 5px 5px 0px 5px;
+    }
 }
 
 .ranges {

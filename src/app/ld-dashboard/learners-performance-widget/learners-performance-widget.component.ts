@@ -9,6 +9,11 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
   routePath: string = "learnerPerformanceFullView";
   performance: boolean = true;
   constructor() {}
-
+  performanceFn(){
+    this.performance = true;
+  }
+  progressFn(){
+    this.performance = false;
+  }
   ngOnInit() {}
 }

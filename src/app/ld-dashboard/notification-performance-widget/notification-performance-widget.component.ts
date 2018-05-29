@@ -11,4 +11,10 @@ export class NotificationPerformanceWidgetComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  scheduledFn(){
+    this.scheduled = true;
+  }
+  seenFn(){
+    this.scheduled = false;
+  }
 }

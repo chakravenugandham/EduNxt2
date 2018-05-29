@@ -51,6 +51,7 @@
       </span>
     </div>
   </div>
-  <app-performance></app-performance>
+  <app-performance *ngIf="performance"></app-performance>
+  <app-progress *ngIf="!performance"></app-progress>
   <app-filter-widget [routePath]="routePath"></app-filter-widget>
 </div>

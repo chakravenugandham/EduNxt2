@@ -7,8 +7,9 @@ import { Router, Route } from "@angular/router";
   styleUrls: ["./filter-widget.component.scss"]
 })
 export class FilterWidgetComponent implements OnInit {
-  filterArray = [];
   @Input() routePath: string;
+  filterArray = [];
+
   constructor(private router: Router) {}
   ngOnInit() {}
 

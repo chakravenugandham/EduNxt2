@@ -54,6 +54,8 @@
       </span>
     </div>
   </div>
-  <app-test-scores></app-test-scores>
+  <app-test-scores *ngIf="testScore"></app-test-scores>
+  <app-quiz *ngIf="quizScore"></app-quiz>
+  <app-assignment *ngIf="!testScore && !quizScore"></app-assignment>
   <app-filter-widget [routePath]="routePath"></app-filter-widget>
 </div>

@@ -51,6 +51,7 @@
       </span>
     </div>
   </div>
-  <app-scheduled-delivered></app-scheduled-delivered>
+  <app-scheduled-delivered *ngIf="scheduled"></app-scheduled-delivered>
+  <app-seen-responded *ngIf="!scheduled"></app-seen-responded>
   <app-filter-widget [routePath]="routePath"></app-filter-widget>
 </div>

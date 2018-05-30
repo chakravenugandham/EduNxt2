@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as d3 from "d3v4";
 import * as _ from "underscore";
-import * as moment from 'moment';
+import * as moment from "moment";
 
 @Component({
   selector: "app-active-users",
@@ -16,8 +16,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   constructor() { }
 
   usersChartRender(dataSet) {
-    console.log(dataSet);
-    d3.select('#activeUserGraph svg').remove();
+    d3.select("#activeUserGraph svg").remove();
     var w = 520;
     var h = 240;
     var p = 40;
@@ -227,7 +226,5 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       this.usersChartRender(this.chartData);
     }
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 }

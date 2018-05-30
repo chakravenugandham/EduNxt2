@@ -8,7 +8,7 @@
         <input type="text" placeholder="Search">
       </div>
     </li>
-    <li class="list-inline-item filter" (click)="addFilter()">
+    <li class="list-inline-item filter" [ngbPopover]="popFilter">
       <span>Add Filter</span>
       <i class="fas fa-plus-circle"></i>
     </li>
@@ -19,10 +19,31 @@
       </li>
     </span>
   </ul>
+  <ng-template placement="bottom" #popFilter>
+    <div class="filterView">
+      <div class="filter cateory">select batches</div>
+      <div>
+        <input type="checkbox" name="South Zone"> South Zone
+      </div>
+      <div>
+        <input type="checkbox" name="North Zone"> North Zone
+      </div>
+      <div>
+        <input type="checkbox" name="East Zone"> East Zone
+      </div>
+      <div>
+        <input type="checkbox" name="West Zone"> West Zone
+      </div>
+      <div>
+        <input type="checkbox" name="Other"> Other
+      </div>
+    </div>
+  </ng-template>
   <div class="viewDetails ">
     <span class="text-primary float-right" class="cursor-pointer" (click)="routetoFullview()"> View Details</span>
     <span>
       <i class="fas fa-angle-right"></i>
     </span>
   </div>
+
 </div>

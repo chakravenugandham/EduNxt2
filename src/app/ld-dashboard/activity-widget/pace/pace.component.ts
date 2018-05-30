@@ -35,7 +35,7 @@ export class PaceComponent implements OnInit {
             "value": resp.data.learnerPace.haventStarted
           }];
 
-          var w = 260;
+          var w = 235;
           var h = 130;
 
           var arc = d3.arc()

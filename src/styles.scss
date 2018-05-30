@@ -172,6 +172,22 @@
     }
 }
 
+table tr td {
+    padding: 18px 12px;
+    vertical-align: middle;
+}
+
+table tr th {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+table tr th img {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+}
+
 .content-perform,
 .content-fullview {
     table tbody tr th {
@@ -270,13 +286,16 @@
         padding: 1px;
         padding-right: 2px;
         cursor: pointer;
-    } //graph badge CSS
-    .graph-badges {
-        text-align: center;
-        margin-top: 12px;
     }
-    .graph-badges i {
-        border-radius: 50%;
-        border: none;
-    }
+}
+
+//graph badge CSS
+.graph-badges {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.graph-badges i {
+    border-radius: 50%;
+    border: none;
 }

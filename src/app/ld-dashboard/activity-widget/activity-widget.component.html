@@ -3,7 +3,7 @@
     Learning activities at a glance
   </p>
 </div>
-<div class="row activity-widgets">
+<div class="activity-widgets d-flex w-100">
   <div class="col-md-3">
     <app-users [userElement]="responseData.activeUsers"></app-users>
   </div>
@@ -17,10 +17,10 @@
   <div class="col-md-3">
     <app-feedback [feedbackDataElement]="responseData.feedback"></app-feedback>
   </div>
-  <!-- <div class="col-md-3">
+  <div class="col-md-3">
     <app-userstrained [usersData]="responseData.usersTrained"></app-userstrained>
-  </div> -->
-  <!-- <div class="col-md-3">
+  </div>
+  <div class="col-md-3">
     <app-timespent [timeData]="responseData.goals"></app-timespent>
-  </div> -->
+  </div>
 </div>

@@ -11,19 +11,20 @@
       </span>
     </div>
   </div>
-  <div id="donut-chart"></div>
+  <div id="tdonut-chart"></div>
   <div class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <span class="bigNumber float-left">{{peopleCompletedTraining}}</span>
+      <span class="bigNumber float-left">{{timeData.timeSpent}}</span>
       <div class="p-t-7">
         <span class="small">
           <i class="fas fa-arrow-up changeNumber"></i>
         </span>
-        <span class="changeNumber"> {{peopleChange}}</span>
-        <span class="font-color"> Users </span>
-        <p class="m-t-5 font-color">since last month</p>
+        <span class="changeNumber"> Expected {{timeData.expected}}%</span>
+        <p class="m-b-0 font-color">{{timeData.hoursSpent}}of{{timeData.totalHours}} hours spent on learning activities</p>
       </div>
-      <p class="boldText">People completed training programs</p>
+      <p class="boldText">
+        <b>of your goals has been met</b>
+      </p>
     </div>
   </div>
 </div>

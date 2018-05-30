@@ -23,6 +23,7 @@ export class ActivityWidgetComponent implements OnInit {
   getDataFromService() {
     this.getData.getActivityData().subscribe((response: any) => {
       this.responseData = response.data;
+      console.log(this.responseData);
     });
   }
 

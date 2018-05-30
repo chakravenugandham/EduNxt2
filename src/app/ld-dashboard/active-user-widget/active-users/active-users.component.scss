@@ -1,19 +1,46 @@
 .activity-user-score img {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  border: 1px solid #fff;
-  margin-left: -12px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    margin-left: -12px;
 }
 
 .activity-user-score img:first-child {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .fa-user-friends {
-  color: #ff5722;
+    color: #ff5722;
 }
 
-#activeUserGraph{
-  margin-top: 20px;
+#activeUserGraph {
+    margin-top: 20px;
+}
+
+.tool-tip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background-color: white;
+    pointer-events: none;
+    color: black;
+    border-radius: 5px;
+    border: solid 1px #e9e9e9;
+    font-size: 12px;
+    font-family: "Source Sans Pro", sans-serif;
+    width: 150px;
+}
+
+.tool-tip table {
+    width: 100%;
+}
+
+.ttip-div {
+    padding: 5px;
+    width: 70px;
+}
+
+.vertline {
+    fill: #707070;
 }

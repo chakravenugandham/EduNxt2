@@ -9,19 +9,21 @@
           <b>Top Interests</b>
         </p>
         <p class="float-right p-r-6">
-          <i class="fa fa-question-circle" aria-hidden="true"></i>
+          <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
         </p>
       </div>
       <div *ngFor="let orgInterestData of orgData">
         <div class="card-block">
           <p>
-            {{orgInterestData.Name}}
+            <b>{{orgInterestData.name}}</b>
           </p>
           <p class="nop">
-            {{orgInterestData.NumberOfPeople}}
+            <span>{{orgInterestData.numberOfPeople}}</span>
+            <span>People</span>
           </p>
           <p>
-            <span class="changeNumber">{{orgInterestData.NumberOfPeopleSinceLastMonth}}</span>
+            <span class="changeNumber">
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>{{orgInterestData.numberOfPeopleSinceLastMonth}}</span>
             <span>Hits since last month</span>
           </p>
         </div>
@@ -33,7 +35,7 @@
           <b>Popular Topics</b>
         </p>
         <p class="float-right p-r-6">
-          <i class="fa fa-question-circle" aria-hidden="true"></i>
+          <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
         </p>
       </div>
     </div>

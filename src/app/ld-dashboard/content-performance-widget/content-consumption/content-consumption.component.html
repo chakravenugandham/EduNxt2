@@ -13,15 +13,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentData">
-        <th scope="row"> {{content.ContentName}} </th>
-        <td> {{content.Author}} </td>
-        <td> {{content.Views}} </td>
+      <tr *ngFor="let content of contentData | slice:0:5; let i=index">
+        <th scope="row"> {{content.contentName}} </th>
+        <td> {{content.author}} </td>
+        <td> {{content.views}} </td>
         <td>
           <span>
             <i class="far fa-star"></i>
           </span>
-          <span> {{content.AvgRating}} </span>
+          <span> {{content.avgRating}} </span>
         </td>
       </tr>
     </tbody>

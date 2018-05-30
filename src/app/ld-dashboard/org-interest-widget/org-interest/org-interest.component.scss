@@ -3,10 +3,13 @@
     margin: 6px 0px;
     padding: 10px;
     border: 0.5px solid #afcbe1;
-    border-top: none;
-    // box-shadow: -2px 1px 1px 1px #CCC;
+    border-top: none; // box-shadow: -2px 1px 1px 1px #CCC;
     .nop {
         color: #5584FF;
+    }
+    p {
+        margin-bottom: 0px;
+        padding-top: 5px;
     }
 }
 

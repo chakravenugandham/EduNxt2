@@ -16,22 +16,11 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   constructor() { }
 
   usersChartRender(dataSet) {
+    console.log(dataSet);
     d3.select('#activeUserGraph svg').remove();
     var w = 520;
     var h = 240;
     var p = 40;
-
-    //var dataSet = this.chartData;
-    //console.log(this.chartData);
-    // [1518307200000, 300, 400],
-    // [1518393600000, 350, 550],
-    // [1518480000000, 400, 600],
-    // [1518566400000, 450, 650],
-    // [1518652800000, 500, 700],
-    // [1518739200000, 550, 750],
-    // [1518825600000, 600, 800]
-
-    //);
 
     // create xScale
     var xScale = d3
@@ -50,7 +39,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     });
     var yScale = d3
       .scaleLinear()
-      .domain([0, yMax + 200])
+      .domain([0, yMax])
       .range([h - p, 15]);
 
     // create SVG
@@ -186,7 +175,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .attr("opacity", "0");
 
     svg.on("mousemove", function () {
-      let mouseX = d3.event.pageX;
+      let mouseX = d3.event.pageX - p;
       vertline.attr("opacity", "1");
       var keys = _.keys(dataPoints).sort();
       var epsilon = (keys[1] - keys[0]) / 2;
@@ -206,7 +195,14 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
           .html(dataPoints[nearest][0][2] + " Active Faculty");
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");
-        tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
+        //tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
+        let xPosition = 0;
+        if (d3.event.clientX > 300) {
+          xPosition = (nearest - 150);
+        } else {
+          xPosition = (nearest);
+        }
+        tooltip.style('top', (150) + 'px').style('left', xPosition + 'px');
       }
     });
 
@@ -219,15 +215,16 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   chartData = [];
   ngOnChanges(changes: any) {
 
-    if (changes.usersData && this.chartData) {
-      for (var i = 0; i < this.usersData.length; i++) {
-        var date = new Date(this.usersData[i].date);
+    if (changes.usersData.currentValue && this.chartData) {
+      console.log(this.usersData.graphData);
+      for (var i = 0; i < this.usersData.graphData.length; i++) {
+        var date = new Date(this.usersData.graphData[i].date);
         var timeStamp = date.getTime();
-        //console.log();
-        this.chartData.push([timeStamp, this.usersData[i].activeLearners, this.usersData[i].activeFacultiesAndAdmins]);
+        var activeLearners = parseInt(this.usersData.graphData[i].activeLearners);
+        var activeFacultiesAndAdmins = parseInt(this.usersData.graphData[i].activeFacultiesAndAdmins);
+        this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
-      //console.log("chartdata", this.chartData);
     }
   }
   ngOnInit() {

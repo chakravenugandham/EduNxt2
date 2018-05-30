@@ -149,6 +149,9 @@
 .content-fullview {
     table tr {
         border-bottom: 2px dotted #ddd;
+        tr:last-child {
+            border-bottom: none;
+        }
         .userName {
             vertical-align: middle;
             padding-left: 4px;
@@ -255,29 +258,6 @@
     .grid path {
         stroke-width: 0;
     }
-    .tool-tip {
-        position: absolute;
-        z-index: 10;
-        visibility: hidden;
-        background-color: white;
-        pointer-events: none;
-        color: black;
-        border-radius: 5px;
-        border: solid 1px #e9e9e9;
-        font-size: 12px;
-        font-family: "Source Sans Pro", sans-serif;
-        width: 150px;
-    }
-    .tool-tip table {
-        width: 100%;
-    }
-    .ttip-div {
-        padding: 5px;
-        width: 70px;
-    }
-    .vertline {
-        fill: #707070;
-    }
 }
 
 //view details CSS
@@ -290,8 +270,7 @@
         padding: 1px;
         padding-right: 2px;
         cursor: pointer;
-    }
-    //graph badge CSS
+    } //graph badge CSS
     .graph-badges {
         text-align: center;
         margin-top: 12px;

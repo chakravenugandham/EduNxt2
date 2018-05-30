@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class LdDashboardService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   baseURL = "http://192.168.239.38:3000/api/v1/";
-  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
+  //headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "101");
 
   getActivityData() {
     let url = this.baseURL + "learning-activities";
@@ -17,24 +18,24 @@ export class LdDashboardService {
     return this.http.get(url);
   }
 
-  getActiveUsersData(userInfo: any[]) {
+  getActiveUsersData() {
     let url = this.baseURL + "active-users-graph";
-    return this.http.post(url, userInfo, { headers: this.headers });
+    return this.http.post(url, { headers: this.headers });
   }
 
-  getLocationData(userInfo: any[]) {
+  getLocationData() {
     let url = this.baseURL + "activity-by-location";
-    this.http.post(url, userInfo, { headers: this.headers });
+    this.http.post(url, { headers: this.headers });
   }
 
-  getContentData(userInfo: any[]) {
+  getContentData() {
     let url = this.baseURL + "content-consumption";
-    return this.http.post(url, userInfo, { headers: this.headers });
+    return this.http.post(url, { headers: this.headers });
   }
 
-  getOrgInterestData(userInfo: any[]) {
+  getOrgInterestData() {
     let url = this.baseURL + "organization-interests";
-    return this.http.post(url, userInfo, { headers: this.headers });
+    return this.http.post(url, { headers: this.headers });
   }
 
   getCoursesData() {
@@ -42,9 +43,15 @@ export class LdDashboardService {
     return this.http.get(url);
   }
 
-  getTrainersData(userInfo: any) {
+  getTrainersData() {
     let url = this.baseURL + "trainer-leaderboard";
-    return this.http.post(url, userInfo, { headers: this.headers });
+    return this.http.post(url, { headers: this.headers });
   }
 
+  getZoneFilters() {
+    //let url = this.baseURL + "zones-dropdown";
+    let url = "https://api.myjson.com/bins/1012oe"
+    //return this.http.post(url, { headers: this.headers });
+    return this.http.get(url);
+  }
 }

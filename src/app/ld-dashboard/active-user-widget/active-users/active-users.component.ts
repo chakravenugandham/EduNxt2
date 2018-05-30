@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as d3 from "d3v4";
 import * as _ from "underscore";
-import * as moment from 'moment';
+import * as moment from "moment";
 
 @Component({
   selector: "app-active-users",
@@ -13,10 +13,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
   @Input() usersData;
 
-  constructor() { }
+  constructor() {}
 
   usersChartRender(dataSet) {
-    d3.select('#activeUserGraph svg').remove();
+    d3.select("#activeUserGraph svg").remove();
     var w = 520;
     var h = 240;
     var p = 40;
@@ -37,14 +37,14 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     var xScale = d3
       .scaleTime()
       .domain(
-        d3.extent(dataSet, function (d) {
+        d3.extent(dataSet, function(d) {
           return d[0];
         })
       )
       .range([p, w - p / 2]);
 
     // create yScale
-    var yMax = d3.max(dataSet, function (d) {
+    var yMax = d3.max(dataSet, function(d) {
       var max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
@@ -98,7 +98,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
         d3
           .axisLeft(yScale)
           .ticks(5)
-          .tickFormat(function (d) {
+          .tickFormat(function(d) {
             return d;
           })
           .tickSize(0, 0)
@@ -107,10 +107,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     //d3 line generator
     var line = d3
       .line()
-      .x(function (d) {
+      .x(function(d) {
         return xScale(d[0]);
       })
-      .y(function (d) {
+      .y(function(d) {
         return yScale(d[1]);
       });
 
@@ -122,10 +122,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     var line2 = d3
       .line()
-      .x(function (d) {
+      .x(function(d) {
         return xScale(d[0]);
       })
-      .y(function (d) {
+      .y(function(d) {
         return yScale(d[2]);
       });
 
@@ -143,13 +143,13 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .enter()
       .append("circle")
       .attr("r", 3)
-      .attr("cx", function (d) {
+      .attr("cx", function(d) {
         var key = xScale(d[0]);
         dataPoints[key] = dataPoints[key] || [];
         dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .attr("cy", function (d) {
+      .attr("cy", function(d) {
         return yScale(d[1]);
       })
       .attr("fill", "white")
@@ -161,13 +161,13 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .enter()
       .append("circle")
       .attr("r", 3)
-      .attr("cx", function (d) {
+      .attr("cx", function(d) {
         var key = xScale(d[0]);
         dataPoints[key] = dataPoints[key] || [];
         dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .attr("cy", function (d) {
+      .attr("cy", function(d) {
         return yScale(d[2]);
       })
       .attr("fill", "white")
@@ -185,12 +185,12 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .attr("stroke-width", 1)
       .attr("opacity", "0");
 
-    svg.on("mousemove", function () {
+    svg.on("mousemove", function() {
       let mouseX = d3.event.pageX;
       vertline.attr("opacity", "1");
       var keys = _.keys(dataPoints).sort();
       var epsilon = (keys[1] - keys[0]) / 2;
-      var nearest = _.find(keys, function (a) {
+      var nearest = _.find(keys, function(a) {
         return Math.abs(a - mouseX) <= epsilon;
       });
       if (nearest) {
@@ -210,7 +210,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       }
     });
 
-    svg.on("mouseout", function () {
+    svg.on("mouseout", function() {
       vertline.attr("opacity", "0");
       var tooltip = d3.select(".tool-tip");
       tooltip.style("visibility", "hidden");
@@ -218,19 +218,20 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   }
   chartData = [];
   ngOnChanges(changes: any) {
-
     if (changes.usersData && this.chartData) {
       for (var i = 0; i < this.usersData.length; i++) {
         var date = new Date(this.usersData[i].date);
         var timeStamp = date.getTime();
         //console.log();
-        this.chartData.push([timeStamp, this.usersData[i].activeLearners, this.usersData[i].activeFacultiesAndAdmins]);
+        this.chartData.push([
+          timeStamp,
+          this.usersData[i].activeLearners,
+          this.usersData[i].activeFacultiesAndAdmins
+        ]);
       }
       this.usersChartRender(this.chartData);
       //console.log("chartdata", this.chartData);
     }
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

@@ -7,6 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttentionNeedWidgetComponent implements OnInit {
 
+  message = [
+    {
+      title: "Mastery Insight",
+      text: "NPS score has increased from 6 to 8 after your recent Customer Service Training."
+    },
+    {
+      title: "Mastery Insight",
+      text: "People from Sales team are performing better than 75% of their peers"
+    },
+    {
+      title: "Mastery Insight",
+      text: "80% of people are struggling on Communication Design quiz module in Communication 101"
+    }
+  ];
+
+  removeWidget(i){
+    this.message.splice(i, 1);
+  }
   constructor() { }
 
   ngOnInit() {

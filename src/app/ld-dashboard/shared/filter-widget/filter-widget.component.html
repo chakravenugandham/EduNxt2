@@ -1,5 +1,13 @@
 <div class="filterComponent">
   <ul class="float-left">
+    <li class="list-inline-item searchList" *ngIf="0">
+      <div class="search-org-user">
+        <span class="serach-icon">
+          <i class="fas fa-search"></i>
+        </span>
+        <input type="text" placeholder="Search">
+      </div>
+    </li>
     <li class="list-inline-item filter" (click)="addFilter()">
       <span>Add Filter</span>
       <i class="fas fa-plus-circle"></i>
@@ -12,6 +20,9 @@
     </span>
   </ul>
   <div class="viewDetails ">
-  <span class="text-primary float-right" class="cursor-pointer" (click)="routetoFullview()"> View Details</span>
+    <span class="text-primary float-right" class="cursor-pointer" (click)="routetoFullview()"> View Details</span>
+    <span>
+      <i class="fas fa-angle-right"></i>
+    </span>
   </div>
 </div>

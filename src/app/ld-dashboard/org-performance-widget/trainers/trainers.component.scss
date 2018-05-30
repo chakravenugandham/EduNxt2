@@ -1,0 +1,12 @@
+thead tr th {
+  position: relative;
+  width: 20%;
+  text-align: right;
+  vertical-align: middle;
+}
+thead tr th i {
+  position: absolute;
+  right: -4px;
+  top: 24px;
+  padding-top: 3px;
+}

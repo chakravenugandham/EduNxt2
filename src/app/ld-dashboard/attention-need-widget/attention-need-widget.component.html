@@ -1,26 +1,63 @@
-<div>
+<div class="attention-needed">
   <div class="widget-heading">
     <p>These items need your attention</p>
   </div>
   <div class="row">
     <div class="col-md-3">
       <div class="widget-block">
-        Faculty
+        <div class="headingText clearfix">
+          <ul class="nav float-left">
+            <li class="nav-item">
+              <a class="nav-link">Faculty</a>
+            </li>
+          </ul>
+        </div>
+        <div class="attention-one-info">
+          <div class="text-primary font-weight-bold">February </div>
+          <div> <span>Faculty with the most popular content </span> </div>
+          <div> 
+            <div class="d-inline faculty-img">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Batman-BenAffleck.jpg/200px-Batman-BenAffleck.jpg" alt="img">
+            </div>
+            <div class="d-inline">
+              <span class="text-primary font-weight-bold"> Ashutosh Tiwari </span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="text-primary"> 56 </div>
+              <div> Content Created </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-primary"> 2667 </div>
+                <div> Times Liked </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="text-primary"> <span> <i class="far fa-star text-warning"></i> </span> 4.6 </div>
+                  <div> Avg. Rating </div>
+                </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-md-3">
+
+    <div class="col-md-3" *ngFor="let items of message; let i = index">
       <div class="widget-block">
-        Mastery Insight
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="widget-block">
-        Mastery Insight
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="widget-block">
-        Mastery Insight
+        <div class="headingText clearfix">
+          <ul class="nav float-left">
+            <li class="nav-item">
+              <a class="nav-link"> {{items.title}} </a>
+            </li>
+          </ul>
+          <div>
+            <span class="float-right">
+              <i class="far fa-times-circle" (click)="removeWidget(i)"></i>
+            </span>
+          </div>
+        </div>
+        <div>
+          {{items.text}}
+        </div>
       </div>
     </div>
   </div>

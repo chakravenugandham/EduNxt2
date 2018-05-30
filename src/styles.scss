@@ -33,7 +33,7 @@
   height: 280px;
   padding: 10px 20px;
 }
-.activity-widgets .headingText {
+.activity-widgets .headingText, .attention-needed .headingText {
   margin-left: -20px;
   .nav-item a {
     font-weight: 700;
@@ -75,6 +75,9 @@
   right: 8px;
   top: 8px;
   font-size: 14px;
+}
+.headingText .fa-times-circle{
+  color: #5584ff;
 }
 .headingText .nav .nav-link {
   padding: 4px;
@@ -248,8 +251,13 @@
 
 //view details CSS
 
-.widget-heading .fa-arrow-alt-circle-left {
+.widget-heading .fa-angle-left {
   margin-right: 6px;
+  border-radius: 50%;
+  border: 1px solid;
+  padding: 1px;
+  padding-right: 2px;
+  cursor: pointer;
 }
 
 //graph badge CSS

@@ -43,8 +43,8 @@
 
 .filterComponent ul li i {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 4px;
+  right: -16px;
 }
 .searchList {
   border: 0 !important;
@@ -68,4 +68,10 @@
       //font-size: 16px;
     }
   }
+}
+
+//dropdown 
+
+.dropdown-toggle::after {
+  display:none;
 }

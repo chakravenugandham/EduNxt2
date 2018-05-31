@@ -10,7 +10,9 @@
     font-size: 14px;
   }
 }
-
+.headingText .nav-item .active{
+  border-bottom: none;
+}
 .p-r-6 {
   padding-right: 6px;
 }

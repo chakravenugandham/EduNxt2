@@ -1,12 +1,12 @@
-<div>
-  <p style="font-weight:bold;">
-    <b>Most watched topics and interests</b>
+<div class="org-interest">
+  <p class="bold-text">
+    Most watched topics and interests
   </p>
   <div class="row">
     <div class="widget-heading col-md-5">
       <div class="heading clearfix">
-        <p class="float-left">
-          <b>Top Interests</b>
+        <p class="float-left bold-text">
+          Top Interests
         </p>
         <p class="float-right p-r-6">
           <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
@@ -14,10 +14,10 @@
       </div>
       <div *ngFor="let orgInterestData of orgData">
         <div class="card-block">
-          <p>
-            <b>{{orgInterestData.name}}</b>
+          <p class="bold-text">
+            {{orgInterestData.name}}
           </p>
-          <p class="nop">
+          <p class="nop bold-text">
             <span>{{orgInterestData.numberOfPeople}}</span>
             <span>People</span>
           </p>
@@ -31,12 +31,16 @@
     </div>
     <div class="widget-heading col-md-7">
       <div class="heading clearfix">
-        <p class="float-left">
-          <b>Popular Topics</b>
+        <p class="float-left bold-text">
+          Popular Topics
         </p>
         <p class="float-right p-r-6">
           <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
         </p>
+      </div>
+      <div>
+        <ng-tag-cloud [data]="data" [width]="options.width" [height]="options.height" [overflow]="options.overflow">
+        </ng-tag-cloud>
       </div>
     </div>
   </div>

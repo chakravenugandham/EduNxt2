@@ -13,12 +13,11 @@ export class ContentConsumptionComponent implements OnInit {
 
   contentData = [];
 
-  constructor(private contentService: LdDashboardService) {}
+  constructor(private contentService: LdDashboardService) { }
 
   getDataFromService() {
     this.contentService.getContentData().subscribe((res: any) => {
       this.contentData = res.data;
-      console.log("content consumption data", this.contentData);
     });
   }
 

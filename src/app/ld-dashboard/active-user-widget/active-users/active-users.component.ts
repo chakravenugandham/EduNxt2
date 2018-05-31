@@ -213,9 +213,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   }
   chartData = [];
   ngOnChanges(changes: any) {
-
     if (changes.usersData.currentValue && this.chartData) {
-      console.log(this.usersData.graphData);
       for (var i = 0; i < this.usersData.graphData.length; i++) {
         var date = new Date(this.usersData.graphData[i].date);
         var timeStamp = date.getTime();

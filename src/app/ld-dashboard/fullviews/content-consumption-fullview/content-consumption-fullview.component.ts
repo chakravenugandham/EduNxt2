@@ -9,8 +9,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
-
-  constructor(private contentService: LdDashboardService) {}
+  constructor(private contentService: LdDashboardService) { }
 
   getDataFromService() {
     console.log("check2");

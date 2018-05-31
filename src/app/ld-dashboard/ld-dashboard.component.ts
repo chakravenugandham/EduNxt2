@@ -15,7 +15,8 @@ export class LdDashboardComponent implements OnInit {
     this.filterService.getZoneFilters()
     .subscribe(
       (response:any) => {
-        this.filtersList.push(response.data);
+        //this.filtersList.push(response.data);
+        this.filtersList = response.data;
         console.log("filtersList",this.filtersList);
       }
     );

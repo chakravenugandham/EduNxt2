@@ -1,7 +1,6 @@
 .userImages {
   margin-bottom: 12px;
   display: flex;
-  margin-left: inherit;
 }
 .imgActive {
   position: relative;
@@ -24,7 +23,7 @@
   border: 1px solid #fff;
   z-index: 0;
 }
-.userImages .imgActive:first-child {
+.userImages .imgActive:first-child img{
   margin-left: 0;
 }
 .m-t-5 {

@@ -269,16 +269,14 @@
 }
 
 //view details CSS
-.widget-heading .fa-arrow-alt-circle-left {
+
+.widget-heading .fa-angle-left {
   margin-right: 6px;
-  .widget-heading .fa-angle-left {
-    margin-right: 6px;
-    border-radius: 50%;
-    border: 1px solid;
-    padding: 1px;
-    padding-right: 2px;
-    cursor: pointer;
-  }
+  border-radius: 50%;
+  border: 1px solid;
+  padding: 1px;
+  padding-right: 2px;
+  cursor: pointer;
 }
 
 //graph badge CSS

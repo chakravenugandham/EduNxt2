@@ -10,10 +10,14 @@ import * as moment from "moment";
 })
 export class ActiveUsersComponent implements OnInit, OnChanges {
   public lineData;
-
+  //chartWidth = $('.widget-block').width();
   @Input() usersData;
 
   constructor() { }
+
+  // onResize() {
+  //   this.usersChartRender(this.chartData);
+  // }
 
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();

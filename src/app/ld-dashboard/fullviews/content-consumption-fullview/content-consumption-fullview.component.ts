@@ -9,13 +9,11 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
-  userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
-
-  constructor(private contentService: LdDashboardService) {}
+  constructor(private contentService: LdDashboardService) { }
 
   getDataFromService() {
     console.log("check2");
-    this.contentService.getContentData(this.userInfo).subscribe((res: any) => {
+    this.contentService.getContentData().subscribe((res: any) => {
       this.contentData = res.data;
       console.log("content consumption data", this.contentData);
     });

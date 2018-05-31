@@ -10,7 +10,7 @@ export class TrainersComponent implements OnInit {
   trainersData = [];
   constructor(private getData: LdDashboardService) { }
   getDataFromService() {
-    this.getData.getTrainersData(this.trainersData).subscribe((res: any) => {
+    this.getData.getTrainersData().subscribe((res: any) => {
       this.trainersData = res.data;
     })
   }

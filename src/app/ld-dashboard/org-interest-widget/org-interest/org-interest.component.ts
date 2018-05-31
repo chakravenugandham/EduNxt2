@@ -11,7 +11,7 @@ export class OrgInterestComponent implements OnInit {
   constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
-    this.getData.getOrgInterestData(this.orgData).subscribe((res: any) => {
+    this.getData.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
     });
   }

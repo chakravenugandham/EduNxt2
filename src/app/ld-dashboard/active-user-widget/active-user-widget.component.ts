@@ -33,11 +33,9 @@ export class ActiveUserWidgetComponent implements OnInit {
     locationData: ""
   };
 
-  userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
-
   getActiveUsersData() {
     this.getData
-      .getActiveUsersData(this.userInfo)
+      .getActiveUsersData()
       .subscribe((response: any) => {
         this.responseData.activeUserData = response.data;
         console.log("respose getActiveUsers", this.responseData);

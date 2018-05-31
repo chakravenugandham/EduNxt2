@@ -162,10 +162,12 @@
     vertical-align: middle;
   }
   table tr th {
-    font-size: 1em;
+    // font-size: 1em;
+    font-size: 12px;
     font-weight: 600;
+    text-align: left !important;
   }
-  table tr th img {
+  table tr td img {
     height: 24px;
     width: 24px;
     border-radius: 50%;

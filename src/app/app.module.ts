@@ -1,25 +1,26 @@
-
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { HttpClientModule } from "@angular/common/http";
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NvD3Module } from 'ng2-nvd3';
-import { Daterangepicker } from 'ng2-daterangepicker';
+import { AngularFontAwesomeModule } from "angular-font-awesome";
+import { Daterangepicker } from "ng2-daterangepicker";
 
-// d3 and nvd3 should be included here
-import 'd3';
-import 'nvd3';
+// d3 and nvd3 should be included somewhere
+import { NvD3Module } from "ng2-nvd3";
+import "d3";
+import "nvd3";
+
+//word cloud moudle
+import { TagCloudComponent } from "angular-tag-cloud-module";
 
 //modules
-import { RoutingModule } from './routing.module';
+import { RoutingModule } from "./routing.module";
 
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './common/header/header.component';
-import { TimeFrameComponent } from './common/time-frame/time-frame.component';
-import { LdDashboardComponent } from './ld-dashboard/ld-dashboard.component';
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./common/header/header.component";
+import { TimeFrameComponent } from "./common/time-frame/time-frame.component";
+import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
 import { ActivityWidgetComponent } from "./ld-dashboard/activity-widget/activity-widget.component";
 import { UsersComponent } from './ld-dashboard/activity-widget/users/users.component';
 import { EngagementComponent } from './ld-dashboard/activity-widget/engagement/engagement.component';
@@ -64,6 +65,8 @@ import { OrgPerformanceFullviewComponent } from './ld-dashboard/fullviews/org-pe
 import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartService";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +115,8 @@ import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartServ
     ScoresDistributionFullviewComponent,
     OrgPerformanceFullviewComponent,
     NotificationPerformanceFullviewComponent,
-    OrgInterestFullviewComponent
+    OrgInterestFullviewComponent,
+    TagCloudComponent
   ],
   imports: [
     BrowserModule,

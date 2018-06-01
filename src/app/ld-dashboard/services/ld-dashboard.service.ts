@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class LdDashboardService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   baseURL = "http://192.168.239.38:3000/api/v1/";
   //userInfo = [{ L_D_UserId: 1, CourseId: 1 }];
@@ -25,7 +25,7 @@ export class LdDashboardService {
 
   getLocationData() {
     let url = this.baseURL + "activity-by-location";
-    this.http.post(url, { headers: this.headers });
+    return this.http.post(url, { headers: this.headers });
   }
 
   getContentData() {
@@ -45,6 +45,11 @@ export class LdDashboardService {
 
   getTrainersData() {
     let url = this.baseURL + "trainer-leaderboard";
+    return this.http.post(url, { headers: this.headers });
+  }
+
+  getScoresDistrubution() {
+    let url = this.baseURL + "scores-distribution";
     return this.http.post(url, { headers: this.headers });
   }
 

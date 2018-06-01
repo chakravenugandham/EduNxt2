@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  @Input('userElement') userData: { activeUsers: number, changeInUsers: number, peopleCurrentlyEnrolled: number, usersSinceLastMonth: number };
+  @Input('userElement') userData;
 
   constructor() { }
 

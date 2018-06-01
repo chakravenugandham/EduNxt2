@@ -4,7 +4,7 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
-<div class="widget-block" (window:resize)="onResize($event)">
+<div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -57,7 +57,7 @@
   <div>
     <app-active-users [usersData]="responseData.activeUserData" *ngIf="activeUser"></app-active-users>
     <app-mode-of-delivery [usersData]="responseData.activeUserData" *ngIf="modeDelivery"></app-mode-of-delivery>
-    <app-location *ngIf="!activeUser && !modeDelivery"></app-location>
+    <app-location [locationData]="responseData.locationData" *ngIf="!activeUser && !modeDelivery"></app-location>
   </div>
   <div>
     <app-filter-widget></app-filter-widget>

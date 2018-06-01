@@ -8,7 +8,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NvD3Module } from 'ng2-nvd3';
 import { Daterangepicker } from 'ng2-daterangepicker';
 
-// d3 and nvd3 should be included somewhere
+// d3 and nvd3 should be included here
 import 'd3';
 import 'nvd3';
 
@@ -63,7 +63,7 @@ import { ScoresDistributionFullviewComponent } from './ld-dashboard/fullviews/sc
 import { OrgPerformanceFullviewComponent } from './ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component';
 import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
-
+import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartService";
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +123,7 @@ import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-inter
     RoutingModule,
     Daterangepicker
   ],
-  providers: [],
+  providers: [GoogleChartsBaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

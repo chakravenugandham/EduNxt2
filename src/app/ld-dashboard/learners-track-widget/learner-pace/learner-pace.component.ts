@@ -7,7 +7,7 @@ import * as d3 from "d3v4";
   styleUrls: ["./learner-pace.component.scss"]
 })
 export class LearnerPaceComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     var w = 560;
@@ -35,7 +35,7 @@ export class LearnerPaceComponent implements OnInit {
       { color: "#FFD630", type: "classD", number: 25 }
     ];
 
-    var arcs = d3.pie().value(function(d) {
+    var arcs = d3.pie().value(function (d) {
       return d.number;
     })(data);
 
@@ -46,7 +46,7 @@ export class LearnerPaceComponent implements OnInit {
 
     arcPath
       .append("path")
-      .style("fill", function(d, i) {
+      .style("fill", function (d, i) {
         return d.data.color;
       })
       .attr("d", arc);
@@ -57,7 +57,7 @@ export class LearnerPaceComponent implements OnInit {
       .attr("dy", "0em")
       .style("font-size", "20px")
       .style("font-weight", "bold")
-      .text(function(d) {
+      .text(function (d) {
         if (d.data.type === "classD") {
           return d.data.number;
         }
@@ -67,7 +67,7 @@ export class LearnerPaceComponent implements OnInit {
       .append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "1em")
-      .text(function(d) {
+      .text(function (d) {
         if (d.data.type === "classD") {
           return "Havent started";
         }

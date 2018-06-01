@@ -8,13 +8,13 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:testScore}" (click)="testScoreFn()">Test Scores</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:'testScore'?active:''}" (click)="testScoreFn()">Test Scores</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:quizScore}" (click)="quizScoreFn()">Quizzes</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:'quiz'?active:''}" (click)="quizScoreFn()">Quizzes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:!testScore && !quizScore}" (click)="assignmentFn()">Assignments</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:'assignment'?active:''}" (click)="assignmentFn()">Assignments</a>
       </li>
     </ul>
     <div class="float-right">
@@ -54,8 +54,8 @@
       </span>
     </div>
   </div>
-  <app-test-scores *ngIf="testScore"></app-test-scores>
-  <app-quiz *ngIf="quizScore"></app-quiz>
-  <app-assignment *ngIf="!testScore && !quizScore"></app-assignment>
+  <app-test-scores *ngIf="getValue == 'testScore'"></app-test-scores>
+  <app-quiz *ngIf="getValue == 'quiz'"></app-quiz>
+  <app-assignment *ngIf="getValue == 'assignment'"></app-assignment>
   <app-filter-widget [routePath]="routePath"></app-filter-widget>
 </div>

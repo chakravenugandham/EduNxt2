@@ -51,6 +51,16 @@ export class LdDashboardService {
     let url = this.baseURL + "trainer-leaderboard";
     return this.http.post(url, { headers: this.headers });
   }
+  
+  getTeamsData() {
+    let url = this.baseURL + "teams-leaderboard";
+    return this.http.post(url, { headers: this.headers });
+  }
+  
+  getLearnersData() {
+    let url = this.baseURL + "learners-leaderboard";
+    return this.http.post(url, { headers: this.headers });
+  }
 
   getScoresDistrubution() {
     let url = this.baseURL + "scores-distribution";

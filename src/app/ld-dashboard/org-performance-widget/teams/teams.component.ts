@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
-  selector: 'app-teams',
-  templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.scss']
+  selector: "app-teams",
+  templateUrl: "./teams.component.html",
+  styleUrls: ["./teams.component.scss"]
 })
 export class TeamsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  teamsData = [];
+  constructor(private getData: LdDashboardService) {}
+  getDataFromService() {
+    this.getData.getTeamsData().subscribe((res: any) => {
+      this.teamsData = res.data;
+    });
   }
 
+  ngOnInit() {
+    this.getDataFromService();
+  }
 }

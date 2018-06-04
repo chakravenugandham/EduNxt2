@@ -29,7 +29,7 @@ export class OrgInterestComponent implements OnInit {
     { text: "SKETCH", weight: 2 }
   ];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData.getOrgInterestData().subscribe((res: any) => {
@@ -37,7 +37,7 @@ export class OrgInterestComponent implements OnInit {
     });
   }
   ngOnInit() {
-    console.log("org interest componet");
+    // console.log("org interest componet");
 
     //this.getDataFromService();
   }

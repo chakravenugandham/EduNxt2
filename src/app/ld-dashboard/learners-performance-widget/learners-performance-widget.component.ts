@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { observable } from "rxjs";
+import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
   selector: "app-learners-performance-widget",
@@ -7,13 +9,23 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LearnersPerformanceWidgetComponent implements OnInit {
   routePath: string = "learnerPerformanceFullView";
-  performance: boolean = true;
-  constructor() {}
-  performanceFn(){
-    this.performance = true;
+  getTab: string = '';
+  responseData = {};
+
+  constructor(private getData: LdDashboardService) { }
+  performanceFn() {
+    this.getTab = 'performance';
   }
-  progressFn(){
-    this.performance = false;
+  progressFn() {
+    this.getTab = 'progress';
   }
-  ngOnInit() {}
+
+  getDataFromService() {
+    this.getData.getProgressData().subscribe((response: any) => {
+      this.responseData = response.data;
+    })
+  }
+  ngOnInit() {
+    this.getDataFromService();
+  }
 }

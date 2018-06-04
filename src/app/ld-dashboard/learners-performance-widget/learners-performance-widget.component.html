@@ -8,10 +8,10 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:performance}" (click)="performanceFn()">Performance</a>
+        <a class="nav-link" class="cursor-pointer active" [ngClass]="{'active' : getTab=='performance'}" (click)="performanceFn()">Performance</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:!performance}" (click)="progressFn()">Progress</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:getTab == 'progress'}" (click)="progressFn()">Progress</a>
       </li>
     </ul>
     <div class="float-right">
@@ -51,7 +51,7 @@
       </span>
     </div>
   </div>
-  <app-performance *ngIf="performance"></app-performance>
-  <app-progress *ngIf="!performance"></app-progress>
+  <app-performance *ngIf="getTab == 'performance'"></app-performance>
+  <app-progress *ngIf="getTab == 'progess'"></app-progress>
   <app-filter-widget [routePath]="routePath"></app-filter-widget>
 </div>

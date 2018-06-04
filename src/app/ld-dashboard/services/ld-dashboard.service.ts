@@ -73,9 +73,14 @@ export class LdDashboardService {
   }
 
   getZoneFilters() {
-    //let url = this.baseURL + "zones-dropdown";
-    let url = "https://api.myjson.com/bins/1012oe"
-    //return this.http.post(url, { headers: this.headers });
-    return this.http.get(url);
+    let url = this.baseURL + "zones-dropdown";
+    //let url = "https://api.myjson.com/bins/1012oe"
+    return this.http.post(url, { headers: this.headers });
+    //return this.http.get(url);
+  }
+
+  getProgressData() {
+    let url = this.baseURL + "learner-performance-progress";
+    return this.http.post(url, { headers: this.headers });
   }
 }

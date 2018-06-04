@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import * as d3 from "d3v4";
 
 @Component({
@@ -7,6 +7,9 @@ import * as d3 from "d3v4";
   styleUrls: ["./learner-pace.component.scss"]
 })
 export class LearnerPaceComponent implements OnInit {
+  
+  @Input() paceData:any;
+
   constructor() {}
 
   ngOnInit() {

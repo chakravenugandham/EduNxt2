@@ -11,7 +11,7 @@ import { NvD3Module } from "ng2-nvd3";
 import "d3";
 import "nvd3";
 
-//word cloud moudle
+//word cloud component
 import { TagCloudComponent } from "angular-tag-cloud-module";
 
 //modules

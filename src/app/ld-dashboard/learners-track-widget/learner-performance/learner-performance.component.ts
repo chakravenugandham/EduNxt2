@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import * as d3 from "d3v4";
+import { map } from "d3";
 
 @Component({
   selector: "app-learner-performance",
@@ -7,9 +8,16 @@ import * as d3 from "d3v4";
   styleUrls: ["./learner-performance.component.scss"]
 })
 export class LearnerPerformanceComponent implements OnInit {
+  @Input() performanceData:any;
   constructor() {}
 
   ngOnInit() {
+    console.log("performanceData",this.performanceData);
+    // var data = map(this.performanceData, 
+    //   (value,index)=>{ 
+    //   return([value]);
+    // });
+    
     var w = 560;
     var h = 200;
 

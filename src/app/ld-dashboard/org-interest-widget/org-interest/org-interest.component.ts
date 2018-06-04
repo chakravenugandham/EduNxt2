@@ -12,37 +12,21 @@ export class OrgInterestComponent implements OnInit {
   orgData = [];
 
   options: CloudOptions = {
-    // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value
     width: 300,
     height: 200,
-    overflow: false
+    overflow: true
   };
 
   data: CloudData[] = [
-    {
-      text: "Weight-8-link-color",
-      weight: 8,
-      link: "https://google.com",
-      color: "#ffaaee"
-    },
-    {
-      text: "Weight-8-link-color",
-      weight: 8,
-      link: "https://google.com",
-      color: "#ffaaee"
-    },
-    {
-      text: "Weight-8-link-color",
-      weight: 8,
-      link: "https://google.com",
-      color: "#ffaaee"
-    },
-    {
-      text: "Weight-8-link-color",
-      weight: 8,
-      link: "https://google.com",
-      color: "#ffaaee"
-    }
+    { text: "Management", weight: 2 },
+    { text: "BlockChain", weight: 1 },
+    { text: "Consumer", weight: 3 },
+    { text: "Regulations", weight: 2 },
+    { text: "UI Design", weight: 1 },
+    { text: "ADOBE XD", weight: 2 },
+    { text: "Zeplin", weight: 5 },
+    { text: "Interactions", weight: 2 },
+    { text: "SKETCH", weight: 2 }
   ];
 
   constructor(private getData: LdDashboardService) {}
@@ -53,6 +37,8 @@ export class OrgInterestComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.getDataFromService();
+    console.log("org interest componet");
+
+    //this.getDataFromService();
   }
 }

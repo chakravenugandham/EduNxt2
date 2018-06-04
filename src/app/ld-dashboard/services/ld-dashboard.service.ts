@@ -25,9 +25,13 @@ export class LdDashboardService {
 
   getLocationData() {
     let url = this.baseURL + "activity-by-location";
-    this.http.post(url, { headers: this.headers });
+    return this.http.post(url, { headers: this.headers });
   }
-
+  
+  getLearnerTrackData(componentName){
+    let url = this.baseURL + "learner-pace-performance?type=" + componentName;
+    return this.http.post(url, { headers: this.headers });
+  }
   getContentData() {
     let url = this.baseURL + "content-consumption";
     return this.http.post(url, { headers: this.headers });

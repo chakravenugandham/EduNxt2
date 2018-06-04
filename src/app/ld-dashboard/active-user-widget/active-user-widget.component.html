@@ -58,7 +58,7 @@
   <div>
     <app-active-users [usersData]="responseData.activeUserData" *ngIf="activeUser"></app-active-users>
     <app-mode-of-delivery [usersData]="responseData.activeUserData" *ngIf="modeDelivery"></app-mode-of-delivery>
-    <app-location *ngIf="!activeUser && !modeDelivery"></app-location>
+    <app-location [locationData]="responseData.locationData" *ngIf="!activeUser && !modeDelivery"></app-location>
   </div>
   <div>
     <app-filter-widget></app-filter-widget>

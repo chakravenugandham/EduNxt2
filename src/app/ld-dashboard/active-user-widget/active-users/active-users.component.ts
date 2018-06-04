@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as d3 from "d3v4";
 import * as _ from "underscore";
 import * as moment from "moment";
+import * as jquery from "jquery";
 
 @Component({
   selector: "app-active-users",
@@ -9,15 +10,16 @@ import * as moment from "moment";
   styleUrls: ["./active-users.component.scss"]
 })
 export class ActiveUsersComponent implements OnInit, OnChanges {
+  $: any;
   public lineData;
-  //chartWidth = $('.widget-block').width();
+  chartWidth = $('.line-block').width();
   @Input() usersData;
 
   constructor() { }
 
-  // onResize() {
-  //   this.usersChartRender(this.chartData);
-  // }
+  onResize() {
+    this.usersChartRender(this.chartData);
+  }
 
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
@@ -226,6 +228,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
+      console.log(this.chartData);
     }
   }
   ngOnInit() { }

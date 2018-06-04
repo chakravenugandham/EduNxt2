@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { observable } from "rxjs";
+
+import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
   selector: "app-scores-distribution-widget",
@@ -7,21 +10,25 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
   routePath: string = "scoreDistributionFullView";
-  testScore: boolean = true;
-  quizScore: boolean = false;
+  getValue: string = "";
   testScoreFn() {
-    this.testScore = true;
-    this.quizScore = false;
+    this.getValue = 'testScore';
   }
-  quizScoreFn(){
-    this.quizScore = true;
-    this.testScore = false;
+  quizScoreFn() {
+    this.getValue = 'quiz';
   }
-  assignmentFn(){
-    this.quizScore = false;
-    this.testScore = false;
+  assignmentFn() {
+    this.getValue = 'assignment';
   }
-  constructor() {}
+  responseData = {};
+  constructor(private getData: LdDashboardService) { }
 
-  ngOnInit() {}
+  getDataFromService() {
+    this.getData.getScoresDistrubution().subscribe((response: any) => {
+      this.responseData = response.data;
+      console.log(this.responseData);
+    });
+  }
+
+  ngOnInit() { }
 }

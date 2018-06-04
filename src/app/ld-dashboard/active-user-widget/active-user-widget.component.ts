@@ -43,11 +43,12 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
 
   getLocationData() {
-    // this.getData.getLocationData(this.userInfo)
-    // .subscribe((respose: any) => {
-    //   this.resposeData.locationData = respose.data;
-    //   console.log("respose getActiveUsers", this.resposeData.locationData);
-    // });
+    this.getData
+      .getLocationData()
+      .subscribe((response: any) => {
+        this.responseData.locationData = response.data;
+        console.log("respose getLocation", this.responseData.locationData);
+      });
   }
   ngOnInit() {
     this.getActiveUsersData();

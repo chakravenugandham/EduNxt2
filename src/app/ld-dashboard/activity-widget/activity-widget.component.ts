@@ -16,9 +16,12 @@ export class ActivityWidgetComponent implements OnInit {
     learnerEngagement: "",
     learnerPace: "",
     feedback: "",
-    usersTrained: "",
-    goals: ""
+
   };
+  responseGoalsData = {
+    usersTrained: "",
+    timeSpent: ""
+  }
 
   getDataFromService() {
     this.getData.getActivityData().subscribe((response: any) => {
@@ -27,7 +30,15 @@ export class ActivityWidgetComponent implements OnInit {
     });
   }
 
+  getGoalsDataFromService() {
+    this.getData.getGoalsData().subscribe((response: any) => {
+      this.responseGoalsData = response.data;
+      console.log("goals data", this.responseGoalsData);
+    });
+  }
+
   ngOnInit() {
     this.getDataFromService();
+    this.getGoalsDataFromService();
   }
 }

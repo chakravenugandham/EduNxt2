@@ -59,13 +59,13 @@ export class UserstrainedComponent implements OnInit, OnChanges {
     charts.append("path")
       .attr("d", <any>backgroundArc)
       .attr("fill", "#E9E9E9")
-    if (this.usersData.timeSpent < 50) {
+    if (this.usersData.usersCompleatedTrainingPercentage < 50) {
       charts.append("path")
         .attr("d", <any>mainArc)
         .attr("fill", "#5A8BFE")
 
     }
-    else if (this.usersData.timeSpent > 50) {
+    else if (this.usersData.usersCompleatedTrainingPercentage > 50) {
       charts.append("path")
         .attr("d", <any>mainArc)
         .attr("fill", "#5A8BFE")
@@ -75,8 +75,9 @@ export class UserstrainedComponent implements OnInit, OnChanges {
   constructor(private http: HttpClient) { }
 
   ngOnChanges(changes: any) {
-    if (changes.usersData && this.usersData.timeSpent) {
-      this.chartRenderFn([this.usersData.timeSpent]);
+    if (changes.usersData && this.usersData.usersCompleatedTrainingPercentage) {
+      console.log(this.usersData);
+      this.chartRenderFn([this.usersData.usersCompleatedTrainingPercentage]);
     }
   }
 

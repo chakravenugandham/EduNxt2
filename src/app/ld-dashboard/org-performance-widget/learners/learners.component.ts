@@ -10,7 +10,7 @@ export class LearnersComponent implements OnInit {
   LearnersData = [];
   constructor(private getData: LdDashboardService) {}
   getDataFromService() {
-    this.getData.getLearnersData().subscribe((res: any) => {
+    this.getData.getLearnerData().subscribe((res: any) => {
       this.LearnersData = res.data;
     });
   }

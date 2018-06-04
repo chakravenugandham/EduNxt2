@@ -10,7 +10,7 @@ export class TeamsComponent implements OnInit {
   teamsData = [];
   constructor(private getData: LdDashboardService) {}
   getDataFromService() {
-    this.getData.getTeamsData().subscribe((res: any) => {
+    this.getData.getTeamData().subscribe((res: any) => {
       this.teamsData = res.data;
     });
   }

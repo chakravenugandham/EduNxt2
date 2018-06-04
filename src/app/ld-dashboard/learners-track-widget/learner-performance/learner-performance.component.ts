@@ -77,7 +77,7 @@ export class LearnerPerformanceComponent implements OnInit {
       .attr("dy", "1em")
       .text(function(d) {
         if (d.data.type === "classD") {
-          return "Havent started";
+          return "Haven't started";
         }
       });
   }

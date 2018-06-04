@@ -10,25 +10,39 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
   routePath: string = "scoreDistributionFullView";
-  getValue: string = "";
+  getValue: string = "test";
   testScoreFn() {
-    this.getValue = 'testScore';
+    if (this.getValue != "test") {
+      this.getDataFromService();
+      this.getValue = "test";
+    }
   }
   quizScoreFn() {
-    this.getValue = 'quiz';
+    if (this.getValue != "quiz") {
+      this.getDataFromService();
+      this.getValue = "quiz";
+    }
   }
   assignmentFn() {
-    this.getValue = 'assignment';
+    if (this.getValue != "assignment") {
+      this.getDataFromService();
+      this.getValue = "assignment";
+    }
   }
   responseData = {};
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
-    this.getData.getScoresDistrubution().subscribe((response: any) => {
-      this.responseData = response.data;
-      console.log(this.responseData);
-    });
+    this.getData
+      .getScoresDistrubution(this.getValue)
+      .subscribe((response: any) => {
+        console.log("content name", this.getValue);
+        this.responseData = response.data;
+        console.log("scoreboard response", this.responseData);
+      });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getDataFromService();
+  }
 }

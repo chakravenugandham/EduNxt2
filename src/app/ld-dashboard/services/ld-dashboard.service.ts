@@ -18,6 +18,11 @@ export class LdDashboardService {
     return this.http.get(url);
   }
 
+  getGoalsData() {
+    let url = this.baseURL + "goals";
+    return this.http.get(url);
+  }
+
   getActiveUsersData() {
     let url = this.baseURL + "active-users-graph";
     return this.http.post(url, { headers: this.headers });
@@ -27,8 +32,8 @@ export class LdDashboardService {
     let url = this.baseURL + "activity-by-location";
     return this.http.post(url, { headers: this.headers });
   }
-  
-  getLearnerTrackData(componentName){
+
+  getLearnerTrackData(componentName) {
     let url = this.baseURL + "learner-pace-performance?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
@@ -51,12 +56,12 @@ export class LdDashboardService {
     let url = this.baseURL + "trainer-leaderboard";
     return this.http.post(url, { headers: this.headers });
   }
-  
+
   getTeamsData() {
     let url = this.baseURL + "teams-leaderboard";
     return this.http.post(url, { headers: this.headers });
   }
-  
+
   getLearnersData() {
     let url = this.baseURL + "learners-leaderboard";
     return this.http.post(url, { headers: this.headers });

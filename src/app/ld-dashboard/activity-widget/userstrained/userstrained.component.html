@@ -14,13 +14,13 @@
   <div id="udonut-chart"></div>
   <div class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <span class="bigNumber float-left">{{usersData.timeSpent}}</span>
+      <span class="bigNumber float-left">{{usersData.usersCompleatedTrainingPercentage}}</span>
       <div class="p-t-7">
         <!-- <span class="small">
           <i class="fas fa-arrow-up changeNumber"></i>
         </span> -->
-        <span class="changeNumber">Expected {{usersData.expected}}%</span>
-        <p class="m-b-0 font-color">{{usersData.hoursSpent}}of{{usersData.totalHours}} hours spent on learning activities</p>
+        <span class="changeNumber">Expected {{usersData.usersCompleatedTrainingExpectedPercentage}}%</span>
+        <p class="m-b-0 font-color">{{usersData.usersCompletedTraining}}of{{usersData.usersTrained}} hours spent on learning activities</p>
       </div>
       <p class="boldText">
         <b>of your goals has been met</b>

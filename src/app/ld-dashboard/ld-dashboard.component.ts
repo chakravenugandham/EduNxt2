@@ -12,14 +12,14 @@ export class LdDashboardComponent implements OnInit {
   constructor( private filterService: LdDashboardService ) { }
 
   getFilters(){
-    this.filterService.getZoneFilters()
-    .subscribe(
-      (response:any) => {
-        //this.filtersList.push(response.data);
-        this.filtersList = response.data;
-        console.log("filtersList",this.filtersList);
-      }
-    );
+    // this.filterService.getZoneFilters()
+    // .subscribe(
+    //   (response:any) => {
+    //     //this.filtersList.push(response.data);
+    //     this.filtersList = response.data;
+    //     console.log("filtersList",this.filtersList);
+    //   }
+    // );
   }
   ngOnInit() {
     this.getFilters();

@@ -7,6 +7,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
   routePath: string = "orgPerformanceFullView";
+  filtersData: {
+    routeTo: "orgPerformanceFullView",
+    filters: true,
+    search: false,
+    filterList: ["zone"]
+  };
   trainers: boolean = true;
   teams: boolean = false;
   teamsFn() {

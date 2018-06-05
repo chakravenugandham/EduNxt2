@@ -7,6 +7,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class NotificationPerformanceWidgetComponent implements OnInit {
   routePath: string = "notificationPerformanceFullView";
+  filtersData: {
+    routeTo: "notificationPerformanceFullView",
+    filters: true,
+    search: false,
+    filterList: ["zone"]
+  };
   scheduled: boolean = true;
   constructor() {}
 

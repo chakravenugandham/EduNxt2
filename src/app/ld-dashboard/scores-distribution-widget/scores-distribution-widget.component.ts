@@ -10,6 +10,12 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
   routePath: string = "scoreDistributionFullView";
+  filtersData: {
+    routeTo: "scoreDistributionFullView",
+    filters: true,
+    search: false,
+    filterList: ["zone"]
+  };
   getValue: string = "test";
   testScoreFn() {
     if (this.getValue != "test") {

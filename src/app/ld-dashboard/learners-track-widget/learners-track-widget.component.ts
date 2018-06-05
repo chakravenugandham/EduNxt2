@@ -12,7 +12,13 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   componentName: string = "pace";
 
-  routePath: string = "learnerTrackFullView";
+  // routePath: string = "learnerTrackFullView";
+  filtersData: {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    filterList: ["zone"]
+  };
 
   widgetData = {
     pace: "",
@@ -35,10 +41,9 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.serviceData
       .getLearnerTrackData(this.componentName)
       .subscribe((response: any) => {
-        if(this.componentName == "pace"){
+        if (this.componentName == "pace") {
           this.widgetData.pace = response.data;
-        }
-        else{
+        } else {
           this.widgetData.performance = response.data;
         }
         console.log("response", response);

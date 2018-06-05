@@ -7,8 +7,15 @@ import { Router, Route } from "@angular/router";
   styleUrls: ["./filter-widget.component.scss"]
 })
 export class FilterWidgetComponent implements OnInit {
-  @Input() routePath: string;
+  //@Input() routePath: string;
   filterArray = [];
+
+  @Input() viewData : {
+    routeTo: string,
+    filters: boolean,
+    search: boolean,
+    filterList: string[]
+  }
 
   constructor(private router: Router) {}
   ngOnInit() {}
@@ -23,6 +30,7 @@ export class FilterWidgetComponent implements OnInit {
     console.log("filterArray", this.filterArray);
   }
   routetoFullview() {
-    this.router.navigate([this.routePath]);
+    console.log("viewData", this.viewData);
+    //this.router.navigate([this.viewData.routeTo]);
   }
 }

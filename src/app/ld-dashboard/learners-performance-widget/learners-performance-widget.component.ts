@@ -9,7 +9,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class LearnersPerformanceWidgetComponent implements OnInit {
   routePath: string = "learnerPerformanceFullView";
-  getTab: string = '';
+  getTab: string = 'performance';
   responseData = {};
 
   constructor(private getData: LdDashboardService) { }

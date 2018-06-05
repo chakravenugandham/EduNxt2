@@ -76,7 +76,6 @@ export class UserstrainedComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.usersData && this.usersData.usersCompleatedTrainingPercentage) {
-      console.log(this.usersData);
       this.chartRenderFn([this.usersData.usersCompleatedTrainingPercentage]);
     }
   }

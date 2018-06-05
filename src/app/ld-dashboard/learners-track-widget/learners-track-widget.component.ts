@@ -35,18 +35,16 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.serviceData
       .getLearnerTrackData(this.componentName)
       .subscribe((response: any) => {
-        if(this.componentName == "pace"){
+        if (this.componentName == "pace") {
           this.widgetData.pace = response.data;
         }
-        else{
+        else {
           this.widgetData.performance = response.data;
         }
-        console.log("response", response);
-        console.log("this.widgetData", this.widgetData);
       });
   }
 
-  constructor(private serviceData: LdDashboardService) {}
+  constructor(private serviceData: LdDashboardService) { }
 
   ngOnInit() {
     this.getData();

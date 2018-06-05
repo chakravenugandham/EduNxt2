@@ -228,7 +228,6 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
-      console.log(this.chartData);
     }
   }
   ngOnInit() { }

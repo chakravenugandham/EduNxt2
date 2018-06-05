@@ -30,15 +30,13 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     }
   }
   responseData = {};
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData
       .getScoresDistrubution(this.getValue)
       .subscribe((response: any) => {
-        console.log("content name", this.getValue);
         this.responseData = response.data;
-        console.log("scoreboard response", this.responseData);
       });
   }
 

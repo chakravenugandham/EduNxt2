@@ -6,6 +6,43 @@
     <span> What is my organization interested in?</span>
   </div>
   <div class="widget-block">
-    <svg></svg>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Interest / Topic</th>
+          <th scope="col">Total Hits</th>
+          <th scope="col">Followers</th>
+          <th scope="col">Video Tags</th>
+          <th scope="col">Article Tags</th>
+          <th scope="col">Avg Rating</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of responseData">
+        <tr>
+          <td class="">{{data.courseName}}</td>
+          <td class="">
+            <span>{{data.hits}}</span>
+            <span style="font-size: 12px;">
+              <span class="changeNumber">
+                <i class="fa fa-arrow-up" aria-hidden="true"></i>{{data.hitsSinceLastMonth}}</span>since last month</span>
+          </td>
+          <td class="">
+            <span>{{data.noFollowers}}</span>
+            <span style="font-size: 12px;">
+              <span class="changeNumber">
+                <i class="fa fa-arrow-up" aria-hidden="true"></i>{{data.followersSinceLastMonth}}</span>since last month</span>
+          </td>
+          <td class="">{{data.videoTags}}</td>
+          <td class="">{{data.articalTags}}</td>
+          <td class="">{{data.avgRating}}</td>
+          <!-- <td class="">73%</td>
+          <td class="">83%</td>
+          <td class="text-primary">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+            <span>Congratulate</span>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

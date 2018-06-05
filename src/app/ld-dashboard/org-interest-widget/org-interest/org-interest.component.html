@@ -12,18 +12,19 @@
           <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></i>
         </p>
       </div>
-      <div *ngFor="let orgInterestData of orgData">
+      <div *ngFor="let orgInterestData of orgData.topInterestsData">
+        <!-- {{orgInterestData}} -->
         <div class="card-block">
           <p class="bold-text">
-            {{orgInterestData.name}}
+            {{orgInterestData.courseName}}
           </p>
           <p class="nop bold-text">
-            <span>{{orgInterestData.numberOfPeople}}</span>
+            <span>{{orgInterestData.hits}}</span>
             <span>People</span>
           </p>
           <p>
             <span class="changeNumber">
-              <i class="fa fa-arrow-up" aria-hidden="true"></i>{{orgInterestData.numberOfPeopleSinceLastMonth}}</span>
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>{{orgInterestData.hitsSinceLastMonth}}</span>
             <span>Hits since last month</span>
           </p>
         </div>

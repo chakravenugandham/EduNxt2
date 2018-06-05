@@ -38,7 +38,6 @@ export class ActiveUserWidgetComponent implements OnInit {
       .getActiveUsersData()
       .subscribe((response: any) => {
         this.responseData.activeUserData = response.data;
-        console.log("respose getActiveUsers", this.responseData);
       });
   }
 
@@ -47,7 +46,6 @@ export class ActiveUserWidgetComponent implements OnInit {
       .getLocationData()
       .subscribe((response: any) => {
         this.responseData.locationData = response.data;
-        console.log("respose getLocation", this.responseData.locationData);
       });
   }
   ngOnInit() {

@@ -1,64 +1,53 @@
 <div class="org-performanace">
-  <!-- <div class="search-org-user">
-    <span class="serach-icon">
-      <i class="fas fa-search"></i>
-    </span>
-    <input type="text" placeholder="search for a trainer">
-  </div> -->
-  <div>
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th class="clearfix">
-            <span class="float-left">Team Name</span>
-            <span class="float-right">
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Completion %
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Completed Programs
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Team Size
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let tableData of teamsData">
-          <td scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName">{{tableData.trainerName}}</span>
-          </td>
-          <td class="text-danger">{{tableData.trainingsConducted}}</td>
-          <td class="text-danger">{{tableData.peopleTrained}}</td>
-          <td class="text-danger">
-            <span>
-              <i class="far fa-star"></i>
-            </span>
-            <span>{{tableData.avgRating}}</span>
-          </td>
-          <td class="text-danger">
-            <span>
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
-            <span>{{tableData.actionMessage}}</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th class="clearfix">
+          <span class="float-left">Team Name</span>
+          <span class="float-right">
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">Completion %
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">Completed Programs
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">Team Size
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tableData of teamsData">
+        <td scope="row">
+          <span>
+            <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
+          </span>
+          <span class="userName">
+            <b>{{tableData.teamName}}</b>
+          </span>
+        </td>
+        <td>{{tableData.completion}}</td>
+        <td>{{tableData.completedPrograms}}</td>
+        <td>{{tableData.teamsize}}</td>
+        <td>
+          <span>
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+          </span>
+          <span class="color">{{tableData.actionMessage}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -7,21 +7,18 @@ import { Component, OnInit } from "@angular/core";
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
   routePath: string = "orgPerformanceFullView";
-  trainers: boolean = true;
-  teams: boolean = false;
-  teamsFn() {
-    this.teams = true;
-    this.trainers = false;
-  }
-  trainersFn(){
-    this.trainers = true;
-    this.teams = false;
-  }
-  learnersFn(){
-    this.trainers = false;
-    this.teams = false;
-  }
-  constructor() {}
+  getTab: string = 'teams';
 
-  ngOnInit() {}
+  teamsFn() {
+    this.getTab = 'teams';
+  }
+  trainersFn() {
+    this.getTab = 'trainers';
+  }
+  learnersFn() {
+    this.getTab = 'learner';
+  }
+  constructor() { }
+
+  ngOnInit() { }
 }

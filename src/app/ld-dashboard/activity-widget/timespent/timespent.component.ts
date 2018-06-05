@@ -13,7 +13,6 @@ export class TimespentComponent implements OnInit, OnChanges {
   @Input() timeData;
 
   chartRenderFn(chartData) {
-    console.log("timespent", this.timeData)
     d3.select('#tdonut-chart svg').remove();
     var backgroundArc = d3.svg.arc()
       .innerRadius(85)
@@ -76,7 +75,6 @@ export class TimespentComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.timeData && this.timeData.timeSpent) {
-      console.log("timespent", this.timeData);
       this.chartRenderFn([this.timeData.timeSpent]);
     }
   }

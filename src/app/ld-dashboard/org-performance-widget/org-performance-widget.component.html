@@ -8,13 +8,13 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{active:teams}" (click)="teamsFn()">Teams</a>
+        <a class="nav-link" [ngClass]="{'active' :getTab =='teams'}" (click)="teamsFn()">Teams</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{active:trainers}" (click)="trainersFn()">Trainers</a>
+        <a class="nav-link" [ngClass]="{'active' :getTab =='trainers'}" (click)="trainersFn()">Trainers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{active:!teams && !trainers}" (click)="learnersFn()">Learners</a>
+        <a class="nav-link" [ngClass]="{'active' :getTab =='learner'}" (click)="learnersFn()">Learners</a>
       </li>
     </ul>
     <div class="float-right">
@@ -55,9 +55,9 @@
     </div>
   </div>
   <div class="org-performance">
-    <app-teams *ngIf="teams"></app-teams>
-    <app-trainers *ngIf="trainers"></app-trainers>
-    <app-learners *ngIf="!teams && !trainers"></app-learners>
+    <app-teams *ngIf="getTab == 'teams'"></app-teams>
+    <app-trainers *ngIf="getTab == 'trainers'"></app-trainers>
+    <app-learners *ngIf="getTab == 'learner'"></app-learners>
   </div>
   <!-- <app-filter-widget [viewData]="filtersData"></app-filter-widget> -->
 

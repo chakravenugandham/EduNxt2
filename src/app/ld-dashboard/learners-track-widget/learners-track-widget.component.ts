@@ -46,12 +46,10 @@ export class LearnersTrackWidgetComponent implements OnInit {
         } else {
           this.widgetData.performance = response.data;
         }
-        console.log("response", response);
-        console.log("this.widgetData", this.widgetData);
       });
   }
 
-  constructor(private serviceData: LdDashboardService) {}
+  constructor(private serviceData: LdDashboardService) { }
 
   ngOnInit() {
     this.getData();

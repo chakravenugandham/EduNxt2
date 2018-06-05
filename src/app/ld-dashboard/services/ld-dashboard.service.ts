@@ -8,6 +8,7 @@ export class LdDashboardService {
   constructor(private http: HttpClient) { }
 
   baseURL = "http://192.168.239.38:3000/api/v1/";
+  // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
   headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "101");
 
   //courses dropdown

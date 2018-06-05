@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { Router, Route } from "@angular/router";
 
 @Component({
@@ -6,7 +6,7 @@ import { Router, Route } from "@angular/router";
   templateUrl: "./filter-widget.component.html",
   styleUrls: ["./filter-widget.component.scss"]
 })
-export class FilterWidgetComponent implements OnInit {
+export class FilterWidgetComponent implements OnInit, OnChanges {
   //@Input() routePath: string;
   filterArray = [];
 
@@ -15,6 +15,14 @@ export class FilterWidgetComponent implements OnInit {
     filters: boolean,
     search: boolean,
     filterList: string[]
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    console.log("changes", changes.viewData);
+    
+    // for(let propertyName in changes){
+    //   console.log("changes",changes[propertyName]);
+    // }
   }
 
   constructor(private router: Router) {}

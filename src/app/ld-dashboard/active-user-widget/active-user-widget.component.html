@@ -61,6 +61,6 @@
     <app-location [locationData]="responseData.locationData" *ngIf="!activeUser && !modeDelivery"></app-location>
   </div>
   <div>
-    <app-filter-widget></app-filter-widget>
+    <app-filter-widget [viewData]="filtersData"></app-filter-widget>
   </div>
 </div>

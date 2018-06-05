@@ -3,26 +3,33 @@
     <b>Activity by Location</b>
   </p>
   <div class="row">
-    <div class="col-md-7" style="border:1px solid black;">
-      <div id="regions_div" style="width: 280px; height: 200px;"></div>
+    <div class="col-md-7">
+      <div class="locationGraph">
+        <div id="regions_div"></div>
+      </div>
     </div>
     <div class="col-md-5">
       <table class="table table-borderless">
         <tbody>
-          <tr *ngFor="let locationData of locationData" style="border-bottom: 1px dotted black;">
+          <tr *ngFor="let locationData of locationData">
             <td>
-
-            </td>
-            <td>
-              {{locationData.locationName}}
+              <span>
+                <i class="far fa-circle" style="color: #5584ff; background-color: #5584ff"></i>
+              </span>
+              <span class="font-weight-bold"> {{locationData.locationName}} </span>
             </td>
             <td class="users">
-              <p>{{locationData.totalActiveUsers}} Users</p>
+              <p>
+                <span class="font-weight-bold"> {{locationData.totalActiveUsers}} </span>
+                <span> Users </span>
+              </p>
               <p class="arrow-text">
-                <span>
-                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                <span class="font-weight-bold" [ngClass]="{'text-success': locationData.activeUsersSinceLastMonth >50 , 'text-danger': locationData.activeUsersSinceLastMonth <=50}">
+                  <span>
+                    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                  </span>
+                  <span>{{locationData.activeUsersSinceLastMonth}}</span>
                 </span>
-                <span>{{locationData.activeUsersSinceLastMonth}}</span>
                 <span> Since Last Month</span>
               </p>
             </td>

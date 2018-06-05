@@ -11,7 +11,7 @@ export class LearnerPerformanceComponent implements OnInit {
   @Input() performanceData: any;
 
   chartRenderFn() {
-    d3.select('#learnerPerformanceBig svg').remove();
+    d3.select("#learnerPerformanceBig svg").remove();
 
     var w = 560;
     var h = 200;
@@ -33,12 +33,24 @@ export class LearnerPerformanceComponent implements OnInit {
       .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
     var data = [
-      { color: "#F77F6C", type: "classA", number: this.performanceData.excelling },
-      { color: "#5584FF", type: "classB", number: this.performanceData.passing },
-      { color: "#FFD630", type: "classD", number: this.performanceData.struggling }
+      {
+        color: "#F77F6C",
+        type: "classA",
+        number: this.performanceData.excelling
+      },
+      {
+        color: "#5584FF",
+        type: "classB",
+        number: this.performanceData.passing
+      },
+      {
+        color: "#FFD630",
+        type: "classD",
+        number: this.performanceData.struggling
+      }
     ];
 
-    var arcs = d3.pie().value(function (d) {
+    var arcs = d3.pie().value(function(d) {
       return d.number;
     })(data);
 
@@ -49,7 +61,7 @@ export class LearnerPerformanceComponent implements OnInit {
 
     arcPath
       .append("path")
-      .style("fill", function (d, i) {
+      .style("fill", function(d, i) {
         return d.data.color;
       })
       .attr("d", arc);
@@ -60,7 +72,7 @@ export class LearnerPerformanceComponent implements OnInit {
       .attr("dy", "0em")
       .style("font-size", "20px")
       .style("font-weight", "bold")
-      .text(function (d) {
+      .text(function(d) {
         if (d.data.type === "classD") {
           return d.data.number;
         }
@@ -70,13 +82,14 @@ export class LearnerPerformanceComponent implements OnInit {
       .append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "1em")
-      .text(function (d) {
+      .style("font-weight", "bold")
+      .text(function(d) {
         if (d.data.type === "classD") {
           return "Haven't started";
         }
       });
   }
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: any) {
     if (changes.performanceData) {
@@ -84,7 +97,5 @@ export class LearnerPerformanceComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

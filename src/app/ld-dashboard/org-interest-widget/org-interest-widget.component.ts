@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgInterestWidgetComponent implements OnInit {
   routePath: string = "orgInterestFullView";
+  filtersData: {
+    routeTo: "orgInterestFullView",
+    filters: true,
+    search: false,
+    filterList: ["zone"]
+  };
   constructor() { }
 
   ngOnInit() {

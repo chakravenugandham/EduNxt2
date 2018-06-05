@@ -70,6 +70,7 @@ export class LearnerPaceComponent implements OnInit {
       .append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "1em")
+      .style("font-weight", "bold")
       .text(function (d) {
         if (d.data.type === "classD") {
           return "Haven't started";

@@ -8,16 +8,16 @@ import { map } from "d3";
   styleUrls: ["./learner-performance.component.scss"]
 })
 export class LearnerPerformanceComponent implements OnInit {
-  @Input() performanceData:any;
+  @Input() performanceData: any;
   constructor() {}
 
   ngOnInit() {
-    console.log("performanceData",this.performanceData);
-    // var data = map(this.performanceData, 
-    //   (value,index)=>{ 
+    console.log("performanceData", this.performanceData);
+    // var data = map(this.performanceData,
+    //   (value,index)=>{
     //   return([value]);
     // });
-    
+
     var w = 560;
     var h = 200;
 
@@ -75,6 +75,7 @@ export class LearnerPerformanceComponent implements OnInit {
       .append("text")
       .attr("text-anchor", "middle")
       .attr("dy", "1em")
+      .style("font-weight", "bold")
       .text(function(d) {
         if (d.data.type === "classD") {
           return "Haven't started";

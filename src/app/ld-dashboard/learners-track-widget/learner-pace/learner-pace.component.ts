@@ -7,12 +7,13 @@ import * as d3 from "d3v4";
   styleUrls: ["./learner-pace.component.scss"]
 })
 export class LearnerPaceComponent implements OnInit {
-  
-  @Input() paceData:any;
 
-  constructor() {}
+  @Input() paceData: any;
 
-  ngOnInit() {
+  chartRenderFn() {
+
+    d3.select('#learnerPaceBig svg').remove();
+
     var w = 560;
     var h = 200;
 
@@ -32,10 +33,10 @@ export class LearnerPaceComponent implements OnInit {
       .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
     var data = [
-      { color: "#F77F6C", type: "classA", number: 30 },
-      { color: "#5584FF", type: "classB", number: 25 },
-      { color: "#23B14D", type: "classC", number: 35 },
-      { color: "#FFD630", type: "classD", number: 25 }
+      { color: "#F77F6C", type: "classA", number: this.paceData.aheadOfSchedule },
+      { color: "#5584FF", type: "classB", number: this.paceData.behindSchedule },
+      { color: "#23B14D", type: "classC", number: this.paceData.haveNotStarted },
+      { color: "#FFD630", type: "classD", number: this.paceData.onTrack }
     ];
 
     var arcs = d3.pie().value(function (d) {
@@ -75,5 +76,18 @@ export class LearnerPaceComponent implements OnInit {
           return "Haven't started";
         }
       });
+  }
+
+  constructor() { }
+
+  ngOnChanges(changes: any) {
+    if (changes.paceData) {
+      this.chartRenderFn();
+
+    }
+  }
+
+  ngOnInit() {
+
   }
 }

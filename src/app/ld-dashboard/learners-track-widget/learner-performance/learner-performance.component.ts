@@ -9,14 +9,9 @@ import { map } from "d3";
 })
 export class LearnerPerformanceComponent implements OnInit {
   @Input() performanceData: any;
-  constructor() {}
 
-  ngOnInit() {
-    console.log("performanceData", this.performanceData);
-    // var data = map(this.performanceData,
-    //   (value,index)=>{
-    //   return([value]);
-    // });
+  chartRenderFn() {
+    d3.select("#learnerPerformanceBig svg").remove();
 
     var w = 560;
     var h = 200;
@@ -38,9 +33,21 @@ export class LearnerPerformanceComponent implements OnInit {
       .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
     var data = [
-      { color: "#F77F6C", type: "classA", number: 30 },
-      { color: "#5584FF", type: "classB", number: 25 },
-      { color: "#FFD630", type: "classD", number: 25 }
+      {
+        color: "#F77F6C",
+        type: "classA",
+        number: this.performanceData.excelling
+      },
+      {
+        color: "#5584FF",
+        type: "classB",
+        number: this.performanceData.passing
+      },
+      {
+        color: "#FFD630",
+        type: "classD",
+        number: this.performanceData.struggling
+      }
     ];
 
     var arcs = d3.pie().value(function(d) {
@@ -82,4 +89,13 @@ export class LearnerPerformanceComponent implements OnInit {
         }
       });
   }
+  constructor() {}
+
+  ngOnChanges(changes: any) {
+    if (changes.performanceData) {
+      this.chartRenderFn();
+    }
+  }
+
+  ngOnInit() {}
 }

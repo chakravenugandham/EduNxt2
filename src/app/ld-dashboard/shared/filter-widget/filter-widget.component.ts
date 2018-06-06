@@ -33,10 +33,18 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   constructor(private router: Router, private server: LdDashboardService) {}
   ngOnInit() {}
 
+  filtersList = ["zone", "team"];
+
+  filtersData = [];
+
   showFilter() {
-    this.server.getFiltersData(this.viewData.filterList).subscribe((response: any) => {
-      console.log("filter Response", response);
+    console.log("filtersData", this.viewData);
+    this.server.getFiltersData(this.filtersList).subscribe((response: any) => {
+      this.filtersData.push(response.data);
+      console.log("filtersData Response", this.filtersData);
     });
+    console.log("type of filtesData", typeof(this.filtersData));
+    
   }
 
   addFilter() {
@@ -53,3 +61,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     //this.router.navigate([this.viewData.routeTo]);
   }
 }
+
+// http://192.168.239.38:3000/api/v1/dropDown?type=zone,team
+// http://192.168.239.38:3000/api/v1/dropdown?type=zone,team

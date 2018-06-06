@@ -1,0 +1,36 @@
+.userImages {
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.imgActive {
+  position: relative;
+  float: left;
+}
+
+.imgActive i {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #e1fd47;
+  border-radius: 50%;
+  color: #FFF;
+  font-size: 18px;
+}
+
+.userImages .imgActive img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: -10px;
+  border: 1px solid #fff;
+  z-index: 0;
+}
+
+.userImages .imgActive:first-child img {
+  margin-left: 0;
+}
+
+.m-t-5 {
+  margin-top: -5px;
+}

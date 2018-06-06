@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { CloudData, CloudOptions } from "angular-tag-cloud-module";
+import { Observable } from "rxjs";
+//import 'rxjs/add/observable/of';
+//import { of } from 'rxjs';
+import { of as observableOf } from 'rxjs';
 
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
@@ -29,7 +33,7 @@ export class OrgInterestComponent implements OnInit {
   };
 
   wordData = [];
-  data: CloudData[] = this.wordData;
+  data: CloudData[];
   constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
@@ -38,6 +42,12 @@ export class OrgInterestComponent implements OnInit {
       for (let i = 0; i < this.orgData['popularTopicsData'].length; i++) {
         this.wordData.push({ 'text': this.orgData['popularTopicsData'][i].courseName, 'weight': 2 })
       }
+      // //this.data = this.wordData;
+      // const changedData$: Observable<CloudData[]> = Observable.of([
+      //   ...this.wordData
+      // ]);
+      // changedData$.subscribe(res => this.data = res);
+      //this.data = [...this.wordData];
     });
   }
 

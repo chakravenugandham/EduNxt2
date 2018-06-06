@@ -15,6 +15,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getDataFromService() {
     this.getData.getLearnerTrackDetails().subscribe((response: any) => {
       this.responseTrackDetails = response.data;
+      console.log(this.responseTrackDetails);
     });
     this.getData.getGraphDetails().subscribe((res: any) => {
       this.responseGraphDetails = res.data;

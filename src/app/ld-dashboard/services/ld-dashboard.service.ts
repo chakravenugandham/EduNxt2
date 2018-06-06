@@ -111,10 +111,15 @@ export class LdDashboardService {
   }
   
   //get-filters
-  getFiltersData(filterObj) {
-    let data = filterObj.filterList[0];
-    let url = this.baseURL + "dropDown?type=" + filterObj.filterList[0];
-    return this.http.post(url, { headers: this.headers });
+  getFiltersData(filtersList) {
+    let filters = "";
+    if(filtersList.length > 1){
+      for(let i in filtersList)
+      filters += filtersList[i] + ',';
+    }
+    filters = filters.slice(0, -1);
+    let url = this.baseURL + "dropDown?type=" + filters;
+    return this.http.get(url);
   }
 
 }

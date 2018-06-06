@@ -12,25 +12,26 @@ export class LearnerPaceComponent implements OnInit {
   chartRenderFn() {
     d3.select("#learnerPaceBig svg").remove();
 
-    var w = 560;
-    var h = 200;
+    // let w = 560;
+    let w = d3.select("#learnerPaceBig").node().getBoundingClientRect().width;
+    let h = 200;
 
-    var arc = d3
+    let arc = d3
       .arc()
       .innerRadius(90)
       .outerRadius(100);
 
-    var svg = d3
+    let svg = d3
       .select("#learnerPaceBig")
       .append("svg")
       .attr("width", w)
       .attr("height", h);
 
-    var g = svg
+    let g = svg
       .append("g")
       .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
-    var data = [
+    let data = [
       {
         color: "#F77F6C",
         type: "classA",
@@ -49,11 +50,11 @@ export class LearnerPaceComponent implements OnInit {
       { color: "#FFD630", type: "classD", number: this.paceData.onTrack }
     ];
 
-    var arcs = d3.pie().value(function(d) {
+    let arcs = d3.pie().value(function(d) {
       return d.number;
     })(data);
 
-    var arcPath = g
+    let arcPath = g
       .selectAll("path")
       .data(arcs)
       .enter();

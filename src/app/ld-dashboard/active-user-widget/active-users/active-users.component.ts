@@ -23,7 +23,11 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
-    var w = 520;
+    // var w = 520;
+    let w = d3
+      .select("#activeUserGraph")
+      .node()
+      .getBoundingClientRect().width;
     var h = 240;
     var p = 40;
 

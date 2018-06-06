@@ -13,7 +13,11 @@ export class LearnerPerformanceComponent implements OnInit {
   chartRenderFn() {
     d3.select("#learnerPerformanceBig svg").remove();
 
-    var w = 560;
+    // var w = 560;
+    let w = d3
+      .select("#learnerPerformanceBig")
+      .node()
+      .getBoundingClientRect().width;
     var h = 200;
 
     var arc = d3

@@ -9,22 +9,51 @@
       </div>
     </li>
     <li class="list-inline-item filter" *ngIf="viewData.filters">
-      <div ngbDropdown>
-        <div id="dropdownBasic1" ngbDropdownToggle (click)="showFilter()">
-          <span>Add a Filter</span>
-          <i class="fas fa-plus-circle"></i>
+      <div class="filterSelect">
+        <div class="getFilter" (click)="showFilter()">
+          <span>Add a Filter
+            <i class="fas fa-plus-circle"></i>
+          </span>
         </div>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <div *ngIf="filtersData">
-            <div class="dropdown-item" *ngFor="let filter of filtersData"> {{filter[0]}} </div>
+        <div *ngIf="displayDropdown">
+          <div class="showFilter-list" *ngIf="filtersData">
+            <ul class="list-unstyled" *ngFor="let filter of filtersData; index as i">
+              <li>
+                <div class="boldText"> {{filter.type}} </div>
+              </li>
+              <li *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
+                <span>
+                  <input id="filterName.id" type="checkbox"> </span>
+                <span>{{filterName.name}} </span>
+              </li>
+            </ul>
+            <div class="apply-filters">
+              <button (click)="applyFilters()">apply</button>
+            </div>
           </div>
-          <!-- <div class="dropdown-item">South Zone</div>
-          <div class="dropdown-item" *ngFor="let filter of filterArray">filter[0].zoneName</div>
-          <div class="dropdown-item">North Zone</div>
-          <div class="dropdown-item">East Zone</div>
-          <div class="dropdown-item">West Zone</div> -->
+
         </div>
       </div>
+      <!-- <div ngbDropdown>
+        <div id="filtersDropdown" ngbDropdownToggle (click)="showFilter()">
+          <span>Add a Filter</span>
+          <i class="fas fa-plus-circle"></i>
+
+          <div ngbDropdownMenu aria-labelledby="filtersDropdown">
+            <div *ngIf="filtersData">
+              <div class="dropdown-item" *ngFor="let filter of filtersData; index as i">
+                <div>
+                  <b> {{filter.type}} </b>
+                </div>
+                <div *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
+                  <div class="dropdown-item">
+                    <input id="filterName.id" type="checkbox"> {{filterName.name}} </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </li>
     <!-- <span *ngIf="filterArray">
       <li class="list-inline-item" *ngFor="let filet of filterArray; let i = index">

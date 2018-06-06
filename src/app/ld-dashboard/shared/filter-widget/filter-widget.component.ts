@@ -26,8 +26,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     filterList: string[];
   };
 
+  displayDropdown:boolean = false;
+
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes", changes.viewData);
+    // console.log("changes", changes.viewData);
   }
 
   constructor(private router: Router, private server: LdDashboardService) {}
@@ -35,16 +37,29 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   filtersList = ["zone", "team"];
 
-  filtersData = [];
+  filtersData;
 
   showFilter() {
+    console.log("this.displayDropdown",this.displayDropdown);
+    this.displayDropdown = !this.displayDropdown;
     console.log("filtersData", this.viewData);
     this.server.getFiltersData(this.filtersList).subscribe((response: any) => {
-      this.filtersData.push(response.data);
+      // this.filtersData.push(response.data);
+      this.filtersData = response.data;
       console.log("filtersData Response", this.filtersData);
+      let evilResponseProps = Object.keys(this.filtersData);
+      console.log("evilResponseProps", evilResponseProps);
     });
-    console.log("type of filtesData", typeof(this.filtersData));
+    console.log("type of filtesData", typeof this.filtersData);
+  }
+
+  selectFilter(filter, filterName) {
+    console.log("parent filterName", filter);
+    console.log("filterName", filterName);
     
+  }
+  applyFilters(){
+    this.displayDropdown = false;
   }
 
   addFilter() {

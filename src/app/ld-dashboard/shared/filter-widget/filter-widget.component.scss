@@ -70,8 +70,63 @@
   }
 }
 
-//dropdown 
+//dropdown
 
 .dropdown-toggle::after {
-  display:none;
+  display: none;
+}
+
+.filterSelect {
+  position: relative;
+}
+.showFilter-list {
+  position: absolute;
+  top: 24px;
+  left: -4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 8px;
+  height: 160px;
+  overflow: scroll;
+  z-index: 1;
+  overflow-x: hidden;
+}
+.showFilter-list ul {
+  padding: 0;
+}
+.showFilter-list ul li {
+  border: none;
+  background-color: #fff;
+  color: #333;
+  width: max-content;
+}
+.showFilter-list ul li input {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.apply-filters {
+  position: absolute;
+  /* position: fixed; */
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  // border: 1px solid;
+}
+.apply-filters button{
+  float: right;
+}
+
+.showFilter-list::-webkit-scrollbar {
+  width: 2px;
+}
+
+.showFilter-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: #ccc;
+  box-shadow: #ccc;
+}
+
+.showFilter-list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

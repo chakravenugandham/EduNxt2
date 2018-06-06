@@ -48,6 +48,11 @@ export class LdDashboardService {
     return this.http.post(url, { headers: this.headers });
   }
 
+  getGraphDetails() {
+    let url = this.baseURL + "learner-pace-performance";
+    return this.http.post(url, { headers: this.headers });
+  }
+
   //learner-performance
   getLearnerPerformanceData() {
     let url = this.baseURL + "learner-performance-progress";

@@ -50,7 +50,7 @@ export class LocationComponent implements OnInit, OnChanges {
     ["Daman and Diu", 242911],
     ["Lakshadweep", 64429]
   ];
-  constructor(private googleChartsBaseService: GoogleChartsBaseService) {}
+  constructor(private googleChartsBaseService: GoogleChartsBaseService) { }
   data = [];
   totalActiveUsers: number;
   ngOnChanges(changes: any) {
@@ -70,5 +70,5 @@ export class LocationComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

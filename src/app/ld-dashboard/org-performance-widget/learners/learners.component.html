@@ -36,16 +36,18 @@
           </span>
           <span class="userName">{{tableData.learnerName}}</span>
         </td>
-        <td>{{tableData.pointsEarned}}</td>
+        <td>{{tableData.pointsEarned}}
+          <span>{{tableData.pointsEarnedSinceLastMonth}}</span>
+        </td>
         <td>{{tableData.testPerformance}}</td>
         <td>
           {{tableData.examScore}}
         </td>
         <td>
           <span>
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="10" width="10">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="5" width="5">
           </span>
-          <span>{{tableData.ActionMessage}}</span>
+          <span class="color">{{tableData.actionMessage}}</span>
         </td>
       </tr>
     </tbody>

@@ -29,10 +29,10 @@
       <i class="far fa-circle"></i>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <div>
+      <!-- <div>
         <span class="bigNumber float-left">{{userData.activeUsers}}</span>
         <div class="small-font">
           <span class="small">
@@ -43,8 +43,11 @@
           <p class="font-color">since last month</p>
         </div>
         <p class="boldText m-t-10">People are currently active</p>
-      </div>
+      </div> -->
       <div>
+        <app-users-data></app-users-data>
+      </div>
+      <!-- <div>
         <span class="bigNumber float-left">{{userData.peopleCurrentlyEnrolled}}</span>
         <div class="small-font">
           <span class="small">
@@ -55,5 +58,8 @@
           <p class="font-color">since last month</p>
         </div>
         <p class="boldText m-t-10">People are currently enrolled</p>
+      </div> -->
+      <div>
+        <app-users-data></app-users-data>
       </div>
     </div>

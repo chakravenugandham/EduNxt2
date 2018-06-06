@@ -1,5 +1,13 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from "@angular/core";
 import { Router, Route } from "@angular/router";
+
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-filter-widget",
@@ -7,26 +15,29 @@ import { Router, Route } from "@angular/router";
   styleUrls: ["./filter-widget.component.scss"]
 })
 export class FilterWidgetComponent implements OnInit, OnChanges {
-  //@Input() routePath: string;
+  // @Input() routePath: string;
   filterArray = [];
 
-  @Input() viewData : {
-    routeTo: string,
-    filters: boolean,
-    search: boolean,
-    filterList: string[]
-  }
+  @Input()
+  viewData: {
+    routeTo: string;
+    filters: boolean;
+    search: boolean;
+    filterList: string[];
+  };
 
-  ngOnChanges(changes: SimpleChanges){
+  ngOnChanges(changes: SimpleChanges) {
     console.log("changes", changes.viewData);
-    
-    // for(let propertyName in changes){
-    //   console.log("changes",changes[propertyName]);
-    // }
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private server: LdDashboardService) {}
   ngOnInit() {}
+
+  showFilter() {
+    this.server.getFiltersData(this.viewData.filterList).subscribe((response: any) => {
+      console.log("filter Response", response);
+    });
+  }
 
   addFilter() {
     this.filterArray.push("Batch");

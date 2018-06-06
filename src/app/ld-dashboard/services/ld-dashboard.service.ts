@@ -109,5 +109,12 @@ export class LdDashboardService {
     let url = this.baseURL + "content-consumption";
     return this.http.post(url, { headers: this.headers });
   }
+  
+  //get-filters
+  getFiltersData(filterObj) {
+    let data = filterObj.filterList[0];
+    let url = this.baseURL + "dropDown?type=" + filterObj.filterList[0];
+    return this.http.post(url, { headers: this.headers });
+  }
 
 }

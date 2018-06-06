@@ -13,12 +13,14 @@ export class LearnersTrackWidgetComponent implements OnInit {
   componentName: string = "pace";
 
   // routePath: string = "learnerTrackFullView";
-  filtersData: {
+  filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
     filterList: ["zone"]
   };
+
+  routerPath:string = "Praveen";
 
   widgetData = {
     pace: "",

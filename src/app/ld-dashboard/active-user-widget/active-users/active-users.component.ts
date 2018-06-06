@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as d3 from "d3v4";
 import * as _ from "underscore";
-import * as moment from "moment";
-import * as jquery from "jquery";
 
 @Component({
   selector: "app-active-users",
@@ -10,9 +8,8 @@ import * as jquery from "jquery";
   styleUrls: ["./active-users.component.scss"]
 })
 export class ActiveUsersComponent implements OnInit, OnChanges {
-  $: any;
   public lineData;
-  chartWidth = $('.line-block').width();
+  // chartWidth = $('.line-block').width();
   @Input() usersData;
 
   constructor() { }

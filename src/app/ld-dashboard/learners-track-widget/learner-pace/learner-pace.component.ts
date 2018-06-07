@@ -10,6 +10,8 @@ export class LearnerPaceComponent implements OnInit {
   @Input() paceData: any;
 
   chartRenderFn() {
+    console.log("paceData", this.paceData);
+    
     d3.select("#learnerPaceBig svg").remove();
 
     // let w = 560;

@@ -43,11 +43,14 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.serviceData
       .getLearnerTrackData(this.componentName)
       .subscribe((response: any) => {
-        if (this.componentName == "pace") {
-          this.widgetData.pace = response.data;
-        } else {
-          this.widgetData.performance = response.data;
-        }
+        this.widgetData.pace = response.data.paceData;
+        this.widgetData.performance = response.data.performanceData;
+        
+        // if (this.componentName == "pace") {
+        //   this.widgetData.pace = response.data.paceData;
+        // } else {
+        //   this.widgetData.performance = response.data.performanceData;
+        // }
       });
   }
 

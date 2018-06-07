@@ -17,14 +17,15 @@
         </div>
         <div *ngIf="displayDropdown">
           <div class="showFilter-list" *ngIf="filtersData">
-            <ul class="list-unstyled" *ngFor="let filter of filtersData; index as i">
-              <li>
-                <div class="boldText"> {{filter.type}} </div>
-              </li>
-              <li *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                <span>
-                  <input id="filterName.id" type="checkbox"> </span>
-                <span>{{filterName.name}} </span>
+            <ul>
+              <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
+                <div class="boldText"> Select {{filter.type}} </div>
+                <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
+                  <span>
+                    <input id="filterName.id" type="checkbox">
+                  </span>
+                  <span>{{filterName.name}} </span>
+                </div>
               </li>
             </ul>
             <div class="apply-filters">

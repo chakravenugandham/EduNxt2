@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import * as d3 from "d3v4";
+// import * as d3 from "d3";
+declare let d3: any;
 
 @Component({
   selector: "app-performance",
@@ -7,132 +8,127 @@ import * as d3 from "d3v4";
   styleUrls: ["./performance.component.scss"]
 })
 export class PerformanceComponent implements OnInit {
+  dataset = [];
   performanceChart() {
-    let svg = d3.select("#performanceGraph svg"),
-      margin = { top: 20, right: 20, bottom: 30, left: 40 },
-      width = +svg.attr("width") - margin.left - margin.right,
-      height = +svg.attr("height") - margin.top - margin.bottom,
-      g = svg
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    this.dataset = [
+      { label: "Module1", Group1: 20, Group3: 50 },
+      { label: "Module2", Group1: 30, Group3: 70 },
+      { label: "Module3", Group1: 20, Group3: 50 },
+      { label: "Module4", Group1: 40, Group3: 90 },
+      { label: "Module5", Group1: 50, Group3: 60 },
+      { label: "Module6", Group1: 60, Group3: 30 }
+    ];
 
-    let x0 = d3
-      .scaleBand()
-      .rangeRound([0, width])
-      .paddingInner(0.1);
+    function rightRoundedRect(x, y, width, height, radius) {
+      return "M" + x + "," + y
+           + "h" + (width - radius)
+           + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
+           + "v" + (height - 2 * radius)
+           + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
+           + "h" + (radius - width)
+           + "z";
+    }    
 
-    let x1 = d3.scaleBand().padding(0.05);
+    let margin = 30, width = document.getElementById("performanceGraph").offsetWidth, height = 200;
 
-    let y = d3.scaleLinear().rangeRound([height, 0]);
+    let svg = d3
+      .select("#performanceGraph svg")
+      // .append("svg")
+      .attr("width", width)
+      .attr("height", height + margin * 2)
+      .append("g")
+      .attr("transform", "translate(" + margin + "," + margin + ")");
 
-    let z = d3.scaleOrdinal().range(["#98abc5", "#8a89a6", "#7b6888"]);
+    let x0 = d3.scale.ordinal().rangeRoundBands([0, width], 0.5, 0.5);
+    //.rangeRoundBands([0, width], .3);
+    //.paddingInner(0.4);
 
-    d3.csv(
-      "data.csv",
-      function(d, i, columns) {
-        for (let i = 1, n = columns.length; i < n; ++i)
-          d[columns[i]] = +d[columns[i]];
-        return d;
-      },
-      function(error, data) {
-        if (error) throw error;
+    let x1 = d3.scale.ordinal();
 
-        let keys = data.columns.slice(1);
+    let y = d3.scale.linear().range([height, 0]);
 
-        x0.domain(
-          data.map(function(d) {
-            return d.State;
-          })
-        );
-        x1.domain(keys).rangeRound([0, x0.bandwidth()]);
-        y.domain([
-          0,
-          d3.max(data, function(d) {
-            return d3.max(keys, function(key) {
-              return d[key];
-            });
-          })
-        ]).nice();
+    let xAxis = d3.svg
+      .axis()
+      .scale(x0)
+      .orient("bottom");
 
-        g.append("g")
-          .selectAll("g")
-          .data(data)
-          .enter()
-          .append("g")
-          .attr("transform", function(d) {
-            return "translate(" + x0(d.State) + ",0)";
-          })
-          .selectAll("rect")
-          .data(function(d) {
-            return keys.map(function(key) {
-              return { key: key, value: d[key] };
-            });
-          })
-          .enter()
-          .append("rect")
-          .attr("x", function(d) {
-            return x1(d.key);
-          })
-          .attr("y", function(d) {
-            return y(d.value);
-          })
-          .attr("width", x1.bandwidth())
-          .attr("height", function(d) {
-            return height - y(d.value);
-          })
-          .attr("fill", function(d) {
-            return z(d.key);
-          });
+    let yAxis = d3.svg
+      .axis()
+      .scale(y)
+      .orient("left")
+      .tickFormat(d3.format(".2s"));
 
-        g.append("g")
-          .attr("class", "axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x0));
+    let options = d3.keys(this.dataset[0]).filter(function(key) {
+      return key !== "label";
+    });
 
-        g.append("g")
-          .attr("class", "axis")
-          .call(d3.axisLeft(y).ticks(null, "s"))
-          .append("text")
-          .attr("x", 2)
-          .attr("y", y(y.ticks().pop()) + 0.5)
-          .attr("dy", "0.32em")
-          .attr("fill", "#000")
-          .attr("font-weight", "bold")
-          .attr("text-anchor", "start")
-          .text("Population");
+    this.dataset.forEach(function(d) {
+      d.valores = options.map(function(name) {
+        return { name: name, value: +d[name] };
+      });
+    });
 
-        let legend = g
-          .append("g")
-          .attr("font-family", "sans-serif")
-          .attr("font-size", 10)
-          .attr("text-anchor", "end")
-          .selectAll("g")
-          .data(keys.slice().reverse())
-          .enter()
-          .append("g")
-          .attr("transform", function(d, i) {
-            return "translate(0," + i * 20 + ")";
-          });
-
-        legend
-          .append("rect")
-          .attr("x", width - 19)
-          .attr("width", 19)
-          .attr("height", 19)
-          .attr("fill", z);
-
-        legend
-          .append("text")
-          .attr("x", width - 24)
-          .attr("y", 9.5)
-          .attr("dy", "0.32em")
-          .text(function(d) {
-            return d;
-          });
-      }
+    x0.domain(
+      this.dataset.map(function(d) {
+        return d.label;
+      })
     );
+    x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
+    y.domain([0, 100]);
+
+    svg
+      .append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg
+      .append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6);
+
+    let bar = svg
+      .selectAll(".bar")
+      .data(this.dataset)
+      .enter()
+      .append("g")
+      .attr("class", "rect")
+      .attr("transform", function(d) {
+        return "translate(" + x0(d.label) + ",0)";
+      });
+
+    let color = d3.scale.ordinal().range(["#ffeb3ba6", "#f77f6c9c"]);
+
+    bar
+      .selectAll("rect")
+      .data(function(d) {
+        return d.valores;
+      })
+      .enter()
+      .append("rect")
+      .attr("width", x1.rangeBand() - 12)
+      .attr("x", function(d) {
+        return x1(d.name);
+      })
+      .attr("y", function(d) {
+        return y(d.value);
+      })
+      .attr("value", function(d) {
+        return d.name;
+      })
+      .attr("height", function(d) {
+        return height - y(d.value);
+      })
+      .style("fill", function(d) {
+        return color(d.name);
+      });
   }
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.performanceChart();
+  }
 }

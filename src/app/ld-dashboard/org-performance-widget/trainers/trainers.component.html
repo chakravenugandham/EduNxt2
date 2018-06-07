@@ -9,9 +9,8 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th class="col">
-            Trainer Name
-            <span class="">
+          <th scope="col">Trainer Name
+            <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
@@ -37,7 +36,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let tableData of trainersData">
-          <td scope="row">
+          <td scope="">
             <span>
               <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
             </span>
@@ -48,14 +47,12 @@
           <td class="text-danger">
             <span>
               <i class="far fa-star"></i>
-            </span>
-            <span>{{tableData.avgRating}}</span>
+            </span> {{tableData.avgRating}}
           </td>
           <td class="text-danger">
             <span>
               <i class="fas fa-exclamation-triangle"></i>
-            </span>
-            <span>{{tableData.actionMessage}}</span>
+            </span> {{tableData.actionMessage}}
           </td>
         </tr>
       </tbody>

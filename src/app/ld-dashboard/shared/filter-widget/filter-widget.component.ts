@@ -72,8 +72,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     console.log("filterArray", this.filterArray);
   }
   routetoFullview() {
-    console.log("viewData", this.viewData);
-    //this.router.navigate([this.viewData.routeTo]);
+    // console.log("viewData", this.viewData);
+    this.router.navigate([this.viewData.routeTo]);
   }
 }
 

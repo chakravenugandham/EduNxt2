@@ -8,6 +8,7 @@ import {
 import { Router, Route } from "@angular/router";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { values } from "d3";
 
 @Component({
   selector: "app-filter-widget",
@@ -26,7 +27,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     filterList: string[];
   };
 
-  displayDropdown:boolean = false;
+  displayDropdown: boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
     // console.log("changes", changes.viewData);
@@ -40,28 +41,29 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   filtersData;
 
   showFilter() {
-    console.log("this.displayDropdown",this.displayDropdown);
     this.displayDropdown = !this.displayDropdown;
-    console.log("filtersData", this.viewData);
     this.server.getFiltersData(this.filtersList).subscribe((response: any) => {
-      // this.filtersData.push(response.data);
       this.filtersData = response.data;
-      console.log("filtersData Response", this.filtersData);
       let evilResponseProps = Object.keys(this.filtersData);
-      console.log("evilResponseProps", evilResponseProps);
     });
-    console.log("type of filtesData", typeof this.filtersData);
   }
 
+  filter = {
+    zoneId: [1, 2, 3],
+    teamId: [3, 7]
+  };
+  tempfilterArray = [];
   selectFilter(filter, filterName) {
     console.log("parent filterName", filter);
     console.log("filterName", filterName);
+    this.tempfilterArray.push(filterName.name);
+  }
+  applyFilters() {
+    this.displayDropdown = false;
+    this.filterArray = this.tempfilterArray;
+    console.log("filterArray", this.filterArray);
     
   }
-  applyFilters(){
-    this.displayDropdown = false;
-  }
-
   addFilter() {
     this.filterArray.push("Batch");
     console.log("filterArray", this.filterArray);
@@ -72,10 +74,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     console.log("filterArray", this.filterArray);
   }
   routetoFullview() {
-    // console.log("viewData", this.viewData);
     this.router.navigate([this.viewData.routeTo]);
   }
 }
-
-// http://192.168.239.38:3000/api/v1/dropDown?type=zone,team
 // http://192.168.239.38:3000/api/v1/dropdown?type=zone,team

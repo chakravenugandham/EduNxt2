@@ -11,23 +11,23 @@ export class PerformanceComponent implements OnInit {
   dataset = [];
   performanceChart() {
     this.dataset = [
-      { label: "Module1", Group1: 20, Group3: 50 },
-      { label: "Module2", Group1: 30, Group3: 70 },
-      { label: "Module3", Group1: 20, Group3: 50 },
-      { label: "Module4", Group1: 40, Group3: 90 },
-      { label: "Module5", Group1: 50, Group3: 60 },
-      { label: "Module6", Group1: 60, Group3: 30 }
+      { label: "Module1", Group1: 20, Group2: 50 },
+      { label: "Module2", Group1: 30, Group2: 70 },
+      { label: "Module3", Group1: 20, Group2: 50 },
+      { label: "Module4", Group1: 40, Group2: 90 },
+      { label: "Module5", Group1: 50, Group2: 60 },
+      { label: "Module6", Group1: 60, Group2: 30 }
     ];
 
     function rightRoundedRect(x, y, width, height, radius) {
       return "M" + x + "," + y
-           + "h" + (width - radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
-           + "v" + (height - 2 * radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
-           + "h" + (radius - width)
-           + "z";
-    }    
+        + "h" + (width - radius)
+        + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
+        + "v" + (height - 2 * radius)
+        + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
+        + "h" + (radius - width)
+        + "z";
+    }
 
     let margin = 30, width = document.getElementById("performanceGraph").offsetWidth, height = 200;
 
@@ -58,18 +58,18 @@ export class PerformanceComponent implements OnInit {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function(key) {
+    let options = d3.keys(this.dataset[0]).filter(function (key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function(d) {
-      d.valores = options.map(function(name) {
+    this.dataset.forEach(function (d) {
+      d.valores = options.map(function (name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function(d) {
+      this.dataset.map(function (d) {
         return d.label;
       })
     );
@@ -96,7 +96,7 @@ export class PerformanceComponent implements OnInit {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function(d) {
+      .attr("transform", function (d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -104,29 +104,29 @@ export class PerformanceComponent implements OnInit {
 
     bar
       .selectAll("rect")
-      .data(function(d) {
+      .data(function (d) {
         return d.valores;
       })
       .enter()
       .append("rect")
       .attr("width", x1.rangeBand() - 12)
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         return x1(d.name);
       })
-      .attr("y", function(d) {
+      .attr("y", function (d) {
         return y(d.value);
       })
-      .attr("value", function(d) {
+      .attr("value", function (d) {
         return d.name;
       })
-      .attr("height", function(d) {
+      .attr("height", function (d) {
         return height - y(d.value);
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return color(d.name);
       });
   }
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.performanceChart();

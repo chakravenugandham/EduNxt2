@@ -66,6 +66,8 @@ import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullvie
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartService";
 import { UsersDataComponent } from './common/users-data/users-data.component';
+import { HalfDonutChartComponent } from './common/half-donut-chart/half-donut-chart.component';
+import { DonutChartComponent } from './common/donut-chart/donut-chart.component';
 
 
 @NgModule({
@@ -118,7 +120,9 @@ import { UsersDataComponent } from './common/users-data/users-data.component';
     NotificationPerformanceFullviewComponent,
     OrgInterestFullviewComponent,
     TagCloudComponent,
-    UsersDataComponent
+    UsersDataComponent,
+    HalfDonutChartComponent,
+    DonutChartComponent
   ],
   imports: [
     BrowserModule,

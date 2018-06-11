@@ -11,7 +11,9 @@
       </span>
     </div>
   </div>
-  <div id="tdonut-chart"></div>
+  <div>
+    <app-half-donut-chart [data]="timeData.timeSpent"></app-half-donut-chart>
+  </div>
   <div class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <span class="bigNumber float-left">{{timeData.timeSpent}}</span>

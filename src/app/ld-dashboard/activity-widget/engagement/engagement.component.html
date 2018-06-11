@@ -11,20 +11,12 @@
       </span>
     </div>
   </div>
-  <div id="donut-chart"></div>
+  <div>
+    <app-half-donut-chart [data]="engageData.peopleCompletedTraining"></app-half-donut-chart>
+  </div>
   <div class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <span class="bigNumber float-left">{{engageData.peopleCompletedTraining}}</span>
-      <div class="p-t-7">
-        <span class="small">
-          <i class="fas fa-arrow-up changeNumber"></i>
-        </span>
-        <span class="changeNumber"> {{engageData.peopleChange}}</span>
-        <span class="font-color"> Users </span>
-        <p class="font-color">since last month</p>
-      </div>
-      <p class="boldText m-t-10">People completed training programs</p>
+      <app-users-data [config]="config"></app-users-data>
     </div>
   </div>
-
 </div>

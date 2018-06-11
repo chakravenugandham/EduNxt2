@@ -16,7 +16,7 @@ declare let d3: any;
 })
 export class PerformanceComponent implements OnInit, OnChanges {
   @Input() performanceData;
-  graphInfo:any;
+  graphInfo: any;
   // constructData(){
   //   this.graphInfo = {
   //     "moduleName": "performance",
@@ -25,10 +25,11 @@ export class PerformanceComponent implements OnInit, OnChanges {
   // }
   dataset = [];
   performanceChart() {
-
     d3.select("#performanceGraph svg").remove();
 
     for (let i in this.performanceData) {
+      console.log(i);
+
       this.dataset.push({
         label: this.performanceData[i].courseName,
         Group1: this.performanceData[i].performance.old,

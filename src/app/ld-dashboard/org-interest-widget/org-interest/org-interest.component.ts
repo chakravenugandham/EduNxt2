@@ -20,12 +20,10 @@ export class OrgInterestComponent implements OnInit {
 
   wordData = [];
   data: CloudData[];
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.options.width = document.getElementById("word-cloud").offsetWidth;
-    console.log("width", this.options.width);
-    
     this.getData.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
       for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
@@ -36,7 +34,7 @@ export class OrgInterestComponent implements OnInit {
         });
       }
       const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
-      myObservable.subscribe(res => (this.data = res));      
+      myObservable.subscribe(res => (this.data = res));
     });
   }
 

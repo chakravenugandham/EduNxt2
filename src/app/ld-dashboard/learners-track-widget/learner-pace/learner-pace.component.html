@@ -1,25 +1,27 @@
 <div>
-    <div class="learnerPaceText">
-        <span>View learner pace across </span>
-        <span class="text-primary font-weight-bold"> Batch 1</span>
+  <div class="learnerPaceText">
+    <span>View learner pace across </span>
+    <span class="text-primary font-weight-bold"> Batch 1</span>
+  </div>
+  <div>
+    <app-donut-chart [data]="chartValues"></app-donut-chart>
+  </div>
+  <div class="row graph-badges">
+    <div class="col-md-3">
+      <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
+      <div> {{paceData.aheadOfSchedule}} </div>
     </div>
-    <div id="learnerPaceBig"></div>
-    <div class="row graph-badges">
-        <div class="col-md-3">
-            <i class="far fa-circle" style="color: #F77F6C; background-color: #F77F6C"></i> Ahead of Schedule
-            <div> {{paceData.aheadOfSchedule}} </div>
-        </div>
-        <div class="col-md-3">
-            <i class="far fa-circle" style="color: #5584FF; background-color: #5584FF"></i> On Track
-            <div> {{paceData.onTrack}} </div>
-        </div>
-        <div class="col-md-3">
-            <i class="far fa-circle" style="color: #23B14D; background-color: #23B14D"></i> Behind Schedule
-            <div> {{paceData.behindSchedule}} </div>
-        </div>
-        <div class="col-md-3">
-            <i class="far fa-circle" style="color: #FFD630; background-color: #FFD630"></i> Haven't Started
-            <div> {{paceData.haveNotStarted}} </div>
-        </div>
+    <div class="col-md-3">
+      <i class="far fa-circle onTrack"></i> On Track
+      <div> {{paceData.onTrack}} </div>
     </div>
+    <div class="col-md-3">
+      <i class="far fa-circle behindSchedule"></i> Behind Schedule
+      <div> {{paceData.behindSchedule}} </div>
+    </div>
+    <div class="col-md-3">
+      <i class="far fa-circle haveNotStarted"></i> Haven't Started
+      <div> {{paceData.haveNotStarted}} </div>
+    </div>
+  </div>
 </div>

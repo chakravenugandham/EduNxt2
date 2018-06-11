@@ -1,0 +1,40 @@
+.testGraph {
+  p {
+    margin-bottom: 0px;
+  }
+  .y-axis path {
+    stroke-width: 0 !important;
+  }
+  .axis path {
+    fill: none;
+    stroke: #707070;
+    stroke-opacity: 0.2;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+  }
+  .axis line {
+    fill: none;
+    stroke: #707070;
+    stroke-opacity: 0.2;
+    shape-rendering: crispEdges;
+  }
+  .axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+    fill: black;
+  }
+  .y-grid line {
+    stroke: #707070;
+    stroke-opacity: 0.2;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 5, 5;
+  }
+  .x-grid line {
+    stroke: #707070;
+    stroke-opacity: 0.2;
+    shape-rendering: crispEdges;
+  }
+  .grid path {
+    stroke-width: 0;
+  }
+}

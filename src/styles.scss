@@ -1,9 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
-
 //set defaults
-
 .row {
   margin: 0;
   padding: 0;
@@ -151,7 +149,6 @@
 }
 
 //Learner-track CSS
-
 .learner-track-fullview select {
   padding: 4px;
   border: 1px solid lightblue;
@@ -163,7 +160,6 @@
 }
 
 //Table CSS
-
 .org-performance,
 .content-perform,
 .learner-track-fullview,
@@ -196,6 +192,7 @@
     border-radius: 50%;
   }
 }
+
 // .org-performance,
 // .content-perform,
 // .learner-track-fullview,
@@ -204,12 +201,10 @@
 //     border-bottom: 0px;
 //   }
 // }
-
 .content-perform,
 .content-fullview {
   table tbody tr th {
-    color: #5584ff;
-    //width: 152px;
+    color: #5584ff; //width: 152px;
   }
 }
 
@@ -241,7 +236,6 @@
 }
 
 //Graph CSS
-
 #activeUserGraph {
   .line1 {
     stroke: #fca104;
@@ -286,7 +280,6 @@
 }
 
 //view details CSS
-
 .widget-heading .fa-angle-left {
   margin-right: 6px;
   border-radius: 50%;
@@ -377,4 +370,8 @@
   .grid path {
     stroke-width: 0;
   }
+}
+
+.area-color {
+  fill: url(#area-gradient);
 }

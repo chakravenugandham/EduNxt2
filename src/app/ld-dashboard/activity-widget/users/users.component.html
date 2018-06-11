@@ -33,33 +33,9 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div>
-        <span class="bigNumber float-left">{{userData.activeUsers}}</span>
-        <div class="small-font">
-          <span class="small">
-            <i class="fas fa-arrow-up changeNumber"></i>
-          </span>
-          <span class="changeNumber"> {{userData.changeInUsers}}</span>
-          <span class="font-color"> Users </span>
-          <p class="font-color">since last month</p>
-        </div>
-        <p class="boldText m-t-10">People are currently active</p>
+        <app-users-data [config]="activeConfig"></app-users-data>
       </div>
-      <!-- <div>
-        <app-users-data></app-users-data>
-      </div> -->
       <div>
-        <span class="bigNumber float-left">{{userData.peopleCurrentlyEnrolled}}</span>
-        <div class="small-font">
-          <span class="small">
-            <i class="fas fa-arrow-up changeNumber"></i>
-          </span>
-          <span class="changeNumber">{{userData.usersSinceLastMonth}}</span>
-          <span class="font-color"> Users </span>
-          <p class="font-color">since last month</p>
-        </div>
-        <p class="boldText m-t-10">People are currently enrolled</p>
+        <app-users-data [config]="enrolledConfig"></app-users-data>
       </div>
-      <!-- <div>
-        <app-users-data></app-users-data>
-      </div> -->
     </div>

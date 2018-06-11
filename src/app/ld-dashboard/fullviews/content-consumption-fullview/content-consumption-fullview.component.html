@@ -19,18 +19,18 @@
       </thead>
       <tbody>
         <tr *ngFor="let content of contentData">
-          <th scope="row"> {{content.ContentName}} </th>
-          <td> {{content.ContentType}} </td>
-          <td> {{content.CourseName}} </td>
-          <td> {{content.Author}} </td>
-          <td> {{content.Views}} </td>
+          <th scope="row"> {{content.contentName}} </th>
+          <td> {{content.contentType}} </td>
+          <td> {{content.courseName}} </td>
+          <td> {{content.author}} </td>
+          <td> {{content.views}} </td>
           <td>
             <span>
               <i class="far fa-star text-warning"></i>
             </span>
-            <span> {{content.AvgRating}} </span>
+            <span> {{content.avgRating}} </span>
           </td>
-          <td> {{content.Duration}} </td>
+          <td> {{content.duration}} </td>
         </tr>
       </tbody>
     </table>

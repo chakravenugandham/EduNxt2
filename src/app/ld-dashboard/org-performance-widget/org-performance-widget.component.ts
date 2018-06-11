@@ -9,7 +9,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   routePath: string = "orgPerformanceFullView";
   getTab: string = 'teams';
 
-  filtersData: {
+  filtersData = {
     routeTo: "orgPerformanceFullView",
     filters: true,
     search: false,

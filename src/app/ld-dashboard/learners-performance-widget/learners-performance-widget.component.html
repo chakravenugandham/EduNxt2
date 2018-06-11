@@ -4,6 +4,12 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
+
+<!-- <ul>
+  <li *ngFor="let test of responseData.performance">
+    {{test.courseName}}
+  </li>
+</ul> -->
 <div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
@@ -51,7 +57,7 @@
       </span>
     </div>
   </div>
-  <app-performance *ngIf="getTab == 'performance'"></app-performance>
-  <app-progress *ngIf="getTab == 'progress'"></app-progress>
-  <!-- <app-filter-widget [viewData]="filtersData"></app-filter-widget> -->
+  <app-performance [performanceData]="responseData" *ngIf="getTab == 'performance'"></app-performance>
+  <app-progress [progressData]="progressData" *ngIf="getTab == 'progress'"></app-progress>
+  <app-filter-widget [viewData]="filtersData"></app-filter-widget>
 </div>

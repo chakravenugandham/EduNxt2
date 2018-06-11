@@ -10,7 +10,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
   routePath: string = "scoreDistributionFullView";
-  filtersData: {
+  filtersData = {
     routeTo: "scoreDistributionFullView",
     filters: true,
     search: false,
@@ -36,7 +36,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     }
   }
   responseData = {};
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
     this.getData

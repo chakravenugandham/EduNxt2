@@ -1,4 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChange,
+  SimpleChanges
+} from "@angular/core";
 // import * as d3 from "d3";
 declare let d3: any;
 
@@ -7,29 +14,70 @@ declare let d3: any;
   templateUrl: "./performance.component.html",
   styleUrls: ["./performance.component.scss"]
 })
-export class PerformanceComponent implements OnInit {
+export class PerformanceComponent implements OnInit, OnChanges {
+  @Input() performanceData;
+  graphInfo:any;
+  // constructData(){
+  //   this.graphInfo = {
+  //     "moduleName": "performance",
+  //     "data": this.performanceData
+  //   }
+  // }
   dataset = [];
   performanceChart() {
-    this.dataset = [
-      { label: "Module1", Group1: 20, Group3: 50 },
-      { label: "Module2", Group1: 30, Group3: 70 },
-      { label: "Module3", Group1: 20, Group3: 50 },
-      { label: "Module4", Group1: 40, Group3: 90 },
-      { label: "Module5", Group1: 50, Group3: 60 },
-      { label: "Module6", Group1: 60, Group3: 30 }
-    ];
+    for (let i in this.performanceData) {
+      console.log(i);
+      
+      this.dataset.push({
+        label: this.performanceData[i].courseName,
+        Group1: this.performanceData[i].performance.old,
+        Group3: this.performanceData[i].performance.new
+      });
+    }
+    // this.dataset = [
+    //   { label: "Module1", Group1: 20, Group3: 50 },
+    //   { label: "Module2", Group1: 30, Group3: 70 },
+    //   { label: "Module3", Group1: 20, Group3: 50 },
+    //   { label: "Module4", Group1: 40, Group3: 90 },
+    //   { label: "Module5", Group1: 50, Group3: 60 },
+    //   { label: "Module6", Group1: 60, Group3: 30 }
+    // ];
 
     function rightRoundedRect(x, y, width, height, radius) {
-      return "M" + x + "," + y
-           + "h" + (width - radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
-           + "v" + (height - 2 * radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
-           + "h" + (radius - width)
-           + "z";
-    }    
+      return (
+        "M" +
+        x +
+        "," +
+        y +
+        "h" +
+        (width - radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        radius +
+        "," +
+        radius +
+        "v" +
+        (height - 2 * radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        -radius +
+        "," +
+        radius +
+        "h" +
+        (radius - width) +
+        "z"
+      );
+    }
 
-    let margin = 30, width = document.getElementById("performanceGraph").offsetWidth, height = 200;
+    let margin = 30,
+      width = document.getElementById("performanceGraph").offsetWidth,
+      height = 200;
 
     let svg = d3
       .select("#performanceGraph svg")
@@ -100,7 +148,7 @@ export class PerformanceComponent implements OnInit {
         return "translate(" + x0(d.label) + ",0)";
       });
 
-    let color = d3.scale.ordinal().range(["#ffeb3ba6", "#f77f6c9c"]);
+    let color = d3.scale.ordinal().range(["#ffc107", "#ff980061"]);
 
     bar
       .selectAll("rect")
@@ -128,7 +176,13 @@ export class PerformanceComponent implements OnInit {
   }
   constructor() {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.performanceData) {
+      this.performanceChart();
+    }
+  }
   ngOnInit() {
     this.performanceChart();
+    // this.constructData();
   }
 }

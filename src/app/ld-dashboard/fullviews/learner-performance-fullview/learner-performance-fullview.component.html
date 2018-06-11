@@ -5,7 +5,49 @@
     </span>
     <span> How are my learners performing?</span>
   </div>
-  <div class="widget-block">
-    <svg></svg>
+
+  <div class="row">
+    <div class="col">
+      <div class="widget-block">
+        <select name="selectComponent" id="selectComponent" (change)="onchange($event.target.value)">
+          <option value="performance" selected> Performance across all courses </option>
+          <option value="progress"> Progress across all courses </option>
+        </select>
+        <app-performance *ngIf="selectedGraph == 'performance'"></app-performance>
+        <app-progress *ngIf="selectedGraph == 'progress'"></app-progress>
+
+        <div>
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Content Name</th>
+                <th scope="col">Content Type</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Views</th>
+                <th scope="col">Avg Rating</th>
+                <th scope="col">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let learner of learnerData">
+                <th scope="row"> {{content.ContentName}} </th>
+                <td> {{content.ContentType}} </td>
+                <td> {{content.CourseName}} </td>
+                <td> {{content.Author}} </td>
+                <td> {{content.Views}} </td>
+                <td>
+                  <span>
+                    <i class="far fa-star text-warning"></i>
+                  </span>
+                  <span> {{content.AvgRating}} </span>
+                </td>
+                <td> {{content.Duration}} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

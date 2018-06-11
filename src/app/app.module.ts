@@ -68,6 +68,7 @@ import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartServ
 import { UsersDataComponent } from './common/users-data/users-data.component';
 import { HalfDonutChartComponent } from './common/half-donut-chart/half-donut-chart.component';
 import { DonutChartComponent } from './common/donut-chart/donut-chart.component';
+import { BarGraphComponent } from './ld-dashboard/learners-performance-widget/bar-graph/bar-graph.component';
 
 
 @NgModule({
@@ -122,7 +123,8 @@ import { DonutChartComponent } from './common/donut-chart/donut-chart.component'
     TagCloudComponent,
     UsersDataComponent,
     HalfDonutChartComponent,
-    DonutChartComponent
+    DonutChartComponent,
+    BarGraphComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
   routePath: string = "contentConsumptionFullView";
-  filtersData: {
+  filtersData = {
     routeTo: "contentConsumptionFullView",
     filters: true,
     search: false,

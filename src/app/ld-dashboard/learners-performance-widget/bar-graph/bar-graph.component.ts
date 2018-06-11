@@ -1,39 +1,73 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChange,
+  SimpleChanges
+} from "@angular/core";
 // import * as d3 from "d3";
 declare let d3: any;
 
 @Component({
-  selector: 'app-progress',
-  templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.scss']
+  selector: "app-bar-graph",
+  templateUrl: "./bar-graph.component.html",
+  styleUrls: ["./bar-graph.component.css"]
 })
-export class ProgressComponent implements OnInit {
-  @Input() progressData;
+export class BarGraphComponent implements OnInit, OnChanges {
+  constructor() {}
+  @Input() performanceData;
+  @Input() graphData;
   dataset = [];
   performanceChart() {
-    this.dataset = [
-      { label: "Module1", Group1: 20, Group2: 10 },
-      { label: "Module2", Group1: 30, Group2: 20 },
-      { label: "Module3", Group1: 20, Group2: 10 },
-      { label: "Module4", Group1: 40, Group2: 70 },
-      { label: "Module5", Group1: 50, Group2: 50 },
-      { label: "Module6", Group1: 60, Group2: 40 }
-    ];
+    for (let i in this.performanceData) {
+      console.log(i);
+
+      this.dataset.push({
+        label: this.performanceData[i].courseName,
+        Group1: this.performanceData[i].performance.old,
+        Group3: this.performanceData[i].performance.new
+      });
+    }
 
     function rightRoundedRect(x, y, width, height, radius) {
-      return "M" + x + "," + y
-           + "h" + (width - radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
-           + "v" + (height - 2 * radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
-           + "h" + (radius - width)
-           + "z";
-    }    
+      return (
+        "M" +
+        x +
+        "," +
+        y +
+        "h" +
+        (width - radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        radius +
+        "," +
+        radius +
+        "v" +
+        (height - 2 * radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        -radius +
+        "," +
+        radius +
+        "h" +
+        (radius - width) +
+        "z"
+      );
+    }
 
-    let margin = 30, width = document.getElementById("progressGraph").offsetWidth, height = 200;
+    let margin = 30,
+      width = document.getElementById("barGraph").offsetWidth,
+      height = 200;
 
     let svg = d3
-      .select("#progressGraph svg")
+      .select("#barGraph svg")
       // .append("svg")
       .attr("width", width)
       .attr("height", height + margin * 2)
@@ -101,7 +135,7 @@ export class ProgressComponent implements OnInit {
         return "translate(" + x0(d.label) + ",0)";
       });
 
-    let color = d3.scale.ordinal().range(["#ffeb3ba6", "#f77f6c9c"]);
+    let color = d3.scale.ordinal().range(["#ffc107", "#ff980061"]);
 
     bar
       .selectAll("rect")
@@ -110,7 +144,7 @@ export class ProgressComponent implements OnInit {
       })
       .enter()
       .append("rect")
-      .attr("width", x1.rangeBand() - 10)
+      .attr("width", x1.rangeBand() - 12)
       .attr("x", function(d) {
         return x1(d.name);
       })
@@ -127,10 +161,7 @@ export class ProgressComponent implements OnInit {
         return color(d.name);
       });
   }
-  constructor() { }
 
-  ngOnInit() {
-    this.performanceChart();
-  }
-
+  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges) {}
 }

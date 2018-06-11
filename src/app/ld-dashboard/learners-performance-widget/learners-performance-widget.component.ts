@@ -9,27 +9,29 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class LearnersPerformanceWidgetComponent implements OnInit {
   routePath: string = "learnerPerformanceFullView";
-  filtersData: {
+  filtersData = {
     routeTo: "learnerPerformanceFullView",
     filters: true,
     search: false,
     filterList: ["zone"]
   };
-  getTab: string = 'performance';
-  responseData = {};
+  getTab: string = "performance";
+  
+  responseData = [];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
   performanceFn() {
-    this.getTab = 'performance';
+    this.getTab = "performance";
   }
   progressFn() {
-    this.getTab = 'progress';
+    this.getTab = "progress";
   }
 
   getDataFromService() {
-    this.getData.getProgressData().subscribe((response: any) => {
-      this.responseData = response.data;
-    })
+    this.getData.getLearnerPerformanceData().subscribe((response: any) => {
+      this.responseData = response.data.performance;
+      console.log("learnerPerformanceProgress Data", this.responseData);
+    });
   }
   ngOnInit() {
     this.getDataFromService();

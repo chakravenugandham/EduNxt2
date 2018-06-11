@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrgInterestWidgetComponent implements OnInit {
   routePath: string = "orgInterestFullView";
-  filtersData: {
+  filtersData = {
     routeTo: "orgInterestFullView",
     filters: true,
     search: false,

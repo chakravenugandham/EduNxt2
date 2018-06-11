@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 // import * as d3 from "d3";
 declare let d3: any;
 
 @Component({
-  selector: 'app-scheduled-delivered',
-  templateUrl: './scheduled-delivered.component.html',
-  styleUrls: ['./scheduled-delivered.component.scss']
+  selector: "app-scheduled-delivered",
+  templateUrl: "./scheduled-delivered.component.html",
+  styleUrls: ["./scheduled-delivered.component.scss"]
 })
 export class ScheduledDeliveredComponent implements OnInit {
-
-  dataset= [];
+  dataset = [];
   notificationChart() {
     this.dataset = [
       { label: "Module1", Group1: 20, Group3: 50 },
@@ -21,16 +20,40 @@ export class ScheduledDeliveredComponent implements OnInit {
     ];
 
     function rightRoundedRect(x, y, width, height, radius) {
-      return "M" + x + "," + y
-           + "h" + (width - radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
-           + "v" + (height - 2 * radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
-           + "h" + (radius - width)
-           + "z";
-    }    
+      return (
+        "M" +
+        x +
+        "," +
+        y +
+        "h" +
+        (width - radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        radius +
+        "," +
+        radius +
+        "v" +
+        (height - 2 * radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        -radius +
+        "," +
+        radius +
+        "h" +
+        (radius - width) +
+        "z"
+      );
+    }
 
-    let margin = 30, width = document.getElementById("notification_graph").offsetWidth, height = 300;
+    let margin = 30,
+      width = document.getElementById("notification_graph").offsetWidth,
+      height = 200;
 
     let svg = d3
       .select("#notification_graph svg")
@@ -101,7 +124,7 @@ export class ScheduledDeliveredComponent implements OnInit {
         return "translate(" + x0(d.label) + ",0)";
       });
 
-    let color = d3.scale.ordinal().range(["#ffc107cf", "#2196f3a6"]);
+    let color = d3.scale.ordinal().range(["#ffc107", "#ff980061"]);
 
     bar
       .selectAll("rect")
@@ -127,10 +150,9 @@ export class ScheduledDeliveredComponent implements OnInit {
         return color(d.name);
       });
   }
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.notificationChart();
   }
-
 }

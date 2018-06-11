@@ -3,9 +3,9 @@ import { Component, OnInit, Input } from "@angular/core";
 declare let d3: any;
 
 @Component({
-  selector: 'app-progress',
-  templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.scss']
+  selector: "app-progress",
+  templateUrl: "./progress.component.html",
+  styleUrls: ["./progress.component.scss"]
 })
 export class ProgressComponent implements OnInit {
   @Input() progressData;
@@ -21,16 +21,40 @@ export class ProgressComponent implements OnInit {
     ];
 
     function rightRoundedRect(x, y, width, height, radius) {
-      return "M" + x + "," + y
-           + "h" + (width - radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius
-           + "v" + (height - 2 * radius)
-           + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius
-           + "h" + (radius - width)
-           + "z";
-    }    
+      return (
+        "M" +
+        x +
+        "," +
+        y +
+        "h" +
+        (width - radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        radius +
+        "," +
+        radius +
+        "v" +
+        (height - 2 * radius) +
+        "a" +
+        radius +
+        "," +
+        radius +
+        " 0 0 1 " +
+        -radius +
+        "," +
+        radius +
+        "h" +
+        (radius - width) +
+        "z"
+      );
+    }
 
-    let margin = 30, width = document.getElementById("progressGraph").offsetWidth, height = 200;
+    let margin = 30,
+      width = document.getElementById("progressGraph").offsetWidth,
+      height = 200;
 
     let svg = d3
       .select("#progressGraph svg")
@@ -127,10 +151,9 @@ export class ProgressComponent implements OnInit {
         return color(d.name);
       });
   }
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.performanceChart();
   }
-
 }

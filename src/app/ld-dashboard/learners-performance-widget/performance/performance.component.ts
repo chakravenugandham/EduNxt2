@@ -25,9 +25,10 @@ export class PerformanceComponent implements OnInit, OnChanges {
   // }
   dataset = [];
   performanceChart() {
+
+    d3.select("#performanceGraph svg").remove();
+
     for (let i in this.performanceData) {
-      console.log(i);
-      
       this.dataset.push({
         label: this.performanceData[i].courseName,
         Group1: this.performanceData[i].performance.old,
@@ -80,8 +81,8 @@ export class PerformanceComponent implements OnInit, OnChanges {
       height = 200;
 
     let svg = d3
-      .select("#performanceGraph svg")
-      // .append("svg")
+      .select("#performanceGraph")
+      .append("svg")
       .attr("width", width)
       .attr("height", height + margin * 2)
       .append("g")

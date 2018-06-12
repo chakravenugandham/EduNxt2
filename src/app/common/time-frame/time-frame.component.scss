@@ -1,4 +1,5 @@
 .time-frame {
+    display: flex;
     padding: 12px 36px 0px 0px;
     box-shadow: 1px 1px #CCC;
     background-color: #FFF;
@@ -51,3 +52,9 @@
 .m-t-7 {
     margin-top: 7px;
 }
+
+@media (max-width: 576px) {
+    .time-frame {
+      padding: 8px 16px;
+    }
+  }

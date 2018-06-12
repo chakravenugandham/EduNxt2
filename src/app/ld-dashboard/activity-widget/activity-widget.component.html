@@ -4,23 +4,23 @@
   </p>
 </div>
 <div class="activity-widgets d-flex w-100">
-  <div class="col-md-3">
+  <div class="col-md-3 col-sm-6 col-xs-12">
     <app-users [userElement]="responseData.activeUsers"></app-users>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-3 col-sm-6 col-xs-12">
     <app-engagement [engageData]="responseData.learnerEngagement"></app-engagement>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 col-sm-6 col-xs-12">
     <app-pace [paceDataElement]="responseData.learnerPace"></app-pace>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 col-sm-6 col-xs-12">
     <app-feedback [feedbackDataElement]="responseData.feedback"></app-feedback>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 col-sm-6 col-xs-12">
     <app-userstrained [usersData]="responseGoalsData.usersTrained"></app-userstrained>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 col-sm-6 col-xs-12">
     <app-timespent [timeData]="responseGoalsData.timeSpent"></app-timespent>
   </div>
 </div>

@@ -15,6 +15,7 @@
 .mainBody {
   font-size: 14px !important;
   font-family: "Muli";
+  padding: 0;
 }
 
 .dashboard {
@@ -28,6 +29,7 @@
 
 .widget-block {
   position: relative;
+  height: 420px;
   background-color: #fff;
   margin: 6px;
   padding: 10px 20px; // border: 1px solid #afcbe1;
@@ -374,4 +376,149 @@
 
 .area-color {
   fill: url(#area-gradient);
+}
+
+// Media Queries
+
+//samller devices
+@media (max-width: 576px) {
+  .dashboard {
+    padding: 4px 8px;
+  }
+  .dashboard .row .col-md-12 .widget-block {
+    // height: 342px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    height: auto;
+    padding-bottom: 52px;
+  }
+
+  .headingText {
+    position: relative;
+    margin-left: -10px;
+    padding-left: 4px;
+    margin-bottom: 4px;
+    border-left: 4px solid #ffd630;
+  }
+  // .headingText ul{
+
+  // }
+  .headingText .widget-menu {
+    position: absolute;
+    right: 0;
+  }
+  .headingText ul li {
+    margin-right: 2px;
+  }
+  .headingText .nav-item a {
+    font-size: 13px;
+    padding: 2px;
+  }
+
+  .bigNumber {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+  // svg {
+  //   height: 240px !important;
+  // }
+
+
+  .graph-badges{
+    font-size: 0.8em;
+  }
+
+  //user-activity widget
+
+  .activity-widgets .headingText,
+  .attention-needed .headingText {
+    margin-left: -10px;
+  }
+  //activity-widget
+
+  .activity-widgets .widget-block {
+    min-width: 280px;
+    padding: 5px 10px;
+  }
+
+  .userImages .imgActive:first-child img {
+    margin-left: 0;
+  }
+  .userImages .imgActive img {
+    height: 42px !important;
+    width: 42px !important;
+  }
+
+  //tables data
+  .org-performance,
+  .content-perform,
+  .learner-track-fullview,
+  .content-fullview {
+    table tr th {
+      padding: 0;
+      font-size: 10px;
+    }
+    table tr td {
+      padding: 1px;
+    }
+  }
+}
+// Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 8px 16px;
+  }
+  .dashboard .row .col-md-12 .widget-block {
+    // height: 342px;
+    padding: 8px 16px;
+    font-size: 0.8em;
+    height: auto;
+    padding-bottom: 52px;
+  }
+
+  .headingText {
+    position: relative;
+    margin-left: -16px;
+    padding-left: 4px;
+    margin-bottom: 4px;
+    border-left: 4px solid #ffd630;
+  }
+  .headingText .widget-menu {
+    position: absolute;
+    right: 0;
+  }
+  .headingText ul li {
+    margin-right: 4px;
+  }
+  .headingText .nav-item a {
+    font-size: 13px;
+    padding: 2px;
+  }
+  .activity-widgets .headingText,
+  .attention-needed .headingText {
+    margin-left: -10px;
+  }
+  .activity-widgets .widget-block {
+    padding: 5px 10px;
+  }
+  .userImages .imgActive:first-child img {
+    margin-left: 0;
+  }
+  .userImages .imgActive img {
+    height: 42px !important;
+    width: 42px !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
 }

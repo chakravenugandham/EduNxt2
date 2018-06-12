@@ -7,7 +7,7 @@ import * as d3 from "d3";
   styleUrls: ['./half-donut-chart.component.scss']
 })
 export class HalfDonutChartComponent implements OnInit {
-  @Input() data: any;
+  @Input() data;
 
   chartRenderFn(chartData) {
     d3.select('#donut-chart svg').remove();
@@ -61,7 +61,7 @@ export class HalfDonutChartComponent implements OnInit {
 
   constructor() { }
   ngOnChanges(changes: any) {
-    if (changes.data && changes.data.currentValue && this.data) {
+    if (changes.data.currentValue && changes.data) {
       this.chartRenderFn([this.data]);
     }
   }
@@ -69,4 +69,8 @@ export class HalfDonutChartComponent implements OnInit {
   ngOnInit() {
   }
 
+}
+
+export class data {
+  chartData: any;
 }

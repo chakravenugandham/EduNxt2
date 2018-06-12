@@ -7,10 +7,10 @@ import * as d3 from "d3v4";
   styleUrls: ['./donut-chart.component.scss']
 })
 export class DonutChartComponent implements OnInit {
-  @Input() value: any;
+  //@Input() value: any;
   @Input() data: dataClass;
 
-  chartRenderFn() {
+  chartRenderFn(chartData) {
     d3.select("#learnerPaceBig svg").remove();
 
     let w = d3.select("#learnerPaceBig").node().getBoundingClientRect().width;
@@ -74,9 +74,11 @@ export class DonutChartComponent implements OnInit {
   constructor() { }
 
   ngOnChanges(changes: any) {
-    if (changes.value && changes.value.currentValue && this.value) {
-      this.chartRenderFn();
+    if (changes.data.currentValue) {
+      this.chartRenderFn(this.data);
+      console.log(this.data);
     }
+
   }
 
   ngOnInit() {
@@ -85,7 +87,5 @@ export class DonutChartComponent implements OnInit {
 }
 
 export class dataClass {
-  color: string;
-  type: string;
-  number: Number;
+  chartValue: any;
 }

@@ -16,21 +16,27 @@ export class UsersComponent implements OnInit {
 
   constructor() { }
 
+  ngOnChanges(changes: any) {
+    if (changes.userData.currentValue) {
+      this.activeConfig = {
+        peopleCurrentlyEnrolled: this.userData.peopleCurrentlyEnrolled,
+        usersSinceLastMonth: this.userData.usersSinceLastMonth,
+        Users: "Users",
+        sinceLastMonth: "since last month",
+        PeopleAreCurrentlyEnrolled: "People are currently active"
+      }
+      this.enrolledConfig = {
+        peopleCurrentlyEnrolled: this.userData.peopleCurrentlyEnrolled,
+        usersSinceLastMonth: this.userData.usersSinceLastMonth,
+        Users: "Users",
+        sinceLastMonth: "since last month",
+        PeopleAreCurrentlyEnrolled: "People are currently enrolled"
+      }
+    }
+  }
+
   ngOnInit() {
-    this.activeConfig = {
-      peopleCurrentlyEnrolled: 23,
-      usersSinceLastMonth: 30,
-      Users: "string",
-      sinceLastMonth: "string",
-      PeopleAreCurrentlyEnrolled: "string"
-    }
-    this.enrolledConfig = {
-      peopleCurrentlyEnrolled: 43,
-      usersSinceLastMonth: 50,
-      Users: "string",
-      sinceLastMonth: "string",
-      PeopleAreCurrentlyEnrolled: "string"
-    }
+
   }
 
 }

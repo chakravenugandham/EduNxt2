@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation, OnChanges } from '@angular/core';
 import * as d3 from "d3";
 import { Config } from '../../../common/users-data/users-data.component';
+import { data } from '../../../common/half-donut-chart/half-donut-chart.component';
 
 @Component({
   selector: 'app-engagement',
@@ -12,24 +13,25 @@ export class EngagementComponent implements OnInit, OnChanges {
 
   config: Config;
 
+  data: data;
 
   constructor() { }
 
-
   ngOnChanges(changes: any) {
-    //   if (changes.engageData && this.engageData.peopleCompletedTraining) {
-
-    //     this.chartRenderFn([this.engageData.peopleCompletedTraining]);
-    //   }
+    if (changes.engageData.currentValue) {
+      this.config = {
+        peopleCurrentlyEnrolled: this.engageData.peopleCompletedTraining,
+        usersSinceLastMonth: this.engageData.peopleChange,
+        Users: "Users",
+        sinceLastMonth: "since last month",
+        PeopleAreCurrentlyEnrolled: "People are currently active"
+      }
+      this.data = {
+        chartData: this.engageData.peopleCompletedTraining
+      };
+    }
   }
 
   ngOnInit() {
-    this.config = {
-      peopleCurrentlyEnrolled: 23,
-      usersSinceLastMonth: 30,
-      Users: "string",
-      sinceLastMonth: "string",
-      PeopleAreCurrentlyEnrolled: "string"
-    }
   }
 }

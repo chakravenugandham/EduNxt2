@@ -19,9 +19,9 @@ export class ActivityWidgetComponent implements OnInit {
 
   };
   responseGoalsData = {
-    usersTrained: "",
-    timeSpent: ""
-  }
+    timeSpent: "",
+    usersTrained: ""
+  };
 
   getDataFromService() {
     this.getData.getActivityData().subscribe((response: any) => {

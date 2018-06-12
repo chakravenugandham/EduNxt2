@@ -13,6 +13,12 @@ export class UsersDataComponent implements OnInit {
 
   constructor() { }
 
+  ngOnChanges(changes: any) {
+    if (changes.config && changes.config.currentValue) {
+      this.config = changes.config.currentValue;
+    }
+  }
+
   ngOnInit() {
   }
 

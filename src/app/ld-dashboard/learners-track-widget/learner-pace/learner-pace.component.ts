@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { dataClass } from "../../../common/donut-chart/donut-chart.component";
 
 @Component({
   selector: "app-learner-pace",
@@ -9,15 +8,13 @@ import { dataClass } from "../../../common/donut-chart/donut-chart.component";
 export class LearnerPaceComponent implements OnInit {
   @Input() paceData: any;
 
-  chartData: dataClass;
-
   chartValues = [];
 
   constructor() { }
 
   ngOnChanges(changes: any) {
     if (changes.paceData.currentValue) {
-      this.chartValues.push(
+      this.chartValues = [
         {
           color: "#F77F6C",
           type: "classA",
@@ -38,10 +35,7 @@ export class LearnerPaceComponent implements OnInit {
           type: "classD",
           number: this.paceData.onTrack
         }
-      );
-      this.chartData = {
-        chartValue: this.chartValues
-      };
+      ];
     }
   }
 

@@ -20,11 +20,21 @@ export class PerformanceComponent implements OnInit, OnChanges {
   performanceChart() {
     d3.select("#performanceGraph svg").remove();
 
-    for (let i in this.performanceData) {
+    for (let i in this.performanceData.Course1) {
       this.dataset.push({
-        label: this.performanceData[i].courseName,
-        Group1: this.performanceData[i].performance.old,
-        Group3: this.performanceData[i].performance.new
+        label: this.performanceData.Course1[i].courseName,
+        Group1: this.performanceData.Course1[i].performance,
+        Group2: this.performanceData.Course1[i].performance,
+        Group3: this.performanceData.Course1[i].performance
+      });
+    }
+
+    for (let i in this.performanceData.Course2) {
+      this.dataset.push({
+        label: this.performanceData.Course2[i].courseName,
+        Group1: this.performanceData.Course2[i].performance,
+        Group2: this.performanceData.Course2[i].performance,
+        Group3: this.performanceData.Course2[i].performance
       });
     }
     // this.dataset = [

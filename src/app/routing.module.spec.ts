@@ -1,6 +1,6 @@
 import { RoutingModule } from './routing.module';
 
-describe('RoutingModule', () => {
+fdescribe('RoutingModule', () => {
   let routingModule: RoutingModule;
 
   beforeEach(() => {

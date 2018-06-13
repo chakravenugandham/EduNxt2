@@ -1,16 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnChanges, OnInit } from '@angular/core';
 import * as d3 from "d3";
-
-@Component({
-  selector: 'app-half-donut-chart',
-  templateUrl: './half-donut-chart.component.html',
-  styleUrls: ['./half-donut-chart.component.scss']
+@Directive({
+  selector: '[appHalfdonutchart]'
 })
-export class HalfDonutChartComponent implements OnInit {
-  @Input() data;
+export class HalfdonutchartDirective implements OnInit, OnChanges {
+  @Input() data: any;
 
+  constructor(private el: ElementRef) {
+  }
+
+  ngOnInit() {
+    this.el.nativeElement.innerHTML = '';
+  }
   chartRenderFn(chartData) {
-    d3.select('#donut-chart svg').remove();
+    this.el.nativeElement.innerHTML = '';
+    let chartDiv = document.createElement('div');
     var backgroundArc = d3.svg.arc()
       .innerRadius(85)
       .outerRadius(100)
@@ -37,7 +41,7 @@ export class HalfDonutChartComponent implements OnInit {
         }
 
       });
-    var svg = d3.select("#donut-chart").append("svg")
+    var svg = d3.select(chartDiv).append("svg")
       .attr("width", 300)
       .attr("height", 130)
       .attr("style", "padding-left:30%; padding-top:5%;");
@@ -56,21 +60,14 @@ export class HalfDonutChartComponent implements OnInit {
 
     charts.append("path")
       .attr("d", <any>mainArc)
-      .attr("fill", "#5A8BFE")
+      .attr("fill", "#5A8BFE");
+
+    this.el.nativeElement.append(chartDiv);
   }
 
-  constructor() { }
   ngOnChanges(changes: any) {
     if (changes.data.currentValue && changes.data) {
       this.chartRenderFn([this.data]);
     }
   }
-
-  ngOnInit() {
-  }
-
-}
-
-export class data {
-  chartData: any;
 }

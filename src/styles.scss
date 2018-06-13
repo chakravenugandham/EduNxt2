@@ -29,7 +29,7 @@
 
 .widget-block {
   position: relative;
-  height: 420px;
+  height: 465px;
   background-color: #fff;
   margin: 6px;
   padding: 10px 20px; // border: 1px solid #afcbe1;
@@ -379,7 +379,6 @@
 }
 
 // Media Queries
-
 //samller devices
 @media (max-width: 576px) {
   .dashboard {
@@ -392,16 +391,13 @@
     height: auto;
     padding-bottom: 52px;
   }
-
   .headingText {
     position: relative;
     margin-left: -10px;
     padding-left: 4px;
     margin-bottom: 4px;
     border-left: 4px solid #ffd630;
-  }
-  // .headingText ul{
-
+  } // .headingText ul{
   // }
   .headingText .widget-menu {
     position: absolute;
@@ -414,42 +410,30 @@
     font-size: 13px;
     padding: 2px;
   }
-
   .bigNumber {
     font-size: 18px;
     margin-bottom: 2px;
-  }
-  // svg {
+  } // svg {
   //   height: 240px !important;
   // }
-
-
-  .graph-badges{
+  .graph-badges {
     font-size: 0.8em;
-  }
-
-  //user-activity widget
-
+  } //user-activity widget
   .activity-widgets .headingText,
   .attention-needed .headingText {
     margin-left: -10px;
-  }
-  //activity-widget
-
+  } //activity-widget
   .activity-widgets .widget-block {
     min-width: 280px;
     padding: 5px 10px;
   }
-
   .userImages .imgActive:first-child img {
     margin-left: 0;
   }
   .userImages .imgActive img {
     height: 42px !important;
     width: 42px !important;
-  }
-
-  //tables data
+  } //tables data
   .org-performance,
   .content-perform,
   .learner-track-fullview,
@@ -463,6 +447,7 @@
     }
   }
 }
+
 // Small devices (landscape phones, 576px and up)
 // @media (min-width: 576px) {
 @media (max-width: 768px) {
@@ -476,7 +461,6 @@
     height: auto;
     padding-bottom: 52px;
   }
-
   .headingText {
     position: relative;
     margin-left: -16px;
@@ -512,13 +496,10 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-}
+@media (min-width: 992px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}

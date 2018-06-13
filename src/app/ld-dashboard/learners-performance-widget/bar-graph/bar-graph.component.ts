@@ -1,21 +1,14 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChange,
-  SimpleChanges
-} from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from "@angular/core";
 // import * as d3 from "d3";
 declare let d3: any;
 
 @Component({
   selector: "app-bar-graph",
   templateUrl: "./bar-graph.component.html",
-  styleUrls: ["./bar-graph.component.css"]
+  styleUrls: ["./bar-graph.component.scss"]
 })
 export class BarGraphComponent implements OnInit, OnChanges {
-  constructor() {}
+  constructor() { }
   @Input() performanceData;
   @Input() graphData;
   dataset = [];
@@ -93,18 +86,18 @@ export class BarGraphComponent implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function(key) {
+    let options = d3.keys(this.dataset[0]).filter(function (key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function(d) {
-      d.valores = options.map(function(name) {
+    this.dataset.forEach(function (d) {
+      d.valores = options.map(function (name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function(d) {
+      this.dataset.map(function (d) {
         return d.label;
       })
     );
@@ -131,7 +124,7 @@ export class BarGraphComponent implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function(d) {
+      .attr("transform", function (d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -139,29 +132,29 @@ export class BarGraphComponent implements OnInit, OnChanges {
 
     bar
       .selectAll("rect")
-      .data(function(d) {
+      .data(function (d) {
         return d.valores;
       })
       .enter()
       .append("rect")
       .attr("width", x1.rangeBand() - 12)
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         return x1(d.name);
       })
-      .attr("y", function(d) {
+      .attr("y", function (d) {
         return y(d.value);
       })
-      .attr("value", function(d) {
+      .attr("value", function (d) {
         return d.name;
       })
-      .attr("height", function(d) {
+      .attr("height", function (d) {
         return height - y(d.value);
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return color(d.name);
       });
   }
 
-  ngOnInit() {}
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnInit() { }
+  ngOnChanges(changes: SimpleChanges) { }
 }

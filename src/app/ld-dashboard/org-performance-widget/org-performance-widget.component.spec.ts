@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrgPerformanceComponent } from './org-performance.component';
+import { OrgPerformanceWidgetComponent } from './org-performance-widget.component';
 
 describe('OrgPerformanceComponent', () => {
-  let component: OrgPerformanceComponent;
-  let fixture: ComponentFixture<OrgPerformanceComponent>;
+  let component: OrgPerformanceWidgetComponent;
+  let fixture: ComponentFixture<OrgPerformanceWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgPerformanceComponent ]
+      declarations: [OrgPerformanceWidgetComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrgPerformanceComponent);
+    fixture = TestBed.createComponent(OrgPerformanceWidgetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

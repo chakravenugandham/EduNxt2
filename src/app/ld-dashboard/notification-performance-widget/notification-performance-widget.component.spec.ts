@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationPerformanceComponent } from './notification-performance.component';
+import { NotificationPerformanceWidgetComponent } from './notification-performance-widget.component';
 
 describe('NotificationPerformanceComponent', () => {
-  let component: NotificationPerformanceComponent;
-  let fixture: ComponentFixture<NotificationPerformanceComponent>;
+  let component: NotificationPerformanceWidgetComponent;
+  let fixture: ComponentFixture<NotificationPerformanceWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationPerformanceComponent ]
+      declarations: [NotificationPerformanceWidgetComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationPerformanceComponent);
+    fixture = TestBed.createComponent(NotificationPerformanceWidgetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

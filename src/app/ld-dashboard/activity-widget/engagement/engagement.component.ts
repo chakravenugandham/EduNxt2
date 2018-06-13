@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation, OnChanges } from '@angular/core';
 import * as d3 from "d3";
 import { Config } from '../../../common/users-data/users-data.component';
-import { data } from '../../../common/half-donut-chart/half-donut-chart.component';
-
+import { HalfdonutchartDirective } from "../../../directives/halfdonutchart.directive";
 @Component({
   selector: 'app-engagement',
   templateUrl: './engagement.component.html',
@@ -12,8 +11,6 @@ export class EngagementComponent implements OnInit, OnChanges {
   @Input() engageData;
 
   config: Config;
-
-  data: data;
 
   constructor() { }
 
@@ -26,9 +23,6 @@ export class EngagementComponent implements OnInit, OnChanges {
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently active"
       }
-      this.data = {
-        chartData: this.engageData.peopleCompletedTraining
-      };
     }
   }
 
@@ -36,6 +30,3 @@ export class EngagementComponent implements OnInit, OnChanges {
   }
 }
 
-export class appComponent {
-  color = 'green';
-}

@@ -16,10 +16,10 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
     filterList: ["zone"]
   };
   getTab: string = "performance";
-  
+
   responseData = [];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
   performanceFn() {
     this.getTab = "performance";
   }
@@ -29,7 +29,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
 
   getDataFromService() {
     this.getData.getLearnerPerformanceData().subscribe((response: any) => {
-      this.responseData = response.data.performance;
+      this.responseData = response.data;
       console.log("learnerPerformanceProgress Data", this.responseData);
     });
   }

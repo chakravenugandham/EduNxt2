@@ -1,19 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnChanges, OnInit } from '@angular/core';
 import * as d3 from "d3v4";
 
-@Component({
-  selector: 'app-donut-chart',
-  templateUrl: './donut-chart.component.html',
-  styleUrls: ['./donut-chart.component.scss']
+@Directive({
+  selector: '[appDonutChart]'
 })
-export class DonutChartComponent implements OnInit {
-  //@Input() value: any;
-  @Input() data: dataClass;
+export class DonutChartDirective implements OnChanges {
+  @Input() data: any;
+
+  constructor(private el: ElementRef) { }
 
   chartRenderFn(chartData) {
-    d3.select("#learnerPaceBig svg").remove();
+    this.el.nativeElement.innerHTML = '';
+    //let chartDiv = document.createElement('div');
 
-    let w = d3.select("#learnerPaceBig").node().getBoundingClientRect().width;
+    let w = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
     let h = 200;
 
     let arc = d3
@@ -22,7 +22,7 @@ export class DonutChartComponent implements OnInit {
       .outerRadius(100);
 
     let svg = d3
-      .select("#learnerPaceBig")
+      .select(this.el.nativeElement)
       .append("svg")
       .attr("width", w)
       .attr("height", h);
@@ -71,23 +71,9 @@ export class DonutChartComponent implements OnInit {
       });
   }
 
-  constructor() { }
-
   ngOnChanges(changes: any) {
-    if (changes.data.currentValue) {
-      this.chartRenderFn(this.data);
-    }
-
-  }
-
-  ngOnInit() {
-    if (this.data.chartValue) {
+    if (changes.data && changes.data.currentValue) {
       this.chartRenderFn(this.data);
     }
   }
-
-}
-
-export class dataClass {
-  chartValue: any;
 }

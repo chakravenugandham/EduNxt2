@@ -11,9 +11,7 @@
       </span>
     </div>
   </div>
-  <div>
-    <app-half-donut-chart [data]="usersData.usersCompletedTrainingPercentage"></app-half-donut-chart>
-  </div>
+  <div appHalfdonutchart [data]="usersData.usersCompletedTrainingPercentage"></div>
   <div class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <span class="bigNumber float-left">{{usersData.usersCompletedTrainingPercentage}}</span>

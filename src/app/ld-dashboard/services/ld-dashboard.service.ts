@@ -57,9 +57,6 @@ export class LdDashboardService {
   getLearnerPerformanceData() {
     let url = this.baseURL + "learner-performance-progress";
     return this.http.post(url, { headers: this.headers });
-    // let url = "https://api.myjson.com/bins/wv4za";
-    //let url = "https://api.myjson.com/bins/18ynzq";
-    //return this.http.get(url);
   }
   getLearnerPerformanceDetails() {
     let url = this.baseURL + "learner-performance-progress-details";

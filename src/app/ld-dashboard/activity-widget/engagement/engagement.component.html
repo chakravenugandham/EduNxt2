@@ -11,9 +11,12 @@
       </span>
     </div>
   </div>
-  <div>
+  <!-- <div>
     <app-half-donut-chart [data]="engageData.peopleCompletedTraining"></app-half-donut-chart>
-  </div>
+  </div> -->
+  <p appHalfdonutchart>Highlight me!</p>
+  <p appHalfdonutchart [highlightColor]="color">Highlighted in yellow</p>
+  <p appHalfdonutchart [highlightColor]="'orange'">Highlighted in orange</p>
   <div class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <app-users-data [config]="config"></app-users-data>

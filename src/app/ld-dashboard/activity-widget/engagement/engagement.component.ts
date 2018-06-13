@@ -35,3 +35,7 @@ export class EngagementComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 }
+
+export class appComponent {
+  color = 'green';
+}

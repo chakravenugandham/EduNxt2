@@ -33,8 +33,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     // console.log("changes", changes.viewData);
   }
 
-  constructor(private router: Router, private server: LdDashboardService) {}
-  ngOnInit() {}
+  constructor(private router: Router, private server: LdDashboardService) { }
+  ngOnInit() { }
 
   filtersList = ["zone", "team"];
 
@@ -62,7 +62,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.displayDropdown = false;
     this.filterArray = this.tempfilterArray;
     console.log("filterArray", this.filterArray);
-    
+
   }
   addFilter() {
     this.filterArray.push("Batch");

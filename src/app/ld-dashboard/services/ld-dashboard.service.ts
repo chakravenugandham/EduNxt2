@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class LdDashboardService {
   constructor(private http: HttpClient) { }
 
-  baseURL = "http://192.168.239.38:3000/api/v1/";
+  baseURL = "http://192.168.239.38:3000/api/v1/lnd/";
   // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
   headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "101");
 
@@ -55,11 +55,11 @@ export class LdDashboardService {
 
   //learner-performance
   getLearnerPerformanceData() {
-    // let url = this.baseURL + "learner-performance-progress";
-    // return this.http.post(url, { headers: this.headers });
+    let url = this.baseURL + "learner-performance-progress";
+    return this.http.post(url, { headers: this.headers });
     // let url = "https://api.myjson.com/bins/wv4za";
-    let url = "https://api.myjson.com/bins/18ynzq";
-    return this.http.get(url);
+    //let url = "https://api.myjson.com/bins/18ynzq";
+    //return this.http.get(url);
   }
   getLearnerPerformanceDetails() {
     let url = this.baseURL + "learner-performance-progress-details";
@@ -100,11 +100,11 @@ export class LdDashboardService {
     return this.http.post(url, { headers: this.headers });
   }
 
-  getZoneFilters() {
-    let url = this.baseURL + "zones-dropdown";
-    //let url = "https://api.myjson.com/bins/1012oe"
-    return this.http.post(url, { headers: this.headers });
-  }
+  // getFilters() {
+  //   let url = this.baseURL + "dropDown";
+  //   //let url = "https://api.myjson.com/bins/1012oe"
+  //   return this.http.post(url, { headers: this.headers });
+  // }
 
   //content-performing
   getContentData() {
@@ -120,8 +120,8 @@ export class LdDashboardService {
         filters += filtersList[i] + ',';
     }
     filters = filters.slice(0, -1);
-    // let url = this.baseURL + "dropDown?type=" + filters;
-    let url = "https://api.myjson.com/bins/pplaq";
+    let url = this.baseURL + "dropDown?type=" + filters;
+    //let url = "https://api.myjson.com/bins/pplaq";
     return this.http.get(url);
   }
 

@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { MDBBootstrapModule } from "angular-bootstrap-md";
 
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
@@ -133,6 +134,7 @@ import { HalfdonutchartDirective } from './halfdonutchart.directive';
     NvD3Module,
     HttpClientModule,
     NgbModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
     AngularFontAwesomeModule,
     RoutingModule,
     Daterangepicker

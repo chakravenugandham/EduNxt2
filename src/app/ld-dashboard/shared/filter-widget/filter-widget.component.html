@@ -28,16 +28,17 @@
                 </div>
               </li>
             </ul>
-            <div class="apply-filters">
+            <!-- <div class="apply-filters">
               <button (click)="applyFilters()">apply</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
-      <!-- <div ngbDropdown>
+      <!-- <div ngbDropdown autoClose="outside">
         <div id="filtersDropdown" ngbDropdownToggle (click)="showFilter()">
-          <span>Add a Filter</span>
-          <i class="fas fa-plus-circle"></i>
+          <span>Add a Filter
+            <i class="fas fa-plus-circle"></i>
+          </span>
 
           <div ngbDropdownMenu aria-labelledby="filtersDropdown">
             <div *ngIf="filtersData">

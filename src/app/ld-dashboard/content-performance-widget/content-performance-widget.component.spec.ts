@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContentPerformanceComponent } from './content-performance.component';
+import { ContentPerformanceWidgetComponent } from './content-performance-widget.component';
 
 describe('ContentPerformanceComponent', () => {
-  let component: ContentPerformanceComponent;
-  let fixture: ComponentFixture<ContentPerformanceComponent>;
+  let component: ContentPerformanceWidgetComponent;
+  let fixture: ComponentFixture<ContentPerformanceWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentPerformanceComponent ]
+      declarations: [ContentPerformanceWidgetComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContentPerformanceComponent);
+    fixture = TestBed.createComponent(ContentPerformanceWidgetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

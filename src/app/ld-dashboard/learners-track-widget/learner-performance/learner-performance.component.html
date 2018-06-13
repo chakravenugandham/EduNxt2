@@ -3,7 +3,7 @@
     <span>View learner performance across </span>
     <span class="text-primary font-weight-bold"> Batch 1</span>
   </div>
-  <div id="learnerPerformanceBig"></div>
+  <div appDonutChart [data]="chartValues"></div>
   <div class="row graph-badges">
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
       <i class="far fa-circle" style="color: #F77F6C; background-color: #F77F6C"></i> Excelling

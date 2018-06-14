@@ -39,7 +39,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   constructor(private router: Router, private server: LdDashboardService) { }
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.viewData);
+  }
 
   filtersList = ["zone", "team"];
 
@@ -77,7 +79,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     // }
   }
 
-  closeDropDown(){
+  closeDropDown() {
     this.displayDropdown = false;
   }
 
@@ -100,5 +102,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   routetoFullview() {
     this.router.navigate([this.viewData.routeTo]);
   }
+
 }
-// http://192.168.239.38:3000/api/v1/dropdown?type=zone,team
+

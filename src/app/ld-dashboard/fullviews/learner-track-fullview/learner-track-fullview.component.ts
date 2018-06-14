@@ -7,7 +7,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./learner-track-fullview.component.html",
   styleUrls: ["./learner-track-fullview.component.scss"]
 })
-export class LearnerTrackFullviewComponent implements OnInit, OnChanges {
+export class LearnerTrackFullviewComponent implements OnInit {
   responseTrackDetails: any;
   responseGraphDetails: any;
 
@@ -32,11 +32,6 @@ export class LearnerTrackFullviewComponent implements OnInit, OnChanges {
     this.getData.getGraphDetails().subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       console.log(this.responseGraphDetails);
-    });
-  }
-
-  ngOnChanges(changes: any) {
-    if (changes.paceData.currentValue && changes.performanceData.currentValue) {
       this.paceTrackValues = [
         {
           color: "#F77F6C",
@@ -76,7 +71,7 @@ export class LearnerTrackFullviewComponent implements OnInit, OnChanges {
           number: this.responseGraphDetails.performanceData['struggling']
         }
       ];
-    }
+    });
   }
 
   ngOnInit() {

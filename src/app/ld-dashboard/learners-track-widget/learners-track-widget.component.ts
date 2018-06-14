@@ -15,7 +15,8 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
-    filterList: ["batch"]
+    filterList: ["zone"],
+    currentModule: this.componentName
   };
 
   widgetData = {
@@ -25,7 +26,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) {}
+  constructor(private serviceData: LdDashboardService) { }
 
   learnerPaceFn() {
     this.learnerPace = true;
@@ -41,7 +42,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   getData() {
     this.serviceData
-      .getLearnerTrackData(this.componentName, this.filterbody)
+      .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;

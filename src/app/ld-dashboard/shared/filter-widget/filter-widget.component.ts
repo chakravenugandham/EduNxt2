@@ -27,6 +27,7 @@ export class FilterWidgetComponent implements OnInit {
     filters: boolean;
     search: boolean;
     filterList: string[];
+    currentModule: string;
   };
 
   displayDropdown: boolean = false;
@@ -90,4 +91,4 @@ export class FilterWidgetComponent implements OnInit {
     // this.setFilterBody();
   }
 }
-// http://192.168.239.38:3000/api/v1/dropdown?type=zone,team
+

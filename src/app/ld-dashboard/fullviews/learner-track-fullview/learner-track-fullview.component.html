@@ -6,17 +6,15 @@
     <span> Are my learners on track? </span>
   </div>
   <div class="row">
-    <div class="col-md-6">
-      <!-- <div class="widget-block text-center">
-        <app-learner-performance [performanceData]="widgetData.performance"></app-learner-performance> -->
-      <div class="widget-block text-center" appDonutChart [data]="chartValues"></div>
-      <!-- </div> -->
+    <div class="col-md-6 widget-block text-center">
+      <p>View Learner performance across</p>
+      <div appDonutChart [data]="performanceTrackValues">
+      </div>
     </div>
-    <div class="col-md-6">
-      <!-- <div class="widget-block text-center">
-          <app-learner-pace [paceData]="widgetData.pace" ></app-learner-pace> -->
-      <div class="widget-block text-center" appDonutChart [data]="chartValues"></div>
-      <!-- </div> -->
+    <div class="col-md-6 widget-block text-center">
+      <p>View Learner pace across</p>
+      <div appDonutChart [data]="paceTrackValues">
+      </div>
     </div>
   </div>
   <div class="widget-block">

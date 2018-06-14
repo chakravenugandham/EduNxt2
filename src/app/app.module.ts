@@ -7,6 +7,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { Daterangepicker } from "ng2-daterangepicker";
 
+import { FormsModule } from '@angular/forms';
+
 // d3 and nvd3 should be included somewhere
 import { NvD3Module } from "ng2-nvd3";
 import "d3";
@@ -71,6 +73,7 @@ import { DonutChartComponent } from './common/donut-chart/donut-chart.component'
 import { HalfdonutchartDirective } from './directives/halfdonutchart.directive';
 import { DonutChartDirective } from './directives/donut-chart.directive';
 import { BarChartDirective } from './directives/bar-chart.directive';
+import { ScoreChartDirective } from './directives/score-chart.directive';
 
 
 @NgModule({
@@ -127,7 +130,8 @@ import { BarChartDirective } from './directives/bar-chart.directive';
     DonutChartComponent,
     HalfdonutchartDirective,
     DonutChartDirective,
-    BarChartDirective
+    BarChartDirective,
+    ScoreChartDirective
   ],
   imports: [
     BrowserModule,
@@ -137,7 +141,8 @@ import { BarChartDirective } from './directives/bar-chart.directive';
     MDBBootstrapModule.forRoot(),
     AngularFontAwesomeModule,
     RoutingModule,
-    Daterangepicker
+    Daterangepicker,
+    FormsModule
   ],
   providers: [GoogleChartsBaseService],
   bootstrap: [AppComponent]

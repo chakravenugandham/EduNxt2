@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { environment } from "../../../environments/environment";
+
 
 @Injectable({
   providedIn: "root"
@@ -7,7 +9,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class LdDashboardService {
   constructor(private http: HttpClient) {}
 
-  baseURL = "http://192.168.239.38:3000/api/v1/lnd/";
+  baseURL = environment.baseUrl; //"http://192.168.239.38:3000/api/v1/lnd/";
   // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
   headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "101");
 
@@ -39,13 +41,13 @@ export class LdDashboardService {
   }
 
   //learner-track
-  getLearnerTrackData(componentName, filterbody) {
-    let url = this.baseURL + "learner-pace-performance?type=" + componentName;
+  getLearnerTrackData(filterbody) {
+    let url = this.baseURL + "learner-pace-performance";
     console.log("filterbody", filterbody);
     return this.http.post(url, filterbody, { headers: this.headers });
   }
-  getLearnerTrackDetails() {
-    let url = this.baseURL + "learner-pace-performance-details";
+  getLearnerTrackDetails(componentName, filterbody) {
+    let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
 
@@ -69,8 +71,8 @@ export class LdDashboardService {
     let url = this.baseURL + "organization-interests";
     return this.http.post(url, { headers: this.headers });
   }
-  getOrgInterestDetails() {
-    let url = this.baseURL + "organization-interests-details";
+  getOrgInterestDetails(componentName, filterbody) {
+    let url = this.baseURL + "organization-interests-details?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
 

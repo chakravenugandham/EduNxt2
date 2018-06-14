@@ -36,13 +36,14 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     }
   }
   responseData = {};
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData
       .getScoresDistrubution(this.getValue)
       .subscribe((response: any) => {
         this.responseData = response.data;
+        console.log(this.responseData);
       });
   }
 

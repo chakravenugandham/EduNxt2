@@ -13,7 +13,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     routeTo: "orgPerformanceFullView",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    filterList: ["zone"],
+    currentModule: this.getTab
   };
   teamsFn() {
     this.getTab = 'teams';

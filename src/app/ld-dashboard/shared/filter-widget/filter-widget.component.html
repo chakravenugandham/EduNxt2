@@ -17,6 +17,7 @@
         </div>
         <div *ngIf="displayDropdown">
           <div class="showFilter-list" *ngIf="filtersData">
+            <span class="closeDropdown text-warning"><i class="far fa-times-circle fa-lg"></i></span>
             <ul>
               <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
                 <div class="boldText"> Select {{filter.type}} </div>
@@ -57,8 +58,8 @@
       </div> -->
     </li>
     <span *ngIf="filterArray">
-      <li class="list-inline-item" *ngFor="let filet of filterArray; let i = index">
-        <span>{{filterArray[0]}}</span>
+      <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">
+        <span>{{filter}}</span>
         <i class="far fa-times-circle" (click)="removeFilter(i)"></i>
       </li>
     </span>

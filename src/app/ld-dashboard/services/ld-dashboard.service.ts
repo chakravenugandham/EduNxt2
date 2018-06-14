@@ -39,9 +39,10 @@ export class LdDashboardService {
   }
 
   //learner-track
-  getLearnerTrackData(componentName) {
+  getLearnerTrackData(componentName,filterbody) {
     let url = this.baseURL + "learner-pace-performance?type=" + componentName;
-    return this.http.post(url, { headers: this.headers });
+    console.log("filterbody",filterbody);
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
   getLearnerTrackDetails() {
     let url = this.baseURL + "learner-pace-performance-details";

@@ -12,6 +12,12 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   componentName: string = "pace";
 
+  filterbody = {}
+  getFilterObject($event){
+    this.filterbody = $event; 
+    console.log("this.filterbody",this.filterbody);
+  }
+
   // routePath: string = "learnerTrackFullView";
   filtersData = {
     routeTo: "learnerTrackFullView",
@@ -41,7 +47,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   getData() {
     this.serviceData
-      .getLearnerTrackData(this.componentName)
+      .getLearnerTrackData(this.componentName, this.filterbody)
       .subscribe((response: any) => {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;

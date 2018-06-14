@@ -53,4 +53,4 @@
   </div>
   <app-learner-pace *ngIf="learnerPace" [paceData]="widgetData.pace"></app-learner-pace>
   <app-learner-performance *ngIf="!learnerPace" [performanceData]="widgetData.performance"></app-learner-performance>
-  <app-filter-widget [viewData]="filtersData"></app-filter-widget>
+  <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>

@@ -58,6 +58,6 @@
     </div>
   </div>
   <app-performance [performanceData]="responseData" *ngIf="getTab == 'performance'"></app-performance>
-  <app-progress [progressData]="progressData" *ngIf="getTab == 'progress'"></app-progress>
+  <app-progress [progressData]="responseData" *ngIf="getTab == 'progress'"></app-progress>
   <app-filter-widget [viewData]="filtersData"></app-filter-widget>
 </div>

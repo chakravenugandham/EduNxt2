@@ -9,14 +9,13 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   learnerPace: boolean = true;
-
   componentName: string = "pace";
 
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    filterList: ["batch"]
   };
 
   widgetData = {
@@ -66,5 +65,4 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getData();
   }
-
 }

@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class LdDashboardService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   baseURL = "http://192.168.239.38:3000/api/v1/lnd/";
   // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
@@ -39,9 +39,9 @@ export class LdDashboardService {
   }
 
   //learner-track
-  getLearnerTrackData(componentName,filterbody) {
+  getLearnerTrackData(componentName, filterbody) {
     let url = this.baseURL + "learner-pace-performance?type=" + componentName;
-    console.log("filterbody",filterbody);
+    console.log("filterbody", filterbody);
     return this.http.post(url, filterbody, { headers: this.headers });
   }
   getLearnerTrackDetails() {
@@ -114,14 +114,13 @@ export class LdDashboardService {
   getFiltersData(filtersList) {
     let filters = "";
     if (filtersList.length > 1) {
-      for (let i in filtersList)
-        filters += filtersList[i] + ',';
+      for (let i in filtersList) filters += filtersList[i] + ",";
+      filters = filters.slice(0, -1);
     }
-    filters = filters.slice(0, -1);
-    // let url = this.baseURL + "dropDown?type=" + filters;
+    filters = filtersList[0];
+    let url = this.baseURL + "dropDown?type=" + filters;
     // let url = "https://api.myjson.com/bins/pplaq";
-    let url = "https://api.myjson.com/bins/m3a0m";
+    // let url = "https://api.myjson.com/bins/m3a0m";
     return this.http.get(url);
   }
-
 }

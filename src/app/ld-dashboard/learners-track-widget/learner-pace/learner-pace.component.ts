@@ -10,7 +10,7 @@ export class LearnerPaceComponent implements OnInit {
 
   chartValues = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: any) {
     if (changes.paceData.currentValue) {
@@ -39,7 +39,5 @@ export class LearnerPaceComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

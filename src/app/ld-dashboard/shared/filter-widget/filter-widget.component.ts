@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   Input,
-  OnChanges,
   SimpleChanges,
   EventEmitter,
   Output
@@ -17,8 +16,7 @@ import { values } from "d3";
   templateUrl: "./filter-widget.component.html",
   styleUrls: ["./filter-widget.component.scss"]
 })
-export class FilterWidgetComponent implements OnInit, OnChanges {
-  // @Input() routePath: string;
+export class FilterWidgetComponent implements OnInit {
   // @Output() filterSelected = new EventEmitter<any>();
   @Output() filterEvent = new EventEmitter<any>();
   filterArray = [];
@@ -33,61 +31,49 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   displayDropdown: boolean = false;
 
-  ngOnChanges(changes: SimpleChanges) {
-    // console.log("changes", changes.viewData);
-  }
-
   constructor(private router: Router, private server: LdDashboardService) {}
-  ngOnInit() {}
 
-  filtersList = ["zone", "team"];
-
+  // filtersList = ["zone", "team"];
   filtersData;
 
   showFilter() {
+    for (let i in this.viewData.filterList) {
+      Object.defineProperty(
+        this.filtersData,
+        this.viewData.filterList[i] + "Id",
+        { value: [] }
+      );
+    }
     this.displayDropdown = !this.displayDropdown;
-    this.server.getFiltersData(this.filtersList).subscribe((response: any) => {
-      this.filtersData = response.data;
-      let evilResponseProps = Object.keys(this.filtersData);
-    });
+    this.server
+      .getFiltersData(this.viewData.filterList)
+      .subscribe((response: any) => {
+        this.filtersData = response.data;
+      });
   }
 
-  filter = {
-    zoneId: [1, 2, 3],
-    teamId: [3, 7]
-  };
+  // filter = {
+  //   zoneId: [1, 2, 3],
+  //   teamId: [3, 7]
+  // };
   filterSelected = {
     teamId: []
   };
 
   tempfilterArray = [];
   selectFilter(filter, filterName) {
-    console.log("parent filterName", filter);
+    console.log("filter", filter);
     console.log("filterName", filterName);
-    this.filterArray.push(filterName.name);
+    // this.filterArray.push(filterName.name);
+    this.filterArray.push({filterType: filter.type,filterName: filterName.name,filterId:filterName.id});
     console.log("filterArray", this.filterArray);
     this.filterSelected.teamId.push(filterName.id);
     console.log("this.filterSelected", this.filterSelected);
     this.filterEvent.emit(this.filterSelected);
-    // if(this.filterSelected.hasOwnProperty(filter.type+'Id')){
-    //   this.filterSelected[filter.type+'Id'].push(filterName.id);
-    // }
-    // else{
-    // }
   }
 
-  closeDropDown(){
+  closeDropDown() {
     this.displayDropdown = false;
-  }
-
-  // applyFilters() {
-  //   this.displayDropdown = false;
-  //   this.filterArray = this.tempfilterArray;
-  //   console.log("filterArray", this.filterArray);
-  // }
-  addFilter() {
-    this.filterArray.push("Batch");
-    console.log("filterArray", this.filterArray);
   }
 
   removeFilter(i) {
@@ -98,6 +84,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   routetoFullview() {
     this.router.navigate([this.viewData.routeTo]);
+  }
+
+  ngOnInit() {
+    // this.setFilterBody();
   }
 }
 // http://192.168.239.38:3000/api/v1/dropdown?type=zone,team

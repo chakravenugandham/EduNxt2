@@ -61,7 +61,7 @@
     </li>
     <span *ngIf="filterArray">
       <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">
-        <span>{{filter}}</span>
+        <span>{{filter.filterName}}</span>
         <i class="far fa-times-circle" (click)="removeFilter(i)"></i>
       </li>
     </span>

@@ -1,25 +1,43 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from "@angular/core";
-// import * as d3 from "d3";
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit
+} from "@angular/core";
+
+// import * as d3 from "d3v4";
 declare let d3: any;
 
-@Component({
-  selector: "app-bar-graph",
-  templateUrl: "./bar-graph.component.html",
-  styleUrls: ["./bar-graph.component.scss"]
+@Directive({
+  selector: "[appBarChart]"
 })
-export class BarGraphComponent implements OnInit, OnChanges {
-  constructor() { }
-  @Input() performanceData;
-  @Input() graphData;
+export class BarChartDirective {
+  @Input() data;
   dataset = [];
-  performanceChart() {
-    for (let i in this.performanceData) {
-      console.log(i);
 
+  constructor(private el: ElementRef) {}
+
+  performanceChart() {
+    this.el.nativeElement.innerHTML = '';
+    let chartDiv = document.createElement('div');
+
+    for (let i in this.data.Course1) {
       this.dataset.push({
-        label: this.performanceData[i].courseName,
-        Group1: this.performanceData[i].performance.old,
-        Group3: this.performanceData[i].performance.new
+        label: this.data.Course1[i].courseName,
+        Group1: this.data.Course1[i].performance,
+        Group2: this.data.Course1[i].performance,
+        Group3: this.data.Course1[i].performance
+      });
+    }
+
+    for (let i in this.data.Course2) {
+      this.dataset.push({
+        label: this.data.Course2[i].courseName,
+        Group1: this.data.Course2[i].performance,
+        Group2: this.data.Course2[i].performance,
+        Group3: this.data.Course2[i].performance
       });
     }
 
@@ -56,12 +74,15 @@ export class BarGraphComponent implements OnInit, OnChanges {
     }
 
     let margin = 30,
-      width = document.getElementById("barGraph").offsetWidth,
+      width = d3
+        .select(this.el.nativeElement)
+        .node()
+        .getBoundingClientRect().width,
       height = 200;
 
     let svg = d3
-      .select("#barGraph svg")
-      // .append("svg")
+      .select(this.el.nativeElement)
+      .append("svg")
       .attr("width", width)
       .attr("height", height + margin * 2)
       .append("g")
@@ -86,18 +107,18 @@ export class BarGraphComponent implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function (key) {
+    let options = d3.keys(this.dataset[0]).filter(function(key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function (d) {
-      d.valores = options.map(function (name) {
+    this.dataset.forEach(function(d) {
+      d.valores = options.map(function(name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function (d) {
+      this.dataset.map(function(d) {
         return d.label;
       })
     );
@@ -124,37 +145,40 @@ export class BarGraphComponent implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function (d) {
+      .attr("transform", function(d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
-    let color = d3.scale.ordinal().range(["#ffc107", "#ff980061"]);
+    let color = d3.scale.ordinal().range(["#FFD630", "#F77F6C", "#5584FF"]);
 
     bar
       .selectAll("rect")
-      .data(function (d) {
+      .data(function(d) {
         return d.valores;
       })
       .enter()
       .append("rect")
       .attr("width", x1.rangeBand() - 12)
-      .attr("x", function (d) {
+      .attr("x", function(d) {
         return x1(d.name);
       })
-      .attr("y", function (d) {
+      .attr("y", function(d) {
         return y(d.value);
       })
-      .attr("value", function (d) {
+      .attr("value", function(d) {
         return d.name;
       })
-      .attr("height", function (d) {
+      .attr("height", function(d) {
         return height - y(d.value);
       })
-      .style("fill", function (d) {
+      .style("fill", function(d) {
         return color(d.name);
       });
   }
 
-  ngOnInit() { }
-  ngOnChanges(changes: SimpleChanges) { }
+  ngOnChanges(changes: any) {
+    if (changes.data && changes.data.currentValue) {
+      this.performanceChart();
+    }
+  }
 }

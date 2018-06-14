@@ -7,6 +7,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationPerformanceFullviewComponent implements OnInit {
 
+  contentData = [
+    {
+      notification: "Course Component update for",
+      scheduledOn: "12:56PM, Feb 8",
+      DeliveredOn: "12:56PM, Feb 8",
+      TimesResponded: "73%",
+      TimesSeen: "83%"
+    },
+    {
+      notification: "Course Component update for",
+      scheduledOn: "12:56PM, Feb 8",
+      DeliveredOn: "12:56PM, Feb 8",
+      TimesResponded: "73%",
+      TimesSeen: "83%"
+    },
+    {
+      notification: "Course Component update for",
+      scheduledOn: "12:56PM, Feb 8",
+      DeliveredOn: "12:56PM, Feb 8",
+      TimesResponded: "73%",
+      TimesSeen: "83%"
+    },
+    {
+      notification: "Course Component update for",
+      scheduledOn: "12:56PM, Feb 8",
+      DeliveredOn: "12:56PM, Feb 8",
+      TimesResponded: "73%",
+      TimesSeen: "83%"
+    },
+    {
+      notification: "Course Component update for",
+      scheduledOn: "12:56PM, Feb 8",
+      DeliveredOn: "12:56PM, Feb 8",
+      TimesResponded: "73%",
+      TimesSeen: "83%"
+    },
+    {
+      notification: "Course Component update for",
+      scheduledOn: "12:56PM, Feb 8",
+      DeliveredOn: "12:56PM, Feb 8",
+      TimesResponded: "73%",
+      TimesSeen: "83%"
+    }
+  ]
   constructor() { }
 
   ngOnInit() {

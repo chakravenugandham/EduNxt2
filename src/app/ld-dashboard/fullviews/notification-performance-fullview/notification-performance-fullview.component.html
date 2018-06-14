@@ -1,4 +1,4 @@
-<div class="dashboard learner-performance-fullview">
+<div class="dashboard fullviewComponent learner-performance-fullview">
   <div class="widget-heading row">
     <span>
       <i class="fas fa-angle-left" routerLink="/"></i>
@@ -6,6 +6,61 @@
     <span> How are my notifcations performing?</span>
   </div>
   <div class="widget-block">
-    <svg></svg>
+    <div>
+      <span>Display graph for </span>
+      <span>
+        <Select>
+          <option value="ScheduledVsDelivered"> Scheduled Vs Delivered </option>
+          <option value="SeenVsResponded"> Seen Vs Responded </option>
+        </Select>
+      </span>
+    </div>
+
+    <app-scheduled-delivered></app-scheduled-delivered>
+
+    <div>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span>
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+              Notifcations
+            </th>
+
+            <th scope="col">Scheduled on
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Delivered on
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">% Times Responded
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">% Times Seen
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let content of contentData">
+            <th scope="row"> {{content.notification}}  </th>
+            <td> {{content.scheduledOn}} </td>
+            <td> {{content.DeliveredOn}} </td>
+            <td> {{content.TimesResponded}} </td>
+            <td> {{content.TimesSeen}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

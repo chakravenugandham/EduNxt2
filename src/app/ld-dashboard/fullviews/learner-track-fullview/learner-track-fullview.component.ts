@@ -15,11 +15,11 @@ export class LearnerTrackFullviewComponent implements OnInit {
     pace: "",
     performance: ""
   };
-  filterbody = {}
+  filterbody = {};
 
   paceTrackValues = [];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
     this.getData.getLearnerTrackDetails().subscribe((response: any) => {
@@ -33,11 +33,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   LearnersServiceData() {
-    this.getData.getLearnerTrackData("pace", this.filterbody).subscribe((response: any) => {
-      this.widgetData.pace = response.data.paceData;
-      this.widgetData.performance = response.data.performanceData;
-      console.log(this.widgetData.pace);
-    });
+    this.getData
+      .getLearnerTrackData("pace", this.filterbody)
+      .subscribe((response: any) => {
+        this.widgetData.pace = response.data.paceData;
+        this.widgetData.performance = response.data.performanceData;
+        console.log(this.widgetData.pace);
+      });
   }
 
   ngOnChanges(changes: any) {
@@ -46,22 +48,22 @@ export class LearnerTrackFullviewComponent implements OnInit {
         {
           color: "#F77F6C",
           type: "classA",
-          number: this.widgetData.pace['aheadOfSchedule']
+          number: this.widgetData.pace["aheadOfSchedule"]
         },
         {
           color: "#5584FF",
           type: "classB",
-          number: this.widgetData.pace['behindSchedule']
+          number: this.widgetData.pace["behindSchedule"]
         },
         {
           color: "#23B14D",
           type: "classC",
-          number: this.widgetData.pace['haveNotStarted']
+          number: this.widgetData.pace["haveNotStarted"]
         },
         {
           color: "#FFD630",
           type: "classD",
-          number: this.widgetData.pace['onTrack']
+          number: this.widgetData.pace["onTrack"]
         }
       ];
     }

@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 
 @Component({
   selector: "app-learner-pace",
   templateUrl: "./learner-pace.component.html",
   styleUrls: ["./learner-pace.component.scss"]
 })
-export class LearnerPaceComponent implements OnInit {
+export class LearnerPaceComponent implements OnInit, OnChanges {
   @Input() paceData: any;
 
   chartValues = [];

@@ -29,6 +29,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     filters: boolean;
     search: boolean;
     filterList: string[];
+    currentModule: string;
   };
 
   displayDropdown: boolean = false;
@@ -37,8 +38,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     // console.log("changes", changes.viewData);
   }
 
-  constructor(private router: Router, private server: LdDashboardService) {}
-  ngOnInit() {}
+  constructor(private router: Router, private server: LdDashboardService) { }
+  ngOnInit() { }
 
   filtersList = ["zone", "team"];
 

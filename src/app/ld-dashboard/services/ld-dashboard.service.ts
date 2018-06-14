@@ -39,13 +39,13 @@ export class LdDashboardService {
   }
 
   //learner-track
-  getLearnerTrackData(componentName,filterbody) {
-    let url = this.baseURL + "learner-pace-performance?type=" + componentName;
-    console.log("filterbody",filterbody);
+  getLearnerTrackData(filterbody) {
+    let url = this.baseURL + "learner-pace-performance";
+    console.log("filterbody", filterbody);
     return this.http.post(url, filterbody, { headers: this.headers });
   }
-  getLearnerTrackDetails() {
-    let url = this.baseURL + "learner-pace-performance-details";
+  getLearnerTrackDetails(componentName, filterbody) {
+    let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
 

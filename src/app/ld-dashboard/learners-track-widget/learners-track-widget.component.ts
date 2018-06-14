@@ -13,20 +13,22 @@ export class LearnersTrackWidgetComponent implements OnInit {
   componentName: string = "pace";
 
   filterbody = {}
-  getFilterObject($event){
-    this.filterbody = $event; 
-    console.log("this.filterbody",this.filterbody);
+  getFilterObject($event) {
+    this.filterbody = $event;
+    console.log("this.filterbody", this.filterbody);
   }
 
   // routePath: string = "learnerTrackFullView";
+  // ?type=" + this.componentName
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    filterList: ["zone"],
+    currentModule: this.componentName
   };
 
-  routerPath:string = "Praveen";
+  routerPath: string = "Praveen";
 
   widgetData = {
     pace: "",
@@ -47,11 +49,11 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   getData() {
     this.serviceData
-      .getLearnerTrackData(this.componentName, this.filterbody)
+      .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
-        
+
         // if (this.componentName == "pace") {
         //   this.widgetData.pace = response.data.paceData;
         // } else {

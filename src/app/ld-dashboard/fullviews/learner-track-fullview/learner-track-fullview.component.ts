@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { Observable } from "rxjs";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -7,21 +7,25 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./learner-track-fullview.component.html",
   styleUrls: ["./learner-track-fullview.component.scss"]
 })
-export class LearnerTrackFullviewComponent implements OnInit {
+export class LearnerTrackFullviewComponent implements OnInit, OnChanges {
   responseTrackDetails: any;
   responseGraphDetails: any;
 
-  widgetData = {
-    pace: "",
-    performance: ""
-  };
+  componentName: string = "pace";
+
+  displayFor = {}
+  getDisplayObject($event) {
+    this.displayFor = $event;
+    console.log("this.displayFor", this.displayFor);
+  }
 
   paceTrackValues = [];
+  performanceTrackValues = [];
 
   constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
-    this.getData.getLearnerTrackDetails().subscribe((response: any) => {
+    this.getData.getLearnerTrackDetails(this.componentName, this.displayFor).subscribe((response: any) => {
       this.responseTrackDetails = response.data;
       console.log(this.responseTrackDetails);
     });
@@ -31,36 +35,45 @@ export class LearnerTrackFullviewComponent implements OnInit {
     });
   }
 
-  LearnersServiceData() {
-    this.getData.getLearnerTrackData("pace").subscribe((response: any) => {
-      this.widgetData.pace = response.data.paceData;
-      this.widgetData.performance = response.data.performanceData;
-      console.log(this.widgetData.pace);
-    });
-  }
-
   ngOnChanges(changes: any) {
-    if (changes.paceData.currentValue) {
+    if (changes.paceData.currentValue && changes.performanceData.currentValue) {
       this.paceTrackValues = [
         {
           color: "#F77F6C",
           type: "classA",
-          number: this.widgetData.pace['aheadOfSchedule']
+          number: this.responseGraphDetails.paceData['aheadOfSchedule']
         },
         {
           color: "#5584FF",
           type: "classB",
-          number: this.widgetData.pace['behindSchedule']
+          number: this.responseGraphDetails.paceData['behindSchedule']
         },
         {
           color: "#23B14D",
           type: "classC",
-          number: this.widgetData.pace['haveNotStarted']
+          number: this.responseGraphDetails.paceData['haveNotStarted']
         },
         {
           color: "#FFD630",
           type: "classD",
-          number: this.widgetData.pace['onTrack']
+          number: this.responseGraphDetails.paceData['onTrack']
+        }
+      ];
+      this.performanceTrackValues = [
+        {
+          color: "#F77F6C",
+          type: "classA",
+          number: this.responseGraphDetails.performanceData['excelling']
+        },
+        {
+          color: "#5584FF",
+          type: "classB",
+          number: this.responseGraphDetails.performanceData['passing']
+        },
+        {
+          color: "#23B14D",
+          type: "classC",
+          number: this.responseGraphDetails.performanceData['struggling']
         }
       ];
     }
@@ -68,7 +81,5 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   ngOnInit() {
     this.getDataFromService();
-    this.LearnersServiceData();
-    console.log(this.responseGraphDetails, this.responseTrackDetails);
   }
 }

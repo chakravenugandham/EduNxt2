@@ -77,6 +77,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     // }
   }
 
+  closeDropDown(){
+    this.displayDropdown = false;
+  }
+
   // applyFilters() {
   //   this.displayDropdown = false;
   //   this.filterArray = this.tempfilterArray;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
@@ -7,18 +7,11 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./learners-track-widget.component.html",
   styleUrls: ["./learners-track-widget.component.scss"]
 })
-export class LearnersTrackWidgetComponent implements OnInit {
+export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   learnerPace: boolean = true;
 
   componentName: string = "pace";
 
-  filterbody = {}
-  getFilterObject($event){
-    this.filterbody = $event; 
-    console.log("this.filterbody",this.filterbody);
-  }
-
-  // routePath: string = "learnerTrackFullView";
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
@@ -26,12 +19,14 @@ export class LearnersTrackWidgetComponent implements OnInit {
     filterList: ["zone"]
   };
 
-  routerPath:string = "Praveen";
-
   widgetData = {
     pace: "",
     performance: ""
   };
+
+  filterbody = {};
+
+  constructor(private serviceData: LdDashboardService) {}
 
   learnerPaceFn() {
     this.learnerPace = true;
@@ -51,18 +46,25 @@ export class LearnersTrackWidgetComponent implements OnInit {
       .subscribe((response: any) => {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
-        
-        // if (this.componentName == "pace") {
-        //   this.widgetData.pace = response.data.paceData;
-        // } else {
-        //   this.widgetData.performance = response.data.performanceData;
-        // }
+        console.log("this.widgetData", this.widgetData);
       });
   }
 
-  constructor(private serviceData: LdDashboardService) { }
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getData();
+    console.log("this.filterbody", this.filterbody);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // if (this.filterbody) {
+    //   console.log("body changed");
+    //   this.getData();
+    // }
+  }
 
   ngOnInit() {
     this.getData();
   }
+
 }

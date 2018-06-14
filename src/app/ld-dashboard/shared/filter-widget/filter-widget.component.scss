@@ -35,7 +35,7 @@
 .filterComponent ul li {
   position: relative;
   font-size: 12px;
-  padding: 4px 24px 4px 4px;
+  padding: 6px 32px 6px 6px;
   border: 1px solid #5584ff;
   background-color: #5584ff;
   color: white;
@@ -43,8 +43,8 @@
 
 .filterComponent ul li i {
   position: absolute;
-  top: 7px;
-  right: 4px;
+  top: 8px;
+  right: 8px;
 }
 .searchList {
   border: 0 !important;
@@ -81,7 +81,7 @@
 // }
 .showFilter-list {
   position: absolute;
-  top: 28px;
+  top: 32px;
   left: 0px;
   background-color: #fff;
   // border: 1px solid #ddd;
@@ -141,4 +141,5 @@
   position: absolute;
   right: 8px;
   z-index: 1;
+  cursor: pointer;
 }

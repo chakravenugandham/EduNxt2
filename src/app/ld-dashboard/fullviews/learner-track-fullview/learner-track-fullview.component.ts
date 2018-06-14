@@ -15,6 +15,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     pace: "",
     performance: ""
   };
+  filterbody = {}
 
   paceTrackValues = [];
 
@@ -32,7 +33,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   LearnersServiceData() {
-    this.getData.getLearnerTrackData("pace").subscribe((response: any) => {
+    this.getData.getLearnerTrackData("pace", this.filterbody).subscribe((response: any) => {
       this.widgetData.pace = response.data.paceData;
       this.widgetData.performance = response.data.performanceData;
       console.log(this.widgetData.pace);

@@ -119,7 +119,8 @@ export class LdDashboardService {
     }
     filters = filters.slice(0, -1);
     // let url = this.baseURL + "dropDown?type=" + filters;
-    let url = "https://api.myjson.com/bins/pplaq";
+    // let url = "https://api.myjson.com/bins/pplaq";
+    let url = "https://api.myjson.com/bins/m3a0m";
     return this.http.get(url);
   }
 

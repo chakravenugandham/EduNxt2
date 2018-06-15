@@ -1,26 +1,38 @@
 import { HalfdonutchartDirective } from './halfdonutchart.directive';
 import { ElementRef } from '@angular/core';
+import { Component, DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
-xdescribe('HalfdonutchartDirective', () => {
+@Component({
+  selector: 'ht-test-component',
+  template: `<div appHalfdonutchart [data]="values"></div>`
+})
+class TestComponent {
+  values = {};
+}
+
+fdescribe('HalfdonutchartDirective', () => {
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
+  let input: DebugElement;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [TestComponent, HalfdonutchartDirective]
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TestComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    input = fixture.debugElement.query(By.directive(HalfdonutchartDirective));
+  });
+
+
   it('should create an instance', () => {
-    // const directive = new HalfdonutchartDirective();
-    //expect(directive).toBeTruthy();
+    //const directive = new HalfdonutchartDirective();
+    expect(component).toBeTruthy();
   });
 });
-
-
-// describe('Directive: HoverFocus', () => {
-
-//   let component: TestHoverFocusComponent;
-//   let fixture: ComponentFixture<TestHoverFocusComponent>;
-//   let inputEl: DebugElement;
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [TestHoverFocusComponent, HoverFocusDirective] 
-//     });
-//     fixture = TestBed.createComponent(TestHoverFocusComponent); 
-//     component = fixture.componentInstance;
-//     inputEl = fixture.debugElement.query(By.css('input'));
-//   });
-// });

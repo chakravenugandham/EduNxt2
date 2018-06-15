@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
+import { LdDashboardService } from "../services/ld-dashboard.service";
 
 import { ActiveUserWidgetComponent } from './active-user-widget.component';
 
-describe('ActiveUserWidgetComponent', () => {
+fdescribe('ActiveUserWidgetComponent', () => {
   let component: ActiveUserWidgetComponent;
   let fixture: ComponentFixture<ActiveUserWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActiveUserWidgetComponent ]
+      declarations: [ActiveUserWidgetComponent, LdDashboardService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

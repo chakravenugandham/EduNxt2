@@ -1,4 +1,4 @@
-<div class="dashboard widget-row learner-track-fullview">
+<div class="dashboard widget-row learner-track-fullview container-fluid">
   <div class="widget-heading row">
     <span>
       <i class="fas fa-angle-left" routerLink="/"></i>
@@ -6,14 +6,46 @@
     <span> Are my learners on track? </span>
   </div>
   <div class="row">
-    <div class="col-md-6 widget-block text-center">
+    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 widget-block text-center">
       <p>View Learner performance across</p>
       <div appDonutChart [data]="performanceTrackValues">
       </div>
+      <div class="row graph-badges">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle excelling"></i> Excelling
+          <div> {{responseGraphDetails.performanceData.excelling}} </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle passing"></i> Passing
+          <div> {{responseGraphDetails.performanceData.passing}} </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle struggling"></i> Struggling
+          <div> {{responseGraphDetails.performanceData.struggling}} </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6 widget-block text-center">
+    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 widget-block text-center">
       <p>View Learner pace across</p>
       <div appDonutChart [data]="paceTrackValues">
+      </div>
+      <div class="row graph-badges">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
+          <div> {{responseGraphDetails.paceData.aheadOfSchedule}} </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle onTrack"></i> On Track
+          <div> {{responseGraphDetails.paceData.onTrack}} </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle behindSchedule"></i> Behind Schedule
+          <div> {{responseGraphDetails.paceData.behindSchedule}} </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+          <i class="far fa-circle haveNotStarted"></i> Haven't Started
+          <div> {{responseGraphDetails.paceData.haveNotStarted}} </div>
+        </div>
       </div>
     </div>
   </div>

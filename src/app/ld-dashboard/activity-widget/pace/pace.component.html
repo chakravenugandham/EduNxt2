@@ -12,7 +12,8 @@
     </div>
   </div>
   <div>
-    <div id="piechart"></div>
+    <div appDonutChart [data]="paceTrackValues">
+    </div>
     <div class="row m-t-16">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="bigNumber">{{paceDataElement.behindSchedule}}</p>

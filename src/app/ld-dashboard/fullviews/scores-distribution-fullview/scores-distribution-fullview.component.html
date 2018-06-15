@@ -5,28 +5,19 @@
     </span>
     <span> Score Distribution </span>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <!-- <div class="widget-block text-center">
-        <app-learner-performance [performanceData]="widgetData.performance"></app-learner-performance>
-      </div> -->
+  <div class="row widget-block">
+    <!-- <div class="col-md-6">
+      <b>Display Graph for </b>
+      <span class="input-group">
+        <select class="custom-select" [(ngModel)]="showDetails" id="inputGroupSelect02">
+          <option [value]="'test'">Test Scores</option>
+          <option [value]="'quiz'">Quizzes</option>
+          <option [value]="'assignment'">Assignments</option>
+        </select>
+      </span>
+    </div> -->
+    <div appScoreChart [data]='dataSet'>
     </div>
-    <div class="col-md-6">
-      <!-- <div class="widget-block text-center">
-          <app-learner-pace [paceData]="widgetData.pace" ></app-learner-pace>
-      </div> -->
-    </div>
-  </div>
-  <div class="widget-block">
-    <b>Display data for </b>
-    <span class="paceDataSelect">
-      <select name="paceDataSelect" id="paceDataSelect">
-        <option value="Ahead of Schedule">Ahead of Schedule</option>
-        <option value="On Track">On Track</option>
-        <option value="Behind Schedule">Behind Schedule</option>
-        <option value="Haven't Started">Haven't Started</option>
-      </select>
-    </span>
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -34,56 +25,74 @@
             <span>
               <i class="fa fa-search" aria-hidden="true"></i>
             </span>
-            <span class="text">Interest / Topic</span>
+            <span class="text">Learner Name</span>
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">Total Hits
+          <th scope="col">Sl.No
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">Followers
+          <th scope="col">Team
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">Video Tags
+          <th scope="col">Batch
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">Article Tags
+          <th scope="col">Score Avg
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">Avg Rating
+          <th scope="col">No of Re-Attempts
+            <span>
+              <i class="fa fa-sort" aria-hidden="true"></i>
+            </span>
+          </th>
+          <th scope="col">Progress %
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let data of responseData">
-        <tr>
-          <td class="">{{data.courseName}}</td>
-          <td class="">
-            <span>{{data.hits}}</span>
-            <span class="small-text">
-              <span class="changeNumber">
-                <i class="fa fa-arrow-up" aria-hidden="true"></i>{{data.hitsSinceLastMonth}}</span>since last month</span>
-          </td>
-          <td class="">
-            <span>{{data.noOfFollowers}}</span>
-            <span class="small-text">
-              <span class="changeNumber">
-                <i class="fa fa-arrow-up" aria-hidden="true"></i>{{data.followersSinceLastMonth}}</span>since last month</span>
-          </td>
-          <td class="">{{data.videoTags}}</td>
-          <td class="">{{data.articalTags}}</td>
-          <td class="">{{data.avgRating}}</td>
+      <tbody *ngIf="showDetails == 'test'">
+        <tr *ngFor="let testData of responseScoreDetails">
+          <td class="">{{testData.learnerName}}</td>
+          <td class="">{{testData.serialNumber}}</td>
+          <td class="">{{testData.team}}</td>
+          <td class="">{{testData.batchName}}</td>
+          <td class="">{{testData.scoreAvg}}</td>
+          <td class="">{{testData.noOfAttempts}}</td>
+          <td class="">{{testData.Progress}}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="showDetails == 'quiz'">
+        <tr *ngFor="let quizData of responseScoreDetails">
+          <td class="">{{quizData.learnerName}}</td>
+          <td class="">{{quizData.serialNumber}}</td>
+          <td class="">{{quizData.team}}</td>
+          <td class="">{{quizData.batchName}}</td>
+          <td class="">{{quizData.scoreAvg}}</td>
+          <td class="">{{quizData.noOfAttempts}}</td>
+          <td class="">{{quizData.Progress}}</td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="showDetails == 'assignment'">
+        <tr *ngFor="let assignmentData of responseScoreDetails">
+          <td class="">{{assignmentData.learnerName}}</td>
+          <td class="">{{assignmentData.serialNumber}}</td>
+          <td class="">{{assignmentData.team}}</td>
+          <td class="">{{assignmentData.batchName}}</td>
+          <td class="">{{assignmentData.scoreAvg}}</td>
+          <td class="">{{assignmentData.noOfAttempts}}</td>
+          <td class="">{{assignmentData.Progress}}</td>
         </tr>
       </tbody>
     </table>

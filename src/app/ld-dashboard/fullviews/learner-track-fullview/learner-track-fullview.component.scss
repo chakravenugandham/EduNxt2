@@ -1,4 +1,41 @@
-.learner-track-fullview .row .col-md-6 .widget-block{
-    height: 318px;
-    padding: 20px;
+.learner-track-fullview .row .col-md-6 .widget-block {
+  height: 318px;
+  padding: 20px;
+}
+
+//pace batches
+.aheadOfSchedule {
+  color: #F77F6C;
+  background-color: #F77F6C;
+}
+
+.onTrack {
+  color: #5584FF;
+  background-color: #5584FF;
+}
+
+.behindSchedule {
+  color: #23B14D;
+  background-color: #23B14D;
+}
+
+.haveNotStarted {
+  color: #FFD630;
+  background-color: #FFD630;
+}
+
+//performance batches
+.excelling {
+  color: #F77F6C;
+  background-color: #F77F6C;
+}
+
+.passing {
+  color: #5584FF;
+  background-color: #5584FF;
+}
+
+.struggling {
+  color: #23B14D;
+  background-color: #23B14D;
 }

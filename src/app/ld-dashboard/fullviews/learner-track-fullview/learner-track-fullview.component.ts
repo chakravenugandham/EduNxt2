@@ -22,7 +22,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData.getLearnerTrackDetails(this.componentName, this.displayFor).subscribe((response: any) => {
@@ -67,7 +67,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
         },
         {
           color: "#23B14D",
-          type: "classC",
+          type: "classD",
           number: this.responseGraphDetails.performanceData['struggling']
         }
       ];

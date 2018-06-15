@@ -7,7 +7,7 @@ import { environment } from "../../../environments/environment";
   providedIn: "root"
 })
 export class LdDashboardService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   baseURL = environment.baseUrl; //"http://192.168.239.38:3000/api/v1/lnd/";
   // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
@@ -95,8 +95,8 @@ export class LdDashboardService {
     let url = this.baseURL + "scores-distribution?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
-  getScoresDetails() {
-    let url = this.baseURL + "scores-distribution-details";
+  getScoresDetails(dropdownValue) {
+    let url = this.baseURL + "scores-distribution-details?type=" + dropdownValue;
     return this.http.post(url, { headers: this.headers });
   }
 

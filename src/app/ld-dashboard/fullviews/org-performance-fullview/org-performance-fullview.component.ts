@@ -14,17 +14,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   showDetails: string = "teams";
 
-  // teams: boolean = true;
-  // trainers: boolean = false;
-  // learners: boolean = false;
-
   constructor(private getData: LdDashboardService) { }
-
-  // getDataFromService(event) {
-  //   this.showDetails = event;
-
-
-  // }
 
   ngOnChanges(changes: any) {
     if (changes.showDetails.currentValue) {

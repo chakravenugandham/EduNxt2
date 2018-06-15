@@ -11,72 +11,37 @@ import * as d3 from "d3v4";
 export class PaceComponent implements OnInit, OnChanges {
   @Input() paceDataElement;
 
-  constructor() {}
-  chartRenderFn() {
-    d3.select("#piechart svg").remove();
-    // let w = 235;
-    let w = d3
-      .select("#piechart")
-      .node()
-      .getBoundingClientRect().width;
-    let h = 130;
+  paceTrackValues = [];
 
-    let arc = d3
-      .arc()
-      .innerRadius(40)
-      .outerRadius(55);
-
-    let svg = d3
-      .select("#piechart")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h);
-
-    let g = svg
-      .append("g")
-      .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
-
-    let data = [
-      {
-        color: "#F77F6C",
-        type: "classA",
-        number: this.paceDataElement.behindSchedule
-      },
-      {
-        color: "#5584FF",
-        type: "classB",
-        number: this.paceDataElement.haventStarted
-      },
-      {
-        color: "#23B14D",
-        type: "classC",
-        number: this.paceDataElement.aheadOfSchedule
-      },
-      { color: "#FFD630", type: "classD", number: this.paceDataElement.onTrack }
-    ];
-
-    let arcs = d3.pie().value(function(d) {
-      return d.number;
-    })(data);
-
-    let arcPath = g
-      .selectAll("path")
-      .data(arcs)
-      .enter();
-
-    arcPath
-      .append("path")
-      .style("fill", function(d, i) {
-        return d.data.color;
-      })
-      .attr("d", arc);
-  }
+  constructor() { }
 
   ngOnChanges(changes: any) {
-    if (changes.paceDataElement) {
-      this.chartRenderFn();
+    if (changes.paceDataElement.currentValue) {
+      console.log(this.paceDataElement);
+      this.paceTrackValues = [
+        {
+          color: "#F77F6C",
+          type: "classA",
+          number: this.paceDataElement['aheadOfSchedule']
+        },
+        {
+          color: "#5584FF",
+          type: "classB",
+          number: this.paceDataElement['behindSchedule']
+        },
+        {
+          color: "#23B14D",
+          type: "classC",
+          number: this.paceDataElement['haveNotStarted']
+        },
+        {
+          color: "#FFD630",
+          type: "classE",
+          number: this.paceDataElement['onTrack']
+        }
+      ];
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

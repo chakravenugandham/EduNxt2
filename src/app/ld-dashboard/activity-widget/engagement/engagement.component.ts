@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation, OnChanges } from '@angular/core';
 import * as d3 from "d3";
 import { Config } from '../../../common/users-data/users-data.component';
-import { HalfdonutchartDirective } from "../../../directives/halfdonutchart.directive";
+
 @Component({
   selector: 'app-engagement',
   templateUrl: './engagement.component.html',

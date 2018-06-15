@@ -9,12 +9,16 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ActiveUserWidgetComponent implements OnInit {
   constructor(private getData: LdDashboardService) { }
-  filtersData: {
+
+  filtersData = {
     routeTo: "",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    viewDetails: false,
+    filterList: ["zone"],
+    currentModule: ""
   };
+
   activeUser: boolean = true;
   modeDelivery: boolean = false;
 

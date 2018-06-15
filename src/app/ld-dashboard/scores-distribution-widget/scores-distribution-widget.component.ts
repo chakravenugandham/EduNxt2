@@ -14,6 +14,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     routeTo: "scoreDistributionFullView",
     filters: true,
     search: false,
+    viewDetails: true,
     filterList: ["zone"]
   };
   getValue: string = "test";

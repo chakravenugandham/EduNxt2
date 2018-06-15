@@ -2,40 +2,37 @@ import {
   Component,
   OnInit,
   Input,
+  OnChanges,
   SimpleChanges,
   EventEmitter,
   Output
 } from "@angular/core";
-import { Router, Route } from "@angular/router";
+import { Router } from "@angular/router";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { values } from "d3";
 
 @Component({
   selector: "app-filter-widget",
   templateUrl: "./filter-widget.component.html",
   styleUrls: ["./filter-widget.component.scss"]
 })
-export class FilterWidgetComponent implements OnInit {
-  // @Output() filterSelected = new EventEmitter<any>();
+export class FilterWidgetComponent implements OnInit, OnChanges {
   @Output() filterEvent = new EventEmitter<any>();
+  displayDropdown: boolean = false;
   filterArray = [];
+  filtersData;
 
   @Input()
   viewData: {
     routeTo: string;
     filters: boolean;
     search: boolean;
+    viewDetails: boolean;
     filterList: string[];
     currentModule: string;
   };
 
-  displayDropdown: boolean = false;
-
   constructor(private router: Router, private server: LdDashboardService) {}
-
-  // filtersList = ["zone", "team"];
-  filtersData;
 
   showFilter() {
     for (let i in this.viewData.filterList) {
@@ -53,10 +50,6 @@ export class FilterWidgetComponent implements OnInit {
       });
   }
 
-  // filter = {
-  //   zoneId: [1, 2, 3],
-  //   teamId: [3, 7]
-  // };
   filterSelected = {
     teamId: []
   };
@@ -65,8 +58,18 @@ export class FilterWidgetComponent implements OnInit {
   selectFilter(filter, filterName) {
     console.log("filter", filter);
     console.log("filterName", filterName);
-    // this.filterArray.push(filterName.name);
-    this.filterArray.push({filterType: filter.type,filterName: filterName.name,filterId:filterName.id});
+    // this.filterArray.push({
+    //   filterType: filter.type,
+    //   filterName: filterName.name,
+    //   filterId: filterName.id
+    // });
+    if (!this.filterArray.includes(filterName.name)) {
+      this.filterArray.push(filterName.name);
+    }
+    else if(this.filterArray.includes(filterName.name)){
+      let i = this.filterArray.indexOf(filterName.name)
+      this.filterArray.splice(i,1);
+    }
     console.log("filterArray", this.filterArray);
     this.filterSelected.teamId.push(filterName.id);
     console.log("this.filterSelected", this.filterSelected);
@@ -90,5 +93,8 @@ export class FilterWidgetComponent implements OnInit {
   ngOnInit() {
     // this.setFilterBody();
   }
-}
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("something changed");
+  }
+}

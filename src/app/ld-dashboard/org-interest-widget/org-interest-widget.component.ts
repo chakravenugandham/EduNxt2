@@ -11,6 +11,7 @@ export class OrgInterestWidgetComponent implements OnInit {
     routeTo: "orgInterestFullView",
     filters: true,
     search: false,
+    viewDetails: true,
     filterList: ["zone"]
   };
   constructor() { }

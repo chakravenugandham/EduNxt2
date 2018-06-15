@@ -25,7 +25,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .select("#activeUserGraph")
       .node()
       .getBoundingClientRect().width;
-    var h = 240;
+    var h = 200;
     var p = 40;
 
     // create xScale

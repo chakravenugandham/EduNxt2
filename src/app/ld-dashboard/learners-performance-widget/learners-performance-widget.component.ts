@@ -13,13 +13,14 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
     routeTo: "learnerPerformanceFullView",
     filters: true,
     search: false,
+    viewDetails: true,
     filterList: ["zone"]
   };
   getTab: string = "performance";
 
   responseData = [];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
   performanceFn() {
     this.getTab = "performance";
   }
@@ -31,7 +32,32 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
     this.getData.getLearnerPerformanceData().subscribe((response: any) => {
       this.responseData = response.data;
       console.log("learnerPerformanceProgress Data", this.responseData);
+      // for (let key in this.responseData) {
+      //   let lableName = this.responseData[key][0].courseName;
+      //   let batchName = this.responseData[key][0].batchName;
+      //   console.log("lableName", lableName);
+      //   console.log("batchName", batchName);
+      //   console.log("key", this.responseData[key]);
+      //   for(let i in this.responseData[key]){
+      //     let Group1 = this.responseData[key][i].performance;
+      //     console.log("Group1", Group1);
+      //   }
+      // }
     });
+  }
+
+  constrcutGrpah() {
+    for (let key in this.responseData) {
+      let lableName = this.responseData[key[0]].courseName;
+      console.log("lableName", lableName);
+
+      // for(let i in this.data )
+      // this.dataset.push(
+      //   {
+      //     label: this.data[key[0]].courseName
+      //   }
+      // )
+    }
   }
   ngOnInit() {
     this.getDataFromService();

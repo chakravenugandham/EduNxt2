@@ -35,6 +35,7 @@ export class ActiveUserWidgetComponent implements OnInit {
   locationFn() {
     this.activeUser = false;
     this.modeDelivery = false;
+    this.getLocationData();
   }
 
   responseData = {
@@ -59,6 +60,6 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
   ngOnInit() {
     this.getActiveUsersData();
-    this.getLocationData();
+    // this.getLocationData();
   }
 }

@@ -2,7 +2,7 @@
   <table class="table table-borderless">
     <thead>
       <tr>
-        <th scope="col">Team Name
+        <th scope="col" (click)={} >Team Name
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
@@ -28,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tableData of teamsData">
+      <tr *ngFor="let tableData of teamsData | slice:0:4">
         <td scope="row">
           <span>
             <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">

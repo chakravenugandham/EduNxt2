@@ -10,6 +10,7 @@ import {
 import { Router } from "@angular/router";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { values } from "d3";
 
 @Component({
   selector: "app-filter-widget",
@@ -19,8 +20,8 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class FilterWidgetComponent implements OnInit, OnChanges {
   @Output() filterEvent = new EventEmitter<any>();
   displayDropdown: boolean = false;
-  filterArray = [];
   filtersData;
+  filterArray = [];
 
   @Input()
   viewData: {
@@ -34,45 +35,52 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   constructor(private router: Router, private server: LdDashboardService) {}
 
+  filterSelected:any = {};
   showFilter() {
-    for (let i in this.viewData.filterList) {
-      Object.defineProperty(
-        this.filtersData,
-        this.viewData.filterList[i] + "Id",
-        { value: [] }
-      );
-    }
     this.displayDropdown = !this.displayDropdown;
     this.server
       .getFiltersData(this.viewData.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
+        console.log("filtersData", this.filtersData);
+        // for (let type in this.filtersData) {
+        //   Object.defineProperty(
+        //     this.filterSelected,
+        //     this.filtersData[type].type+"Id",
+        //     {
+        //       value: []
+        //     }
+        //   );
+        // }
+        // console.log("filterSelected",this.filterSelected);
       });
   }
 
-  filterSelected = {
-    teamId: []
-  };
-
-  tempfilterArray = [];
   selectFilter(filter, filterName) {
     console.log("filter", filter);
     console.log("filterName", filterName);
-    // this.filterArray.push({
-    //   filterType: filter.type,
-    //   filterName: filterName.name,
-    //   filterId: filterName.id
-    // });
     if (!this.filterArray.includes(filterName.name)) {
       this.filterArray.push(filterName.name);
+    } else if (this.filterArray.includes(filterName.name)) {
+      let i = this.filterArray.indexOf(filterName.name);
+      this.filterArray.splice(i, 1);
     }
-    else if(this.filterArray.includes(filterName.name)){
-      let i = this.filterArray.indexOf(filterName.name)
-      this.filterArray.splice(i,1);
+    let filterType:string = filter.type + "Id";
+    if (!this.filterSelected.hasOwnProperty(filterType)) {
+      Object.defineProperty(this.filterSelected, filterType, { value: [] });
+      this.filterSelected[filterType].push(filterName.id);
+    } 
+    // else if (this.filterSelected.filterType.includes(filterName.id)) {
+    //   let id = this.filterSelected.filterType.indexOf(filterName.id);
+    //   this.filterSelected.filterType.splice(id, 1);
+    // } 
+    else {
+      this.filterSelected[filterType].push(filterName.id);
     }
-    console.log("filterArray", this.filterArray);
-    this.filterSelected.teamId.push(filterName.id);
-    console.log("this.filterSelected", this.filterSelected);
+    console.log("this.filterSelected before stringify", this.filterSelected);
+    JSON.stringify(this.filterSelected);
+    // this.filterSelected.filterType.push(filterName.id);
+    console.log("this.filterSelected after stringify", this.filterSelected);
     this.filterEvent.emit(this.filterSelected);
   }
 
@@ -84,6 +92,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     console.log("removable filter index", i);
     this.filterArray.splice(i, 1);
     console.log("filterArray", this.filterArray);
+  }
+  removeFromFilterBody(filterBodyName) {
+    console.log("filterBodyName", filterBodyName);
   }
 
   routetoFullview() {

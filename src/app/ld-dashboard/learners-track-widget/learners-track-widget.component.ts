@@ -42,6 +42,8 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   getData() {
+    console.log("this.filterbody after construction",this.filterbody);
+    
     this.serviceData
       .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
@@ -58,10 +60,10 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // if (this.filterbody) {
-    //   console.log("body changed");
-    //   this.getData();
-    // }
+    if (this.filterbody) {
+      console.log("body changed");
+      this.getData();
+    }
   }
 
   ngOnInit() {

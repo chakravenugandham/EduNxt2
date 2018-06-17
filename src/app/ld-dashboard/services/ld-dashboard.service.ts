@@ -2,23 +2,23 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 
-
 @Injectable({
   providedIn: "root"
 })
 export class LdDashboardService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  baseURL = environment.baseUrl; //"http://192.168.239.38:3000/api/v1/lnd/";
+  baseURL = environment.baseUrl;
+  // baseURL = "http://192.168.239.38:3000/api/v1/lnd/";
   // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
-  headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "101");
-
+  headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "0");
+  
   //courses dropdown
   getCoursesData() {
     let url = this.baseURL + "courses-dropdown";
     return this.http.get(url);
   }
-
+  
   //activity at glance
   getActivityData() {
     let url = this.baseURL + "learning-activities";
@@ -26,8 +26,9 @@ export class LdDashboardService {
     return this.http.get(url);
   }
   getGoalsData() {
+    let headers = new HttpHeaders().set("LnDUserId", "1001").set("courseId", "994");
     let url = this.baseURL + "goals";
-    return this.http.get(url);
+    return this.http.get(url, { headers: headers});
   }
 
   //active users widget
@@ -42,13 +43,16 @@ export class LdDashboardService {
 
   //learner-track
   getLearnerTrackData(filterbody) {
+    // let filterbody_new = {batchId: [33,30]};
     let url = this.baseURL + "learner-pace-performance";
     console.log("filterbody", filterbody);
+    console.log("filterbody", JSON.stringify(filterbody));
     return this.http.post(url, filterbody, { headers: this.headers });
   }
   getLearnerTrackDetails(componentName, filterbody) {
-    let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
-    return this.http.post(url, { headers: this.headers });
+    let url =
+      this.baseURL + "learner-pace-performance-details?type=" + componentName;
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   getGraphDetails() {
@@ -57,9 +61,9 @@ export class LdDashboardService {
   }
 
   //learner-performance
-  getLearnerPerformanceData() {
+  getLearnerPerformanceData(filterbody) {
     let url = this.baseURL + "learner-performance-progress";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
   getLearnerPerformanceDetails() {
     let url = this.baseURL + "learner-performance-progress-details";
@@ -72,7 +76,8 @@ export class LdDashboardService {
     return this.http.post(url, { headers: this.headers });
   }
   getOrgInterestDetails(componentName, filterbody) {
-    let url = this.baseURL + "organization-interests-details?type=" + componentName;
+    let url =
+      this.baseURL + "organization-interests-details?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
 
@@ -96,7 +101,8 @@ export class LdDashboardService {
     return this.http.post(url, { headers: this.headers });
   }
   getScoresDetails(dropdownValue) {
-    let url = this.baseURL + "scores-distribution-details?type=" + dropdownValue;
+    let url =
+      this.baseURL + "scores-distribution-details?type=" + dropdownValue;
     return this.http.post(url, { headers: this.headers });
   }
 

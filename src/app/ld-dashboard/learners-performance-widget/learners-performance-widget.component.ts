@@ -27,9 +27,15 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
   progressFn() {
     this.getTab = "progress";
   }
+  filterbody = {};
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getDataFromService();
+    console.log("this.filterbody", this.filterbody);
+  }
 
   getDataFromService() {
-    this.getData.getLearnerPerformanceData().subscribe((response: any) => {
+    this.getData.getLearnerPerformanceData(this.filterbody).subscribe((response: any) => {
       this.responseData = response.data;
       console.log("learnerPerformanceProgress Data", this.responseData);
       // for (let key in this.responseData) {

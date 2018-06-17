@@ -16,7 +16,7 @@ export class ModeOfDeliveryComponent implements OnInit, OnChanges {
   constructor() { }
 
   usersChartRender(dataSet) {
-    d3.select("#modeOfDeliveryGraph svg").remove();
+    // d3.select("#modeOfDeliveryGraph svg").remove();
     var w = 520;
     var h = 240;
     var p = 40;

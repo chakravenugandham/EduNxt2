@@ -14,7 +14,7 @@ export class DonutChartComponent implements OnInit {
     d3.select("#learnerPaceBig svg").remove();
 
     let w = d3.select("#learnerPaceBig").node().getBoundingClientRect().width;
-    let h = 130;
+    let h = 200;
 
     let arc = d3
       .arc()

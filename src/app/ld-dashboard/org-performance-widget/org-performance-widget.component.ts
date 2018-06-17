@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
   selector: "app-org-performance-widget",
@@ -6,8 +7,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-  routePath: string = "orgPerformanceFullView";
-  getTab: string = 'teams';
+  // routePath: string = "orgPerformanceFullView";
+  getTab: string = "teams";
 
   filtersData = {
     routeTo: "orgPerformanceFullView",
@@ -17,16 +18,36 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     filterList: ["zone"],
     currentModule: this.getTab
   };
+
+  responseData:any;
+
+  filterbody = {};
+
+  constructor(private serviceData: LdDashboardService) {}
+
   teamsFn() {
-    this.getTab = 'teams';
+    this.getTab = "teams";
   }
   trainersFn() {
-    this.getTab = 'trainers';
+    this.getTab = "trainers";
   }
   learnersFn() {
-    this.getTab = 'learner';
+    this.getTab = "learner";
   }
-  constructor() { }
 
-  ngOnInit() { }
+  getData() {
+    this.serviceData
+      .getScoresDistrubution(this.getTab, this.filterbody)
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+      });
+  }
+  
+  getFilterObject($event) {
+    this.filterbody = $event;
+    // this.();
+    console.log("this.filterbody", this.filterbody);
+  }
+
+  ngOnInit() {}
 }

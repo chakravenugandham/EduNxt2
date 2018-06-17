@@ -11,14 +11,15 @@ export class LdDashboardService {
   baseURL = environment.baseUrl;
   // baseURL = "http://192.168.239.38:3000/api/v1/lnd/";
   // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
-  headers = new HttpHeaders().set("LnDUserId", "1").set("courseId", "0");
-  
+  headers = new HttpHeaders().set("LnDUserId", "1002").set("courseId", "0");
+
   //courses dropdown
+
   getCoursesData() {
     let url = this.baseURL + "courses-dropdown";
     return this.http.get(url);
   }
-  
+
   //activity at glance
   getActivityData() {
     let url = this.baseURL + "learning-activities";
@@ -26,19 +27,22 @@ export class LdDashboardService {
     return this.http.get(url);
   }
   getGoalsData() {
-    let headers = new HttpHeaders().set("LnDUserId", "1001").set("courseId", "994");
+    let headers = new HttpHeaders()
+      .set("LnDUserId", "1001")
+      .set("courseId", "994");
     let url = this.baseURL + "goals";
-    return this.http.get(url, { headers: headers});
+    return this.http.get(url, { headers: headers });
   }
 
   //active users widget
-  getActiveUsersData() {
+  getActiveUsersData(filterbody) {
+    console.log("filterbody", filterbody);
     let url = this.baseURL + "active-users-graph";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
-  getLocationData() {
+  getLocationData(filterbody) {
     let url = this.baseURL + "activity-by-location";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //learner-track
@@ -63,7 +67,8 @@ export class LdDashboardService {
   //learner-performance
   getLearnerPerformanceData(filterbody) {
     let url = this.baseURL + "learner-performance-progress";
-    return this.http.post(url, filterbody, { headers: this.headers });
+    let headers = new HttpHeaders().set("LnDUserId", "0").set("courseId", "0");
+    return this.http.post(url, filterbody, { headers: headers });
   }
   getLearnerPerformanceDetails() {
     let url = this.baseURL + "learner-performance-progress-details";
@@ -96,9 +101,9 @@ export class LdDashboardService {
   }
 
   //scores-distribution
-  getScoresDistrubution(componentName) {
+  getScoresDistrubution(componentName, filterbody) {
     let url = this.baseURL + "scores-distribution?type=" + componentName;
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
   getScoresDetails(dropdownValue) {
     let url =

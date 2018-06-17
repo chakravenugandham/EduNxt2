@@ -60,7 +60,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.filterbody) {
+    if (changes.filterbody) {
       console.log("body changed");
       this.getData();
     }

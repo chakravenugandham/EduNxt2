@@ -14,7 +14,7 @@ export class DonutChartDirective implements OnChanges {
     //let chartDiv = document.createElement('div');
 
     let w = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
-    let h = 130;
+    let h = 200;
 
     let arc = d3
       .arc()

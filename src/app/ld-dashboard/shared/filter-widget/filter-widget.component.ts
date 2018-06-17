@@ -35,7 +35,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   constructor(private router: Router, private server: LdDashboardService) {}
 
-  filterSelected:any = {};
+  filterSelected: any = {
+    batchId: [],
+    teamId: [],
+    zoneId: []
+  };
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
     this.server
@@ -43,16 +47,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       .subscribe((response: any) => {
         this.filtersData = response.data;
         console.log("filtersData", this.filtersData);
-        // for (let type in this.filtersData) {
-        //   Object.defineProperty(
-        //     this.filterSelected,
-        //     this.filtersData[type].type+"Id",
-        //     {
-        //       value: []
-        //     }
-        //   );
-        // }
-        // console.log("filterSelected",this.filterSelected);
       });
   }
 
@@ -65,22 +59,40 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       let i = this.filterArray.indexOf(filterName.name);
       this.filterArray.splice(i, 1);
     }
-    let filterType:string = filter.type + "Id";
-    if (!this.filterSelected.hasOwnProperty(filterType)) {
-      Object.defineProperty(this.filterSelected, filterType, { value: [] });
-      this.filterSelected[filterType].push(filterName.id);
-    } 
-    // else if (this.filterSelected.filterType.includes(filterName.id)) {
-    //   let id = this.filterSelected.filterType.indexOf(filterName.id);
-    //   this.filterSelected.filterType.splice(id, 1);
-    // } 
-    else {
-      this.filterSelected[filterType].push(filterName.id);
+
+    let filterTypeId = "";
+    switch (filter.type) {
+      case "batch": {
+        filterTypeId = "batchId";
+        // this.filterSelected["batchId"].push(filterName.id);
+        break;
+      }
+      case "team": {
+        filterTypeId = "teamId";
+        // this.filterSelected["teamId"].push(filterName.id);
+        break;
+      }
+      case "zone": {
+        filterTypeId = "zoneId";
+        // this.filterSelected["zoneId"].push(filterName.id);
+        break;
+      }
     }
+
+    if (!this.filterSelected[filterTypeId].includes(filterName.id)) {
+      this.filterSelected[filterTypeId].push(filterName.id);
+    } else if (this.filterSelected[filterTypeId].includes(filterName.id)) {
+      let i = this.filterSelected[filterTypeId].indexOf(filterName.name);
+      this.filterSelected[filterTypeId].splice(i, 1);
+    }
+
     console.log("this.filterSelected before stringify", this.filterSelected);
-    JSON.stringify(this.filterSelected);
+    let jsonedFilter = JSON.stringify(this.filterSelected);
+    console.log("jsonedFilter", jsonedFilter);
+
     // this.filterSelected.filterType.push(filterName.id);
     console.log("this.filterSelected after stringify", this.filterSelected);
+
     this.filterEvent.emit(this.filterSelected);
   }
 

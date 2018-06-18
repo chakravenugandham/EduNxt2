@@ -9,13 +9,13 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:activeUser}" (click)="activeUsersFn()">Active Users</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='activeUser'}" (click)="activeUsersFn()">Active Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:modeDelivery}" (click)="modeDeliveryFn()">Mode of Delivery</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='modeDelivery'}" (click)="modeDeliveryFn()">Mode of Delivery</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:!activeUser && !modeDelivery}" (click)="locationFn()">Location</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='location'}" (click)="locationFn()">Location</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -56,12 +56,11 @@
     </div>
   </div>
   <div>
-    <app-active-users [usersData]="responseData.activeUserData" *ngIf="activeUser"></app-active-users>
-    <app-mode-of-delivery [usersData]="responseData.activeUserData" *ngIf="modeDelivery"></app-mode-of-delivery>
-    <app-location [locationData]="responseData.locationData" *ngIf="!activeUser && !modeDelivery"></app-location>
+    <app-active-users [usersData]="responseData.activeUserData" *ngIf="getTab=='activeUser'"></app-active-users>
+    <app-mode-of-delivery [usersData]="responseData.activeUserData" *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
+    <app-location [locationData]="responseData.locationData" *ngIf="getTab=='location'"></app-location>
   </div>
   <div>
-    <!-- <app-filter-widget [viewData]="filtersData"></app-filter-widget> -->
     <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
   </div>
 </div>

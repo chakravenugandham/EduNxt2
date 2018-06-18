@@ -6,17 +6,15 @@
     <span> Score Distribution </span>
   </div>
   <div class="row widget-block">
-    <!-- <div class="col-md-6">
-      <b>Display Graph for </b>
-      <span class="input-group">
-        <select class="custom-select" [(ngModel)]="showDetails" id="inputGroupSelect02">
-          <option [value]="'test'">Test Scores</option>
-          <option [value]="'quiz'">Quizzes</option>
-          <option [value]="'assignment'">Assignments</option>
-        </select>
-      </span>
-    </div> -->
-    <div appScoreChart [data]='dataSet'>
+    <b>Display Graph for </b>
+    <span class="input-group">
+      <select class="custom-select" [(ngModel)]="showDetails" id="inputGroupSelect02">
+        <option [value]="'test'">Test Scores</option>
+        <option [value]="'quiz'">Quizzes</option>
+        <option [value]="'assignment'">Assignments</option>
+      </select>
+    </span>
+    <div class="col-md-10" appScoreChart [data]='dataSet'>
     </div>
     <table class="table table-borderless">
       <thead>

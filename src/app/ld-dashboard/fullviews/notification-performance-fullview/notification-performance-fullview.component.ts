@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationPerformanceFullviewComponent implements OnInit {
 
+
+  //global variable declaration
   contentData = [
     {
       notification: "Course Component update for",

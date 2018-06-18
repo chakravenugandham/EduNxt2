@@ -8,7 +8,11 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./active-user-widget.component.scss"]
 })
 export class ActiveUserWidgetComponent implements OnInit, OnChanges {
-  constructor(private getData: LdDashboardService) {}
+
+  getTab = "activeUser";
+  constructor(private getData: LdDashboardService) { }
+
+  //fliter object for payload
 
   filtersData = {
     routeTo: "",
@@ -25,18 +29,15 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
   filterbody = {};
 
   activeUsersFn() {
-    this.activeUser = true;
-    this.modeDelivery = false;
+    this.getTab = "activeUser";
   }
 
   modeDeliveryFn() {
-    this.activeUser = false;
-    this.modeDelivery = true;
+    this.getTab = "modeDelivery"
   }
 
   locationFn() {
-    this.activeUser = false;
-    this.modeDelivery = false;
+    this.getTab = "location"
     this.getLocationData();
   }
 
@@ -63,7 +64,6 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
     this.filterbody = $event;
     this.getActiveUsersData();
     this.getLocationData();
-    console.log("this.filterbody", this.filterbody);
   }
 
   ngOnInit() {
@@ -73,7 +73,6 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.filterbody) {
-      console.log("body changed");
       this.getActiveUsersData();
       this.getLocationData();
     }

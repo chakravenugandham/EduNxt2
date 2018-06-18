@@ -11,7 +11,8 @@ fdescribe('ActiveUserWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ActiveUserWidgetComponent, LdDashboardService]
+      declarations: [ActiveUserWidgetComponent],
+      providers: [LdDashboardService]
     })
       .compileComponents();
   }));

@@ -12,6 +12,7 @@ export class PaceComponent implements OnInit, OnChanges {
   @Input() paceDataElement;
 
   paceTrackValues = [];
+  componentName = "active-learner-pace"
 
   constructor() { }
 

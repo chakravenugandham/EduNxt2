@@ -57,7 +57,7 @@
       </span>
     </div>
   </div>
-  <app-performance [performanceData]="responseData" *ngIf="getTab == 'performance'"></app-performance>
-  <app-progress [progressData]="responseData" *ngIf="getTab == 'progress'"></app-progress>
+  <app-performance [performanceData]="performanceDataSet" *ngIf="getTab == 'performance'"></app-performance>
+  <app-progress [progressData]="progressDataSet" *ngIf="getTab == 'progress'"></app-progress>
   <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 </div>

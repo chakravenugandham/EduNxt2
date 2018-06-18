@@ -20,26 +20,28 @@ export class BarChartDirective {
   constructor(private el: ElementRef) {}
 
   performanceChart() {
-    this.el.nativeElement.innerHTML = '';
-    let chartDiv = document.createElement('div');
+    this.el.nativeElement.innerHTML = "";
+    let chartDiv = document.createElement("div");
 
-    for (let i in this.data.Course1) {
-      this.dataset.push({
-        label: this.data.Course1[i].courseName,
-        Group1: this.data.Course1[i].performance,
-        Group2: this.data.Course1[i].performance,
-        Group3: this.data.Course1[i].performance
-      });
-    }
+    
 
-    for (let i in this.data.Course2) {
-      this.dataset.push({
-        label: this.data.Course2[i].courseName,
-        Group1: this.data.Course2[i].performance,
-        Group2: this.data.Course2[i].performance,
-        Group3: this.data.Course2[i].performance
-      });
-    }
+    // for (let i in this.data.Course1) {
+    //   this.dataset.push({
+    //     label: this.data.Course1[i].courseName,
+    //     Group1: this.data.Course1[i].performance,
+    //     Group2: this.data.Course1[i].performance,
+    //     Group3: this.data.Course1[i].performance
+    //   });
+    // }
+
+    // for (let i in this.data.Course2) {
+    //   this.dataset.push({
+    //     label: this.data.Course2[i].courseName,
+    //     Group1: this.data.Course2[i].performance,
+    //     Group2: this.data.Course2[i].performance,
+    //     Group3: this.data.Course2[i].performance
+    //   });
+    // }    
 
     function rightRoundedRect(x, y, width, height, radius) {
       return (
@@ -178,7 +180,9 @@ export class BarChartDirective {
 
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
+      this.dataset = this.data;
       this.performanceChart();
+      console.log("progress data", this.dataset);
     }
   }
 }

@@ -23,22 +23,16 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   constructor(private getData: LdDashboardService) { }
 
   testScoreFn() {
-    if (this.getValue != "test") {
-      this.getDataFromService();
-      this.getValue = "test";
-    }
+    this.getValue = "test";
+    this.getDataFromService();
   }
   quizScoreFn() {
-    if (this.getValue != "quiz") {
-      this.getDataFromService();
-      this.getValue = "quiz";
-    }
+    this.getValue = "quiz";
+    this.getDataFromService();
   }
   assignmentFn() {
-    if (this.getValue != "assignment") {
-      this.getDataFromService();
-      this.getValue = "assignment";
-    }
+    this.getValue = "assignment";
+    this.getDataFromService();
   }
 
   getFilterObject($event) {

@@ -28,6 +28,8 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     this.getTab = "progress";
   }
   filterbody = {};
+  performanceDataSet = [];
+  progressDataSet = [];
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
@@ -40,6 +42,49 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       .subscribe((response: any) => {
         this.responseData = response.data;
         console.log("learnerPerformanceProgress Data", this.responseData);
+
+        for (let i in this.responseData) {
+          let batchOnePerformance:number;
+          let batchTwoPerformance:number;
+          let batchThreePerformance:number;
+          let batchOneProgress:number;
+          let batchTwoProgress:number;
+          let batchThreeProgress:number;
+          for (let j in this.responseData[i].batches){
+            batchOnePerformance = this.responseData[i].batches[j].performance;
+            batchTwoPerformance = this.responseData[i].batches[j].performance;
+            batchOneProgress = this.responseData[i].batches[j].progress;
+            batchTwoProgress = this.responseData[i].batches[j].progress;
+          }
+          this.performanceDataSet.push({
+            label: this.responseData[i].courseName,
+            Group1: batchOnePerformance,
+            Group2: batchTwoPerformance,
+            Group3: batchTwoPerformance
+          });
+          this.progressDataSet.push({
+            label: this.responseData[i].courseName,
+            Group1: batchOneProgress,
+            Group2: batchTwoProgress,
+            Group3: batchTwoProgress
+          });
+          // for (let j in this.responseData[i].batches) {
+          //   this.performanceDataSet.push({
+          //     Group1: this.responseData[i].batches[j].performance,
+          //     Group2: this.responseData[i].batches[j].performance
+          //   });
+          //   this.progressDataSet.push({
+          //     Group1: this.responseData[i].batches[j].progress,
+          //     Group2: this.responseData[i].batches[j].progress
+          //   });
+          // }
+        }
+
+        console.log("this.performanceDataSet",this.performanceDataSet);
+        console.log("this.progressDataSet",this.progressDataSet);
+        
+
+
         // for (let key in this.responseData) {
         //   let lableName = this.responseData[key][0].courseName;
         //   let batchName = this.responseData[key][0].batchName;

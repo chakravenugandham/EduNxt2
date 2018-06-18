@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
   ngOnChanges(changes: any) {
     if (changes.userData.currentValue) {
       this.activeConfig = {
-        peopleCurrentlyEnrolled: this.userData.peopleCurrentlyEnrolled,
+        peopleCurrentlyEnrolled: this.userData.activeUsers,
         usersSinceLastMonth: this.userData.usersSinceLastMonth,
         Users: "Users",
         sinceLastMonth: "since last month",
@@ -27,7 +27,7 @@ export class UsersComponent implements OnInit {
       }
       this.enrolledConfig = {
         peopleCurrentlyEnrolled: this.userData.peopleCurrentlyEnrolled,
-        usersSinceLastMonth: this.userData.usersSinceLastMonth,
+        usersSinceLastMonth: this.userData.changeInUsers,
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently enrolled"

@@ -6,11 +6,11 @@ import { environment } from "../../../environments/environment";
   providedIn: "root"
 })
 export class LdDashboardService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  //baseURL from enviornment 
 
   baseURL = environment.baseUrl;
-  // baseURL = "http://192.168.239.38:3000/api/v1/lnd/";
-  // baseURL = "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/";
   headers = new HttpHeaders().set("LnDUserId", "1002").set("courseId", "0");
 
   //courses dropdown
@@ -20,12 +20,16 @@ export class LdDashboardService {
     return this.http.get(url);
   }
 
-  //activity at glance
+  //first four widgets
+
   getActivityData() {
     let url = this.baseURL + "learning-activities";
     //let url = "https://api.myjson.com/bins/o83wu";
-    return this.http.get(url);
+    return this.http.get(url, { headers: this.headers });
   }
+
+  //goals and timespent widgets
+
   getGoalsData() {
     let headers = new HttpHeaders()
       .set("LnDUserId", "1001")
@@ -34,88 +38,105 @@ export class LdDashboardService {
     return this.http.get(url, { headers: headers });
   }
 
-  //active users widget
+  //active users & mode of delivery data
+
   getActiveUsersData(filterbody) {
     console.log("filterbody", filterbody);
     let url = this.baseURL + "active-users-graph";
     return this.http.post(url, filterbody, { headers: this.headers });
   }
+
+  //location data
+
   getLocationData(filterbody) {
     let url = this.baseURL + "activity-by-location";
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  //learner-track
+  //learner-track widget data
   getLearnerTrackData(filterbody) {
     // let filterbody_new = {batchId: [33,30]};
     let url = this.baseURL + "learner-pace-performance";
-    console.log("filterbody", filterbody);
-    console.log("filterbody", JSON.stringify(filterbody));
     return this.http.post(url, filterbody, { headers: this.headers });
   }
+
+  //learner-track full details
   getLearnerTrackDetails(componentName, filterbody) {
     let url =
       this.baseURL + "learner-pace-performance-details?type=" + componentName;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
+  //learner-track graph details
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";
     return this.http.post(url, { headers: this.headers });
   }
 
   //learner-performance
+
   getLearnerPerformanceData(filterbody) {
     let url = this.baseURL + "learner-performance-progress";
     let headers = new HttpHeaders().set("LnDUserId", "0").set("courseId", "0");
     return this.http.post(url, filterbody, { headers: headers });
   }
+
+  //learner-performance full details
+
   getLearnerPerformanceDetails() {
     let url = this.baseURL + "learner-performance-progress-details";
     return this.http.post(url, { headers: this.headers });
   }
 
   //org-interest
+
   getOrgInterestData() {
     let url = this.baseURL + "organization-interests";
     return this.http.post(url, { headers: this.headers });
   }
+
+  //org-interest full details
+
   getOrgInterestDetails(componentName, filterbody) {
     let url =
       this.baseURL + "organization-interests-details?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
 
-  //org-performance
+  //org-performance teams data
   getTrainersData() {
     let url = this.baseURL + "trainer-leaderboard";
     return this.http.post(url, { headers: this.headers });
   }
+
+  //org-performance trainers data
+
   getTeamData() {
     let url = this.baseURL + "team-leaderboard";
     return this.http.post(url, { headers: this.headers });
   }
+
+  //org-performance leaners data
+
   getLearnerData() {
     let url = this.baseURL + "learner-leaderboard";
     return this.http.post(url, { headers: this.headers });
   }
 
-  //scores-distribution
+  //scores-distribution based on component type
+
   getScoresDistrubution(componentName, filterbody) {
     let url = this.baseURL + "scores-distribution?type=" + componentName;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
+
+  //scores full-details 
+
   getScoresDetails(dropdownValue) {
     let url =
       this.baseURL + "scores-distribution-details?type=" + dropdownValue;
     return this.http.post(url, { headers: this.headers });
   }
-
-  // getFilters() {
-  //   let url = this.baseURL + "dropDown";
-  //   //let url = "https://api.myjson.com/bins/1012oe"
-  //   return this.http.post(url, { headers: this.headers });
-  // }
 
   //content-performing
   getContentData() {
@@ -132,8 +153,6 @@ export class LdDashboardService {
     }
     filters = filtersList[0];
     let url = this.baseURL + "dropDown?type=" + filters;
-    // let url = "https://api.myjson.com/bins/pplaq";
-    // let url = "https://api.myjson.com/bins/m3a0m";
     return this.http.get(url);
   }
 }

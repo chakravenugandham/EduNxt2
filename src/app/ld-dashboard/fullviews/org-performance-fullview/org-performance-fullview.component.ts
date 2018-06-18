@@ -16,25 +16,16 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   constructor(private getData: LdDashboardService) { }
 
-  ngOnChanges(changes: any) {
-    if (changes.showDetails.currentValue) {
-      //this.getDataFromService();
-    }
-
-  }
-
+  //api calls for trainers ,teams and learner
   ngOnInit() {
     this.getData.getTrainersData().subscribe((response: any) => {
       this.responseTrainersDetails = response.data;
-      console.log(this.responseTrainersDetails);
     });
     this.getData.getTeamData().subscribe((response: any) => {
       this.responseTeamsDetails = response.data;
-      console.log(this.responseTeamsDetails);
     });
     this.getData.getLearnerData().subscribe((response: any) => {
       this.responseLeanersDetails = response.data;
-      console.log(this.responseLeanersDetails);
     });
   }
 

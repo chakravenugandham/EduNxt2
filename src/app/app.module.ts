@@ -69,7 +69,6 @@ import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullvie
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartService";
 import { UsersDataComponent } from './common/users-data/users-data.component';
-import { DonutChartComponent } from './common/donut-chart/donut-chart.component';
 import { HalfdonutchartDirective } from './directives/halfdonutchart.directive';
 import { DonutChartDirective } from './directives/donut-chart.directive';
 import { BarChartDirective } from './directives/bar-chart.directive';
@@ -129,7 +128,6 @@ import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/
     OrgInterestFullviewComponent,
     TagCloudComponent,
     UsersDataComponent,
-    DonutChartComponent,
     HalfdonutchartDirective,
     DonutChartDirective,
     BarChartDirective,

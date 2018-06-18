@@ -17,31 +17,11 @@ export class BarChartDirective {
   @Input() data;
   dataset = [];
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
     let chartDiv = document.createElement("div");
-
-    
-
-    // for (let i in this.data.Course1) {
-    //   this.dataset.push({
-    //     label: this.data.Course1[i].courseName,
-    //     Group1: this.data.Course1[i].performance,
-    //     Group2: this.data.Course1[i].performance,
-    //     Group3: this.data.Course1[i].performance
-    //   });
-    // }
-
-    // for (let i in this.data.Course2) {
-    //   this.dataset.push({
-    //     label: this.data.Course2[i].courseName,
-    //     Group1: this.data.Course2[i].performance,
-    //     Group2: this.data.Course2[i].performance,
-    //     Group3: this.data.Course2[i].performance
-    //   });
-    // }    
 
     function rightRoundedRect(x, y, width, height, radius) {
       return (
@@ -91,8 +71,6 @@ export class BarChartDirective {
       .attr("transform", "translate(" + margin + "," + margin + ")");
 
     let x0 = d3.scale.ordinal().rangeRoundBands([0, width], 0.5, 0.5);
-    //.rangeRoundBands([0, width], .3);
-    //.paddingInner(0.4);
 
     let x1 = d3.scale.ordinal();
 
@@ -109,18 +87,18 @@ export class BarChartDirective {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function(key) {
+    let options = d3.keys(this.dataset[0]).filter(function (key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function(d) {
-      d.valores = options.map(function(name) {
+    this.dataset.forEach(function (d) {
+      d.valores = options.map(function (name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function(d) {
+      this.dataset.map(function (d) {
         return d.label;
       })
     );
@@ -147,7 +125,7 @@ export class BarChartDirective {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function(d) {
+      .attr("transform", function (d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -155,25 +133,25 @@ export class BarChartDirective {
 
     bar
       .selectAll("rect")
-      .data(function(d) {
+      .data(function (d) {
         return d.valores;
       })
       .enter()
       .append("rect")
       .attr("width", x1.rangeBand() - 12)
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         return x1(d.name);
       })
-      .attr("y", function(d) {
+      .attr("y", function (d) {
         return y(d.value);
       })
-      .attr("value", function(d) {
+      .attr("value", function (d) {
         return d.name;
       })
-      .attr("height", function(d) {
+      .attr("height", function (d) {
         return height - y(d.value);
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return color(d.name);
       });
   }
@@ -182,7 +160,6 @@ export class BarChartDirective {
     if (changes.data && changes.data.currentValue) {
       this.dataset = this.data;
       this.performanceChart();
-      console.log("progress data", this.dataset);
     }
   }
 }

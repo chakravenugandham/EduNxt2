@@ -18,7 +18,6 @@ export class PaceComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.paceDataElement.currentValue) {
-      console.log(this.paceDataElement);
       this.paceTrackValues = [
         {
           color: "#F77F6C",

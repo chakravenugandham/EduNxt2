@@ -7,7 +7,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-  // routePath: string = "orgPerformanceFullView";
+
   getTab: string = "teams";
 
   filtersData = {
@@ -19,11 +19,11 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     currentModule: this.getTab
   };
 
-  responseData:any;
+  responseData: any;
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) {}
+  constructor(private serviceData: LdDashboardService) { }
 
   teamsFn() {
     this.getTab = "teams";
@@ -42,12 +42,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
         this.responseData = response.data;
       });
   }
-  
+
   getFilterObject($event) {
     this.filterbody = $event;
-    // this.();
-    console.log("this.filterbody", this.filterbody);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

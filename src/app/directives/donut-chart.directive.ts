@@ -6,6 +6,7 @@ import * as d3 from "d3v4";
 })
 export class DonutChartDirective implements OnChanges {
   @Input() data: any;
+  @Input() componentName: string;
 
   constructor(private el: ElementRef) { }
 
@@ -14,12 +15,20 @@ export class DonutChartDirective implements OnChanges {
     //let chartDiv = document.createElement('div');
 
     let w = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
-    let h = 200;
+    let h:number;
+    if(this.componentName == "active-learner-pace"){
+      h = 130;
+    }
+    else{
+      h = 240;
+    }
 
     let arc = d3
       .arc()
-      .innerRadius(90)
-      .outerRadius(100);
+      // .innerRadius(90)
+      // .outerRadius(100);
+      .innerRadius(this.componentName == "active-learner-pace" ? 55 : 90)
+      .outerRadius(this.componentName == "active-learner-pace" ? 65 : 100);
 
     let svg = d3
       .select(this.el.nativeElement)

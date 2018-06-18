@@ -22,7 +22,7 @@
         <span class="bigNumber float-left">{{feedbackDataElement.learnerSatisfaction}}%</span>
         <p class="small-font">
           <span>
-            <i class="fas fa-arrow-up changeNumber"></i>
+            <i class="fas changeNumber" [ngClass]="{'fa-arrow-down text-danger': feedbackDataElement.learnerSatisfactionChange < 0, 'fa-arrow-up text-success': feedbackDataElement.learnerSatisfactionChange < 0}"></i>
           </span>
           <span> by</span>
           <span class="changeNumber"> {{feedbackDataElement.learnerSatisfactionChange}}%
@@ -38,7 +38,8 @@
         <span class="bigNumber m-r-3 danger-class float-left">{{feedbackDataElement.trainerRating}}</span>
         <p class="small-font">
           <span>
-            <i class="fas fa-arrow-down danger-class"></i>
+            <!-- <i class="fas fa-arrow-down danger-class"></i> -->
+            <i class="fas fa-arrow-up changeNumber" [ngClass]="{'fa-arrow-down text-danger': feedbackDataElement.trainerRatingChange <= 0, 'fa-arrow-up text-success': feedbackDataElement.trainerRatingChange < 0}"></i>
           </span>
           <span>by</span>
           <span class="danger-class"> {{feedbackDataElement.trainerRatingChange}}%</span>
@@ -51,7 +52,8 @@
         <span class="bigNumber float-left">{{feedbackDataElement.contentRating}}</span>
         <p class="small-font">
           <span>
-            <i class="fas fa-arrow-up changeNumber"></i>
+            <!-- <i class="fas fa-arrow-up changeNumber"></i> -->
+            <i class="fas changeNumber" [ngClass]="{'fa-arrow-down text-danger': feedbackDataElement.contentRatingChange <= 0, 'fa-arrow-up text-success': feedbackDataElement.contentRatingChange < 0}"></i>
           </span>
           <span> by</span>
           <span class="changeNumber"> {{feedbackDataElement.contentRatingChange}}%</span>

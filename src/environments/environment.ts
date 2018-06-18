@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://192.168.239.38:3000/api/v1/lnd/"
+  // baseUrl: "http://192.168.239.38:3000/api/v1/lnd/"
+  // baseUrl: "http://54.158.201.24:3000/api/v1/lnd/"
+  // baseUrl: "http://innominds-analytics.cmmtocbvzm4p.ap-southeast-1.rds.amazonaws.com:3000/api/v1/lnd/"
+  baseUrl: "http://localhost:3000/api/v1/lnd/"
 };
 
 /*

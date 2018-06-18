@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 import { observable } from "rxjs";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
@@ -8,39 +8,44 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./scores-distribution-widget.component.html",
   styleUrls: ["./scores-distribution-widget.component.scss"]
 })
-export class ScoresDistributionWidgetComponent implements OnInit {
+export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   routePath: string = "scoreDistributionFullView";
   filtersData = {
     routeTo: "scoreDistributionFullView",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    viewDetails: true,
+    filterList: ["batch"]
   };
   getValue: string = "test";
+  filterbody = {};
+
+  constructor(private getData: LdDashboardService) { }
+
   testScoreFn() {
-    if (this.getValue != "test") {
-      this.getDataFromService();
-      this.getValue = "test";
-    }
+    this.getValue = "test";
+    this.getDataFromService();
   }
   quizScoreFn() {
-    if (this.getValue != "quiz") {
-      this.getDataFromService();
-      this.getValue = "quiz";
-    }
+    this.getValue = "quiz";
+    this.getDataFromService();
   }
   assignmentFn() {
-    if (this.getValue != "assignment") {
-      this.getDataFromService();
-      this.getValue = "assignment";
-    }
+    this.getValue = "assignment";
+    this.getDataFromService();
   }
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getDataFromService();
+    console.log("this.filterbody", this.filterbody);
+  }
+
   responseData = {};
-  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData
-      .getScoresDistrubution(this.getValue)
+      .getScoresDistrubution(this.getValue, this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;
         console.log(this.responseData);
@@ -50,4 +55,11 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   ngOnInit() {
     this.getDataFromService();
   }
+
+  ngOnChanges(changes:SimpleChanges){
+    if(changes.filterbody){
+      this.getDataFromService();
+    }
+  }
+
 }

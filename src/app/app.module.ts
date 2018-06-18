@@ -74,6 +74,8 @@ import { HalfdonutchartDirective } from './directives/halfdonutchart.directive';
 import { DonutChartDirective } from './directives/donut-chart.directive';
 import { BarChartDirective } from './directives/bar-chart.directive';
 import { ScoreChartDirective } from './directives/score-chart.directive';
+import { BestProgramsWidgetComponent } from './ld-dashboard/best-programs-widget/best-programs-widget.component';
+import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/programs.component';
 
 
 @NgModule({
@@ -131,7 +133,9 @@ import { ScoreChartDirective } from './directives/score-chart.directive';
     HalfdonutchartDirective,
     DonutChartDirective,
     BarChartDirective,
-    ScoreChartDirective
+    ScoreChartDirective,
+    BestProgramsWidgetComponent,
+    ProgramsComponent
   ],
   imports: [
     BrowserModule,

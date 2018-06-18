@@ -8,6 +8,7 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 })
 export class TeamsComponent implements OnInit {
   teamsData = [];
+  sortType:string = "";
   constructor(private getData: LdDashboardService) {}
   getDataFromService() {
     this.getData.getTeamData().subscribe((res: any) => {

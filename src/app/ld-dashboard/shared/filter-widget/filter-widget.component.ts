@@ -2,11 +2,12 @@ import {
   Component,
   OnInit,
   Input,
+  OnChanges,
   SimpleChanges,
   EventEmitter,
   Output
 } from "@angular/core";
-import { Router, Route } from "@angular/router";
+import { Router } from "@angular/router";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { values } from "d3";
@@ -16,9 +17,10 @@ import { values } from "d3";
   templateUrl: "./filter-widget.component.html",
   styleUrls: ["./filter-widget.component.scss"]
 })
-export class FilterWidgetComponent implements OnInit {
-  // @Output() filterSelected = new EventEmitter<any>();
+export class FilterWidgetComponent implements OnInit, OnChanges {
   @Output() filterEvent = new EventEmitter<any>();
+  displayDropdown: boolean = false;
+  filtersData;
   filterArray = [];
 
   @Input()
@@ -26,50 +28,71 @@ export class FilterWidgetComponent implements OnInit {
     routeTo: string;
     filters: boolean;
     search: boolean;
+    viewDetails: boolean;
     filterList: string[];
     currentModule: string;
   };
 
-  displayDropdown: boolean = false;
-
   constructor(private router: Router, private server: LdDashboardService) {}
 
-  // filtersList = ["zone", "team"];
-  filtersData;
-
+  filterSelected: any = {
+    batchId: [],
+    teamId: [],
+    zoneId: []
+  };
   showFilter() {
-    for (let i in this.viewData.filterList) {
-      Object.defineProperty(
-        this.filtersData,
-        this.viewData.filterList[i] + "Id",
-        { value: [] }
-      );
-    }
     this.displayDropdown = !this.displayDropdown;
     this.server
       .getFiltersData(this.viewData.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
+        console.log("filtersData", this.filtersData);
       });
   }
 
-  // filter = {
-  //   zoneId: [1, 2, 3],
-  //   teamId: [3, 7]
-  // };
-  filterSelected = {
-    teamId: []
-  };
-
-  tempfilterArray = [];
   selectFilter(filter, filterName) {
     console.log("filter", filter);
     console.log("filterName", filterName);
-    // this.filterArray.push(filterName.name);
-    this.filterArray.push({filterType: filter.type,filterName: filterName.name,filterId:filterName.id});
-    console.log("filterArray", this.filterArray);
-    this.filterSelected.teamId.push(filterName.id);
-    console.log("this.filterSelected", this.filterSelected);
+    if (!this.filterArray.includes(filterName.name)) {
+      this.filterArray.push(filterName.name);
+    } else if (this.filterArray.includes(filterName.name)) {
+      let i = this.filterArray.indexOf(filterName.name);
+      this.filterArray.splice(i, 1);
+    }
+
+    let filterTypeId = "";
+    switch (filter.type) {
+      case "batch": {
+        filterTypeId = "batchId";
+        // this.filterSelected["batchId"].push(filterName.id);
+        break;
+      }
+      case "team": {
+        filterTypeId = "teamId";
+        // this.filterSelected["teamId"].push(filterName.id);
+        break;
+      }
+      case "zone": {
+        filterTypeId = "zoneId";
+        // this.filterSelected["zoneId"].push(filterName.id);
+        break;
+      }
+    }
+
+    if (!this.filterSelected[filterTypeId].includes(filterName.id)) {
+      this.filterSelected[filterTypeId].push(filterName.id);
+    } else if (this.filterSelected[filterTypeId].includes(filterName.id)) {
+      let i = this.filterSelected[filterTypeId].indexOf(filterName.name);
+      this.filterSelected[filterTypeId].splice(i, 1);
+    }
+
+    console.log("this.filterSelected before stringify", this.filterSelected);
+    let jsonedFilter = JSON.stringify(this.filterSelected);
+    console.log("jsonedFilter", jsonedFilter);
+
+    // this.filterSelected.filterType.push(filterName.id);
+    console.log("this.filterSelected after stringify", this.filterSelected);
+
     this.filterEvent.emit(this.filterSelected);
   }
 
@@ -82,6 +105,9 @@ export class FilterWidgetComponent implements OnInit {
     this.filterArray.splice(i, 1);
     console.log("filterArray", this.filterArray);
   }
+  removeFromFilterBody(filterBodyName) {
+    console.log("filterBodyName", filterBodyName);
+  }
 
   routetoFullview() {
     this.router.navigate([this.viewData.routeTo]);
@@ -90,5 +116,8 @@ export class FilterWidgetComponent implements OnInit {
   ngOnInit() {
     // this.setFilterBody();
   }
-}
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("something changed");
+  }
+}

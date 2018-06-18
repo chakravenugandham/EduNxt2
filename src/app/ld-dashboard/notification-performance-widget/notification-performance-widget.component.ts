@@ -11,6 +11,7 @@ export class NotificationPerformanceWidgetComponent implements OnInit {
     routeTo: "notificationPerformanceFullView",
     filters: true,
     search: false,
+    viewDetails: true,
     filterList: ["zone"]
   };
   scheduled: boolean = true;

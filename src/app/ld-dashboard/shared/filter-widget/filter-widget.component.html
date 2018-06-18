@@ -24,9 +24,11 @@
               <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
                 <div class="boldText"> Select {{filter.type}} </div>
                 <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                  <span>
+                  <!-- <span>
                     <input id="filterName.id" type="checkbox">
-                  </span>
+                  </span> -->
+                  <!-- <span class="check-box" [ngClass]="{'text-warning': filterArray.includes(filterName.name)}"></span> -->
+                  <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>
                   <span>{{filterName.name}} </span>
                 </div>
               </li>
@@ -61,12 +63,12 @@
     </li>
     <span *ngIf="filterArray">
       <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">
-        <span>{{filter.filterName}}</span>
-        <i class="far fa-times-circle" (click)="removeFilter(i)"></i>
+        <span>{{filter}}</span>
+        <i class="far fa-times-circle" (click)="removeFilter(i);removeFromFilterBody(filter);"></i>
       </li>
     </span>
   </ul>
-  <div class="viewDetails">
+  <div class="viewDetails" *ngIf="viewData.viewDetails">
     <span class="text-primary float-right" class="cursor-pointer" (click)="routetoFullview()"> View Details</span>
     <span>
       <i class="fas fa-angle-right"></i>

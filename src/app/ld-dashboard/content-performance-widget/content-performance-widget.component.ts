@@ -11,7 +11,8 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     routeTo: "contentConsumptionFullView",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    viewDetails: true,
+    filterList: ["contentType"]
   };
   constructor() {}
 

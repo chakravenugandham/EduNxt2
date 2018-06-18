@@ -15,7 +15,7 @@ export class OrgInterestComponent implements OnInit {
   options: CloudOptions = {
     width: 300,
     height: 200,
-    overflow: true
+    overflow: false
   };
 
   wordData = [];
@@ -27,7 +27,7 @@ export class OrgInterestComponent implements OnInit {
     this.getData.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
       for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
-        let wordWeight = Math.floor((Math.random() * 4) + 1);
+        let wordWeight = Math.floor((Math.random() * 3) + 1);
         this.wordData.push({
           text: this.orgData["popularTopicsData"][i].courseName,
           weight: wordWeight

@@ -70,6 +70,21 @@
   }
 }
 
+.check-box {
+  width: 12px;
+  height: 12px;
+  color: #ddd;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.checked-box{
+  background-color: orange !important;
+}
+
 //dropdown
 
 .dropdown-toggle::after {
@@ -90,6 +105,9 @@
   width: 220px;
   // width: max-content;
 }
+.getFilter{
+  cursor: pointer;
+}
 .showFilter-list ul {
   height: 140px;
   padding: 0;
@@ -107,7 +125,7 @@
   margin-right: 4px;
   vertical-align: middle;
 }
-.filter-name{
+.filter-name {
   padding: 4px 0px;
 }
 .apply-filters {
@@ -137,7 +155,7 @@
   outline: 1px solid slategrey;
 }
 
-.closeDropdown{
+.closeDropdown {
   position: absolute;
   right: 8px;
   z-index: 1;

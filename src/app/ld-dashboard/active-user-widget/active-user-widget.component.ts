@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
@@ -7,16 +7,22 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./active-user-widget.component.html",
   styleUrls: ["./active-user-widget.component.scss"]
 })
-export class ActiveUserWidgetComponent implements OnInit {
-  constructor(private getData: LdDashboardService) { }
-  filtersData: {
+export class ActiveUserWidgetComponent implements OnInit, OnChanges {
+  constructor(private getData: LdDashboardService) {}
+
+  filtersData = {
     routeTo: "",
     filters: true,
     search: false,
-    filterList: ["zone"]
+    viewDetails: false,
+    filterList: ["zone"],
+    currentModule: ""
   };
+
   activeUser: boolean = true;
   modeDelivery: boolean = false;
+
+  filterbody = {};
 
   activeUsersFn() {
     this.activeUser = true;
@@ -31,6 +37,7 @@ export class ActiveUserWidgetComponent implements OnInit {
   locationFn() {
     this.activeUser = false;
     this.modeDelivery = false;
+    this.getLocationData();
   }
 
   responseData = {
@@ -40,21 +47,35 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   getActiveUsersData() {
     this.getData
-      .getActiveUsersData()
+      .getActiveUsersData(this.filterbody)
       .subscribe((response: any) => {
         this.responseData.activeUserData = response.data;
       });
   }
 
   getLocationData() {
-    this.getData
-      .getLocationData()
-      .subscribe((response: any) => {
-        this.responseData.locationData = response.data;
-      });
+    this.getData.getLocationData(this.filterbody).subscribe((response: any) => {
+      this.responseData.locationData = response.data;
+    });
   }
-  ngOnInit() {
+
+  getFilterObject($event) {
+    this.filterbody = $event;
     this.getActiveUsersData();
     this.getLocationData();
+    console.log("this.filterbody", this.filterbody);
+  }
+
+  ngOnInit() {
+    this.getActiveUsersData();
+    // this.getLocationData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.filterbody) {
+      console.log("body changed");
+      this.getActiveUsersData();
+      this.getLocationData();
+    }
   }
 }

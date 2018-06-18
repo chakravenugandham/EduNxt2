@@ -11,33 +11,37 @@
         <b>Select a course</b>
       </li>
       <li class="list-inline-item selectCourse">
-        <div ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <!-- <div ngbDropdown role="group" aria-label="Button group with nested dropdown">
           <button class="btn btn-outline-primary" ngbDropdownToggle>All Courses</button>
           <div class="dropdown-menu" ngbDropdownMenu>
             <button class="dropdown-item" *ngFor="let courses of coursesData">{{courses.courseName}}</button>
           </div>
-        </div>
+        </div> -->
+        <select name="selectCourse" id="selectCourse">
+          <option value="defualtAllCourse" style="color: red" class="course-item">All Courses</option>
+          <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.id}}">{{courses.courseName}}</option>
+        </select>
       </li>
-      <div class="float-right m-t-7">
-        <li class="list-inline-item cursor-pointer">
-          <span>
-            <img src="../../assets/IconsSVGs/SAve.svg">
-          </span>
-          <span class="font-color p-l-5">Save this view</span>
-        </li>
-        <li class="list-inline-item cursor-pointer">
-          <span>
-            <img src="../../assets/IconsSVGs/mail.svg">
-          </span>
-          <span class="font-color p-l-5">Email this report</span>
-        </li>
-        <li class="list-inline-item cursor-pointer">
-          <span>
-            <img src="../../assets/IconsSVGs/Download.svg">
-          </span>
-          <span class="font-color p-l-5">Download this report</span>
-        </li>
-      </div>
     </ul>
+    <div class="float-right m-t-7">
+      <li class="list-inline-item cursor-pointer">
+        <span>
+          <img src="../../assets/IconsSVGs/SAve.svg">
+        </span>
+        <span class="font-color p-l-5">Save this view</span>
+      </li>
+      <li class="list-inline-item cursor-pointer">
+        <span>
+          <img src="../../assets/IconsSVGs/mail.svg">
+        </span>
+        <span class="font-color p-l-5">Email this report</span>
+      </li>
+      <li class="list-inline-item cursor-pointer">
+        <span>
+          <img src="../../assets/IconsSVGs/Download.svg">
+        </span>
+        <span class="font-color p-l-5">Download this report</span>
+      </li>
+    </div>
   </div>
 </div>

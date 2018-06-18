@@ -13,7 +13,7 @@ export class ScoreChartDirective implements OnChanges {
     this.el.nativeElement.innerHTML = '';
     //let w = 250;
     let w = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
-    var h = 350;
+    var h = 280;
     var p = 50;
 
     // create xScale
@@ -111,6 +111,8 @@ export class ScoreChartDirective implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
       this.chartRenderFn(this.data);
+      console.log("score distribution data", this.data);
+      
     }
 
   }

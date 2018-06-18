@@ -181,6 +181,9 @@
     padding: 15px 8px;
     vertical-align: middle;
     font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   table tr th {
     padding: 15px 8px;

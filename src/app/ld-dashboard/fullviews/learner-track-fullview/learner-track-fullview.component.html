@@ -6,45 +6,49 @@
     <span> Are my learners on track? </span>
   </div>
   <div class="row">
-    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 widget-block text-center">
-      <p>View Learner performance across</p>
-      <div appDonutChart [data]="performanceTrackValues">
-      </div>
-      <div class="row graph-badges">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle excelling"></i> Excelling
-          <div> {{responseGraphDetails.performanceData.excelling}} </div>
+    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+      <div class="widget-block text-center">
+        <p>View Learner performance across</p>
+        <div appDonutChart [data]="performanceTrackValues">
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle passing"></i> Passing
-          <div> {{responseGraphDetails.performanceData.passing}} </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle struggling"></i> Struggling
-          <div> {{responseGraphDetails.performanceData.struggling}} </div>
+        <div class="row graph-badges">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle excelling"></i> Excelling
+            <div> {{responseGraphDetails.performanceData.excelling}} </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle passing"></i> Passing
+            <div> {{responseGraphDetails.performanceData.passing}} </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle struggling"></i> Struggling
+            <div> {{responseGraphDetails.performanceData.struggling}} </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6 widget-block text-center">
-      <p>View Learner pace across</p>
-      <div appDonutChart [data]="paceTrackValues">
-      </div>
-      <div class="row graph-badges">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
-          <div> {{responseGraphDetails.paceData.aheadOfSchedule}} </div>
+    <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
+      <div class="widget-block text-center">
+        <p>View Learner pace across</p>
+        <div appDonutChart [data]="paceTrackValues">
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle onTrack"></i> On Track
-          <div> {{responseGraphDetails.paceData.onTrack}} </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle behindSchedule"></i> Behind Schedule
-          <div> {{responseGraphDetails.paceData.behindSchedule}} </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-          <i class="far fa-circle haveNotStarted"></i> Haven't Started
-          <div> {{responseGraphDetails.paceData.haveNotStarted}} </div>
+        <div class="row graph-badges">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
+            <div> {{responseGraphDetails.paceData.aheadOfSchedule}} </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle onTrack"></i> On Track
+            <div> {{responseGraphDetails.paceData.onTrack}} </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle behindSchedule"></i> Behind Schedule
+            <div> {{responseGraphDetails.paceData.behindSchedule}} </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle haveNotStarted"></i> Haven't Started
+            <div> {{responseGraphDetails.paceData.haveNotStarted}} </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,101 +79,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let data of responseTrackDetails">
           <th scope="row">
             <span>
               <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
             </span>
-            <span class="userName"> Riddle</span>
+            <span class="userName"> {{data.learnerName}} </span>
           </th>
-          <td class="">1235-4333-4356</td>
-          <td class="">Communication 101</td>
-          <td class="">Sales</td>
-          <td class="">Batch 1</td>
-          <td class="">Count Dooku</td>
-          <td class="">89%</td>
-          <td class="">73%</td>
-          <td class="">83%</td>
-          <td class="text-primary">
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-            <span>Congratulate</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="">1235-4333-4356</td>
-          <td class="">Communication 101</td>
-          <td class="">Sales</td>
-          <td class="">Batch 1</td>
-          <td class="">Count Dooku</td>
-          <td class="">89%</td>
-          <td class="">73%</td>
-          <td class="">83%</td>
-          <td class="text-primary">
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-            <span>Congratulate</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="">1235-4333-4356</td>
-          <td class="">Communication 101</td>
-          <td class="">Sales</td>
-          <td class="">Batch 1</td>
-          <td class="">Count Dooku</td>
-          <td class="">89%</td>
-          <td class="">73%</td>
-          <td class="">83%</td>
-          <td class="text-primary">
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-            <span>Congratulate</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="">1235-4333-4356</td>
-          <td class="">Communication 101</td>
-          <td class="">Sales</td>
-          <td class="">Batch 1</td>
-          <td class="">Count Dooku</td>
-          <td class="">89%</td>
-          <td class="">73%</td>
-          <td class="">83%</td>
-          <td class="text-primary">
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-            <span>Congratulate</span>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span>
-              <img src="/assets/IconsSVGs/praveen.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> Riddle</span>
-          </th>
-          <td class="">1235-4333-4356</td>
-          <td class="">Communication 101</td>
-          <td class="">Sales</td>
-          <td class="">Batch 1</td>
-          <td class="">Count Dooku</td>
-          <td class="">89%</td>
-          <td class="">73%</td>
-          <td class="">83%</td>
+          <td class=""> {{data.courseName}} </td>
+          <td class=""> {{data.teamName}} </td>
+          <td class=""> {{data.batchName}} </td>
+          <td class=""> {{data.teamLeaderName}} </td>
+          <td class=""> {{data.scoreInCourse}} </td>
+          <td class=""> {{data.scoreAvg}} </td>
+          <td class=""> {{data.highestScore}} </td>
           <td class="text-primary">
             <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
             <span>Congratulate</span>

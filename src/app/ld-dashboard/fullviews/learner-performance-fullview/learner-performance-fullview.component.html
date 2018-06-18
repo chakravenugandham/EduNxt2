@@ -16,9 +16,9 @@
             <option value="progress"> Progress across all courses </option>
           </select>
         </span>
-        <div class="bar-chart-graph" appBarChart [data]="learnerData"></div>
-        <!-- <app-performance *ngIf="selectedGraph == 'performance'"></app-performance>
-        <app-progress *ngIf="selectedGraph == 'progress'"></app-progress> -->
+        <!-- <div class="bar-chart-graph" appBarChart [data]="learnerData"></div> -->
+        <app-performance *ngIf="selectedGraph == 'performance'"></app-performance>
+        <app-progress *ngIf="selectedGraph == 'progress'"></app-progress>
 
         <div>
           <table class="table table-borderless">
@@ -74,15 +74,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of learnerPerformacneProgressData">
+              <tr *ngFor="let data of learnerData">
                 <th scope="row"> {{data.courseName}} </th>
-                <td> {{data.startDate}} </td>
-                <td> {{data.endDate}} </td>
+                <td> {{data.courseStartDate | date}} </td>
+                <td> {{data.courseEndDate | date}} </td>
                 <td> {{data.facultyName}} </td>
-                <td> {{data.studentsCount}} </td>
+                <td> {{data.studentCount}} </td>
                 <td> {{data.programStatus}} </td>
-                <td> {{data.completion}} % </td>
-                <td> {{data.testScore}} %</td>
+                <td> {{data.completionAvg}} % </td>
+                <td> {{data.testScoreAvg}} %</td>
                 <td> {{data.highestScore}} %</td>
               </tr>
             </tbody>

@@ -41,20 +41,18 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       .getLearnerPerformanceData(this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;
-        console.log("learnerPerformanceProgress Data", this.responseData);
-
         for (let i in this.responseData) {
-          let batchOnePerformance:number;
-          let batchTwoPerformance:number;
-          let batchThreePerformance:number;
-          let batchOneProgress:number;
-          let batchTwoProgress:number;
-          let batchThreeProgress:number;
-          for (let j in this.responseData[i].batches){
-            batchOnePerformance = this.responseData[i].batches[j].performance;
-            batchTwoPerformance = this.responseData[i].batches[j].performance;
-            batchOneProgress = this.responseData[i].batches[j].progress;
-            batchTwoProgress = this.responseData[i].batches[j].progress;
+          let batchOnePerformance: number;
+          let batchTwoPerformance: number;
+          let batchThreePerformance: number;
+          let batchOneProgress: number;
+          let batchTwoProgress: number;
+          let batchThreeProgress: number;
+          for (let j in this.responseData[i].batches) {
+            batchOnePerformance = parseFloat(this.responseData[i].batches[j].performance);
+            batchTwoPerformance = parseFloat(this.responseData[i].batches[j].performance);
+            batchOneProgress = parseFloat(this.responseData[i].batches[j].progress);
+            batchTwoProgress = parseFloat(this.responseData[i].batches[j].progress);
           }
           this.performanceDataSet.push({
             label: this.responseData[i].courseName,
@@ -68,34 +66,9 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
             Group2: batchTwoProgress,
             Group3: batchTwoProgress
           });
-          // for (let j in this.responseData[i].batches) {
-          //   this.performanceDataSet.push({
-          //     Group1: this.responseData[i].batches[j].performance,
-          //     Group2: this.responseData[i].batches[j].performance
-          //   });
-          //   this.progressDataSet.push({
-          //     Group1: this.responseData[i].batches[j].progress,
-          //     Group2: this.responseData[i].batches[j].progress
-          //   });
-          // }
         }
-
-        console.log("this.performanceDataSet",this.performanceDataSet);
-        console.log("this.progressDataSet",this.progressDataSet);
+        console.log("performanceDataSet",this.performanceDataSet);
         
-
-
-        // for (let key in this.responseData) {
-        //   let lableName = this.responseData[key][0].courseName;
-        //   let batchName = this.responseData[key][0].batchName;
-        //   console.log("lableName", lableName);
-        //   console.log("batchName", batchName);
-        //   console.log("key", this.responseData[key]);
-        //   for(let i in this.responseData[key]){
-        //     let Group1 = this.responseData[key][i].performance;
-        //     console.log("Group1", Group1);
-        //   }
-        // }
       });
   }
 
@@ -110,7 +83,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(changes.filterbody){
+    if (changes.filterbody) {
       console.log("body changed");
       this.getDataFromService();
     }

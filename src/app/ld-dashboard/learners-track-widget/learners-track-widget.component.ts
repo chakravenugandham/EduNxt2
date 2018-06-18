@@ -42,26 +42,21 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   getData() {
-    console.log("this.filterbody after construction",this.filterbody);
-    
     this.serviceData
       .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
-        console.log("this.widgetData", this.widgetData);
       });
   }
 
   getFilterObject($event) {
     this.filterbody = $event;
     this.getData();
-    console.log("this.filterbody", this.filterbody);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {
-      console.log("body changed");
       this.getData();
     }
   }

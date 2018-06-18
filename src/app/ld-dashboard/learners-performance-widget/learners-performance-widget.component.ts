@@ -20,7 +20,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
 
   responseData = [];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
   performanceFn() {
     this.getTab = "performance";
   }
@@ -33,7 +33,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
-    console.log("this.filterbody", this.filterbody);
   }
 
   getDataFromService() {
@@ -67,15 +66,12 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
             Group3: batchTwoProgress
           });
         }
-        console.log("performanceDataSet",this.performanceDataSet);
-        
       });
   }
 
   constrcutGrpah() {
     for (let key in this.responseData) {
       let lableName = this.responseData[key[0]].courseName;
-      console.log("lableName", lableName);
     }
   }
   ngOnInit() {
@@ -84,7 +80,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {
-      console.log("body changed");
       this.getDataFromService();
     }
   }

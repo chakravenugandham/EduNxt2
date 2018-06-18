@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 
 import { GoogleChartsBaseService } from "../../services/googleChartService";
 
-//declare var google: any;
 @Component({
   selector: "app-location",
   templateUrl: "./location.component.html",
@@ -62,10 +61,6 @@ export class LocationComponent implements OnInit, OnChanges {
           this.totalActiveUsers
         );
       }
-      console.log(this.data);
-      console.log(this.locationData);
-      // console.log(this.locationData[i].totalActiveUsers);
-
       this.googleChartsBaseService.setMap(this.someData);
     }
   }

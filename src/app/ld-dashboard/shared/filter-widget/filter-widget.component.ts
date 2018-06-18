@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  EventEmitter,
-  Output
-} from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
@@ -33,7 +25,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     currentModule: string;
   };
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
 
   filterSelected: any = {
     batchId: [],
@@ -46,13 +38,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       .getFiltersData(this.viewData.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
-        console.log("filtersData", this.filtersData);
       });
   }
 
   selectFilter(filter, filterName) {
-    console.log("filter", filter);
-    console.log("filterName", filterName);
     if (!this.filterArray.includes(filterName.name)) {
       this.filterArray.push(filterName.name);
     } else if (this.filterArray.includes(filterName.name)) {
@@ -64,17 +53,14 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     switch (filter.type) {
       case "batch": {
         filterTypeId = "batchId";
-        // this.filterSelected["batchId"].push(filterName.id);
         break;
       }
       case "team": {
         filterTypeId = "teamId";
-        // this.filterSelected["teamId"].push(filterName.id);
         break;
       }
       case "zone": {
         filterTypeId = "zoneId";
-        // this.filterSelected["zoneId"].push(filterName.id);
         break;
       }
     }
@@ -86,12 +72,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       this.filterSelected[filterTypeId].splice(i, 1);
     }
 
-    console.log("this.filterSelected before stringify", this.filterSelected);
     let jsonedFilter = JSON.stringify(this.filterSelected);
-    console.log("jsonedFilter", jsonedFilter);
 
-    // this.filterSelected.filterType.push(filterName.id);
-    console.log("this.filterSelected after stringify", this.filterSelected);
+    this.filterSelected.filterType.push(filterName.id);
 
     this.filterEvent.emit(this.filterSelected);
   }
@@ -101,12 +84,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   removeFilter(i) {
-    console.log("removable filter index", i);
     this.filterArray.splice(i, 1);
-    console.log("filterArray", this.filterArray);
   }
   removeFromFilterBody(filterBodyName) {
-    console.log("filterBodyName", filterBodyName);
   }
 
   routetoFullview() {
@@ -114,10 +94,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // this.setFilterBody();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("something changed");
   }
 }

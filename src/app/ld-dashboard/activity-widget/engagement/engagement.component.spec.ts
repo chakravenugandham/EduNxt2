@@ -22,7 +22,6 @@ fdescribe('EngagementComponent', () => {
     fixture = TestBed.createComponent(EngagementComponent);
     component = fixture.componentInstance;
     component.engageData = {};
-    //inputEl = fixture.debugElement.query(By.css('input'));
     fixture.detectChanges();
   });
 

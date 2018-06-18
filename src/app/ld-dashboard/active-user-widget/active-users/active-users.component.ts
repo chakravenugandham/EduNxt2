@@ -9,7 +9,7 @@ import * as _ from "underscore";
 })
 export class ActiveUsersComponent implements OnInit, OnChanges {
   public lineData;
-  // chartWidth = $('.line-block').width();
+
   @Input() usersData;
 
   constructor() { }
@@ -20,7 +20,6 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
-    // var w = 520;
     let w = d3
       .select("#activeUserGraph")
       .node()

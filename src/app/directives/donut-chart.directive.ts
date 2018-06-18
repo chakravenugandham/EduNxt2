@@ -12,14 +12,13 @@ export class DonutChartDirective implements OnChanges {
 
   chartRenderFn(chartData) {
     this.el.nativeElement.innerHTML = '';
-    //let chartDiv = document.createElement('div');
 
     let w = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
-    let h:number;
-    if(this.componentName == "active-learner-pace"){
+    let h: number;
+    if (this.componentName == "active-learner-pace") {
       h = 130;
     }
-    else{
+    else {
       h = 240;
     }
 
@@ -75,7 +74,6 @@ export class DonutChartDirective implements OnChanges {
       .style("font-weight", "bold")
       .text(function (d) {
         if (d.data.type === "classD") {
-          console.log(d.data);
           return "Haven't started";
         }
       });

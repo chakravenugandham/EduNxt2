@@ -44,17 +44,15 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   responseData = [];
   dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
   // [[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]]
+
   getDataFromService() {
     this.getData
       .getScoresDistrubution(this.getValue, this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;
-        console.log("Score data", this.responseData);
-        // for (let k in this.responseData) {
-        //   this.dataSet[k+1].push(this.responseData[k].numberOfUsers);
-        // }
-        // console.log("dataset from score response", this.dataSet);
-        
+        for (let i = 1; i <= this.responseData.length; i++) {
+          this.dataSet[i][1] = this.responseData[i - 1].numberOfUsers;
+        }
       });
   }
 
@@ -63,7 +61,7 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.filterbody) {
+    if (changes.filterbody.currentValue) {
       this.getDataFromService();
     }
   }

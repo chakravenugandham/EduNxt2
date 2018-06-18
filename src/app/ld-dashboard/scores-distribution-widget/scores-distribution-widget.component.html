@@ -54,10 +54,11 @@
       </span>
     </div>
   </div>
-  
-  <app-test-scores [testData]="responseData" *ngIf="getValue == 'test'"></app-test-scores>
-  <app-quiz [testData]="responseData" *ngIf="getValue == 'quiz'"></app-quiz>
-  <app-assignment [testData]="responseData" *ngIf="getValue == 'assignment'"></app-assignment>
+  <div *ngIf="responseData.length>0">
+    <app-test-scores [testData]="dataSet" *ngIf="getValue == 'test'"></app-test-scores>
+    <app-quiz [testData]="dataSet" *ngIf="getValue == 'quiz'"></app-quiz>
+    <app-assignment [testData]="dataSet" *ngIf="getValue == 'assignment'"></app-assignment>
+  </div>
 
   <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 

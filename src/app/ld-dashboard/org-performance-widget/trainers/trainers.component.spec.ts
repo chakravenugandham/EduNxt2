@@ -1,16 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { TrainersComponent } from './trainers.component';
+import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.component";
 
-describe('TrainersComponent', () => {
+
+fdescribe('TrainersComponent', () => {
   let component: TrainersComponent;
   let fixture: ComponentFixture<TrainersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrainersComponent ]
+      declarations: [TrainersComponent, FilterWidgetComponent],
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

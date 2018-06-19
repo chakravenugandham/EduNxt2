@@ -1,11 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges
-} from "@angular/core";
-// import * as d3 from "d3";
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
+
 declare let d3: any;
 
 @Component({
@@ -16,9 +10,9 @@ declare let d3: any;
 export class ProgressComponent implements OnInit, OnChanges {
   @Input() progressData;
   barChartData;
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.progressData) {

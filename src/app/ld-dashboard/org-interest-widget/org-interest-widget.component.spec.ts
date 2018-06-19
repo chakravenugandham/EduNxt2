@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { OrgInterestWidgetComponent } from './org-interest-widget.component';
+import { OrgInterestComponent } from "./org-interest/org-interest.component";
+import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
 
 describe('OrgInterestWidgetComponent', () => {
   let component: OrgInterestWidgetComponent;
@@ -8,9 +12,9 @@ describe('OrgInterestWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgInterestWidgetComponent ]
+      declarations: [OrgInterestWidgetComponent, OrgInterestComponent, FilterWidgetComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges,  SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-org-interest-widget',
@@ -16,21 +16,17 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   };
 
   filterbody = {};
-  
+
   constructor() { }
-  
+
   getFilterObject($event) {
     this.filterbody = $event;
-    // this.getData();
-    console.log("this.filterbody", this.filterbody);
   }
   ngOnInit() {
   }
 
-  ngOnChanges(changes:SimpleChanges){
-    if(changes.filterbody){
-      console.log("xxx");
-      
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.filterbody) {
     }
   }
 }

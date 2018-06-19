@@ -1,16 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { ContentConsumptionFullviewComponent } from './content-consumption-fullview.component';
+import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('ContentConsumptionFullviewComponent', () => {
+fdescribe('ContentConsumptionFullviewComponent', () => {
   let component: ContentConsumptionFullviewComponent;
   let fixture: ComponentFixture<ContentConsumptionFullviewComponent>;
+  let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContentConsumptionFullviewComponent ]
+      declarations: [ContentConsumptionFullviewComponent],
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

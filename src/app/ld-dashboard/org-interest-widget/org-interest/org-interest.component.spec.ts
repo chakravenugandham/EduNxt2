@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { CloudData, CloudOptions } from "angular-tag-cloud-module";
+import { By } from "@angular/platform-browser";
 
 import { OrgInterestComponent } from './org-interest.component';
+import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 describe('OrgInterestComponent', () => {
   let component: OrgInterestComponent;
@@ -8,9 +12,10 @@ describe('OrgInterestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgInterestComponent ]
+      declarations: [OrgInterestComponent],
+      providers: [LdDashboardService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

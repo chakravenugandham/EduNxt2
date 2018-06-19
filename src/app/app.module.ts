@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
 
+import { HttpModule } from '@angular/http';
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { Daterangepicker } from "ng2-daterangepicker";
@@ -138,11 +139,11 @@ import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/
   imports: [
     BrowserModule,
     NvD3Module,
+    HttpModule,
     HttpClientModule,
     NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     AngularFontAwesomeModule,
-    RoutingModule,
     Daterangepicker,
     FormsModule
   ],

@@ -1,16 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { ScoresDistributionWidgetComponent } from './scores-distribution-widget.component';
+import { LdDashboardService } from "../services/ld-dashboard.service";
+import { QuizComponent } from "./quiz/quiz.component";
+import { AssignmentComponent } from "./assignment/assignment.component";
+import { TestScoresComponent } from "./test-scores/test-scores.component";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
+import { ScoreChartDirective } from "../../directives/score-chart.directive";
 
-describe('ScoresDistributionWidgetComponent', () => {
+fdescribe('ScoresDistributionWidgetComponent', () => {
   let component: ScoresDistributionWidgetComponent;
   let fixture: ComponentFixture<ScoresDistributionWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScoresDistributionWidgetComponent ]
+      declarations: [ScoresDistributionWidgetComponent, QuizComponent, AssignmentComponent,
+        TestScoresComponent, FilterWidgetComponent, ScoreChartDirective],
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

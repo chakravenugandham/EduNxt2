@@ -1,33 +1,21 @@
-.feedback-emoji {
-  padding: 12px;
-  margin-left: -10px;
-  margin-right: 10px;
+.feedback-component {
+  .feedback-emoji {
+    padding: 12px;
+    margin-left: -10px;
+    margin-right: 10px;
+  }
+  .p-t-20 {
+    padding-top: 20px;
+  }
+  .m-r-3 {
+    margin-right: 3px;
+  }
+  .danger-class {
+    color: #ff4e00;
+  }
 }
 
-.p-t-20 {
-  padding-top: 20px;
-}
-
-.p-t-7 {
-  padding-top: 7px !important;
-  font-size: 12px;
-}
-
-.m-r-0 {
-  margin-right: 0px;
-}
-
-.m-r-3 {
-  margin-right: 3px;
-}
-
-.danger-class {
-  color: #ff4e00;
-}
 @media (max-width: 576px) {
-  //   .feedback-component {
-  //     text-align: center;
-  //   }
   .feedback-emoji {
     padding: 0;
     text-align: center;

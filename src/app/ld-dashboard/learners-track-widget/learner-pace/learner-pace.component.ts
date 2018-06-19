@@ -7,7 +7,6 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 })
 export class LearnerPaceComponent implements OnInit, OnChanges {
   @Input() paceData: any;
-
   chartValues = [];
 
   constructor() {}

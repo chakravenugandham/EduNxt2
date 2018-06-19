@@ -4,7 +4,7 @@
     padding-left: 6px;
   }
   i {
-    color: #FF5722;
+    color: #ff5722;
     right: 8px;
     top: 8px;
     font-size: 14px;
@@ -26,12 +26,11 @@
 .list-inline {
   padding-left: 0px;
   width: 170px;
-}
-
-.list-inline-item {
-  padding-top: 15px;
-  img {
-    height: 16px;
-    width: 16px;
+  .list-inline-item {
+    padding-top: 15px;
+    img {
+      height: 16px;
+      width: 16px;
+    }
   }
 }

@@ -8,7 +8,6 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./learners-performance-widget.component.scss"]
 })
 export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
-  routePath: string = "learnerPerformanceFullView";
   filtersData = {
     routeTo: "learnerPerformanceFullView",
     filters: true,
@@ -17,19 +16,19 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     filterList: ["zone"]
   };
   getTab: string = "performance";
-
   responseData = [];
+  filterbody = {};
+  performanceDataSet = [];
+  progressDataSet = [];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
+
   performanceFn() {
     this.getTab = "performance";
   }
   progressFn() {
     this.getTab = "progress";
   }
-  filterbody = {};
-  performanceDataSet = [];
-  progressDataSet = [];
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
@@ -41,38 +40,30 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       .subscribe((response: any) => {
         this.responseData = response.data;
         for (let i in this.responseData) {
-          let batchOnePerformance: number;
-          let batchTwoPerformance: number;
-          let batchThreePerformance: number;
-          let batchOneProgress: number;
-          let batchTwoProgress: number;
-          let batchThreeProgress: number;
+          let performancegroupValues = [];
+          let progressgroupValues = [];
           for (let j in this.responseData[i].batches) {
-            batchOnePerformance = parseFloat(this.responseData[i].batches[j].performance);
-            batchTwoPerformance = parseFloat(this.responseData[i].batches[j].performance);
-            batchOneProgress = parseFloat(this.responseData[i].batches[j].progress);
-            batchTwoProgress = parseFloat(this.responseData[i].batches[j].progress);
+            performancegroupValues.push(
+             parseInt(this.responseData[i].batches[j].performance)
+            );
+            progressgroupValues.push(
+              parseInt(this.responseData[i].batches[j].progress)
+            );
           }
           this.performanceDataSet.push({
             label: this.responseData[i].courseName,
-            Group1: batchOnePerformance,
-            Group2: batchTwoPerformance,
-            Group3: batchTwoPerformance
+            Group1: performancegroupValues[0],
+            Group2: performancegroupValues[0],
+            Group3: performancegroupValues[0]
           });
           this.progressDataSet.push({
             label: this.responseData[i].courseName,
-            Group1: batchOneProgress,
-            Group2: batchTwoProgress,
-            Group3: batchTwoProgress
+            Group1: progressgroupValues[0],
+            Group2: progressgroupValues[0],
+            Group3: progressgroupValues[0]
           });
         }
       });
-  }
-
-  constrcutGrpah() {
-    for (let key in this.responseData) {
-      let lableName = this.responseData[key[0]].courseName;
-    }
   }
   ngOnInit() {
     this.getDataFromService();

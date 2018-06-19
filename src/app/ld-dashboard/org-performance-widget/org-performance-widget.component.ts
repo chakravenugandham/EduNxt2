@@ -7,7 +7,6 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-
   getTab: string = "teams";
 
   filtersData = {
@@ -23,7 +22,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) { }
+  constructor(private serviceData: LdDashboardService) {}
 
   teamsFn() {
     this.getTab = "teams";
@@ -47,5 +46,5 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterbody = $event;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

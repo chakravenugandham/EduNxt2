@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-seen-responded',
-  templateUrl: './seen-responded.component.html',
-  styleUrls: ['./seen-responded.component.scss']
+  selector: "app-seen-responded",
+  templateUrl: "./seen-responded.component.html",
+  styleUrls: ["./seen-responded.component.scss"]
 })
 export class SeenRespondedComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

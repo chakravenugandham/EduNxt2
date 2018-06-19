@@ -8,11 +8,10 @@ import * as _ from "underscore";
   styleUrls: ["./active-users.component.scss"]
 })
 export class ActiveUsersComponent implements OnInit, OnChanges {
-  public lineData;
-
   @Input() usersData;
+  chartData = [];
 
-  constructor() { }
+  constructor() {}
 
   onResize() {
     this.usersChartRender(this.chartData);
@@ -31,14 +30,14 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     var xScale = d3
       .scaleTime()
       .domain(
-        d3.extent(dataSet, function (d) {
+        d3.extent(dataSet, function(d) {
           return d[0];
         })
       )
       .range([p, w - p / 2]);
 
     // create yScale
-    var yMax = d3.max(dataSet, function (d) {
+    var yMax = d3.max(dataSet, function(d) {
       var max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
@@ -92,7 +91,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
         d3
           .axisLeft(yScale)
           .ticks(5)
-          .tickFormat(function (d) {
+          .tickFormat(function(d) {
             return d;
           })
           .tickSize(0, 0)
@@ -101,10 +100,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     //d3 line generator
     var line = d3
       .line()
-      .x(function (d) {
+      .x(function(d) {
         return xScale(d[0]);
       })
-      .y(function (d) {
+      .y(function(d) {
         return yScale(d[1]);
       });
 
@@ -116,10 +115,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     var line2 = d3
       .line()
-      .x(function (d) {
+      .x(function(d) {
         return xScale(d[0]);
       })
-      .y(function (d) {
+      .y(function(d) {
         return yScale(d[2]);
       });
 
@@ -137,13 +136,13 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .enter()
       .append("circle")
       .attr("r", 3)
-      .attr("cx", function (d) {
+      .attr("cx", function(d) {
         var key = xScale(d[0]);
         dataPoints[key] = dataPoints[key] || [];
         dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .attr("cy", function (d) {
+      .attr("cy", function(d) {
         return yScale(d[1]);
       })
       .attr("fill", "white")
@@ -155,13 +154,13 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .enter()
       .append("circle")
       .attr("r", 3)
-      .attr("cx", function (d) {
+      .attr("cx", function(d) {
         var key = xScale(d[0]);
         dataPoints[key] = dataPoints[key] || [];
         dataPoints[key].push(d);
         return xScale(d[0]);
       })
-      .attr("cy", function (d) {
+      .attr("cy", function(d) {
         return yScale(d[2]);
       })
       .attr("fill", "white")
@@ -179,56 +178,65 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .attr("stroke-width", 1)
       .attr("opacity", "0");
 
-    svg.on("mousemove", function () {
+    svg.on("mousemove", function() {
       let mouseX = d3.event.pageX - p;
       vertline.attr("opacity", "1");
       var keys = _.keys(dataPoints).sort();
       var epsilon = (keys[1] - keys[0]) / 2;
-      var nearest = _.find(keys, function (a) {
+      var nearest = _.find(keys, function(a) {
         return Math.abs(a - mouseX) <= epsilon;
       });
       if (nearest) {
         vertline.attr("x1", nearest).attr("x2", nearest);
-        d3
-          .select(".ttip-date")
-          .html(d3.timeFormat("%d %b")(new Date(dataPoints[nearest][0][0])));
-        d3
-          .select(".ttip-learners")
-          .html(dataPoints[nearest][0][1] + " Active Learner");
-        d3
-          .select(".ttip-faculty")
-          .html(dataPoints[nearest][0][2] + " Active Faculty");
+        d3.select(".ttip-date").html(
+          d3.timeFormat("%d %b")(new Date(dataPoints[nearest][0][0]))
+        );
+        d3.select(".ttip-learners").html(
+          dataPoints[nearest][0][1] + " Active Learner"
+        );
+        d3.select(".ttip-faculty").html(
+          dataPoints[nearest][0][2] + " Active Faculty"
+        );
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");
         //tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
         let xPosition = 0;
         if (d3.event.clientX > 300) {
-          xPosition = (nearest - 150);
+          xPosition = nearest - 150;
         } else {
-          xPosition = (nearest);
+          xPosition = nearest;
         }
-        tooltip.style('top', (150) + 'px').style('left', xPosition + 'px');
+        tooltip.style("top", 150 + "px").style("left", xPosition + "px");
       }
     });
 
-    svg.on("mouseout", function () {
+    svg.on("mouseout", function() {
       vertline.attr("opacity", "0");
       var tooltip = d3.select(".tool-tip");
       tooltip.style("visibility", "hidden");
     });
   }
-  chartData = [];
+
+  ngOnInit() {}
+
   ngOnChanges(changes: any) {
     if (changes.usersData.currentValue && this.chartData) {
       for (var i = 0; i < this.usersData.graphData.length; i++) {
         var date = new Date(this.usersData.graphData[i].date);
         var timeStamp = date.getTime();
-        var activeLearners = parseInt(this.usersData.graphData[i].activeLearners);
-        var activeFacultiesAndAdmins = parseInt(this.usersData.graphData[i].activeFacultiesAndAdmins);
-        this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
+        var activeLearners = parseInt(
+          this.usersData.graphData[i].activeLearners
+        );
+        var activeFacultiesAndAdmins = parseInt(
+          this.usersData.graphData[i].activeFacultiesAndAdmins
+        );
+        this.chartData.push([
+          timeStamp,
+          activeLearners,
+          activeFacultiesAndAdmins
+        ]);
       }
       this.usersChartRender(this.chartData);
     }
   }
-  ngOnInit() { }
 }

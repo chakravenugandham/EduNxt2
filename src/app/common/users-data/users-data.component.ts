@@ -1,17 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-users-data',
-  templateUrl: './users-data.component.html',
-  styleUrls: ['./users-data.component.scss']
+  selector: "app-users-data",
+  templateUrl: "./users-data.component.html",
+  styleUrls: ["./users-data.component.scss"]
 })
-
-
 export class UsersDataComponent implements OnInit {
-
   @Input() config: Config;
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: any) {
     if (changes.config && changes.config.currentValue) {
@@ -19,9 +16,7 @@ export class UsersDataComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
 
 export class Config {

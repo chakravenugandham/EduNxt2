@@ -1,30 +1,32 @@
 declare var google: any;
 
-import { Subject } from 'rxjs';
-
+import { Subject } from "rxjs";
 
 export class GoogleChartsBaseService {
-    constructor() { }
-    public setMap(someData: Array<any>) {
-        google.charts.load('current', {
-            'packages': ['geochart'],
-            'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-        });
-        google.charts.setOnLoadCallback(drawRegionsMap);
+  constructor() {}
 
-        function drawRegionsMap() {
-            var data = google.visualization.arrayToDataTable(someData);
+  public setMap(someData: Array<any>) {
+    google.charts.load("current", {
+      packages: ["geochart"],
+      mapsApiKey: "AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY"
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
 
-            var options = {
-                region: 'IN',
-                displayMode: 'regions',
-                resolution: 'provinces',
-                colors: ['#0146F9', '#5584FF']
-            };
+    function drawRegionsMap() {
+      var data = google.visualization.arrayToDataTable(someData);
 
-            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+      var options = {
+        region: "IN",
+        displayMode: "regions",
+        resolution: "provinces",
+        colors: ["#0146F9", "#5584FF"]
+      };
 
-            chart.draw(data, options);
-        }
+      var chart = new google.visualization.GeoChart(
+        document.getElementById("regions_div")
+      );
+
+      chart.draw(data, options);
     }
+  }
 }

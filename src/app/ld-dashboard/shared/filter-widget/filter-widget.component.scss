@@ -4,6 +4,28 @@
   bottom: 20px;
   padding-top: 12px;
   border-top: 1px dotted #ddd;
+  ul {
+    padding: 0;
+    margin: 0;
+    padding-right: 72px;
+    .filter {
+      background-color: #fff;
+      color: #5584ff;
+    }
+    li {
+      position: relative;
+      font-size: 12px;
+      padding: 6px 32px 6px 6px;
+      border: 1px solid #5584ff;
+      background-color: #5584ff;
+      color: white;
+      i {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+      }
+    }
+  }
 }
 
 .viewDetails {
@@ -13,49 +35,23 @@
   color: #5584ff;
   font-size: 12px;
   font-weight: 600;
-}
-.viewDetails i {
-  padding: 2px 4px 2px 4px;
-  border: 1px solid #5584ff;
-  border-radius: 50%;
-  margin-left: 4px;
-  font-weight: 600;
-}
-.filterComponent ul {
-  padding: 0;
-  margin: 0;
-  padding-right: 72px;
+  i {
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #5584ff;
+    border-radius: 50%;
+    margin-left: 4px;
+    font-weight: 600;
+  }
 }
 
-.filterComponent ul .filter {
-  background-color: #fff;
-  color: #5584ff;
-}
-
-.filterComponent ul li {
-  position: relative;
-  font-size: 12px;
-  padding: 6px 32px 6px 6px;
-  border: 1px solid #5584ff;
-  background-color: #5584ff;
-  color: white;
-}
-
-.filterComponent ul li i {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-}
 .searchList {
   border: 0 !important;
   padding: 0 !important;
 }
 .search-org-user {
   position: relative;
-  //margin-left: 12px;
   input {
     padding: 4px;
-    //padding-left: 36px;
     border: 1px solid #2196f3a8;
     width: 68px;
   }
@@ -65,7 +61,6 @@
     top: 3px;
     i {
       color: #2196f3a8;
-      //font-size: 16px;
     }
   }
 }
@@ -81,7 +76,7 @@
   vertical-align: middle;
   cursor: pointer;
 }
-.checked-box{
+.checked-box {
   background-color: orange !important;
 }
 
@@ -90,52 +85,43 @@
 .dropdown-toggle::after {
   display: none;
 }
-
-// .filterSelect {
-//   position: relative;
-// }
 .showFilter-list {
   position: absolute;
   top: 32px;
   left: 0px;
   background-color: #fff;
-  // border: 1px solid #ddd;
   padding: 8px;
   z-index: 1;
   width: 220px;
-  // width: max-content;
+  ul {
+    height: 140px;
+    padding: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-bottom: 6px;
+    li {
+      border: none;
+      background-color: #fff;
+      color: #333;
+      input {
+        margin-right: 4px;
+        vertical-align: middle;
+      }
+    }
+  }
 }
-.getFilter{
+.getFilter {
   cursor: pointer;
-}
-.showFilter-list ul {
-  height: 140px;
-  padding: 0;
-  overflow: scroll;
-  overflow-x: hidden;
-  margin-bottom: 6px;
-  // margin-right: 6px;
-}
-.showFilter-list ul li {
-  border: none;
-  background-color: #fff;
-  color: #333;
-}
-.showFilter-list ul li input {
-  margin-right: 4px;
-  vertical-align: middle;
 }
 .filter-name {
   padding: 4px 0px;
 }
 .apply-filters {
   position: absolute;
-  /* position: fixed; */
   bottom: 0;
   left: 0;
   background: #fff;
   width: 100%;
-  // border: 1px solid;
 }
 .apply-filters button {
   float: right;

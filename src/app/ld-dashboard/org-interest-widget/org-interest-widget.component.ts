@@ -17,16 +17,15 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
 
   filterbody = {};
 
-  constructor() {}
+  constructor() { }
 
   getFilterObject($event) {
     this.filterbody = $event;
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {
-      console.log("xxx");
     }
   }
 }

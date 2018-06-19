@@ -11,17 +11,14 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
   learnerData = [];
 
   onchange(componentName) {
-    console.log("component name", componentName);
     this.selectedGraph = componentName;
   }
 
-  constructor(private contentService: LdDashboardService) {}
+  constructor(private contentService: LdDashboardService) { }
 
   getDataFromService() {
-    console.log("check2");
     this.contentService.getLearnerPerformanceDetails().subscribe((res: any) => {
       this.learnerData = res.data;
-      console.log("learnerData", this.learnerData);
     });
   }
   ngOnInit() {

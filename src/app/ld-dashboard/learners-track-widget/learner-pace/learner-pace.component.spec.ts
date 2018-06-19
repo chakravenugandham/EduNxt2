@@ -1,21 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { LearnerPaceComponent } from './learner-pace.component';
+import { DonutChartDirective } from "../../../directives/donut-chart.directive";
 
-describe('LearnerPaceComponent', () => {
+fdescribe('LearnerPaceComponent', () => {
   let component: LearnerPaceComponent;
   let fixture: ComponentFixture<LearnerPaceComponent>;
+  let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LearnerPaceComponent ]
+      declarations: [LearnerPaceComponent, DonutChartDirective]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LearnerPaceComponent);
     component = fixture.componentInstance;
+    component.paceData = [];
     fixture.detectChanges();
   });
 

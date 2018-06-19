@@ -1,21 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { ActiveUsersComponent } from './active-users.component';
 
-describe('ActiveUsersComponent', () => {
+fdescribe('ActiveUsersComponent', () => {
   let component: ActiveUsersComponent;
   let fixture: ComponentFixture<ActiveUsersComponent>;
+  let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActiveUsersComponent ]
+      declarations: [ActiveUsersComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ActiveUsersComponent);
     component = fixture.componentInstance;
+    component.usersData = [];
     fixture.detectChanges();
   });
 

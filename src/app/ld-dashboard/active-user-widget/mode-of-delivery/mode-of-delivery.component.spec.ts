@@ -1,21 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { ModeOfDeliveryComponent } from './mode-of-delivery.component';
 
-describe('ModeOfDeliveryComponent', () => {
+fdescribe('ModeOfDeliveryComponent', () => {
   let component: ModeOfDeliveryComponent;
   let fixture: ComponentFixture<ModeOfDeliveryComponent>;
+  let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModeOfDeliveryComponent ]
+      declarations: [ModeOfDeliveryComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ModeOfDeliveryComponent);
     component = fixture.componentInstance;
+    component.usersData = [];
     fixture.detectChanges();
   });
 

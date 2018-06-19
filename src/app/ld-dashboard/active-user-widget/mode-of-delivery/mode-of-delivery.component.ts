@@ -9,8 +9,7 @@ import * as moment from "moment";
   styleUrls: ['./mode-of-delivery.component.scss']
 })
 export class ModeOfDeliveryComponent implements OnInit, OnChanges {
-  public lineData;
-  //chartWidth = $('.widget-block').width();
+
   @Input() usersData;
 
   constructor() { }

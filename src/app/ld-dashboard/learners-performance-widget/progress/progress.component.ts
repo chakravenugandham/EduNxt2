@@ -1,10 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges
-} from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
+
 declare let d3: any;
 
 @Component({
@@ -19,7 +14,7 @@ export class ProgressComponent implements OnInit, OnChanges {
   batchNames = [];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.progressData) {

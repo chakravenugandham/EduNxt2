@@ -12,10 +12,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   constructor(private contentService: LdDashboardService) { }
 
   getDataFromService() {
-    console.log("check2");
     this.contentService.getContentData().subscribe((res: any) => {
       this.contentData = res.data;
-      console.log("content consumption data", this.contentData);
     });
   }
 

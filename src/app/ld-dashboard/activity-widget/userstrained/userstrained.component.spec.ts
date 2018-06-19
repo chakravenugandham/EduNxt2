@@ -1,21 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { UserstrainedComponent } from './userstrained.component';
+import { HalfdonutchartDirective } from '../../../directives/halfdonutchart.directive';
 
-describe('UserstrainedComponent', () => {
+fdescribe('UserstrainedComponent', () => {
   let component: UserstrainedComponent;
   let fixture: ComponentFixture<UserstrainedComponent>;
+  let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserstrainedComponent ]
+      declarations: [UserstrainedComponent, HalfdonutchartDirective]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserstrainedComponent);
     component = fixture.componentInstance;
+    component.usersData = {};
     fixture.detectChanges();
   });
 

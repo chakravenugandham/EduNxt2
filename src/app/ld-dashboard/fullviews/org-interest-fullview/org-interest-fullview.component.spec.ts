@@ -1,16 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { OrgInterestFullviewComponent } from './org-interest-fullview.component';
+import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('OrgInterestFullviewComponent', () => {
+fdescribe('OrgInterestFullviewComponent', () => {
   let component: OrgInterestFullviewComponent;
   let fixture: ComponentFixture<OrgInterestFullviewComponent>;
+  let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgInterestFullviewComponent ]
+      declarations: [OrgInterestFullviewComponent],
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

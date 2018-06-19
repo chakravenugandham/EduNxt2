@@ -1,16 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 import { LearnersPerformanceWidgetComponent } from './learners-performance-widget.component';
+import { LdDashboardService } from "../services/ld-dashboard.service";
+import { PerformanceComponent } from "./performance/performance.component";
+import { ProgressComponent } from "./progress/progress.component";
+import { BarChartDirective } from "../../directives/bar-chart.directive";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('LearnersPerformanceWidgetComponent', () => {
+fdescribe('LearnersPerformanceWidgetComponent', () => {
   let component: LearnersPerformanceWidgetComponent;
   let fixture: ComponentFixture<LearnersPerformanceWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LearnersPerformanceWidgetComponent ]
+      declarations: [LearnersPerformanceWidgetComponent, PerformanceComponent, ProgressComponent, BarChartDirective, FilterWidgetComponent],
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

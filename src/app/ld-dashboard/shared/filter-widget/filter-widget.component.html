@@ -24,10 +24,7 @@
               <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
                 <div class="boldText"> Select {{filter.type}} </div>
                 <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                  <!-- <span>
-                    <input id="filterName.id" type="checkbox">
-                  </span> -->
-                  <!-- <span class="check-box" [ngClass]="{'text-warning': filterArray.includes(filterName.name)}"></span> -->
+
                   <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>
                   <span>{{filterName.name}} </span>
                 </div>
@@ -39,27 +36,6 @@
           </div>
         </div>
       </div>
-      <!-- <div ngbDropdown autoClose="outside">
-        <div id="filtersDropdown" ngbDropdownToggle (click)="showFilter()">
-          <span>Add a Filter
-            <i class="fas fa-plus-circle"></i>
-          </span>
-
-          <div ngbDropdownMenu aria-labelledby="filtersDropdown">
-            <div *ngIf="filtersData">
-              <div class="dropdown-item" *ngFor="let filter of filtersData; index as i">
-                <div>
-                  <b> {{filter.type}} </b>
-                </div>
-                <div *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                  <div class="dropdown-item">
-                    <input id="filterName.id" type="checkbox"> {{filterName.name}} </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </li>
     <span *ngIf="filterArray">
       <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">

@@ -1,11 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  HostListener,
-  Input,
-  OnChanges,
-  OnInit
-} from "@angular/core";
+import { Directive, ElementRef, Input, OnChanges, OnInit } from "@angular/core";
 
 // import * as d3 from "d3v4";
 declare let d3: any;
@@ -13,47 +6,50 @@ declare let d3: any;
 @Directive({
   selector: "[appBarChart]"
 })
-export class BarChartDirective {
+export class BarChartDirective implements OnChanges {
   @Input() data;
   dataset = [];
 
-  constructor(private el: ElementRef) { }
+  // dataset model
+  // dataset = [{ label: "course_name", Group1: 60, Group2: 72, Group3: 46 }];
+
+  constructor(private el: ElementRef) {}
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
-    let chartDiv = document.createElement("div");
+    // let chartDiv = document.createElement("div");
 
-    function rightRoundedRect(x, y, width, height, radius) {
-      return (
-        "M" +
-        x +
-        "," +
-        y +
-        "h" +
-        (width - radius) +
-        "a" +
-        radius +
-        "," +
-        radius +
-        " 0 0 1 " +
-        radius +
-        "," +
-        radius +
-        "v" +
-        (height - 2 * radius) +
-        "a" +
-        radius +
-        "," +
-        radius +
-        " 0 0 1 " +
-        -radius +
-        "," +
-        radius +
-        "h" +
-        (radius - width) +
-        "z"
-      );
-    }
+    // function rightRoundedRect(x, y, width, height, radius) {
+    //   return (
+    //     "M" +
+    //     x +
+    //     "," +
+    //     y +
+    //     "h" +
+    //     (width - radius) +
+    //     "a" +
+    //     radius +
+    //     "," +
+    //     radius +
+    //     " 0 0 1 " +
+    //     radius +
+    //     "," +
+    //     radius +
+    //     "v" +
+    //     (height - 2 * radius) +
+    //     "a" +
+    //     radius +
+    //     "," +
+    //     radius +
+    //     " 0 0 1 " +
+    //     -radius +
+    //     "," +
+    //     radius +
+    //     "h" +
+    //     (radius - width) +
+    //     "z"
+    //   );
+    // }
 
     let margin = 30,
       width = d3
@@ -87,22 +83,24 @@ export class BarChartDirective {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function (key) {
+    let options = d3.keys(this.dataset[0]).filter(function(key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function (d) {
-      d.valores = options.map(function (name) {
+    this.dataset.forEach(function(d) {
+      d.valores = options.map(function(name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function (d) {
+      this.dataset.map(function(d) {
         return d.label;
       })
     );
+
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
+
     y.domain([0, 100]);
 
     svg
@@ -125,7 +123,7 @@ export class BarChartDirective {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function (d) {
+      .attr("transform", function(d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -133,25 +131,25 @@ export class BarChartDirective {
 
     bar
       .selectAll("rect")
-      .data(function (d) {
+      .data(function(d) {
         return d.valores;
       })
       .enter()
       .append("rect")
       .attr("width", x1.rangeBand() - 12)
-      .attr("x", function (d) {
+      .attr("x", function(d) {
         return x1(d.name);
       })
-      .attr("y", function (d) {
+      .attr("y", function(d) {
         return y(d.value);
       })
-      .attr("value", function (d) {
+      .attr("value", function(d) {
         return d.name;
       })
-      .attr("height", function (d) {
+      .attr("height", function(d) {
         return height - y(d.value);
       })
-      .style("fill", function (d) {
+      .style("fill", function(d) {
         return color(d.name);
       });
   }

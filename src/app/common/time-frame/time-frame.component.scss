@@ -3,59 +3,41 @@
   padding: 12px 36px 0px 0px;
   box-shadow: 1px 1px #ccc;
   background-color: #fff;
-}
-
-.time-frame ul {
-  margin: 0;
-  display: inline-block;
-}
-
-.m-l-38 {
-  margin-left: 38px;
-}
-
-.time-frame ul li {
-  margin-right: 10px;
-}
-
-.selectDate,
-.selectCourse select {
-  border: 1px solid #0146f9;
-  padding: 6px 4px;
-  // color: #0146F9;
-}
-.course-item {
-  border-bottom: 1px solid #eee;
-  padding-top: 2px;
-}
-.list-inline-item {
-  img {
-    height: 16px;
-    width: 16px;
+  ul {
+    margin: 0;
+    display: inline-block;
+    li {
+      margin-right: 10px;
+      img {
+        height: 16px;
+        width: 16px;
+      }
+    }
+    .select-time-frame {
+      color: #262626 !important;
+    }
+    .m-l-38 {
+      margin-left: 38px;
+    }
+  }
+  .m-t-7 {
+    margin-top: 7px;
+    display: inline-block;
+    .p-l-5 {
+      padding-left: 5px;
+    }
   }
 }
 
-.calender-span {
-  //border-left: 1px solid #0146F9;
-  //margin-left:10px;
-  .calender {
-    padding-left: 10px;
-    height: 30px;
-    width: 30px;
+.selectCourse {
+  select {
+    border: 1px solid #0146f9;
+    padding: 6px 4px;
   }
-}
-
-.select-time-frame {
-  color: #262626 !important;
-}
-
-.p-l-5 {
-  padding-left: 5px;
-}
-
-.m-t-7 {
-  margin-top: 7px;
-  display: inline-block;
+  .course-item {
+    border-bottom: 1px solid #eee;
+    padding-top: 2px;
+  }
 }
 
 @media (max-width: 576px) {

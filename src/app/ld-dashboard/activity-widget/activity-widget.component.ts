@@ -9,19 +9,19 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./activity-widget.component.scss"]
 })
 export class ActivityWidgetComponent implements OnInit {
-  constructor(private getData: LdDashboardService) { }
-
   responseData = {
     activeUsers: "",
     learnerEngagement: "",
     learnerPace: "",
-    feedback: "",
-
+    feedback: ""
   };
+
   responseGoalsData = {
     timeSpent: "",
     usersTrained: ""
   };
+
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
     this.getData.getActivityData().subscribe((response: any) => {

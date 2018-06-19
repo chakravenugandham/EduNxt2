@@ -27,7 +27,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) { }
+  constructor(private serviceData: LdDashboardService) {}
 
   learnerPaceFn() {
     this.learnerPace = true;

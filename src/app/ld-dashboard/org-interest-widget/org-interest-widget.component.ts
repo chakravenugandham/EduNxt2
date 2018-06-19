@@ -1,9 +1,9 @@
-import { Component, OnInit, OnChanges,  SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
 @Component({
-  selector: 'app-org-interest-widget',
-  templateUrl: './org-interest-widget.component.html',
-  styleUrls: ['./org-interest-widget.component.scss']
+  selector: "app-org-interest-widget",
+  templateUrl: "./org-interest-widget.component.html",
+  styleUrls: ["./org-interest-widget.component.scss"]
 })
 export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   routePath: string = "orgInterestFullView";
@@ -16,21 +16,17 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   };
 
   filterbody = {};
-  
-  constructor() { }
-  
+
+  constructor() {}
+
   getFilterObject($event) {
     this.filterbody = $event;
-    // this.getData();
-    console.log("this.filterbody", this.filterbody);
   }
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  ngOnChanges(changes:SimpleChanges){
-    if(changes.filterbody){
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.filterbody) {
       console.log("xxx");
-      
     }
   }
 }

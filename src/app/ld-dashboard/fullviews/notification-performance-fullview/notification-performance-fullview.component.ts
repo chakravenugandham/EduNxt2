@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-notification-performance-fullview',
-  templateUrl: './notification-performance-fullview.component.html',
-  styleUrls: ['./notification-performance-fullview.component.scss']
+  selector: "app-notification-performance-fullview",
+  templateUrl: "./notification-performance-fullview.component.html",
+  styleUrls: ["./notification-performance-fullview.component.scss"]
 })
 export class NotificationPerformanceFullviewComponent implements OnInit {
-
-
   //global variable declaration
   contentData = [
     {
@@ -52,10 +50,8 @@ export class NotificationPerformanceFullviewComponent implements OnInit {
       TimesResponded: "73%",
       TimesSeen: "83%"
     }
-  ]
-  constructor() { }
+  ];
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

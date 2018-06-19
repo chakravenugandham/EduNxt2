@@ -7,12 +7,12 @@ import { LdDashboardService } from '../../services/ld-dashboard.service';
   styleUrls: ['./scores-distribution-fullview.component.scss']
 })
 export class ScoresDistributionFullviewComponent implements OnInit {
-
   responseScoreDetails: any;
   responseGraphData: any;
 
   dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
   //[[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]];
+
   showDetails: string = "test";
 
   filterbody = {};

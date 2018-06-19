@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from "@angular/core";
-import * as d3 from "d3v4";
-import { map } from "d3";
 
 @Component({
   selector: "app-learner-performance",
@@ -9,13 +7,11 @@ import { map } from "d3";
 })
 export class LearnerPerformanceComponent implements OnInit {
   @Input() performanceData: any;
-
   chartValues = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: any) {
-
     if (changes.performanceData.currentValue) {
       this.chartValues = [
         {
@@ -37,5 +33,5 @@ export class LearnerPerformanceComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

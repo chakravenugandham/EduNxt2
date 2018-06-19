@@ -9,7 +9,6 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./scores-distribution-widget.component.scss"]
 })
 export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
-  routePath: string = "scoreDistributionFullView";
   filtersData = {
     routeTo: "scoreDistributionFullView",
     filters: true,
@@ -19,40 +18,41 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   };
   getValue: string = "test";
   filterbody = {};
+  responseData = [];
+  dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   testScoreFn() {
     this.getValue = "test";
     this.getDataFromService();
   }
+
   quizScoreFn() {
     this.getValue = "quiz";
     this.getDataFromService();
   }
+
   assignmentFn() {
     this.getValue = "assignment";
     this.getDataFromService();
   }
-
+  
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
   }
 
-  responseData = [];
-  dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
-  // [[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]]
+  // data model
+  // dataSet = [[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]]
 
   getDataFromService() {
     this.getData
       .getScoresDistrubution(this.getValue, this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;
-        console.log(this.responseData);
         for (let i = 1; i <= this.responseData.length; i++) {
           this.dataSet[i][1] = this.responseData[i - 1].numberOfUsers;
-          console.log(this.dataSet);
         }
       });
   }

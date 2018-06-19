@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { Injectable } from "@angular/core";
-
 import { GoogleChartsBaseService } from "../../services/googleChartService";
 
 @Component({
@@ -49,9 +47,13 @@ export class LocationComponent implements OnInit, OnChanges {
     ["Daman and Diu", 242911],
     ["Lakshadweep", 64429]
   ];
-  constructor(private googleChartsBaseService: GoogleChartsBaseService) { }
   data = [];
   totalActiveUsers: number;
+
+  constructor(private googleChartsBaseService: GoogleChartsBaseService) {}
+
+  ngOnInit() {}
+
   ngOnChanges(changes: any) {
     if (changes.locationData.currentValue && this.locationData) {
       for (var i = 0; i < this.locationData.length; i++) {
@@ -64,6 +66,4 @@ export class LocationComponent implements OnInit, OnChanges {
       this.googleChartsBaseService.setMap(this.someData);
     }
   }
-
-  ngOnInit() { }
 }

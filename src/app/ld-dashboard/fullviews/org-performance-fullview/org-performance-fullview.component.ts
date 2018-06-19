@@ -1,20 +1,19 @@
-import { Component, OnInit, AfterViewChecked, AfterViewInit, DoCheck } from '@angular/core';
-import { LdDashboardService } from '../../services/ld-dashboard.service';
+import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
-  selector: 'app-org-performance-fullview',
-  templateUrl: './org-performance-fullview.component.html',
-  styleUrls: ['./org-performance-fullview.component.scss']
+  selector: "app-org-performance-fullview",
+  templateUrl: "./org-performance-fullview.component.html",
+  styleUrls: ["./org-performance-fullview.component.scss"]
 })
 export class OrgPerformanceFullviewComponent implements OnInit {
-
   responseTeamsDetails: any;
   responseTrainersDetails: any;
   responseLeanersDetails: any;
 
   showDetails: string = "teams";
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   //api calls for trainers ,teams and learner
   ngOnInit() {
@@ -28,5 +27,4 @@ export class OrgPerformanceFullviewComponent implements OnInit {
       this.responseLeanersDetails = response.data;
     });
   }
-
 }

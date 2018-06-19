@@ -5,7 +5,6 @@ import {
   OnChanges,
   SimpleChanges
 } from "@angular/core";
-// import * as d3 from "d3";
 declare let d3: any;
 
 @Component({

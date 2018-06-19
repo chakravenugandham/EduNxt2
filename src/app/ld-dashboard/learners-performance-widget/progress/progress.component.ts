@@ -14,7 +14,9 @@ declare let d3: any;
 })
 export class ProgressComponent implements OnInit, OnChanges {
   @Input() progressData;
+  @Input() batches:string[];
   barChartData;
+  batchNames = [];
   constructor() {}
 
   ngOnInit() {}
@@ -22,6 +24,7 @@ export class ProgressComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.progressData) {
       this.barChartData = this.progressData;
+      this.batchNames = this.batches;
     }
   }
 }

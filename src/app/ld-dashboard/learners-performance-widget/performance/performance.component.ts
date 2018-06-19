@@ -15,7 +15,9 @@ declare let d3: any;
 })
 export class PerformanceComponent implements OnInit, OnChanges {
   @Input() performanceData;
+  @Input() batches:string[];
   barChartData;
+  batchNames = [];
   constructor() {}
 
   ngOnInit() {}
@@ -23,6 +25,7 @@ export class PerformanceComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.performanceData) {
       this.barChartData = this.performanceData;
+      this.batchNames = this.batches;
     }
   }
 }

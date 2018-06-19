@@ -9,7 +9,7 @@ import { Config } from "../../../common/users-data/users-data.component";
 export class EngagementComponent implements OnInit, OnChanges {
   @Input() engageData;
   config: Config;
-
+  percentageChange: number;
   constructor() {}
 
   ngOnInit() {}
@@ -23,6 +23,10 @@ export class EngagementComponent implements OnInit, OnChanges {
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently active"
       };
+      this.percentageChange = Math.floor(
+        (this.engageData.peopleCompletedTraining * 36) /
+          this.engageData.peopleCompletedTraining
+      );
     }
   }
 }

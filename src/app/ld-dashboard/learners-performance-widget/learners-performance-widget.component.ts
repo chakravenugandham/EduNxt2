@@ -20,6 +20,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   filterbody = {};
   performanceDataSet = [];
   progressDataSet = [];
+  batches = [];
 
   constructor(private getData: LdDashboardService) {}
 
@@ -39,12 +40,19 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       .getLearnerPerformanceData(this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;
+
+        this.batches.push(
+          this.responseData[0].batches[0].batchName,
+          this.responseData[0].batches[0].batchName,
+          this.responseData[0].batches[0].batchName
+        );
+
         for (let i in this.responseData) {
           let performancegroupValues = [];
           let progressgroupValues = [];
           for (let j in this.responseData[i].batches) {
             performancegroupValues.push(
-             parseInt(this.responseData[i].batches[j].performance)
+              parseInt(this.responseData[i].batches[j].performance)
             );
             progressgroupValues.push(
               parseInt(this.responseData[i].batches[j].progress)
@@ -53,13 +61,13 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
           this.performanceDataSet.push({
             label: this.responseData[i].courseName,
             Group1: performancegroupValues[0],
-            Group2: performancegroupValues[0],
+            // Group2: performancegroupValues[0],
             Group3: performancegroupValues[0]
           });
           this.progressDataSet.push({
             label: this.responseData[i].courseName,
             Group1: progressgroupValues[0],
-            Group2: progressgroupValues[0],
+            // Group2: progressgroupValues[0],
             Group3: progressgroupValues[0]
           });
         }

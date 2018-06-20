@@ -54,8 +54,9 @@
   </div>
 
   <div *ngIf="responseData.length > 0">
-    <app-performance [performanceData]="performanceDataSet" [batches]="batches" *ngIf="getTab == 'performance'"></app-performance>
-    <app-progress [progressData]="progressDataSet" [batches]="batches" *ngIf="getTab == 'progress'"></app-progress>
+    <app-performance *ngIf="performanceDataSet.length > 0 && getTab == 'performance'" [performanceData]="performanceDataSet"
+      [batches]="batches"></app-performance>
+    <app-progress *ngIf="progressDataSet.length > 0 && getTab == 'progress'" [progressData]="progressDataSet" [batches]="batches"></app-progress>
   </div>
 
   <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>

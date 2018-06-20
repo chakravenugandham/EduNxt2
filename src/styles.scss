@@ -131,7 +131,7 @@
 }
 
 .bigNumber {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 600;
   color: #5584ff;
   margin-right: 8px;
@@ -244,13 +244,13 @@
 //Graph CSS
 #activeUserGraph {
   .line1 {
-    stroke: #fca104;
+    stroke: #5584ff;
     stroke-width: 6px;
     fill: none;
     opacity: 0.8;
   }
   .line2 {
-    stroke: #5584ff;
+    stroke: #fca104;
     stroke-width: 6px;
     fill: none;
     opacity: 0.8;

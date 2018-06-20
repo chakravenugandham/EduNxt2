@@ -34,17 +34,17 @@ export class ScoresDistributionFullviewComponent implements OnInit {
       }
     });
 
-    this.getData
-      .getScoresDistrubution(this.showDetails, this.filterbody)
-      .subscribe((response: any) => {
-        this.responseGraphData = response.data;
-        //console.log(this.responseGraphData);
-        for (let i = 1; i <= this.responseGraphData.length; i++) {
-          console.log(this.responseScoreDetails[i - 1]);
-          this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
-          //console.log(this.dataSet);
-        }
-      });
+    // this.getData
+    //   .getScoresDistrubution(this.showDetails, this.filterbody)
+    //   .subscribe((response: any) => {
+    //     this.responseGraphData = response.data;
+    //     //console.log(this.responseGraphData);
+    //     for (let i = 1; i <= this.responseGraphData.length; i++) {
+    //       console.log(this.responseScoreDetails[i - 1]);
+    //       this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
+    //       //console.log(this.dataSet);
+    //     }
+    //   });
   }
 
 }

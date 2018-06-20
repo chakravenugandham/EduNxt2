@@ -11,18 +11,19 @@
       </span>
     </div>
   </div>
-  <div>
-    <div appDonutChart [data]="paceTrackValues" [componentName]="componentName" >
+  <div *ngIf="paceTrackValues.length==0" class="spinner_loading text-center">
+    <i class="fas fa-spinner fa-spin fa-3x align-middle"></i>
+  </div>
+  <div appDonutChart [data]="paceTrackValues" [componentName]="componentName">
+  </div>
+  <div *ngIf="paceTrackValues.length>0" class="row m-t-16">
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <p class="bigNumber aheadOfScheduleColor">{{paceDataElement.aheadOfSchedule}}</p>
+      <p class="boldText m-t-10">Ahead of Schedule</p>
     </div>
-    <div class="row m-t-16">
-      <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="bigNumber aheadOfScheduleColor">{{paceDataElement.aheadOfSchedule}}</p>
-        <p class="boldText m-t-10">Ahead of Schedule</p>
-      </div>
-      <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="bigNumber onTrackClass">{{paceDataElement.onTrack}}</p>
-        <p class="boldText m-t-10">On Track</p>
-      </div>
+    <div class="col-md-6 col-sm-6 col-xs-6">
+      <p class="bigNumber onTrackClass">{{paceDataElement.onTrack}}</p>
+      <p class="boldText m-t-10">On Track</p>
     </div>
   </div>
 </div>

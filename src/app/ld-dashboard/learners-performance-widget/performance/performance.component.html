@@ -6,14 +6,14 @@
   <div class="bar-chart-graph" appBarChart [data]="barChartData"></div>
 
   <div class="row graph-badges">
-    <div class="col-md-4">
-      <i class="far fa-circle" style="color: #FFD630; background-color: #FFD630"></i> {{batchNames[0]}}
+    <div *ngFor="let batch of batchNames" class="col-md">
+      <i class="far fa-circle"></i> {{batch}}
     </div>
     <!-- <div class="col-md-4">
       <i class="far fa-circle" style="color: #F77F6C; background-color: #F77F6C"></i> {{batchNames[1]}}
     </div> -->
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <i class="far fa-circle" style="color: #5584FF; background-color: #5584FF"></i> {{batchNames[2]}}
-    </div>
+    </div> -->
   </div>
 </div>

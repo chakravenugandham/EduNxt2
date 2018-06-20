@@ -141,6 +141,7 @@ import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/
     NvD3Module,
     HttpModule,
     HttpClientModule,
+    RoutingModule,
     NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     AngularFontAwesomeModule,

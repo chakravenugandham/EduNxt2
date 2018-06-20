@@ -8,11 +8,12 @@ import * as d3 from "d3";
 })
 export class UserstrainedComponent implements OnInit, OnChanges {
   @Input() usersData;
-
+  percentageChange:number;
   constructor() { }
 
   ngOnChanges(changes: any) {
     if (changes.usersData.currentValue) {
+      this.percentageChange = Math.floor((this.usersData.usersTrained*100)/this.usersData.usersCompletedTraining);
     }
   }
 

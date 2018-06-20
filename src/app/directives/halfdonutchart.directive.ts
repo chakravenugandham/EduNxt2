@@ -69,7 +69,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.data.currentValue && changes.data) {
-      this.chartRenderFn([this.data]);
+      this.chartRenderFn([this.data]);      
     }
   }
 }

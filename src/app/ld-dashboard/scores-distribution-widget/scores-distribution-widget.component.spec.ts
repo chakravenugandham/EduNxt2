@@ -36,4 +36,26 @@ fdescribe('ScoresDistributionWidgetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create testScoreFn', () => {
+    component.testScoreFn();
+    expect(component.testScoreFn).toBeTruthy();
+  });
+
+  it('should create quizScoreFn', () => {
+    component.quizScoreFn();
+    expect(component.quizScoreFn).toBeTruthy();
+  });
+
+  it('should create assignmentFn', () => {
+    component.assignmentFn();
+    expect(component.assignmentFn).toBeTruthy();
+  });
+
+  it('should create getFilterObject', () => {
+    let $event;
+    component.getFilterObject($event);
+    expect(component.getFilterObject).toBeTruthy();
+  });
+
 });

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as d3 from "d3v4";
 import * as _ from "underscore";
 import * as moment from "moment";
@@ -211,7 +211,7 @@ export class ModeOfDeliveryComponent implements OnInit, OnChanges {
     });
   }
   chartData = [];
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes.usersData.currentValue && this.chartData) {
       for (var i = 0; i < this.usersData.graphData.length; i++) {
         var date = new Date(this.usersData.graphData[i].date);

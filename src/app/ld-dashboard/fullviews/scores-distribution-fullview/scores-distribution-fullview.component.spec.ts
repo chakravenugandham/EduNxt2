@@ -30,4 +30,10 @@ fdescribe('ScoresDistributionFullviewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create getFilterObject', () => {
+    let $event;
+    component.getFilterObject($event);
+    expect(component.getFilterObject).toBeTruthy();
+  });
 });

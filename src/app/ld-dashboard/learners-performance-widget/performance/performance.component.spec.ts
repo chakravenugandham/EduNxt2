@@ -21,6 +21,7 @@ fdescribe('PerformanceComponent', () => {
     fixture = TestBed.createComponent(PerformanceComponent);
     component = fixture.componentInstance;
     component.performanceData = {};
+    component.batches = [];
     fixture.detectChanges();
   });
 

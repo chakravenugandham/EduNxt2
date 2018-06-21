@@ -36,4 +36,26 @@ fdescribe('LearnersTrackWidgetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create learnerPaceFn', () => {
+    component.learnerPaceFn();
+    expect(component.learnerPaceFn).toBeTruthy();
+  });
+
+  it('should create learnerPerfFn', () => {
+    component.learnerPerfFn();
+    expect(component.learnerPerfFn).toBeTruthy();
+  });
+
+  it('should create getData', () => {
+    component.getData();
+    expect(component.getData).toBeTruthy();
+  });
+
+  it('should create getFilterObject', () => {
+    let $event;
+    component.getFilterObject($event);
+    expect(component.getFilterObject).toBeTruthy();
+  });
+
 });

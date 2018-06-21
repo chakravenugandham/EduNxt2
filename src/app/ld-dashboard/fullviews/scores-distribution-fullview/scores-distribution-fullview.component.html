@@ -1,21 +1,27 @@
 <div class="dashboard fullviewComponent widget-row learner-performance-fullview">
-  <div class="widget-heading row">
-    <span>
-      <i class="fas fa-angle-left" routerLink="/"></i>
-    </span>
-    <span> Score Distribution </span>
+  <div class="widget-heading row clear-fix">
+    <div class="float-left">
+      <span>
+        <i class="fas fa-angle-left" routerLink="/"></i>
+      </span>
+      <span> Score Distribution </span>
+    </div>
+    <!-- <div class="float-right">
+      <app-filter-widget></app-filter-widget>
+    </div> -->
   </div>
   <div class="row widget-block">
-    <b>Display Graph for </b>
-    <span class="input-group">
-      <select class="custom-select" [(ngModel)]="showDetails" id="inputGroupSelect02">
-        <option [value]="'test'">Test Scores</option>
-        <option [value]="'quiz'">Quizzes</option>
-        <option [value]="'assignment'">Assignments</option>
-      </select>
-    </span>
-    <!-- <div class="col-md-10" appScoreChart [data]='dataSet'>
-    </div> -->
+    <div class="col-md-3">
+      <b>Display Graph for </b>
+      <span class="input-group">
+        <select class="custom-select" [(ngModel)]="showDetails" (change)='getDataFromService()' id="inputGroupSelect02">
+          <option [value]="'test'">Test Scores</option>
+          <option [value]="'quiz'">Quizzes</option>
+          <option [value]="'assignment'">Assignments</option>
+        </select>
+      </span>
+    </div>
+    <div class="col-md-12" appScoreChart [data]='dataSet'></div>
     <table class="table table-borderless">
       <thead>
         <tr>

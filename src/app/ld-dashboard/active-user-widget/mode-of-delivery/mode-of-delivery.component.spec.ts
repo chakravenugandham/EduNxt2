@@ -19,11 +19,34 @@ fdescribe('ModeOfDeliveryComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ModeOfDeliveryComponent);
     component = fixture.componentInstance;
-    component.usersData = [];
+    component.usersData = {};
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  xit('should create ngOnChanges', () => {
+    //let usersData = {
+    // "graphData": [
+    //   {
+    //     "date": "2018-05-09T13:00:00.000Z",
+    //     "activeLearners": 150,
+    //     "activeFacultiesAndAdmins": 200,
+    //     "onlineDelivery": 100,
+    //     "offlineDelivery": 200
+    //   },
+    //   {
+    //     "date": "2018-05-10T13:00:00.000Z",
+    //     "activeLearners": 150,
+    //     "activeFacultiesAndAdmins": 200,
+    //     "onlineDelivery": 100,
+    //     "offlineDelivery": 200
+    //   }
+    // ]
+    //}
+    fixture.detectChanges();
+    expect(component.usersData).toBe({});
   });
 });

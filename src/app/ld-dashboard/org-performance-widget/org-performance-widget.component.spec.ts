@@ -34,4 +34,31 @@ fdescribe('OrgPerformanceComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create teamsFn', () => {
+    component.teamsFn();
+    expect(component.teamsFn).toBeTruthy();
+  });
+
+  it('should create trainersFn', () => {
+    component.trainersFn();
+    expect(component.trainersFn).toBeTruthy();
+  });
+
+  it('should create learnersFn', () => {
+    component.learnersFn();
+    expect(component.learnersFn).toBeTruthy();
+  });
+
+  it('should create getFilterObject', () => {
+    let $event;
+    component.getFilterObject($event);
+    expect(component.getFilterObject).toBeTruthy();
+  });
+
+  it('should create getData', () => {
+    component.getData();
+    expect(component.getData).toBeTruthy();
+  });
+
 });

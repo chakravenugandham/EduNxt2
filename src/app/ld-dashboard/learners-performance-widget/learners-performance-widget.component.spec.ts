@@ -34,4 +34,26 @@ fdescribe('LearnersPerformanceWidgetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create performanceFn', () => {
+    component.performanceFn();
+    expect(component.performanceFn).toBeTruthy();
+  });
+
+  it('should create progressFn', () => {
+    component.progressFn();
+    expect(component.progressFn).toBeTruthy();
+  });
+
+  it('should create getFilterObject', () => {
+    let $event;
+    component.getFilterObject($event);
+    expect(component.getFilterObject).toBeTruthy();
+  });
+
+  it('should create getDataFromService', () => {
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
+  });
+
 });

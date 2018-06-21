@@ -159,8 +159,6 @@ export class BarChartDirective implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
       this.dataset = this.data;
-      console.log("this.dataset", this.dataset);
-
       this.performanceChart();
     }
   }

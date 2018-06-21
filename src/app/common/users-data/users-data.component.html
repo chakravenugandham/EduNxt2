@@ -1,12 +1,14 @@
 <div>
-  <span class="bigNumber float-left">{{config?.peopleCurrentlyEnrolled}}</span>
+  <span class="bigNumber float-left" [ngClass]="{'big-positive-number': numberFontColor, 'big-danger-class': !numberFontColor}"> {{config?.peopleCurrentlyEnrolled}} </span>
   <div class="small-font">
     <span class="small">
       <i class="fas fa-arrow-up changeNumber"></i>
     </span>
-    <span class="changeNumber">{{config?.usersSinceLastMonth}}</span>
-    <span class="font-color">{{config?.Users}}</span>
-    <p class="font-color">{{config?.sinceLastMonth}}</p>
+    <span class="changeInNumberText">
+      <span class="changeNumber"> {{config?.usersSinceLastMonth}} </span>
+      <span class="font-color"> {{config?.Users}} </span>
+      <p class="font-color"> {{config?.sinceLastMonth}} </p>
+    </span>
   </div>
-  <p class="boldText m-t-10">{{config?.PeopleAreCurrentlyEnrolled}}</p>
+  <p class="m-t-10"> {{config?.PeopleAreCurrentlyEnrolled}} </p>
 </div>

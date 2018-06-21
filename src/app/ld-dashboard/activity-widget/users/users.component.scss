@@ -25,10 +25,21 @@
     }
   }
   .m-t-5 {
-    margin-top: -5px;
+    margin-top: -5px !important;
   }
 }
 
 .userImages .imgActive:first-child img {
   margin-left: 0;
 }
+
+// @media (min-width: 1024px) {
+//   .user-component {
+//     .userImages {
+//       img {
+//         height: 40px;
+//         width: 40px;
+//       }
+//     }
+//   }
+// }

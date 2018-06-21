@@ -49,13 +49,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   selectFilter(filter, filterName) {
-    if (!this.filterArray.includes(filterName.name)) {
-      this.filterArray.push(filterName.name);
-    } else if (this.filterArray.includes(filterName.name)) {
-      let i = this.filterArray.indexOf(filterName.name);
-      this.filterArray.splice(i, 1);
-    }
-
     let filterTypeId = "";
     switch (filter.type) {
       case "batch": {
@@ -72,14 +65,20 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       }
     }
 
+    if (!this.filterArray.includes(filterName.name)) {
+      this.filterArray.push(filterName.name);
+    } else {
+      let i = this.filterArray.indexOf(filterName.name);
+      this.filterArray.splice(i, 1);
+    }
+
     if (!this.filterSelected[filterTypeId].includes(filterName.id)) {
       this.filterSelected[filterTypeId].push(filterName.id);
-    } else if (this.filterSelected[filterTypeId].includes(filterName.id)) {
+    } else {
       let i = this.filterSelected[filterTypeId].indexOf(filterName.name);
       this.filterSelected[filterTypeId].splice(i, 1);
     }
 
-    this.filterSelected.filterType.push(filterName.id);
     this.filterEvent.emit(this.filterSelected);
   }
 

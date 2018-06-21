@@ -86,7 +86,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
             Group3: progressgroupValues[2]
           });
         }
-        console.log("progressDataSet", this.progressDataSet);
         // this.testData = [
         //   { label: "ORACLE 1", Group1: 52, Group2: 56 },
         //   { label: "ORACLE 2", Group1: 42, Group2: 86 },

@@ -5,6 +5,7 @@ import * as d3 from "d3";
 })
 export class HalfdonutchartDirective implements OnInit, OnChanges {
   @Input() data: any;
+  @Input() expectedChange: boolean;
 
   constructor(private el: ElementRef) {}
 
@@ -55,10 +56,11 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .attr("d", <any>backgroundArc)
       .attr("fill", "#E9E9E9");
 
+    let graph_color = this.expectedChange ? "#5A8BFE" : "#F77F6C";
     charts
       .append("path")
       .attr("d", <any>mainArc)
-      .attr("fill", "#5A8BFE");
+      .attr("fill", graph_color);
 
     this.el.nativeElement.append(chartDiv);
   }
@@ -69,7 +71,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.data.currentValue && changes.data) {
-      this.chartRenderFn([this.data]);      
+      this.chartRenderFn([this.data]);
     }
   }
 }

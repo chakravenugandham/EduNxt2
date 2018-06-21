@@ -68,10 +68,10 @@ fdescribe('FilterWidgetComponent', () => {
     expect(component.selectFilter).toBeDefined();
   });
 
-  xit('should define showFilter', () => {
-    component.selectFilter(filter, filterName);
-    expect(!component.filterArray.includes(filterName.name)).toEqual(component.filterArray.push(filterName.name));
-  });
+  // xit('should define showFilter', () => {
+  //   component.selectFilter(filter, filterName);
+  //   expect(!component.filterArray.includes(filterName.name)).toEqual(component.filterArray.push(filterName.name));
+  // });
 
   it('should define showFilter', () => {
     component.closeDropDown();

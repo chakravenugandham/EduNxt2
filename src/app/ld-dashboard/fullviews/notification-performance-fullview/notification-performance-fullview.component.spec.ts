@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotificationPerformanceFullviewComponent } from './notification-performance-fullview.component';
 import { ScheduledDeliveredComponent } from "../../notification-performance-widget/scheduled-delivered/scheduled-delivered.component";
 import { SeenRespondedComponent } from "../../notification-performance-widget/seen-responded/seen-responded.component";
+import { BarChartDirective } from "../../../directives/bar-chart.directive";
 
 fdescribe('NotificationPerformanceFullviewComponent', () => {
   let component: NotificationPerformanceFullviewComponent;
@@ -10,7 +11,8 @@ fdescribe('NotificationPerformanceFullviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NotificationPerformanceFullviewComponent, ScheduledDeliveredComponent, SeenRespondedComponent]
+      declarations: [NotificationPerformanceFullviewComponent, ScheduledDeliveredComponent,
+        SeenRespondedComponent, BarChartDirective]
     })
       .compileComponents();
   }));

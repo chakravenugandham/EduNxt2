@@ -1,16 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MpDatepickerRangeComponent } from './mp-datepicker-range.component';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('MpDatepickerRangeComponent', () => {
+
+fdescribe('MpDatepickerRangeComponent', () => {
   let component: MpDatepickerRangeComponent;
   let fixture: ComponentFixture<MpDatepickerRangeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MpDatepickerRangeComponent ]
+      declarations: [MpDatepickerRangeComponent],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

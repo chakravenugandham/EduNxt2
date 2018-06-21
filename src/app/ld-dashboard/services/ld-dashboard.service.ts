@@ -6,7 +6,7 @@ import { environment } from "../../../environments/environment";
   providedIn: "root"
 })
 export class LdDashboardService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
@@ -114,8 +114,7 @@ export class LdDashboardService {
 
   //scores full-details
   getScoresDetails(dropdownValue) {
-    let url =
-      this.baseURL + "scores-distribution-details?type=" + dropdownValue;
+    let url = this.baseURL + "scores-distribution-details?type=" + dropdownValue;
     return this.http.post(url, { headers: this.headers });
   }
 

@@ -21,15 +21,25 @@ export class FeedbackComponent implements OnInit, OnChanges {
     contentRating: number;
     contentRatingChange: number;
   };
+  learnerSatisfaction:number;
   learnerSatisfactionChange:number;
+  trainerRatingChange:number;
+  contentRatingChange:number;
 
   constructor() {}
 
   ngOnInit() {}
   ngOnChanges(changes: SimpleChanges) {
     if (changes.feedbackDataElement) {
+      this.learnerSatisfaction = Math.round(this.feedbackDataElement.learnerSatisfaction);
       this.learnerSatisfactionChange = Math.abs(
         this.feedbackDataElement.learnerSatisfactionChange
+      );
+      this.trainerRatingChange = Math.abs(
+        this.feedbackDataElement.trainerRatingChange
+      );
+      this.contentRatingChange = Math.abs(
+        this.feedbackDataElement.contentRatingChange
       );
     }
   }

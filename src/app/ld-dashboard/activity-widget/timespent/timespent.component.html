@@ -14,20 +14,22 @@
   <div *ngIf="!timeData" class="spinner_loading text-center">
     <i class="fas fa-spinner fa-spin fa-3x align-middle"></i>
   </div>
-  <div appHalfdonutchart [data]="percentageChange"></div>
-  <div *ngIf="timeData" class="row m-t-8">
+  <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
+  <div *ngIf="timeData" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <span class="bigNumber float-left">{{percentageChange}}%</span>
-      <div class="p-t-7">
-        <span class="small">
-          <i class="fas fa-arrow-up changeNumber"></i>
-        </span>
-        <span class="changeNumber"> Expected {{timeData.expectedTimeSpentPercentage}}%</span>
-        <p class="m-b-0 font-color">{{timeData.timeSpentPercentage}} of {{timeData.totalTime}} hours spent on learning activities</p>
+      <div class="d-flex">
+        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{percentageChange}}% </div>
+        <div class="p-t-7 changeInNumberText">
+          <div>
+            <span class="small">
+              <i class="fas fa-arrow-up changeNumber"></i>
+            </span>
+            <span class="changeNumber"> Expected {{timeData.expectedTimeSpentPercentage}}%</span>
+          </div>
+          <div class="m-b-0 font-color">{{timeData.timeSpentPercentage}} of {{timeData.totalTime}} hours spent on learning activities</div>
+        </div>
       </div>
-      <p class="boldText">
-        <b> of your goals has been met</b>
-      </p>
+      <div class="m-t-10">of your goals has been met</div>
     </div>
   </div>
 </div>

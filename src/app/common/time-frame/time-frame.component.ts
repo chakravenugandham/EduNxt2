@@ -1,24 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
-  selector: 'app-time-frame',
-  templateUrl: './time-frame.component.html',
-  styleUrls: ['./time-frame.component.scss']
+  selector: "app-time-frame",
+  templateUrl: "./time-frame.component.html",
+  styleUrls: ["./time-frame.component.scss"]
 })
 export class TimeFrameComponent implements OnInit {
+  @Output() filterEvent = new EventEmitter<any>();
   coursesData = [];
   today: Date = new Date();
+
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
     this.getData.getCoursesData().subscribe((res: any) => {
       this.coursesData = res.data;
-    })
+    });
   }
-  constructor(private getData: LdDashboardService) { }
+
+  onChangeCourse(courseId) {
+    this.filterEvent.emit(courseId);
+  }
 
   ngOnInit() {
     this.getDataFromService();
   }
-
 }

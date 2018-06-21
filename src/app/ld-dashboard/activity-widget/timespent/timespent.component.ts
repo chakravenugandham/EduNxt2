@@ -3,11 +3,8 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChange
+  SimpleChanges
 } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import * as d3 from "d3";
 
 @Component({
   selector: "app-timespent",
@@ -17,16 +14,22 @@ import * as d3 from "d3";
 export class TimespentComponent implements OnInit, OnChanges {
   @Input() timeData;
   percentageChange: number;
+  expectedChange: boolean;
 
   constructor() {}
 
   ngOnInit() {}
 
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes.timeData.currentValue) {
       this.percentageChange = Math.ceil(
         (this.timeData.totalTime * 100) / this.timeData.timeSpent
       );
+
+      this.expectedChange =
+        this.percentageChange < this.timeData.expectedTimeSpentPercentage
+          ? false
+          : true;
     }
   }
 }

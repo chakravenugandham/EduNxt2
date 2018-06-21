@@ -7,7 +7,7 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
   styleUrls: ["./teams.component.scss"]
 })
 export class TeamsComponent implements OnInit {
-  teamsData = [];
+  teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
   constructor(private getData: LdDashboardService) { }
@@ -22,3 +22,14 @@ export class TeamsComponent implements OnInit {
     this.getDataFromService();
   }
 }
+
+// export class teamDataConfig {
+//   teamDataConfig: {
+//     teamId: number;
+//     teamName: string;
+//     actionMessage: string;
+//     completion: string;
+//     completedProgram: string;
+//     teamsize: string;
+//   };
+// }

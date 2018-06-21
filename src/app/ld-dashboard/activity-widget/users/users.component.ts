@@ -11,6 +11,7 @@ export class UsersComponent implements OnInit {
 
   activeConfig: Config;
   enrolledConfig: Config;
+  numberFontColor:boolean;
 
   constructor() {}
 
@@ -31,6 +32,7 @@ export class UsersComponent implements OnInit {
         PeopleAreCurrentlyEnrolled: "People are currently enrolled"
       };
     }
+    this.numberFontColor = true;
   }
 
   ngOnInit() {}

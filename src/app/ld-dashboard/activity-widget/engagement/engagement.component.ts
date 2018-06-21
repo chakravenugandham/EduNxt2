@@ -11,8 +11,9 @@ export class EngagementComponent implements OnInit, OnChanges {
   @Input() totalUsers;
 
   config: Config;
-  totalUserCount:number;
+  totalUserCount: number;
   percentageChange: number;
+  expectedChange: boolean;
   constructor() {}
 
   ngOnInit() {}
@@ -24,15 +25,15 @@ export class EngagementComponent implements OnInit, OnChanges {
         usersSinceLastMonth: this.engageData.peopleChange,
         Users: "Users",
         sinceLastMonth: "since last month",
-        PeopleAreCurrentlyEnrolled: "People are currently active"
+        PeopleAreCurrentlyEnrolled: "People completed training programs"
       };
-      this.percentageChange = Math.floor(
-        (this.engageData.peopleCompletedTraining * 36) /
-          this.engageData.peopleCompletedTraining
+
+      this.percentageChange = Math.round(
+        (this.config.peopleCurrentlyEnrolled * 100) /
+          this.totalUsers.peopleCurrentlyEnrolled
       );
 
-      this.totalUserCount = Math.round((this.config.peopleCurrentlyEnrolled*100)/this.totalUsers.peopleCurrentlyEnrolled);
-      console.log("this.totalUsers",this.totalUserCount);
+      this.expectedChange = this.percentageChange < 50 ? false : true;
     }
   }
 }

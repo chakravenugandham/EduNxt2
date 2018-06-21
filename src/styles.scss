@@ -39,10 +39,21 @@
 .activity-widgets .widget-block {
   height: 280px;
   padding: 10px 20px;
+  .big-danger-class {
+    color: #ff4e00;
+    font-size: 22px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  // .text-fix-bottom{
+  //   position: absolute;
+  //   bottom: 0;
+  // }
 }
 
 .m-t-10 {
   margin-top: -10px;
+  font-size: 13px !important;
 }
 
 .activity-widgets .headingText,
@@ -125,6 +136,9 @@
   font-weight: 600;
   color: #707070;
 }
+.changeInNumberText {
+  font-size: 11px !important;
+}
 
 .font-color {
   color: #707070;
@@ -133,8 +147,10 @@
 .bigNumber {
   font-size: 22px;
   font-weight: 600;
-  color: #5584ff;
   margin-right: 8px;
+}
+.big-positive-number {
+  color: #5584ff;
 }
 
 .cursor-pointer {
@@ -181,9 +197,9 @@
     padding: 15px 8px;
     vertical-align: middle;
     font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
   }
   table tr th {
     padding: 15px 8px;
@@ -549,7 +565,8 @@
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1199.98px){
+  
 }
 
 // Extra large devices (large desktops, 1200px and up)

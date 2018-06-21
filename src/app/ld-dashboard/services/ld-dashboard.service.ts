@@ -52,8 +52,7 @@ export class LdDashboardService {
 
   //learner-track full details
   getLearnerTrackDetails(componentName, filterbody) {
-    let url =
-      this.baseURL + "learner-pace-performance-details?type=" + componentName;
+    let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 

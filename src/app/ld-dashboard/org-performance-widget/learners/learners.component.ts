@@ -8,7 +8,8 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 })
 export class LearnersComponent implements OnInit {
   LearnersData = [];
-  constructor(private getData: LdDashboardService) {}
+  parseFloat = parseFloat;
+  constructor(private getData: LdDashboardService) { }
   getDataFromService() {
     this.getData.getLearnerData().subscribe((res: any) => {
       this.LearnersData = res.data;

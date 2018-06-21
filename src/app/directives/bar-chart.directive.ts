@@ -17,39 +17,39 @@ export class BarChartDirective implements OnChanges {
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
-    let chartDiv = document.createElement("div");
+    // let chartDiv = document.createElement("div");
 
-    function rightRoundedRect(x, y, width, height, radius) {
-      return (
-        "M" +
-        x +
-        "," +
-        y +
-        "h" +
-        (width - radius) +
-        "a" +
-        radius +
-        "," +
-        radius +
-        " 0 0 1 " +
-        radius +
-        "," +
-        radius +
-        "v" +
-        (height - 2 * radius) +
-        "a" +
-        radius +
-        "," +
-        radius +
-        " 0 0 1 " +
-        -radius +
-        "," +
-        radius +
-        "h" +
-        (radius - width) +
-        "z"
-      );
-    }
+    // function rightRoundedRect(x, y, width, height, radius) {
+    //   return (
+    //     "M" +
+    //     x +
+    //     "," +
+    //     y +
+    //     "h" +
+    //     (width - radius) +
+    //     "a" +
+    //     radius +
+    //     "," +
+    //     radius +
+    //     " 0 0 1 " +
+    //     radius +
+    //     "," +
+    //     radius +
+    //     "v" +
+    //     (height - 2 * radius) +
+    //     "a" +
+    //     radius +
+    //     "," +
+    //     radius +
+    //     " 0 0 1 " +
+    //     -radius +
+    //     "," +
+    //     radius +
+    //     "h" +
+    //     (radius - width) +
+    //     "z"
+    //   );
+    // }
 
     let margin = 30,
       width = d3

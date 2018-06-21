@@ -16,7 +16,7 @@
             <option value="progress"> Progress across all courses </option>
           </select>
         </span>
-        <!-- <div class="bar-chart-graph" appBarChart [data]="learnerData"></div> -->
+        <div class="bar-chart-graph" appBarChart [data]="learnerData"></div>
         <app-performance *ngIf="selectedGraph == 'performance'"></app-performance>
         <app-progress *ngIf="selectedGraph == 'progress'"></app-progress>
 

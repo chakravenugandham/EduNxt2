@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.component";
 
@@ -7,7 +7,7 @@ import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.
   templateUrl: './scores-distribution-fullview.component.html',
   styleUrls: ['./scores-distribution-fullview.component.scss']
 })
-export class ScoresDistributionFullviewComponent implements OnInit, OnChanges {
+export class ScoresDistributionFullviewComponent implements OnInit {
   responseScoreDetails: any;
   responseGraphData: any;
 
@@ -45,9 +45,5 @@ export class ScoresDistributionFullviewComponent implements OnInit, OnChanges {
   //api call for score details based on component
   ngOnInit() {
     this.getDataFromService();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-
   }
 }

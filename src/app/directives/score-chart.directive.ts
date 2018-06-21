@@ -32,7 +32,7 @@ export class ScoreChartDirective implements OnChanges {
     // create yScale
     var yScale = d3
       .scaleLinear()
-      .domain([0, 1000])
+      .domain([0, 4000])
       .range([h - p, 15]);
 
     // create SVG

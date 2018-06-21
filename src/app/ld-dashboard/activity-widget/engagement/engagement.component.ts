@@ -8,7 +8,10 @@ import { Config } from "../../../common/users-data/users-data.component";
 })
 export class EngagementComponent implements OnInit, OnChanges {
   @Input() engageData;
+  @Input() totalUsers;
+
   config: Config;
+  totalUserCount:number;
   percentageChange: number;
   constructor() {}
 
@@ -27,6 +30,9 @@ export class EngagementComponent implements OnInit, OnChanges {
         (this.engageData.peopleCompletedTraining * 36) /
           this.engageData.peopleCompletedTraining
       );
+
+      this.totalUserCount = Math.round((this.config.peopleCurrentlyEnrolled*100)/this.totalUsers.peopleCurrentlyEnrolled);
+      console.log("this.totalUsers",this.totalUserCount);
     }
   }
 }

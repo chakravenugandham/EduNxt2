@@ -43,8 +43,8 @@ export class DonutChartDirective implements OnChanges {
       .arc()
       // .innerRadius(90)
       // .outerRadius(100);
-      .innerRadius(this.componentName == "active-learner-pace" ? 55 : 90)
-      .outerRadius(this.componentName == "active-learner-pace" ? 65 : 100);
+      .innerRadius(this.componentName == "active-learner-pace" ? 40 : 90)
+      .outerRadius(this.componentName == "active-learner-pace" ? 55 : 100);
 
     let svg = d3
       .select(this.el.nativeElement)

@@ -127,7 +127,9 @@ export class BarChartDirective implements OnChanges {
         return "translate(" + x0(d.label) + ",0)";
       });
 
-    let color = d3.scale.ordinal().range(["#FFD630", "#F77F6C", "#5584FF"]);
+    let color = d3.scale
+      .ordinal()
+      .range(["#FFD630", "#F77F6C", "#5584FF", "#23b14d"]);
 
     bar
       .selectAll("rect")
@@ -136,7 +138,7 @@ export class BarChartDirective implements OnChanges {
       })
       .enter()
       .append("rect")
-      .attr("width", x1.rangeBand() - 12)
+      .attr("width", x1.rangeBand() - 8)
       .attr("x", function(d) {
         return x1(d.name);
       })
@@ -157,6 +159,8 @@ export class BarChartDirective implements OnChanges {
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
       this.dataset = this.data;
+      console.log("this.dataset", this.dataset);
+
       this.performanceChart();
     }
   }

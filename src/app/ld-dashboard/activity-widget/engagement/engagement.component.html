@@ -11,8 +11,11 @@
       </span>
     </div>
   </div>
-  <div appHalfdonutchart [data]="percentageChange"></div>
-  <div class="row m-t-8">
+  <div *ngIf="!engageData" class="spinner_loading text-center">
+    <i class="fas fa-spinner fa-spin fa-3x align-middle"></i>
+  </div>
+  <div appHalfdonutchart [data]="totalUserCount"></div>
+  <div *ngIf="engageData" class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <app-users-data [config]="config"></app-users-data>
     </div>

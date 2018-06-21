@@ -11,15 +11,18 @@
       </span>
     </div>
   </div>
+  <div *ngIf="!usersData" class="spinner_loading text-center">
+    <i class="fas fa-spinner fa-spin fa-3x align-middle"></i>
+  </div>
   <div appHalfdonutchart [data]="percentageChange"></div>
-  <div class="row m-t-8">
+  <div *ngIf="usersData" class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <span class="bigNumber float-left">{{percentageChange}}% </span>
       <div class="p-t-7">
-        <!-- <span class="small">
+        <span class="small">
           <i class="fas fa-arrow-up changeNumber"></i>
-        </span> -->
-        <span class="changeNumber">Expected {{usersData.usersCompletedTrainingExpectedPercentage}}%</span>
+        </span>
+        <span class="changeNumber"> Expected {{usersData.usersCompletedTrainingExpectedPercentage}}%</span>
         <p class="m-b-0 font-color">{{usersData.usersTrained}} of {{usersData.usersCompletedTraining}} hours spent on learning activities</p>
       </div>
       <p class="boldText">

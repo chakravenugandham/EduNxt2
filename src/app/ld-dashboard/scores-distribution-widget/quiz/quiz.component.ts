@@ -13,7 +13,7 @@ import {
 })
 export class QuizComponent implements OnInit, OnChanges {
   @Input() testData: any;
-  dataSet;
+  dataSet = [];
   // dataSet = [[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]];
 
   constructor() {}
@@ -21,6 +21,8 @@ export class QuizComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    this.dataSet = this.testData;
+    if (changes.testData) {
+      this.dataSet = this.testData;
+    }
   }
 }

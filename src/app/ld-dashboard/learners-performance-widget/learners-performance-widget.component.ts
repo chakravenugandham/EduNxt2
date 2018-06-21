@@ -52,11 +52,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       .getLearnerPerformanceData(this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;
-        // this.batches.push(
-        //   this.responseData[0].batches[0].batchName,
-        //   this.responseData[0].batches[1].batchName,
-        //   this.responseData[0].batches[2].batchName
-        // );
 
         for (let b in this.responseData[0].batches) {
           this.batches.push(this.responseData[0].batches[b].batchName);
@@ -86,14 +81,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
             Group3: progressgroupValues[2]
           });
         }
-        // this.testData = [
-        //   { label: "ORACLE 1", Group1: 52, Group2: 56 },
-        //   { label: "ORACLE 2", Group1: 42, Group2: 86 },
-        //   { label: "ORACLE 3", Group1: 62, Group2: 26 },
-        //   { label: "ORACLE 4", Group1: 32, Group2: 46 },
-        //   { label: "ORACLE 7", Group1: 32, Group2: 46 },
-        //   { label: "ORACLE 8", Group1: 32, Group2: 46 }
-        // ];
       });
   }
   ngOnInit() {

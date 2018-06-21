@@ -7,6 +7,8 @@ import { Component, OnInit } from "@angular/core";
 })
 export class NotificationPerformanceWidgetComponent implements OnInit {
   routePath: string = "notificationPerformanceFullView";
+
+  getTab: string = "schedule";
   filtersData = {
     routeTo: "notificationPerformanceFullView",
     filters: true,
@@ -15,13 +17,15 @@ export class NotificationPerformanceWidgetComponent implements OnInit {
     filterList: ["zone"]
   };
   scheduled: boolean = true;
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
   scheduledFn() {
-    this.scheduled = true;
+    this.getTab = "schedule";
   }
   seenFn() {
-    this.scheduled = false;
+    this.getTab = "seen"
   }
+
+  ngOnInit() { }
+
 }

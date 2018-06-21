@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { LdDashboardService } from './ld-dashboard.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-describe('LdDashboardService', () => {
+fdescribe('LdDashboardService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LdDashboardService]
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule]
     });
   });
 

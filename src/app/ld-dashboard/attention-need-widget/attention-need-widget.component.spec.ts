@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AttentionNeedWidgetComponent } from './attention-need-widget.component';
 
-describe('AttentionNeedWidgetComponent', () => {
+fdescribe('AttentionNeedWidgetComponent', () => {
   let component: AttentionNeedWidgetComponent;
   let fixture: ComponentFixture<AttentionNeedWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AttentionNeedWidgetComponent ]
+      declarations: [AttentionNeedWidgetComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +22,12 @@ describe('AttentionNeedWidgetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create removeWidget', () => {
+    let i;
+    component.removeWidget(i);
+    expect(component.removeWidget).toBeTruthy();
+  });
+
+
 });

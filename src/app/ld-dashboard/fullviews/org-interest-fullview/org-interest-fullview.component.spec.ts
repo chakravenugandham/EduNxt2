@@ -29,4 +29,15 @@ fdescribe('OrgInterestFullviewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create getDisplayObject', () => {
+    let $event;
+    component.getDisplayObject($event);
+    expect(component.getDisplayObject).toBeTruthy();
+  });
+
+  it('should create getDataFromService', () => {
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
+  });
 });

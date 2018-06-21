@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  EventEmitter,
-  Output
-} from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
@@ -32,7 +24,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     currentModule: string;
   };
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
 
   filterSelected: any = {
     batchId: [],
@@ -90,13 +82,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   removeFilter(i) {
     this.filterArray.splice(i, 1);
   }
-  removeFromFilterBody(filterBodyName) {}
+  removeFromFilterBody(filterBodyName) { }
 
   routetoFullview() {
     this.router.navigate([this.viewData.routeTo]);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnChanges(changes: SimpleChanges) { }
 }

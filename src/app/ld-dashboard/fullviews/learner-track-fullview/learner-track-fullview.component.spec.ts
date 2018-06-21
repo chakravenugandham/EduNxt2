@@ -8,6 +8,8 @@ import { LearnerPerformanceComponent } from "../../learners-track-widget/learner
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { DonutChartDirective } from "../../../directives/donut-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.component";
 
 describe('LearnerTrackFullviewComponent', () => {
   let component: LearnerTrackFullviewComponent;
@@ -16,9 +18,10 @@ describe('LearnerTrackFullviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LearnerTrackFullviewComponent, LearnerPaceComponent, LearnerPerformanceComponent, DonutChartDirective],
+      declarations: [LearnerTrackFullviewComponent, LearnerPaceComponent,
+        LearnerPerformanceComponent, DonutChartDirective, FilterWidgetComponent],
       providers: [LdDashboardService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     })
       .compileComponents();
   }));

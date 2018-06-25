@@ -10,7 +10,12 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 export class ActiveUserWidgetComponent implements OnInit, OnChanges {
 
   getTab = "activeUser";
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getActiveUsersData();
+      this.getLocationData();
+    })
+  }
 
   //fliter object for payload
 

@@ -21,7 +21,11 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   responseData = [];
   dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   testScoreFn() {
     this.getValue = "test";
@@ -37,14 +41,11 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
     this.getValue = "assignment";
     this.getDataFromService();
   }
-  
+
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
   }
-
-  // data model
-  // dataSet = [[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]]
 
   getDataFromService() {
     this.getData

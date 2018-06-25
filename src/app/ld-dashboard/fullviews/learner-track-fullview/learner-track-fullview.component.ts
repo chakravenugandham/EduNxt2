@@ -22,7 +22,11 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+  }
 
   getDataFromService() {
     this.getData

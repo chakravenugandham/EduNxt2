@@ -13,10 +13,14 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   showDetails: string = "teams";
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   //api calls for trainers ,teams and learner
-  ngOnInit() {
+  getDataFromService() {
     this.getData.getTrainersData().subscribe((response: any) => {
       this.responseTrainersDetails = response.data;
     });
@@ -26,5 +30,9 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.getData.getLearnerData().subscribe((response: any) => {
       this.responseLeanersDetails = response.data;
     });
+  }
+
+  ngOnInit() {
+    this.getDataFromService();
   }
 }

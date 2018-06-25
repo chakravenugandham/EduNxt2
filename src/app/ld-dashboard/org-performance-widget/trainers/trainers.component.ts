@@ -9,7 +9,11 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 export class TrainersComponent implements OnInit {
   trainersData = [];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   getDataFromService() {
     this.getData.getTrainersData().subscribe((res: any) => {

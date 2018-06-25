@@ -11,7 +11,8 @@
     <li class="list-inline-item filter" *ngIf="viewData.filters">
       <div class="filterSelect">
         <div class="getFilter" (click)="showFilter()">
-          <span>Add a filter
+          <span>Add a filter</span>
+          <span>
             <i class="fas fa-plus-circle"></i>
           </span>
         </div>
@@ -43,8 +44,8 @@
       </li>
     </span>
   </ul>
-  <div class="viewDetails" *ngIf="viewData.viewDetails">
-    <span class="text-primary float-right" class="cursor-pointer" (click)="routetoFullview()"> View Details</span>
+  <div class="viewDetails" *ngIf="viewData.viewDetails" (click)="routetoFullview()">
+    <span class="text-primary float-right" class="cursor-pointer"> View Details</span>
     <span>
       <i class="fas fa-angle-right"></i>
     </span>

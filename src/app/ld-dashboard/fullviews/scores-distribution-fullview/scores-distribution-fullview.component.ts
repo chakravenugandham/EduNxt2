@@ -22,7 +22,11 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.filterbody = $event;
     this.getDataFromService();
   }
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
   //, this.filterbody
   getDataFromService() {
     this.getData.getScoresDetails(this.showDetails).subscribe((response: any) => {

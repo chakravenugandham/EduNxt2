@@ -27,21 +27,25 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) {}
+  constructor(private serviceData: LdDashboardService) {
+    this.serviceData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   learnerPaceFn() {
     this.learnerPace = true;
     this.componentName = "pace";
-    this.getData();
+    this.getDataFromService();
   }
 
   learnerPerfFn() {
     this.learnerPace = false;
     this.componentName = "performance";
-    this.getData();
+    this.getDataFromService();
   }
 
-  getData() {
+  getDataFromService() {
     this.serviceData
       .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
@@ -52,16 +56,16 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   getFilterObject($event) {
     this.filterbody = $event;
-    this.getData();
+    this.getDataFromService();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {
-      this.getData();
+      this.getDataFromService();
     }
   }
 
   ngOnInit() {
-    this.getData();
+    this.getDataFromService();
   }
 }

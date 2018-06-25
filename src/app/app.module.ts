@@ -22,8 +22,8 @@ import { TagCloudComponent } from "angular-tag-cloud-module";
 import { RoutingModule } from "./routing.module";
 
 import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./common/header/header.component";
-import { TimeFrameComponent } from "./common/time-frame/time-frame.component";
+import { HeaderComponent } from "./ld-dashboard/common/header/header.component";
+import { TimeFrameComponent } from "./ld-dashboard/common/time-frame/time-frame.component";
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
 import { ActivityWidgetComponent } from "./ld-dashboard/activity-widget/activity-widget.component";
 import { UsersComponent } from './ld-dashboard/activity-widget/users/users.component';
@@ -57,9 +57,9 @@ import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/o
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
-import { MpDatepickerRangeComponent } from './common/mp-datepicker-range/mp-datepicker-range.component';
+import { MpDatepickerRangeComponent } from './ld-dashboard/common/mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
-import { FooterComponent } from './common/footer/footer.component';
+import { FooterComponent } from './ld-dashboard/common/footer/footer.component';
 import { TimespentComponent } from './ld-dashboard/activity-widget/timespent/timespent.component';
 import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrained/userstrained.component';
 import { FilterWidgetComponent } from './ld-dashboard/shared/filter-widget/filter-widget.component';
@@ -69,11 +69,11 @@ import { OrgPerformanceFullviewComponent } from './ld-dashboard/fullviews/org-pe
 import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 import { GoogleChartsBaseService } from "./ld-dashboard/services/googleChartService";
-import { UsersDataComponent } from './common/users-data/users-data.component';
-import { HalfdonutchartDirective } from './directives/halfdonutchart.directive';
-import { DonutChartDirective } from './directives/donut-chart.directive';
-import { BarChartDirective } from './directives/bar-chart.directive';
-import { ScoreChartDirective } from './directives/score-chart.directive';
+import { UsersDataComponent } from './ld-dashboard/common/users-data/users-data.component';
+import { HalfdonutchartDirective } from './ld-dashboard/directives/halfdonutchart.directive';
+import { DonutChartDirective } from './ld-dashboard/directives/donut-chart.directive';
+import { BarChartDirective } from './ld-dashboard/directives/bar-chart.directive';
+import { ScoreChartDirective } from './ld-dashboard/directives/score-chart.directive';
 import { BestProgramsWidgetComponent } from './ld-dashboard/best-programs-widget/best-programs-widget.component';
 import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/programs.component';
 

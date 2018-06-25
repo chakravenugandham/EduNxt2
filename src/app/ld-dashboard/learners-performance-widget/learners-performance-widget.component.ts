@@ -22,7 +22,11 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   progressDataSet = [];
   batches = [];
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   performanceFn() {
     if (this.getTab != "performance") {

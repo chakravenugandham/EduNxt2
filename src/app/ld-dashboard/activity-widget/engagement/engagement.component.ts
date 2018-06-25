@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { Config } from "../../../common/users-data/users-data.component";
+import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
 
 @Component({
   selector: "app-engagement",
@@ -14,9 +14,9 @@ export class EngagementComponent implements OnInit, OnChanges {
   totalUserCount: number;
   percentageChange: number;
   expectedChange: boolean;
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges(changes: any) {
     if (changes.engageData.currentValue) {
@@ -30,7 +30,7 @@ export class EngagementComponent implements OnInit, OnChanges {
 
       this.percentageChange = Math.round(
         (this.config.peopleCurrentlyEnrolled * 100) /
-          this.totalUsers.peopleCurrentlyEnrolled
+        this.totalUsers.peopleCurrentlyEnrolled
       );
 
       this.expectedChange = this.percentageChange < 50 ? false : true;

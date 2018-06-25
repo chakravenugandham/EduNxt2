@@ -11,16 +11,16 @@
         <b>Select a course</b>
       </li>
       <li class="list-inline-item selectCourse">
-        <!-- <div ngbDropdown role="group" aria-label="Button group with nested dropdown">
-          <button class="btn btn-outline-primary" ngbDropdownToggle>All Courses</button>
-          <div class="dropdown-menu" ngbDropdownMenu>
-            <button class="dropdown-item" *ngFor="let courses of coursesData">{{courses.courseName}}</button>
-          </div>
-        </div> -->
-        <select name="selectCourse" id="selectCourse">
-          <option value="defualtAllCourse" style="color: red" class="course-item">All Courses</option>
-          <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.id}}">{{courses.courseName}}</option>
+        <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
+          <!-- <option selected value="defaultAllCourse" class="course-item">All Courses</option> -->
+          <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseId}}">{{courses.courseName}}</option>
         </select>
+        <!-- <span class="input-group">
+          <select class="custom-select" [(ngModel)]="selectCourse" id="inputGroupSelect02">
+            <option value="defualtAllCourse" style="color: red" class="course-item">All Courses</option>
+            <option *ngFor="let courses of coursesData" [value]="{{courses.id}}">{{courses.courseName}}</option>
+          </select>
+        </span> -->
       </li>
     </ul>
     <div class="float-right m-t-7">

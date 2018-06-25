@@ -20,7 +20,11 @@ export class OrgInterestComponent implements OnInit {
 
   wordData = [];
   data: CloudData[];
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   getDataFromService() {
     this.options.width = document.getElementById("word-cloud").offsetWidth;

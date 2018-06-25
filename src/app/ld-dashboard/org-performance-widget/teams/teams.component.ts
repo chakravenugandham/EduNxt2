@@ -10,7 +10,11 @@ export class TeamsComponent implements OnInit {
   teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   getDataFromService() {
     this.getData.getTeamData().subscribe((res: any) => {
@@ -22,14 +26,3 @@ export class TeamsComponent implements OnInit {
     this.getDataFromService();
   }
 }
-
-// export class teamDataConfig {
-//   teamDataConfig: {
-//     teamId: number;
-//     teamName: string;
-//     actionMessage: string;
-//     completion: string;
-//     completedProgram: string;
-//     teamsize: string;
-//   };
-// }

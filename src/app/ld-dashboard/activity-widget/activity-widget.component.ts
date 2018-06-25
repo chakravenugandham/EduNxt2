@@ -21,7 +21,11 @@ export class ActivityWidgetComponent implements OnInit {
     usersTrained: ""
   };
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   getDataFromService() {
     this.getData.getActivityData().subscribe((response: any) => {

@@ -19,7 +19,12 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
     this.getDataForGraph();
   }
 
-  constructor(private contentService: LdDashboardService) {}
+  constructor(private contentService: LdDashboardService) {
+    this.contentService.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+      this.getDataForGraph();
+    })
+  }
 
   getDataFromService() {
     this.contentService

@@ -1,20 +1,33 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class LdDashboardService {
+  refreshAPI$ = new Subject<any>();
+
   constructor(private http: HttpClient) { }
+
+  get refreshAPI() { return this.refreshAPI$.asObservable() }
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
   headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
 
   getHeaders() {
-    const headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
-    return headers;
+
+  }
+
+  setHeaders(config?: any) {
+    let headers = new HttpHeaders().set('LnDUserId', '37046');
+    for (let key in config) {
+      headers = headers.append(key, config[key]);
+    }
+    this.headers = headers;
+    this.refreshAPI$.next();
   }
 
   //courses dropdown
@@ -65,7 +78,7 @@ export class LdDashboardService {
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";
     let headers = new HttpHeaders().set("LnDUserId", "1001");
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //learner-performance
@@ -77,31 +90,31 @@ export class LdDashboardService {
   //learner-performance full details
   getLearnerPerformanceDetails() {
     let url = this.baseURL + "learner-performance-progress-details";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-interest
   getOrgInterestData() {
     let url = this.baseURL + "organization-interests";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance teams data
   getTrainersData() {
     let url = this.baseURL + "trainer-leaderboard";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance trainers data
   getTeamData() {
     let url = this.baseURL + "team-leaderboard";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance leaners data
   getLearnerData() {
     let url = this.baseURL + "learner-leaderboard";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //scores-distribution based on component type
@@ -113,13 +126,13 @@ export class LdDashboardService {
   //scores full-details
   getScoresDetails(dropdownValue) {
     let url = this.baseURL + "scores-distribution-details?type=" + dropdownValue;
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //content-performing
   getContentData() {
     let url = this.baseURL + "content-consumption";
-    return this.http.post(url, { headers: this.getHeaders() });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //get-filters

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
+import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: "app-time-frame",
@@ -10,8 +10,9 @@ export class TimeFrameComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<any>();
   coursesData = [];
   today: Date = new Date();
+  selectCourse: any;
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData.getCoursesData().subscribe((res: any) => {
@@ -21,6 +22,10 @@ export class TimeFrameComponent implements OnInit {
 
   onChangeCourse(courseId) {
     this.filterEvent.emit(courseId);
+  }
+
+  changeCourse(selectCourse) {
+    this.getData.setHeaders({ 'courseId': selectCourse });
   }
 
   ngOnInit() {

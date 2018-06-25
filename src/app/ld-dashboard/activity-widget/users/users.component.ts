@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Config } from "../../../common/users-data/users-data.component";
+import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
 
 @Component({
   selector: "app-users",
@@ -11,9 +11,9 @@ export class UsersComponent implements OnInit {
 
   activeConfig: Config;
   enrolledConfig: Config;
-  numberFontColor:boolean;
+  numberFontColor: boolean;
 
-  constructor() {}
+  constructor() { }
 
   ngOnChanges(changes: any) {
     if (changes.userData.currentValue) {
@@ -35,5 +35,5 @@ export class UsersComponent implements OnInit {
     this.numberFontColor = true;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

@@ -22,7 +22,11 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) {}
+  constructor(private serviceData: LdDashboardService) {
+    this.serviceData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
   teamsFn() {
     this.getTab = "teams";
@@ -34,7 +38,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.getTab = "learner";
   }
 
-  getData() {
+  getDataFromService() {
     this.serviceData
       .getScoresDistrubution(this.getTab, this.filterbody)
       .subscribe((response: any) => {
@@ -46,5 +50,5 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterbody = $event;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

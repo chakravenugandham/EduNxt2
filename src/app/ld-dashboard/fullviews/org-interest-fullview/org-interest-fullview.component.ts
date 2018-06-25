@@ -14,7 +14,11 @@ export class OrgInterestFullviewComponent implements OnInit {
   //dropdown display values
   displayFor = {};
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
   getDisplayObject($event) {
     this.displayFor = $event;
   }

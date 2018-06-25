@@ -9,7 +9,11 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 })
 export class ContentConsumptionComponent implements OnInit {
   contentData = [];
-  constructor(private contentService: LdDashboardService) {}
+  constructor(private contentService: LdDashboardService) {
+    this.contentService.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
   getDataFromService() {
     this.contentService.getContentData().subscribe((res: any) => {
       this.contentData = res.data;

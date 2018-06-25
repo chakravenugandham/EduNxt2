@@ -67,18 +67,21 @@ export class LdDashboardService {
     let headers = new HttpHeaders().set("LnDUserId", "1001");
     return this.http.post(url, filterbody, { headers: headers });
   }
-
+  
   //learner-track full details
   getLearnerTrackDetails(componentName, filterbody) {
     let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
-    return this.http.post(url, filterbody, { headers: this.headers });
+    let headers = new HttpHeaders().set("LnDUserId", "1001");
+    return this.http.post(url, filterbody, { headers: headers });
+    // return this.http.post(url, filterbody, { headers: this.headers });
   }
-
+  
   //learner-track graph details
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";
     let headers = new HttpHeaders().set("LnDUserId", "1001");
-    return this.http.post(url, null, { headers: this.headers });
+    return this.http.post(url, null, { headers: headers });
+    // return this.http.post(url, null, { headers: this.headers });
   }
 
   //learner-performance

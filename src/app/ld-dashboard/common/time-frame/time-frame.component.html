@@ -12,7 +12,7 @@
       </li>
       <li class="list-inline-item selectCourse">
         <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-          <!-- <option selected value="defaultAllCourse" style="color: #5584ff" class="course-item">All Courses</option> -->
+          <option selected="selected" style="color: #5584ff">All Courses</option>
           <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseId}}">{{courses.courseName}}</option>
         </select>
         <!-- <span class="input-group">

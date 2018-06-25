@@ -3,10 +3,11 @@
   <div class="form-group">
     <div class="input-group selectDate" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event)">
       <span class="form-control uneditable-input">
-        {{ daterange.start | date:'M/dd/y' }} - {{ daterange.end| date:'M/dd/y' }}
+        <!-- {{ daterange.start | date:'M/dd/y' }} - {{ daterange.end| date:'M/dd/y' }} -->
+        {{ daterange.start | date }} ~ {{ daterange.end| date }}
       </span>
       <span class="calender-img">
-        <img src="../../assets/IconsSVGs/calender.svg" height="20px" width="20px">
+        <img src="../../assets/IconsSVGs/calender.svg" height="14px" width="14px">
       </span>
     </div>
   </div>

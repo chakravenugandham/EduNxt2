@@ -15,22 +15,22 @@ export class LearnerPaceComponent implements OnInit, OnChanges {
     if (changes.paceData.currentValue) {
       this.chartValues = [
         {
-          color: "#F77F6C",
+          color: "#23b14d",
           type: "classA",
           number: this.paceData.aheadOfSchedule
         },
         {
-          color: "#5584FF",
+          color: "#ffd630",
           type: "classB",
           number: this.paceData.behindSchedule
         },
         {
-          color: "#23B14D",
+          color: "#f77f6c",
           type: "classC",
           number: this.paceData.haveNotStarted
         },
         {
-          color: "#FFD630",
+          color: "#5584ff",
           type: "classD",
           number: this.paceData.onTrack
         }

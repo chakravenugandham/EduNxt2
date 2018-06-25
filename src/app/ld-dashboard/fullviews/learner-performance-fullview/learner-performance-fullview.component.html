@@ -39,11 +39,11 @@
                     <i class="fa fa-sort" aria-hidden="true"></i>
                   </span>
                 </th>
-                <th scope="col">Faculty Name
+                <!-- <th scope="col">Faculty Name
                   <span>
                     <i class="fa fa-sort" aria-hidden="true"></i>
                   </span>
-                </th>
+                </th> -->
                 <th scope="col">Students Count
                   <span>
                     <i class="fa fa-sort" aria-hidden="true"></i>
@@ -73,10 +73,10 @@
             </thead>
             <tbody>
               <tr *ngFor="let data of learnerData">
-                <th scope="row"> {{data.courseName}} </th>
+                <th scope="row" class="text-primary"> {{data.courseName}} </th>
                 <td> {{data.courseStartDate | date}} </td>
                 <td> {{data.courseEndDate | date}} </td>
-                <td> {{data.facultyName}} </td>
+                <!-- <td> {{data.facultyName}} </td> -->
                 <td> {{data.studentCount}} </td>
                 <td> {{data.programStatus}} </td>
                 <td> {{data.completionAvg}} % </td>

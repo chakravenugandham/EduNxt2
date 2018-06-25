@@ -1,19 +1,19 @@
 .aheadOfSchedule {
-  color: #f77f6c;
-  background-color: #f77f6c;
+  color: #23b14d;
+  background-color: #23b14d;
 }
 
 .onTrack {
-  color: #ffd630;
-  background-color: #ffd630;
-}
-
-.behindSchedule {
   color: #5584ff;
   background-color: #5584ff;
 }
 
+.behindSchedule {
+  color: #ffd630;
+  background-color: #ffd630;
+}
+
 .haveNotStarted {
-  color: #23b14d;
-  background-color: #23b14d;
+  color: #f77f6c;
+  background-color: #f77f6c;
 }

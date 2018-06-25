@@ -1,14 +1,14 @@
 .user-component {
   .userImages {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     display: flex;
   }
   .imgActive {
     position: relative;
     float: left;
     img {
-      height: 50px;
-      width: 50px;
+      height: 56px;
+      width: 56px;
       border-radius: 50%;
       margin-left: -10px;
       border: 1px solid #fff;
@@ -18,7 +18,8 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      background-color: #e1fd47;
+      background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%);
+      // background-color: #befd45d9;
       border-radius: 50%;
       color: #fff;
       font-size: 18px;

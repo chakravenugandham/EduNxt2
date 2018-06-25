@@ -15,17 +15,17 @@ export class LearnerPerformanceComponent implements OnInit {
     if (changes.performanceData.currentValue) {
       this.chartValues = [
         {
-          color: "#F77F6C",
+          color: "#23b14d",
           type: "classA",
           number: this.performanceData.excelling
         },
         {
-          color: "#5584FF",
+          color: "#ffd630",
           type: "classB",
           number: this.performanceData.passing
         },
         {
-          color: "#FFD630",
+          color: "#f77f6c",
           type: "classD",
           number: this.performanceData.struggling
         }

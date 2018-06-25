@@ -13,7 +13,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   componentName: string = "pace";
 
-  displayFor = {}
+  displayFor = {};
   getDisplayObject($event) {
     this.displayFor = $event;
     console.log("this.displayFor", this.displayFor);
@@ -22,53 +22,55 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
-    this.getData.getLearnerTrackDetails(this.componentName, this.displayFor).subscribe((response: any) => {
-      this.responseTrackDetails = response.data;
-      console.log(this.responseTrackDetails);
-    });
+    this.getData
+      .getLearnerTrackDetails(this.componentName, this.displayFor)
+      .subscribe((response: any) => {
+        this.responseTrackDetails = response.data;
+        console.log(this.responseTrackDetails);
+      });
     this.getData.getGraphDetails().subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       console.log(this.responseGraphDetails);
       this.paceTrackValues = [
         {
-          color: "#F77F6C",
+          color: "#23b14d",
           type: "classA",
-          number: this.responseGraphDetails.paceData['aheadOfSchedule']
+          number: this.responseGraphDetails.paceData["aheadOfSchedule"]
         },
         {
-          color: "#5584FF",
+          color: "#ffd630",
           type: "classB",
-          number: this.responseGraphDetails.paceData['behindSchedule']
+          number: this.responseGraphDetails.paceData["behindSchedule"]
         },
         {
-          color: "#23B14D",
+          color: "#f77f6c",
           type: "classC",
-          number: this.responseGraphDetails.paceData['haveNotStarted']
+          number: this.responseGraphDetails.paceData["haveNotStarted"]
         },
         {
-          color: "#FFD630",
+          color: "#5584ff",
           type: "classD",
-          number: this.responseGraphDetails.paceData['onTrack']
+          number: this.responseGraphDetails.paceData["onTrack"]
         }
       ];
       this.performanceTrackValues = [
         {
-          color: "#F77F6C",
+          color: "#23b14d",
           type: "classA",
-          number: this.responseGraphDetails.performanceData['excelling']
+          number: this.responseGraphDetails.performanceData["excelling"]
         },
         {
-          color: "#5584FF",
+          color: "#ffd630",
           type: "classB",
-          number: this.responseGraphDetails.performanceData['passing']
+          number: this.responseGraphDetails.performanceData["passing"]
         },
         {
-          color: "#23B14D",
+          color: "#f77f6c",
           type: "classD",
-          number: this.responseGraphDetails.performanceData['struggling']
+          number: this.responseGraphDetails.performanceData["struggling"]
         }
       ];
     });

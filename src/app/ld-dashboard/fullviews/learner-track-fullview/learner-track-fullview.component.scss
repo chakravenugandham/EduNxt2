@@ -1,7 +1,7 @@
 //pace batches
 .aheadOfSchedule {
-  color: #f77f6c;
-  background-color: #f77f6c;
+  color: #23b14d;
+  background-color: #23b14d;
 }
 
 .onTrack {
@@ -10,27 +10,27 @@
 }
 
 .behindSchedule {
-  color: #23b14d;
-  background-color: #23b14d;
-}
-
-.haveNotStarted {
   color: #ffd630;
   background-color: #ffd630;
 }
 
-//performance batches
-.excelling {
+.haveNotStarted {
   color: #f77f6c;
   background-color: #f77f6c;
 }
 
+//performance batches
+.excelling {
+  color: #23b14d;
+  background-color: #23b14d;
+}
+
 .passing {
-  color: #5584ff;
-  background-color: #5584ff;
+  color: #ffd630;
+  background-color: #ffd630;
 }
 
 .struggling {
-  color: #23b14d;
-  background-color: #23b14d;
+  color: #f77f6c;
+  background-color: #f77f6c;
 }

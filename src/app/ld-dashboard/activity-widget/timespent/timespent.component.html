@@ -22,11 +22,12 @@
         <div class="p-t-7 changeInNumberText">
           <div>
             <span class="small">
-              <i class="fas fa-arrow-up changeNumber"></i>
+              <i class="fas" [ngClass]="{'fa-arrow-up changeNumber': expectedChange, 'fa-arrow-down changeNumberLow': !expectedChange}"></i>
             </span>
-            <span class="changeNumber"> Expected {{timeData.expectedTimeSpentPercentage}}%</span>
+            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{timeData.expectedTimeSpentPercentage}}%.</span>
           </div>
-          <div class="m-b-0 font-color">{{timeData.timeSpentPercentage}} of {{timeData.totalTime}} hours spent on learning activities</div>
+          <div class="m-b-0 font-color">
+            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}">{{timeData.timeSpentPercentage}} </span> of {{timeData.totalTime}} hours spent on learning activities</div>
         </div>
       </div>
       <div class="m-t-10">of your goals has been met</div>

@@ -11,7 +11,7 @@
     <li class="list-inline-item filter" *ngIf="viewData.filters">
       <div class="filterSelect">
         <div class="getFilter" (click)="showFilter()">
-          <span>Add a Filter
+          <span>Add a filter
             <i class="fas fa-plus-circle"></i>
           </span>
         </div>
@@ -39,7 +39,7 @@
     <span *ngIf="filterArray">
       <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">
         <span>{{filter}}</span>
-        <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(i);removeFromFilterBody(filter);"></i>
+        <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
       </li>
     </span>
   </ul>

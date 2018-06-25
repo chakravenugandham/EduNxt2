@@ -14,7 +14,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
     let chartDiv = document.createElement("div");
     var backgroundArc = d3.svg
       .arc()
-      .innerRadius(85)
+      .innerRadius(82)
       .outerRadius(100)
       .cornerRadius(10)
       .startAngle(-90 * (Math.PI / 180))
@@ -22,7 +22,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
 
     var mainArc = d3.svg
       .arc()
-      .innerRadius(85)
+      .innerRadius(82)
       .outerRadius(100)
       .cornerRadius(10)
       .startAngle(-90 * (Math.PI / 180))
@@ -40,7 +40,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .append("svg")
       .attr("width", 300)
       .attr("height", 130)
-      .attr("style", "padding-left:30%; padding-top:5%;");
+      .attr("style", "padding-left:25%; padding-top:5%;");
 
     var charts = svg
       .selectAll("g")
@@ -48,7 +48,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("transform", function(d, i) {
-        return "translate(" + (i * 50 + 50) + ",100)";
+        return "translate(" + (i * 50 + 70) + ",100)";
       });
 
     charts

@@ -31,8 +31,12 @@
 
 .selectCourse {
   select {
-    border: 1px solid #0146f9;
-    padding: 6px 4px;
+    color: #5584ff;
+    border: 1px solid #5584ff;
+    padding: 9px 6px;
+    option {
+      color: #5584ff;
+    }
   }
   .course-item {
     border-bottom: 1px solid #eee;

@@ -10,7 +10,12 @@ export class LdDashboardService {
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  headers = new HttpHeaders().set("LnDUserId", "37046").set("courseId", "0");
+  headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
+
+  getHeaders() {
+    const headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
+    return headers;
+  }
 
   //courses dropdown
   getCoursesData() {
@@ -59,6 +64,7 @@ export class LdDashboardService {
   //learner-track graph details
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";
+    let headers = new HttpHeaders().set("LnDUserId", "1001");
     return this.http.post(url, { headers: this.headers });
   }
 
@@ -77,13 +83,6 @@ export class LdDashboardService {
   //org-interest
   getOrgInterestData() {
     let url = this.baseURL + "organization-interests";
-    return this.http.post(url, { headers: this.headers });
-  }
-
-  //org-interest full details
-  getOrgInterestDetails(componentName, filterbody) {
-    let url =
-      this.baseURL + "organization-interests-details?type=" + componentName;
     return this.http.post(url, { headers: this.headers });
   }
 
@@ -120,7 +119,7 @@ export class LdDashboardService {
   //content-performing
   getContentData() {
     let url = this.baseURL + "content-consumption";
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, { headers: this.getHeaders() });
   }
 
   //get-filters

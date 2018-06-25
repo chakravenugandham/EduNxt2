@@ -10,23 +10,20 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class OrgInterestFullviewComponent implements OnInit {
   //global variable declarations
   responseData = [];
-  componentName: string = "teams";
 
   //dropdown display values
   displayFor = {};
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
   getDisplayObject($event) {
     this.displayFor = $event;
   }
 
   //api call for orgDetails based on component
   getDataFromService() {
-    this.getData
-      .getOrgInterestDetails(this.componentName, this.displayFor)
-      .subscribe((response: any) => {
-        this.responseData = response.data;
-      });
+    this.getData.getOrgInterestData().subscribe((res: any) => {
+      this.responseData = res.data;
+    })
   }
 
   ngOnInit() {

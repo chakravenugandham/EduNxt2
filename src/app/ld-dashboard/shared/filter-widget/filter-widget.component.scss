@@ -51,9 +51,10 @@
 .search-org-user {
   position: relative;
   input {
-    padding: 4px;
-    border: 1px solid #2196f3a8;
-    width: 68px;
+    padding: 6px 12px;
+    color: #5584ff;
+    border: 1px solid #5584ff;
+    width: 124px;
   }
   .serach-icon {
     position: absolute;
@@ -64,6 +65,31 @@
     }
   }
 }
+.search-org-user input::placeholder {
+  color: #5584ff;
+}
+.search-org-user input::-ms-input-placeholder {
+  color: #5584ff;
+}
+.search-org-user input::-ms-input-placeholder {
+  color: #5584ff;
+}
+
+// ::placeholder {
+//   /* Chrome, Firefox, Opera, Safari 10.1+ */
+//   color: #5584ff;
+//   opacity: 1; /* Firefox */
+// }
+
+// :-ms-input-placeholder {
+//   /* Internet Explorer 10-11 */
+//   color: #5584ff;
+// }
+
+// ::-ms-input-placeholder {
+//   /* Microsoft Edge */
+//   color: #5584ff;
+// }
 
 .check-box {
   width: 12px;
@@ -112,6 +138,9 @@
 }
 .getFilter {
   cursor: pointer;
+  i {
+    border-radius: 50%;
+  }
 }
 .filter-name {
   padding: 4px 0px;

@@ -53,5 +53,5 @@
     <app-content-consumption></app-content-consumption>
   </div>
 
-  <app-filter-widget [viewData]="filtersData"></app-filter-widget>
+  <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 </div>

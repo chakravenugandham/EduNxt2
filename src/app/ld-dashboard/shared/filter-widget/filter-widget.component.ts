@@ -34,6 +34,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   filterSelected: any = {
     batchId: [],
     teamId: [],
+    courseId: [],
     zoneId: []
   };
 
@@ -61,6 +62,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         filterTypeId = "teamId";
         break;
       }
+      case "course": {
+        filterTypeId = "courseId";
+        break;
+      }
       case "zone": {
         filterTypeId = "zoneId";
         break;
@@ -83,10 +88,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       this.filterArray.splice(i, 1);
       let j = this.filterSelected[filterTypeId].indexOf(filterName.name);
       this.filterSelected[filterTypeId].splice(j, 1);
-      
-      for(let k in this.filterFullObj){
-        if(filterName.name == this.filterFullObj[k].name){
-          this.filterFullObj.splice(0,1);
+
+      for (let k in this.filterFullObj) {
+        if (filterName.name == this.filterFullObj[k].name) {
+          this.filterFullObj.splice(0, 1);
         }
       }
     }

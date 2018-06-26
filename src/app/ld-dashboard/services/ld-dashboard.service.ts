@@ -9,20 +9,20 @@ import { Subject } from "rxjs";
 export class LdDashboardService {
   refreshAPI$ = new Subject<any>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  get refreshAPI() { return this.refreshAPI$.asObservable() }
+  get refreshAPI() {
+    return this.refreshAPI$.asObservable();
+  }
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
+  headers = new HttpHeaders().set("LnDUserId", "37046").set("courseId", "0");
 
-  getHeaders() {
-
-  }
+  getHeaders() {}
 
   setHeaders(config?: any) {
-    let headers = new HttpHeaders().set('LnDUserId', '37046');
+    let headers = new HttpHeaders().set("LnDUserId", "37046");
     for (let key in config) {
       headers = headers.append(key, config[key]);
     }
@@ -64,22 +64,29 @@ export class LdDashboardService {
   //learner-track widget data
   getLearnerTrackData(filterbody) {
     let url = this.baseURL + "learner-pace-performance";
-    let headers = new HttpHeaders().set("LnDUserId", "1001");
+    let headers = new HttpHeaders()
+      .set("LnDUserId", "1001")
+      .set("courseId", "0");
     return this.http.post(url, filterbody, { headers: headers });
   }
-  
+
   //learner-track full details
   getLearnerTrackDetails(componentName, filterbody) {
-    let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
-    let headers = new HttpHeaders().set("LnDUserId", "1001");
+    let url =
+      this.baseURL + "learner-pace-performance-details?type=" + componentName;
+    let headers = new HttpHeaders()
+      .set("LnDUserId", "1001")
+      .set("courseId", "0");
     return this.http.post(url, filterbody, { headers: headers });
     // return this.http.post(url, filterbody, { headers: this.headers });
   }
-  
+
   //learner-track graph details
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";
-    let headers = new HttpHeaders().set("LnDUserId", "1001");
+    let headers = new HttpHeaders()
+      .set("LnDUserId", "1001")
+      .set("courseId", "0");
     return this.http.post(url, null, { headers: headers });
     // return this.http.post(url, null, { headers: this.headers });
   }
@@ -128,7 +135,8 @@ export class LdDashboardService {
 
   //scores full-details
   getScoresDetails(dropdownValue) {
-    let url = this.baseURL + "scores-distribution-details?type=" + dropdownValue;
+    let url =
+      this.baseURL + "scores-distribution-details?type=" + dropdownValue;
     return this.http.post(url, null, { headers: this.headers });
   }
 

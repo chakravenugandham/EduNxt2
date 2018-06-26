@@ -3,21 +3,21 @@
     <span>
       <i class="fas fa-angle-left" routerLink="/"></i>
     </span>
-    <span> How are my notifcations performing?</span>
+    <span> How are my notifications performing?</span>
   </div>
   <div class="widget-block">
     <div>
       <span>Display graph for </span>
       <span>
-        <Select>
-          <option value="ScheduledVsDelivered"> Scheduled Vs Delivered </option>
-          <option value="SeenVsResponded"> Seen Vs Responded </option>
+        <Select class="f-w-100">
+          <option value="ScheduledVsDelivered" class="f-w-100"> Scheduled Vs Delivered </option>
+          <option value="SeenVsResponded" class="f-w-100"> Seen Vs Responded </option>
         </Select>
       </span>
     </div>
-
-    <app-scheduled-delivered></app-scheduled-delivered>
-
+    <div class="m-t-50">
+      <app-scheduled-delivered></app-scheduled-delivered>
+    </div>
     <div>
       <table class="table table-borderless">
         <thead>
@@ -28,7 +28,6 @@
               </span>
               Notifcations
             </th>
-
             <th scope="col">Scheduled on
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>

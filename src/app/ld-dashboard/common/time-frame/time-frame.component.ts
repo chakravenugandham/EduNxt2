@@ -10,7 +10,7 @@ export class TimeFrameComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<any>();
   coursesData = [];
   today: Date = new Date();
-  selectCourse: any;
+  selectCourse: any = "All Courses";
 
   constructor(private getData: LdDashboardService) { }
 

@@ -76,6 +76,7 @@ import { BarChartDirective } from './ld-dashboard/directives/bar-chart.directive
 import { ScoreChartDirective } from './ld-dashboard/directives/score-chart.directive';
 import { BestProgramsWidgetComponent } from './ld-dashboard/best-programs-widget/best-programs-widget.component';
 import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/programs.component';
+import { ModalComponent } from './ld-dashboard/common/modal/modal.component';
 
 
 @NgModule({
@@ -134,7 +135,8 @@ import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/
     BarChartDirective,
     ScoreChartDirective,
     BestProgramsWidgetComponent,
-    ProgramsComponent
+    ProgramsComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

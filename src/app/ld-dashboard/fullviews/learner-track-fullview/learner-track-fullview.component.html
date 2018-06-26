@@ -59,14 +59,21 @@
       </div>
     </div>
   </div>
-  <div class="widget-block">
+  <div class="widget-block form-inline">
     <b>Display data for </b>
-    <span class="paceDataSelect">
-      <select name="paceDataSelect" id="paceDataSelect">
-        <option value="Ahead of Schedule">Ahead of Schedule</option>
-        <option value="On Track">On Track</option>
-        <option value="Behind Schedule">Behind Schedule</option>
-        <option value="Haven't Started">Haven't Started</option>
+    <span *ngIf="componentName == 'pace'">
+      <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
+        <option value="paceaheadschedule">Ahead of Schedule</option>
+        <option value="paceusersontrack">On Track</option>
+        <option value="pacebehindschedule">Behind Schedule</option>
+        <option value="pacehavenotstarted">Haven't Started</option>
+      </select>
+    </span>
+    <span *ngIf="componentName == 'performance'">
+      <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
+        <option value="excelling">Excelling</option>
+        <option value="passing">Passing</option>
+        <option value="struggling">Struggling</option>
       </select>
     </span>
     <table class="table table-borderless">
@@ -92,6 +99,7 @@
             </span>
             <span class="userName"> {{data.learnerName}} </span>
           </th>
+          <td class=""> {{data.serialNumber}} </td>
           <td class=""> {{data.courseName}} </td>
           <td class=""> {{data.teamName}} </td>
           <td class=""> {{data.batchName}} </td>

@@ -6,20 +6,20 @@
     <span> How is my organization performing? </span>
   </div>
   <div class="widget-block">
-    <div class="clear-fix">
-      <div class="float-left">
-        <b>Display Leaderboard for </b>
-        <span class="input-group">
-          <select class="custom-select" [(ngModel)]="showDetails" id="inputGroupSelect02">
-            <option [value]="'teams'">Teams</option>
-            <option [value]="'trainers'">Trainers</option>
-            <option [value]="'learners'">Learners</option>
-          </select>
+    <div>
+      <div class="float-left form-inline">
+        <span>
+          <b>Display Leaderboard for </b>
         </span>
+        <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails">
+          <option [value]="'teams'">Teams</option>
+          <option [value]="'trainers'">Trainers</option>
+          <option [value]="'learners'">Learners</option>
+        </select>
       </div>
       <div class="float-right">
         <button type="button" class="btn btn-primary">Add to compare</button>
-        <button type="button" class="btn btn-secondary">Clear all</button>
+        <button type="button" class="btn btn-secondary m-l-20">Clear all</button>
       </div>
     </div>
     <div>
@@ -31,27 +31,27 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Team Name</span>
-              <span>
+              <span class="m-l-8">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Completion %
-              <span>
+              <span class="m-l-8">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Completed Programs
-              <span>
+              <span class="m-l-8">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Team Size
-              <span>
+              <span class="m-l-8">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Action
-              <span>
+              <span class="m-l-8">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>

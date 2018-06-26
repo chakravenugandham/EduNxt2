@@ -44,8 +44,7 @@
     font-size: 22px;
     font-weight: 600;
     margin-right: 8px;
-  }
-  // .text-fix-bottom{
+  } // .text-fix-bottom{
   //   position: absolute;
   //   bottom: 0;
   // }
@@ -136,6 +135,7 @@
   font-weight: 600;
   color: #707070;
 }
+
 .changeInNumberText {
   font-size: 11px !important;
 }
@@ -149,6 +149,7 @@
   font-weight: 600;
   margin-right: 8px;
 }
+
 .big-positive-number {
   color: #5584ff;
 }
@@ -200,8 +201,7 @@
   table tr td {
     padding: 15px 8px;
     vertical-align: middle;
-    font-size: 12px;
-    // white-space: nowrap;
+    font-size: 12px; // white-space: nowrap;
     // overflow: hidden;
     // text-overflow: ellipsis;
   }
@@ -313,6 +313,10 @@
   padding: 1px;
   padding-right: 2px;
   cursor: pointer;
+}
+
+.ellipse {
+  color: #007bff !important;
 }
 
 //graph badge CSS
@@ -565,13 +569,10 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
+@media (min-width: 992px) and (max-width: 1199.98px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}

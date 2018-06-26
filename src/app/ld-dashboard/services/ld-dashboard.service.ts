@@ -17,10 +17,6 @@ export class LdDashboardService {
   baseURL = environment.baseUrl;
   headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
 
-  getHeaders() {
-
-  }
-
   setHeaders(config?: any) {
     let headers = new HttpHeaders().set('LnDUserId', '37046');
     for (let key in config) {
@@ -67,7 +63,7 @@ export class LdDashboardService {
     let headers = new HttpHeaders().set("LnDUserId", "1001");
     return this.http.post(url, filterbody, { headers: headers });
   }
-  
+
   //learner-track full details
   getLearnerTrackDetails(componentName, filterbody) {
     let url = this.baseURL + "learner-pace-performance-details?type=" + componentName;
@@ -75,7 +71,12 @@ export class LdDashboardService {
     return this.http.post(url, filterbody, { headers: headers });
     // return this.http.post(url, filterbody, { headers: this.headers });
   }
-  
+
+  getLearnerFilterBodyDetails(filterbody) {
+    let filterbodyDetails = filterbody;
+    console.log(filterbodyDetails);
+  }
+
   //learner-track graph details
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";

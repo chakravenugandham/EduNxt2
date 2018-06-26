@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -7,19 +7,17 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./content-consumption.component.html",
   styleUrls: ["./content-consumption.component.scss"]
 })
-export class ContentConsumptionComponent implements OnInit {
-  contentData = [];
-  constructor(private contentService: LdDashboardService) {
-    this.contentService.refreshAPI.subscribe((result) => {
-      this.getDataFromService();
-    })
+export class ContentConsumptionComponent implements OnInit, OnChanges {
+
+  @Input() contentData;
+
+  constructor() { }
+
+  ngOnChanges(changes: any) {
+    if (changes.contentData.currentValue) {
+
+    }
   }
-  getDataFromService() {
-    this.contentService.getContentData().subscribe((res: any) => {
-      this.contentData = res.data;
-    });
-  }
-  ngOnInit() {
-    this.getDataFromService();
-  }
+
+  ngOnInit() { }
 }

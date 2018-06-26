@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit, OnChanges, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -11,12 +11,15 @@ export class LearnerTrackFullviewComponent implements OnInit {
   responseTrackDetails: any;
   responseGraphDetails: any;
 
-  componentName: string = "pace";
+  selectType: string = "Ahead of Schedule";
 
-  displayFor = {};
+  filterbody = {};
+  componentName = {};
+
   getDisplayObject($event) {
-    this.displayFor = $event;
-    console.log("this.displayFor", this.displayFor);
+    this.filterbody = $event;
+    console.log("this.displayFor", this.filterbody);
+    this.getTableDataFromService();
   }
 
   paceTrackValues = [];
@@ -24,17 +27,25 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getGraphDataFromService();
     });
   }
 
-  getDataFromService() {
+  getFilterData() {
+    this.getData.getLearnerFilterBodyDetails(this.componentName);
+    console.log(this.componentName);
+  }
+
+  getTableDataFromService() {
     this.getData
-      .getLearnerTrackDetails(this.componentName, this.displayFor)
+      .getLearnerTrackDetails(this.componentName, this.filterbody)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
-        console.log(this.responseTrackDetails);
+        console.log(this.filterbody);
       });
+  }
+
+  getGraphDataFromService() {
     this.getData.getGraphDetails().subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       console.log(this.responseGraphDetails);
@@ -80,7 +91,15 @@ export class LearnerTrackFullviewComponent implements OnInit {
     });
   }
 
+  // ngOnChanges(changes: any) {
+  //   if (changes.componentName.currentValue) {
+  //     this.getFilterData();
+  //   }
+  // }
+
   ngOnInit() {
-    this.getDataFromService();
+    this.getTableDataFromService();
+    this.getGraphDataFromService();
+
   }
 }

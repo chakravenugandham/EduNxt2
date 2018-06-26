@@ -34,12 +34,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   filterSelected: any = {
     batchId: [],
     teamId: [],
-    zoneId: []
+    zoneId: [],
+    displayFor: ''
   };
 
   filterFullObj = [];
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
 
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
@@ -65,6 +66,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         filterTypeId = "zoneId";
         break;
       }
+      case "displayFor": {
+        filterTypeId = "displayFor";
+      }
     }
 
     if (!this.filterArray.includes(filterName.name)) {
@@ -83,10 +87,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       this.filterArray.splice(i, 1);
       let j = this.filterSelected[filterTypeId].indexOf(filterName.name);
       this.filterSelected[filterTypeId].splice(j, 1);
-      
-      for(let k in this.filterFullObj){
-        if(filterName.name == this.filterFullObj[k].name){
-          this.filterFullObj.splice(0,1);
+
+      for (let k in this.filterFullObj) {
+        if (filterName.name == this.filterFullObj[k].name) {
+          this.filterFullObj.splice(0, 1);
         }
       }
     }
@@ -105,9 +109,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.displayDropdown = false;
   }
 
-  // removeFilter(i) {
-  //   this.filterArray.splice(i, 1);
-  // }
   removeFromFilterBody(filterBodyName, index) {
     for (let i in this.filterFullObj) {
       if (filterBodyName == this.filterFullObj[i].name) {
@@ -128,7 +129,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.router.navigate([this.viewData.routeTo]);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnChanges(changes: SimpleChanges) { }
 }

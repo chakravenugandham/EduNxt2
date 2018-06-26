@@ -1,3 +1,15 @@
 .color {
   color: #5584ff;
 }
+thead tr th:nth-child(1) {
+  width: 25%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+thead tr th:nth-child(3) {
+  width: 18%;
+}
+thead tr th:nth-child(4) {
+  width: 18%;
+}

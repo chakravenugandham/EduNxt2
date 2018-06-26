@@ -62,6 +62,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         filterTypeId = "teamId";
         break;
       }
+      case "course": {
+        filterTypeId = "courseId";
+        break;
+      }
       case "zone": {
         filterTypeId = "zoneId";
         break;

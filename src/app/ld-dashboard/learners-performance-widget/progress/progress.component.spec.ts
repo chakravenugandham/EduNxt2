@@ -3,7 +3,7 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { ProgressComponent } from './progress.component';
-import { BarChartDirective } from "../../../directives/bar-chart.directive";
+import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 
 fdescribe('ProgressComponent', () => {
   let component: ProgressComponent;

@@ -14,7 +14,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   selectType: string = "Ahead of Schedule";
 
   filterbody = {};
-  componentName = {};
+  componentName: string;
 
   getDisplayObject($event) {
     this.filterbody = $event;
@@ -32,13 +32,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getFilterData() {
-    this.getData.getLearnerFilterBodyDetails(this.componentName);
-    console.log(this.componentName);
+    this.getData.learnerFilterBodyDetails;
+    this.componentName = this.getData.learnerFilterBodyDetails['currentModule'];
   }
 
   getTableDataFromService() {
     this.getData
-      .getLearnerTrackDetails(this.componentName, this.filterbody)
+      .getLearnerTrackDetails(this.getData.learnerFilterBodyDetails['currentModule'], this.filterbody)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         console.log(this.filterbody);
@@ -91,15 +91,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
     });
   }
 
-  // ngOnChanges(changes: any) {
-  //   if (changes.componentName.currentValue) {
-  //     this.getFilterData();
-  //   }
-  // }
-
   ngOnInit() {
     this.getTableDataFromService();
     this.getGraphDataFromService();
-
+    this.getFilterData();
   }
 }

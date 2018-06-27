@@ -7,7 +7,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
-import { BarChartDirective } from "../../directives/bar-chart.directive";
+import { BarChartDirective } from "../../ld-dashboard/directives/bar-chart.directive";
 import { ScheduledDeliveredComponent } from "./scheduled-delivered/scheduled-delivered.component";
 import { SeenRespondedComponent } from "./seen-responded/seen-responded.component";
 

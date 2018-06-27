@@ -35,9 +35,8 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
       filterList: ["batch"],
       currentModule: this.componentName
     };
-    this.serviceData.getLearnerFilterBodyDetails(this.filtersData);
+    this.serviceData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
-    //console.log("pace", this.filtersData);
   }
 
   learnerPerfFn() {
@@ -50,9 +49,8 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
       filterList: ["batch"],
       currentModule: this.componentName
     };
-    this.serviceData.getLearnerFilterBodyDetails(this.filtersData);
+    this.serviceData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
-    //console.log("per", this.filtersData);
   }
 
   getDataFromService() {
@@ -76,6 +74,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.learnerPaceFn();
     this.getDataFromService();
   }
 }

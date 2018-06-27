@@ -6,7 +6,7 @@ import { LearnersPerformanceWidgetComponent } from './learners-performance-widge
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { PerformanceComponent } from "./performance/performance.component";
 import { ProgressComponent } from "./progress/progress.component";
-import { BarChartDirective } from "../../directives/bar-chart.directive";
+import { BarChartDirective } from "../../ld-dashboard/directives/bar-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";

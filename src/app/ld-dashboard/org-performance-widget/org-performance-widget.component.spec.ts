@@ -57,8 +57,9 @@ fdescribe('OrgPerformanceComponent', () => {
   });
 
   it('should create getData', () => {
-    component.getData();
-    expect(component.getData).toBeTruthy();
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
   });
 
 });
+

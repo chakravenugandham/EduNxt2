@@ -15,15 +15,7 @@ export class DonutChartDirective implements OnChanges {
   @Input() data: any;
   @Input() componentName: string;
 
-  // graph data model
-  // dataSet = [
-  //   { color: "#F77F6C", type: "classA", number: 46 },
-  //   { color: "#5584FF", type: "classB", number: 24 },
-  //   { color: "#23B14D", type: "classC", number: 32 },
-  //   { color: "#FFD630", type: "classE", number: 67 }
-  // ];
-
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   chartRenderFn(chartData) {
     this.el.nativeElement.innerHTML = "";
@@ -56,7 +48,7 @@ export class DonutChartDirective implements OnChanges {
       .append("g")
       .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
-    let arcs = d3.pie().value(function(d) {
+    let arcs = d3.pie().value(function (d) {
       return d.number;
     })(chartData);
 
@@ -67,7 +59,7 @@ export class DonutChartDirective implements OnChanges {
 
     arcPath
       .append("path")
-      .style("fill", function(d, i) {
+      .style("fill", function (d, i) {
         return d.data.color;
       })
       .attr("d", arc);
@@ -78,7 +70,7 @@ export class DonutChartDirective implements OnChanges {
       .attr("dy", "0em")
       .style("font-size", "20px")
       .style("font-weight", "bold")
-      .text(function(d) {
+      .text(function (d) {
         if (d.data.type === "classD") {
           return d.data.number;
         }
@@ -89,7 +81,7 @@ export class DonutChartDirective implements OnChanges {
       .attr("text-anchor", "middle")
       .attr("dy", "1em")
       .style("font-weight", "bold")
-      .text(function(d) {
+      .text(function (d) {
         if (d.data.type === "classD") {
           return "Haven't Started";
         }

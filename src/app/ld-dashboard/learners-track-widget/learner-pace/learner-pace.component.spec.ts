@@ -3,7 +3,7 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { LearnerPaceComponent } from './learner-pace.component';
-import { DonutChartDirective } from "../../../directives/donut-chart.directive";
+import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 
 fdescribe('LearnerPaceComponent', () => {
   let component: LearnerPaceComponent;

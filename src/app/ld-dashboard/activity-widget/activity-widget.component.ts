@@ -16,6 +16,10 @@ export class ActivityWidgetComponent implements OnInit {
     feedback: ""
   };
 
+  responseImageData = {
+    activeImageUsers: ""
+  }
+
   responseGoalsData = {
     timeSpent: "",
     usersTrained: ""
@@ -30,6 +34,11 @@ export class ActivityWidgetComponent implements OnInit {
   getDataFromService() {
     this.getData.getActivityData().subscribe((response: any) => {
       this.responseData = response.data;
+    });
+
+    this.getData.getImageData().subscribe((response: any) => {
+      this.responseImageData = response.data;
+      console.log("image", this.responseImageData);
     });
   }
 

@@ -79,14 +79,8 @@ fdescribe('FilterWidgetComponent', () => {
   });
 
   it('should define showFilter', () => {
-    let i;
-    component.removeFilter(i);
-    expect(component.removeFilter).toBeDefined();
-  });
-
-  it('should define showFilter', () => {
-    let filterBodyName;
-    component.removeFromFilterBody(filterBodyName);
+    let filterBodyName, index;
+    component.removeFromFilterBody(filterBodyName, index);
     expect(component.removeFromFilterBody).toBeDefined();
   });
 

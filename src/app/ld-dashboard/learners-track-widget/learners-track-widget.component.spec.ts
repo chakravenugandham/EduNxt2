@@ -3,7 +3,7 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { LearnersTrackWidgetComponent } from './learners-track-widget.component';
-import { DonutChartDirective } from "../../directives/donut-chart.directive";
+import { DonutChartDirective } from "../../ld-dashboard/directives/donut-chart.directive";
 import { LearnerPaceComponent } from "./learner-pace/learner-pace.component";
 import { LearnerPerformanceComponent } from "./learner-performance/learner-performance.component";
 import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
@@ -48,8 +48,8 @@ fdescribe('LearnersTrackWidgetComponent', () => {
   });
 
   it('should create getData', () => {
-    component.getData();
-    expect(component.getData).toBeTruthy();
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
   });
 
   it('should create getFilterObject', () => {

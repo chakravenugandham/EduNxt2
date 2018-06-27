@@ -3,7 +3,7 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { UsersComponent } from './users.component';
-import { Config, UsersDataComponent } from '../../../common/users-data/users-data.component';
+import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
 
 fdescribe('UsersComponent', () => {
   let component: UsersComponent;

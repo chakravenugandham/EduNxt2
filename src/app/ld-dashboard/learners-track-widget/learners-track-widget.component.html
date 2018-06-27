@@ -8,10 +8,10 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:learnerPace}" (click)="learnerPaceFn()">Learner Pace</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':componentName == 'pace'}" (click)="learnerPaceFn()">Learner Pace</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{active:!learnerPace}" (click)="learnerPerfFn()">Learner Performance</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':componentName == 'performance'}" (click)="learnerPerfFn()">Learner Performance</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -48,11 +48,11 @@
         [ngbPopover]="popcontent"
       </ng-template> -->
       <span class="p-l-20" placement="left">
-        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
       </span>
     </div>
   </div>
-  <app-learner-pace *ngIf="learnerPace" [paceData]="widgetData.pace"></app-learner-pace>
-  <app-learner-performance *ngIf="!learnerPace" [performanceData]="widgetData.performance"></app-learner-performance>
+  <app-learner-pace *ngIf="componentName == 'pace'" [paceData]="widgetData.pace"></app-learner-pace>
+  <app-learner-performance *ngIf="componentName == 'performance'" [performanceData]="widgetData.performance"></app-learner-performance>
   <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 </div>

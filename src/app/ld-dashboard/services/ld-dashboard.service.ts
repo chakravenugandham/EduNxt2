@@ -9,7 +9,7 @@ import { Subject } from "rxjs";
 export class LdDashboardService {
   refreshAPI$ = new Subject<any>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   get refreshAPI() {
     return this.refreshAPI$.asObservable();
@@ -17,9 +17,7 @@ export class LdDashboardService {
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  headers = new HttpHeaders().set("LnDUserId", "37046").set("courseId", "0");
-
-  getHeaders() {}
+  headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
 
   setHeaders(config?: any) {
     let headers = new HttpHeaders().set("LnDUserId", "37046");
@@ -79,6 +77,11 @@ export class LdDashboardService {
       .set("courseId", "0");
     return this.http.post(url, filterbody, { headers: headers });
     // return this.http.post(url, filterbody, { headers: this.headers });
+  }
+
+  getLearnerFilterBodyDetails(filterbody) {
+    let filterbodyDetails = filterbody;
+    console.log(filterbodyDetails);
   }
 
   //learner-track graph details

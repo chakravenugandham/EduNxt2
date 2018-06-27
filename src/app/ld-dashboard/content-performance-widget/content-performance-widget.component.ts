@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
   selector: "app-content-performance-widget",
@@ -14,7 +15,19 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     viewDetails: true,
     filterList: ["contentType"]
   };
-  constructor() {}
+  contentData = [];
+  getDataFromService() {
+    this.contentService.getContentData().subscribe((res: any) => {
+      this.contentData = res.data;
+    });
+  }
+  constructor(private contentService: LdDashboardService) {
+    this.contentService.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    })
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getDataFromService();
+  }
 }

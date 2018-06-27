@@ -8,18 +8,10 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./learners-track-widget.component.scss"]
 })
 export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
-  learnerPace: boolean = true;
+
   componentName: string = "pace";
 
-  filtersData = {
-    routeTo: "learnerTrackFullView",
-    filters: true,
-    search: false,
-    viewDetails: true,
-    filterList: ["batch"],
-    currentModule: this.componentName
-  };
-
+  filtersData = {};
   widgetData = {
     pace: "",
     performance: ""
@@ -34,15 +26,33 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   learnerPaceFn() {
-    this.learnerPace = true;
     this.componentName = "pace";
+    this.filtersData = {
+      routeTo: "learnerTrackFullView",
+      filters: true,
+      search: false,
+      viewDetails: true,
+      filterList: ["batch"],
+      currentModule: this.componentName
+    };
+    this.serviceData.getLearnerFilterBodyDetails(this.filtersData);
     this.getDataFromService();
+    //console.log("pace", this.filtersData);
   }
 
   learnerPerfFn() {
-    this.learnerPace = false;
     this.componentName = "performance";
+    this.filtersData = {
+      routeTo: "learnerTrackFullView",
+      filters: true,
+      search: false,
+      viewDetails: true,
+      filterList: ["batch"],
+      currentModule: this.componentName
+    };
+    this.serviceData.getLearnerFilterBodyDetails(this.filtersData);
     this.getDataFromService();
+    //console.log("per", this.filtersData);
   }
 
   getDataFromService() {

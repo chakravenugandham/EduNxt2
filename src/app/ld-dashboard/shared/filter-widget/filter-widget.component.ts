@@ -34,13 +34,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   filterSelected: any = {
     batchId: [],
     teamId: [],
-    courseId: [],
-    zoneId: []
+    zoneId: [],
+    displayFor: ''
   };
 
   filterFullObj = [];
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
 
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
@@ -69,6 +69,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       case "zone": {
         filterTypeId = "zoneId";
         break;
+      }
+      case "displayFor": {
+        filterTypeId = "displayFor";
       }
     }
 
@@ -110,9 +113,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.displayDropdown = false;
   }
 
-  // removeFilter(i) {
-  //   this.filterArray.splice(i, 1);
-  // }
   removeFromFilterBody(filterBodyName, index) {
     for (let i in this.filterFullObj) {
       if (filterBodyName == this.filterFullObj[i].name) {
@@ -133,7 +133,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.router.navigate([this.viewData.routeTo]);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnChanges(changes: SimpleChanges) { }
 }

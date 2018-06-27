@@ -48,6 +48,7 @@
   border: 0 !important;
   padding: 0 !important;
 }
+
 .search-org-user {
   position: relative;
   input {
@@ -56,7 +57,7 @@
     border: 1px solid #5584ff;
     width: 124px;
   }
-  .serach-icon {
+  .search-icon {
     position: absolute;
     right: 0px;
     top: 3px;
@@ -102,15 +103,16 @@
   vertical-align: middle;
   cursor: pointer;
 }
+
 .checked-box {
   background-color: orange !important;
 }
 
 //dropdown
-
 .dropdown-toggle::after {
   display: none;
 }
+
 .showFilter-list {
   position: absolute;
   top: 32px;
@@ -136,15 +138,18 @@
     }
   }
 }
+
 .getFilter {
   cursor: pointer;
   i {
     border-radius: 50%;
   }
 }
+
 .filter-name {
   padding: 4px 0px;
 }
+
 .apply-filters {
   position: absolute;
   bottom: 0;
@@ -152,6 +157,7 @@
   background: #fff;
   width: 100%;
 }
+
 .apply-filters button {
   float: right;
 }

@@ -1,5 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~font-awesome/css/font-awesome.min.css";
+// @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
 //set defaults
 .row {
@@ -48,6 +48,13 @@
   //   position: absolute;
   //   bottom: 0;
   // }
+}
+
+.arrow-space {
+  img {
+    height: 10px;
+    width: 10px;
+  }
 }
 
 .m-t-10 {
@@ -569,10 +576,13 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) {}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}

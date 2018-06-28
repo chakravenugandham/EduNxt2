@@ -17,36 +17,43 @@
   <div *ngIf="feedbackDataElement">
     <div class="row p-t-18">
       <div class="col-md-6 col-sm-6 col-xs-6 feedback-emoji">
+
         <img src="/assets/IconsSVGs/happy_emoji.svg" alt="happy" *ngIf="feedbackDataElement.learnerSatisfaction >= 75">
         <img src="/assets/IconsSVGs/meh_emoji.svg" alt="meh" *ngIf="feedbackDataElement.learnerSatisfaction >= 50 && feedbackDataElement.learnerSatisfaction < 75">
         <img src="/assets/IconsSVGs/angry_emoji.svg" alt="angry" *ngIf="feedbackDataElement.learnerSatisfaction < 50">
+
       </div>
+
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <div>
-          <span class="bigNumber" [ngClass]="{'big-positive-number': feedbackDataElement.learnerSatisfactionChange > 0, 'big-danger-class': feedbackDataElement.learnerSatisfactionChange <= 0}">{{learnerSatisfaction}}%</span>
+        <div class="arrow-space">
+          <span class="bigNumber" [ngClass]="{'big-positive-number': feedbackDataElement.learnerSatisfaction >= 50, 'big-danger-class': feedbackDataElement.learnerSatisfaction < 50}">{{learnerSatisfaction}}%</span>
           <span class="small-font">
-            <span>
-              <i class="fas changeNumber" [ngClass]="{'fa-arrow-down text-danger': feedbackDataElement.learnerSatisfactionChange <= 0, 'fa-arrow-up text-success': feedbackDataElement.learnerSatisfactionChange > 0}"></i>
-            </span>
+
+            <img *ngIf="feedbackDataElement.learnerSatisfactionChange <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <img *ngIf="feedbackDataElement.learnerSatisfactionChange > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+
             <span> by</span>
-            <span class="changeNumber" [ngClass]="{'text-danger': feedbackDataElement.learnerSatisfactionChange <= 0, 'text-success': feedbackDataElement.learnerSatisfactionChange > 0}">
+            <span class="changeNumberLow" [ngClass]="{'changeNumberLow': feedbackDataElement.learnerSatisfactionChange <= 0, 'changeNumber': feedbackDataElement.learnerSatisfactionChange > 0}">
               {{learnerSatisfactionChange}}%
             </span>
           </span>
         </div>
         <div class="m-t-10">Learner Satisfaction</div>
       </div>
+
     </div>
+
     <div class="row p-t-18">
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <div>
-          <span class="bigNumber m-r-3" [ngClass]="{'big-positive-number': feedbackDataElement.trainerRatingChange > 0, 'big-danger-class': feedbackDataElement.trainerRatingChange <= 0}">{{feedbackDataElement.trainerRating}}</span>
+        <div class="arrow-space">
+          <span class="bigNumber m-r-3" [ngClass]="{'big-positive-number': feedbackDataElement.trainerRating >= 3, 'big-danger-class': feedbackDataElement.trainerRating < 3}">{{feedbackDataElement.trainerRating}}</span>
           <span class="small-font">
-            <span>
-              <i class="fas changeNumber" [ngClass]="{'fa-arrow-down text-danger': feedbackDataElement.trainerRatingChange <= 0, 'fa-arrow-up text-success': feedbackDataElement.trainerRatingChange > 0}"></i>
-            </span>
+
+            <img *ngIf="feedbackDataElement.trainerRatingChange <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <img *ngIf="feedbackDataElement.trainerRatingChange > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+
             <span> by </span>
-            <span class="changeNumber" [ngClass]="{'text-danger': feedbackDataElement.trainerRatingChange <= 0, 'text-success': feedbackDataElement.trainerRatingChange < 0}">
+            <span class="changeNumber" [ngClass]="{'changeNumberLow': feedbackDataElement.trainerRatingChange <= 0, 'changeNumber': feedbackDataElement.trainerRatingChange < 0}">
               {{trainerRatingChange}}%</span>
           </span>
         </div>
@@ -54,14 +61,15 @@
       </div>
 
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <div>
-          <span class="bigNumber m-r-3" [ngClass]="{'big-positive-number': feedbackDataElement.contentRatingChange > 0, 'big-danger-class': feedbackDataElement.contentRatingChange <= 0}">{{feedbackDataElement.contentRating}}</span>
+        <div class="arrow-space">
+          <span class="bigNumber m-r-3" [ngClass]="{'big-positive-number': feedbackDataElement.contentRating >= 3, 'big-danger-class': feedbackDataElement.contentRating < 3}">{{feedbackDataElement.contentRating}}</span>
           <span class="small-font">
-            <span>
-              <i class="fas changeNumber" [ngClass]="{'fa-arrow-down text-danger': feedbackDataElement.contentRatingChange <= 0, 'fa-arrow-up text-success': feedbackDataElement.contentRatingChange < 0}"></i>
-            </span>
+
+            <img *ngIf="feedbackDataElement.contentRatingChange <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <img *ngIf="feedbackDataElement.contentRatingChange > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+
             <span> by </span>
-            <span class="changeNumber" [ngClass]="{'text-danger': feedbackDataElement.contentRatingChange <= 0, 'text-success': feedbackDataElement.contentRatingChange < 0}">
+            <span class="changeNumber" [ngClass]="{'changeNumberLow': feedbackDataElement.contentRatingChange <= 0, 'changeNumber': feedbackDataElement.contentRatingChange < 0}">
               {{contentRatingChange}}%</span>
           </span>
         </div>

@@ -1,14 +1,13 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { MDBBootstrapModule } from "angular-bootstrap-md";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
-import { HttpModule } from '@angular/http';
+import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
-import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { Daterangepicker } from "ng2-daterangepicker";
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms";
 
 // d3 and nvd3 should be included somewhere
 import { NvD3Module } from "ng2-nvd3";
@@ -153,8 +152,7 @@ import { LinegraphDirective } from './ld-dashboard/directives/linegraph.directiv
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    MDBBootstrapModule.forRoot(),
-    AngularFontAwesomeModule,
+    FontAwesomeModule,
     Daterangepicker,
     FormsModule
   ],

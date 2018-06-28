@@ -14,7 +14,14 @@ export class UsersComponent implements OnInit {
   enrolledConfig: Config;
   numberFontColor: boolean;
 
-  constructor() { }
+  userImages: string[] = [
+    "/assets/images/user.png",
+    "/assets/images/user.png",
+    "/assets/images/user.png",
+    "/assets/images/user.png"
+  ];
+
+  constructor() {}
 
   ngOnChanges(changes: any) {
     if (changes.userElement) {
@@ -36,5 +43,5 @@ export class UsersComponent implements OnInit {
     this.numberFontColor = true;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

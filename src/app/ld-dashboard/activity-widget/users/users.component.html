@@ -16,20 +16,8 @@
   </div>
   <div *ngIf="activeConfig">
     <div class="userImages">
-      <div class="imgActive">
-        <img src="/assets/images/praveen.png" alt="praveen">
-        <i class="far fa-circle"></i>
-      </div>
-      <div class="imgActive">
-        <img src="/assets/images/sudheer.jpeg" alt="batman">
-        <i class="far fa-circle"></i>
-      </div>
-      <div class="imgActive">
-        <img src="/assets/images/praveen.png" alt="praveen">
-        <i class="far fa-circle"></i>
-      </div>
-      <div class="imgActive">
-        <img src="/assets/images/sudheer.jpeg" alt="batman">
+      <div class="imgActive" *ngFor="let img of userImages">
+        <img [src]="img" alt="user">
         <i class="far fa-circle"></i>
       </div>
     </div>

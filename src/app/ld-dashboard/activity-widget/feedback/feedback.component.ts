@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges
 } from "@angular/core";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-feedback",
@@ -21,17 +22,22 @@ export class FeedbackComponent implements OnInit, OnChanges {
     contentRating: number;
     contentRatingChange: number;
   };
-  learnerSatisfaction:number;
-  learnerSatisfactionChange:number;
-  trainerRatingChange:number;
-  contentRatingChange:number;
+  learnerSatisfaction: number;
+  learnerSatisfactionChange: number;
+  trainerRatingChange: number;
+  contentRatingChange: number;
+  faArrowUp = faArrowUp;
 
   constructor() {}
 
   ngOnInit() {}
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.feedbackDataElement) {
-      this.learnerSatisfaction = Math.round(this.feedbackDataElement.learnerSatisfaction);
+    if (changes.feedbackDataElement.currentValue) {
+      console.log("feedbackDataElement", this.feedbackDataElement);
+
+      this.learnerSatisfaction = Math.round(
+        this.feedbackDataElement.learnerSatisfaction
+      );
       this.learnerSatisfactionChange = Math.abs(
         this.feedbackDataElement.learnerSatisfactionChange
       );

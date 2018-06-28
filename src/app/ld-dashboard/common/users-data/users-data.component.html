@@ -1,11 +1,16 @@
 <div>
-  <span class="bigNumber float-left" [ngClass]="{'big-positive-number': numberFontColor, 'big-danger-class': !numberFontColor}"> {{config?.peopleCurrentlyEnrolled}} </span>
+  <span class="bigNumber float-left" [ngClass]="{'big-positive-number': numberFontColor, 'big-danger-class': !numberFontColor}">
+    {{config?.peopleCurrentlyEnrolled}} </span>
   <div class="small-font">
-    <span class="small">
-      <i class="fas fa-arrow-up changeNumber"></i>
+    <span class="small arrow-space">
+      <!-- <i class="fas fa-arrow-up changeNumber"></i> -->
+
+      <img *ngIf="numberFontColor" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+      <img *ngIf="!numberFontColor" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+
     </span>
     <span class="changeInNumberText">
-      <span class="changeNumber"> {{config?.usersSinceLastMonth}} </span>
+      <span [ngClass]="{'changeNumber': numberFontColor, 'changeNumberLow': !numberFontColor}"> {{config?.usersSinceLastMonth}} </span>
       <span class="font-color"> {{config?.Users}} </span>
       <p class="font-color"> {{config?.sinceLastMonth}} </p>
     </span>

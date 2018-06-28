@@ -18,26 +18,31 @@ export class LdDashboardService {
   //baseURL from enviornment
   baseURL = environment.baseUrl;
   headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0').set('progaramId', '0');
+  headers1 = new HttpHeaders().set('LnDUserId', '57142').set('courseId', '0').set('progaramId', '0');
 
   setHeaders(config?: any) {
     let headers = new HttpHeaders().set("LnDUserId", "37046");
+    let headers1 = new HttpHeaders().set("LnDUserId", "57142");
     for (let key in config) {
+      console.log(config);
       headers = headers.append(key, config[key]);
+      headers1 = headers1.append(key, config[key]);
     }
     this.headers = headers;
+    this.headers1 = headers1;
     this.refreshAPI$.next();
   }
 
   //courses dropdown
   getCoursesData() {
     let url = this.baseURL + "courses-dropdown";
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get(url, { headers: this.headers1 });
   }
 
   //first four widgets
   getActivityData() {
     let url = this.baseURL + "learning-activities";
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get(url, { headers: this.headers1 });
   }
 
   getImageData() {
@@ -48,7 +53,7 @@ export class LdDashboardService {
   //goals and timespent widgets
   getGoalsData() {
     let url = this.baseURL + "goals";
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get(url, { headers: this.headers1 });
   }
 
   //active users & mode of delivery data

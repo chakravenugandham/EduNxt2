@@ -25,7 +25,7 @@ export class TimeFrameComponent implements OnInit {
   }
 
   changeCourse(selectCourse) {
-    this.getData.setHeaders({ 'courseId': selectCourse });
+    this.getData.setHeaders({ 'courseId': selectCourse, 'progaramId': selectCourse });
   }
 
   ngOnInit() {

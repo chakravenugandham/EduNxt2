@@ -3,7 +3,7 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { UserstrainedComponent } from './userstrained.component';
-import { HalfdonutchartDirective } from '../../../directives/halfdonutchart.directive';
+import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
 
 fdescribe('UserstrainedComponent', () => {
   let component: UserstrainedComponent;

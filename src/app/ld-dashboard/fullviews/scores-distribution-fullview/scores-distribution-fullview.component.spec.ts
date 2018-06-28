@@ -6,7 +6,7 @@ import { ScoresDistributionFullviewComponent } from './scores-distribution-fullv
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ScoreChartDirective } from "../../../directives/score-chart.directive";
+import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
 
 fdescribe('ScoresDistributionFullviewComponent', () => {
   let component: ScoresDistributionFullviewComponent;

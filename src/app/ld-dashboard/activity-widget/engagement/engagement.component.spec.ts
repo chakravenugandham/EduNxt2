@@ -3,8 +3,8 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { EngagementComponent } from './engagement.component';
-import { Config, UsersDataComponent } from '../../../common/users-data/users-data.component';
-import { HalfdonutchartDirective } from '../../../directives/halfdonutchart.directive';
+import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
+import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
 
 
 fdescribe('EngagementComponent', () => {

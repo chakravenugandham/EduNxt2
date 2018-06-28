@@ -6,7 +6,7 @@ import { LearnerPerformanceFullviewComponent } from './learner-performance-fullv
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { PerformanceComponent } from "../../learners-performance-widget/performance/performance.component";
 import { ProgressComponent } from "../../learners-performance-widget/progress/progress.component";
-import { BarChartDirective } from "../../../directives/bar-chart.directive";
+import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 fdescribe('LearnerPerformanceFullviewComponent', () => {

@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BarChartDirective } from "../directives/bar-chart.directive";
-import { DonutChartDirective } from "../directives/donut-chart.directive";
-import { HalfdonutchartDirective } from "../directives/halfdonutchart.directive";
-import { ScoreChartDirective } from "../directives/score-chart.directive";
+import { BarChartDirective } from "../ld-dashboard/directives/bar-chart.directive";
+import { DonutChartDirective } from "../ld-dashboard/directives/donut-chart.directive";
+import { HalfdonutchartDirective } from "../ld-dashboard/directives/halfdonutchart.directive";
+import { ScoreChartDirective } from "../ld-dashboard/directives/score-chart.directive";
 import { ActivityWidgetComponent } from "../ld-dashboard/activity-widget/activity-widget.component";
 import { EngagementComponent } from "../ld-dashboard/activity-widget/engagement/engagement.component";
 import { FeedbackComponent } from "../ld-dashboard/activity-widget/feedback/feedback.component";
@@ -10,8 +10,8 @@ import { PaceComponent } from "../ld-dashboard/activity-widget/pace/pace.compone
 import { TimespentComponent } from "../ld-dashboard/activity-widget/timespent/timespent.component";
 import { UsersComponent } from "../ld-dashboard/activity-widget/users/users.component";
 import { UserstrainedComponent } from "../ld-dashboard/activity-widget/userstrained/userstrained.component";
-import { HeaderComponent } from "../common/header/header.component";
-import { TimeFrameComponent } from "../common/time-frame/time-frame.component";
+import { HeaderComponent } from "../ld-dashboard/common/header/header.component";
+import { TimeFrameComponent } from "../ld-dashboard/common/time-frame/time-frame.component";
 import { ActiveUserWidgetComponent } from '../ld-dashboard/active-user-widget/active-user-widget.component';
 import { ActiveUsersComponent } from '../ld-dashboard/active-user-widget/active-users/active-users.component';
 import { ModeOfDeliveryComponent } from '../ld-dashboard/active-user-widget/mode-of-delivery/mode-of-delivery.component';
@@ -39,9 +39,9 @@ import { OrgInterestWidgetComponent } from '../ld-dashboard/org-interest-widget/
 import { OrgInterestComponent } from '../ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from '../ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from '../ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
-import { MpDatepickerRangeComponent } from '../common/mp-datepicker-range/mp-datepicker-range.component';
+import { MpDatepickerRangeComponent } from '../ld-dashboard/common/mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from '../ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
-import { FooterComponent } from '../common/footer/footer.component';
+import { FooterComponent } from '../ld-dashboard/common/footer/footer.component';
 import { FilterWidgetComponent } from '../ld-dashboard/shared/filter-widget/filter-widget.component';
 import { LearnerPerformanceFullviewComponent } from '../ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component';
 import { ScoresDistributionFullviewComponent } from '../ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component';
@@ -49,7 +49,7 @@ import { OrgPerformanceFullviewComponent } from '../ld-dashboard/fullviews/org-p
 import { NotificationPerformanceFullviewComponent } from '../ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
 import { OrgInterestFullviewComponent } from '../ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 // import { GoogleChartsBaseService } from "../ld-dashboard/services/googleChartService";
-import { UsersDataComponent } from '../common/users-data/users-data.component';
+import { UsersDataComponent } from '../ld-dashboard/common/users-data/users-data.component';
 import { BestProgramsWidgetComponent } from '../ld-dashboard/best-programs-widget/best-programs-widget.component';
 import { ProgramsComponent } from '../ld-dashboard/best-programs-widget/programs/programs.component';
 import { LdDashboardService } from "./services/ld-dashboard.service";

@@ -8,6 +8,7 @@ import { Config } from "../../../ld-dashboard/common/users-data/users-data.compo
 })
 export class UsersComponent implements OnInit {
   @Input("userElement") userData;
+  @Input("imageElement") imageData;
 
   activeConfig: Config;
   enrolledConfig: Config;
@@ -18,7 +19,7 @@ export class UsersComponent implements OnInit {
   ngOnChanges(changes: any) {
     if (changes.userData.currentValue) {
       this.activeConfig = {
-        peopleCurrentlyEnrolled: this.userData.activeUsers,
+        peopleCurrentlyEnrolled: this.imageData.activeUsers,
         usersSinceLastMonth: this.userData.changeInUsers,
         Users: "Users",
         sinceLastMonth: "since last month",

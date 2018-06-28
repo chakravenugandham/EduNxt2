@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QuizComponent } from './quiz.component';
-import { ScoreChartDirective } from "../../../directives/score-chart.directive";
+import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';

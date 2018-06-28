@@ -17,7 +17,7 @@ export class LdDashboardService {
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0');
+  headers = new HttpHeaders().set('LnDUserId', '37046').set('courseId', '0').set('progaramId', '0');
 
   setHeaders(config?: any) {
     let headers = new HttpHeaders().set("LnDUserId", "37046");
@@ -38,6 +38,11 @@ export class LdDashboardService {
   getActivityData() {
     let url = this.baseURL + "learning-activities";
     return this.http.get(url, { headers: this.headers });
+  }
+
+  getImageData() {
+    let url = this.baseURL + "active-users";
+    return this.http.get(url);
   }
 
   //goals and timespent widgets
@@ -76,13 +81,15 @@ export class LdDashboardService {
       .set("LnDUserId", "1001")
       .set("courseId", "0");
     return this.http.post(url, filterbody, { headers: headers });
-    // return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  getLearnerFilterBodyDetails(filterbody) {
-    let filterbodyDetails = filterbody;
-    console.log(filterbodyDetails);
+  filterbodyDetails = {};
+
+  set learnerFilterBodyDetails(data) {
+    this.filterbodyDetails = data;
   }
+
+  get learnerFilterBodyDetails() { return this.filterbodyDetails }
 
   //learner-track graph details
   getGraphDetails() {

@@ -5,9 +5,8 @@
 </div>
 <div class="activity-widgets d-flex w-100">
   <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-users [userElement]="responseData.activeUsers"></app-users>
+    <app-users [userElement]="responseData.activeUsers" [imageElement]="responseImageData.activeImageUsers"></app-users>
   </div>
-
   <div class="col-md-3 col-sm-6 col-xs-12">
     <app-engagement [engageData]="responseData.learnerEngagement" [totalUsers]="responseData.activeUsers"></app-engagement>
   </div>

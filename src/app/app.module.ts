@@ -77,6 +77,9 @@ import { ScoreChartDirective } from './ld-dashboard/directives/score-chart.direc
 import { BestProgramsWidgetComponent } from './ld-dashboard/best-programs-widget/best-programs-widget.component';
 import { ProgramsComponent } from './ld-dashboard/best-programs-widget/programs/programs.component';
 import { ModalComponent } from './ld-dashboard/common/modal/modal.component';
+import { TrackofgoalsComponent } from './ld-dashboard/trackofgoals/trackofgoals.component';
+import { GoalsComponent } from './ld-dashboard/trackofgoals/goals/goals.component';
+import { GoalcardsComponent } from './ld-dashboard/common/goalcards/goalcards.component';
 
 
 @NgModule({
@@ -136,7 +139,10 @@ import { ModalComponent } from './ld-dashboard/common/modal/modal.component';
     ScoreChartDirective,
     BestProgramsWidgetComponent,
     ProgramsComponent,
-    ModalComponent
+    ModalComponent,
+    TrackofgoalsComponent,
+    GoalsComponent,
+    GoalcardsComponent
   ],
   imports: [
     BrowserModule,

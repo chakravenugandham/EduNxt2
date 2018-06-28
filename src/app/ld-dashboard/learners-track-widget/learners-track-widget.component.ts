@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
+import { CommonService } from "../services/common.service";
 
 @Component({
   selector: "app-learners-track-widget",
@@ -19,7 +20,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) {
+  constructor(private serviceData: LdDashboardService, private filterData: CommonService) {
     this.serviceData.refreshAPI.subscribe((result) => {
       this.getDataFromService();
     })
@@ -35,7 +36,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
       filterList: ["batch"],
       currentModule: this.componentName
     };
-    this.serviceData.learnerFilterBodyDetails = this.filtersData;
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 
@@ -49,7 +50,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
       filterList: ["batch"],
       currentModule: this.componentName
     };
-    this.serviceData.learnerFilterBodyDetails = this.filtersData;
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 

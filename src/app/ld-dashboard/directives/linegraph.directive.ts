@@ -1,31 +1,29 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
 import * as d3 from "d3v4";
 import * as _ from "underscore";
 
-@Component({
-  selector: "app-active-users",
-  templateUrl: "./active-users.component.html",
-  styleUrls: ["./active-users.component.scss"]
+
+@Directive({
+  selector: '[appLinegraph]'
 })
-export class ActiveUsersComponent implements OnInit, OnChanges {
-  @Input() usersData;
-  chartData = [];
+export class LinegraphDirective implements OnChanges {
 
-  constructor() { }
+  @Input() data;
 
-  onResize() {
-    this.usersChartRender(this.chartData);
-  }
+  constructor(private el: ElementRef) { }
 
   usersChartRender(dataSet) {
-    d3.select("#activeUserGraph svg").remove();
+    console.log(this.data);
+    this.el.nativeElement.innerHTML = "";
+    //d3.select("#activeUserGraph svg").remove();
     let w = d3
-      .select("#activeUserGraph")
+      .select(this.el.nativeElement)
       .node()
       .getBoundingClientRect().width;
     var h = 200;
     var p = 40;
 
+    console.log(dataSet);
     // create xScale
     var xScale = d3
       .scaleTime()
@@ -48,7 +46,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     // create SVG
     var svg = d3
-      .select("#activeUserGraph")
+      .select(this.el.nativeElement)
       .append("svg")
       .attr("width", w)
       .attr("height", h);
@@ -217,26 +215,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnInit() { }
-
   ngOnChanges(changes: any) {
-    if (changes.usersData.currentValue && this.chartData) {
-      for (var i = 0; i < this.usersData.graphData.length; i++) {
-        var date = new Date(this.usersData.graphData[i].date);
-        var timeStamp = date.getTime();
-        var activeLearners = parseInt(
-          this.usersData.graphData[i].activeLearners
-        );
-        var activeFacultiesAndAdmins = parseInt(
-          this.usersData.graphData[i].activeFacultiesAndAdmins
-        );
-        this.chartData.push([
-          timeStamp,
-          activeLearners,
-          activeFacultiesAndAdmins
-        ]);
-      }
-      this.usersChartRender(this.chartData);
+    if (changes.data && changes.data.currentValue) {
+      this.usersChartRender(this.data);
     }
   }
+
 }

@@ -88,14 +88,6 @@ export class LdDashboardService {
     return this.http.post(url, filterbody, { headers: headers });
   }
 
-  filterbodyDetails = {};
-
-  set learnerFilterBodyDetails(data) {
-    this.filterbodyDetails = data;
-  }
-
-  get learnerFilterBodyDetails() { return this.filterbodyDetails }
-
   //learner-track graph details
   getGraphDetails() {
     let url = this.baseURL + "learner-pace-performance";

@@ -62,7 +62,7 @@ import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/co
 import { FooterComponent } from './ld-dashboard/common/footer/footer.component';
 import { TimespentComponent } from './ld-dashboard/activity-widget/timespent/timespent.component';
 import { UserstrainedComponent } from './ld-dashboard/activity-widget/userstrained/userstrained.component';
-import { FilterWidgetComponent } from './ld-dashboard/shared/filter-widget/filter-widget.component';
+import { FilterWidgetComponent } from './ld-dashboard/common/filter-widget/filter-widget.component';
 import { LearnerPerformanceFullviewComponent } from './ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component';
 import { ScoresDistributionFullviewComponent } from './ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component';
 import { OrgPerformanceFullviewComponent } from './ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component';
@@ -80,6 +80,7 @@ import { ModalComponent } from './ld-dashboard/common/modal/modal.component';
 import { TrackofgoalsComponent } from './ld-dashboard/trackofgoals/trackofgoals.component';
 import { GoalsComponent } from './ld-dashboard/trackofgoals/goals/goals.component';
 import { GoalcardsComponent } from './ld-dashboard/common/goalcards/goalcards.component';
+import { LinegraphDirective } from './ld-dashboard/directives/linegraph.directive';
 
 
 @NgModule({
@@ -142,7 +143,8 @@ import { GoalcardsComponent } from './ld-dashboard/common/goalcards/goalcards.co
     ModalComponent,
     TrackofgoalsComponent,
     GoalsComponent,
-    GoalcardsComponent
+    GoalcardsComponent,
+    LinegraphDirective
   ],
   imports: [
     BrowserModule,

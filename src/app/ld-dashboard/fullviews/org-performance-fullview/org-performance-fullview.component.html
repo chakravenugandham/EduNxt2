@@ -51,9 +51,6 @@
               </span>
             </th>
             <th scope="col">Action
-              <span class="m-l-8">
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
             </th>
           </tr>
         </thead>
@@ -90,7 +87,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Train Conducted
+            <th scope="col">Trainings Conducted
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -121,7 +118,10 @@
             </th>
             <td class="">{{trainerData.trainingsConducted}}</td>
             <td class="">{{trainerData.peopleTrained}}</td>
-            <td class="">{{trainerData.avgRating}}</td>
+            <td class="">
+              <span>
+                <i class="far fa-star"></i>
+              </span>{{trainerData.avgRating}}</td>
             <td class="text-primary">
               <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
               <span>Congratulate</span>

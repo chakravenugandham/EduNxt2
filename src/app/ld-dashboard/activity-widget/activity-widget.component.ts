@@ -36,7 +36,6 @@ export class ActivityWidgetComponent implements OnInit {
 
     this.getData.getImageData().subscribe((response: any) => {
       this.responseImageData = response.data;
-      console.log("image", this.responseImageData);
     });
   }
 

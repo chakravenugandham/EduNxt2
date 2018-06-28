@@ -57,15 +57,20 @@
             <span>{{data.hits}}</span>
             <span class="small-text">
               <span class="changeNumber">
-                <i class="fa fa-arrow-up" aria-hidden="true"></i>{{data.hitsSinceLastMonth}}</span>since last month</span>
+                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                <span style="margin-left: 5px;">{{data.hitsSinceLastMonth}}</span>
+              </span>
+              <span style="margin-left: 5px;">since last month</span>
+            </span>
           </td>
           <td class="">
             <span class="numberDisplay">{{data.noOfFollowers}}</span>
             <span class="small-text">
               <span class="changeNumber">
-                <i class="fa fa-arrow-up" aria-hidden="true"></i>{{data.followersSinceLastMonth}}
+                <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                <span style="margin-left: 5px;">{{data.followersSinceLastMonth}}</span>
               </span>
-              since last month
+              <span style="margin-left: 5px;">since last month</span>
             </span>
           </td>
           <td class="">{{data.videoTags}}</td>

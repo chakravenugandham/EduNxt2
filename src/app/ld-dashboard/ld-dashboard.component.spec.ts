@@ -42,7 +42,7 @@ import { LearnerTrackFullviewComponent } from '../ld-dashboard/fullviews/learner
 import { MpDatepickerRangeComponent } from '../ld-dashboard/common/mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from '../ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
 import { FooterComponent } from '../ld-dashboard/common/footer/footer.component';
-import { FilterWidgetComponent } from '../ld-dashboard/shared/filter-widget/filter-widget.component';
+import { FilterWidgetComponent } from '../ld-dashboard/common/filter-widget/filter-widget.component';
 import { LearnerPerformanceFullviewComponent } from '../ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component';
 import { ScoresDistributionFullviewComponent } from '../ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component';
 import { OrgPerformanceFullviewComponent } from '../ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component';

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { CommonService } from "../../services/common.service";
 
 @Component({
   selector: "app-learner-track-fullview",
@@ -25,20 +26,20 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  constructor(private getData: LdDashboardService) {
+  constructor(private getData: LdDashboardService, private filterData: CommonService) {
     this.getData.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
     });
   }
 
   getFilterData() {
-    this.getData.learnerFilterBodyDetails;
-    this.componentName = this.getData.learnerFilterBodyDetails['currentModule'];
+    this.filterData.learnerFilterBodyDetails;
+    this.componentName = this.filterData.learnerFilterBodyDetails['currentModule'];
   }
 
   getTableDataFromService() {
     this.getData
-      .getLearnerTrackDetails(this.getData.learnerFilterBodyDetails['currentModule'], this.filterbody)
+      .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.filterbody)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         console.log(this.filterbody);

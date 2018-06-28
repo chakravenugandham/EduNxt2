@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
-import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 
 @Component({
   selector: 'app-scores-distribution-fullview',

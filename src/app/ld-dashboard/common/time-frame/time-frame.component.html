@@ -1,23 +1,25 @@
 <div class="time-frame">
   <div class="">
-    <ul class="list-inline">
-      <li class="list-inline-item select-time-frame m-l-38">
-        <b> Select a Time Frame </b>
-      </li>
-      <li class="list-inline-item">
-        <app-mp-datepicker-range></app-mp-datepicker-range>
-      </li>
-      <li class="list-inline-item select-time-frame">
-        <b>Select a course</b>
-      </li>
-      <li class="list-inline-item selectCourse">
-        <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-          <option style="color: #5584ff">All Courses</option>
-          <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseId}}">{{courses.courseName}}</option>
-        </select>
-      </li>
-    </ul>
-    <div class="float-right m-t-7">
+    <div class="d-inline">
+      <ul class="list-inline">
+        <li class="list-inline-item select-time-frame m-l-38">
+          <b> Select a Time Frame </b>
+        </li>
+        <li class="list-inline-item">
+          <app-mp-datepicker-range></app-mp-datepicker-range>
+        </li>
+        <li class="list-inline-item select-time-frame">
+          <b>Select a Course</b>
+        </li>
+        <li class="list-inline-item selectCourse">
+          <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
+            <option style="color: #5584ff">All Courses</option>
+            <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseId}}">{{courses.courseName}}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    <div class="d-inline float-right m-t-7">
       <ul class="list-inline">
         <li class="list-inline-item cursor-pointer">
           <span>

@@ -16,9 +16,7 @@ export class ActivityWidgetComponent implements OnInit {
     feedback: ""
   };
 
-  responseImageData = {
-    activeImageUsers: ""
-  }
+  responseImageData = {}
 
   responseGoalsData = {
     timeSpent: "",

@@ -15,7 +15,21 @@ export class LearnerTrackFullviewComponent implements OnInit {
   selectType: string = "Ahead of Schedule";
 
   filterbody = {};
+  filtersData = {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    viewDetails: false,
+    filterList: ["batch"],
+    viewDetailsFilters: true
+  };
   componentName: string;
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getTableDataFromService();
+    this.getGraphDataFromService();
+  }
 
   getDisplayObject($event) {
     this.filterbody = $event;
@@ -26,7 +40,10 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  constructor(private getData: LdDashboardService, private filterData: CommonService) {
+  constructor(
+    private getData: LdDashboardService,
+    private filterData: CommonService
+  ) {
     this.getData.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
     });
@@ -34,12 +51,17 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getFilterData() {
     this.filterData.learnerFilterBodyDetails;
-    this.componentName = this.filterData.learnerFilterBodyDetails['currentModule'];
+    this.componentName = this.filterData.learnerFilterBodyDetails[
+      "currentModule"
+    ];
   }
 
   getTableDataFromService() {
     this.getData
-      .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.filterbody)
+      .getLearnerTrackDetails(
+        this.filterData.learnerFilterBodyDetails["currentModule"],
+        this.filterbody
+      )
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         console.log(this.filterbody);
@@ -47,7 +69,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getGraphDataFromService() {
-    this.getData.getGraphDetails().subscribe((res: any) => {
+    this.getData.getGraphDetails(this.filterbody).subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       console.log(this.responseGraphDetails);
       this.paceTrackValues = [

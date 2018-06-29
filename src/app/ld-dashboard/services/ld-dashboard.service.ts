@@ -89,12 +89,12 @@ export class LdDashboardService {
   }
 
   //learner-track graph details
-  getGraphDetails() {
+  getGraphDetails(filterbody) {
     let url = this.baseURL + "learner-pace-performance";
     let headers = new HttpHeaders()
       .set("LnDUserId", "1001")
       .set("courseId", "0");
-    return this.http.post(url, null, { headers: headers });
+    return this.http.post(url, filterbody, { headers: headers });
     // return this.http.post(url, null, { headers: this.headers });
   }
 

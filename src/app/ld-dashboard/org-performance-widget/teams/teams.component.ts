@@ -10,15 +10,17 @@ export class TeamsComponent implements OnInit {
   teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
+  order: string;
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
 
   getDataFromService() {
     this.getData.getTeamData().subscribe((res: any) => {
       this.teamsData = res.data;
+      // this.order = this.teamsData.teamName;
     });
   }
 

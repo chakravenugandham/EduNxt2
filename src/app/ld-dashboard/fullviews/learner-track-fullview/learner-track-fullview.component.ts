@@ -11,15 +11,12 @@ import { CommonService } from "../../services/common.service";
 export class LearnerTrackFullviewComponent implements OnInit {
   responseTrackDetails: any;
   responseGraphDetails: any;
-
-  selectType: string = "Ahead of Schedule";
-
+  selectType: string;
   filterbody = {};
   componentName: string;
 
   getDisplayObject($event) {
-    this.filterbody = $event;
-    console.log("this.displayFor", this.filterbody);
+    this.selectType = $event;
     this.getTableDataFromService();
   }
 
@@ -38,18 +35,29 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getTableDataFromService() {
-    this.getData
-      .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.filterbody)
-      .subscribe((response: any) => {
-        this.responseTrackDetails = response.data;
-        console.log(this.filterbody);
-      });
+    if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'pace') {
+      this.selectType = "paceaheadschedule";
+      this.getData
+        .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
+        .subscribe((response: any) => {
+          this.responseTrackDetails = response.data;
+        });
+    }
+    if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'performance') {
+      this.selectType = "excelling";
+      this.getData
+        .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
+        .subscribe((response: any) => {
+          this.responseTrackDetails = response.data;
+        });
+    }
+
+
   }
 
   getGraphDataFromService() {
     this.getData.getGraphDetails().subscribe((res: any) => {
       this.responseGraphDetails = res.data;
-      console.log(this.responseGraphDetails);
       this.paceTrackValues = [
         {
           color: "#23b14d",
@@ -96,5 +104,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.getTableDataFromService();
     this.getGraphDataFromService();
     this.getFilterData();
+    this.getDisplayObject(this.selectType);
   }
 }

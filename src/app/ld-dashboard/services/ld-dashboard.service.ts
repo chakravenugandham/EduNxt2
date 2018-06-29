@@ -9,6 +9,9 @@ import { Subject } from "rxjs";
 export class LdDashboardService {
   refreshAPI$ = new Subject<any>();
 
+  start_date: string = "29/03/2018";
+  end_date: string = "29/06/2018";
+
   constructor(private http: HttpClient) { }
 
   get refreshAPI() {
@@ -24,7 +27,6 @@ export class LdDashboardService {
     let headers = new HttpHeaders().set("LnDUserId", "37046");
     let headers1 = new HttpHeaders().set("LnDUserId", "57142");
     for (let key in config) {
-      console.log(config);
       headers = headers.append(key, config[key]);
       headers1 = headers1.append(key, config[key]);
     }
@@ -41,7 +43,7 @@ export class LdDashboardService {
 
   //first four widgets
   getActivityData() {
-    let url = this.baseURL + "learning-activities";
+    let url = this.baseURL + "learning-activities" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -52,26 +54,26 @@ export class LdDashboardService {
 
   //goals and timespent widgets
   getGoalsData() {
-    let url = this.baseURL + "goals";
+    let url = this.baseURL + "goals" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.get(url, { headers: this.headers1 });
   }
 
   //active users & mode of delivery data
   getActiveUsersData(filterbody) {
-    let url = this.baseURL + "active-users-graph";
+    let url = this.baseURL + "active-users-graph" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //location data
 
   getLocationData(filterbody) {
-    let url = this.baseURL + "activity-by-location";
+    let url = this.baseURL + "activity-by-location" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //learner-track widget data
   getLearnerTrackData(filterbody) {
-    let url = this.baseURL + "learner-pace-performance";
+    let url = this.baseURL + "learner-pace-performance" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     let headers = new HttpHeaders()
       .set("LnDUserId", "1001")
       .set("courseId", "0");
@@ -79,9 +81,9 @@ export class LdDashboardService {
   }
 
   //learner-track full details
-  getLearnerTrackDetails(componentName, filterbody) {
+  getLearnerTrackDetails(componentName, displayfor, filterbody) {
     let url =
-      this.baseURL + "learner-pace-performance-details?type=" + componentName;
+      this.baseURL + "learner-pace-performance-details?type=" + componentName + "&displayFor=" + displayfor + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     let headers = new HttpHeaders()
       .set("LnDUserId", "1001")
       .set("courseId", "0");
@@ -90,7 +92,7 @@ export class LdDashboardService {
 
   //learner-track graph details
   getGraphDetails() {
-    let url = this.baseURL + "learner-pace-performance";
+    let url = this.baseURL + "learner-pace-performance" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     let headers = new HttpHeaders()
       .set("LnDUserId", "1001")
       .set("courseId", "0");
@@ -100,56 +102,56 @@ export class LdDashboardService {
 
   //learner-performance
   getLearnerPerformanceData(filterbody) {
-    let url = this.baseURL + "learner-performance-progress";
+    let url = this.baseURL + "learner-performance-progress" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //learner-performance full details
   getLearnerPerformanceDetails() {
-    let url = this.baseURL + "learner-performance-progress-details";
+    let url = this.baseURL + "learner-performance-progress-details" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-interest
   getOrgInterestData() {
-    let url = this.baseURL + "organization-interests";
+    let url = this.baseURL + "organization-interests" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance teams data
   getTrainersData() {
-    let url = this.baseURL + "trainer-leaderboard";
+    let url = this.baseURL + "trainer-leaderboard" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance trainers data
   getTeamData() {
-    let url = this.baseURL + "team-leaderboard";
+    let url = this.baseURL + "team-leaderboard" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance leaners data
   getLearnerData() {
-    let url = this.baseURL + "learner-leaderboard";
+    let url = this.baseURL + "learner-leaderboard" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //scores-distribution based on component type
   getScoresDistrubution(componentName, filterbody) {
-    let url = this.baseURL + "scores-distribution?type=" + componentName;
+    let url = this.baseURL + "scores-distribution?type=" + componentName + "&start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //scores full-details
   getScoresDetails(dropdownValue) {
     let url =
-      this.baseURL + "scores-distribution-details?type=" + dropdownValue;
+      this.baseURL + "scores-distribution-details?type=" + dropdownValue + "&start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //content-performing
   getContentData() {
-    let url = this.baseURL + "content-consumption";
+    let url = this.baseURL + "content-consumption" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
     return this.http.post(url, null, { headers: this.headers });
   }
 

@@ -15,7 +15,7 @@
           </th>
           <th scope="col">People Trained
             <span>
-              <i class="far fa-question-circle text-danger"></i>
+              <i class="far fa-question-circle questionmark"></i>
             </span>
           </th>
           <th scope="col">Avg. Rating
@@ -30,20 +30,20 @@
       </thead>
       <tbody>
         <tr *ngFor="let tableData of trainersData | slice:0:4">
-          <td scope="">
+          <th scope="">
             <span>
               <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
             </span>
             <span class="userName">{{tableData.trainerName}}</span>
-          </td>
-          <td class="text-danger">{{tableData.trainingsConducted}}</td>
-          <td class="text-danger">{{tableData.peopleTrained}}</td>
+          </th>
+          <td class="text">{{tableData.trainingsConducted}}</td>
+          <td class="text">{{tableData.peopleTrained}}</td>
           <td class="">
             <span>
               <i class="far fa-star text-warning"></i>
             </span> {{tableData.avgRating}}
           </td>
-          <td class="text-danger">
+          <td class="text">
             <span>
               <i class="fas fa-exclamation-triangle"></i>
             </span> {{tableData.actionMessage}}

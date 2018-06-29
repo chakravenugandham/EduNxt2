@@ -20,12 +20,14 @@
           </p>
           <p class="nop bold-text">
             <span>{{orgInterestData.hits}}</span>
-            <span>People</span>
+            <span style="margin-left: 5px;">People</span>
           </p>
           <p>
             <span class="changeNumber">
-              <i class="fa fa-arrow-up" aria-hidden="true"></i>{{orgInterestData.hitsSinceLastMonth}}</span>
-            <span style="margin-left: 5px;">Hits since last month</span>
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>
+              <span style="margin-left: 5px;">{{orgInterestData.hitsSinceLastMonth}}</span>
+            </span>
+            <span style="margin-left: 5px;font-weight: 100">Hits since last month</span>
           </p>
         </div>
       </div>
@@ -40,7 +42,7 @@
         </p>
       </div>
       <div id="word-cloud">
-        <ng-tag-cloud *ngIf="wordData.length > 0" [data]="data" [width]="options.width" [overflow]="options.overflow">
+        <ng-tag-cloud class="cloud-data" *ngIf="wordData.length > 0" [data]="data" [width]="options.width" [overflow]="options.overflow">
         </ng-tag-cloud>
       </div>
     </div>

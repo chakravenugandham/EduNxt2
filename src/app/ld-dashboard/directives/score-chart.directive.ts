@@ -7,7 +7,7 @@ import * as d3 from "d3v4";
 export class ScoreChartDirective implements OnChanges {
   @Input() data: any;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   chartRenderFn(chartData) {
     this.el.nativeElement.innerHTML = "";
@@ -23,7 +23,7 @@ export class ScoreChartDirective implements OnChanges {
       .scaleLinear()
       .domain([
         0,
-        d3.max(chartData, function(d) {
+        d3.max(chartData, function (d) {
           return d[0];
         })
       ])
@@ -34,7 +34,7 @@ export class ScoreChartDirective implements OnChanges {
       .scaleLinear()
       .domain([
         0,
-        d3.max(chartData, function(d) {
+        d3.max(chartData, function (d) {
           return d[1];
         })
       ])
@@ -78,10 +78,10 @@ export class ScoreChartDirective implements OnChanges {
     //area line generator
     var area = d3
       .area()
-      .x(function(d) {
+      .x(function (d) {
         return xScale(d[0]);
       })
-      .y1(function(d) {
+      .y1(function (d) {
         return yScale(d[1]);
       })
       .curve(d3.curveCatmullRom.alpha(0.5));
@@ -133,10 +133,10 @@ export class ScoreChartDirective implements OnChanges {
       ])
       .enter()
       .append("stop")
-      .attr("offset", function(d) {
+      .attr("offset", function (d) {
         return d.offset;
       })
-      .attr("stop-color", function(d) {
+      .attr("stop-color", function (d) {
         return d.color;
       });
   }

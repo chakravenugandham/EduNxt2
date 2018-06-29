@@ -85,7 +85,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         name: filterName.name
       });
 
-      console.log("this.filterFullObj", this.filterFullObj);
     } else {
       let i = this.filterArray.indexOf(filterName.name);
       this.filterArray.splice(i, 1);

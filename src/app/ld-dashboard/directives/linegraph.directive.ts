@@ -13,7 +13,6 @@ export class LinegraphDirective implements OnChanges {
   constructor(private el: ElementRef) { }
 
   usersChartRender(dataSet) {
-    console.log(this.data);
     this.el.nativeElement.innerHTML = "";
     //d3.select("#activeUserGraph svg").remove();
     let w = d3
@@ -22,8 +21,6 @@ export class LinegraphDirective implements OnChanges {
       .getBoundingClientRect().width;
     var h = 200;
     var p = 40;
-
-    console.log(dataSet);
     // create xScale
     var xScale = d3
       .scaleTime()

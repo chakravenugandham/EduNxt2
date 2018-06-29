@@ -26,7 +26,10 @@
               <span>
                 <i class="fas fa-search" aria-hidden="true"></i>
               </span>
-              Notifcations
+              Notifcation
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
             </th>
             <th scope="col">Scheduled on
               <span>
@@ -52,9 +55,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let content of contentData">
-            <th scope="row"> {{content.notification}} </th>
+            <th scope="row" [ngClass]="{'fail_class': content.DeliveredOn == 'Failed' }"> {{content.notification}} </th>
             <td> {{content.scheduledOn}} </td>
-            <td> {{content.DeliveredOn}} </td>
+            <td [ngClass]="{'fail_class': content.DeliveredOn == 'Failed' }"> {{content.DeliveredOn}} </td>
             <td> {{content.TimesResponded}} </td>
             <td> {{content.TimesSeen}} </td>
           </tr>

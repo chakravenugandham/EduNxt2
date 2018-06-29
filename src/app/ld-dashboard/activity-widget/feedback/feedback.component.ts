@@ -28,12 +28,11 @@ export class FeedbackComponent implements OnInit, OnChanges {
   contentRatingChange: number;
   faArrowUp = faArrowUp;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
   ngOnChanges(changes: SimpleChanges) {
     if (changes.feedbackDataElement.currentValue) {
-      console.log("feedbackDataElement", this.feedbackDataElement);
 
       this.learnerSatisfaction = Math.round(
         this.feedbackDataElement.learnerSatisfaction

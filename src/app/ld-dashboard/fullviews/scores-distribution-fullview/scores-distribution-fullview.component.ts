@@ -31,7 +31,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   getDataFromService() {
     this.getData.getScoresDetails(this.showDetails).subscribe((response: any) => {
       this.responseScoreDetails = response.data;
-      console.log(this.responseScoreDetails);
     });
     this.getData
       .getScoresDistrubution(this.showDetails, this.filterbody)
@@ -41,7 +40,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
           this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
         }
         this.dataSet = [...this.dataSet];
-        console.log(this.dataSet, this.responseGraphData);
       });
   }
 

@@ -6,3 +6,21 @@
 .m-t-50 {
   margin-top: 50px;
 }
+
+.learner-performance-fullview table thead tr th {
+  font-weight: bold;
+}
+
+.learner-performance-fullview table tbody tr th {
+  font-weight: 500;
+  color: #0146F9;
+}
+
+.fail_class {
+  font-weight: 100;
+  color: #FF4E00 !important;
+}
+
+.learner-performance-fullview table tbody tr td {
+  font-weight: 100;
+}

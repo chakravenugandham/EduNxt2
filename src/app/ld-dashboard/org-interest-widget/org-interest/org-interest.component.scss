@@ -1,6 +1,7 @@
 .org-interest {
   font-size: inherit;
 }
+
 .card-block {
   background-color: #fff;
   margin: 8px 0px;
@@ -58,7 +59,14 @@
     width: 16px;
   }
 }
+
 .bold-text {
   font-size: 12px;
   font-weight: 600;
+}
+
+.cloud-data {
+  span {
+    color: #0146F9;
+  }
 }

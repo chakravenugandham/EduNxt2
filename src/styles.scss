@@ -70,10 +70,9 @@
   }
 }
 
-.ranges {
-  display: none;
-}
-
+// .ranges {
+//   display: none;
+// }
 .daterangepicker {
   width: 700px !important;
 }
@@ -127,7 +126,7 @@
 .headingText .nav-item a {
   font-size: 14px; //font-size: 16px;
   color: #262626;
-  font-weight: 500;
+  font-weight: 100;
   padding: 6px;
   cursor: pointer;
 }
@@ -297,7 +296,7 @@
     shape-rendering: crispEdges;
   }
   .axis text {
-    font-family: sans-serif;
+    font-family: "Muli";
     font-size: 11px;
     fill: darkgray;
   }
@@ -356,7 +355,7 @@
     shape-rendering: crispEdges;
   }
   .axis text {
-    font-family: sans-serif;
+    font-family: "Muli";
     font-size: 11px;
     fill: darkgray;
   }
@@ -389,7 +388,7 @@
     shape-rendering: crispEdges;
   }
   .axis text {
-    font-family: sans-serif;
+    font-family: "Muli";
     font-size: 11px;
     fill: lightgray;
   }
@@ -425,7 +424,7 @@
     shape-rendering: crispEdges;
   }
   .axis text {
-    font-family: sans-serif;
+    font-family: "Muli";
     font-size: 11px;
     fill: darkgray;
   }
@@ -576,13 +575,10 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
+@media (min-width: 992px) and (max-width: 1199.98px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}

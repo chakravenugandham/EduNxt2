@@ -195,7 +195,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
           dataPoints[nearest][0][1] + " Active Learner"
         );
         d3.select(".ttip-faculty").html(
-          dataPoints[nearest][0][2] + " Active Faculty"
+          dataPoints[nearest][0][2] + " Active Faculty and admins"
         );
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");

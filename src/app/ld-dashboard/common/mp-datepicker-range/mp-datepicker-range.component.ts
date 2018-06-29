@@ -20,16 +20,19 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     locale: { format: "YYYY-MM-DD" },
     alwaysShowCalendars: false
   };
-  public applyDate(e: any) {}
+  public applyDate(e: any) { }
 
-  constructor() {}
+  constructor() { }
 
   public selectedDate(value: any) {
     this.daterange.start = value.start;
     this.daterange.end = value.end;
+    console.log(this.daterange.start, this.daterange.end);
+    console.log("value", value);
   }
 
   ngAfterViewInit() {
     this.picker.datePicker.setStartDate(this.date);
+    console.log(this.date);
   }
 }

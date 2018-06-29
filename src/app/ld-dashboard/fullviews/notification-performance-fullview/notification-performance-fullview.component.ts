@@ -25,7 +25,7 @@ export class NotificationPerformanceFullviewComponent implements OnInit {
     {
       notification: "Course Component update for",
       scheduledOn: "12:56PM, Feb 8",
-      DeliveredOn: "12:56PM, Feb 8",
+      DeliveredOn: "Failed",
       TimesResponded: "73%",
       TimesSeen: "83%"
     },
@@ -51,7 +51,7 @@ export class NotificationPerformanceFullviewComponent implements OnInit {
       TimesSeen: "83%"
     }
   ];
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

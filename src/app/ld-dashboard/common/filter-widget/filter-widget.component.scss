@@ -28,6 +28,28 @@
   }
 }
 
+.filterComponentDetails {
+  position: absolute;
+  right: 0;
+  .filterSelect {
+    position: relative;
+    padding: 6px 32px 6px 6px;
+    border: 1px solid #5584ff;
+    color: #5584ff;
+  }
+  i {
+    position: absolute;
+    right: 8px;
+    top: 8px !important;
+  }
+  .filterName {
+    position: relative;
+    padding: 6px 32px 6px 6px;
+    color: #fff;
+    background-color: #5584ff;
+  }
+}
+
 .viewDetails {
   position: absolute;
   right: 0;
@@ -75,22 +97,6 @@
 .search-org-user input::-ms-input-placeholder {
   color: #5584ff;
 }
-
-// ::placeholder {
-//   /* Chrome, Firefox, Opera, Safari 10.1+ */
-//   color: #5584ff;
-//   opacity: 1; /* Firefox */
-// }
-
-// :-ms-input-placeholder {
-//   /* Internet Explorer 10-11 */
-//   color: #5584ff;
-// }
-
-// ::-ms-input-placeholder {
-//   /* Microsoft Edge */
-//   color: #5584ff;
-// }
 
 .check-box {
   width: 12px;

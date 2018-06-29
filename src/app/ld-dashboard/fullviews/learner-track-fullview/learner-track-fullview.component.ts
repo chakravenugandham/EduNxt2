@@ -13,7 +13,21 @@ export class LearnerTrackFullviewComponent implements OnInit {
   responseGraphDetails: any;
   selectType: string;
   filterbody = {};
+  filtersData = {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    viewDetails: false,
+    filterList: ["batch"],
+    viewDetailsFilters: true
+  };
   componentName: string;
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getTableDataFromService();
+    this.getGraphDataFromService();
+  }
 
   getDisplayObject($event) {
     this.selectType = $event;
@@ -23,7 +37,10 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  constructor(private getData: LdDashboardService, private filterData: CommonService) {
+  constructor(
+    private getData: LdDashboardService,
+    private filterData: CommonService
+  ) {
     this.getData.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
     });
@@ -31,7 +48,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getFilterData() {
     this.filterData.learnerFilterBodyDetails;
-    this.componentName = this.filterData.learnerFilterBodyDetails['currentModule'];
+    this.componentName = this.filterData.learnerFilterBodyDetails[
+      "currentModule"
+    ];
   }
 
   getTableDataFromService() {
@@ -56,7 +75,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getGraphDataFromService() {
-    this.getData.getGraphDetails().subscribe((res: any) => {
+    this.getData.getGraphDetails(this.filterbody).subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       this.paceTrackValues = [
         {

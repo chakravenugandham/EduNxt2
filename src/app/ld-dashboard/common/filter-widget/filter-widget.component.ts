@@ -25,22 +25,24 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     viewDetails: boolean;
     filterList: string[];
     currentModule: string;
+    viewDetailsFilters: boolean;
   };
   @Output() filterEvent = new EventEmitter<any>();
   displayDropdown: boolean = false;
   filtersData;
   filterArray = [];
+  viewDetailsDisplay: boolean = false;
 
   filterSelected: any = {
     batchId: [],
     teamId: [],
     zoneId: [],
-    displayFor: ''
+    displayFor: ""
   };
 
   filterFullObj = [];
 
-  constructor(private router: Router, private server: LdDashboardService) { }
+  constructor(private router: Router, private server: LdDashboardService) {}
 
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
@@ -132,7 +134,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.router.navigate([this.viewData.routeTo]);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.viewDetailsDisplay = this.viewData.viewDetailsFilters;
+    console.log(
+      "this.viewData.viewDetailsFilters",
+      this.viewData.viewDetailsFilters
+    );
+  }
 
-  ngOnChanges(changes: SimpleChanges) { }
+  ngOnChanges(changes: SimpleChanges) {}
 }

@@ -1,9 +1,14 @@
 <div class="dashboard fullviewComponent widget-row learner-track-fullview container-fluid">
-  <div class="widget-heading row">
-    <span>
-      <i class="fas fa-angle-left" routerLink="/"></i>
-    </span>
-    <span> Are my learners on track? </span>
+  <div class="row">
+    <div class="widget-heading fullview-heading col-md-6">
+      <span>
+        <i class="fas fa-angle-left" routerLink="/"></i>
+      </span>
+      <span> Are my learners on track? </span>
+    </div>
+    <div class="col-md-6">
+      <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">

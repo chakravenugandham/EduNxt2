@@ -136,10 +136,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.viewDetailsDisplay = this.viewData.viewDetailsFilters;
-    console.log(
-      "this.viewData.viewDetailsFilters",
-      this.viewData.viewDetailsFilters
-    );
   }
 
   ngOnChanges(changes: SimpleChanges) {}

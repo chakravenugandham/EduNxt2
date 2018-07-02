@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: "orgInterestFullView", component: OrgInterestFullviewComponent }
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class RoutingModule {}
+export class RoutingModule { }

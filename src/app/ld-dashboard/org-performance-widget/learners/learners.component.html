@@ -31,8 +31,9 @@
     <tbody>
       <tr *ngFor="let tableData of LearnersData | slice:0:4">
         <td scope="row">
-          <span>
-            <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
+          <span class="imgActive">
+            <img src="/assets/images/user.png" alt="userImg">
+            <i class="far fa-circle"></i>
           </span>
           <span class="userName">{{tableData.learnerName}}</span>
         </td>

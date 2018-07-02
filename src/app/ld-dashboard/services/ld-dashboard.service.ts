@@ -59,8 +59,9 @@ export class LdDashboardService {
   }
 
   //active users & mode of delivery data
+  // + "?start_date=" + this.start_date + "&end_date=" + this.end_date
   getActiveUsersData(filterbody) {
-    let url = this.baseURL + "active-users-graph" + "?start_date=" + this.start_date + "&end_date=" + this.end_date;
+    let url = this.baseURL + "active-users-graph";
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 

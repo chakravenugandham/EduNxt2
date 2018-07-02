@@ -4,10 +4,8 @@
   <div class="small-font">
     <span class="small arrow-space">
       <!-- <i class="fas fa-arrow-up changeNumber"></i> -->
-
       <img *ngIf="numberFontColor" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
       <img *ngIf="!numberFontColor" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
-
     </span>
     <span class="changeInNumberText">
       <span [ngClass]="{'changeNumber': numberFontColor, 'changeNumberLow': !numberFontColor}"> {{config?.usersSinceLastMonth}} </span>

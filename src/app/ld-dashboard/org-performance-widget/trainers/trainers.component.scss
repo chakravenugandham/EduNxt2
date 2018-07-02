@@ -11,3 +11,25 @@ table thead th {
 .text {
   color: #FF4E00 !important;
 }
+
+.imgActive {
+  position: relative;
+  float: left;
+  img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin-left: -10px;
+    border: 1px solid #fff;
+    z-index: 0;
+  }
+  i {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%); // background-color: #befd45d9;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+  }
+}

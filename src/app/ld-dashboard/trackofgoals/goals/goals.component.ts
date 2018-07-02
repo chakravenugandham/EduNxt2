@@ -18,8 +18,23 @@ export class GoalsComponent implements OnInit {
   paceTrackValues = [];
 
   ngOnChanges(changes: any) {
-    //if (changes.paceDataElement.currentValue) {
-    //}
+    if (changes.firstCard.currentValue && changes.secondCard.currentValue) {
+      this.firstCard = {
+        businessGoal: 'string',
+        objective: 'string',
+        peopleTrained: 20,
+        timeRemaining: 'string',
+        status: 'string',
+      };
+
+      this.secondCard = {
+        businessGoal: 'string',
+        objective: 'string',
+        peopleTrained: 20,
+        timeRemaining: 'string',
+        status: 'string',
+      };
+    }
   }
   ngOnInit() {
     this.paceTrackValues = [
@@ -29,22 +44,5 @@ export class GoalsComponent implements OnInit {
         number: 80
       }
     ];
-
-    this.firstCard = {
-      businessGoal: 'string',
-      objective: 'string',
-      peopleTrained: 20,
-      timeRemaining: 'string',
-      status: 'string',
-    };
-
-    this.secondCard = {
-      businessGoal: 'string',
-      objective: 'string',
-      peopleTrained: 20,
-      timeRemaining: 'string',
-      status: 'string',
-    };
   }
-
 }

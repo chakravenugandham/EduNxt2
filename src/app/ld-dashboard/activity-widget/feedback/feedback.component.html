@@ -6,13 +6,14 @@
       </li>
     </ul>
     <div>
-      <span class="float-right widget-menu">
+      <span class="float-right widget-menu" data-toggle="tooltip" data-placement="top" title="Need Help?">
         <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
     </div>
   </div>
   <div *ngIf="!feedbackDataElement" class="spinner_loading text-center">
-    <i class="fas fa-spinner fa-spin fa-3x align-middle"></i>
+    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
+    <p>No data found</p>
   </div>
   <div *ngIf="feedbackDataElement">
     <div class="row p-t-18">

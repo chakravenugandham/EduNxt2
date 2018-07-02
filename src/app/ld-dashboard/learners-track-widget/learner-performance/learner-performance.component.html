@@ -6,16 +6,23 @@
   <div appDonutChart [data]="chartValues"></div>
   <div class="row graph-badges">
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-      <i class="far fa-circle excelling"></i> Excelling
-      <div> {{performanceData.excelling}} </div>
+      <i class="far fa-circle excelling"></i>
+      <span class="text-font"> Excelling</span>
+      <span> {{performanceData.excelling}} </span>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-      <i class="far fa-circle passing"></i> Passing
-      <div> {{performanceData.passing}} </div>
+      <i class="far fa-circle passing"></i>
+      <span class="text-font"> Passing</span>
+      <span> {{performanceData.passing}} </span>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-      <i class="far fa-circle struggling"></i> Struggling
-      <div> {{performanceData.struggling}} </div>
+      <i class="far fa-circle struggling"></i>
+      <span class="text-font"> Struggling</span>
+      <span> {{performanceData.struggling}} </span>
     </div>
   </div>
+</div>
+
+<div *ngIf="!performanceData">
+  <p>No data found</p>
 </div>

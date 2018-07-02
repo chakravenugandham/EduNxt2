@@ -20,6 +20,9 @@
       margin-left: 38px;
     }
   }
+  .m-l-147 {
+    margin-left: 147px;
+  }
   .m-t-7 {
     margin-top: 7px;
     display: inline-block;
@@ -33,8 +36,7 @@
   select {
     color: #5584ff;
     border: 1px solid #5584ff;
-    width: 280px;
-    // padding: 9px 6px;
+    width: 280px; // padding: 9px 6px;
     option {
       color: #5584ff;
     }
@@ -48,5 +50,11 @@
 @media (max-width: 576px) {
   .time-frame {
     padding: 8px 16px;
+  }
+}
+
+@-moz-document url-prefix() {
+  .m-l-147 {
+    margin-left: 140px !important;
   }
 }

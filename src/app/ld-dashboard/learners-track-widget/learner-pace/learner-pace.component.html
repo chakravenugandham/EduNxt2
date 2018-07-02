@@ -6,20 +6,28 @@
   <div appDonutChart [data]="chartValues"></div>
   <div class="row graph-badges">
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
-      <div> {{paceData.aheadOfSchedule}} </div>
+      <i class="far fa-circle aheadOfSchedule"></i>
+      <span class="text-font">Ahead of Schedule</span>
+      <span> {{paceData.aheadOfSchedule}} </span>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <i class="far fa-circle onTrack"></i> On Track
-      <div> {{paceData.onTrack}} </div>
+      <i class="far fa-circle onTrack"></i>
+      <span class="text-font"> On Track</span>
+      <span> {{paceData.onTrack}} </span>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <i class="far fa-circle behindSchedule"></i> Behind Schedule
-      <div> {{paceData.behindSchedule}} </div>
+      <i class="far fa-circle behindSchedule"></i>
+      <span class="text-font"> Behind Schedule</span>
+      <span> {{paceData.behindSchedule}} </span>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <i class="far fa-circle haveNotStarted"></i> Haven't Started
-      <div> {{paceData.haveNotStarted}} </div>
+      <i class="far fa-circle haveNotStarted"></i>
+      <span class="text-font"> Haven't Started</span>
+      <span> {{paceData.haveNotStarted}} </span>
     </div>
   </div>
+</div>
+
+<div *ngIf="!paceData">
+  <p>No data found</p>
 </div>

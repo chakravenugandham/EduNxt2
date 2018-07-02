@@ -13,7 +13,7 @@
 }
 
 .mainBody {
-  font-size: 14px !important;
+  font-size: 12px !important;
   font-family: "Muli";
   padding: 0;
 }
@@ -34,6 +34,11 @@
   margin: 6px;
   padding: 10px 20px; // border: 1px solid #afcbe1;
   box-shadow: 1px 1px #ccc; //font-size: 0.7em;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .activity-widgets .widget-block {

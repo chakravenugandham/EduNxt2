@@ -30,8 +30,9 @@
     <tbody>
       <tr *ngFor="let tableData of teamsData | slice:0:4 | orderBy: 'teamId'">
         <td scope="row">
-          <span>
-            <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
+          <span class="imgActive">
+            <img src="/assets/images/user.png" alt="userImg">
+            <i class="far fa-circle"></i>
           </span>
           <span class="userName">
             <b>{{tableData.teamName}}</b>

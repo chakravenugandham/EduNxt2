@@ -21,8 +21,8 @@ export class EngagementComponent implements OnInit, OnChanges {
   ngOnChanges(changes: any) {
     if (changes.engageData.currentValue) {
       this.config = {
-        peopleCurrentlyEnrolled: this.engageData.peopleCompletedTraining,
-        usersSinceLastMonth: this.engageData.peopleChange,
+        peopleCurrentlyEnrolled: this.engageData.usersCompletedPrograms,
+        usersSinceLastMonth: this.engageData.completedProgramsSinceLastMonth,
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People completed training programs"

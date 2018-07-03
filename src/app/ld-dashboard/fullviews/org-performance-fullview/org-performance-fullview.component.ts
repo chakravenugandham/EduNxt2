@@ -11,6 +11,10 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   responseTrainersDetails: any;
   responseLeanersDetails: any;
 
+  checkBoxValue: boolean = false;
+
+  parseFloat = parseFloat;
+
   showDetails: string = "teams";
 
   constructor(private getData: LdDashboardService) {

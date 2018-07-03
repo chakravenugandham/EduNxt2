@@ -25,7 +25,8 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   //api call for orgDetails based on component
   getDataFromService() {
-    this.getData.getOrgInterestData().subscribe((res: any) => {
+    this.getData.getOrgInterestDetailsData().subscribe((res: any) => {
+      console.log(res.data);
       this.responseData = res.data;
     })
   }

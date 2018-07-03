@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-users",
@@ -14,6 +15,8 @@ export class UsersComponent implements OnInit {
   enrolledConfig: Config;
   numberFontColor: boolean;
 
+  responseData = {};
+
   userImages: string[] = [
     "/assets/images/user.png",
     "/assets/images/user.png",
@@ -21,20 +24,27 @@ export class UsersComponent implements OnInit {
     "/assets/images/user.png"
   ];
 
-  constructor() {}
+  constructor(private getData: LdDashboardService) { }
+
+  getAPIData() {
+    this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
+      console.log(this.responseData);
+      this.responseData = response.data;
+    });
+  }
 
   ngOnChanges(changes: any) {
     if (changes.userElement) {
       this.activeConfig = {
         peopleCurrentlyEnrolled: this.imageElement.activeUsers,
-        usersSinceLastMonth: this.userElement.changeInUsers,
+        usersSinceLastMonth: this.userElement.activeUsersSinceLastMonth,
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently active"
       };
       this.enrolledConfig = {
-        peopleCurrentlyEnrolled: this.userElement.peopleCurrentlyEnrolled,
-        usersSinceLastMonth: this.userElement.usersSinceLastMonth,
+        peopleCurrentlyEnrolled: this.userElement.enrolledUsers,
+        usersSinceLastMonth: this.userElement.enrolledUsersSinceLastMonth,
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently enrolled"
@@ -43,5 +53,7 @@ export class UsersComponent implements OnInit {
     this.numberFontColor = true;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //this.getAPIData();
+  }
 }

@@ -75,7 +75,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getGraphDataFromService() {
-    this.getData.getGraphDetails(this.filterbody).subscribe((res: any) => {
+    this.getData.getLearnerTrackData(this.filterbody).subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       this.paceTrackValues = [
         {

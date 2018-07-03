@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Subject } from "rxjs";
+import { APIURL } from "../../apiURL";
 
 @Injectable({
   providedIn: "root"
@@ -34,6 +35,10 @@ export class LdDashboardService {
     return this.refreshAPI$.asObservable();
   }
 
+  //api urls from constants
+
+  //apiURL = APIURL;
+
   //baseURL from enviornment
   baseURL = environment.baseUrl;
   headers = new HttpHeaders()
@@ -60,6 +65,11 @@ export class LdDashboardService {
   //courses dropdown
   getCoursesData() {
     let url = this.baseURL + "courses-dropdown";
+    return this.http.get(url, { headers: this.headers1 });
+  }
+
+  getActiveUsersWidgetData() {
+    let url = this.baseURL + APIURL.ACTIVE_USERS;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -98,7 +108,7 @@ export class LdDashboardService {
   //active users & mode of delivery data
   // + "?start_date=" + this.start_date + "&end_date=" + this.end_date
   getActiveUsersData(filterbody) {
-    let url = this.baseURL + "active-users-graph";
+    let url = this.baseURL + APIURL.ACTIVE_USERS_GRAPH;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -107,7 +117,7 @@ export class LdDashboardService {
   getLocationData(filterbody) {
     let url =
       this.baseURL +
-      "activity-by-location" +
+      APIURL.LOCATION +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -119,7 +129,7 @@ export class LdDashboardService {
   getLearnerTrackData(filterbody) {
     let url =
       this.baseURL +
-      "learner-pace-performance" +
+      APIURL.LEARNER_PACE_PERFORMANCE +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -134,7 +144,8 @@ export class LdDashboardService {
   getLearnerTrackDetails(componentName, displayfor, filterbody) {
     let url =
       this.baseURL +
-      "learner-pace-performance-details?type=" +
+      APIURL.LEARNER_PACE_PERFORMANCE_DETAILS +
+      "?type=" +
       componentName +
       "&displayFor=" +
       displayfor +
@@ -148,27 +159,11 @@ export class LdDashboardService {
     return this.http.post(url, filterbody, { headers: headers });
   }
 
-  //learner-track graph details
-  getGraphDetails(filterbody) {
-    let url =
-      this.baseURL +
-      "learner-pace-performance" +
-      "?start_date=" +
-      this.start_date +
-      "&end_date=" +
-      this.end_date;
-    let headers = new HttpHeaders()
-      .set("LnDUserId", "1001")
-      .set("courseId", "0");
-    return this.http.post(url, filterbody, { headers: headers });
-    // return this.http.post(url, null, { headers: this.headers });
-  }
-
   //learner-performance
   getLearnerPerformanceData(filterbody) {
     let url =
       this.baseURL +
-      "learner-performance-progress" +
+      APIURL.LEARNER_PERFORMANCE_PROGRESS +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -180,7 +175,7 @@ export class LdDashboardService {
   getLearnerPerformanceDetails() {
     let url =
       this.baseURL +
-      "learner-performance-progress-details" +
+      APIURL.LEARNER_PERFORMANCE_PROGRESS_DETAILS +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -192,7 +187,7 @@ export class LdDashboardService {
   getOrgInterestData() {
     let url =
       this.baseURL +
-      "organization-interests" +
+      APIURL.ORGANISATION_INTEREST +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -200,11 +195,11 @@ export class LdDashboardService {
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //org-performance teams data
-  getTrainersData() {
+  //org-interest full details
+  getOrgInterestDetailsData() {
     let url =
       this.baseURL +
-      "trainer-leaderboard" +
+      APIURL.ORGANISATION_INTEREST_DETAILS +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -216,7 +211,19 @@ export class LdDashboardService {
   getTeamData() {
     let url =
       this.baseURL +
-      "team-leaderboard" +
+      APIURL.TEAMS_LEADERBOARD +
+      "?start_date=" +
+      this.start_date +
+      "&end_date=" +
+      this.end_date;
+    return this.http.post(url, null, { headers: this.headers });
+  }
+
+  //org-performance teams data
+  getTrainersData() {
+    let url =
+      this.baseURL +
+      APIURL.TRAINER_LEADERBOARD +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -228,7 +235,7 @@ export class LdDashboardService {
   getLearnerData() {
     let url =
       this.baseURL +
-      "learner-leaderboard" +
+      APIURL.LEARNER_LEADERBOARD +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -240,7 +247,8 @@ export class LdDashboardService {
   getScoresDistrubution(componentName, filterbody) {
     let url =
       this.baseURL +
-      "scores-distribution?type=" +
+      APIURL.SCORES_DISTRUBUTION +
+      "?type=" +
       componentName +
       "&start_date=" +
       this.start_date +
@@ -253,7 +261,8 @@ export class LdDashboardService {
   getScoresDetails(dropdownValue) {
     let url =
       this.baseURL +
-      "scores-distribution-details?type=" +
+      APIURL.SCORES_DISTRUBUTION_DETAILS +
+      "?type=" +
       dropdownValue +
       "&start_date=" +
       this.start_date +
@@ -266,7 +275,7 @@ export class LdDashboardService {
   getContentData() {
     let url =
       this.baseURL +
-      "content-consumption" +
+      APIURL.CONTENT_CONSUMPTION +
       "?start_date=" +
       this.start_date +
       "&end_date=" +
@@ -282,7 +291,7 @@ export class LdDashboardService {
       filters = filters.slice(0, -1);
     }
     filters = filtersList[0];
-    let url = this.baseURL + "dropDown?type=" + filters;
+    let url = this.baseURL + APIURL.FILTERS + "?type=" + filters;
     return this.http.get(url);
   }
 }

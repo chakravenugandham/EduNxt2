@@ -15,17 +15,17 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 export class FeedbackComponent implements OnInit, OnChanges {
   @Input()
   feedbackDataElement: {
-    learnerSatisfaction: number;
-    learnerSatisfactionChange: number;
+    learnerSatisfation: number;
+    learnerSatisfationBy: number;
     trainerRating: number;
-    trainerRatingChange: number;
+    trainerRatingBy: number;
     contentRating: number;
-    contentRatingChange: number;
+    contentRatingBy: number;
   };
-  learnerSatisfaction: number;
-  learnerSatisfactionChange: number;
-  trainerRatingChange: number;
-  contentRatingChange: number;
+  learnerSatisfation: number;
+  learnerSatisfationBy: number;
+  trainerRatingBy: number;
+  contentRatingBy: number;
   faArrowUp = faArrowUp;
 
   constructor() { }
@@ -34,17 +34,17 @@ export class FeedbackComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.feedbackDataElement.currentValue) {
 
-      this.learnerSatisfaction = Math.round(
-        this.feedbackDataElement.learnerSatisfaction
+      this.learnerSatisfation = Math.round(
+        this.feedbackDataElement.learnerSatisfation
       );
-      this.learnerSatisfactionChange = Math.abs(
-        this.feedbackDataElement.learnerSatisfactionChange
+      this.learnerSatisfationBy = Math.abs(
+        this.feedbackDataElement.learnerSatisfationBy
       );
-      this.trainerRatingChange = Math.abs(
-        this.feedbackDataElement.trainerRatingChange
+      this.trainerRatingBy = Math.abs(
+        this.feedbackDataElement.trainerRatingBy
       );
-      this.contentRatingChange = Math.abs(
-        this.feedbackDataElement.contentRatingChange
+      this.contentRatingBy = Math.abs(
+        this.feedbackDataElement.contentRatingBy
       );
     }
   }

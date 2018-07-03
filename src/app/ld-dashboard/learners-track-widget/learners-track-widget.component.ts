@@ -9,10 +9,17 @@ import { CommonService } from "../services/common.service";
   styleUrls: ["./learners-track-widget.component.scss"]
 })
 export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
-
   componentName: string = "pace";
+  filtersData = {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    viewDetails: true,
+    filterList: ["batch"],
+    currentModule: this.componentName
+  };
 
-  filtersData = {};
+  // filtersData = {};
   widgetData = {
     pace: "",
     performance: ""
@@ -20,36 +27,23 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService, private filterData: CommonService) {
-    this.serviceData.refreshAPI.subscribe((result) => {
+  constructor(
+    private serviceData: LdDashboardService,
+    private filterData: CommonService
+  ) {
+    this.serviceData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
 
   learnerPaceFn() {
     this.componentName = "pace";
-    this.filtersData = {
-      routeTo: "learnerTrackFullView",
-      filters: true,
-      search: false,
-      viewDetails: true,
-      filterList: ["batch"],
-      currentModule: this.componentName
-    };
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
     this.componentName = "performance";
-    this.filtersData = {
-      routeTo: "learnerTrackFullView",
-      filters: true,
-      search: false,
-      viewDetails: true,
-      filterList: ["batch"],
-      currentModule: this.componentName
-    };
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }

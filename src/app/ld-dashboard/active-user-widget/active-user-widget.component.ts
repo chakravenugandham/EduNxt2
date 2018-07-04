@@ -8,13 +8,12 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./active-user-widget.component.scss"]
 })
 export class ActiveUserWidgetComponent implements OnInit, OnChanges {
-
   getTab = "activeUser";
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getActiveUsersData();
       this.getLocationData();
-    })
+    });
   }
 
   //fliter object for payload
@@ -24,8 +23,9 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
     filters: true,
     search: false,
     viewDetails: false,
-    filterList: ["zone"],
-    currentModule: ""
+    filterList: ["location"],
+    currentModule: "",
+    viewDetailsFilters: false
   };
 
   activeUser: boolean = true;
@@ -38,11 +38,11 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
   }
 
   modeDeliveryFn() {
-    this.getTab = "modeDelivery"
+    this.getTab = "modeDelivery";
   }
 
   locationFn() {
-    this.getTab = "location"
+    this.getTab = "location";
     this.getLocationData();
   }
 

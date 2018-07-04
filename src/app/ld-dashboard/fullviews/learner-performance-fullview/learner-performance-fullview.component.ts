@@ -13,22 +13,30 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
   batches = [];
   graphData = [];
   filterbody = {};
+  filtersData = {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    viewDetails: false,
+    filterList: ["batch"],
+    viewDetailsFilters: true
+  };
+
+  constructor(private contentService: LdDashboardService) {
+    this.contentService.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+      this.getDataForGraph();
+    });
+  }
 
   onchange(componentName) {
     this.selectedGraph = componentName;
     this.getDataForGraph();
   }
 
-  constructor(private contentService: LdDashboardService) {
-    this.contentService.refreshAPI.subscribe((result) => {
-      this.getDataFromService();
-      this.getDataForGraph();
-    })
-  }
-
   getDataFromService() {
     this.contentService
-      .getLearnerPerformanceDetails()
+      .getLearnerPerformanceDetails(this.filterbody)
       .subscribe((response: any) => {
         this.learnerData = response.data;
       });
@@ -76,6 +84,12 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
             ? performanceDataSet
             : progressDataSet;
       });
+  }
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getDataFromService();
+    this.getDataForGraph();
   }
 
   ngOnInit() {

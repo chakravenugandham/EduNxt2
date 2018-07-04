@@ -27,16 +27,21 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     currentModule: string;
     viewDetailsFilters: boolean;
   };
+
   @Output() filterEvent = new EventEmitter<any>();
+
   displayDropdown: boolean = false;
   filtersData;
   filterArray = [];
   viewDetailsDisplay: boolean = false;
+  filterDisplayName = "Add a Filter";
 
   filterSelected: any = {
+    locationId: [],
     batchId: [],
     teamId: [],
     zoneId: [],
+    contentTypeId: [],
     displayFor: ""
   };
 
@@ -44,6 +49,38 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   constructor(private router: Router, private server: LdDashboardService) {}
 
+  filterDispalyNameFraming() {
+    if (this.viewData.filterList.length > 1) {
+      this.filterDisplayName = "Add a Filter";
+    } else {
+      switch (this.viewData.filterList[0]) {
+        case "location": {
+          this.filterDisplayName = "Location";
+          break;
+        }
+        case "batch": {
+          this.filterDisplayName = "Batch";
+          break;
+        }
+        case "team": {
+          this.filterDisplayName = "Team";
+          break;
+        }
+        case "course": {
+          this.filterDisplayName = "Course";
+          break;
+        }
+        case "zone": {
+          this.filterDisplayName = "Zone";
+          break;
+        }
+        case "contentType": {
+          this.filterDisplayName = "Content Type";
+          break;
+        }
+      }
+    }
+  }
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
     this.server
@@ -56,6 +93,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   selectFilter(filter, filterName) {
     let filterTypeId = "";
     switch (filter.type) {
+      case "location": {
+        filterTypeId = "locationId";
+        break;
+      }
       case "batch": {
         filterTypeId = "batchId";
         break;
@@ -72,6 +113,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         filterTypeId = "zoneId";
         break;
       }
+      case "contentType": {
+        filterTypeId = "contentTypeId";
+        break;
+      }
       case "displayFor": {
         filterTypeId = "displayFor";
       }
@@ -86,7 +131,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         id: filterName.id,
         name: filterName.name
       });
-
     } else {
       let i = this.filterArray.indexOf(filterName.name);
       this.filterArray.splice(i, 1);
@@ -136,6 +180,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.viewDetailsDisplay = this.viewData.viewDetailsFilters;
+    this.filterDispalyNameFraming();
   }
 
   ngOnChanges(changes: SimpleChanges) {}

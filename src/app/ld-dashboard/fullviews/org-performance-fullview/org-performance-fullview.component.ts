@@ -16,11 +16,12 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   parseFloat = parseFloat;
 
   showDetails: string = "teams";
+  compareUsers = [];
 
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
 
   //api calls for trainers ,teams and learner
@@ -30,10 +31,16 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     });
     this.getData.getTeamData().subscribe((response: any) => {
       this.responseTeamsDetails = response.data;
+      console.log("responseTeamsDetails", this.responseTeamsDetails);
     });
     this.getData.getLearnerData().subscribe((response: any) => {
       this.responseLeanersDetails = response.data;
     });
+  }
+
+  comapreUsers(teamData) {
+    this.compareUsers.push(teamData.teamId);
+    console.log("this.compareUsers", this.compareUsers);
   }
 
   ngOnInit() {

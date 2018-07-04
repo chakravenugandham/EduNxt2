@@ -22,13 +22,17 @@ export class LdDashboardService implements OnInit {
   constructDate() {
     let today = new Date();
     this.end_date =
-      today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear();
+      today.getDate() +
+      "/" +
+      (today.getMonth() + 1) +
+      "/" +
+      today.getFullYear();
 
     let last_date = new Date(today.setDate(today.getDate() - 30));
     this.start_date =
       last_date.getDate() +
       "/" +
-      last_date.getMonth() +
+      (last_date.getMonth() + 1) +
       "/" +
       last_date.getFullYear();
   }
@@ -180,7 +184,7 @@ export class LdDashboardService implements OnInit {
   }
 
   //learner-performance full details
-  getLearnerPerformanceDetails() {
+  getLearnerPerformanceDetails(filterbody) {
     let url =
       this.baseURL +
       APIURL.LEARNER_PERFORMANCE_PROGRESS_DETAILS +
@@ -188,7 +192,7 @@ export class LdDashboardService implements OnInit {
       this.start_date +
       "&end_date=" +
       this.end_date;
-    return this.http.post(url, null, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //org-interest
@@ -266,7 +270,7 @@ export class LdDashboardService implements OnInit {
   }
 
   //scores full-details
-  getScoresDetails(dropdownValue) {
+  getScoresDetails(dropdownValue, filterbody) {
     let url =
       this.baseURL +
       APIURL.SCORES_DISTRUBUTION_DETAILS +
@@ -276,11 +280,11 @@ export class LdDashboardService implements OnInit {
       this.start_date +
       "&end_date=" +
       this.end_date;
-    return this.http.post(url, null, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //content-performing
-  getContentData() {
+  getContentData(filterbody) {
     let url =
       this.baseURL +
       APIURL.CONTENT_CONSUMPTION +
@@ -288,7 +292,7 @@ export class LdDashboardService implements OnInit {
       this.start_date +
       "&end_date=" +
       this.end_date;
-    return this.http.post(url, null, { headers: this.headers });
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //get-filters

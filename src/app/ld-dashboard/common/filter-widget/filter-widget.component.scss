@@ -1,6 +1,7 @@
 .filterComponent {
   position: absolute;
   width: calc(100% - 40px);
+  min-height: 45px;
   bottom: 20px;
   padding-top: 12px;
   border-top: 1px dotted #ddd;
@@ -47,6 +48,10 @@
     padding: 6px 32px 6px 6px;
     color: #fff;
     background-color: #5584ff;
+  }
+  .showFilter-list {
+    right: 0px;
+    left: auto;
   }
 }
 

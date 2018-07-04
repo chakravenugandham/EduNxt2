@@ -12,7 +12,7 @@
       <li class="list-inline-item filter" *ngIf="viewData.filters">
         <div class="filterSelect">
           <div class="getFilter" (click)="showFilter()">
-            <span>Add a filter</span>
+            <span>{{filterDisplayName}}</span>
             <span>
               <!-- <i class="fas fa-plus-circle"></i> -->
               <i class="fas fa-plus"></i>
@@ -59,7 +59,7 @@
     <li class="list-inline-item filter" *ngIf="viewData.filters">
       <div class="filterSelect">
         <div class="getFilter" (click)="showFilter()">
-          <span>Add a filter</span>
+          <span>{{filterDisplayName}}</span>
           <span>
             <i class="fas fa-plus"></i>
           </span>

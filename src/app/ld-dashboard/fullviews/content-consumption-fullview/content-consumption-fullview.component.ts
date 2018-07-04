@@ -9,16 +9,32 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
+  filterbody = {};
+  filtersData = {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    viewDetails: false,
+    filterList: ["batch"],
+    viewDetailsFilters: true
+  };
   constructor(private contentService: LdDashboardService) {
-    this.contentService.refreshAPI.subscribe((result) => {
+    this.contentService.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
 
   getDataFromService() {
-    this.contentService.getContentData().subscribe((res: any) => {
-      this.contentData = res.data;
-    });
+    this.contentService
+      .getContentData(this.filterbody)
+      .subscribe((res: any) => {
+        this.contentData = res.data;
+      });
+  }
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getDataFromService();
   }
 
   ngOnInit() {

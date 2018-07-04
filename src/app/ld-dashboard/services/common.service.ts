@@ -8,7 +8,7 @@ export class CommonService {
 
   dateObj = {};
 
-  constructor() {}
+  constructor() { }
 
   set learnerFilterBodyDetails(data) {
     this.filterbodyDetails = data;
@@ -20,10 +20,11 @@ export class CommonService {
 
   set dateFilterBodyDetails(date) {
     this.dateObj = date;
-    console.log(this.dateObj);
+    console.log('service set done', this.dateObj);
   }
 
   get dateFilterBodyDetails() {
+    console.log(this.dateObj);
     return this.dateObj;
   }
 }

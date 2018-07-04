@@ -23,6 +23,10 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     this.contentService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.contentService.dateChange.subscribe(result => {
+      this.getDataFromService();
+    })
   }
 
   getDataFromService() {

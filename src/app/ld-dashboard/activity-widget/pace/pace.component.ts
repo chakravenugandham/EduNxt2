@@ -16,7 +16,11 @@ export class PaceComponent implements OnInit, OnChanges {
 
   responseData = {};
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.dateChange.subscribe(result => {
+      this.getDataFromService();
+    })
+  }
 
   getDataFromService() {
     this.getData.getPaceWidgetData().subscribe((response: any) => {

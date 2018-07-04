@@ -20,7 +20,10 @@ export class EngagementComponent implements OnInit, OnChanges {
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe((result) => {
       this.getDataFromService();
-    })
+    });
+    this.getData.dateChange.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {

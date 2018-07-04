@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "./services/ld-dashboard.service";
 
 @Component({
   selector: "app-ld-dashboard",
@@ -7,7 +8,16 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LdDashboardComponent implements OnInit {
   filtersList = [];
-  constructor() {}
 
-  ngOnInit() {}
+  loading: boolean = false;
+  constructor(private getDataService: LdDashboardService) {
+    //   this.getDataService.dateChange.subscribe(result => {
+    //     this.loading = true;
+    //     setTimeout(()=>{    
+    //       this.loading = false;
+    //  }, 3000);
+    //   })
+  }
+
+  ngOnInit() { }
 }

@@ -24,7 +24,11 @@ export class UsersComponent implements OnInit {
     "/assets/images/user.png"
   ];
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.dateChange.subscribe(result => {
+      this.getAPIData();
+    })
+  }
 
   getAPIData() {
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {

@@ -32,14 +32,14 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     this.daterange.start = value.start;
     this.daterange.end = value.end;
     this.dateFilterObj["start_date"] = this.daterange.start._d.getDate() + "/" + this.daterange.start._d.getMonth() + "/" + this.daterange.start._d.getFullYear();
-    console.log("start_date", this.dateFilterObj["start_date"]);
+    // console.log("start_date", this.dateFilterObj["start_date"]);
 
     this.dateFilterObj["end_date"] = this.daterange.end._d.getDate() + "/" + this.daterange.end._d.getMonth() + "/" + this.daterange.end._d.getFullYear();
-    console.log("end_date", this.dateFilterObj["end_date"]);
+    // console.log("end_date", this.dateFilterObj["end_date"]);
     this.getDate.dateFilterBodyDetails = this.dateFilterObj;
-    console.log(this.getDate.dateFilterBodyDetails);
+    console.log('this.getDate.dateFilterBodyDetail', this.getDate.dateFilterBodyDetails);
 
-    this.getData.dateChange.next(true);
+    this.getData.dateChange.next(this.dateFilterObj);
   }
 
   ngAfterViewInit() {

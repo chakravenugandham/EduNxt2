@@ -9,6 +9,11 @@ import { CommonService } from "../services/common.service";
   providedIn: "root"
 })
 export class LdDashboardService implements OnInit {
+
+  public dateChange = new Subject<boolean>();
+
+  dateChange$ = this.dateChange.asObservable();
+
   refreshAPI$ = new Subject<any>();
 
   // start_date: string = "29/03/2018";
@@ -32,15 +37,19 @@ export class LdDashboardService implements OnInit {
   constructDate() {
     let today = new Date();
     this.dateFilterObj.end_date =
-      today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+      // today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+      today.toLocaleDateString();
 
     let last_date = new Date(today.setDate(today.getDate() - 30));
     this.dateFilterObj.start_date =
-      last_date.getDate() +
-      "/" +
-      (last_date.getMonth() + 1) +
-      "/" +
-      last_date.getFullYear();
+      last_date.toLocaleDateString();
+    // last_date.getDate() +
+    // "/" +
+    // (last_date.getMonth() + 1) +
+    // "/" +
+    // last_date.getFullYear();
+    console.log("dateFilterObj", this.dateFilterObj);
+
     this.refreshAPI$.next();
     return this.dateFilterObj;
   }

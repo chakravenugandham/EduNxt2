@@ -9,20 +9,20 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   routePath: string = "orgInterestFullView";
   filtersData = {
     routeTo: "orgInterestFullView",
-    filters: true,
-    search: false,
+    filters: false,
+    search: true,
     viewDetails: true,
     filterList: ["zone"]
   };
 
   filterbody = {};
 
-  constructor() { }
+  constructor() {}
 
   getFilterObject($event) {
     this.filterbody = $event;
   }
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {

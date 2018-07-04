@@ -449,10 +449,16 @@
 }
 
 .fullviewComponent {
+  .fullview-heading {
+    margin-bottom: 20px;
+  }
   select {
     border: 1px solid #03a9f4;
+    color: #03a9f4;
     padding: 2px;
     margin-left: 4px;
+    height: 28px;
+    padding: 0px 8px;
   }
   select::-ms-expand {
     display: none;
@@ -580,10 +586,13 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) {}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+}

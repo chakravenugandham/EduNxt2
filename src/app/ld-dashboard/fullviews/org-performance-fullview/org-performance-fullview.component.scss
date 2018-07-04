@@ -7,7 +7,11 @@
 }
 
 .w-90 {
-  width: 90px;
+  // width: 90px;
+  width: 140px;
+}
+.m-b-12 {
+  margin-bottom: 12px;
 }
 
 table {
@@ -21,6 +25,22 @@ table {
     }
   }
 }
+.action-items {
+  margin-top: 12px;
+  .compare-selected {
+    color: #fff;
+    background-color: #5584ff;
+    margin-right: 8px;
+  }
+  .clear-selected {
+    color: #fff;
+    background-color: #707070;
+  }
+  .compare-selected,
+  .clear-selected {
+    padding: 8px;
+  }
+}
 
 .check-box {
   width: 12px;
@@ -28,7 +48,7 @@ table {
   color: #ddd;
   background-color: #eee;
   border: 1px solid #ddd;
-  margin-right: 10px;
+  margin-right: 6px;
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
@@ -38,30 +58,34 @@ table {
   background-color: orange !important;
 }
 
-.userName {
-  margin-left: 33px;
-}
+// .userName {
+//   margin-left: 33px;
+// }
 
-.m-l-47 {
-  margin-left: -47px;
-}
+// .m-l-47 {
+//   margin-left: -47px;
+// }
 
 .imgActive {
   position: relative;
-  float: left;
+  // float: left;
   img {
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    margin-left: 10px;
+    // margin-left: 10px;
     border: 1px solid #fff;
     z-index: 0;
   }
   i {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%); // background-color: #befd45d9;
+    bottom: -12px;
+    right: -4px;
+    background: linear-gradient(
+      to top left,
+      #00ff00 0%,
+      #ccff33 100%
+    ); // background-color: #befd45d9;
     border-radius: 50%;
     color: #fff;
     font-size: 14px;

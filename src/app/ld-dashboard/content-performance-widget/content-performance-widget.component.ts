@@ -13,18 +13,29 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: ["contentType"]
+    filterList: ["contentType"],
+    viewDetailsFilters: false
   };
+  filterbody = {};
   contentData = [];
-  getDataFromService() {
-    this.contentService.getContentData().subscribe((res: any) => {
-      this.contentData = res.data;
+
+  constructor(private contentService: LdDashboardService) {
+    this.contentService.refreshAPI.subscribe(result => {
+      this.getDataFromService();
     });
   }
-  constructor(private contentService: LdDashboardService) {
-    this.contentService.refreshAPI.subscribe((result) => {
-      this.getDataFromService();
-    })
+
+  getDataFromService() {
+    this.contentService
+      .getContentData(this.filterbody)
+      .subscribe((res: any) => {
+        this.contentData = res.data;
+      });
+  }
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getDataFromService();
   }
 
   ngOnInit() {

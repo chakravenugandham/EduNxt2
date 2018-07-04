@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { LdDashboardService } from '../../services/ld-dashboard.service';
-import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
+import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
-  selector: 'app-scores-distribution-fullview',
-  templateUrl: './scores-distribution-fullview.component.html',
-  styleUrls: ['./scores-distribution-fullview.component.scss']
+  selector: "app-scores-distribution-fullview",
+  templateUrl: "./scores-distribution-fullview.component.html",
+  styleUrls: ["./scores-distribution-fullview.component.scss"]
 })
 export class ScoresDistributionFullviewComponent implements OnInit {
   responseScoreDetails: any;
@@ -17,21 +16,31 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   showDetails: string = "test";
 
   filterbody = {};
+  filtersData = {
+    routeTo: "learnerTrackFullView",
+    filters: true,
+    search: false,
+    viewDetails: false,
+    filterList: ["batch"],
+    viewDetailsFilters: true
+  };
 
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
   }
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
-  }
-  //, this.filterbody
-  getDataFromService() {
-    this.getData.getScoresDetails(this.showDetails).subscribe((response: any) => {
-      this.responseScoreDetails = response.data;
     });
+  }
+
+  getDataFromService() {
+    this.getData
+      .getScoresDetails(this.showDetails, this.filterbody)
+      .subscribe((response: any) => {
+        this.responseScoreDetails = response.data;
+      });
     this.getData
       .getScoresDistrubution(this.showDetails, this.filterbody)
       .subscribe((res: any) => {
@@ -42,7 +51,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
         this.dataSet = [...this.dataSet];
       });
   }
-
 
   //api call for score details based on component
   ngOnInit() {

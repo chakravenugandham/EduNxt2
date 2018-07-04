@@ -6,7 +6,7 @@
     <span> How is my organization performing? </span>
   </div>
   <div class="widget-block">
-    <div>
+    <div class="m-b-12">
       <div class="float-left form-inline">
         <span>
           <b>Display Leaderboard for </b>
@@ -17,9 +17,11 @@
           <option [value]="'learners'">Learners</option>
         </select>
       </div>
-      <div class="float-right">
-        <button type="button" class="btn btn-primary">Add to compare</button>
-        <button type="button" class="btn btn-secondary m-l-20">Clear all</button>
+      <div class="action-items float-right">
+        <span class="compare-selected">Add to compare</span>
+        <span class="clear-selected">Clear all</span>
+        <!-- <button type="button" class="btn btn-primary">Add to compare</button>
+        <button type="button" class="btn btn-secondary m-l-20">Clear all</button> -->
       </div>
     </div>
     <div>
@@ -56,9 +58,9 @@
         </thead>
         <tbody *ngFor="let teamData of responseTeamsDetails">
           <tr>
-            <th scope="row">
-              <span class="m-l-47 check-box" [ngClass]="{'checked-box': checkBoxValue == true}">
-                <input type="checkbox" [(ngModel)]="checkBoxValue">
+            <th scope="row" (click)="comapreUsers(teamData)">
+              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(teamData.teamId)}">
+                <!-- <input type="checkbox" [(ngModel)]="checkBoxValue"> -->
               </span>
               <span class="imgActive">
                 <img src="/assets/images/user.png" alt="userImg">

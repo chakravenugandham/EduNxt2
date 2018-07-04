@@ -11,21 +11,20 @@ export class NotificationPerformanceWidgetComponent implements OnInit {
   getTab: string = "schedule";
   filtersData = {
     routeTo: "notificationPerformanceFullView",
-    filters: true,
+    filters: false,
     search: false,
     viewDetails: true,
     filterList: ["zone"]
   };
   scheduled: boolean = true;
-  constructor() { }
+  constructor() {}
 
   scheduledFn() {
     this.getTab = "schedule";
   }
   seenFn() {
-    this.getTab = "seen"
+    this.getTab = "seen";
   }
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 }

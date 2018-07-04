@@ -10,7 +10,9 @@ export class BestProgramsWidgetComponent implements OnInit {
     routeTo: "bestProgramsFullView",
     filters: true,
     search: false,
-    filterList: ["program"]
+    viewDetails: true,
+    filterList: ["program"],
+    viewDetailsFilters: false
   };
   constructor() {}
 

@@ -25,7 +25,15 @@ export class FeedbackComponent implements OnInit, OnChanges {
 
   responseData = {};
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe((result) => {
+      this.getDataFromService();
+    });
+
+    this.getData.dateChange.subscribe(result => {
+      this.getDataFromService();
+    });
+  }
 
   getDataFromService() {
     this.getData.getFeedbackWidgetData().subscribe((response: any) => {

@@ -1,43 +1,51 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Subject } from "rxjs";
 import { APIURL } from "../../apiURL";
+import { CommonService } from "../services/common.service";
 
 @Injectable({
   providedIn: "root"
 })
-export class LdDashboardService {
+export class LdDashboardService implements OnInit {
   refreshAPI$ = new Subject<any>();
 
   // start_date: string = "29/03/2018";
   // end_date: string = "29/06/2018";
 
-  today = new Date();
-  end_date =
-    this.today.getDate() +
-    "/" +
-    this.today.getMonth() +
-    "/" +
-    this.today.getFullYear();
+  start_date: string = "";
+  end_date: string = "";
 
-  last_date = new Date(this.today.setDate(this.today.getDate() - 30));
-  start_date =
-    this.last_date.getDate() +
-    "/" +
-    this.last_date.getMonth() +
-    "/" +
-    this.last_date.getFullYear();
+  tempString = "";
 
-  constructor(private http: HttpClient) {}
+  constructDate() {
+    let today = new Date();
+    this.end_date =
+      today.getDate() + "/" + today.getMonth() + "/" + today.getFullYear();
+
+    let last_date = new Date(today.setDate(today.getDate() - 30));
+    this.start_date =
+      last_date.getDate() +
+      "/" +
+      last_date.getMonth() +
+      "/" +
+      last_date.getFullYear();
+  }
+
+  constructor(private http: HttpClient, private dateDetails: CommonService) {
+    this.constructDate();
+  }
 
   get refreshAPI() {
     return this.refreshAPI$.asObservable();
   }
 
-  //api urls from constants
-
-  //apiURL = APIURL;
+  getDateChange() {
+    this.start_date = this.dateDetails.dateFilterBodyDetails["start_date"];
+    this.end_date = this.dateDetails.dateFilterBodyDetails["end_date"];
+    this.refreshAPI$.next();
+  }
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
@@ -294,4 +302,6 @@ export class LdDashboardService {
     let url = this.baseURL + APIURL.FILTERS + "?type=" + filters;
     return this.http.get(url);
   }
+
+  ngOnInit() {}
 }

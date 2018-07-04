@@ -1,6 +1,6 @@
 .time-frame {
   display: flex;
-  padding: 12px 36px 0px 0px;
+  padding: 12px 36px;
   box-shadow: 1px 1px #ccc;
   background-color: #fff;
   ul {
@@ -21,11 +21,13 @@
     }
   }
   .m-l-147 {
-    margin-left: 147px;
+    margin-left: 0px;
   }
   .m-t-7 {
-    margin-top: 7px;
+    margin-top: 12px;
     display: inline-block;
+    position: absolute;
+    right: 36px;
     .p-l-5 {
       padding-left: 5px;
     }
@@ -36,7 +38,7 @@
   select {
     color: #5584ff;
     border: 1px solid #5584ff;
-    width: 280px; // padding: 9px 6px;
+    // width: 320px; // padding: 9px 6px;
     option {
       color: #5584ff;
     }
@@ -55,6 +57,6 @@
 
 @-moz-document url-prefix() {
   .m-l-147 {
-    margin-left: 140px !important;
+    margin-left: 0px !important;
   }
 }

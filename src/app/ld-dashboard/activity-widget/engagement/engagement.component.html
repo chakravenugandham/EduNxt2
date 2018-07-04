@@ -11,12 +11,12 @@
       </span>
     </div>
   </div>
-  <div *ngIf="!engageData" class="spinner_loading text-center">
+  <div *ngIf="!responseData" class="spinner_loading text-center">
     <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
     <p>No data found</p>
   </div>
   <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
-  <div *ngIf="engageData" class="row m-t-8 text-fix-bottom">
+  <div *ngIf="responseData" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <app-users-data [config]="config" [numberFontColor]="expectedChange"></app-users-data>
     </div>

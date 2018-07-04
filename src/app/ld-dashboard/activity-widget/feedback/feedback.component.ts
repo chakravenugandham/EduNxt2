@@ -6,6 +6,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-feedback",
@@ -13,39 +14,45 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./feedback.component.scss"]
 })
 export class FeedbackComponent implements OnInit, OnChanges {
-  @Input()
-  feedbackDataElement: {
-    learnerSatisfation: number;
-    learnerSatisfationBy: number;
-    trainerRating: number;
-    trainerRatingBy: number;
-    contentRating: number;
-    contentRatingBy: number;
-  };
+
+  @Input() feedbackDataElement;
+
   learnerSatisfation: number;
   learnerSatisfationBy: number;
   trainerRatingBy: number;
   contentRatingBy: number;
   faArrowUp = faArrowUp;
 
-  constructor() { }
+  responseData = {};
 
-  ngOnInit() { }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.feedbackDataElement.currentValue) {
+  constructor(private getData: LdDashboardService) { }
 
+  getDataFromService() {
+    this.getData.getFeedbackWidgetData().subscribe((response: any) => {
+      this.responseData = response.data;
+      console.log(this.responseData);
       this.learnerSatisfation = Math.round(
-        this.feedbackDataElement.learnerSatisfation
+        this.responseData['learnerSatisfation']
       );
       this.learnerSatisfationBy = Math.abs(
-        this.feedbackDataElement.learnerSatisfationBy
+        this.responseData['learnerSatisfationBy']
       );
       this.trainerRatingBy = Math.abs(
-        this.feedbackDataElement.trainerRatingBy
+        this.responseData['trainerRatingBy']
       );
       this.contentRatingBy = Math.abs(
-        this.feedbackDataElement.contentRatingBy
+        this.responseData['contentRatingBy']
       );
-    }
+    })
+  };
+
+  ngOnChanges(changes: SimpleChanges) {
+    // if (changes.feedbackDataElement.currentValue) {
+
+    // }
+  }
+
+  ngOnInit() {
+    this.getDataFromService();
   }
 }

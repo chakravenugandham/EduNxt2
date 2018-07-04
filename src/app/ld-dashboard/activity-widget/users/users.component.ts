@@ -28,32 +28,31 @@ export class UsersComponent implements OnInit {
 
   getAPIData() {
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
-      console.log(this.responseData);
       this.responseData = response.data;
-    });
-  }
-
-  ngOnChanges(changes: any) {
-    if (changes.userElement) {
+      console.log(this.responseData);
       this.activeConfig = {
-        peopleCurrentlyEnrolled: this.imageElement.activeUsers,
-        usersSinceLastMonth: this.userElement.activeUsersSinceLastMonth,
+        peopleCurrentlyEnrolled: Math.round(this.responseData['activeUsers']),
+        usersSinceLastMonth: Math.round(this.responseData['activeUsersSinceLastMonth']),
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently active"
       };
       this.enrolledConfig = {
-        peopleCurrentlyEnrolled: this.userElement.enrolledUsers,
-        usersSinceLastMonth: this.userElement.enrolledUsersSinceLastMonth,
+        peopleCurrentlyEnrolled: Math.round(this.responseData['enrolledUsers']),
+        usersSinceLastMonth: Math.round(this.responseData['enrolledUsersSinceLastMonth']),
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently enrolled"
       };
-    }
-    this.numberFontColor = true;
+      this.numberFontColor = true;
+    });
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.responseData) { }
   }
 
   ngOnInit() {
-    //this.getAPIData();
+    this.getAPIData();
   }
 }

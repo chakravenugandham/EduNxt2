@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
 import { DaterangePickerComponent } from "ng2-daterangepicker";
 import { CommonService } from "../../services/common.service";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-mp-datepicker-range",
@@ -9,11 +10,6 @@ import { CommonService } from "../../services/common.service";
 })
 export class MpDatepickerRangeComponent implements AfterViewInit {
   public date = new Date();
-  public daterange: any = {
-    start: Date.now(),
-    end: Date.now(),
-    label: ""
-  };
 
   @ViewChild(DaterangePickerComponent) private picker: DaterangePickerComponent;
 
@@ -21,34 +17,30 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     locale: { format: "YYYY-MM-DD" },
     alwaysShowCalendars: false
   };
-  public applyDate(e: any) {}
+  public applyDate(e: any) { }
 
-  constructor(private getDate: CommonService) {}
+  constructor(private getDate: CommonService, private getdate: LdDashboardService) { }
+
+  dateTest = this.getdate.constructDate();
+  public daterange: any = {
+    start: this.dateTest.start_date,
+    end: this.dateTest.end_date,
+    label: ""
+  };
   dateFilterObj = {};
   public selectedDate(value: any) {
     this.daterange.start = value.start;
     this.daterange.end = value.end;
-    this.dateFilterObj["start_date"] =
-      this.daterange.start._d.getDate() +
-      "/" +
-      this.daterange.start._d.getMonth() +
-      "/" +
-      this.daterange.start._d.getFullYear();
+    this.dateFilterObj["start_date"] = this.daterange.start._d.getDate() + "/" + this.daterange.start._d.getMonth() + "/" + this.daterange.start._d.getFullYear();
     console.log("start_date", this.dateFilterObj["start_date"]);
 
-    this.dateFilterObj["end_date"] =
-      this.daterange.end._d.getDate() +
-      "/" +
-      this.daterange.end._d.getMonth() +
-      "/" +
-      this.daterange.end._d.getFullYear();
+    this.dateFilterObj["end_date"] = this.daterange.end._d.getDate() + "/" + this.daterange.end._d.getMonth() + "/" + this.daterange.end._d.getFullYear();
     console.log("end_date", this.dateFilterObj["end_date"]);
-
     this.getDate.dateFilterBodyDetails = this.dateFilterObj;
+    console.log(this.getDate.dateFilterBodyDetails);
   }
 
   ngAfterViewInit() {
     this.picker.datePicker.setStartDate(this.date);
-    console.log(this.date);
   }
 }

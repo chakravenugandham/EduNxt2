@@ -25,28 +25,28 @@ export class ActivityWidgetComponent implements OnInit {
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe((result) => {
-      this.getDataFromService();
+      //this.getDataFromService();
     })
   }
 
   getDataFromService() {
-    this.getData.getActivityData().subscribe((response: any) => {
-      this.responseData = response.data;
-    });
+    // this.getData.getActivityData().subscribe((response: any) => {
+    //   this.responseData = response.data;
+    // });
 
-    this.getData.getImageData().subscribe((response: any) => {
-      this.responseImageData = response.data;
-    });
+    // this.getData.getImageData().subscribe((response: any) => {
+    //   this.responseImageData = response.data;
+    // });
   }
 
-  getGoalsDataFromService() {
-    this.getData.getGoalsData().subscribe((response: any) => {
-      this.responseGoalsData = response.data;
-    });
-  }
+  // getGoalsDataFromService() {
+  //   this.getData.getGoalsData().subscribe((response: any) => {
+  //     this.responseGoalsData = response.data;
+  //   });
+  //}
 
   ngOnInit() {
-    this.getDataFromService();
-    this.getGoalsDataFromService();
+    //this.getDataFromService();
+    //this.getGoalsDataFromService();
   }
 }

@@ -31,7 +31,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     });
     this.getData.getTeamData().subscribe((response: any) => {
       this.responseTeamsDetails = response.data;
-      console.log("responseTeamsDetails", this.responseTeamsDetails);
     });
     this.getData.getLearnerData().subscribe((response: any) => {
       this.responseLeanersDetails = response.data;
@@ -40,7 +39,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   comapreUsers(teamData) {
     this.compareUsers.push(teamData.teamId);
-    console.log("this.compareUsers", this.compareUsers);
   }
 
   ngOnInit() {

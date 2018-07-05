@@ -11,13 +11,13 @@
       </span>
     </div>
   </div>
-  <div *ngIf="responseData==0" class="spinner_loading text-center">
+  <div *ngIf="noDataFlag" class="spinner_loading">
     <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-    <p>No data found</p>
+    <span class="spinner_inside">No data found</span>
   </div>
-  <div appDonutChart [data]="paceTrackValues" [componentName]="componentName">
+  <div *ngIf="!noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
   </div>
-  <div *ngIf="responseData" class="m-t-16">
+  <div *ngIf="!noDataFlag" class="m-t-16">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="bigNumber aheadOfScheduleColor">{{responseData.aheadSchedule}}</p>

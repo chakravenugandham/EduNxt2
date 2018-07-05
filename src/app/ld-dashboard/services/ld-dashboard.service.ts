@@ -48,7 +48,6 @@ export class LdDashboardService implements OnInit {
       last_date.getDate() +
       "/" +
       last_date.getFullYear();
-    console.log("dateFilterObj", this.dateFilterObj);
 
     this.refreshAPI$.next();
     return this.dateFilterObj;
@@ -84,7 +83,6 @@ export class LdDashboardService implements OnInit {
     this.dateFilterObj.end_date = this.dateDetails.dateFilterBodyDetails[
       "end_date"
     ];
-    console.log(this.dateFilterObj.start_date, this.dateFilterObj.end_date);
     this.refreshAPI$.next();
   }
 
@@ -207,8 +205,6 @@ export class LdDashboardService implements OnInit {
       this.dateFilterObj.start_date +
       "&end_date=" +
       this.dateFilterObj.end_date;
-    console.log("start_date", this.dateFilterObj.start_date);
-    console.log("end_date", this.dateFilterObj.end_date);
 
     return this.http.get(url, { headers: this.headers1 });
   }

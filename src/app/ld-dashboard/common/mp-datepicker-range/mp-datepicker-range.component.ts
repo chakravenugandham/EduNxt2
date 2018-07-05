@@ -41,7 +41,6 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
       this.daterange.start._d.getDate() +
       "/" +
       this.daterange.start._d.getFullYear();
-    // console.log("start_date", this.dateFilterObj["start_date"]);
 
     this.dateFilterObj["end_date"] =
       this.daterange.end._d.getMonth() +
@@ -50,13 +49,7 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
       this.daterange.end._d.getDate() +
       "/" +
       this.daterange.end._d.getFullYear();
-    // console.log("end_date", this.dateFilterObj["end_date"]);
     this.getDate.dateFilterBodyDetails = this.dateFilterObj;
-    console.log(
-      "this.getDate.dateFilterBodyDetail",
-      this.getDate.dateFilterBodyDetails
-    );
-
     this.getData.dateChange.next(this.dateFilterObj);
   }
 

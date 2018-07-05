@@ -16,6 +16,7 @@ export class EngagementComponent implements OnInit, OnChanges {
   percentageChange: number;
   expectedChange: boolean;
   spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   responseData = {};
   constructor(private getData: LdDashboardService) {
@@ -29,12 +30,16 @@ export class EngagementComponent implements OnInit, OnChanges {
 
   getDataFromService() {
     this.spinner_loader = true;
+
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
       this.totalUserCount = Number(response.data.enrolledUsers);
       this.spinner_loader = false;
-      console.log(this.totalUserCount);
+
       this.getData.getEngagementWidgetData().subscribe((response: any) => {
         this.responseData = response.data;
+
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+
         this.config = {
           peopleCurrentlyEnrolled: Math.round(
             this.responseData["usersCompletedPrograms"]
@@ -50,7 +55,6 @@ export class EngagementComponent implements OnInit, OnChanges {
         this.percentageChange = Math.round(
           (this.config.peopleCurrentlyEnrolled * 100) / this.totalUserCount
         );
-        console.log("this.percentageChange", this.percentageChange);
 
         this.expectedChange = this.percentageChange < 50 ? false : true;
       });

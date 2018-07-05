@@ -27,6 +27,7 @@ export class FeedbackComponent implements OnInit, OnChanges {
 
   responseData = {};
   spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -43,7 +44,11 @@ export class FeedbackComponent implements OnInit, OnChanges {
     this.getData.getFeedbackWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
-      console.log("responseData", this.responseData);
+
+      this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+
+      console.log("this.spinner_loader", this.spinner_loader);
+      console.log("this.noDataFlag", this.noDataFlag);
 
       this.learnerSatisfaction = Math.round(
         this.responseData["learnerSatisfaction"]

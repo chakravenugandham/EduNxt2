@@ -24,11 +24,11 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      // this.getDataFromService();
     });
 
     this.getData.dateChange.subscribe(result => {
-      this.getDataFromService();
+      // this.getDataFromService();
     });
   }
 

@@ -11,15 +11,15 @@
       </span>
     </div>
   </div>
-  <div *ngIf="!usersData" class="spinner_loading">
+  <div *ngIf="!responseData" class="spinner_loading">
     <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
     <span class="spinner_inside">No data found</span>
   </div>
   <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
-  <div *ngIf="usersData" class="row m-t-8">
+  <div *ngIf="responseData" class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex">
-        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{percentageChange}}% </div>
+        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{responseData.trainedPercentage}}% </div>
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
             <!-- <span class="small">
@@ -29,11 +29,11 @@
             <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
             <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
 
-            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{usersData.usersCompletedTrainingExpectedPercentage}}%.</span>
+            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{responseData.expectedtrainedPercentage}}%.</span>
           </div>
           <div class="m-b-0 font-color">
-            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}">{{usersData.usersTrained}} </span>
-            of {{usersData.usersCompletedTraining}} users have been trained</div>
+            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}">{{responseData.completedTraining}} </span>
+            of {{responseData.totalLearners}} users have been trained</div>
         </div>
       </div>
       <div class="m-t-10 m-t-8">of your goals has been met</div>

@@ -23,7 +23,7 @@ export class EngagementComponent implements OnInit, OnChanges {
     this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
-    this.getData.dateChange.subscribe(result => {
+    this.getData.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }

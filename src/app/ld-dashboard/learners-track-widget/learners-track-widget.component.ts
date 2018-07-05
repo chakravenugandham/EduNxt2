@@ -35,7 +35,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
       this.getDataFromService();
     });
 
-    this.serviceData.dateChange.subscribe(result => {
+    this.serviceData.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }

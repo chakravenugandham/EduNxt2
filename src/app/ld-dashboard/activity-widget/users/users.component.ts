@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
       this.getAPIData();
     });
 
-    this.getData.dateChange.subscribe(result => {
+    this.getData.dateChangeAPI.subscribe(result => {
       this.getAPIData();
     });
   }

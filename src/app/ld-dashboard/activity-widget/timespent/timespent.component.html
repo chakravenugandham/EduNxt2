@@ -11,15 +11,15 @@
       </span>
     </div>
   </div>
-  <div *ngIf="!timeData" class="spinner_loading">
+  <div *ngIf="!responseData" class="spinner_loading">
     <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
     <span class="spinner_inside">No data found</span>
   </div>
   <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
-  <div *ngIf="timeData" class="row m-t-8 text-fix-bottom">
+  <div *ngIf="responseData" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex">
-        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{percentageChange}}% </div>
+        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{responseData.timeSpent}}% </div>
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
             <!-- <span class="small">
@@ -29,10 +29,10 @@
             <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
             <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
 
-            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{timeData.expectedTimeSpentPercentage}}%.</span>
+            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{responseData.expectedTimeSpent}}%.</span>
           </div>
           <div class="m-b-0 font-color">
-            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}">{{timeData.timeSpentPercentage}} </span> of {{timeData.totalTime}} hours spent on learning activities</div>
+            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}">{{responseData.courseDuration}} </span> of {{responseData.durationSpent}} hours spent on learning activities</div>
         </div>
       </div>
       <div class="m-t-10">of your goals has been met</div>

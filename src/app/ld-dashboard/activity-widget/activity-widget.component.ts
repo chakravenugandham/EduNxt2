@@ -24,20 +24,20 @@ export class ActivityWidgetComponent implements OnInit {
   };
 
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
-      //this.getDataFromService();
-    })
+    // this.getData.refreshAPI.subscribe((result) => {
+    //   //this.getDataFromService();
+    // })
   }
 
-  getDataFromService() {
-    // this.getData.getActivityData().subscribe((response: any) => {
-    //   this.responseData = response.data;
-    // });
+  //getDataFromService() {
+  // this.getData.getActivityData().subscribe((response: any) => {
+  //   this.responseData = response.data;
+  // });
 
-    // this.getData.getImageData().subscribe((response: any) => {
-    //   this.responseImageData = response.data;
-    // });
-  }
+  // this.getData.getImageData().subscribe((response: any) => {
+  //   this.responseImageData = response.data;
+  // });
+  //}
 
   // getGoalsDataFromService() {
   //   this.getData.getGoalsData().subscribe((response: any) => {

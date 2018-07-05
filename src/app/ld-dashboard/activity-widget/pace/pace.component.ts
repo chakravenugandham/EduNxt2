@@ -23,7 +23,7 @@ export class PaceComponent implements OnInit, OnChanges {
       this.getDataFromService();
     });
 
-    this.getData.dateChange.subscribe(result => {
+    this.getData.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -73,8 +73,6 @@ export class PaceComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: any) {
-    // if (changes.responseData) {
-    // }
   }
 
   ngOnInit() {

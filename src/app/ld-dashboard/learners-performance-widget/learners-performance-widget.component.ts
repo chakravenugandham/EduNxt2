@@ -27,7 +27,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       // this.getDataFromService();
     });
 
-    this.getData.dateChange.subscribe(result => {
+    this.getData.dateChangeAPI.subscribe(result => {
       // this.getDataFromService();
     });
   }

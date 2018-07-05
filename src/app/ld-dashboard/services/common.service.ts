@@ -6,9 +6,7 @@ import { Injectable } from "@angular/core";
 export class CommonService {
   filterbodyDetails = {};
 
-  dateObj = {};
-
-  constructor() {}
+  constructor() { }
 
   set learnerFilterBodyDetails(data) {
     this.filterbodyDetails = data;
@@ -18,11 +16,4 @@ export class CommonService {
     return this.filterbodyDetails;
   }
 
-  set dateFilterBodyDetails(date) {
-    this.dateObj = date;
-  }
-
-  get dateFilterBodyDetails() {
-    return this.dateObj;
-  }
 }

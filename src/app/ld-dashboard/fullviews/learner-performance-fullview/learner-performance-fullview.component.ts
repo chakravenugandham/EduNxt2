@@ -27,6 +27,10 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
       this.getDataFromService();
       this.getDataForGraph();
     });
+    this.contentService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+      this.getDataForGraph();
+    });
   }
 
   onchange(componentName) {

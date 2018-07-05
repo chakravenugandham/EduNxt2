@@ -33,6 +33,10 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.getData.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {

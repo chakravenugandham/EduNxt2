@@ -22,6 +22,10 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.contentService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.contentService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {

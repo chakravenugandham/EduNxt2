@@ -32,7 +32,6 @@ export class TimespentComponent implements OnInit, OnChanges {
   getDataFromService() {
     this.getDataService.getTimeSpentWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
-      console.log(this.responseData);
       this.percentageChange = Math.ceil((this.responseData['courseDuration'] * 100) / this.responseData['durationSpent']);
       this.expectedChange = this.percentageChange < this.responseData['expectedTimeSpent'] ? false : true;
     });

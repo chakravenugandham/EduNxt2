@@ -43,8 +43,6 @@ export class FeedbackComponent implements OnInit, OnChanges {
     this.getData.getFeedbackWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
-      console.log("responseData", this.responseData);
-
       this.learnerSatisfaction = Math.round(
         this.responseData["learnerSatisfaction"]
       );

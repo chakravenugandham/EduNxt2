@@ -22,6 +22,10 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.getData.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   //api calls for trainers ,teams and learner

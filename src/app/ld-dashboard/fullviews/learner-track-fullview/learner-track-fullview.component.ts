@@ -43,6 +43,11 @@ export class LearnerTrackFullviewComponent implements OnInit {
   ) {
     this.getData.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
+      this.getTableDataFromService();
+    });
+    this.getData.dateChangeAPI.subscribe(result => {
+      this.getGraphDataFromService();
+      this.getTableDataFromService();
     });
   }
 
@@ -70,8 +75,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
           this.responseTrackDetails = response.data;
         });
     }
-
-
   }
 
   getGraphDataFromService() {

@@ -63,8 +63,6 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnChanges(changes: any) {
-    if (changes.responseData) {
-    }
   }
 
   ngOnInit() {

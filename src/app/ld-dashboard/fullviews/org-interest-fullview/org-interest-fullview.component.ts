@@ -18,6 +18,10 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.getData.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
   getDisplayObject($event) {
     this.displayFor = $event;

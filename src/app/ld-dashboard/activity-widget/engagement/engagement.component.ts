@@ -32,7 +32,6 @@ export class EngagementComponent implements OnInit, OnChanges {
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
       this.totalUserCount = Number(response.data.enrolledUsers);
       this.spinner_loader = false;
-      console.log(this.totalUserCount);
       this.getData.getEngagementWidgetData().subscribe((response: any) => {
         this.responseData = response.data;
         this.config = {
@@ -50,14 +49,13 @@ export class EngagementComponent implements OnInit, OnChanges {
         this.percentageChange = Math.round(
           (this.config.peopleCurrentlyEnrolled * 100) / this.totalUserCount
         );
-        console.log("this.percentageChange", this.percentageChange);
 
         this.expectedChange = this.percentageChange < 50 ? false : true;
       });
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     // this.getToalUsers();

@@ -11,8 +11,6 @@ import { DateserviceService } from "../services/dateservice.service";
 })
 export class LdDashboardService implements OnInit {
 
-  tempString = "";
-
   dateFilterObj = {
     start_date: "",
     end_date: ""
@@ -31,24 +29,8 @@ export class LdDashboardService implements OnInit {
   }
 
   constructor(private http: HttpClient, private filterService: CommonService, private dateService: DateserviceService) {
-    this.constructDate();
   }
 
-
-  constructDate() {
-    let today = new Date();
-    this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
-
-    let last_date = new Date(today.setDate(today.getDate() - 30));
-    this.dateFilterObj.start_date =
-      last_date.getMonth() +
-      1 +
-      "/" +
-      last_date.getDate() +
-      "/" +
-      last_date.getFullYear();
-    return this.dateFilterObj;
-  }
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
@@ -80,7 +62,6 @@ export class LdDashboardService implements OnInit {
     this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
       "end_date"
     ];
-    console.log(this.dateFilterObj.start_date, this.dateFilterObj.end_date);
   }
 
   //courses dropdown

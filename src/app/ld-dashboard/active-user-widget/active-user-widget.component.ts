@@ -15,7 +15,7 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
       this.getLocationData();
     });
 
-    this.getData.dateChange.subscribe(result => {
+    this.getData.dateChangeAPI.subscribe(result => {
       this.getActiveUsersData();
       this.getLocationData();
     });

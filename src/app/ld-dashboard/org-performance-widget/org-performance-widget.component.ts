@@ -27,7 +27,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    this.serviceData.dateChange.subscribe(result => {
+    this.serviceData.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }

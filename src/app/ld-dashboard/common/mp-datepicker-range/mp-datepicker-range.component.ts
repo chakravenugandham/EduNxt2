@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
 import { DaterangePickerComponent } from "ng2-daterangepicker";
 import { CommonService } from "../../services/common.service";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { DateserviceService } from "../../services/dateservice.service";
 
 @Component({
   selector: "app-mp-datepicker-range",
@@ -17,12 +18,13 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     locale: { format: "YYYY-MM-DD" },
     alwaysShowCalendars: false
   };
-  public applyDate(e: any) {}
+  public applyDate(e: any) { }
 
   constructor(
     private getDate: CommonService,
-    private getData: LdDashboardService
-  ) {}
+    private getData: LdDashboardService,
+    private getDateService: DateserviceService
+  ) { }
 
   dateTest = this.getData.constructDate();
   public daterange: any = {
@@ -50,14 +52,13 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
       this.daterange.end._d.getDate() +
       "/" +
       this.daterange.end._d.getFullYear();
-    // console.log("end_date", this.dateFilterObj["end_date"]);
-    this.getDate.dateFilterBodyDetails = this.dateFilterObj;
+    this.getDateService.dateFilterBodyDetails = this.dateFilterObj;
     console.log(
       "this.getDate.dateFilterBodyDetail",
-      this.getDate.dateFilterBodyDetails
+      this.getDateService.dateFilterBodyDetails
     );
 
-    this.getData.dateChange.next(this.dateFilterObj);
+    this.getData.dateChange$.next(this.dateFilterObj);
   }
 
   ngAfterViewInit() {

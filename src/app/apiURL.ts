@@ -4,6 +4,8 @@ export class APIURL {
     public static LEARNER_ENGAGEMENT = 'learner-engagement';
     public static LEARNER_PACE = 'learner-pace';
     public static FEEDBACK = 'feedback';
+    public static TIME_SPENT = 'time-spent';
+    public static USERS_TRAINED = 'users-trained';
     public static ACTIVE_USERS_GRAPH = 'active-users-graph';
     public static LOCATION = 'activity-by-location';
     public static LEARNER_PACE_PERFORMANCE = 'learner-pace-performance';

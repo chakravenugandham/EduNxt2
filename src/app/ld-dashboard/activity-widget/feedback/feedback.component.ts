@@ -14,7 +14,6 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./feedback.component.scss"]
 })
 export class FeedbackComponent implements OnInit, OnChanges {
-
   @Input() feedbackDataElement;
 
   learnerSatisfation: number;
@@ -26,7 +25,7 @@ export class FeedbackComponent implements OnInit, OnChanges {
   responseData = {};
 
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
@@ -38,25 +37,22 @@ export class FeedbackComponent implements OnInit, OnChanges {
   getDataFromService() {
     this.getData.getFeedbackWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
+      console.log("this.responseData", this.responseData);
+
       console.log(this.responseData);
       this.learnerSatisfation = Math.round(
-        this.responseData['learnerSatisfation']
+        this.responseData["learnerSatisfation"]
       );
       this.learnerSatisfationBy = Math.abs(
-        this.responseData['learnerSatisfationBy']
+        this.responseData["learnerSatisfationBy"]
       );
-      this.trainerRatingBy = Math.abs(
-        this.responseData['trainerRatingBy']
-      );
-      this.contentRatingBy = Math.abs(
-        this.responseData['contentRatingBy']
-      );
-    })
-  };
+      this.trainerRatingBy = Math.abs(this.responseData["trainerRatingBy"]);
+      this.contentRatingBy = Math.abs(this.responseData["contentRatingBy"]);
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     // if (changes.feedbackDataElement.currentValue) {
-
     // }
   }
 

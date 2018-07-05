@@ -18,7 +18,7 @@ export class EngagementComponent implements OnInit, OnChanges {
 
   responseData = {};
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
     this.getData.dateChange.subscribe(result => {
@@ -31,23 +31,25 @@ export class EngagementComponent implements OnInit, OnChanges {
       this.responseData = response.data;
       //console.log(this.responseData);
       this.config = {
-        peopleCurrentlyEnrolled: this.responseData['usersCompletedPrograms'],
-        usersSinceLastMonth: this.responseData['completedProgramsSinceLastMonth'],
+        peopleCurrentlyEnrolled: this.responseData["usersCompletedPrograms"],
+        usersSinceLastMonth: this.responseData[
+          "completedProgramsSinceLastMonth"
+        ],
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People completed training programs"
       };
 
-      this.percentageChange = Math.round(
-        (this.config.peopleCurrentlyEnrolled * 100) /
-        this.totalUsers.peopleCurrentlyEnrolled
-      );
+      // this.percentageChange = Math.round(
+      //   (this.config.peopleCurrentlyEnrolled * 100) /
+      //   this.totalUsers.peopleCurrentlyEnrolled
+      // );
 
+      this.percentageChange = 62;
       this.expectedChange = this.percentageChange < 50 ? false : true;
       //console.log(this.responseData);
-    })
-
-  };
+    });
+  }
 
   ngOnChanges(changes: any) {
     //this.getDataFromService();
@@ -60,12 +62,10 @@ export class EngagementComponent implements OnInit, OnChanges {
     //   sinceLastMonth: "since last month",
     //   PeopleAreCurrentlyEnrolled: "People completed training programs"
     // };
-
     // this.percentageChange = Math.round(
     //   (this.config.peopleCurrentlyEnrolled * 100) /
     //   this.totalUsers.peopleCurrentlyEnrolled
     // );
-
     // this.expectedChange = this.percentageChange < 50 ? false : true;
     // }
   }
@@ -73,5 +73,4 @@ export class EngagementComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getDataFromService();
   }
-
 }

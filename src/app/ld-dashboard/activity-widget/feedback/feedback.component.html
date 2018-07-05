@@ -11,11 +11,11 @@
       </span>
     </div>
   </div>
-  <div *ngIf='!responseData' class="spinner_loading text-center">
+  <div *ngIf='!responseData.hasOwnProperty("learnerSatisfaction")' class="spinner_loading text-center">
     <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
     <p>No data found</p>
   </div>
-  <div *ngIf='responseData'>
+  <div *ngIf='responseData.hasOwnProperty("learnerSatisfaction")'>
     <div class="row p-t-18">
       <div class="col-md-6 col-sm-6 col-xs-6 feedback-emoji">
 
@@ -27,15 +27,15 @@
 
       <div class="col-md-6 col-sm-6 col-xs-6">
         <div class="arrow-space">
-          <span class="bigNumber" [ngClass]="{'big-positive-number': responseData.learnerSatisfaction >= 50, 'big-danger-class': responseData.learnerSatisfaction < 50}">{{learnerSatisfaction}}%</span>
+          <span class="bigNumber" [ngClass]="{'big-positive-number': responseData.learnerSatisfaction >= 50, 'big-danger-class': responseData.learnerSatisfaction < 50}">{{responseData.learnerSatisfaction}}%</span>
           <span class="small-font">
 
-            <img *ngIf="responseData.learnerSatisfactionChange <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
-            <img *ngIf="responseData.learnerSatisfactionChange > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+            <img *ngIf="responseData.learnerSatisfationBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <img *ngIf="responseData.learnerSatisfationBy > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
 
             <span> by</span>
-            <span class="changeNumberLow" [ngClass]="{'changeNumberLow': responseData.learnerSatisfactionChange <= 0, 'changeNumber': responseData.learnerSatisfactionChange > 0}">
-              {{learnerSatisfactionChange}}%
+            <span class="changeNumberLow" [ngClass]="{'changeNumberLow': responseData.learnerSatisfationBy <= 0, 'changeNumber': responseData.learnerSatisfationBy > 0}">
+              {{learnerSatisfationBy}}%
             </span>
           </span>
         </div>
@@ -50,12 +50,12 @@
           <span class="bigNumber m-r-3" [ngClass]="{'big-positive-number': responseData.trainerRating >= 3, 'big-danger-class': responseData.trainerRating < 3}">{{responseData.trainerRating}}</span>
           <span class="small-font">
 
-            <img *ngIf="responseData.trainerRatingChange <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
-            <img *ngIf="responseData.trainerRatingChange > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+            <img *ngIf="responseData.trainerRatingBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <img *ngIf="responseData.trainerRatingBy > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
 
             <span> by </span>
-            <span class="changeNumber" [ngClass]="{'changeNumberLow': responseData.trainerRatingChange <= 0, 'changeNumber': responseData.trainerRatingChange < 0}">
-              {{trainerRatingChange}}%</span>
+            <span class="changeNumber" [ngClass]="{'changeNumberLow': responseData.trainerRatingBy <= 0, 'changeNumber': responseData.trainerRatingBy < 0}">
+              {{trainerRatingBy}}%</span>
           </span>
         </div>
         <div class="m-t-10">Trainer Rating</div>
@@ -66,12 +66,12 @@
           <span class="bigNumber m-r-3" [ngClass]="{'big-positive-number': responseData.contentRating >= 3, 'big-danger-class': responseData.contentRating < 3}">{{responseData.contentRating}}</span>
           <span class="small-font">
 
-            <img *ngIf="responseData.contentRatingChange <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
-            <img *ngIf="responseData.contentRatingChange > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+            <img *ngIf="responseData.contentRatingBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <img *ngIf="responseData.contentRatingBy > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
 
             <span> by </span>
-            <span class="changeNumber" [ngClass]="{'changeNumberLow': responseData.contentRatingChange <= 0, 'changeNumber': responseData.contentRatingChange < 0}">
-              {{contentRatingChange}}%</span>
+            <span class="changeNumber" [ngClass]="{'changeNumberLow': responseData.contentRatingBy <= 0, 'changeNumber': responseData.contentRatingBy < 0}">
+              {{contentRatingBy}}%</span>
           </span>
         </div>
         <div class="m-t-10">Content Rating</div>

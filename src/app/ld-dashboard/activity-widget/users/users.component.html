@@ -11,11 +11,13 @@
       </span>
     </div>
   </div>
-  <div *ngIf="!responseData" class="spinner_loading text-center">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-    <p>No data found</p>
+  <!-- <div *ngIf="!responseData.hasOwnProperty('activeUsers')" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div> -->
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
-  <div>
+  <div *ngIf="responseData.hasOwnProperty('activeUsers')">
     <div class="userImages">
       <div class="imgActive" *ngFor="let img of userImages">
         <img [src]="img" alt="user">

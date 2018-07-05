@@ -37,10 +37,9 @@ export class TimespentComponent implements OnInit, OnChanges {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-      console.log(this.responseData);
       this.percentageChange = Math.ceil(
         (this.responseData["courseDuration"] * 100) /
-        this.responseData["durationSpent"]
+          this.responseData["durationSpent"]
       );
       this.expectedChange =
         this.percentageChange < this.responseData["expectedTimeSpent"]

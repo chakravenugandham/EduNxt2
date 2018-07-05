@@ -45,8 +45,6 @@ export class FeedbackComponent implements OnInit, OnChanges {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-      console.log("this.spinner_loader", this.spinner_loader);
-      console.log("this.noDataFlag", this.noDataFlag);
 
       this.learnerSatisfaction = Math.round(
         this.responseData["learnerSatisfaction"]

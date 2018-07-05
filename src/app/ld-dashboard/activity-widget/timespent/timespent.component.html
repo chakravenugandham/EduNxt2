@@ -11,23 +11,27 @@
       </span>
     </div>
   </div>
-  <div *ngIf="!responseData" class="spinner_loading">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
     <span class="spinner_inside">No data found</span>
   </div>
-  <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
-  <div *ngIf="responseData" class="row m-t-8 text-fix-bottom">
+
+
+  <div [hidden]="spinner_loader" appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
+
+  <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex">
         <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{responseData.timeSpent}}% </div>
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
-            <!-- <span class="small">
-              <i class="fas" [ngClass]="{'fa-arrow-up changeNumber': expectedChange, 'fa-arrow-down changeNumberLow': !expectedChange}"></i>
-            </span> -->
 
-            <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
-            <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+            <!-- <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+            <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow"> -->
 
             <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{responseData.expectedTimeSpent}}%.</span>
           </div>

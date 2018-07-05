@@ -11,11 +11,15 @@
       </span>
     </div>
   </div>
-  <div *ngIf="noDataFlag" class="spinner_loading">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-    <span class="spinner_inside">No data found</span>
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
-  <div *ngIf="!noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data available</span>
+  </div>
+  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
   </div>
   <div *ngIf="!noDataFlag" class="m-t-16">
     <div class="row">

@@ -16,14 +16,17 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class FeedbackComponent implements OnInit, OnChanges {
   @Input() feedbackDataElement;
 
-  learnerSatisfation: number;
+  learnerSatisfaction: number;
   learnerSatisfationBy: number;
+  trainerRating: number;
   trainerRatingBy: number;
+  contentRating: number;
   contentRatingBy: number;
   parseFloat = parseFloat;
   faArrowUp = faArrowUp;
 
   responseData = {};
+  spinner_loader: boolean = false;
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -36,11 +39,17 @@ export class FeedbackComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
     this.getData.getFeedbackWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
-      this.learnerSatisfation = Math.round(
-        this.responseData["learnerSatisfation"]
+      this.spinner_loader = false;
+      console.log("responseData", this.responseData);
+
+      this.learnerSatisfaction = Math.round(
+        this.responseData["learnerSatisfaction"]
       );
+      this.trainerRating = Math.round(this.responseData["trainerRating"]);
+      this.contentRating = Math.round(this.responseData["contentRating"]);
       this.learnerSatisfationBy = Math.abs(
         this.responseData["learnerSatisfationBy"]
       );

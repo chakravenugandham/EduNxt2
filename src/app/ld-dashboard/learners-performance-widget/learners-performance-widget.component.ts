@@ -23,7 +23,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   batches = [];
 
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
@@ -92,12 +92,12 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       });
   }
   ngOnInit() {
-    this.getDataFromService();
+    // this.getDataFromService();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {
-      this.getDataFromService();
+      // this.getDataFromService();
     }
   }
 }

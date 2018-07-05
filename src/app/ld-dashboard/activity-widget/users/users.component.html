@@ -17,7 +17,7 @@
   <div *ngIf="spinner_loader" class="spinner_loading">
     <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
-  <div *ngIf="responseData.hasOwnProperty('activeUsers')">
+  <div *ngIf="!spinner_loader && responseData.hasOwnProperty('activeUsers')">
     <div class="userImages">
       <div class="imgActive" *ngFor="let img of userImages">
         <img [src]="img" alt="user">

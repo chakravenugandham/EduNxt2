@@ -16,6 +16,7 @@ export class PaceComponent implements OnInit, OnChanges {
 
   responseData = {};
   noDataFlag: boolean = false;
+  spinner_loader: boolean = false;
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -28,13 +29,15 @@ export class PaceComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
     this.getData.getPaceWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
       console.log(this.responseData);
       if (
-        this.responseData["aheadOfSchedule"] == 0 &&
-        this.responseData["behindSchedule"] == 0 &&
-        this.responseData["haveNotStarted"] == 0 &&
+        this.responseData["aheadOfSchedule"] == 0 ||
+        this.responseData["behindSchedule"] == 0 ||
+        this.responseData["haveNotStarted"] == 0 ||
         this.responseData["onTrack"]
       ) {
         this.noDataFlag = true;

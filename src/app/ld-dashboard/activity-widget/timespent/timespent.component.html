@@ -26,17 +26,17 @@
   <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex">
-        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{responseData.timeSpent}}% </div>
+        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.timeSpent>=50, 'big-danger-class': responseData.timeSpent<50}">{{responseData.timeSpent}}% </div>
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
 
             <!-- <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
             <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow"> -->
 
-            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}"> Expected {{responseData.expectedTimeSpent}}%.</span>
+            <span [ngClass]="{'changeNumber': responseData.timeSpent>=50, 'changeNumberLow': responseData.timeSpent<50}"> Expected {{responseData.expectedTimeSpent}}%.</span>
           </div>
           <div class="m-b-0 font-color">
-            <span [ngClass]="{'changeNumber': expectedChange, 'changeNumberLow': !expectedChange}">{{responseData.courseDuration}} </span> of {{responseData.durationSpent}} hours spent on learning activities</div>
+            <span [ngClass]="{'changeNumber': responseData.timeSpent>=50, 'changeNumberLow': responseData.timeSpent<50}">{{responseData.courseDuration}} </span> of {{responseData.durationSpent}} hours spent on learning activities</div>
         </div>
       </div>
       <div class="m-t-10">of your goals has been met</div>

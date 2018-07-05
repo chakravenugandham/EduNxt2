@@ -16,7 +16,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class TimespentComponent implements OnInit, OnChanges {
   @Input() timeData;
   percentageChange: number;
-  expectedChange: boolean;
+  // expectedChange: boolean;
 
   responseData = {};
   spinner_loader: boolean = false;
@@ -42,10 +42,10 @@ export class TimespentComponent implements OnInit, OnChanges {
       //   (this.responseData["courseDuration"] * 100) /
       //   this.responseData["durationSpent"]
       // );
-      this.expectedChange =
-        this.percentageChange < this.responseData["expectedTimeSpent"]
-          ? false
-          : true;
+      // this.expectedChange =
+      //   this.percentageChange < this.responseData["expectedTimeSpent"]
+      //     ? false
+      //     : true;
     });
   }
 

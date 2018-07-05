@@ -16,7 +16,6 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class UserstrainedComponent implements OnInit, OnChanges {
   @Input() usersData;
   percentageChange: number;
-  expectedChange: boolean;
   responseData = {};
   constructor(private getDataService: LdDashboardService) {
     this.getDataService.refreshAPI.subscribe(result => {
@@ -28,14 +27,18 @@ export class UserstrainedComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
-    this.getDataService.getUsersTrainedWidgetData().subscribe((response: any) => {
-      this.responseData = response.data;
-      this.percentageChange = Math.floor((this.responseData['completedTraining'] * 100) / this.responseData['totalLearners']);
-      this.expectedChange = this.percentageChange < this.responseData['expectedtrainedPercentage'] ? false : true;
-    });
+    this.getDataService
+      .getUsersTrainedWidgetData()
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+        this.percentageChange = Math.floor(
+          (this.responseData["completedTraining"] * 100) /
+            this.responseData["totalLearners"]
+        );
+      });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getDataFromService();

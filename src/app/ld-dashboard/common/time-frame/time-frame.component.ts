@@ -12,7 +12,7 @@ export class TimeFrameComponent implements OnInit {
   today: Date = new Date();
   selectCourse: any = "All Courses";
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
     this.getData.getCoursesData().subscribe((res: any) => {
@@ -25,7 +25,16 @@ export class TimeFrameComponent implements OnInit {
   }
 
   changeCourse(selectCourse) {
-    this.getData.setHeaders({ 'courseId': selectCourse, 'progaramId': selectCourse });
+    let progaramId;
+    for (let i in this.coursesData) {
+      if (selectCourse == this.coursesData[i].courseId) {
+        progaramId = this.coursesData[i].progaramId;
+      }
+    }
+    this.getData.setHeaders({
+      courseId: selectCourse,
+      progaramId: progaramId
+    });
   }
 
   ngOnInit() {

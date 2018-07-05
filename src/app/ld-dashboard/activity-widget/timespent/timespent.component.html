@@ -21,7 +21,7 @@
   </div>
 
 
-  <div [hidden]="spinner_loader" appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
+  <div [hidden]="spinner_loader" appHalfdonutchart [data]="responseData.timeSpent"></div>
 
   <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">

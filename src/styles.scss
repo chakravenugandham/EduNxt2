@@ -54,7 +54,16 @@
   //   bottom: 0;
   // }
 }
-
+.spinner_loading {
+  position: relative;
+  height: 200px;
+}
+.spinner_inside {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .arrow-space {
   img {
     height: 10px;

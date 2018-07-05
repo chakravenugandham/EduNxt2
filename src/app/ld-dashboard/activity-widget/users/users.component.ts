@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   activeConfig: Config;
   enrolledConfig: Config;
   numberFontColor: boolean;
+  spinner_loader: boolean = false;
 
   responseData = {};
 
@@ -27,23 +28,29 @@ export class UsersComponent implements OnInit {
   constructor(private getData: LdDashboardService) {
     this.getData.dateChange.subscribe(result => {
       this.getAPIData();
-    })
+    });
   }
 
   getAPIData() {
+    this.spinner_loader = true;
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
       console.log(this.responseData);
       this.activeConfig = {
-        peopleCurrentlyEnrolled: Math.round(this.responseData['activeUsers']),
-        usersSinceLastMonth: Math.round(this.responseData['activeUsersSinceLastMonth']),
+        peopleCurrentlyEnrolled: Math.round(this.responseData["activeUsers"]),
+        usersSinceLastMonth: Math.round(
+          this.responseData["activeUsersSinceLastMonth"]
+        ),
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently active"
       };
       this.enrolledConfig = {
-        peopleCurrentlyEnrolled: Math.round(this.responseData['enrolledUsers']),
-        usersSinceLastMonth: Math.round(this.responseData['enrolledUsersSinceLastMonth']),
+        peopleCurrentlyEnrolled: Math.round(this.responseData["enrolledUsers"]),
+        usersSinceLastMonth: Math.round(
+          this.responseData["enrolledUsersSinceLastMonth"]
+        ),
         Users: "Users",
         sinceLastMonth: "since last month",
         PeopleAreCurrentlyEnrolled: "People are currently enrolled"
@@ -53,7 +60,8 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnChanges(changes: any) {
-    if (changes.responseData) { }
+    if (changes.responseData) {
+    }
   }
 
   ngOnInit() {

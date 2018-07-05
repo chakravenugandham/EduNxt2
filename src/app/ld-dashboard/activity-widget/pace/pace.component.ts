@@ -18,6 +18,10 @@ export class PaceComponent implements OnInit, OnChanges {
   noDataFlag: boolean = false;
 
   constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
     this.getData.dateChange.subscribe(result => {
       this.getDataFromService();
     });

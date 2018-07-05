@@ -20,12 +20,12 @@
   <div *ngIf="!noDataFlag" class="m-t-16">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="bigNumber aheadOfScheduleColor">{{responseData.aheadSchedule}}</p>
-        <p class="m-t-10">Ahead of Schedule</p>
+        <p class="bigNumber aheadOfScheduleColor">{{responseData.behindSchedule}}</p>
+        <p class="m-t-10">Behind Schedule</p>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="bigNumber onTrackClass">{{responseData.onTrack}}</p>
-        <p class="m-t-10">On Track</p>
+        <p class="bigNumber onTrackClass">{{responseData.haveNotStarted}}</p>
+        <p class="m-t-10">Haven't Started</p>
       </div>
     </div>
   </div>

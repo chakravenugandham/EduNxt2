@@ -20,6 +20,7 @@ export class FeedbackComponent implements OnInit, OnChanges {
   learnerSatisfationBy: number;
   trainerRatingBy: number;
   contentRatingBy: number;
+  parseFloat = parseFloat;
   faArrowUp = faArrowUp;
 
   responseData = {};

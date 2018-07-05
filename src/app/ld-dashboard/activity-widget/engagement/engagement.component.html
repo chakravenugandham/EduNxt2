@@ -16,16 +16,15 @@
     <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
 
-  <div *ngIf="!spinner_loader && !responseData.hasOwnProperty('usersCompletedPrograms')" class="spinner_loading text-center">
-    <p>No data found</p>
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
   </div>
 
   <div [hidden]="spinner_loader">
     <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
   </div>
 
-
-  <div *ngIf="!spinner_loader && responseData.hasOwnProperty('usersCompletedPrograms')" class="row m-t-8 text-fix-bottom">
+  <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <app-users-data [config]="config" [numberFontColor]="expectedChange"></app-users-data>
     </div>

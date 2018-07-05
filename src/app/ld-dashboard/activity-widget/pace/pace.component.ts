@@ -33,6 +33,10 @@ export class PaceComponent implements OnInit, OnChanges {
     this.getData.getPaceWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
+      this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+      console.log("this.spinner_loader", this.spinner_loader);
+      console.log("this.noDataFlag", this.noDataFlag);
+
       if (
         this.responseData["aheadOfSchedule"] == 0 ||
         this.responseData["behindSchedule"] == 0 ||

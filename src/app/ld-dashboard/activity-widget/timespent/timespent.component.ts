@@ -19,6 +19,8 @@ export class TimespentComponent implements OnInit, OnChanges {
   expectedChange: boolean;
 
   responseData = {};
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   constructor(private getDataService: LdDashboardService) {
     this.getDataService.refreshAPI.subscribe(result => {
@@ -30,21 +32,29 @@ export class TimespentComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
     this.getDataService.getTimeSpentWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
-      this.percentageChange = Math.ceil((this.responseData['courseDuration'] * 100) / this.responseData['durationSpent']);
-      this.expectedChange = this.percentageChange < this.responseData['expectedTimeSpent'] ? false : true;
+      this.spinner_loader = false;
+      this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+      console.log(this.responseData);
+      this.percentageChange = Math.ceil(
+        (this.responseData["courseDuration"] * 100) /
+        this.responseData["durationSpent"]
+      );
+      this.expectedChange =
+        this.percentageChange < this.responseData["expectedTimeSpent"]
+          ? false
+          : true;
     });
   }
 
   ngOnInit() {
-
     this.getDataFromService();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // if (changes.timeData.currentValue) {
-
     // }
   }
 }

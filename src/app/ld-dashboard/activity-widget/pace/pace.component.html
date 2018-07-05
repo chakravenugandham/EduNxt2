@@ -17,11 +17,11 @@
   </div>
 
   <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data available</span>
+    <span class="spinner_inside">No data Found</span>
   </div>
   <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
   </div>
-  <div *ngIf="!noDataFlag" class="m-t-16">
+  <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6">
         <p class="bigNumber aheadOfScheduleColor">{{responseData.behindSchedule}}</p>

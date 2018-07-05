@@ -11,17 +11,16 @@
       </span>
     </div>
   </div>
-  <!-- <div *ngIf='!learnerSatisfation' class="spinner_loading text-center">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-  <!-- <p>No data found</p>
-  </div> -->
-  <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
 
   <div *ngIf="spinner_loader" class="spinner_loading">
     <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
 
-  <div *ngIf="!spinner_loader">
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+  <div *ngIf="!spinner_loader && !noDataFlag">
     <div class="row p-t-18">
       <div class="col-md-6 col-sm-6 col-xs-6 feedback-emoji">
 

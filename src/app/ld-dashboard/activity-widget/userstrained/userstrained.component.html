@@ -11,12 +11,18 @@
       </span>
     </div>
   </div>
-  <div *ngIf="!responseData" class="spinner_loading">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
     <span class="spinner_inside">No data found</span>
   </div>
-  <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
-  <div *ngIf="responseData" class="row m-t-8">
+
+  <div [hidden]="spinner_loader" appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
+
+  <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex">
         <div class="bigNumber float-left" [ngClass]="{'big-positive-number': expectedChange, 'big-danger-class': !expectedChange}">{{responseData.trainedPercentage}}% </div>

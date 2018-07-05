@@ -40,7 +40,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .append("svg")
       .attr("width", 300)
       .attr("height", 130)
-      .attr("style", "padding-left:25%; padding-top:5%;");
+      .attr("style", "padding-left:22%; padding-top:5%;");
 
     var charts = svg
       .selectAll("g")

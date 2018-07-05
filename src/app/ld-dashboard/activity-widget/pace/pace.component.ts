@@ -37,14 +37,17 @@ export class PaceComponent implements OnInit, OnChanges {
       console.log("this.spinner_loader", this.spinner_loader);
       console.log("this.noDataFlag", this.noDataFlag);
 
-      if (
-        this.responseData["aheadOfSchedule"] == 0 ||
-        this.responseData["behindSchedule"] == 0 ||
-        this.responseData["haveNotStarted"] == 0 ||
-        this.responseData["onTrack"]
-      ) {
-        this.noDataFlag = true;
-      }
+      // if (
+      //   this.responseData["aheadOfSchedule"] == 0 ||
+      //   this.responseData["behindSchedule"] == 0 ||
+      //   this.responseData["haveNotStarted"] == 0 ||
+      //   this.responseData["onTrack"]
+      // ) {
+      //   this.noDataFlag = true;
+      // } else {
+      //   this.noDataFlag = false;
+      // }
+      console.log("this.noDataFlag after checking data", this.noDataFlag);
       this.paceTrackValues = [
         {
           color: "#F77F6C",
@@ -70,8 +73,7 @@ export class PaceComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) {
-  }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getDataFromService();

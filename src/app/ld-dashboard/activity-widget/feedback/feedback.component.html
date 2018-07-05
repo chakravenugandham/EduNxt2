@@ -14,19 +14,26 @@
   <div *ngIf='!learnerSatisfation' class="spinner_loading text-center">
     <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
     <p>No data found</p>
+  </div> -->
+  <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
-  <div *ngIf='learnerSatisfation'>
+
+  <div *ngIf="!spinner_loader">
     <div class="row p-t-18">
       <div class="col-md-6 col-sm-6 col-xs-6 feedback-emoji">
 
-        <img src="/assets/IconsSVGs/happy_emoji.svg" alt="happy" *ngIf="learnerSatisfation >= 75">
-        <img src="/assets/IconsSVGs/meh_emoji.svg" alt="meh" *ngIf="learnerSatisfation >= 50 && learnerSatisfation < 75">
-        <img src="/assets/IconsSVGs/angry_emoji.svg" alt="angry" *ngIf="learnerSatisfation < 50">
+        <img src="/assets/IconsSVGs/happy_emoji.svg" alt="happy" *ngIf="learnerSatisfaction >= 75">
+        <img src="/assets/IconsSVGs/meh_emoji.svg" alt="meh" *ngIf="learnerSatisfaction >= 50 && learnerSatisfaction < 75">
+        <img src="/assets/IconsSVGs/angry_emoji.svg" alt="angry" *ngIf="learnerSatisfaction < 50">
       </div>
 
       <div class="col-md-6 col-sm-6 col-xs-6">
         <div class="arrow-space">
-          <span class="bigNumber" [ngClass]="{'big-positive-number': learnerSatisfation >= 50, 'big-danger-class': learnerSatisfation < 50}">{{parseFloat(learnerSatisfation).toFixed(1)}}%</span>
+          <span class="bigNumber" [ngClass]="{'big-positive-number': learnerSatisfaction >= 50, 'big-danger-class': learnerSatisfaction < 50}">
+            {{learnerSatisfaction}}% </span>
           <span class="small-font">
             <img *ngIf="learnerSatisfationBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
             <img *ngIf="learnerSatisfationBy > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">

@@ -15,6 +15,8 @@ export class PaceComponent implements OnInit, OnChanges {
   componentName = "active-learner-pace";
 
   responseData = {};
+  noDataFlag: boolean = false;
+  spinner_loader: boolean = false;
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -23,13 +25,23 @@ export class PaceComponent implements OnInit, OnChanges {
 
     this.getData.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
     this.getData.getPaceWidgetData().subscribe((response: any) => {
-      console.log(this.responseData);
       this.responseData = response.data;
+      this.spinner_loader = false;
+      console.log(this.responseData);
+      if (
+        this.responseData["aheadOfSchedule"] == 0 ||
+        this.responseData["behindSchedule"] == 0 ||
+        this.responseData["haveNotStarted"] == 0 ||
+        this.responseData["onTrack"]
+      ) {
+        this.noDataFlag = true;
+      }
       this.paceTrackValues = [
         {
           color: "#F77F6C",
@@ -52,8 +64,8 @@ export class PaceComponent implements OnInit, OnChanges {
           number: this.responseData["onTrack"]
         }
       ];
-    })
-  };
+    });
+  }
 
   ngOnChanges(changes: any) {
   }

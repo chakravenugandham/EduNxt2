@@ -40,7 +40,6 @@ export class UsersComponent implements OnInit {
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
-      console.log(this.responseData);
       this.activeConfig = {
         peopleCurrentlyEnrolled: Math.round(this.responseData["activeUsers"]),
         usersSinceLastMonth: Math.round(

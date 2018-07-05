@@ -15,9 +15,9 @@ export class OrgInterestFullviewComponent implements OnInit {
   displayFor = {};
 
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
   getDisplayObject($event) {
     this.displayFor = $event;
@@ -26,9 +26,8 @@ export class OrgInterestFullviewComponent implements OnInit {
   //api call for orgDetails based on component
   getDataFromService() {
     this.getData.getOrgInterestDetailsData().subscribe((res: any) => {
-      console.log(res.data);
       this.responseData = res.data;
-    })
+    });
   }
 
   ngOnInit() {

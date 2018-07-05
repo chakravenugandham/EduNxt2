@@ -25,6 +25,10 @@ export class UsersComponent implements OnInit {
   ];
 
   constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe(result => {
+      this.getAPIData();
+    });
+
     this.getData.dateChange.subscribe(result => {
       this.getAPIData();
     })

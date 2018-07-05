@@ -20,6 +20,7 @@ export class FeedbackComponent implements OnInit, OnChanges {
   learnerSatisfationBy: number;
   trainerRatingBy: number;
   contentRatingBy: number;
+  parseFloat = parseFloat;
   faArrowUp = faArrowUp;
 
   responseData = {};
@@ -38,11 +39,7 @@ export class FeedbackComponent implements OnInit, OnChanges {
     this.getData.getFeedbackWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       console.log("this.responseData", this.responseData);
-
-      console.log(this.responseData);
-      this.learnerSatisfation = Math.round(
-        this.responseData["learnerSatisfation"]
-      );
+      this.learnerSatisfation = this.responseData["learnerSatisfaction"];
       this.learnerSatisfationBy = Math.abs(
         this.responseData["learnerSatisfationBy"]
       );

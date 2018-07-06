@@ -3,14 +3,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Subject } from "rxjs";
 import { APIURL } from "../../apiURL";
-import { CommonService } from "../services/common.service";
 import { DateserviceService } from "../services/dateservice.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class LdDashboardService implements OnInit {
-
   dateFilterObj = {
     start_date: "",
     end_date: ""
@@ -28,9 +26,10 @@ export class LdDashboardService implements OnInit {
     return this.dateChange$.asObservable();
   }
 
-  constructor(private http: HttpClient, private filterService: CommonService, private dateService: DateserviceService) {
-  }
-
+  constructor(
+    private http: HttpClient,
+    private dateService: DateserviceService
+  ) {}
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
@@ -572,5 +571,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

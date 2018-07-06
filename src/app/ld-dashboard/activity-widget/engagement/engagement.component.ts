@@ -62,10 +62,13 @@ export class EngagementComponent implements OnInit, OnChanges {
           PeopleAreCurrentlyEnrolled: "People completed training programs"
         };
 
-        this.percentageChange = Math.round(
-          (this.config.peopleCurrentlyEnrolled * 100) / this.totalUserCount
-        );
-
+        if (this.config.peopleCurrentlyEnrolled > 0) {
+          this.percentageChange = Math.round(
+            (this.config.peopleCurrentlyEnrolled * 100) / this.totalUserCount
+          );
+        } else {
+          this.percentageChange = 0;
+        }
         this.expectedChange = this.percentageChange < 50 ? false : true;
       });
     });

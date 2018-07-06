@@ -57,7 +57,7 @@
             <img *ngIf="responseData.trainerRatingBy > 0" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
 
             <span> by </span>
-            <span class="changeNumber" [ngClass]="{'changeNumberLow': responseData.trainerRatingBy <= 0, 'changeNumber': responseData.trainerRatingBy < 0}">
+            <span class="changeNumber" [ngClass]="{'changeNumberLow': responseData.trainerRatingBy <= 0, 'changeNumber': responseData.trainerRatingBy > 0}">
               {{trainerRatingBy}}%</span>
           </span>
         </div>

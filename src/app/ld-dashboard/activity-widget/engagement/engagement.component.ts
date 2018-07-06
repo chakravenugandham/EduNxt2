@@ -17,6 +17,7 @@ export class EngagementComponent implements OnInit, OnChanges {
   expectedChange: boolean;
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
+  engageUserChange: boolean = false;
 
   responseData = {};
   constructor(private getData: LdDashboardService) {
@@ -38,6 +39,12 @@ export class EngagementComponent implements OnInit, OnChanges {
         this.responseData = response.data;
 
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+
+        this.engageUserChange =
+          this.responseData["usersCompletedPrograms"] <
+          this.responseData["completedProgramsSinceLastMonth"]
+            ? false
+            : true;
 
         this.config = {
           peopleCurrentlyEnrolled: Math.round(
@@ -61,7 +68,7 @@ export class EngagementComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     // this.getToalUsers();

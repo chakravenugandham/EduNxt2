@@ -39,16 +39,6 @@ export class EngagementComponent implements OnInit, OnChanges {
 
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-        let today = new Date();
-        let last_date = new Date(today.setDate(today.getDate() - 30));
-        let start_date =
-          last_date.getMonth() +
-          1 +
-          "/" +
-          last_date.getDate() +
-          "/" +
-          last_date.getFullYear();
-
         this.config = {
           peopleCurrentlyEnrolled: Math.round(
             this.responseData["usersCompletedPrograms"]
@@ -57,7 +47,7 @@ export class EngagementComponent implements OnInit, OnChanges {
             this.responseData["completedProgramsSinceLastMonth"]
           ),
           Users: "Users",
-          sinceLastMonth: start_date,
+          sinceLastMonth: "",
           // sinceLastMonth: new Date(start_date).toLocaleDateString(),
           PeopleAreCurrentlyEnrolled: "People completed training programs"
         };

@@ -25,8 +25,6 @@ export class TimeFrameComponent implements OnInit {
   }
 
   changeCourse(selectCourse) {
-    console.log("selectCourse", selectCourse);
-
     let courseIdSelected;
     let progaramIdSelected;
     if (selectCourse == "All Courses") {

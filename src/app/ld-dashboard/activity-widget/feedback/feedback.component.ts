@@ -52,10 +52,12 @@ export class FeedbackComponent implements OnInit, OnChanges {
       this.trainerRating = Math.round(this.responseData["trainerRating"]);
       this.contentRating = Math.round(this.responseData["contentRating"]);
       this.learnerSatisfationBy = Math.abs(
-        this.responseData["learnerSatisfationBy"]
+        Math.round(this.responseData["learnerSatisfationBy"])
       );
       this.trainerRatingBy = Math.abs(this.responseData["trainerRatingBy"]);
-      this.contentRatingBy = Math.abs(this.responseData["contentRatingBy"]);
+      this.contentRatingBy = Math.abs(
+        Math.round(this.responseData["contentRatingBy"])
+      );
     });
   }
 

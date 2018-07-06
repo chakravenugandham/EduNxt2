@@ -46,7 +46,7 @@
   padding: 10px 20px;
   .big-danger-class {
     color: #ff4e00;
-    font-size: 22px;
+    // font-size: 22px;
     font-weight: 600;
     margin-right: 8px;
   }
@@ -526,6 +526,7 @@
   } //activity-widget
   .activity-widgets .widget-block {
     min-width: 280px;
+    // height: 260px;
     padding: 5px 10px;
   }
   .userImages .imgActive:first-child img {

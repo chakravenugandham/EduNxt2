@@ -22,14 +22,26 @@
   <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
   </div>
   <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">
-    <div class="row text-fix-bottom">
-      <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="bigNumber behindSchedule">{{responseData.behindSchedule}}</p>
-        <p class="m-t-10">Behind Schedule</p>
+    <div class="text-fix-bottom">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+          <p class="bigNumber behindSchedule">{{responseData.behindSchedule}}</p>
+          <p class="m-t-10">Behind Schedule</p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+          <p class="bigNumber havenotStarted">{{responseData.haveNotStarted}}</p>
+          <p class="m-t-10">Haven't Started</p>
+        </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-xs-6">
-        <p class="bigNumber havenotStarted">{{responseData.haveNotStarted}}</p>
-        <p class="m-t-10">Haven't Started</p>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+          <p class="bigNumber aheadOfScheduleColor">{{responseData.aheadSchedule}}</p>
+          <p class="m-t-10 m-b-0">Ahead of Schedule</p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+          <p class="bigNumber onTrackClass">{{responseData.onTrack}}</p>
+          <p class="m-t-10 m-b-0">On Track</p>
+        </div>
       </div>
     </div>
   </div>

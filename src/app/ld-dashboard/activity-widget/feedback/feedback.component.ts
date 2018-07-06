@@ -16,11 +16,11 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class FeedbackComponent implements OnInit, OnChanges {
   @Input() feedbackDataElement;
 
-  learnerSatisfaction: number;
+  learnerSatisfaction: any;
   learnerSatisfationBy: number;
-  trainerRating: number;
+  trainerRating: any;
   trainerRatingBy: number;
-  contentRating: number;
+  contentRating: any;
   contentRatingBy: number;
   parseFloat = parseFloat;
   faArrowUp = faArrowUp;
@@ -46,11 +46,17 @@ export class FeedbackComponent implements OnInit, OnChanges {
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-      this.learnerSatisfaction = Math.round(
+      this.learnerSatisfaction = parseInt(
         this.responseData["learnerSatisfaction"]
+      ).toFixed(1);
+
+      this.trainerRating = parseInt(this.responseData["trainerRating"]).toFixed(
+        1
       );
-      this.trainerRating = Math.round(this.responseData["trainerRating"]);
-      this.contentRating = Math.round(this.responseData["contentRating"]);
+      this.contentRating = parseInt(this.responseData["contentRating"]).toFixed(
+        1
+      );
+
       this.learnerSatisfationBy = Math.abs(
         Math.round(this.responseData["learnerSatisfationBy"])
       );

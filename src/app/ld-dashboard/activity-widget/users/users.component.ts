@@ -41,9 +41,7 @@ export class UsersComponent implements OnInit {
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
-
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-
       let today = new Date();
       let last_date = new Date(today.setDate(today.getDate() - 30));
       let start_date =
@@ -76,7 +74,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getAPIData();

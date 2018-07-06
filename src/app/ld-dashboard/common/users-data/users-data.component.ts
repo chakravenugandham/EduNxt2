@@ -7,9 +7,28 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class UsersDataComponent implements OnInit {
   @Input() config: Config;
-  @Input() numberFontColor:boolean;
+  @Input() numberFontColor: boolean;
 
   constructor() {}
+  monthFullName: string;
+  constructPreviousMonth() {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    this.monthFullName =
+      monthNames[new Date().getMonth() - 1] + " " + new Date().getFullYear();
+  }
 
   ngOnChanges(changes: any) {
     if (changes.config && changes.config.currentValue) {
@@ -17,7 +36,9 @@ export class UsersDataComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.constructPreviousMonth();
+  }
 }
 
 export class Config {

@@ -1,23 +1,42 @@
 .danger-class {
-  color: #FF4E00;
+  color: #ff4e00;
 }
 
-.m-t-16 {
-  margin-top: 16px;
-}
+// .m-t-16 {
+//   margin-top: 16px;
+// }
 
 .aheadOfScheduleColor {
-  color: #F77F6C;
+  color: #f77f6c;
 }
 
 .onTrackClass {
-  color: #FFD630;
+  color: #ffd630;
 }
 
 .behindSchedule {
-  color: #5584FF;
+  color: #5584ff;
 }
 
 .havenotStarted {
-  color: #23B14D;
+  color: #23b14d;
+}
+p {
+  margin-bottom: 6px;
+  font-size: 12px !important;
+}
+.m-b-0 {
+  margin-bottom: 0;
+}
+.bigNumber {
+  font-size: 14px !important;
+}
+.text-fix-bottom {
+  bottom: 1rem !important;
+}
+
+@media (max-width: 576px) {
+  .m-t-10 {
+    margin-top: 0;
+  }
 }

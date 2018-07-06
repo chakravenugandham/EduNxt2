@@ -13,11 +13,12 @@ export class UsersComponent implements OnInit {
 
   activeConfig: Config;
   enrolledConfig: Config;
-  numberFontColor: boolean;
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
   responseData = {};
+  activeUserChange: boolean = false;
+  enrolledUserChange: boolean = false;
 
   userImages: string[] = [
     "/assets/images/user.png",
@@ -42,15 +43,21 @@ export class UsersComponent implements OnInit {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-      let today = new Date();
-      let last_date = new Date(today.setDate(today.getDate() - 30));
-      let start_date =
-        last_date.getMonth() +
-        1 +
-        "/" +
-        last_date.getDate() +
-        "/" +
-        last_date.getFullYear();
+
+      this.activeUserChange =
+        this.responseData["activeUsers"] <
+        this.responseData["activeUsersSinceLastMonth"]
+          ? false
+          : true;
+
+      this.enrolledUserChange =
+        this.responseData["enrolledUsers"] <
+        this.responseData["enrolledUsersSinceLastMonth"]
+          ? false
+          : true;
+
+      console.log("this.activeUserChange", this.activeUserChange);
+      console.log("this.enrolledUserChange", this.enrolledUserChange);
 
       this.activeConfig = {
         peopleCurrentlyEnrolled: Math.round(this.responseData["activeUsers"]),
@@ -58,7 +65,7 @@ export class UsersComponent implements OnInit {
           this.responseData["activeUsersSinceLastMonth"]
         ),
         Users: "Users",
-        sinceLastMonth: start_date,
+        sinceLastMonth: "",
         PeopleAreCurrentlyEnrolled: "People are currently active"
       };
       this.enrolledConfig = {
@@ -67,14 +74,13 @@ export class UsersComponent implements OnInit {
           this.responseData["enrolledUsersSinceLastMonth"]
         ),
         Users: "Users",
-        sinceLastMonth: start_date,
+        sinceLastMonth: "",
         PeopleAreCurrentlyEnrolled: "People are currently enrolled"
       };
-      this.numberFontColor = true;
     });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getAPIData();

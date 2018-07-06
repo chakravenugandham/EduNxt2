@@ -12,7 +12,7 @@ export class TimeFrameComponent implements OnInit {
   today: Date = new Date();
   selectCourse: any = "All Courses";
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   getDataFromService() {
     this.getData.getCoursesData().subscribe((res: any) => {
@@ -25,7 +25,6 @@ export class TimeFrameComponent implements OnInit {
   }
 
   changeCourse(selectCourse) {
-    console.log(this.coursesData)
     let courseIdSelected;
     let programIdSelected;
     if (selectCourse == "All Courses") {

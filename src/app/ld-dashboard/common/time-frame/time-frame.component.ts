@@ -27,23 +27,23 @@ export class TimeFrameComponent implements OnInit {
   changeCourse(selectCourse) {
     console.log("selectCourse", selectCourse);
 
-    let progaramId;
+    let courseIdSelected;
+    let progaramIdSelected;
     if (selectCourse == "All Courses") {
-      this.getData.setHeaders({
-        courseId: 0,
-        progaramId: 0
-      });
+      courseIdSelected = 0;
+      progaramIdSelected = 0;
     } else {
       for (let i in this.coursesData) {
-        if (selectCourse == this.coursesData[i].courseId) {
-          progaramId = this.coursesData[i].progaramId;
+        if (selectCourse == this.coursesData[i].courseName) {
+          courseIdSelected = this.coursesData[i].courseId;
+          progaramIdSelected = this.coursesData[i].progaramId;
         }
       }
-      this.getData.setHeaders({
-        courseId: selectCourse,
-        progaramId: progaramId
-      });
     }
+    this.getData.setHeaders({
+      courseId: courseIdSelected,
+      progaramId: progaramIdSelected
+    });
   }
 
   ngOnInit() {

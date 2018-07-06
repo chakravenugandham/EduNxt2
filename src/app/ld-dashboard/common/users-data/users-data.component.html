@@ -10,7 +10,7 @@
     <span class="changeInNumberText">
       <span [ngClass]="{'changeNumber': numberFontColor, 'changeNumberLow': !numberFontColor}"> {{config?.usersSinceLastMonth}} </span>
       <span class="font-color"> {{config?.Users}} </span>
-      <p class="font-color"> {{config?.sinceLastMonth}} </p>
+      <p class="font-color"> Since {{config?.sinceLastMonth | date}} </p>
     </span>
   </div>
   <p class="m-t-10"> {{config?.PeopleAreCurrentlyEnrolled}} </p>

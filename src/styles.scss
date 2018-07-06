@@ -49,10 +49,12 @@
     font-size: 22px;
     font-weight: 600;
     margin-right: 8px;
-  } // .text-fix-bottom{
-  //   position: absolute;
-  //   bottom: 0;
-  // }
+  }
+  .text-fix-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
 }
 .spinner_loading {
   position: relative;
@@ -87,9 +89,9 @@
 // .ranges {
 //   display: none;
 // }
-.daterangepicker {
-  width: 700px !important;
-}
+// .daterangepicker {
+//   width: 700px !important;
+// }
 
 .dashboard .row .col-md-6 .widget-block {
   height: 460px;

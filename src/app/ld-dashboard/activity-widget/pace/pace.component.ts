@@ -45,7 +45,6 @@ export class PaceComponent implements OnInit, OnChanges {
       // } else {
       //   this.noDataFlag = false;
       // }
-      console.log(this.responseData)
       this.paceTrackValues = [
         {
           color: "#F77F6C",

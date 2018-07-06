@@ -61,7 +61,7 @@ export class EngagementComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     // this.getToalUsers();

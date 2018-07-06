@@ -54,11 +54,11 @@ export class LdDashboardService implements OnInit {
   headers = new HttpHeaders()
     .set("LnDUserId", "37046")
     .set("courseId", "0")
-    .set("progaramId", "0");
+    .set("programId", "0");
   headers1 = new HttpHeaders()
     .set("LnDUserId", "57142")
     .set("courseId", "0")
-    .set("progaramId", "0");
+    .set("programId", "0");
 
   setHeaders(config?: any) {
     let headers = new HttpHeaders().set("LnDUserId", "37046");

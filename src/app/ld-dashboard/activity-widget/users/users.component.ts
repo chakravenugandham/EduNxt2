@@ -41,7 +41,6 @@ export class UsersComponent implements OnInit {
     this.getData.getActiveUsersWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
-
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
       this.activeConfig = {

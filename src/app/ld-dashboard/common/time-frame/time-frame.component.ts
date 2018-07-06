@@ -26,21 +26,21 @@ export class TimeFrameComponent implements OnInit {
 
   changeCourse(selectCourse) {
     let courseIdSelected;
-    let progaramIdSelected;
+    let programIdSelected;
     if (selectCourse == "All Courses") {
       courseIdSelected = 0;
-      progaramIdSelected = 0;
+      programIdSelected = 0;
     } else {
       for (let i in this.coursesData) {
         if (selectCourse == this.coursesData[i].courseName) {
           courseIdSelected = this.coursesData[i].courseId;
-          progaramIdSelected = this.coursesData[i].progaramId;
+          programIdSelected = this.coursesData[i].programId;
         }
       }
     }
     this.getData.setHeaders({
       courseId: courseIdSelected,
-      progaramId: progaramIdSelected
+      programId: programIdSelected
     });
   }
 

@@ -26,7 +26,7 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     private getDateService: DateserviceService
   ) { }
 
-  dateTest = this.getDateService.constructDate();
+  dateTest = this.getData.constructDate();
 
   public daterange: any = {
     start: this.dateTest.start_date,

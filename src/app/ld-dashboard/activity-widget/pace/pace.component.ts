@@ -45,11 +45,12 @@ export class PaceComponent implements OnInit, OnChanges {
       // } else {
       //   this.noDataFlag = false;
       // }
+      console.log(this.responseData)
       this.paceTrackValues = [
         {
           color: "#F77F6C",
           type: "classA",
-          number: this.responseData["aheadOfSchedule"]
+          number: this.responseData["aheadSchedule"]
         },
         {
           color: "#5584FF",
@@ -70,7 +71,7 @@ export class PaceComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

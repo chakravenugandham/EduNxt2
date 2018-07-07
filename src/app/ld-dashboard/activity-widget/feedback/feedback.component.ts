@@ -46,14 +46,20 @@ export class FeedbackComponent implements OnInit, OnChanges {
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-      this.learnerSatisfaction = parseInt(
+      this.learnerSatisfaction = Number(
         this.responseData["learnerSatisfaction"]
       ).toFixed(1);
 
-      this.trainerRating = parseInt(this.responseData["trainerRating"]).toFixed(
+      console.log(
+        "acctual learnerSatisfaction",
+        this.responseData["learnerSatisfaction"]
+      );
+      console.log("learnerSatisfaction", this.learnerSatisfaction);
+
+      this.trainerRating = Number(this.responseData["trainerRating"]).toFixed(
         1
       );
-      this.contentRating = parseInt(this.responseData["contentRating"]).toFixed(
+      this.contentRating = Number(this.responseData["contentRating"]).toFixed(
         1
       );
 

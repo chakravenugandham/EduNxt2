@@ -46,18 +46,15 @@ export class UsersComponent implements OnInit {
 
       this.activeUserChange =
         this.responseData["activeUsers"] <
-        this.responseData["activeUsersSinceLastMonth"]
+          this.responseData["activeUsersSinceLastMonth"]
           ? false
           : true;
 
       this.enrolledUserChange =
         this.responseData["enrolledUsers"] <
-        this.responseData["enrolledUsersSinceLastMonth"]
+          this.responseData["enrolledUsersSinceLastMonth"]
           ? false
           : true;
-
-      console.log("this.activeUserChange", this.activeUserChange);
-      console.log("this.enrolledUserChange", this.enrolledUserChange);
 
       this.activeConfig = {
         peopleCurrentlyEnrolled: Math.round(this.responseData["activeUsers"]),
@@ -80,7 +77,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getAPIData();

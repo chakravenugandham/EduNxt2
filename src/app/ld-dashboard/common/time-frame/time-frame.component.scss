@@ -13,15 +13,12 @@
         width: 16px;
       }
     }
-    .select-time-frame {
-      color: #262626 !important;
-    }
   }
   .selectCourse {
     select {
       color: #5584ff;
       border: 1px solid #5584ff;
-      width: 210px; // padding: 9px 6px;
+      width: 180px; // padding: 9px 6px;
       cursor: pointer;
       option {
         color: #5584ff;
@@ -35,9 +32,7 @@
   .report-menu {
     float: right;
   }
-  .m-l-147 {
-    margin-left: 0px;
-  }
+
   .m-t-7 {
     margin-top: 12px;
     // display: inline-block;
@@ -59,14 +54,15 @@
         width: 10px;
       }
     }
+    .select-time-frame {
+      display: block;
+    }
     .report-menu {
       float: none;
+      li {
+        display: block;
+        margin-bottom: 4px;
+      }
     }
-  }
-}
-
-@-moz-document url-prefix() {
-  .m-l-147 {
-    margin-left: 0px !important;
   }
 }

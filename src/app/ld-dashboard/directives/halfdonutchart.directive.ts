@@ -36,12 +36,15 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
           return -90 * (Math.PI / 180) + (<any>d * 1.8 * Math.PI) / 180;
         }
       });
+
+    let donutWidth = 280;
+    let donutHeight = 170;
     var svg = d3
       .select(chartDiv)
       .append("svg")
-      .attr("width", 300)
-      .attr("height", 130)
-      .attr("style", "padding-left:22%; padding-top:5%;");
+      .attr("width", donutWidth)
+      .attr("height", donutHeight)
+      .attr("style", "padding-left:0%; padding-top:5%;");
 
     var charts = svg
       .selectAll("g")
@@ -49,7 +52,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("transform", function(d, i) {
-        return "translate(" + (i * 50 + 70) + ",100)";
+        return "translate(130,100)";
       });
 
     charts

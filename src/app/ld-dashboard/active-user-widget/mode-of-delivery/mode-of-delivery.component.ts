@@ -15,7 +15,7 @@ export class ModeOfDeliveryComponent implements OnInit, OnChanges {
   constructor() { }
 
   usersChartRender(dataSet) {
-    // d3.select("#modeOfDeliveryGraph svg").remove();
+    d3.select("#modeOfDeliveryGraph svg").remove();
     var w = 520;
     var h = 240;
     var p = 40;
@@ -42,7 +42,7 @@ export class ModeOfDeliveryComponent implements OnInit, OnChanges {
 
     // create SVG
     var svg = d3
-      .select("#activeUserGraph")
+      .select("#modeOfDeliveryGraph")
       .append("svg")
       .attr("width", w)
       .attr("height", h);

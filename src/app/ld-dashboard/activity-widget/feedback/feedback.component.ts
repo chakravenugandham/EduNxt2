@@ -50,12 +50,6 @@ export class FeedbackComponent implements OnInit, OnChanges {
         this.responseData["learnerSatisfaction"]
       ).toFixed(1);
 
-      console.log(
-        "acctual learnerSatisfaction",
-        this.responseData["learnerSatisfaction"]
-      );
-      console.log("learnerSatisfaction", this.learnerSatisfaction);
-
       this.trainerRating = Number(this.responseData["trainerRating"]).toFixed(
         1
       );

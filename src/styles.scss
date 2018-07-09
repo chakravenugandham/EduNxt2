@@ -195,6 +195,37 @@
   font-size: 12px;
 }
 
+//date-picker CSS
+.daterangepicker {
+  font-size: 12px;
+  .input-mini {
+    color: #007bff !important;
+    border: none !important;
+    border-bottom: 1px solid #007bff !important;
+    border-radius: 0% !important;
+    text-align: center !important;
+  }
+  .daterangepicker_input i {
+    display: none;
+  }
+  .calendar {
+    .calendar-table {
+      table {
+        thead {
+          color: #007bff;
+        }
+      }
+    }
+  }
+  .ranges {
+    .range_inputs {
+      .cancelBtn {
+        display: none;
+      }
+    }
+  }
+}
+
 //Learner-track CSS
 .learner-track-fullview select {
   padding: 4px;

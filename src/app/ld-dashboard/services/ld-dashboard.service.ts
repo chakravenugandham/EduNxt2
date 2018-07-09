@@ -16,7 +16,8 @@ export class LdDashboardService implements OnInit {
 
   constructDate() {
     let today = new Date();
-    this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
+    this.dateFilterObj.end_date =
+      today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
 
     let last_date = new Date(today.setDate(today.getDate() - 30));
     this.dateFilterObj.start_date =
@@ -28,7 +29,6 @@ export class LdDashboardService implements OnInit {
       last_date.getFullYear();
     return this.dateFilterObj;
   }
-
 
   refreshAPI$ = new Subject<any>();
 
@@ -84,7 +84,7 @@ export class LdDashboardService implements OnInit {
   //courses dropdown
   getCoursesData() {
     let url = this.baseURL + APIURL.COURSES_DROPDOWN;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url);
   }
 
   getActiveUsersWidgetData() {
@@ -589,5 +589,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

@@ -18,7 +18,9 @@
     select {
       color: #5584ff;
       border: 1px solid #5584ff;
-      width: 180px; // padding: 9px 6px;
+      width: 180px;
+      height: 29px;
+      border-radius: 2px;
       cursor: pointer;
       option {
         color: #5584ff;
@@ -34,7 +36,7 @@
   }
 
   .m-t-7 {
-    margin-top: 12px;
+    margin-top: 6px;
     // display: inline-block;
     // position: absolute;
     // right: 36px;

@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-timespent",
@@ -14,7 +14,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./timespent.component.scss"]
 })
 export class TimespentComponent implements OnInit, OnChanges {
-  @Input() timeData;
+  // @Input() timeData;
   percentageChange: number;
   // expectedChange: boolean;
 

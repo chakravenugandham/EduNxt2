@@ -6,7 +6,7 @@ import {
   OnChanges
 } from "@angular/core";
 import * as d3 from "d3";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-userstrained",
@@ -14,7 +14,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./userstrained.component.scss"]
 })
 export class UserstrainedComponent implements OnInit, OnChanges {
-  @Input() usersData;
+  //@Input() usersData;
   percentageChange: number;
   responseData = {};
   constructor(private getDataService: LdDashboardService) {
@@ -33,12 +33,12 @@ export class UserstrainedComponent implements OnInit, OnChanges {
         this.responseData = response.data;
         this.percentageChange = Math.floor(
           (this.responseData["completedTraining"] * 100) /
-            this.responseData["totalLearners"]
+          this.responseData["totalLearners"]
         );
       });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

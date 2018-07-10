@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import * as d3 from "d3v4";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-pace",
@@ -10,7 +10,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./pace.component.scss"]
 })
 export class PaceComponent implements OnInit, OnChanges {
-  @Input() paceDataElement;
+  // @Input() paceDataElement;
   paceTrackValues = [];
   componentName = "active-learner-pace";
 

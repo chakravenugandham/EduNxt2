@@ -9,44 +9,8 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./activity-widget.component.scss"]
 })
 export class ActivityWidgetComponent implements OnInit {
-  responseData = {
-    activeUsers: "",
-    learnerEngagement: "",
-    learnerPace: "",
-    feedback: ""
-  };
 
-  responseImageData = {}
+  constructor(private getData: LdDashboardService) { }
 
-  responseGoalsData = {
-    timeSpent: "",
-    usersTrained: ""
-  };
-
-  constructor(private getData: LdDashboardService) {
-    // this.getData.refreshAPI.subscribe((result) => {
-    //   //this.getDataFromService();
-    // })
-  }
-
-  //getDataFromService() {
-  // this.getData.getActivityData().subscribe((response: any) => {
-  //   this.responseData = response.data;
-  // });
-
-  // this.getData.getImageData().subscribe((response: any) => {
-  //   this.responseImageData = response.data;
-  // });
-  //}
-
-  // getGoalsDataFromService() {
-  //   this.getData.getGoalsData().subscribe((response: any) => {
-  //     this.responseGoalsData = response.data;
-  //   });
-  //}
-
-  ngOnInit() {
-    //this.getDataFromService();
-    //this.getGoalsDataFromService();
-  }
+  ngOnInit() { }
 }

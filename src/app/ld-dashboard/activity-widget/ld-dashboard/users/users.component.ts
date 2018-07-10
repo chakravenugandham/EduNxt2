@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { Config } from "../../../../ld-dashboard/common/users-data/users-data.component";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-users",
@@ -8,8 +8,8 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
-  @Input() userElement;
-  @Input() imageElement;
+  // @Input() userElement;
+  // @Input() imageElement;
 
   activeConfig: Config;
   enrolledConfig: Config;

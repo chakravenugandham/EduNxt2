@@ -2,6 +2,22 @@
 //@import "~bootstrap/scss/_modal.scss";
 // @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
+
+$blue: #0146f9;
+$lightBlue: #5584ff;
+$white: #ffffff;
+$black: #262626;
+$green: #23b14d;
+$lightGreen: #39ea37;
+$orange: #ff4e00;
+$lightOrange: #ffd630;
+$pink: #f77f6c;
+$gray: #eaeaea;
+$darkGray: #707070;
+$grayOne: #f6f6f6;
+$grayTwo: #eef2f5;
+$grayThree: #e9e9e9;
+
 //set defaults
 .row {
   margin: 0;
@@ -18,7 +34,8 @@
   font-family: "Muli";
   padding: 0;
   .dashboard {
-    background-color: #eef2f5;
+    // background-color: #eef2f5;
+    background-color: $grayOne;
     padding: 16px 36px;
     .widget-row {
       margin: 0;
@@ -80,7 +97,6 @@
 
 .activity-widgets .widget-block {
   height: 280px;
-  padding: 10px 20px;
   .big-danger-class {
     color: #ff4e00;
     font-weight: 600;
@@ -143,7 +159,6 @@
 }
 
 .headingText {
-  font-weight: 600;
   border-left: 6px solid #ffd630;
   margin-bottom: 12px;
   margin-left: -20px;
@@ -156,13 +171,12 @@
   .nav-item a {
     font-size: 14px;
     color: #262626;
-    font-weight: 100;
     padding: 6px;
     cursor: pointer;
-    .active {
-      font-weight: 700;
-      border-bottom: 1px solid #ffd630;
-    }
+  }
+  .active {
+    font-weight: 700;
+    border-bottom: 2px solid #ffd630;
   }
   ul li {
     margin-right: 12px;
@@ -493,8 +507,6 @@
     padding: 8px 16px !important;
   }
   .dashboard .row .col-md-12 .widget-block {
-    // height: 342px;
-    // padding: 5px 10px;
     font-size: 0.8em;
     height: auto;
     padding-bottom: 52px;
@@ -527,13 +539,6 @@
   //activity-widget
   .activity-widgets .widget-block {
     min-width: 280px;
-  }
-  .userImages .imgActive:first-child img {
-    margin-left: 0;
-  }
-  .userImages .imgActive img {
-    height: 42px !important;
-    width: 42px !important;
   }
 
   //tables data

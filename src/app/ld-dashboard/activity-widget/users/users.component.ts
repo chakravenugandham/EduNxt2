@@ -24,6 +24,7 @@ export class UsersComponent implements OnInit {
     "/assets/images/user.png",
     "/assets/images/user.png",
     "/assets/images/user.png",
+    "/assets/images/user.png",
     "/assets/images/user.png"
   ];
 
@@ -46,13 +47,13 @@ export class UsersComponent implements OnInit {
 
       this.activeUserChange =
         this.responseData["activeUsers"] <
-          this.responseData["activeUsersSinceLastMonth"]
+        this.responseData["activeUsersSinceLastMonth"]
           ? false
           : true;
 
       this.enrolledUserChange =
         this.responseData["enrolledUsers"] <
-          this.responseData["enrolledUsersSinceLastMonth"]
+        this.responseData["enrolledUsersSinceLastMonth"]
           ? false
           : true;
 
@@ -77,7 +78,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getAPIData();

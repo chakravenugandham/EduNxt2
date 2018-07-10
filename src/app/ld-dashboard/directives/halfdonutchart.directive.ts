@@ -60,11 +60,16 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .attr("d", <any>backgroundArc)
       .attr("fill", "#E9E9E9");
 
-    let graph_color = chartData > 50 ? "#5A8BFE" : "#F77F6C";
+    let graph_color = chartData > 50 ? "#5584FF" : "#F77F6C";
+    let graph_color_gradient = chartData > 50 ? "#0146F9" : "#F77F6C";
     charts
       .append("path")
       .attr("d", <any>mainArc)
       .attr("fill", graph_color);
+    // .attr("offset", "0%")
+    // .attr("fill", graph_color_gradient)
+    // .attr("offset", "100%")
+    // .attr("fill", graph_color);
 
     this.el.nativeElement.append(chartDiv);
   }

@@ -28,10 +28,10 @@ import { HeaderComponent } from "./ld-dashboard/common/header/header.component";
 import { TimeFrameComponent } from "./ld-dashboard/common/time-frame/time-frame.component";
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
 import { ActivityWidgetComponent } from "./ld-dashboard/activity-widget/activity-widget.component";
-import { UsersComponent } from "./ld-dashboard/activity-widget/users/users.component";
-import { EngagementComponent } from "./ld-dashboard/activity-widget/engagement/engagement.component";
-import { PaceComponent } from "./ld-dashboard/activity-widget/pace/pace.component";
-import { FeedbackComponent } from "./ld-dashboard/activity-widget/feedback/feedback.component";
+import { UsersComponent } from "./ld-dashboard/activity-widget/ld-dashboard/users/users.component";
+import { EngagementComponent } from "./ld-dashboard/activity-widget/ld-dashboard/engagement/engagement.component";
+import { PaceComponent } from "./ld-dashboard/activity-widget/ld-dashboard/pace/pace.component";
+import { FeedbackComponent } from "./ld-dashboard/activity-widget/ld-dashboard/feedback/feedback.component";
 import { ActiveUserWidgetComponent } from "./ld-dashboard/active-user-widget/active-user-widget.component";
 import { ActiveUsersComponent } from "./ld-dashboard/active-user-widget/active-users/active-users.component";
 import { ModeOfDeliveryComponent } from "./ld-dashboard/active-user-widget/mode-of-delivery/mode-of-delivery.component";
@@ -62,8 +62,8 @@ import { LearnerTrackFullviewComponent } from "./ld-dashboard/fullviews/learner-
 import { MpDatepickerRangeComponent } from "./ld-dashboard/common/mp-datepicker-range/mp-datepicker-range.component";
 import { ContentConsumptionFullviewComponent } from "./ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component";
 import { FooterComponent } from "./ld-dashboard/common/footer/footer.component";
-import { TimespentComponent } from "./ld-dashboard/activity-widget/timespent/timespent.component";
-import { UserstrainedComponent } from "./ld-dashboard/activity-widget/userstrained/userstrained.component";
+import { TimespentComponent } from "./ld-dashboard/activity-widget/ld-dashboard/timespent/timespent.component";
+import { UserstrainedComponent } from "./ld-dashboard/activity-widget/ld-dashboard/userstrained/userstrained.component";
 import { FilterWidgetComponent } from "./ld-dashboard/common/filter-widget/filter-widget.component";
 import { LearnerPerformanceFullviewComponent } from "./ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component";
 import { ScoresDistributionFullviewComponent } from "./ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component";
@@ -83,6 +83,12 @@ import { TrackofgoalsComponent } from "./ld-dashboard/trackofgoals/trackofgoals.
 import { GoalsComponent } from "./ld-dashboard/trackofgoals/goals/goals.component";
 import { GoalcardsComponent } from "./ld-dashboard/common/goalcards/goalcards.component";
 import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directive";
+import { HalfdonutComponent } from './ld-dashboard/common/halfdonut/halfdonut.component';
+import { FacultyperformanceComponent } from './ld-dashboard/activity-widget/faculty/facultyperformance/facultyperformance.component';
+import { FacultyComponent } from './ld-dashboard/activity-widget/faculty/faculty.component';
+import { LdDashboardWidgetComponent } from "./ld-dashboard/activity-widget/ld-dashboard/ld-dashboard-widget.component";
+import { FacultylearnerprogressComponent } from './ld-dashboard/activity-widget/faculty/facultylearnerprogress/facultylearnerprogress.component';
+import { OutliersComponent } from './ld-dashboard/activity-widget/faculty/outliers/outliers.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +151,13 @@ import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directiv
     TrackofgoalsComponent,
     GoalsComponent,
     GoalcardsComponent,
-    LinegraphDirective
+    LinegraphDirective,
+    HalfdonutComponent,
+    FacultyperformanceComponent,
+    FacultyComponent,
+    LdDashboardWidgetComponent,
+    FacultylearnerprogressComponent,
+    OutliersComponent
   ],
   imports: [
     BrowserModule,
@@ -162,4 +174,4 @@ import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directiv
   providers: [GoogleChartsBaseService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

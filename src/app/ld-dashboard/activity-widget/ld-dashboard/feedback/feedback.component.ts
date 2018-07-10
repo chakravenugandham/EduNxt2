@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-feedback",
@@ -14,7 +14,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./feedback.component.scss"]
 })
 export class FeedbackComponent implements OnInit, OnChanges {
-  @Input() feedbackDataElement;
+  //@Input() feedbackDataElement;
 
   learnerSatisfaction: any;
   learnerSatisfationBy: number;

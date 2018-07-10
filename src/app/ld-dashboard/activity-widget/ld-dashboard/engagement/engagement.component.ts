@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { Config } from "../../../../ld-dashboard/common/users-data/users-data.component";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-engagement",
@@ -8,8 +8,8 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./engagement.component.scss"]
 })
 export class EngagementComponent implements OnInit, OnChanges {
-  @Input() engageData;
-  @Input() totalUsers;
+  // @Input() engageData;
+  // @Input() totalUsers;
 
   config: Config;
   totalUserCount: number;
@@ -42,7 +42,7 @@ export class EngagementComponent implements OnInit, OnChanges {
 
         this.engageUserChange =
           this.responseData["usersCompletedPrograms"] <
-          this.responseData["completedProgramsSinceLastMonth"]
+            this.responseData["completedProgramsSinceLastMonth"]
             ? false
             : true;
 
@@ -71,7 +71,7 @@ export class EngagementComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     // this.getToalUsers();

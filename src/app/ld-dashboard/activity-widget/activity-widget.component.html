@@ -1,27 +1,4 @@
-<div class="widget-heading row font-weight-bold">
-  <p>
-    Learning activities at a glance
-  </p>
-</div>
-<div class="activity-widgets d-flex w-100">
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-users [userElement]="responseData.activeUsers" [imageElement]="responseImageData"></app-users>
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-engagement [engageData]="responseData.learnerEngagement" [totalUsers]="responseData.activeUsers"></app-engagement>
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-pace [paceDataElement]="responseData.learnerPace"></app-pace>
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-feedback [feedbackDataElement]="responseData.feedback"></app-feedback>
-  </div>
-
-  <!-- <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-userstrained [usersData]="responseGoalsData.usersTrained"></app-userstrained>
-  </div> -->
-
-  <!-- <div class="col-md-3 col-sm-6 col-xs-12">
-    <app-timespent [timeData]="responseGoalsData.timeSpent"></app-timespent>
-  </div> -->
+<div>
+  <app-ld-dashboard-widget></app-ld-dashboard-widget>
+  <app-faculty></app-faculty>
 </div>

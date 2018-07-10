@@ -11,6 +11,17 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   @Input() usersData;
   chartData = [];
 
+  dataSet =
+    [
+      [1518307200000, 300, 400],
+      [1518393600000, 350, 550],
+      [1518480000000, 400, 600],
+      [1518566400000, 450, 650],
+      [1518652800000, 500, 700],
+      [1518739200000, 550, 750],
+      [1518825600000, 600, 800],
+    ]
+
   constructor() { }
 
   onResize() {
@@ -178,6 +189,16 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .attr("stroke-width", 1)
       .attr("opacity", "0");
 
+    svg.append("text")
+      .text("No.of users")
+      .attr("transform", "rotate(-90)")
+      .attr("x", - (h / 2))
+      .attr("y", 20)
+
+    svg.append("text")
+      .text("scoreranges")
+      .attr("transform", "translate(" + (w / 2) + "," + h + ")")
+
     svg.on("mousemove", function () {
       let mouseX = d3.event.pageX - p;
       vertline.attr("opacity", "1");
@@ -189,10 +210,10 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       if (nearest) {
         vertline.attr("x1", nearest).attr("x2", nearest);
         d3.select(".ttip-date").html(
-          d3.timeFormat("%d %b")(new Date(dataPoints[nearest][0][0]))
+          d3.timeFormat("%b %d %Y")(new Date(dataPoints[nearest][0][0]))
         );
-        d3.select(".ttip-learners").html(
-          dataPoints[nearest][0][1] + " Active Learner"
+        d3.select(".ttip-learners").html("<span style='color:red'>" +
+          dataPoints[nearest][0][1] + "</span> Active Learner"
         );
         d3.select(".ttip-faculty").html(
           dataPoints[nearest][0][2] + " Active Faculty and admins"
@@ -217,7 +238,9 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.usersChartRender(this.dataSet);
+  }
 
   ngOnChanges(changes: any) {
     if (changes.usersData.currentValue && this.chartData) {
@@ -236,7 +259,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
           activeFacultiesAndAdmins
         ]);
       }
-      this.usersChartRender(this.chartData);
+      this.usersChartRender(this.dataSet);
     }
   }
 }

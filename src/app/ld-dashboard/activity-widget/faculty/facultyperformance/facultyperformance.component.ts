@@ -9,12 +9,16 @@ import { LdDashboardService } from "../../../services/ld-dashboard.service";
 })
 export class FacultyperformanceComponent implements OnInit {
   config: Config;
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
+  // spinner_loader: boolean = false;
+  // noDataFlag: boolean = false;
+  percentageChange: number;
+  expectedChange: boolean;
 
   constructor(private getData: LdDashboardService) { }
 
   ngOnInit() {
+    this.percentageChange = 75;
+    this.expectedChange = true;
   }
 
 }

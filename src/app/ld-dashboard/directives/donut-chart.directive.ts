@@ -24,7 +24,7 @@ export class DonutChartDirective implements OnChanges {
       .node()
       .getBoundingClientRect().width;
     let h: number;
-    if (this.componentName == "active-learner-pace") {
+    if (this.componentName == "active-learner-pace" || this.componentName == "faculty-learner-progress" || this.componentName == "faculty-outliers") {
       h = 130;
     } else {
       h = 240;
@@ -34,8 +34,8 @@ export class DonutChartDirective implements OnChanges {
       .arc()
       // .innerRadius(90)
       // .outerRadius(100);
-      .innerRadius(this.componentName == "active-learner-pace" ? 40 : 90)
-      .outerRadius(this.componentName == "active-learner-pace" ? 55 : 100);
+      .innerRadius((this.componentName == "active-learner-pace") || (this.componentName == "faculty-learner-progress") || (this.componentName == "faculty-outliers") ? 40 : 90)
+      .outerRadius((this.componentName == "active-learner-pace") || (this.componentName == "faculty-learner-progress") || (this.componentName == "faculty-outliers") ? 55 : 100);
 
     let svg = d3
       .select(this.el.nativeElement)

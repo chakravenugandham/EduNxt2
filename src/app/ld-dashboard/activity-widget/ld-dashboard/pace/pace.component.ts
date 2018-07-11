@@ -34,17 +34,6 @@ export class PaceComponent implements OnInit, OnChanges {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-
-      // if (
-      //   this.responseData["aheadOfSchedule"] == 0 ||
-      //   this.responseData["behindSchedule"] == 0 ||
-      //   this.responseData["haveNotStarted"] == 0 ||
-      //   this.responseData["onTrack"]
-      // ) {
-      //   this.noDataFlag = true;
-      // } else {
-      //   this.noDataFlag = false;
-      // }
       this.paceTrackValues = [
         {
           color: "#F77F6C",

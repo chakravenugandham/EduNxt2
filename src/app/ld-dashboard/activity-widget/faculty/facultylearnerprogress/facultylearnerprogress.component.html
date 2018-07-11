@@ -20,15 +20,19 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <!-- <div [hidden]="spinner_loader">
-    <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
-  </div> -->
-  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
+  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="learnerProgressValues" [componentName]="componentName">
   </div>
 
-  <!-- <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <app-users-data [config]="config" [numberFontColor]="engageUserChange"></app-users-data>
-        </div>
-      </div> -->
+  <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">
+    <div class="text-fix-bottom row">
+      <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+        <p class="bigNumber behindSchedule">24</p>
+        <p class="m-t-10">Behind Schedule</p>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+        <p class="bigNumber aheadOfScheduleColor">30</p>
+        <p class="m-t-10 m-b-0">Ahead of Schedule</p>
+      </div>
+    </div>
+  </div>
 </div>

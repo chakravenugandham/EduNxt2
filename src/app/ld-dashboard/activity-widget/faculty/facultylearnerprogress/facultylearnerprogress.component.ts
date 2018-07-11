@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as d3 from "d3v4";
+import { LdDashboardService } from "../../../services/ld-dashboard.service";
+
 
 @Component({
   selector: 'app-facultylearnerprogress',
@@ -6,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facultylearnerprogress.component.scss']
 })
 export class FacultylearnerprogressComponent implements OnInit {
+  learnerProgressValues = [];
+  componentName = "faculty-learner-progress";
 
   constructor() { }
 
   ngOnInit() {
+    this.learnerProgressValues = [
+      {
+        color: "#F77F6C",
+        type: "classA",
+        number: 24
+      },
+      {
+        color: "#5584FF",
+        type: "classB",
+        number: 30
+      }
+    ];
   }
 
 }

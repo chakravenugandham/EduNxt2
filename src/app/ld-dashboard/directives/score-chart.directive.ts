@@ -94,6 +94,16 @@ export class ScoreChartDirective implements OnChanges {
       .attr("class", "area-color")
       .attr("d", area); // Calls the area generator
 
+    svg.append("text")
+      .text("No.of users")
+      .attr("transform", "rotate(-90)")
+      .attr("x", - (h / 2))
+      .attr("y", 20)
+
+    svg.append("text")
+      .text("scoreranges")
+      .attr("transform", "translate(" + (w / 2) + "," + h + ")")
+
     function make_x_gridlines() {
       return d3.axisBottom(xScale).ticks(5);
     }

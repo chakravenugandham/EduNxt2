@@ -12,7 +12,7 @@ export class TimeFrameComponent implements OnInit {
   today: Date = new Date();
   selectCourse: any = "All Courses";
 
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   getDataFromService() {
     this.getData.getCoursesData().subscribe((res: any) => {
@@ -38,7 +38,7 @@ export class TimeFrameComponent implements OnInit {
         }
       }
     }
-    this.getData.setHeaders({
+    this.getData.courseAndProgram({
       courseId: courseIdSelected,
       programId: programIdSelected
     });

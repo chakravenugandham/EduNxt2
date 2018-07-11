@@ -2,22 +2,22 @@
   <table class="table table-borderless">
     <thead>
       <tr>
-        <th scope="col" (click)={}>Team Name
+        <th scope="col" (click)="sortByFn('teamName')">Team Name
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col">Completion %
+        <th scope="col" (click)="sortByFn('completion')">Completion %
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col">Completed Programs
+        <th scope="col" (click)="sortByFn('completedProgram')">Completed Programs
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col">Team Size
+        <th scope="col" (click)="sortByFn('teamsize')">Team Size
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
@@ -28,7 +28,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tableData of teamsData | slice:0:4 | orderBy: 'teamId'">
+      <tr *ngFor="let tableData of teamsData | orderBy: sortOrder">
         <td scope="row">
           <span class="imgActive">
             <img src="/assets/images/user.png" alt="userImg">

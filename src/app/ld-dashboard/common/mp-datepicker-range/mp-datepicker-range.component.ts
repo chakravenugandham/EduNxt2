@@ -18,13 +18,13 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     locale: { format: "YYYY-MM-DD" },
     alwaysShowCalendars: false
   };
-  public applyDate(e: any) { }
+  public applyDate(e: any) {}
 
   constructor(
     private getDate: CommonService,
     private getData: LdDashboardService,
     private getDateService: DateserviceService
-  ) { }
+  ) {}
 
   dateTest = this.getData.constructDate();
 

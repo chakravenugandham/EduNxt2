@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
-import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbModalOptions
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-teams",
@@ -12,11 +16,19 @@ export class TeamsComponent implements OnInit {
   teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
-  order: string;
-  constructor(private getData: LdDashboardService, private modalService: NgbModal) {
+  sortOrder: string = "teamName";
+
+  constructor(
+    private getData: LdDashboardService,
+    private modalService: NgbModal
+  ) {
     this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
+  }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
   }
 
   // open(content) {

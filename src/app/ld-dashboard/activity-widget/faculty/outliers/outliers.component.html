@@ -1,3 +1,38 @@
-<p>
-  outliers works!
-</p>
+<div class="widget-block engagement-component">
+  <div class="headingText clearfix">
+    <ul class="nav float-left">
+      <li class="nav-item">
+        <a class="nav-link">Learner Progress</a>
+      </li>
+    </ul>
+    <div>
+      <span class="float-right widget-menu" data-toggle="tooltip" data-placement="top" title="Need Help?">
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="outliersValues" [componentName]="componentName">
+  </div>
+
+  <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">
+    <div class="text-fix-bottom row">
+      <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+        <p class="bigNumber behindSchedule">24</p>
+        <p class="m-t-10">Behind Schedule</p>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+        <p class="bigNumber aheadOfScheduleColor">30</p>
+        <p class="m-t-10 m-b-0">Ahead of Schedule</p>
+      </div>
+    </div>
+  </div>
+</div>

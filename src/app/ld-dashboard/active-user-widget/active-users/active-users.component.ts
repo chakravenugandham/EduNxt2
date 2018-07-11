@@ -11,16 +11,16 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   @Input() usersData;
   chartData = [];
 
-  dataSet =
-    [
-      [1518307200000, 300, 400],
-      [1518393600000, 350, 550],
-      [1518480000000, 400, 600],
-      [1518566400000, 450, 650],
-      [1518652800000, 500, 700],
-      [1518739200000, 550, 750],
-      [1518825600000, 600, 800],
-    ]
+  // dataSet =
+  //   [
+  //     [1518307200000, 300, 400],
+  //     [1518393600000, 350, 550],
+  //     [1518480000000, 400, 600],
+  //     [1518566400000, 450, 650],
+  //     [1518652800000, 500, 700],
+  //     [1518739200000, 550, 750],
+  //     [1518825600000, 600, 800],
+  //   ]
 
   constructor() { }
 
@@ -189,16 +189,6 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
       .attr("stroke-width", 1)
       .attr("opacity", "0");
 
-    svg.append("text")
-      .text("No.of users")
-      .attr("transform", "rotate(-90)")
-      .attr("x", - (h / 2))
-      .attr("y", 20)
-
-    svg.append("text")
-      .text("scoreranges")
-      .attr("transform", "translate(" + (w / 2) + "," + h + ")")
-
     svg.on("mousemove", function () {
       let mouseX = d3.event.pageX - p;
       vertline.attr("opacity", "1");
@@ -239,7 +229,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.usersChartRender(this.dataSet);
+    //this.usersChartRender(this.dataSet);
   }
 
   ngOnChanges(changes: any) {
@@ -259,7 +249,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
           activeFacultiesAndAdmins
         ]);
       }
-      this.usersChartRender(this.dataSet);
+      this.usersChartRender(this.chartData);
     }
   }
 }

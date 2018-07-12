@@ -6,7 +6,7 @@ import {
   OnChanges
 } from "@angular/core";
 import * as d3 from "d3";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-userstrained",

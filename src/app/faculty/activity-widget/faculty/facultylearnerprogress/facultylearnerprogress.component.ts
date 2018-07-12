@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as d3 from "d3v4";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Config } from "../../../../ld-dashboard/common/users-data/users-data.component";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
+import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-users",

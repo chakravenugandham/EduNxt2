@@ -143,6 +143,12 @@ export class LinegraphDirective implements OnChanges {
       .attr("fill", "white")
       .style("opacity", "0.5");
 
+    svg.append("text")
+      .text("No.of users")
+      .attr("transform", "rotate(-90)")
+      .attr("x", - (h / 2))
+      .attr("y", 20)
+
     svg
       .selectAll("circles")
       .data(dataSet)

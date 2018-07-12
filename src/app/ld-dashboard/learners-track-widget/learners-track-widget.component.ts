@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
-import { CommonService } from "../services/common.service";
+import { CommonService } from "../../common-services/common.service";
 
 @Component({
   selector: "app-learners-track-widget",

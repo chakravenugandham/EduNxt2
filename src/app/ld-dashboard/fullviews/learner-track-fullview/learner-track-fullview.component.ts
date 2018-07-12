@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { CommonService } from "../../services/common.service";
+import { CommonService } from "../../../common-services/common.service";
 
 @Component({
   selector: "app-learner-track-fullview",

@@ -9,7 +9,7 @@ import { ScoresDistributionFullviewComponent } from "./ld-dashboard/fullviews/sc
 import { OrgPerformanceFullviewComponent } from "./ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component";
 import { NotificationPerformanceFullviewComponent } from "./ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component";
 import { OrgInterestFullviewComponent } from "./ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component";
-import { LearnersQuizFullviewComponent } from "./ld-dashboard/fullviews/learners-quiz-fullview/learners-quiz-fullview.component";
+import { LearnersQuizFullviewComponent } from "./faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component";
 
 const routes: Routes = [
   { path: "", component: LdDashboardComponent },

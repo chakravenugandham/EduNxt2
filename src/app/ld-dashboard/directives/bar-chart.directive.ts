@@ -131,6 +131,12 @@ export class BarChartDirective implements OnChanges {
       .ordinal()
       .range(["#FFD630", "#F77F6C", "#5584FF", "#23b14d"]);
 
+    svg.append("text")
+      .text("No.of users")
+      .attr("transform", "rotate(-90)")
+      .attr("x", - (height / 2))
+      .attr("y", 20)
+
     bar
       .selectAll("rect")
       .data(function (d) {

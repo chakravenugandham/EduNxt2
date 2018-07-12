@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-feedback",
@@ -54,7 +54,7 @@ export class FeedbackComponent implements OnInit, OnChanges {
         1
       );
       this.contentRating = Number(this.responseData["contentRating"]).toFixed(
-        1
+        2
       );
 
       this.learnerSatisfationBy = Math.abs(

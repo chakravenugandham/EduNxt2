@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Config } from "../../../../ld-dashboard/common/users-data/users-data.component";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
+import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-users",
@@ -47,13 +47,13 @@ export class UsersComponent implements OnInit {
 
       this.activeUserChange =
         this.responseData["activeUsers"] <
-        this.responseData["activeUsersSinceLastMonth"]
+          this.responseData["activeUsersSinceLastMonth"]
           ? false
           : true;
 
       this.enrolledUserChange =
         this.responseData["enrolledUsers"] <
-        this.responseData["enrolledUsersSinceLastMonth"]
+          this.responseData["enrolledUsersSinceLastMonth"]
           ? false
           : true;
 
@@ -78,7 +78,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getAPIData();

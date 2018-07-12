@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import * as d3 from "d3v4";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-pace",
@@ -36,22 +36,22 @@ export class PaceComponent implements OnInit, OnChanges {
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       this.paceTrackValues = [
         {
-          color: "#F77F6C",
+          color: "#23b14d",
           type: "classA",
           number: this.responseData["aheadSchedule"]
         },
         {
-          color: "#5584FF",
+          color: "#ffd630",
           type: "classB",
           number: this.responseData["behindSchedule"]
         },
         {
-          color: "#23B14D",
+          color: "#f77f6c",
           type: "classC",
           number: this.responseData["haveNotStarted"]
         },
         {
-          color: "#FFD630",
+          color: "#5584ff",
           type: "classE",
           number: this.responseData["onTrack"]
         }

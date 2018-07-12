@@ -6,7 +6,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-timespent",

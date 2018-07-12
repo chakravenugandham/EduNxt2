@@ -11,16 +11,16 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   @Input() usersData;
   chartData = [];
 
-  // dataSet =
-  //   [
-  //     [1518307200000, 300, 400],
-  //     [1518393600000, 350, 550],
-  //     [1518480000000, 400, 600],
-  //     [1518566400000, 450, 650],
-  //     [1518652800000, 500, 700],
-  //     [1518739200000, 550, 750],
-  //     [1518825600000, 600, 800],
-  //   ]
+  dataSet =
+    [
+      [1518307200000, 300, 400],
+      [1518393600000, 350, 550],
+      [1518480000000, 400, 600],
+      [1518566400000, 450, 650],
+      [1518652800000, 500, 700],
+      [1518739200000, 550, 750],
+      [1518825600000, 600, 800],
+    ]
 
   constructor() { }
 
@@ -202,11 +202,11 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
         d3.select(".ttip-date").html(
           d3.timeFormat("%b %d %Y")(new Date(dataPoints[nearest][0][0]))
         );
-        d3.select(".ttip-learners").html("<span style='color:red'>" +
+        d3.select(".ttip-learners").html("<span style='color:#0146F9'>" +
           dataPoints[nearest][0][1] + "</span> Active Learner"
         );
-        d3.select(".ttip-faculty").html(
-          dataPoints[nearest][0][2] + " Active Faculty and admins"
+        d3.select(".ttip-faculty").html("<span style='color:#0146F9'>" +
+          dataPoints[nearest][0][2] + "</span> Active Faculty and admins"
         );
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");
@@ -229,7 +229,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    //this.usersChartRender(this.dataSet);
+    this.usersChartRender(this.dataSet);
   }
 
   ngOnChanges(changes: any) {

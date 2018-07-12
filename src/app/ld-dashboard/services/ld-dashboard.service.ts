@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Subject } from "rxjs";
 import { APIURL } from "../../apiURL";
-import { DateserviceService } from "../services/dateservice.service";
+import { DateserviceService } from "../../common-services/dateservice.service";
 
 @Injectable({
   providedIn: "root"
@@ -66,16 +66,12 @@ export class LdDashboardService implements OnInit {
   courseAndProgram(config?: any) {
     let courseId;
     let programId;
-    console.log(config);
-
     for (let key in config) {
       courseId = config.courseId;
       programId = config.programId;
     }
     this.courseId = courseId;
     this.programId = programId;
-    console.log(this.courseId);
-    console.log(this.programId);
 
     this.refreshAPI$.next();
   }

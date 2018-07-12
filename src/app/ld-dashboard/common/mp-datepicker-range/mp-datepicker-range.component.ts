@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
 import { DaterangePickerComponent } from "ng2-daterangepicker";
-import { CommonService } from "../../services/common.service";
+import { CommonService } from "../../../common-services/common.service";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { DateserviceService } from "../../services/dateservice.service";
+import { DateserviceService } from "../../../common-services/dateservice.service";
 
 @Component({
   selector: "app-mp-datepicker-range",
@@ -18,13 +18,13 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     locale: { format: "YYYY-MM-DD" },
     alwaysShowCalendars: false
   };
-  public applyDate(e: any) {}
+  public applyDate(e: any) { }
 
   constructor(
     private getDate: CommonService,
     private getData: LdDashboardService,
     private getDateService: DateserviceService
-  ) {}
+  ) { }
 
   dateTest = this.getData.constructDate();
 

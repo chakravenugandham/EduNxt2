@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Config } from "../../../../ld-dashboard/common/users-data/users-data.component";
-import { LdDashboardService } from "../../../services/ld-dashboard.service";
 
 @Component({
   selector: 'app-facultyperformance',
@@ -14,7 +13,7 @@ export class FacultyperformanceComponent implements OnInit {
   percentageChange: number;
   expectedChange: boolean;
 
-  constructor(private getData: LdDashboardService) { }
+  constructor() { }
 
   ngOnInit() {
     this.percentageChange = 75;

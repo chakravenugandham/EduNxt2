@@ -1,0 +1,52 @@
+<div class="org-performanace">
+  <p>
+    <b>View performance across assignments </b>
+  </p>
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Assignment Name
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">% Submitted
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">Yet to submit
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">No. to review
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+        <th scope="col">
+          Avg. Score
+          <span>
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tableData of teamsData | slice:0:4 | orderBy: 'teamId'">
+        <td scope="row">
+
+          {{tableData.teamName}}
+
+        </td>
+        <td>{{parseFloat(tableData.completion).toFixed(2)}}</td>
+        <td>{{tableData.completedProgram}}</td>
+        <td>{{tableData.teamsize}}</td>
+        <td>
+          <span class="color cursor-pointer" data-toggle="modal" data-target="#exampleModal">{{tableData.actionMessage}}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

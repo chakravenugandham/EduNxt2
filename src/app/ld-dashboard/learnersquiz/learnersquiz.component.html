@@ -1,0 +1,60 @@
+<div class="widget-heading clearfix font-weight-bold">
+  <p class="float-left">How are my learners doing on quizzes and assignments?</p>
+  <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="Need Help?">
+    <i class="fa fa-question-circle" aria-hidden="true"></i>
+  </p>
+</div>
+<div class="widget-block">
+  <div class="headingText clearfix">
+    <ul class="nav float-left">
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active' :getTab =='quiz'}" (click)="quizFn()">Quiz Overview</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active' :getTab =='assignment'}" (click)="assignmentFn()">Assignment Overview</a>
+      </li>
+    </ul>
+    <div class="float-right widget-menu">
+      <span data-toggle="tooltip" data-placement="top" title="Need Help?">
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+      </span>
+      <!-- <ng-template #popcontent>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/SAve.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Save this view</b>
+            </span>
+          </li>
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/mail.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Email this report</b>
+            </span>
+          </li>
+          <li class="list-inline-item">
+            <span>
+              <img src="../../assets/IconsSVGs/Download.svg">
+            </span>
+            <span class="font-color p-l-10">
+              <b>Download this report</b>
+            </span>
+          </li>
+        </ul>
+        [ngbPopover]="popcontent"
+      </ng-template> -->
+      <span class="p-l-20" placement="right">
+        <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
+      </span>
+    </div>
+  </div>
+  <div class="org-performance">
+    <app-quizoverview *ngIf="getTab == 'quiz'"></app-quizoverview>
+    <app-assignmentoverview *ngIf="getTab == 'assignment'"></app-assignmentoverview>
+  </div>
+  <app-filter-widget [viewData]="filtersData"></app-filter-widget>
+</div>

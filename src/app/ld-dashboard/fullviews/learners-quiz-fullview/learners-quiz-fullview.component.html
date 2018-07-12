@@ -1,0 +1,175 @@
+<div class="dashboard fullviewComponent widget-row learner-track-fullview">
+  <div class="widget-heading row">
+    <span>
+      <i class="fas fa-angle-left" routerLink="/"></i>
+    </span>
+    <span *ngIf="showDetails == 'quiz'"> How have my learners been performing in Quizzes? </span>
+    <span *ngIf="showDetails == 'assignment'"> How have my learners been performing in Assignments? </span>
+  </div>
+  <div class="widget-block">
+    <div class="m-b-12">
+      <div class="float-left form-inline">
+        <span>
+          <b>Display Performance for </b>
+        </span>
+        <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails">
+          <option [value]="'quiz'">Quizzes</option>
+          <option [value]="'assignment'">Assignments</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <table class="table table-borderless" *ngIf="showDetails == 'quiz'">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+              <span class="text">Quiz Name</span>
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">% Attempted
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">No of Attempts
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">No. passed
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">No. Failed
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">% Skipped
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Avg Score
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Highest Score
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Lowest Score
+              <span class="m-l-8">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let teamData of responseTeamsDetails">
+          <tr>
+            <th scope="row" (click)="comapreUsers(teamData)">
+              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(teamData.teamId)}">
+                <!-- <input type="checkbox" [(ngModel)]="checkBoxValue"> -->
+              </span>
+              <span class="imgActive">
+                <img src="/assets/images/user.png" alt="userImg">
+                <i class="far fa-circle"></i>
+              </span>
+              <span class="userName">{{teamData.teamName}}</span>
+            </th>
+            <td class="">{{parseFloat(teamData.completion).toFixed(2)}}</td>
+            <td class="">{{teamData.completedProgram}}</td>
+            <td class="">{{teamData.teamsize}}</td>
+            <td class="text-primary">
+              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+              <span>Congratulate</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-borderless" *ngIf="showDetails == 'assignment'">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span class="text">Assignment Name</span>
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">% Submitted
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Yet to Submit
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">No. to review
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">On time
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Delayed
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Avg Score
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Highest Score
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Lowest Score
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let trainerData of responseTrainersDetails">
+          <tr>
+            <th scope="row">
+              <span>
+                <input type="checkbox" aria-label="Checkbox for following text input" value="">
+              </span>
+              <span>
+                <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
+              </span>
+              <span class="userName">{{trainerData.trainerName}}</span>
+            </th>
+            <td class="">{{trainerData.trainingsConducted}}</td>
+            <td class="">{{trainerData.peopleTrained}}</td>
+            <td class="">
+              <span>
+                <i class="far fa-star"></i>
+              </span>{{trainerData.avgRating}}</td>
+            <td class="text-primary">
+              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+              <span>Congratulate</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

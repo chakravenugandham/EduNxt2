@@ -6,22 +6,22 @@
   <table class="table table-borderless">
     <thead>
       <tr>
-        <th scope="col">Content
+        <th scope="col" (click)="sortByFn('contentName')">Content
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col">Author
+        <th scope="col" (click)="sortByFn('author')">Author
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col">Views
+        <th scope="col" (click)="sortByFn('views')">Views
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col">Avg. Rating
+        <th scope="col" (click)="sortByFn('avgRating')">Avg. Rating
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentData | slice:0:5; let i=index">
+      <tr *ngFor="let content of contentData | orderBy: sortOrder">
         <th scope="row"> {{content.contentName}} </th>
         <td> {{content.author}} </td>
         <td> {{content.views}} </td>

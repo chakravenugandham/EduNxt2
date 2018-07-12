@@ -8,11 +8,16 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 })
 export class TrainersComponent implements OnInit {
   trainersData = [];
+  sortOrder: string = "trainerName";
 
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
+  }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
   }
 
   getDataFromService() {

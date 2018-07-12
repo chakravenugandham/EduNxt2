@@ -8,16 +8,17 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./content-consumption.component.scss"]
 })
 export class ContentConsumptionComponent implements OnInit, OnChanges {
-
   @Input() contentData;
-
-  constructor() { }
+  sortOrder: string = "contentName";
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+  }
+  constructor() {}
 
   ngOnChanges(changes: any) {
     if (changes.contentData.currentValue) {
-
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

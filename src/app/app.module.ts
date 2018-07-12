@@ -83,9 +83,9 @@ import { TrackofgoalsComponent } from "./ld-dashboard/trackofgoals/trackofgoals.
 import { GoalsComponent } from "./ld-dashboard/trackofgoals/goals/goals.component";
 import { GoalcardsComponent } from "./ld-dashboard/common/goalcards/goalcards.component";
 import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directive";
-import { HalfdonutComponent } from './ld-dashboard/common/halfdonut/halfdonut.component';
-import { FacultyperformanceComponent } from './ld-dashboard/activity-widget/faculty/facultyperformance/facultyperformance.component';
-import { FacultyComponent } from './ld-dashboard/activity-widget/faculty/faculty.component';
+import { HalfdonutComponent } from "./ld-dashboard/common/halfdonut/halfdonut.component";
+import { FacultyperformanceComponent } from "./ld-dashboard/activity-widget/faculty/facultyperformance/facultyperformance.component";
+import { FacultyComponent } from "./ld-dashboard/activity-widget/faculty/faculty.component";
 import { LdDashboardWidgetComponent } from "./ld-dashboard/activity-widget/ld-dashboard/ld-dashboard-widget.component";
 import { FacultylearnerprogressComponent } from './ld-dashboard/activity-widget/faculty/facultylearnerprogress/facultylearnerprogress.component';
 import { OutliersComponent } from './ld-dashboard/activity-widget/faculty/outliers/outliers.component';

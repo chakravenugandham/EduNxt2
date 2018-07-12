@@ -3,22 +3,22 @@
     <table class="table table-borderless">
       <thead>
         <tr>
-          <th scope="col">Trainer Name
+          <th scope="col" (click)="sortByFn('trainerName')">Trainer Name
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">Trainings Conducted
+          <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
-          <th scope="col">People Trained
+          <th scope="col" (click)="sortByFn('peopleTrained')">People Trained
             <span>
               <i class="far fa-question-circle questionmark"></i>
             </span>
           </th>
-          <th scope="col">Avg. Rating
+          <th scope="col" (click)="sortByFn('avgRating')">Avg. Rating
             <span>
               <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tableData of trainersData | slice:0:4">
+        <tr *ngFor="let tableData of trainersData | orderBy: sortOrder">
           <th scope="">
             <span class="imgActive">
               <img src="/assets/images/user.png" alt="userImg">

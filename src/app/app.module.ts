@@ -89,6 +89,10 @@ import { FacultyComponent } from './ld-dashboard/activity-widget/faculty/faculty
 import { LdDashboardWidgetComponent } from "./ld-dashboard/activity-widget/ld-dashboard/ld-dashboard-widget.component";
 import { FacultylearnerprogressComponent } from './ld-dashboard/activity-widget/faculty/facultylearnerprogress/facultylearnerprogress.component';
 import { OutliersComponent } from './ld-dashboard/activity-widget/faculty/outliers/outliers.component';
+import { LearnersquizComponent } from './ld-dashboard/learnersquiz/learnersquiz.component';
+import { QuizoverviewComponent } from './ld-dashboard/learnersquiz/quizoverview/quizoverview.component';
+import { AssignmentoverviewComponent } from './ld-dashboard/learnersquiz/assignmentoverview/assignmentoverview.component';
+import { LearnersQuizFullviewComponent } from './ld-dashboard/fullviews/learners-quiz-fullview/learners-quiz-fullview.component';
 
 @NgModule({
   declarations: [
@@ -157,7 +161,11 @@ import { OutliersComponent } from './ld-dashboard/activity-widget/faculty/outlie
     FacultyComponent,
     LdDashboardWidgetComponent,
     FacultylearnerprogressComponent,
-    OutliersComponent
+    OutliersComponent,
+    LearnersquizComponent,
+    QuizoverviewComponent,
+    AssignmentoverviewComponent,
+    LearnersQuizFullviewComponent
   ],
   imports: [
     BrowserModule,

@@ -55,10 +55,10 @@ export class LdDashboardService implements OnInit {
   baseURL = environment.baseUrl;
   headers = new HttpHeaders()
     .set("LnDUserId", "37046");
-  //.set("tenant-name", "mait");
+  //.set("tenant-name", "MAIT");
   headers1 = new HttpHeaders()
     .set("LnDUserId", "57142");
-  //.set("tenant-name", "mait");
+  //.set("tenant-name", "MAIT");
 
   courseId = 0;
   programId = 0;

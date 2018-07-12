@@ -29,19 +29,19 @@ export class FeedbackComponent implements OnInit, OnChanges {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
 
   getDataFromService() {
     this.spinner_loader = true;
-    this.getData.getFeedbackWidgetData().subscribe((response: any) => {
+    this.dashboardService.getFeedbackWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;

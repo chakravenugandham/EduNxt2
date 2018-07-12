@@ -9,17 +9,16 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ActiveUserWidgetComponent implements OnInit, OnChanges {
   getTab = "activeUser";
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getActiveUsersData();
       this.getLocationData();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getActiveUsersData();
       this.getLocationData();
     });
-
   }
 
   //fliter object for payload
@@ -58,7 +57,7 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
   };
 
   getActiveUsersData() {
-    this.getData
+    this.dashboardService
       .getActiveUsersData(this.filterbody)
       .subscribe((response: any) => {
         this.responseData.activeUserData = response.data;
@@ -66,9 +65,11 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
   }
 
   getLocationData() {
-    this.getData.getLocationData(this.filterbody).subscribe((response: any) => {
-      this.responseData.locationData = response.data;
-    });
+    this.dashboardService
+      .getLocationData(this.filterbody)
+      .subscribe((response: any) => {
+        this.responseData.locationData = response.data;
+      });
   }
 
   getFilterObject($event) {

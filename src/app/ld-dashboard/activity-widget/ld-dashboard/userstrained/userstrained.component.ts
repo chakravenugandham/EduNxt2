@@ -17,28 +17,28 @@ export class UserstrainedComponent implements OnInit, OnChanges {
   //@Input() usersData;
   percentageChange: number;
   responseData = {};
-  constructor(private getDataService: LdDashboardService) {
-    this.getDataService.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
-    this.getDataService.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
 
   getDataFromService() {
-    this.getDataService
+    this.dashboardService
       .getUsersTrainedWidgetData()
       .subscribe((response: any) => {
         this.responseData = response.data;
         this.percentageChange = Math.floor(
           (this.responseData["completedTraining"] * 100) /
-          this.responseData["totalLearners"]
+            this.responseData["totalLearners"]
         );
       });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getDataFromService();

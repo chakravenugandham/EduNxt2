@@ -18,19 +18,19 @@ export class PaceComponent implements OnInit, OnChanges {
   noDataFlag: boolean = false;
   spinner_loader: boolean = false;
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
 
   getDataFromService() {
     this.spinner_loader = true;
-    this.getData.getPaceWidgetData().subscribe((response: any) => {
+    this.dashboardService.getPaceWidgetData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
@@ -59,7 +59,7 @@ export class PaceComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getDataFromService();

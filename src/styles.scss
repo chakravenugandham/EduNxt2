@@ -53,7 +53,7 @@ $grayThree: #e9e9e9;
   .boldText {
     font-size: 13px !important;
     font-weight: 600;
-    color: #707070;
+    color: $darkGray;
   }
   .changeInNumberText {
     font-size: 11px !important;
@@ -77,7 +77,7 @@ $grayThree: #e9e9e9;
   }
 
   .changeNumber {
-    color: #23b14d;
+    color: $green;
   }
 
   .changeNumberLow {
@@ -182,7 +182,8 @@ $grayThree: #e9e9e9;
     margin-right: 12px;
   }
   i {
-    color: #ff5722;
+    // color: #ff5722;
+    color: $orange;
     border-radius: 50%;
     right: 8px;
     top: 8px;
@@ -197,9 +198,9 @@ $grayThree: #e9e9e9;
 .daterangepicker {
   font-size: 12px;
   .input-mini {
-    color: #007bff !important;
+    color: $lightBlue !important;
     border: none !important;
-    border-bottom: 1px solid #007bff !important;
+    border-bottom: 1px solid $lightBlue !important;
     border-radius: 0% !important;
     text-align: center !important;
   }
@@ -210,7 +211,7 @@ $grayThree: #e9e9e9;
     .calendar-table {
       table {
         thead {
-          color: #007bff;
+          color: $lightBlue;
         }
       }
     }
@@ -227,7 +228,7 @@ $grayThree: #e9e9e9;
 //Learner-track CSS
 .learner-track-fullview select {
   padding: 4px;
-  border: 1px solid lightblue;
+  border: 1px solid $lightBlue;
 }
 
 .learnerPaceText {
@@ -242,7 +243,7 @@ $grayThree: #e9e9e9;
 .content-fullview,
 .learner-performance-fullview {
   table tr {
-    border-bottom: 2px dotted #ddd;
+    border-bottom: 2px dotted $grayOne;
     tr:last-child {
       border-bottom: none;
     }
@@ -285,7 +286,7 @@ $grayThree: #e9e9e9;
     input {
       padding: 6px;
       padding-left: 36px;
-      border: 1px solid #2196f3a8;
+      border: 1px solid $lightBlue;
       width: 280px;
     }
     .serach-icon {
@@ -293,7 +294,7 @@ $grayThree: #e9e9e9;
       left: 12px;
       top: 8px;
       i {
-        color: #2196f3a8;
+        color: $lightBlue;
         font-size: 16px;
       }
     }
@@ -301,14 +302,14 @@ $grayThree: #e9e9e9;
 }
 
 .org-performanace input::placeholder {
-  color: #2196f3a8;
+  color: $blue;
   font-size: 10px;
 }
 
 //Line Graph CSS
 #activeUserGraph {
   .line1 {
-    stroke: #fca104;
+    stroke: $orange;
     stroke-width: 6px;
     fill: none;
     opacity: 0.8;
@@ -324,22 +325,22 @@ $grayThree: #e9e9e9;
   }
   .axis path {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
   .axis line {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     shape-rendering: crispEdges;
   }
   .axis text {
     font-family: "Muli";
     font-size: 11px;
-    fill: darkgray;
+    fill: $darkGray;
   }
   .grid line {
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
@@ -353,14 +354,14 @@ $grayThree: #e9e9e9;
 .widget-heading .fa-angle-left {
   margin-right: 6px;
   border-radius: 50%;
-  border: 1px solid;
+  border: 1px solid $gray;
   padding: 1px;
   padding-right: 2px;
   cursor: pointer;
 }
 
 .ellipse {
-  color: #007bff !important;
+  color: $lightBlue !important;
 }
 
 //graph badge CSS
@@ -383,22 +384,22 @@ $grayThree: #e9e9e9;
   }
   .axis path {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
   .axis line {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     shape-rendering: crispEdges;
   }
   .axis text {
     font-family: "Muli";
     font-size: 11px;
-    fill: darkgray;
+    fill: $darkGray;
   }
   .grid line {
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
@@ -414,14 +415,14 @@ $grayThree: #e9e9e9;
   }
   .axis path {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-opacity: 0.2;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
   .axis line {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-opacity: 0.2;
     shape-rendering: crispEdges;
   }
@@ -437,7 +438,7 @@ $grayThree: #e9e9e9;
     stroke-dasharray: 5, 5;
   }
   .x-grid line {
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-opacity: 0.2;
     shape-rendering: crispEdges;
   }
@@ -452,22 +453,22 @@ $grayThree: #e9e9e9;
   }
   .axis path {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
   .axis line {
     fill: none;
-    stroke: #707070;
+    stroke: $darkGray;
     shape-rendering: crispEdges;
   }
   .axis text {
     font-family: "Muli";
     font-size: 11px;
-    fill: darkgray;
+    fill: $darkGray;
   }
   .grid line {
-    stroke: #707070;
+    stroke: $darkGray;
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
@@ -486,8 +487,8 @@ $grayThree: #e9e9e9;
     margin-bottom: 20px;
   }
   select {
-    border: 1px solid #03a9f4;
-    color: #03a9f4;
+    border: 1px solid $lightBlue;
+    color: $lightBlue;
     padding: 2px;
     margin-left: 4px;
     height: 28px;

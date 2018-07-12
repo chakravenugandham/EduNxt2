@@ -54,11 +54,11 @@ export class LdDashboardService implements OnInit {
   //baseURL from enviornment
   baseURL = environment.baseUrl;
   headers = new HttpHeaders()
-    .set("LnDUserId", "37046");
-  //.set("tenant-name", "MAIT");
+    .set("LnDUserId", "37046")
+    .set("tenant-name", "MAIT");
   headers1 = new HttpHeaders()
-    .set("LnDUserId", "57142");
-  //.set("tenant-name", "MAIT");
+    .set("LnDUserId", "57142")
+    .set("tenant-name", "MAIT");
 
   courseId = 0;
   programId = 0;
@@ -110,7 +110,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -133,7 +137,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -156,7 +164,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -179,7 +191,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -202,7 +218,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -225,7 +245,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers1 });
   }
 
@@ -250,7 +274,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -275,7 +303,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -299,9 +331,12 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
-    let headers = new HttpHeaders()
-      .set("LnDUserId", "1001");
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
+    let headers = new HttpHeaders().set("LnDUserId", "1001");
     return this.http.post(url, filterbody, { headers: headers });
   }
 
@@ -329,9 +364,12 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
-    let headers = new HttpHeaders()
-      .set("LnDUserId", "1001");
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
+    let headers = new HttpHeaders().set("LnDUserId", "1001");
     return this.http.post(url, filterbody, { headers: headers });
   }
 
@@ -355,7 +393,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -379,7 +421,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -403,7 +449,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -427,7 +477,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -451,7 +505,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -475,7 +533,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -499,7 +561,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -525,7 +591,11 @@ export class LdDashboardService implements OnInit {
       "&start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -551,7 +621,11 @@ export class LdDashboardService implements OnInit {
       "&start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -575,7 +649,11 @@ export class LdDashboardService implements OnInit {
       "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
-      this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -591,5 +669,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

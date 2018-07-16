@@ -12,7 +12,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class PaceComponent implements OnInit, OnChanges {
   // @Input() paceDataElement;
   paceTrackValues = [];
-  componentName = "active-learner-pace";
+  graphSize = "smallGraph";
 
   responseData = {};
   noDataFlag: boolean = false;
@@ -36,22 +36,22 @@ export class PaceComponent implements OnInit, OnChanges {
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       this.paceTrackValues = [
         {
-          color: "#23b14d",
+          color: "#FCA104",
           type: "classA",
           number: this.responseData["aheadSchedule"]
         },
         {
-          color: "#ffd630",
+          color: "#5584FF",
           type: "classB",
           number: this.responseData["behindSchedule"]
         },
         {
-          color: "#f77f6c",
+          color: "#F77F6C",
           type: "classC",
           number: this.responseData["haveNotStarted"]
         },
         {
-          color: "#5584ff",
+          color: "#39EA37",
           type: "classE",
           number: this.responseData["onTrack"]
         }

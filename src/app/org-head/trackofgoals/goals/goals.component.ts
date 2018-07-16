@@ -1,38 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import * as d3 from "d3v4";
-import { GoalcardsComponent, Config } from "../../common/goalcards/goalcards.component";
+import {
+  GoalcardsComponent,
+  Config
+} from "../../common/goalcards/goalcards.component";
 
 @Component({
-  selector: 'app-goals',
-  templateUrl: './goals.component.html',
-  styleUrls: ['./goals.component.scss']
+  selector: "app-goals",
+  templateUrl: "./goals.component.html",
+  styleUrls: ["./goals.component.scss"]
 })
 export class GoalsComponent implements OnInit {
-
   firstCard: Config;
   secondCard: Config;
-  componentName = "active-learner-pace";
+  graphSize = "smallGraph";
 
-  constructor() { }
+  constructor() {}
 
   paceTrackValues = [];
 
   ngOnChanges(changes: any) {
     if (changes.firstCard.currentValue && changes.secondCard.currentValue) {
       this.firstCard = {
-        businessGoal: 'string',
-        objective: 'string',
+        businessGoal: "string",
+        objective: "string",
         peopleTrained: 20,
-        timeRemaining: 'string',
-        status: 'string',
+        timeRemaining: "string",
+        status: "string"
       };
 
       this.secondCard = {
-        businessGoal: 'string',
-        objective: 'string',
+        businessGoal: "string",
+        objective: "string",
         peopleTrained: 20,
-        timeRemaining: 'string',
-        status: 'string',
+        timeRemaining: "string",
+        status: "string"
       };
     }
   }

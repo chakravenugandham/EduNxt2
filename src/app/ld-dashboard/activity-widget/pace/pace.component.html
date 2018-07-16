@@ -19,7 +19,7 @@
   <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
     <span class="spinner_inside">No data Found</span>
   </div>
-  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="paceTrackValues" [componentName]="componentName">
+  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="paceTrackValues" [graphSize]="graphSize">
   </div>
   <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">
     <div class="text-fix-bottom">

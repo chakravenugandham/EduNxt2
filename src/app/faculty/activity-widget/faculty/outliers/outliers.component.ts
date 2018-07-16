@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-outliers',
-  templateUrl: './outliers.component.html',
-  styleUrls: ['./outliers.component.scss']
+  selector: "app-outliers",
+  templateUrl: "./outliers.component.html",
+  styleUrls: ["./outliers.component.scss"]
 })
 export class OutliersComponent implements OnInit {
-
   outliersValues = [];
-  componentName = "faculty-outliers";
+  graphSize = "smallGraph";
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.outliersValues = [
@@ -26,5 +25,4 @@ export class OutliersComponent implements OnInit {
       }
     ];
   }
-
 }

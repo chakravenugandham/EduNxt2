@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import * as d3 from "d3v4";
 
-
 @Component({
-  selector: 'app-facultylearnerprogress',
-  templateUrl: './facultylearnerprogress.component.html',
-  styleUrls: ['./facultylearnerprogress.component.scss']
+  selector: "app-facultylearnerprogress",
+  templateUrl: "./facultylearnerprogress.component.html",
+  styleUrls: ["./facultylearnerprogress.component.scss"]
 })
 export class FacultylearnerprogressComponent implements OnInit {
   learnerProgressValues = [];
-  componentName = "faculty-learner-progress";
+  graphSize = "smallGraph";
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.learnerProgressValues = [
@@ -27,5 +26,4 @@ export class FacultylearnerprogressComponent implements OnInit {
       }
     ];
   }
-
 }

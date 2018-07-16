@@ -20,7 +20,7 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="learnerProgressValues" [componentName]="componentName">
+  <div *ngIf="!spinner_loader && !noDataFlag" appDonutChart [data]="learnerProgressValues" [graphSize]="graphSize">
   </div>
 
   <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">

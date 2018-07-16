@@ -671,5 +671,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

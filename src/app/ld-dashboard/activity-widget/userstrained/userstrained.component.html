@@ -28,10 +28,6 @@
         <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.trainedPercentage>=50, 'big-danger-class': responseData.trainedPercentage<50}">{{responseData.trainedPercentage}}% </div>
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
-
-            <!-- <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
-            <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow"> -->
-
             <span [ngClass]="{'changeNumber': responseData.trainedPercentage>=50, 'changeNumberLow': responseData.trainedPercentage<50}">
               Expected {{responseData.expectedtrainedPercentage}}%.</span>
           </div>

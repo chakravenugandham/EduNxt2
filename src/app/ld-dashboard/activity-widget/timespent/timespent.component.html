@@ -29,10 +29,6 @@
         <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.timeSpent>=50, 'big-danger-class': responseData.timeSpent<50}">{{responseData.timeSpent}}% </div>
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
-
-            <!-- <img *ngIf="expectedChange" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
-            <img *ngIf="!expectedChange" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow"> -->
-
             <span [ngClass]="{'changeNumber': responseData.timeSpent>=50, 'changeNumberLow': responseData.timeSpent<50}"> Expected {{responseData.expectedTimeSpent}}%.</span>
           </div>
           <div class="m-b-0 font-color">

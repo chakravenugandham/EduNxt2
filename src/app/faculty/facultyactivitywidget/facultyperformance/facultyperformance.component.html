@@ -12,21 +12,21 @@
     </div>
   </div>
 
-  <!-- <div *ngIf="spinner_loader" class="spinner_loading">
+  <div *ngIf="spinner_loader" class="spinner_loading">
     <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
 
   <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
     <span class="spinner_inside">No data found</span>
-  </div> -->
-
-  <div [hidden]="spinner_loader">
-    <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div>
   </div>
 
-  <!-- <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <app-users-data [config]="config" [numberFontColor]="engageUserChange"></app-users-data>
-      </div>
-    </div> -->
+  <div [hidden]="spinner_loader">
+    <div appHalfdonutchart [data]="percentageChange"></div>
+  </div>
+
+  <div class="row m-t-8 text-fix-bottom">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <app-users-data [config]="config" [numberFontColor]="engageUserChange"></app-users-data>
+    </div>
+  </div>
 </div>

@@ -49,7 +49,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
     let performanceDataSet = [];
     let progressDataSet = [];
     this.contentService
-      .getLearnerPerformanceData(this.filterbody)
+      .getLearnerPerformanceData(this.selectedGraph)
       .subscribe((response: any) => {
         this.responseData = response.data;
 

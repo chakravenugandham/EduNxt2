@@ -13,10 +13,46 @@ export class FacultyperformanceComponent implements OnInit {
   percentageChange: number;
   expectedChange: boolean;
 
+  getTab: string = "facultyperformance";
+
+  filtersData = {
+    routeTo: "learnerQuizFullView",
+    filters: false,
+    search: true,
+    viewDetails: true,
+    filterList: ["zone"],
+    currentModule: this.getTab
+  };
+
+  filterbody = {};
+
+
   constructor() { }
 
+  getFilterObject($event) {
+    this.filterbody = $event;
+  }
+
+
   ngOnInit() {
-    this.percentageChange = 75;
-    this.expectedChange = true;
+    this.config = {
+      peopleCurrentlyEnrolled: 20,
+      usersSinceLastMonth: 30,
+      Users: "Users",
+      sinceLastMonth: "",
+      // sinceLastMonth: new Date(start_date).toLocaleDateString(),
+      PeopleAreCurrentlyEnrolled: "People completed training programs"
+    };
+
+    if (this.config.peopleCurrentlyEnrolled > 0) {
+      this.percentageChange = Math.round(
+        (this.config.peopleCurrentlyEnrolled * 100) /
+        15
+      );
+    } else {
+      this.percentageChange = 0;
+    }
+    this.expectedChange = this.percentageChange < 50 ? false : true;
+
   }
 }

@@ -1,6 +1,5 @@
 <div class="widget-heading clearfix font-weight-bold">
-  <p *ngIf="" class="float-left">How active are the users?</p>
-  <p *ngIf="" class="float-left">What is the activity on my course?</p>
+  <p class="float-left">What are my insights from this course?</p>
   <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="Need Help?">
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
@@ -10,13 +9,7 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='activeUser'}" (click)="activeUsersFn()">Active Users</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='modeDelivery'}" (click)="modeDeliveryFn()">Mode of Delivery</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='location'}" (click)="locationFn()">Location</a>
+        <a class="nav-link">Course Insights</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -56,11 +49,6 @@
         <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
       </span>
     </div>
-  </div>
-  <div>
-    <app-active-users [usersData]="responseData.activeUserData" *ngIf="getTab=='activeUser'"></app-active-users>
-    <app-mode-of-delivery [usersData]="responseData.activeUserData" *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
-    <app-location [locationData]="responseData.locationData" *ngIf="getTab=='location'"></app-location>
   </div>
   <div>
     <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>

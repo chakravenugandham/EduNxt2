@@ -57,7 +57,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     this.batches = [];
 
     this.getData
-      .getLearnerPerformanceData(this.filterbody)
+      .getLearnerPerformanceData(this.getTab)
       .subscribe((response: any) => {
         this.responseData = response.data;
 

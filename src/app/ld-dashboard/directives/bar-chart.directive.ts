@@ -66,10 +66,7 @@ export class BarChartDirective implements OnInit, OnChanges {
     // }
 
     let margin = 30,
-      width = d3
-        .select(this.el.nativeElement)
-        .node()
-        .getBoundingClientRect().width,
+      width = 500,
       height = 200;
     let calculatedWidth =
       this.dataset.length > 6 ? width + 46 * (this.dataset.length - 6) : width;

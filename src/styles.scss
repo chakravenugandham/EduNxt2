@@ -449,9 +449,14 @@ $grayThree: #e9e9e9;
 }
 
 .bar-chart-graph {
+  overflow-x: scroll;
+
   .y-axis path {
     stroke-width: 0 !important;
   }
+  // .x text {
+  //   transform: rotate(354deg);
+  // }
   .axis path {
     fill: none;
     stroke: $darkGray;

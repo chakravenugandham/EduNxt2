@@ -31,11 +31,11 @@
           <div class="arrow-space">
             <span [ngClass]="{'changeNumber': responseData.timeSpent>=50, 'changeNumberLow': responseData.timeSpent<50}"> Expected {{responseData.expectedTimeSpent}}%.</span>
           </div>
-          <div class="m-b-0 font-color">
-            <span [ngClass]="{'changeNumber': responseData.timeSpent>=50, 'changeNumberLow': responseData.timeSpent<50}">{{responseData.courseDuration}} </span> of {{responseData.durationSpent}} hours spent on learning activities</div>
+          <p class="font-color">
+            <span [ngClass]="{'changeNumber': responseData.timeSpent>=50, 'changeNumberLow': responseData.timeSpent<50}">{{responseData.courseDuration}} </span> of {{responseData.durationSpent}} hours spent on learning activities</p>
         </div>
       </div>
-      <div class="m-t-10">of your goals has been met</div>
+      <p class="m-t-10">of your goals has been met</p>
     </div>
   </div>
 </div>

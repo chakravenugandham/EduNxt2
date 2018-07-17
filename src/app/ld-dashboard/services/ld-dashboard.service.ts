@@ -376,7 +376,7 @@ export class LdDashboardService implements OnInit {
   }
 
   //learner-performance
-  getLearnerPerformanceData(filterbody) {
+  getLearnerPerformanceData(tab) {
     if (
       this.dateService.dateFilterBodyDetails["start_date"] &&
       this.dateService.dateFilterBodyDetails["end_date"]
@@ -399,8 +399,8 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId;
-    return this.http.post(url, filterbody, { headers: this.headers });
+      this.programId + "&type=" + tab;
+    return this.http.get(url, { headers: this.headers });
   }
 
   //learner-performance full details

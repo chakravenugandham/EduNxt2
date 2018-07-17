@@ -52,10 +52,7 @@ export class BarChartDirective implements OnChanges {
     // }
 
     let margin = 30,
-      width = d3
-        .select(this.el.nativeElement)
-        .node()
-        .getBoundingClientRect().width,
+      width = 500,
       height = 200;
 
     let svg = d3

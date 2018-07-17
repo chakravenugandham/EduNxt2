@@ -1,0 +1,59 @@
+.attention-needed {
+  .widget-heading {
+    p {
+      margin-bottom: 0px;
+      padding-left: 6px;
+    }
+  }
+  .widget-block {
+    height: auto;
+    .headingText {
+      font-weight: 600;
+      border-left: 8px solid #FF4E00;
+      /* margin-bottom: 12px; */
+      margin-left: -20px;
+      padding-left: 12px;
+      color: #262626;
+      position: relative;
+      p {
+        margin-bottom: 0px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+  }
+  p {
+    margin-bottom: 0px;
+  }
+  .attention-one-info {
+    font-size: 12px;
+    line-height: 24px;
+  } // .faculty-img img {
+  //   height: 30px;
+  //   width: 30px;
+  //   border-radius: 50%;
+  //   margin-right: 8px;
+  // }
+}
+
+.imgActive {
+  position: relative;
+  float: left;
+  img {
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    margin-left: -10px;
+    border: 1px solid #fff;
+    z-index: 0;
+  }
+  i {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%); // background-color: #befd45d9;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+  }
+}

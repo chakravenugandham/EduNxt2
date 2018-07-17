@@ -92,11 +92,16 @@ import { QuizoverviewComponent } from './faculty/learnersquiz/quizoverview/quizo
 import { AssignmentoverviewComponent } from './faculty/learnersquiz/assignmentoverview/assignmentoverview.component';
 import { LearnersQuizFullviewComponent } from './faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component';
 import { OrgHeadComponent } from './org-head/org-head.component';
+import { FacultyComponent } from "./faculty/faculty.component";
 import { ProgramcardComponent } from './org-head/common/programcard/programcard.component';
 import { ProgramstatusComponent } from './org-head/orgactivitywidget/programstatus/programstatus.component';
 import { FacultyactivitywidgetComponent } from './faculty/facultyactivitywidget/facultyactivitywidget.component';
 import { OrgactivitywidgetComponent } from './org-head/orgactivitywidget/orgactivitywidget.component';
 import { BestprogramsfullviewComponent } from './org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component';
+import { CourseinsightComponent } from './faculty/courseinsight/courseinsight.component';
+import { CourseInsightWidgetComponent } from './faculty/courseinsight/course-insight-widget/course-insight-widget.component';
+import { FacultyAttentionWidgetComponent } from './faculty/faculty-attention-widget/faculty-attention-widget.component';
+import { FacultyAttentionWidgetCardComponent } from './faculty/common/faculty-attention-widget-card/faculty-attention-widget-card.component';
 
 @NgModule({
   declarations: [
@@ -169,11 +174,16 @@ import { BestprogramsfullviewComponent } from './org-head/fullviews/bestprograms
     AssignmentoverviewComponent,
     LearnersQuizFullviewComponent,
     OrgHeadComponent,
+    FacultyComponent,
     ProgramcardComponent,
     ProgramstatusComponent,
     FacultyactivitywidgetComponent,
     OrgactivitywidgetComponent,
-    BestprogramsfullviewComponent
+    BestprogramsfullviewComponent,
+    CourseinsightComponent,
+    CourseInsightWidgetComponent,
+    FacultyAttentionWidgetComponent,
+    FacultyAttentionWidgetCardComponent
   ],
   imports: [
     BrowserModule,

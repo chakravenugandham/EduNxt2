@@ -1,0 +1,22 @@
+<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+  <div class="program-box">
+    <div class="program-img">
+      <img src={{programdata?.imgUrl}} alt="image">
+      <!-- "./assets/images/program_01.PNG" -->
+    </div>
+    <div class="program-info">
+      <div class="program-heading">{{programdata?.programName}}</div>
+      <div>
+        <span class="bigNumber float-left">{{programdata?.noOfUsers}}</span>
+        <div class="small-font small">
+          <span class="small">
+            <i class="fas fa-arrow-up changeNumber"></i>
+          </span>
+          <span class="changeNumber">{{programdata?.changeInUsers}}</span>
+          <span class="font-color">{{programdata?.users}}</span>
+          <p class="font-color">{{programdata?.sinceLastMonth}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

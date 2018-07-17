@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackofgoalsComponent implements OnInit {
 
+  filtersData = {
+    routeTo: "orgPerformanceFullView",
+    filters: false,
+    search: true,
+    viewDetails: true,
+    filterList: ["zone"]
+  };
+
+  filterbody = {};
+
   constructor() { }
+
+  getFilterObject($event) {
+    this.filterbody = $event;
+  }
 
   ngOnInit() {
   }

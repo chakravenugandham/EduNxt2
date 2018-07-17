@@ -31,12 +31,12 @@
             <span [ngClass]="{'changeNumber': responseData.trainedPercentage>=50, 'changeNumberLow': responseData.trainedPercentage<50}">
               Expected {{responseData.expectedtrainedPercentage}}%.</span>
           </div>
-          <div class="m-b-0 font-color">
+          <p class="font-color">
             <span [ngClass]="{'changeNumber': responseData.trainedPercentage>=50, 'changeNumberLow': responseData.trainedPercentage<50}">{{responseData.completedTraining}} </span>
-            of {{responseData.totalLearners}} users have been trained</div>
+            of {{responseData.totalLearners}} users have been trained</p>
         </div>
       </div>
-      <div class="m-t-10 m-t-8">of your goals has been met</div>
+      <p class="m-t-10">of your goals has been met</p>
     </div>
   </div>
 </div>

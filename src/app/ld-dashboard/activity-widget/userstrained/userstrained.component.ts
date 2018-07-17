@@ -35,6 +35,7 @@ export class UserstrainedComponent implements OnInit, OnChanges {
           (this.responseData["completedTraining"] * 100) /
           this.responseData["totalLearners"]
         );
+        console.log("percentageChange", this.percentageChange);
       });
   }
 

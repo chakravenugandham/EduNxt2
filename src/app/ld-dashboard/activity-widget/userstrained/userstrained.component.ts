@@ -33,12 +33,12 @@ export class UserstrainedComponent implements OnInit, OnChanges {
         this.responseData = response.data;
         this.percentageChange = Math.floor(
           (this.responseData["completedTraining"] * 100) /
-            this.responseData["totalLearners"]
+          this.responseData["totalLearners"]
         );
       });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

@@ -84,15 +84,19 @@ import { GoalsComponent } from "./org-head/trackofgoals/goals/goals.component";
 import { GoalcardsComponent } from "./org-head/common/goalcards/goalcards.component";
 import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directive";
 import { HalfdonutComponent } from "./ld-dashboard/common/halfdonut/halfdonut.component";
-import { FacultyperformanceComponent } from "./faculty/activity-widget/faculty/facultyperformance/facultyperformance.component";
-import { FacultyComponent } from "./faculty/activity-widget/faculty/faculty.component";
-import { FacultylearnerprogressComponent } from './faculty/activity-widget/faculty/facultylearnerprogress/facultylearnerprogress.component';
-import { OutliersComponent } from './faculty/activity-widget/faculty/outliers/outliers.component';
+import { FacultyperformanceComponent } from "./faculty/facultyactivitywidget/facultyperformance/facultyperformance.component";
+import { FacultylearnerprogressComponent } from './faculty/facultyactivitywidget/facultylearnerprogress/facultylearnerprogress.component';
+import { OutliersComponent } from './faculty/facultyactivitywidget/outliers/outliers.component';
 import { LearnersquizComponent } from './faculty/learnersquiz/learnersquiz.component';
 import { QuizoverviewComponent } from './faculty/learnersquiz/quizoverview/quizoverview.component';
 import { AssignmentoverviewComponent } from './faculty/learnersquiz/assignmentoverview/assignmentoverview.component';
 import { LearnersQuizFullviewComponent } from './faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component';
 import { OrgHeadComponent } from './org-head/org-head.component';
+import { ProgramcardComponent } from './org-head/common/programcard/programcard.component';
+import { ProgramstatusComponent } from './org-head/orgactivitywidget/programstatus/programstatus.component';
+import { FacultyactivitywidgetComponent } from './faculty/facultyactivitywidget/facultyactivitywidget.component';
+import { OrgactivitywidgetComponent } from './org-head/orgactivitywidget/orgactivitywidget.component';
+import { BestprogramsfullviewComponent } from './org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component';
 
 @NgModule({
   declarations: [
@@ -158,14 +162,18 @@ import { OrgHeadComponent } from './org-head/org-head.component';
     LinegraphDirective,
     HalfdonutComponent,
     FacultyperformanceComponent,
-    FacultyComponent,
     FacultylearnerprogressComponent,
     OutliersComponent,
     LearnersquizComponent,
     QuizoverviewComponent,
     AssignmentoverviewComponent,
     LearnersQuizFullviewComponent,
-    OrgHeadComponent
+    OrgHeadComponent,
+    ProgramcardComponent,
+    ProgramstatusComponent,
+    FacultyactivitywidgetComponent,
+    OrgactivitywidgetComponent,
+    BestprogramsfullviewComponent
   ],
   imports: [
     BrowserModule,

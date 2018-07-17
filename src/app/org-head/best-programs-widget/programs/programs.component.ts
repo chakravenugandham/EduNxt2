@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProgramcardComponent, programData } from "../../common/programcard/programcard.component";
 
 @Component({
   selector: 'app-programs',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./programs.component.scss']
 })
 export class ProgramsComponent implements OnInit {
+
+  programdata: programData;
 
   programData = [
     {

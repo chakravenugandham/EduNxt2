@@ -22,7 +22,7 @@
 
   <div [hidden]="spinner_loader" appHalfdonutchart [data]="percentageChange"></div>
 
-  <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8">
+  <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex">
         <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.trainedPercentage>=50, 'big-danger-class': responseData.trainedPercentage<50}">{{responseData.trainedPercentage}}% </div>

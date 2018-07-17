@@ -1,0 +1,21 @@
+.best-programs {
+  position: relative;
+  .program-box {
+    box-shadow: 1px 1px #9e9e9e38;
+    margin: 8px 8px 0px 0px;
+  }
+  .row .col-12:last-child .program-box {
+    margin-right: 0;
+  }
+  .program-img {
+    img {
+      width: 100%;
+    }
+  }
+  .program-heading {
+    font-weight: 600;
+  }
+  .program-info {
+    padding: 16px 8px;
+  }
+}

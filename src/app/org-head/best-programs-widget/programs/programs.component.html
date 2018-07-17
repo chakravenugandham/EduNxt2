@@ -10,10 +10,10 @@
   </div>
   <div class="small">
     <span class="text-success font-weight-bold"> 07 </span>
-    <span>Programs on schedule</span>
+    <span>Programs are on schedule</span>
   </div>
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-12" *ngFor="let program of programData">
+    <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-12" *ngFor="let program of programData">
       <div class="program-box">
         <div class="program-img">
           <img src={{program.imgUrl}} alt="">
@@ -21,18 +21,19 @@
         <div class="program-info">
           <div class="program-heading"> {{program.programName}} </div>
           <div>
-              <span class="bigNumber float-left">  {{program.totalCount}}  </span>
-              <div class="small-font small">
-                <span class="small">
-                  <i class="fas fa-arrow-up changeNumber"></i>
-                </span>
-                <span class="changeNumber">  {{program.userCount}}  </span>
-                <span class="font-color"> Users </span>
-                <p class="font-color">sinceLastMonth</p>
-              </div>
+            <span class="bigNumber float-left"> {{program.totalCount}} </span>
+            <div class="small-font small">
+              <span class="small">
+                <i class="fas fa-arrow-up changeNumber"></i>
+              </span>
+              <span class="changeNumber"> {{program.userCount}} </span>
+              <span class="font-color"> Users </span>
+              <p class="font-color">sinceLastMonth</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <app-programcard></app-programcard>
   </div>
 </div>

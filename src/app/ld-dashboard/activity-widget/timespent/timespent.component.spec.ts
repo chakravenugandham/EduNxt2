@@ -20,7 +20,6 @@ fdescribe('TimespentComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TimespentComponent);
     component = fixture.componentInstance;
-    component.timeData = {};
     fixture.detectChanges();
   });
 

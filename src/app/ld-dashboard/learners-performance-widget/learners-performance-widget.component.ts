@@ -92,7 +92,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
       });
   }
   ngOnInit() {
-    // this.getDataFromService();
+    this.getDataFromService();
   }
 
   ngOnChanges(changes: SimpleChanges) {

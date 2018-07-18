@@ -54,13 +54,13 @@ export class LdDashboardService implements OnInit {
   //baseURL from enviornment
   baseURL = environment.baseUrl;
   headers = new HttpHeaders()
-    .set("LnDUserId", "37046")
-    .set("user-type", "LND")
-    .set("tenant-name", "MAIT");
-  headers1 = new HttpHeaders()
     .set("LnDUserId", "57142")
     .set("user-type", "LND")
     .set("tenant-name", "MAIT");
+  // headers1 = new HttpHeaders()
+  //   .set("LnDUserId", "57142")
+  //   .set("user-type", "LND")
+  //   .set("tenant-name", "MAIT");
 
   courseId = 0;
   programId = 0;
@@ -117,7 +117,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url, { headers: this.headers });
   }
 
   getEngagementWidgetData() {
@@ -144,7 +144,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url, { headers: this.headers });
   }
 
   getPaceWidgetData() {
@@ -171,7 +171,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url, { headers: this.headers });
   }
 
   getFeedbackWidgetData() {
@@ -198,7 +198,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url, { headers: this.headers });
   }
 
   getTimeSpentWidgetData() {
@@ -225,7 +225,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url, { headers: this.headers });
   }
 
   getUsersTrainedWidgetData() {
@@ -252,7 +252,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    return this.http.get(url, { headers: this.headers1 });
+    return this.http.get(url, { headers: this.headers });
   }
 
   //active users & mode of delivery data

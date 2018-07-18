@@ -13,7 +13,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: ["zone"]
+    filterList: []
   };
   getTab: string = "performance";
   responseData = [];
@@ -24,11 +24,11 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
-      // this.getDataFromService();
+      this.getDataFromService();
     });
 
     this.getData.dateChangeAPI.subscribe(result => {
-      // this.getDataFromService();
+      this.getDataFromService();
     });
   }
 

@@ -8,24 +8,24 @@ declare let d3: any;
 })
 export class BarChartDirective implements OnInit, OnChanges {
   @Input() data;
-  // dataset = [];
+  dataset = [];
 
   // dataset model
-  dataset = [
-    { label: "Data Structures", Group1: 60 },
-    { label: "Algo", Group1: 30 },
-    { label: "Database", Group1: 40 },
-    { label: "ML", Group1: 50 },
-    { label: "Problem Solving", Group1: 60 },
-    { label: "DB 2", Group1: 30 },
-    { label: "D S 2", Group1: 20 },
-    { label: "Algorithms1", Group1: 70 },
-    { label: "ML 2", Group1: 40 },
-    { label: "Problem", Group1: 50 },
-    { label: "ML 3", Group1: 30 },
-    { label: "Database 3", Group1: 80 },
-    { label: "Problem Solving4", Group1: 60 }
-  ];
+  // dataset = [
+  //   { label: "Data Structures", Group1: 60 },
+  //   { label: "Algo", Group1: 30 },
+  //   { label: "Database", Group1: 40 },
+  //   { label: "ML", Group1: 50 },
+  //   { label: "Problem Solving", Group1: 60 },
+  //   { label: "DB 2", Group1: 30 },
+  //   { label: "D S 2", Group1: 20 },
+  //   { label: "Algorithms1", Group1: 70 },
+  //   { label: "ML 2", Group1: 40 },
+  //   { label: "Problem", Group1: 50 },
+  //   { label: "ML 3", Group1: 30 },
+  //   { label: "Database 3", Group1: 80 },
+  //   { label: "Problem Solving4", Group1: 60 }
+  // ];
 
   constructor(private el: ElementRef) {}
 
@@ -190,12 +190,12 @@ export class BarChartDirective implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.performanceChart();
+    // this.performanceChart();
   }
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
-      // this.dataset = this.data;
-      // this.performanceChart();
+      this.dataset = this.data;
+      this.performanceChart();
     }
   }
 }

@@ -33,10 +33,12 @@
     <div class="row text-fix-bottom">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div>
-          <app-users-data [config]="activeConfig" [numberFontColor]="activeUserChange"></app-users-data>
+          <!-- <app-users-data [config]="activeConfig" [numberFontColor]="activeUserChange"></app-users-data> -->
+          <app-users-data [config]="activeUserCount"></app-users-data>
         </div>
         <div>
-          <app-users-data [config]="enrolledConfig" [numberFontColor]="enrolledUserChange"></app-users-data>
+          <!-- <app-users-data [config]="enrolledConfig" [numberFontColor]="enrolledUserChange"></app-users-data> -->
+          <app-users-data [config]="enrolledConfig"></app-users-data>
         </div>
       </div>
     </div>

@@ -1,17 +1,24 @@
 <div>
-  <span class="bigNumber float-left" [ngClass]="{'big-positive-number': numberFontColor, 'big-danger-class': !numberFontColor}">
-    {{config?.peopleCurrentlyEnrolled}} </span>
+
+  <span class="bigNumber float-left" [ngClass]="config.numberChange ? 'big-positive-number' : 'big-danger-class'">{{config.peopleCurrentlyEnrolled}} </span>
+
+
   <div class="small-font">
+
     <span class="small arrow-space">
-      <!-- <i class="fas fa-arrow-up changeNumber"></i> -->
-      <img *ngIf="numberFontColor" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
-      <img *ngIf="!numberFontColor" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
+      <img *ngIf="config.peopleCurrentlyEnrolled > config.usersSinceLastMonth" src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow">
+      <img *ngIf="config.peopleCurrentlyEnrolled < config.usersSinceLastMonth" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
     </span>
+
     <span class="changeInNumberText">
-      <span [ngClass]="{'changeNumber': numberFontColor, 'changeNumberLow': !numberFontColor}"> {{config?.usersSinceLastMonth}} </span>
-      <span class="font-color"> {{config?.Users}} </span>
+      <!-- <span [ngClass]="{'changeNumber': numberFontColor, 'changeNumberLow': !numberFontColor}"> {{config.usersSinceLastMonth}} </span> -->
+      <span [ngClass]="config.peopleCurrentlyEnrolled >= config.usersSinceLastMonth ? 'changeNumber' : 'changeNumberLow'"> {{config.usersSinceLastMonth}} </span>
+      <span class="font-color"> {{config.Users}} </span>
       <p class="font-color"> As of {{monthFullName}} </p>
     </span>
+
   </div>
-  <p class="m-t-10"> {{config?.PeopleAreCurrentlyEnrolled}} </p>
+
+  <p class="m-t-10"> {{config.PeopleAreCurrentlyEnrolled}} </p>
+
 </div>

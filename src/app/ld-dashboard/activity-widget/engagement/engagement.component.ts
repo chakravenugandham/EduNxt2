@@ -8,11 +8,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./engagement.component.scss"]
 })
 export class EngagementComponent implements OnInit, OnChanges {
-  // @Input() engageData;
-  // @Input() totalUsers;
-
   config: Config;
-  totalUserCount: number;
   percentageChange: number;
   expectedChange: boolean;
   spinner_loader: boolean = false;
@@ -31,56 +27,48 @@ export class EngagementComponent implements OnInit, OnChanges {
 
   getDataFromService() {
     this.spinner_loader = true;
-
     this.dashboardService
-      .getActiveUsersWidgetData()
+      .getEngagementWidgetData()
       .subscribe((response: any) => {
-        this.totalUserCount = Number(response.data.enrolledUsers);
+        this.responseData = response.data;
+
         this.spinner_loader = false;
-        this.dashboardService
-          .getEngagementWidgetData()
-          .subscribe((response: any) => {
-            this.responseData = response.data;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-            this.noDataFlag =
-              Object.keys(response.data).length == 0 ? true : false;
+        // this.engageUserChange =
+        //   this.responseData["usersCompletedPrograms"] <
+        //   this.responseData["completedProgramsSinceLastMonth"]
+        //     ? false
+        //     : true;
 
-            this.engageUserChange =
-              this.responseData["usersCompletedPrograms"] <
-              this.responseData["completedProgramsSinceLastMonth"]
-                ? false
-                : true;
+        this.percentageChange =
+          this.responseData["usersCompletedPrograms"] > 0
+            ? (this.responseData["usersCompletedPrograms"] * 100) /
+              this.responseData["enrolledUsers"]
+            : 0;
 
-            this.config = {
-              peopleCurrentlyEnrolled: Math.round(
-                this.responseData["usersCompletedPrograms"]
-              ),
-              usersSinceLastMonth: Math.round(
-                this.responseData["completedProgramsSinceLastMonth"]
-              ),
-              Users: "Users",
-              sinceLastMonth: "",
-              // sinceLastMonth: new Date(start_date).toLocaleDateString(),
-              PeopleAreCurrentlyEnrolled: "People completed training programs"
-            };
+        this.config = {
+          peopleCurrentlyEnrolled: Math.round(
+            this.responseData["usersCompletedPrograms"]
+          ),
+          numberChange: this.percentageChange < 50 ? false : true,
 
-            if (this.config.peopleCurrentlyEnrolled > 0) {
-              this.percentageChange = Math.round(
-                (this.config.peopleCurrentlyEnrolled * 100) /
-                  this.totalUserCount
-              );
-            } else {
-              this.percentageChange = 0;
-            }
-            this.expectedChange = this.percentageChange < 50 ? false : true;
-          });
+          usersSinceLastMonth: Math.round(
+            this.responseData["completedProgramsSinceLastMonth"]
+          ),
+
+          Users: "Users",
+          sinceLastMonth: "",
+          PeopleAreCurrentlyEnrolled: "People completed training programs"
+        };
+
+        // this.expectedChange = this.percentageChange < 50 ? false : true;
       });
   }
 
   ngOnChanges(changes: any) {}
 
   ngOnInit() {
-    // this.getToalUsers();
     this.getDataFromService();
   }
 }

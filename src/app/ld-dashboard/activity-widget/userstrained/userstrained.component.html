@@ -20,23 +20,35 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div [hidden]="spinner_loader" appHalfdonutchart [data]="percentageChange"></div>
+  <div [hidden]="spinner_loader" appHalfdonutchart [data]="responseData.trainedPercentage"></div>
 
   <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="d-flex">
-        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.trainedPercentage>=50, 'big-danger-class': responseData.trainedPercentage<50}">{{responseData.trainedPercentage}}% </div>
+      <div class="d-flex p-r-20">
+
+        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.completedTraining >= responseData.expectedtrainedPercentage, 'big-danger-class': responseData.completedTraining < responseData.expectedtrainedPercentage}">
+          {{responseData.trainedPercentage}}%
+        </div>
+
         <div class="p-t-7 changeInNumberText">
           <div class="arrow-space">
-            <span [ngClass]="{'changeNumber': responseData.trainedPercentage>=50, 'changeNumberLow': responseData.trainedPercentage<50}">
-              Expected {{responseData.expectedtrainedPercentage}}%.</span>
+            <span [ngClass]="{'changeNumber': responseData.completedTraining >= responseData.expectedtrainedPercentage, 'changeNumberLow': responseData.completedTraining < responseData.expectedtrainedPercentage}">
+              Expected {{responseData.expectedtrainedPercentage}}%.
+            </span>
           </div>
           <p class="font-color">
-            <span [ngClass]="{'changeNumber': responseData.trainedPercentage>=50, 'changeNumberLow': responseData.trainedPercentage<50}">{{responseData.completedTraining}} </span>
-            of {{responseData.totalLearners}} users have been trained</p>
+            <span [ngClass]="{'changeNumber': responseData.completedTraining >= responseData.expectedtrainedPercentage, 'changeNumberLow': responseData.completedTraining < responseData.expectedtrainedPercentage}">
+              {{responseData.completedTraining}}
+            </span>
+            <span>
+              of {{responseData.totalLearners}} users have been trained
+            </span>
+          </p>
         </div>
       </div>
+
       <p class="m-t-10">of your goals has been met</p>
+
     </div>
   </div>
 </div>

@@ -17,11 +17,26 @@ import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprograms
 const routes: Routes = [
   { path: "", component: LdDashboardComponent },
   { path: "learnerTrackFullView", component: LearnerTrackFullviewComponent },
-  { path: "learnerPerformanceFullView", component: LearnerPerformanceFullviewComponent },
-  { path: "scoreDistributionFullView", component: ScoresDistributionFullviewComponent },
-  { path: "orgPerformanceFullView", component: OrgPerformanceFullviewComponent },
-  { path: "contentConsumptionFullView", component: ContentConsumptionFullviewComponent },
-  { path: "notificationPerformanceFullView", component: NotificationPerformanceFullviewComponent },
+  {
+    path: "learnerPerformanceFullView",
+    component: LearnerPerformanceFullviewComponent
+  },
+  {
+    path: "scoreDistributionFullView",
+    component: ScoresDistributionFullviewComponent
+  },
+  {
+    path: "orgPerformanceFullView",
+    component: OrgPerformanceFullviewComponent
+  },
+  {
+    path: "contentConsumptionFullView",
+    component: ContentConsumptionFullviewComponent
+  },
+  {
+    path: "notificationPerformanceFullView",
+    component: NotificationPerformanceFullviewComponent
+  },
   { path: "orgInterestFullView", component: OrgInterestFullviewComponent },
   { path: "learnerQuizFullView", component: LearnersQuizFullviewComponent },
   { path: "bestprogramsfullview", component: BestprogramsfullviewComponent }
@@ -30,4 +45,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class RoutingModule { }
+export class RoutingModule {}

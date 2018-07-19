@@ -399,7 +399,9 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId + "&type=" + tab;
+      this.programId +
+      "&type=" +
+      tab;
     return this.http.get(url, { headers: this.headers });
   }
 
@@ -671,5 +673,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

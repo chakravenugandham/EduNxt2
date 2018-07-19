@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ViewEncapsulation,
-  OnChanges
-} from "@angular/core";
-import * as d3 from "d3";
+import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
@@ -13,10 +6,11 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./userstrained.component.html",
   styleUrls: ["./userstrained.component.scss"]
 })
-export class UserstrainedComponent implements OnInit, OnChanges {
-  //@Input() usersData;
-  percentageChange: number;
-  responseData = {};
+export class UserstrainedComponent implements OnInit {
+  responseData: any = {};
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -27,18 +21,15 @@ export class UserstrainedComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
     this.dashboardService
       .getUsersTrainedWidgetData()
       .subscribe((response: any) => {
         this.responseData = response.data;
-        this.percentageChange = Math.floor(
-          (this.responseData["completedTraining"] * 100) /
-            this.responseData["totalLearners"]
-        );
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       });
   }
-
-  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getDataFromService();

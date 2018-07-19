@@ -11,14 +11,14 @@ export class UsersComponent implements OnInit {
   // @Input() userElement;
   // @Input() imageElement;
 
-  activeConfig: Config;
+  activeUserCount: Config;
   enrolledConfig: Config;
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
   responseData = {};
-  activeUserChange: boolean = false;
-  enrolledUserChange: boolean = false;
+  // activeUserChange: boolean = false;
+  // enrolledUserChange: boolean = false;
 
   userImages: string[] = [
     "/assets/images/user.png",
@@ -47,34 +47,41 @@ export class UsersComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-        this.activeUserChange =
-          this.responseData["activeUsers"] <
-          this.responseData["activeUsersSinceLastMonth"]
-            ? false
-            : true;
+        // this.activeUserChange =
+        //   this.responseData["activeUsers"] <
+        //   this.responseData["activeUsersSinceLastMonth"]
+        //     ? false
+        //     : true;
 
-        this.enrolledUserChange =
-          this.responseData["enrolledUsers"] <
-          this.responseData["enrolledUsersSinceLastMonth"]
-            ? false
-            : true;
+        // this.enrolledUserChange =
+        //   this.responseData["enrolledUsers"] <
+        //   this.responseData["enrolledUsersSinceLastMonth"]
+        //     ? false
+        //     : true;
 
-        this.activeConfig = {
-          peopleCurrentlyEnrolled: Math.round(this.responseData["activeUsers"]),
-          usersSinceLastMonth: Math.round(
+        this.activeUserCount = {
+          peopleCurrentlyEnrolled: Number(this.responseData["activeUsers"]),
+
+          numberChange: true,
+
+          usersSinceLastMonth: Number(
             this.responseData["activeUsersSinceLastMonth"]
           ),
+
           Users: "Users",
           sinceLastMonth: "",
           PeopleAreCurrentlyEnrolled: "People are currently active"
         };
+
         this.enrolledConfig = {
-          peopleCurrentlyEnrolled: Math.round(
-            this.responseData["enrolledUsers"]
-          ),
-          usersSinceLastMonth: Math.round(
+          peopleCurrentlyEnrolled: Number(this.responseData["enrolledUsers"]),
+
+          numberChange: true,
+
+          usersSinceLastMonth: Number(
             this.responseData["enrolledUsersSinceLastMonth"]
           ),
+
           Users: "Users",
           sinceLastMonth: "",
           PeopleAreCurrentlyEnrolled: "People are currently enrolled"

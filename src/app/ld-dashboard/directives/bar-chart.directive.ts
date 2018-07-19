@@ -65,7 +65,7 @@ export class BarChartDirective implements OnInit, OnChanges {
     //   );
     // }
 
-    let margin = 30,
+    let margin: number = 30,
       width = 500,
       height = 200;
     let calculatedWidth =
@@ -75,11 +75,10 @@ export class BarChartDirective implements OnInit, OnChanges {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
     }
 
-    console.log("width", width);
-    console.log("this.dataset.length", this.dataset.length);
-    console.log("this.dataset.length / 6", this.dataset.length - 6);
-
-    console.log("calculatedWidth", calculatedWidth);
+    // console.log("width", width);
+    // console.log("this.dataset.length", this.dataset.length);
+    // console.log("this.dataset.length / 6", this.dataset.length - 6);
+    // console.log("calculatedWidth", calculatedWidth);
 
     let svg = d3
       .select(this.el.nativeElement)
@@ -120,7 +119,7 @@ export class BarChartDirective implements OnInit, OnChanges {
     });
 
     x0.domain(
-      this.dataset.map(function(d) {
+      this.dataset.map(function(d: any) {
         return d.label;
       })
     );
@@ -166,7 +165,7 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     bar
       .selectAll("rect")
-      .data(function(d) {
+      .data(function(d: any) {
         return d.valores;
       })
       .enter()

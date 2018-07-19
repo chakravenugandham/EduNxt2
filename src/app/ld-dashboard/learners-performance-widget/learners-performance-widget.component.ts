@@ -54,41 +54,49 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   getDataFromService() {
     this.performanceDataSet = [];
     this.progressDataSet = [];
-    this.batches = [];
 
     this.getData
       .getLearnerPerformanceData(this.getTab)
       .subscribe((response: any) => {
         this.responseData = response.data;
 
-        for (let b in this.responseData[0].batches) {
-          this.batches.push(this.responseData[0].batches[b].batchName);
-        }
-
         for (let i in this.responseData) {
-          let performancegroupValues = [];
-          let progressgroupValues = [];
-          for (let j in this.responseData[i].batches) {
-            performancegroupValues.push(
-              parseInt(this.responseData[i].batches[j].performance)
-            );
-            progressgroupValues.push(
-              parseInt(this.responseData[i].batches[j].progress)
-            );
+          if (this.getTab == "performance") {
+            this.performanceDataSet.push({
+              label: this.responseData[i].courseName,
+              Group1: this.responseData[i].performance
+            });
+          } else if (this.getTab == "progress") {
+            this.progressDataSet.push({
+              label: this.responseData[i].courseName,
+              Group1: this.responseData[i].progress
+            });
           }
-          this.performanceDataSet.push({
-            label: this.responseData[i].courseName,
-            Group1: performancegroupValues[0],
-            Group2: performancegroupValues[1],
-            Group3: performancegroupValues[2]
-          });
-          this.progressDataSet.push({
-            label: this.responseData[i].courseName,
-            Group1: progressgroupValues[0],
-            Group2: progressgroupValues[1],
-            Group3: progressgroupValues[2]
-          });
         }
+        // for (let i in this.responseData) {
+        //   let performancegroupValues = [];
+        //   let progressgroupValues = [];
+        //   for (let j in this.responseData[i].batches) {
+        //     performancegroupValues.push(
+        //       parseInt(this.responseData[i].batches[j].performance)
+        //     );
+        //     progressgroupValues.push(
+        //       parseInt(this.responseData[i].batches[j].progress)
+        //     );
+        //   }
+        //   this.performanceDataSet.push({
+        //     label: this.responseData[i].courseName,
+        //     Group1: performancegroupValues[0],
+        //     Group2: performancegroupValues[1],
+        //     Group3: performancegroupValues[2]
+        //   });
+        //   this.progressDataSet.push({
+        //     label: this.responseData[i].courseName,
+        //     Group1: progressgroupValues[0],
+        //     Group2: progressgroupValues[1],
+        //     Group3: progressgroupValues[2]
+        //   });
+        // }
       });
   }
   ngOnInit() {

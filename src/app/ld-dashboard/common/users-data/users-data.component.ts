@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class UsersDataComponent implements OnInit {
   @Input() config: Config;
-  @Input() numberFontColor: boolean;
+  // @Input() numberFontColor: boolean;
 
   constructor() {}
   monthFullName: string;
@@ -43,6 +43,7 @@ export class UsersDataComponent implements OnInit {
 
 export class Config {
   peopleCurrentlyEnrolled: number;
+  numberChange: boolean;
   usersSinceLastMonth: number;
   Users: string;
   sinceLastMonth: string;

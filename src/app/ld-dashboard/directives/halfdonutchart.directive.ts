@@ -66,10 +66,6 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .append("path")
       .attr("d", <any>mainArc)
       .attr("fill", graph_color);
-    // .attr("offset", "0%")
-    // .attr("fill", graph_color_gradient)
-    // .attr("offset", "100%")
-    // .attr("fill", graph_color);
 
     this.el.nativeElement.append(chartDiv);
   }
@@ -80,9 +76,9 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.data.currentValue != changes.data.previousValue) {
-      d3.select(".halfdonut")
-        .selectAll("svg")
-        .remove();
+      // d3.select(".halfdonut")
+      //   .selectAll("svg")
+      //   .remove();
       this.chartRenderFn([this.data]);
     }
   }

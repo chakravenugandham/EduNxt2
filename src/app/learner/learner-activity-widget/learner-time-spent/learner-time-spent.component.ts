@@ -16,16 +16,20 @@ export class LearnerTimeSpentComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-    this.percentageChange = 15;
+  getLeanerTimeData() {
+    this.percentageChange = 82;
     this.config = {
-      peopleCurrentlyEnrolled: 15,
+      peopleCurrentlyEnrolled: 46,
       numberChange: true,
       // numberChange: this.percentageChange < 50 ? false : true,
-      usersSinceLastMonth: 4,
+      usersSinceLastMonth: 1,
       Users: "On par with recommended time of 12 hours",
       sinceLastMonth: "",
-      PeopleAreCurrentlyEnrolled: "Of this course has been completed"
+      PeopleAreCurrentlyEnrolled: "Hours spent on course content"
     };
+  }
+
+  ngOnInit() {
+    this.getLeanerTimeData();
   }
 }

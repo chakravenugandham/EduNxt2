@@ -21,8 +21,7 @@
   </div>
 
   <div [hidden]="spinner_loader">
-    <!-- <div appHalfdonutchart [data]="percentageChange" [expectedChange]="expectedChange"></div> -->
-    <!-- <div appHalfdonutchart [data]="percentageChange"></div> -->
+    <div appHalfdonutchart [data]="percentageChange"></div>
   </div>
 
   <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">

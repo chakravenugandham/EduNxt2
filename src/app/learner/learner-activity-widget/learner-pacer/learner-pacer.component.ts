@@ -16,7 +16,7 @@ export class LearnerPacerComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  getLeanerPacerData() {
     this.percentageChange = 56;
     this.config = {
       peopleCurrentlyEnrolled: 46,
@@ -27,5 +27,9 @@ export class LearnerPacerComponent implements OnInit {
       sinceLastMonth: "",
       PeopleAreCurrentlyEnrolled: "Of the pace that was set up"
     };
+  }
+
+  ngOnInit() {
+    this.getLeanerPacerData();
   }
 }

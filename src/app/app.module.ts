@@ -85,23 +85,31 @@ import { GoalcardsComponent } from "./org-head/common/goalcards/goalcards.compon
 import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directive";
 import { HalfdonutComponent } from "./ld-dashboard/common/halfdonut/halfdonut.component";
 import { FacultyperformanceComponent } from "./faculty/facultyactivitywidget/facultyperformance/facultyperformance.component";
-import { FacultylearnerprogressComponent } from './faculty/facultyactivitywidget/facultylearnerprogress/facultylearnerprogress.component';
-import { OutliersComponent } from './faculty/facultyactivitywidget/outliers/outliers.component';
-import { LearnersquizComponent } from './faculty/learnersquiz/learnersquiz.component';
-import { QuizoverviewComponent } from './faculty/learnersquiz/quizoverview/quizoverview.component';
-import { AssignmentoverviewComponent } from './faculty/learnersquiz/assignmentoverview/assignmentoverview.component';
-import { LearnersQuizFullviewComponent } from './faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component';
-import { OrgHeadComponent } from './org-head/org-head.component';
+import { FacultylearnerprogressComponent } from "./faculty/facultyactivitywidget/facultylearnerprogress/facultylearnerprogress.component";
+import { OutliersComponent } from "./faculty/facultyactivitywidget/outliers/outliers.component";
+import { LearnersquizComponent } from "./faculty/learnersquiz/learnersquiz.component";
+import { QuizoverviewComponent } from "./faculty/learnersquiz/quizoverview/quizoverview.component";
+import { AssignmentoverviewComponent } from "./faculty/learnersquiz/assignmentoverview/assignmentoverview.component";
+import { LearnersQuizFullviewComponent } from "./faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component";
+import { OrgHeadComponent } from "./org-head/org-head.component";
 import { FacultyComponent } from "./faculty/faculty.component";
-import { ProgramcardComponent } from './org-head/common/programcard/programcard.component';
-import { ProgramstatusComponent } from './org-head/orgactivitywidget/programstatus/programstatus.component';
-import { FacultyactivitywidgetComponent } from './faculty/facultyactivitywidget/facultyactivitywidget.component';
-import { OrgactivitywidgetComponent } from './org-head/orgactivitywidget/orgactivitywidget.component';
-import { BestprogramsfullviewComponent } from './org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component';
-import { CourseinsightComponent } from './faculty/courseinsight/courseinsight.component';
-import { CourseInsightWidgetComponent } from './faculty/courseinsight/course-insight-widget/course-insight-widget.component';
-import { FacultyAttentionWidgetComponent } from './faculty/faculty-attention-widget/faculty-attention-widget.component';
-import { FacultyAttentionWidgetCardComponent } from './faculty/common/faculty-attention-widget-card/faculty-attention-widget-card.component';
+import { ProgramcardComponent } from "./org-head/common/programcard/programcard.component";
+import { ProgramstatusComponent } from "./org-head/orgactivitywidget/programstatus/programstatus.component";
+import { FacultyactivitywidgetComponent } from "./faculty/facultyactivitywidget/facultyactivitywidget.component";
+import { OrgactivitywidgetComponent } from "./org-head/orgactivitywidget/orgactivitywidget.component";
+import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component";
+import { CourseinsightComponent } from "./faculty/courseinsight/courseinsight.component";
+import { CourseInsightWidgetComponent } from "./faculty/courseinsight/course-insight-widget/course-insight-widget.component";
+import { FacultyAttentionWidgetComponent } from "./faculty/faculty-attention-widget/faculty-attention-widget.component";
+import { FacultyAttentionWidgetCardComponent } from "./faculty/common/faculty-attention-widget-card/faculty-attention-widget-card.component";
+import { LearnerComponent } from "./learner/learner.component";
+import { LearnerActivityWidgetComponent } from "./learner/learner-activity-widget/learner-activity-widget.component";
+import { LearnerPacerComponent } from "./learner/learner-activity-widget/learner-pacer/learner-pacer.component";
+import { LearnerProgressComponent } from "./learner/learner-activity-widget/learner-progress/learner-progress.component";
+import { LearnerTimeSpentComponent } from './learner/learner-activity-widget/learner-time-spent/learner-time-spent.component';
+import { LearnerScoreCardComponent } from './learner/learner-activity-widget/learner-score-card/learner-score-card.component';
+import { LearnerCoursePerformanceComponent } from './learner/learner-course-performance/learner-course-performance.component';
+import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component';
 
 @NgModule({
   declarations: [
@@ -183,7 +191,15 @@ import { FacultyAttentionWidgetCardComponent } from './faculty/common/faculty-at
     CourseinsightComponent,
     CourseInsightWidgetComponent,
     FacultyAttentionWidgetComponent,
-    FacultyAttentionWidgetCardComponent
+    FacultyAttentionWidgetCardComponent,
+    LearnerComponent,
+    LearnerActivityWidgetComponent,
+    LearnerPacerComponent,
+    LearnerProgressComponent,
+    LearnerTimeSpentComponent,
+    LearnerScoreCardComponent,
+    LearnerCoursePerformanceComponent,
+    LearnerAvgCoursePerformanceComponent
   ],
   imports: [
     BrowserModule,
@@ -200,4 +216,4 @@ import { FacultyAttentionWidgetCardComponent } from './faculty/common/faculty-at
   providers: [GoogleChartsBaseService, { provide: Window, useValue: window }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

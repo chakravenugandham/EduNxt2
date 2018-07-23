@@ -4,6 +4,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
 import { FacultyComponent } from "./faculty/faculty.component";
 import { OrgHeadComponent } from "./org-head/org-head.component";
+import { LearnerComponent } from "./learner/learner.component";
+
 import { LearnerTrackFullviewComponent } from "./ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component";
 import { ContentConsumptionFullviewComponent } from "./ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component";
 import { LearnerPerformanceFullviewComponent } from "./ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component";
@@ -15,7 +17,11 @@ import { LearnersQuizFullviewComponent } from "./faculty/fullviews/learners-quiz
 import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component";
 
 const routes: Routes = [
-  { path: "", component: LdDashboardComponent },
+  { path: "", redirectTo: "learner", pathMatch: "full" },
+  { path: "LnD", component: LdDashboardComponent },
+  { path: "faculty", component: FacultyComponent },
+  { path: "orgHead", component: OrgHeadComponent },
+  { path: "learner", component: LearnerComponent },
   { path: "learnerTrackFullView", component: LearnerTrackFullviewComponent },
   {
     path: "learnerPerformanceFullView",

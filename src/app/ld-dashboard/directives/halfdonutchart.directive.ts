@@ -72,6 +72,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
 
   ngOnInit() {
     this.el.nativeElement.innerHTML = "";
+    console.log("data", this.data);
   }
 
   ngOnChanges(changes: any) {
@@ -80,6 +81,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       //   .selectAll("svg")
       //   .remove();
       this.chartRenderFn([this.data]);
+      // console.log("data", this.data);
     }
   }
 }

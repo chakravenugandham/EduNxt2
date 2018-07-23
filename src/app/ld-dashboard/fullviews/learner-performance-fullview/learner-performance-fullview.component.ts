@@ -22,12 +22,17 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
     viewDetailsFilters: true
   };
 
-  constructor(private contentService: LdDashboardService) {
-    this.contentService.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
       this.getDataForGraph();
     });
-    this.contentService.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+      this.getDataForGraph();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
       this.getDataForGraph();
     });
@@ -39,7 +44,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
   }
 
   getDataFromService() {
-    this.contentService
+    this.dashboardService
       .getLearnerPerformanceDetails(this.filterbody)
       .subscribe((response: any) => {
         this.learnerData = response.data;
@@ -48,7 +53,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
   getDataForGraph() {
     let performanceDataSet = [];
     let progressDataSet = [];
-    this.contentService
+    this.dashboardService
       .getLearnerPerformanceData(this.selectedGraph)
       .subscribe((response: any) => {
         this.responseData = response.data;

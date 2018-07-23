@@ -14,12 +14,16 @@ export class OrgInterestFullviewComponent implements OnInit {
   //dropdown display values
   displayFor = {};
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -29,7 +33,7 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   //api call for orgDetails based on component
   getDataFromService() {
-    this.getData.getOrgInterestDetailsData().subscribe((res: any) => {
+    this.dashboardService.getOrgInterestDetailsData().subscribe((res: any) => {
       this.responseData = res.data;
     });
   }

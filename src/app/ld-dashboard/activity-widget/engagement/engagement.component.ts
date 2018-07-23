@@ -23,6 +23,9 @@ export class EngagementComponent implements OnInit, OnChanges {
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {
@@ -44,7 +47,7 @@ export class EngagementComponent implements OnInit, OnChanges {
         this.percentageChange =
           this.responseData["usersCompletedPrograms"] > 0
             ? (this.responseData["usersCompletedPrograms"] * 100) /
-              this.responseData["enrolledUsers"]
+            this.responseData["enrolledUsers"]
             : 0;
 
         this.config = {
@@ -66,7 +69,7 @@ export class EngagementComponent implements OnInit, OnChanges {
       });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

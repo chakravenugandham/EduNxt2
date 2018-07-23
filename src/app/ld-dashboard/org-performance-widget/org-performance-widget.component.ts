@@ -22,12 +22,16 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   filterbody = {};
 
-  constructor(private serviceData: LdDashboardService) {
-    this.serviceData.refreshAPI.subscribe((result) => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe((result) => {
       this.getDataFromService();
     });
 
-    this.serviceData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -43,7 +47,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   getDataFromService() {
-    this.serviceData
+    this.dashboardService
       .getScoresDistrubution(this.getTab, this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { CommonService } from "../../../common-services/common.service";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-header",
@@ -6,7 +8,17 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  selectTenantName: string = "MAIT";
 
-  ngOnInit() {}
+  tenantsName = ['MAIT', 'MAB', 'HDFC'];
+
+  constructor(private getTenantName: CommonService, private dashboardService: LdDashboardService) { }
+
+  changeCourse(selectTenantName) {
+    this.dashboardService.selectTenantName(selectTenantName);
+  }
+
+
+
+  ngOnInit() { }
 }

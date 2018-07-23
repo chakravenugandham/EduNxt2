@@ -21,12 +21,16 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   responseData = [];
   dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe((result) => {
       this.getDataFromService();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -52,7 +56,7 @@ export class ScoresDistributionWidgetComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
-    this.getData
+    this.dashboardService
       .getScoresDistrubution(this.getValue, this.filterbody)
       .subscribe((response: any) => {
         this.responseData = response.data;

@@ -38,14 +38,19 @@ export class LearnerTrackFullviewComponent implements OnInit {
   performanceTrackValues = [];
 
   constructor(
-    private getData: LdDashboardService,
+    private dashboardService: LdDashboardService,
     private filterData: CommonService
   ) {
-    this.getData.refreshAPI.subscribe(result => {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
       this.getTableDataFromService();
     });
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getGraphDataFromService();
+      this.getTableDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getGraphDataFromService();
       this.getTableDataFromService();
     });
@@ -61,7 +66,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getTableDataFromService() {
     if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'pace') {
       this.selectType = "paceaheadschedule";
-      this.getData
+      this.dashboardService
         .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
@@ -69,7 +74,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     }
     if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'performance') {
       this.selectType = "excelling";
-      this.getData
+      this.dashboardService
         .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
@@ -78,7 +83,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getGraphDataFromService() {
-    this.getData.getLearnerTrackData(this.filterbody).subscribe((res: any) => {
+    this.dashboardService.getLearnerTrackData(this.filterbody).subscribe((res: any) => {
       this.responseGraphDetails = res.data;
       this.paceTrackValues = [
         {

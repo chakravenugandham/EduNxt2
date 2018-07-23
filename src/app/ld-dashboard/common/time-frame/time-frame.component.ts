@@ -12,7 +12,11 @@ export class TimeFrameComponent implements OnInit {
   today: Date = new Date();
   selectCourse: any = "All Courses";
 
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {
+    this.getData.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+  }
 
   getDataFromService() {
     this.getData.getCoursesData().subscribe((res: any) => {

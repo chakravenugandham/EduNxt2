@@ -10,15 +10,16 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class HeaderComponent implements OnInit {
   selectTenantName: string = "MAIT";
 
-  tenantsName = ['MAIT', 'MAB', 'HDFC'];
+  tenantsName = ["MAIT", "MAB", "HDFC"];
 
-  constructor(private getTenantName: CommonService, private dashboardService: LdDashboardService) { }
+  constructor(
+    private getTenantName: CommonService,
+    private dashboardService: LdDashboardService
+  ) {}
 
   changeCourse(selectTenantName) {
     this.dashboardService.selectTenantName(selectTenantName);
   }
 
-
-
-  ngOnInit() { }
+  ngOnInit() {}
 }

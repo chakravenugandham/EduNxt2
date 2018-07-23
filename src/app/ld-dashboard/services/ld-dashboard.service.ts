@@ -55,7 +55,8 @@ export class LdDashboardService implements OnInit {
   constructor(
     private http: HttpClient,
     private dateService: DateserviceService,
-    private _window: Window, private getTenantName: CommonService
+    private _window: Window,
+    private getTenantName: CommonService
   ) {
     // this._baseUrl = this._window.location.href;
     // let base = this._baseUrl.split('/')[3];
@@ -70,20 +71,27 @@ export class LdDashboardService implements OnInit {
 
   selectTenantName(tenantName?: any) {
     //for (let i = 0; i < this.getTenantName.tenantsNameDetails.length; i++) {
-    if (tenantName == 'MAIT') {
+    if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "57142")
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
-    if (tenantName == 'MAB') {
+    if (tenantName == "MAB") {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "26642")
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
-    //}
+    if (tenantName == "HDFC") {
+      this.headers = new HttpHeaders()
+        .set("LnDUserId", "4")
+        .set("user-type", "LND")
+        .set("tenant-name", tenantName);
+    }
     this.tenantName$.next();
+    // this.courseAndProgram();
+    this.refreshAPI$.next();
   }
 
   courseId = 0;
@@ -114,7 +122,7 @@ export class LdDashboardService implements OnInit {
   //courses dropdown
   getCoursesData() {
     let url = this.baseURL + APIURL.COURSES_DROPDOWN;
-    return this.http.get(url);
+    return this.http.get(url, { headers: this.headers });
   }
 
   getActiveUsersWidgetData() {
@@ -697,5 +705,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

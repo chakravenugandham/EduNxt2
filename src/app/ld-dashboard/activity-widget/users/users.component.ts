@@ -36,6 +36,10 @@ export class UsersComponent implements OnInit {
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getAPIData();
     });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getAPIData();
+    });
   }
 
   getAPIData() {
@@ -89,7 +93,7 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getAPIData();

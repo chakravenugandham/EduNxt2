@@ -26,6 +26,10 @@ export class PaceComponent implements OnInit, OnChanges {
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {
@@ -59,7 +63,7 @@ export class PaceComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

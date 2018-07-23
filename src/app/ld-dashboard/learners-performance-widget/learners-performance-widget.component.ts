@@ -22,12 +22,16 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   progressDataSet = [];
   batches = [];
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -55,7 +59,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     this.performanceDataSet = [];
     this.progressDataSet = [];
 
-    this.getData
+    this.dashboardService
       .getLearnerPerformanceData(this.getTab)
       .subscribe((response: any) => {
         this.responseData = response.data;

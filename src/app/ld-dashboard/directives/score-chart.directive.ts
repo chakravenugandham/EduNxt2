@@ -61,13 +61,6 @@ export class ScoreChartDirective implements OnChanges {
     //   .tickFormat("")
     // )
 
-    // create xAxis
-    svg
-      .append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(0," + (h - p) + ")")
-      .call(d3.axisBottom(xScale).ticks(5));
-
     // create yAxis
     svg
       .append("g")
@@ -149,6 +142,15 @@ export class ScoreChartDirective implements OnChanges {
       .attr("stop-color", function (d) {
         return d.color;
       });
+
+
+    // create xAxis
+    svg
+      .append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + (h - p) + ")")
+      .call(d3.axisBottom(xScale).ticks(5));
+
   }
 
   ngOnChanges(changes: any) {

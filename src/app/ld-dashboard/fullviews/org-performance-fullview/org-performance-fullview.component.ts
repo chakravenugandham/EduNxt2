@@ -18,25 +18,28 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   showDetails: string = "teams";
   compareUsers = [];
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.getData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-    this.getData.getTrainersData().subscribe((response: any) => {
+    this.dashboardService.getTrainersData().subscribe((response: any) => {
       this.responseTrainersDetails = response.data;
     });
-    this.getData.getTeamData().subscribe((response: any) => {
+    this.dashboardService.getTeamData().subscribe((response: any) => {
       this.responseTeamsDetails = response.data;
     });
-    this.getData.getLearnerData().subscribe((response: any) => {
+    this.dashboardService.getLearnerData().subscribe((response: any) => {
       this.responseLeanersDetails = response.data;
     });
   }

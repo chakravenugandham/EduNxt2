@@ -18,18 +18,22 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     filterList: ["batch"],
     viewDetailsFilters: true
   };
-  constructor(private contentService: LdDashboardService) {
-    this.contentService.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.contentService.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
 
   getDataFromService() {
-    this.contentService
+    this.dashboardService
       .getContentData(this.filterbody)
       .subscribe((res: any) => {
         this.contentData = res.data;

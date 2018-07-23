@@ -18,6 +18,10 @@ export class UserstrainedComponent implements OnInit {
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {

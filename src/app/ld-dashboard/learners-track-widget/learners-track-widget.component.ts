@@ -28,14 +28,18 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   filterbody = {};
 
   constructor(
-    private serviceData: LdDashboardService,
+    private dashboardService: LdDashboardService,
     private filterData: CommonService
   ) {
-    this.serviceData.refreshAPI.subscribe(result => {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
-    this.serviceData.dateChangeAPI.subscribe(result => {
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -53,7 +57,7 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
-    this.serviceData
+    this.dashboardService
       .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
         this.widgetData.pace = response.data.paceData;

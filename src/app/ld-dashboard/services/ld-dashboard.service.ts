@@ -4,6 +4,7 @@ import { environment } from "../../../environments/environment";
 import { Subject } from "rxjs";
 import { APIURL } from "../../apiURL";
 import { DateserviceService } from "../../common-services/dateservice.service";
+import { CommonService } from "../../common-services/common.service";
 
 @Injectable({
   providedIn: "root"
@@ -36,6 +37,12 @@ export class LdDashboardService implements OnInit {
     return this.refreshAPI$.asObservable();
   }
 
+  tenantName$ = new Subject<any>();
+
+  get tenantNameAPI() {
+    return this.tenantName$.asObservable();
+  }
+
   dateChange$ = new Subject<any>();
 
   get dateChangeAPI() {
@@ -43,32 +50,40 @@ export class LdDashboardService implements OnInit {
   }
 
   _baseUrl;
-  headers;
   //baseURL from enviornment
   baseURL = environment.baseUrl;
   constructor(
     private http: HttpClient,
     private dateService: DateserviceService,
-    private _window: Window
+    private _window: Window, private getTenantName: CommonService
   ) {
-    this._baseUrl = this._window.location.href;
-    let base = this._baseUrl.split('/')[3];
-    base = base.substring(0, base.length - 1);
-    if (base == 'MAIT') {
+    // this._baseUrl = this._window.location.href;
+    // let base = this._baseUrl.split('/')[3];
+    // base = base.substring(0, base.length - 1);
+    this.constructDate();
+  }
+
+  headers = new HttpHeaders()
+    .set("LnDUserId", "57142")
+    .set("user-type", "LND")
+    .set("tenant-name", "MAIT");
+
+  selectTenantName(tenantName?: any) {
+    //for (let i = 0; i < this.getTenantName.tenantsNameDetails.length; i++) {
+    if (tenantName == 'MAIT') {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "57142")
         .set("user-type", "LND")
-        .set("tenant-name", base);
+        .set("tenant-name", tenantName);
     }
-    if (base == 'MAB') {
+    if (tenantName == 'MAB') {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "26642")
         .set("user-type", "LND")
-        .set("tenant-name", base);
+        .set("tenant-name", tenantName);
     }
-
-    console.log(base);
-    this.constructDate();
+    //}
+    this.tenantName$.next();
   }
 
   courseId = 0;

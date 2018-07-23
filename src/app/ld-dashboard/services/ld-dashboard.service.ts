@@ -42,25 +42,34 @@ export class LdDashboardService implements OnInit {
     return this.dateChange$.asObservable();
   }
 
-  constructor(
-    private http: HttpClient,
-    private dateService: DateserviceService
-  ) {
-    this.constructDate();
-  }
-
-  // .set("courseId", "0")
-  //   .set("programId", "0")
+  _baseUrl;
+  headers;
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  headers = new HttpHeaders()
-    .set("LnDUserId", "57142")
-    .set("user-type", "LND")
-    .set("tenant-name", "MAIT");
-  // headers1 = new HttpHeaders()
-  //   .set("LnDUserId", "57142")
-  //   .set("user-type", "LND")
-  //   .set("tenant-name", "MAIT");
+  constructor(
+    private http: HttpClient,
+    private dateService: DateserviceService,
+    private _window: Window
+  ) {
+    this._baseUrl = this._window.location.href;
+    let base = this._baseUrl.split('/')[3];
+    base = base.substring(0, base.length - 1);
+    if (base == 'MAIT') {
+      this.headers = new HttpHeaders()
+        .set("LnDUserId", "57142")
+        .set("user-type", "LND")
+        .set("tenant-name", base);
+    }
+    if (base == 'MAB') {
+      this.headers = new HttpHeaders()
+        .set("LnDUserId", "26642")
+        .set("user-type", "LND")
+        .set("tenant-name", base);
+    }
+
+    console.log(base);
+    this.constructDate();
+  }
 
   courseId = 0;
   programId = 0;
@@ -673,5 +682,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

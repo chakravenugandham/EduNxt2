@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>EduNxtMaGE</title>
-  <base href="/">
+  <script type='text/javascript'>
+    var base = document.location.pathname.split('/')[1];
+    document.write('<base href="/' + base + '" />');
+
+  </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/assets/images/EduNxt.jpeg">

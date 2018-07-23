@@ -14,7 +14,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
   graphData = [];
   filterbody = {};
   filtersData = {
-    routeTo: "learnerTrackFullView",
+    routeTo: "learnerPerformanceFullView",
     filters: true,
     search: false,
     viewDetails: false,

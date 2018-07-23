@@ -2,6 +2,15 @@
   <p>
     <b>View score distribution</b>
   </p>
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
   <div appScoreChart [data]='dataSet'>
   </div>
   <p style="text-align: center;font-weight: bold;">Score Ranges</p>

@@ -213,7 +213,7 @@ import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-p
     FormsModule,
     OrderModule
   ],
-  providers: [GoogleChartsBaseService],
+  providers: [GoogleChartsBaseService, { provide: Window, useValue: window }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

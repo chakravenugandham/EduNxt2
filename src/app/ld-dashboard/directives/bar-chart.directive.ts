@@ -27,7 +27,7 @@ export class BarChartDirective implements OnInit, OnChanges {
   //   { label: "Problem Solving4", Group1: 60 }
   // ];
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
@@ -106,20 +106,20 @@ export class BarChartDirective implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function(key) {
+    let options = d3.keys(this.dataset[0]).filter(function (key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function(d: any) {
+    this.dataset.forEach(function (d: any) {
       // console.log("d", d);
 
-      d.valores = options.map(function(name) {
+      d.valores = options.map(function (name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function(d: any) {
+      this.dataset.map(function (d: any) {
         return d.label;
       })
     );
@@ -148,7 +148,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function(d) {
+      .attr("transform", function (d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -165,26 +165,26 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     bar
       .selectAll("rect")
-      .data(function(d: any) {
+      .data(function (d: any) {
         return d.valores;
       })
       .enter()
       .append("rect")
       // .attr("width", x1.rangeBand() - 8)
       .attr("width", 24)
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         return x1(d.name);
       })
-      .attr("y", function(d) {
+      .attr("y", function (d) {
         return y(d.value);
       })
-      .attr("value", function(d) {
+      .attr("value", function (d) {
         return d.name;
       })
-      .attr("height", function(d) {
+      .attr("height", function (d) {
         return height - y(d.value);
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return color(d.name);
       });
   }

@@ -197,7 +197,7 @@ import { FacultyAttentionWidgetCardComponent } from './faculty/common/faculty-at
     FormsModule,
     OrderModule
   ],
-  providers: [GoogleChartsBaseService],
+  providers: [GoogleChartsBaseService, { provide: Window, useValue: window }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

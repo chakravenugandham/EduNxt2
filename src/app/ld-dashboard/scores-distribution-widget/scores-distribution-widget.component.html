@@ -4,6 +4,7 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
+
 <div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
@@ -55,12 +56,21 @@
       </span>
     </div>
   </div>
-  <div *ngIf="responseData.length>0">
-    <app-test-scores [testData]="dataSet" *ngIf="getValue == 'test'"></app-test-scores>
-    <app-quiz [testData]="dataSet" *ngIf="getValue == 'quiz'"></app-quiz>
-    <app-assignment [testData]="dataSet" *ngIf="getValue == 'assignment'"></app-assignment>
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
 
-  <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+  <div *ngIf="responseData.length>0">
+    <app-test-scores *ngIf=" getValue == 'test'" [testData]="dataSet"></app-test-scores>
+    <app-quiz *ngIf="getValue == 'quiz'" [testData]="dataSet"></app-quiz>
+    <app-assignment *ngIf="responseData.length > 0 && getValue == 'assignment'" [testData]="dataSet"></app-assignment>
+  </div>
+
+  <!-- <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget> -->
 
 </div>

@@ -412,9 +412,49 @@ $grayThree: #e9e9e9;
   }
 }
 
+.testScoresGraph {
+  .y-axis {
+    path {
+      stroke: none !important;
+    }
+    g line {
+      stroke: none !important;
+    }
+  }
+  .axis {
+    path {
+      // stroke-dasharray: 4px;
+      fill: #fff;
+    }
+  }
+  .y-grid {
+    path {
+      stroke: #fff;
+    }
+    g {
+      line {
+        stroke-dasharray: 4px;
+        stroke: #ccc;
+      }
+    }
+  }
+  .x-grid {
+    path {
+      stroke: #fff;
+    }
+    g {
+      line {
+        stroke-dasharray: 4px;
+        stroke: #ccc;
+      }
+    }
+  }
+}
+
 #testScoresGraph {
   .y-axis path {
-    stroke-width: 0 !important;
+    // stroke-width: 0 !important;
+    stroke: none !important;
   }
   .axis path {
     fill: none;
@@ -450,8 +490,41 @@ $grayThree: #e9e9e9;
   }
 }
 
+.bar-chart-graph ::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
 .bar-chart-graph {
   overflow-x: scroll;
+  .y {
+    path {
+      stroke: none !important;
+    }
+    g {
+      line {
+        stroke: none;
+      }
+    }
+  }
+  .x {
+    g {
+      line {
+        stroke: none;
+      }
+      text {
+        transform: rotate(-6deg) !important;
+      }
+    }
+  }
 
   .y-axis path {
     stroke-width: 0 !important;

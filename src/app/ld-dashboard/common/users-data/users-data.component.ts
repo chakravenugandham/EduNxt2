@@ -30,6 +30,10 @@ export class UsersDataComponent implements OnInit {
       monthNames[new Date().getMonth() - 1] + " " + new Date().getFullYear();
   }
 
+  numberFormat(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   ngOnChanges(changes: any) {
     if (changes.config && changes.config.currentValue) {
       this.config = changes.config.currentValue;

@@ -67,18 +67,14 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     let margin: number = 30,
       width = 500,
-      height = 200;
+      height = 250,
+      p = 50;
     let calculatedWidth =
       this.dataset.length > 6 ? width + 46 * (this.dataset.length - 6) : width;
 
     if (this.dataset.length > 6) {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
     }
-
-    // console.log("width", width);
-    // console.log("this.dataset.length", this.dataset.length);
-    // console.log("this.dataset.length / 6", this.dataset.length - 6);
-    // console.log("calculatedWidth", calculatedWidth);
 
     let svg = d3
       .select(this.el.nativeElement)
@@ -94,6 +90,16 @@ export class BarChartDirective implements OnInit, OnChanges {
     let x1 = d3.scale.ordinal();
 
     let y = d3.scale.linear().range([height, 0]);
+
+    // ---- create xScale ----
+    // var yScale = d3
+    //   .scaleLinear()
+    //   .domain([0, 100])
+    //   .range([p, calculatedWidth - 15]);
+
+    // function make_y_gridlines() {
+    //   return d3.axisLeft(yScale).ticks(5);
+    // }
 
     let xAxis = d3.svg
       .axis()
@@ -111,8 +117,6 @@ export class BarChartDirective implements OnInit, OnChanges {
     });
 
     this.dataset.forEach(function(d: any) {
-      // console.log("d", d);
-
       d.valores = options.map(function(name) {
         return { name: name, value: +d[name] };
       });
@@ -141,6 +145,17 @@ export class BarChartDirective implements OnInit, OnChanges {
       .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6);
+
+    // ---- add the Y gridlines ----
+    // svg
+    //   .append("g")
+    //   .attr("class", "y-grid grid")
+    //   .attr("transform", "translate(" + p + ", 0)")
+    //   .call(
+    //     make_y_gridlines()
+    //       .tickSize(-(calculatedWidth - p - p / 2))
+    //       .tickFormat("")
+    //   );
 
     let bar = svg
       .selectAll(".bar")

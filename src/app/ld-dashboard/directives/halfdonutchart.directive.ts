@@ -51,7 +51,6 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("transform", function(d, i) {
-        // console.log("d", d);
         return "translate(130,100)";
       });
 

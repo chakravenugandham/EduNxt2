@@ -10,7 +10,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   filtersData = {
     routeTo: "learnerPerformanceFullView",
-    filters: true,
+    filters: false,
     search: false,
     viewDetails: true,
     filterList: []

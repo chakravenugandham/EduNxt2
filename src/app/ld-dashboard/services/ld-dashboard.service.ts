@@ -395,7 +395,7 @@ export class LdDashboardService implements OnInit {
       componentName +
       "&displayFor=" +
       displayfor +
-      "?start_date=" +
+      "&start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
       this.dateFilterObj.end_date +

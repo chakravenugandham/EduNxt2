@@ -13,6 +13,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
   batches = [];
   graphData = [];
   filterbody = {};
+  page: number = 2;
   filtersData = {
     routeTo: "learnerPerformanceFullView",
     filters: true,

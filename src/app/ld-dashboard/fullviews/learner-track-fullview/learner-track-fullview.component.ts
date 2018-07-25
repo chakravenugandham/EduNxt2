@@ -65,7 +65,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getTableDataFromService() {
     if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'pace') {
-      this.selectType = "paceaheadschedule";
+      this.selectType = "aheadschedule";
+      //this.getDisplayObject(this.selectType);
       this.dashboardService
         .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
         .subscribe((response: any) => {
@@ -89,7 +90,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
         {
           color: "#23b14d",
           type: "classA",
-          number: this.responseGraphDetails.paceData["aheadOfSchedule"]
+          number: this.responseGraphDetails.paceData["aheadSchedule"]
         },
         {
           color: "#ffd630",
@@ -126,6 +127,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
       ];
     });
   }
+
+  ngOnCh
 
   ngOnInit() {
     this.getTableDataFromService();

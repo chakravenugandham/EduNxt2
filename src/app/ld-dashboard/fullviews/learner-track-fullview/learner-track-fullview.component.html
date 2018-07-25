@@ -46,7 +46,7 @@
         <div class="row graph-badges">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
             <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
-            <div> {{responseGraphDetails?.paceData.aheadOfSchedule}} </div>
+            <div> {{responseGraphDetails?.paceData.aheadSchedule}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
             <i class="far fa-circle onTrack"></i> On Track
@@ -68,10 +68,10 @@
     <b>Display data for </b>
     <span *ngIf="componentName == 'pace'">
       <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
-        <option value="paceaheadschedule">Ahead of Schedule</option>
-        <option value="paceusersontrack">On Track</option>
-        <option value="pacebehindschedule">Behind Schedule</option>
-        <option value="pacehavenotstarted">Haven't Started</option>
+        <option value="aheadschedule">Ahead of Schedule</option>
+        <option value="ontrack">On Track</option>
+        <option value="behindschedule">Behind Schedule</option>
+        <option value="have not started">Haven't Started</option>
       </select>
     </span>
     <span *ngIf="componentName == 'performance'">

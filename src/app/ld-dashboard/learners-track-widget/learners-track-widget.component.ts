@@ -8,7 +8,7 @@ import { CommonService } from "../../common-services/common.service";
   templateUrl: "./learners-track-widget.component.html",
   styleUrls: ["./learners-track-widget.component.scss"]
 })
-export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
+export class LearnersTrackWidgetComponent implements OnInit {
   componentName: string = "pace";
   filtersData = {
     routeTo: "learnerTrackFullView",
@@ -45,13 +45,15 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
   }
 
   learnerPaceFn() {
-    this.componentName = "pace";
+    this.componentName = 'pace';
+    this.filtersData.currentModule = "pace";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
-    this.componentName = "performance";
+    this.componentName = 'performance';
+    this.filtersData.currentModule = "performance";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
@@ -63,18 +65,21 @@ export class LearnersTrackWidgetComponent implements OnInit, OnChanges {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
       });
+    console.log(this.widgetData.pace);
+    console.log(this.widgetData.performance);
   }
+
 
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.filterbody) {
-      this.getDataFromService();
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes.filterbody) {
+  //     this.getDataFromService();
+  //   }
+  // }
 
   ngOnInit() {
     this.learnerPaceFn();

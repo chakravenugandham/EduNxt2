@@ -37,6 +37,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
+  page = 2;
+
   constructor(
     private dashboardService: LdDashboardService,
     private filterData: CommonService

@@ -68,7 +68,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getTableDataFromService() {
     if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'pace') {
       this.selectType = "aheadschedule";
-      //this.getDisplayObject(this.selectType);
       this.dashboardService
         .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
         .subscribe((response: any) => {

@@ -38,10 +38,10 @@
           </div>
           <p class="font-color">
             <span [ngClass]="{'changeNumber': responseData.completedTraining >= responseData.expectedtrainedPercentage, 'changeNumberLow': responseData.completedTraining < responseData.expectedtrainedPercentage}">
-              {{responseData.completedTraining}}
+              {{numberFormat(responseData.completedTraining)}}
             </span>
             <span>
-              of {{responseData.totalLearners}} users have been trained
+              of {{numberFormat(responseData.totalLearners)}} users have been trained
             </span>
           </p>
         </div>

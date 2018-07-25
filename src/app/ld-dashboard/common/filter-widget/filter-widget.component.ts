@@ -46,6 +46,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   };
 
   filterFullObj = [];
+  filtersUrl = "scores-distribution-filters";
 
   constructor(private router: Router, private server: LdDashboardService) {}
 
@@ -84,7 +85,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
     this.server
-      .getFiltersData(this.viewData.filterList)
+      .getFiltersData(this.filtersUrl, this.viewData.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
       });

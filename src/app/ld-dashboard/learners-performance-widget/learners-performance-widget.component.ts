@@ -10,7 +10,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   filtersData = {
     routeTo: "learnerPerformanceFullView",
-    filters: true,
+    filters: false,
     search: false,
     viewDetails: true,
     filterList: []
@@ -21,6 +21,8 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   performanceDataSet = [];
   progressDataSet = [];
   batches = [];
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -58,11 +60,15 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   getDataFromService() {
     this.performanceDataSet = [];
     this.progressDataSet = [];
+    this.spinner_loader = true;
 
     this.dashboardService
       .getLearnerPerformanceData(this.getTab)
       .subscribe((response: any) => {
         this.responseData = response.data;
+
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
         for (let i in this.responseData) {
           if (this.getTab == "performance") {

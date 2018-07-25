@@ -93,7 +93,7 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getAPIData();

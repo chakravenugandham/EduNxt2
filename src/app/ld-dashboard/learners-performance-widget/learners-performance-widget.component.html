@@ -53,11 +53,19 @@
     </div>
   </div>
 
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
   <div *ngIf="responseData.length > 0">
     <app-performance *ngIf="performanceDataSet.length > 0 && getTab == 'performance'" [performanceData]="performanceDataSet"
       [batches]="batches"></app-performance>
     <app-progress *ngIf="progressDataSet.length > 0 && getTab == 'progress'" [progressData]="progressDataSet" [batches]="batches"></app-progress>
   </div>
 
-  <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  <!-- <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget> -->
 </div>

@@ -5,9 +5,8 @@ import * as d3 from "d3";
 })
 export class HalfdonutchartDirective implements OnInit, OnChanges {
   @Input() data: any;
-  @Input() expectedChange: boolean;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
 
   chartRenderFn(chartData) {
     this.el.nativeElement.innerHTML = "";
@@ -27,7 +26,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .outerRadius(100)
       .cornerRadius(10)
       .startAngle(-90 * (Math.PI / 180))
-      .endAngle(function (d) {
+      .endAngle(function(d) {
         if (<any>d == 50) {
           return 0;
         } else if (<any>d > 50) {
@@ -51,7 +50,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .data(chartData)
       .enter()
       .append("g")
-      .attr("transform", function (d, i) {
+      .attr("transform", function(d, i) {
         return "translate(130,100)";
       });
 
@@ -71,8 +70,8 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.el.nativeElement.innerHTML = "";
-    console.log("data", this.data);
+    // this.chartRenderFn([this.data]);
+    // this.el.nativeElement.innerHTML = "";
   }
 
   ngOnChanges(changes: any) {
@@ -81,7 +80,6 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       //   .selectAll("svg")
       //   .remove();
       this.chartRenderFn([this.data]);
-      // console.log("data", this.data);
     }
   }
 }

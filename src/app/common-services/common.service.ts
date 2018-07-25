@@ -7,7 +7,7 @@ export class CommonService {
   filterbodyDetails = {};
   tenantNames = [];
 
-  constructor() { }
+  constructor() {}
 
   set learnerFilterBodyDetails(data) {
     this.filterbodyDetails = data;
@@ -16,5 +16,4 @@ export class CommonService {
   get learnerFilterBodyDetails() {
     return this.filterbodyDetails;
   }
-
 }

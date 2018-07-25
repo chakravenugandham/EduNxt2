@@ -2,7 +2,7 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link">Time Spent</a>
+        <a class="nav-link">Scorecard</a>
       </li>
     </ul>
     <div>
@@ -25,22 +25,23 @@
     <!-- <div appHalfdonutchart [data]="percentageChange"></div> -->
   </div>
 
-  <div *ngIf="!spinner_loader && !noDataFlag" class="row m-t-8 text-fix-bottom">
+  <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-8 text-fix-bottom">
     <div class="row">
       <div class="col-md-6 col-sm-6 col-xs-6 col-6">
         <p class="">
           <span class="bigNumber big-positive-number">80</span>
-          <span class="changeNumber">percentile</span>
+          <span class="changeNumber position-absolute">percentile</span>
         </p>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6 col-6">
         <p class="">
           <span class="bigNumber big-positive-number">4.85</span>
-          <span class="changeNumber">CGPA</span>
+          <span class="changeNumber position-absolute">CGPA</span>
         </p>
       </div>
     </div>
-    <p>You are currently ranked
+    <p class="m-t-10">
+      You are currently ranked
       <span class="changeNumber"> 2nd </span>
     </p>
   </div>

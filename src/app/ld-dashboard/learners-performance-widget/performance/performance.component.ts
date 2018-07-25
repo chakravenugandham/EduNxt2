@@ -1,6 +1,10 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/core";
-
-declare let d3: any;
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from "@angular/core";
 
 @Component({
   selector: "app-performance",
@@ -9,12 +13,12 @@ declare let d3: any;
 })
 export class PerformanceComponent implements OnInit, OnChanges {
   @Input() performanceData;
-  @Input() batches:string[];
+  @Input() batches: string[];
   barChartData;
   batchNames = [];
   constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.performanceData) {

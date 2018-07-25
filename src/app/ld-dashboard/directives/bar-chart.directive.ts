@@ -27,7 +27,7 @@ export class BarChartDirective implements OnInit, OnChanges {
   //   { label: "Problem Solving4", Group1: 60 }
   // ];
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
@@ -67,18 +67,14 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     let margin: number = 30,
       width = 500,
-      height = 200;
+      height = 250,
+      p = 50;
     let calculatedWidth =
       this.dataset.length > 6 ? width + 46 * (this.dataset.length - 6) : width;
 
     if (this.dataset.length > 6) {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
     }
-
-    // console.log("width", width);
-    // console.log("this.dataset.length", this.dataset.length);
-    // console.log("this.dataset.length / 6", this.dataset.length - 6);
-    // console.log("calculatedWidth", calculatedWidth);
 
     let svg = d3
       .select(this.el.nativeElement)
@@ -95,6 +91,16 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     let y = d3.scale.linear().range([height, 0]);
 
+    // ---- create xScale ----
+    // var yScale = d3
+    //   .scaleLinear()
+    //   .domain([0, 100])
+    //   .range([p, calculatedWidth - 15]);
+
+    // function make_y_gridlines() {
+    //   return d3.axisLeft(yScale).ticks(5);
+    // }
+
     let xAxis = d3.svg
       .axis()
       .scale(x0)
@@ -106,20 +112,18 @@ export class BarChartDirective implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function (key) {
+    let options = d3.keys(this.dataset[0]).filter(function(key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function (d: any) {
-      // console.log("d", d);
-
-      d.valores = options.map(function (name) {
+    this.dataset.forEach(function(d: any) {
+      d.valores = options.map(function(name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function (d: any) {
+      this.dataset.map(function(d: any) {
         return d.label;
       })
     );
@@ -142,49 +146,60 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("transform", "rotate(-90)")
       .attr("y", 6);
 
+    // ---- add the Y gridlines ----
+    // svg
+    //   .append("g")
+    //   .attr("class", "y-grid grid")
+    //   .attr("transform", "translate(" + p + ", 0)")
+    //   .call(
+    //     make_y_gridlines()
+    //       .tickSize(-(calculatedWidth - p - p / 2))
+    //       .tickFormat("")
+    //   );
+
     let bar = svg
       .selectAll(".bar")
       .data(this.dataset)
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function (d) {
+      .attr("transform", function(d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
     let color = d3.scale
       .ordinal()
-      .range(["#F77F6C", "#FFD630", "#5584FF", "#23b14d"]);
+      .range(["#5584FF", "#F77F6C", "#FFD630", "#23B14D"]);
 
     svg
       .append("text")
       .text("Performance")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", 20);
+      .attr("y", 14);
 
     bar
       .selectAll("rect")
-      .data(function (d: any) {
+      .data(function(d: any) {
         return d.valores;
       })
       .enter()
       .append("rect")
       // .attr("width", x1.rangeBand() - 8)
-      .attr("width", 24)
-      .attr("x", function (d) {
+      .attr("width", 18)
+      .attr("x", function(d) {
         return x1(d.name);
       })
-      .attr("y", function (d) {
+      .attr("y", function(d) {
         return y(d.value);
       })
-      .attr("value", function (d) {
+      .attr("value", function(d) {
         return d.name;
       })
-      .attr("height", function (d) {
+      .attr("height", function(d) {
         return height - y(d.value);
       })
-      .style("fill", function (d) {
+      .style("fill", function(d) {
         return color(d.name);
       });
   }

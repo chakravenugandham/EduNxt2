@@ -17,7 +17,7 @@ import { LearnersQuizFullviewComponent } from "./faculty/fullviews/learners-quiz
 import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "learner", pathMatch: "full" },
+  { path: "", redirectTo: "LnD", pathMatch: "full" },
   { path: "LnD", component: LdDashboardComponent },
   { path: "faculty", component: FacultyComponent },
   { path: "orgHead", component: OrgHeadComponent },
@@ -51,4 +51,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
-export class RoutingModule {}
+export class RoutingModule { }

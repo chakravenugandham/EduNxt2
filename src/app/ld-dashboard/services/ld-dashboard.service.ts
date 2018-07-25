@@ -362,8 +362,8 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    let headers = new HttpHeaders().set("LnDUserId", "1001");
-    return this.http.post(url, filterbody, { headers: headers });
+    //let headers = new HttpHeaders().set("LnDUserId", "1001");
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //learner-track full details
@@ -395,8 +395,8 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    let headers = new HttpHeaders().set("LnDUserId", "1001");
-    return this.http.post(url, filterbody, { headers: headers });
+    //let headers = new HttpHeaders().set("LnDUserId", "1001");
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //learner-performance

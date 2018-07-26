@@ -17,13 +17,14 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     filterList: ["zone"],
     currentModule: this.getTab
   };
+  filterName = ["batch"];
 
   responseData: any;
 
   filterbody = {};
 
   constructor(private dashboardService: LdDashboardService) {
-    this.dashboardService.refreshAPI.subscribe((result) => {
+    this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
 
@@ -56,7 +57,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   getFilterObject($event) {
     this.filterbody = $event;
+    this.getDataFromService();
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

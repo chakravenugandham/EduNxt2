@@ -52,7 +52,9 @@
       </span>
     </div>
   </div>
+
   <app-learner-pace *ngIf="componentName == 'pace'" [paceData]="widgetData.pace"></app-learner-pace>
   <app-learner-performance *ngIf="componentName == 'performance'" [performanceData]="widgetData.performance"></app-learner-performance>
-  <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+
+  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 </div>

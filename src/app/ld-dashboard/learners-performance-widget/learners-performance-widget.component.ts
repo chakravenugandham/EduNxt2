@@ -15,6 +15,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     viewDetails: true,
     filterList: []
   };
+  filterName = ["batch"];
   getTab: string = "performance";
   responseData = [];
   filterbody = {};

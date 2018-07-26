@@ -31,8 +31,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getDisplayObject($event) {
     this.selectType = $event;
-    console.log("this.selectType", this.selectType);
-
     this.getTableDataFromService();
   }
 
@@ -61,18 +59,12 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getFilterData() {
-    // this.filterData.learnerFilterBodyDetails;
     this.componentName = this.filterData.learnerFilterBodyDetails[
       "currentModule"
     ];
   }
 
   getTableDataFromService() {
-    console.log(
-      "getTableDataFromService",
-      this.filterData.learnerFilterBodyDetails["currentModule"]
-    );
-
     if (
       this.filterData.learnerFilterBodyDetails["currentModule"] == undefined
     ) {
@@ -152,8 +144,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
         ];
       });
   }
-
-  ngOnCh;
 
   ngOnInit() {
     this.getTableDataFromService();

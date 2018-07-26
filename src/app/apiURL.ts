@@ -23,6 +23,6 @@ export class APIURL {
   public static SCORES_DISTRUBUTION = "scores-distribution";
   public static SCORES_DISTRUBUTION_DETAILS = "scores-distribution-details";
   public static CONTENT_CONSUMPTION = "content-consumption";
-  public static FILTERS = "dropDown";
+  public static FILTERS = "filters";
   public static SCORES_FILTERS = "scores-distribution-filters";
 }

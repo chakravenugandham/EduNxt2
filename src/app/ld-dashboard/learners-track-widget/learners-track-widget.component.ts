@@ -15,9 +15,10 @@ export class LearnersTrackWidgetComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: ["batch"],
+    filterList: [],
     currentModule: this.componentName
   };
+  filterName = ["batch"];
 
   // filtersData = {};
   widgetData = {
@@ -45,14 +46,14 @@ export class LearnersTrackWidgetComponent implements OnInit {
   }
 
   learnerPaceFn() {
-    this.componentName = 'pace';
+    this.componentName = "pace";
     this.filtersData.currentModule = "pace";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
-    this.componentName = 'performance';
+    this.componentName = "performance";
     this.filtersData.currentModule = "performance";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
@@ -65,10 +66,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
       });
-    console.log(this.widgetData.pace);
-    console.log(this.widgetData.performance);
   }
-
 
   getFilterObject($event) {
     this.filterbody = $event;

@@ -28,6 +28,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     viewDetailsFilters: boolean;
   };
 
+  @Input() filterName: string[];
+
   @Output() filterEvent = new EventEmitter<any>();
 
   displayDropdown: boolean = false;
@@ -37,12 +39,14 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   filterDisplayName = "Add a Filter";
 
   filterSelected: any = {
-    locationId: [],
     batchId: [],
+    quizId: [],
+    assignmentId: [],
+    locationId: [],
     teamId: [],
     zoneId: [],
-    contentTypeId: [],
-    displayFor: ""
+    contentTypeId: []
+    // displayFor: ""
   };
 
   filterFullObj = [];
@@ -81,6 +85,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       }
     }
   }
+
   showFilter() {
     this.displayDropdown = !this.displayDropdown;
     this.server
@@ -101,6 +106,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         filterTypeId = "batchId";
         break;
       }
+      case "quiz": {
+        filterTypeId = "quizId";
+        break;
+      }
       case "team": {
         filterTypeId = "teamId";
         break;
@@ -116,9 +125,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       case "contentType": {
         filterTypeId = "contentTypeId";
         break;
-      }
-      case "displayFor": {
-        filterTypeId = "displayFor";
       }
     }
 
@@ -143,13 +149,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         }
       }
     }
-
-    // if (!this.filterSelected[filterTypeId].includes(filterName.id)) {
-    //   this.filterSelected[filterTypeId].push(filterName.id);
-    // } else {
-    //   let i = this.filterSelected[filterTypeId].indexOf(filterName.name);
-    //   this.filterSelected[filterTypeId].splice(i, 1);
-    // }
 
     this.filterEvent.emit(this.filterSelected);
   }
@@ -183,5 +182,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.filterDispalyNameFraming();
   }
 
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnChanges(changes: any) {
+    this.viewData.filterList = this.filterName;
+    this.filterDispalyNameFraming();
+  }
 }

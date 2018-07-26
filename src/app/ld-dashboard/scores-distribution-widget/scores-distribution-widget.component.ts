@@ -1,5 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { observable } from "rxjs";
+import { Component, OnInit, OnChanges } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
@@ -16,6 +15,8 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     viewDetails: true,
     filterList: []
   };
+  filterName = ["batch"];
+
   getValue: string = "test";
   filterbody = {};
   responseData = [];
@@ -39,19 +40,19 @@ export class ScoresDistributionWidgetComponent implements OnInit {
 
   testScoreFn() {
     this.getValue = "test";
-    this.filtersData.filterList = ["batch"];
+    this.filterName = ["batch"];
     this.getDataFromService();
   }
 
   quizScoreFn() {
     this.getValue = "quiz";
-    this.filtersData.filterList = ["batch", "quiz"];
+    this.filterName = ["batch", "quiz"];
     this.getDataFromService();
   }
 
   assignmentFn() {
     this.getValue = "assignment";
-    this.filtersData.filterList = ["batch", "assignment"];
+    this.filterName = ["batch", "assignment"];
     this.getDataFromService();
   }
 
@@ -76,7 +77,6 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filtersData.filterList = ["batch"];
     this.getDataFromService();
   }
 }

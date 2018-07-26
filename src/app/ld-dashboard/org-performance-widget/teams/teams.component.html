@@ -17,7 +17,7 @@
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
-        <th scope="col" (click)="sortByFn('teamsize')">Team Size
+        <th scope="col" (click)="sortByFn('teamSize')">Team Size
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
@@ -38,20 +38,29 @@
             <b>{{tableData.teamName}}</b>
           </span>
         </td>
-        <td>{{parseFloat(tableData.completion).toFixed(2)}}</td>
+        <td>{{parseFloat(tableData.completion).toFixed(0)}}</td>
         <td>{{tableData.completedProgram}}</td>
-        <td>{{tableData.teamsize}}</td>
-        <td>
-          <span>
+        <td>{{tableData.teamSize}}</td>
+
+        <td data-toggle="modal" data-target="#exampleModal">
+
+          <span class="action_icon positive-number" *ngIf="tableData.completion > 75">
+            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+          </span>
+
+          <span class="negative-number" *ngIf="tableData.completion <= 75">
+            <i class="fas fa-exclamation-triangle"></i> Follow up
+          </span>
+
+          <!-- <span class="action_icon">
             <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
           </span>
-          <span class="color cursor-pointer" data-toggle="modal" data-target="#exampleModal">{{tableData.actionMessage}}</span>
+          <span class="cursor-pointer" data-toggle="modal" data-target="#exampleModal"> Congradulate </span> -->
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
 
 <!-- <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

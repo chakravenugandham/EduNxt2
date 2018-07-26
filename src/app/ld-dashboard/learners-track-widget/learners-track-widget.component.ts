@@ -14,7 +14,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
-    viewDetails: true,
+    viewDetails: false,
     filterList: [],
     currentModule: this.componentName
   };
@@ -48,7 +48,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPaceFn() {
     this.componentName = "pace";
     this.filtersData.currentModule = "pace";
-    console.log(this.filtersData)
+    console.log(this.filtersData);
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }

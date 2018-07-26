@@ -12,7 +12,6 @@ export class LearnerPaceComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: any) {
-    console.log(this.paceData);
     if (changes.paceData.currentValue) {
       this.chartValues = [
         {

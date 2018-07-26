@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
+import { CommonService } from "../../common-services/common.service";
 
 @Component({
   selector: "app-org-performance-widget",
@@ -22,7 +23,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   filterbody = {};
 
-  constructor(private dashboardService: LdDashboardService) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe((result) => {
       this.getDataFromService();
     });
@@ -38,12 +39,20 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   teamsFn() {
     this.getTab = "teams";
+    this.filtersData.currentModule = 'teams';
+    console.log(this.filterData.learnerFilterBodyDetails);
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    console.log(this.filterData.learnerFilterBodyDetails);
   }
   trainersFn() {
     this.getTab = "trainers";
+    this.filtersData.currentModule = 'trainers';
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
   }
   learnersFn() {
     this.getTab = "learner";
+    this.filtersData.currentModule = 'learner';
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
   }
 
   getDataFromService() {

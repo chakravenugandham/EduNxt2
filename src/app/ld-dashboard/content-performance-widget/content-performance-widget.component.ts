@@ -8,6 +8,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
   routePath: string = "contentConsumptionFullView";
+  limitTo = 5;
   filtersData = {
     routeTo: "contentConsumptionFullView",
     filters: true,
@@ -35,7 +36,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   getDataFromService() {
     this.dashboardService
-      .getContentData(this.filterbody)
+      .getContentData(this.filterbody, this.limitTo)
       .subscribe((res: any) => {
         this.contentData = res.data;
       });

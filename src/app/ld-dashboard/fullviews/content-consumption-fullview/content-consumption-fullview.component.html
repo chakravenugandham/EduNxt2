@@ -24,40 +24,51 @@
         <thead>
           <tr>
             <th scope="col">
-              <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+              <span *ngIf="!searchBox">
+                <span (click)="searchFn()">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <span (click)="sortByFn('contentName')">
+                  Content Name
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
               </span>
-              Content Name
+
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('contentType')">Content Type
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Content Type
+            <th scope="col" (click)="sortByFn('courseName')">Course Name
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Course Name
+            <th scope="col" (click)="sortByFn('author')">Author
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Author
+            <th scope="col" (click)="sortByFn('views')">Views
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Views
+            <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Avg Rating
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col">Duration
+            <th scope="col" (click)="sortByFn('duration')">Duration
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -65,7 +76,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let content of contentData">
+          <tr *ngFor="let content of contentData | orderBy: sortOrder">
             <th scope="row"> {{content.contentName}} </th>
             <td> {{content.contentType}} </td>
             <td> {{content.courseName}} </td>

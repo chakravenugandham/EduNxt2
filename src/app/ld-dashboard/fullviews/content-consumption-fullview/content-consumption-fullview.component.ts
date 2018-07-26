@@ -10,6 +10,9 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
   filterbody = {};
+  limitTo = 10;
+  sortOrder: string = "contentName";
+  searchBox: boolean = false;
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
@@ -32,9 +35,26 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     });
   }
 
+  searchFn() {
+    this.searchBox = true;
+  }
+
+  closeSearchFn() {
+    this.searchBox = false;
+  }
+
+  onSearchChange(searchValue: string) {
+    console.log(searchValue);
+
+  }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+  }
+
   getDataFromService() {
     this.dashboardService
-      .getContentData(this.filterbody)
+      .getContentData(this.filterbody, this.limitTo)
       .subscribe((res: any) => {
         this.contentData = res.data;
       });

@@ -522,7 +522,7 @@ export class LdDashboardService implements OnInit {
   }
 
   //org-performance trainers data
-  getTeamData() {
+  getTeamData(limitTo) {
     if (
       this.dateService.dateFilterBodyDetails["start_date"] &&
       this.dateService.dateFilterBodyDetails["end_date"]
@@ -545,12 +545,12 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId;
+      this.programId + "&limit=" + limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance teams data
-  getTrainersData() {
+  getTrainersData(limitTo) {
     if (
       this.dateService.dateFilterBodyDetails["start_date"] &&
       this.dateService.dateFilterBodyDetails["end_date"]
@@ -573,12 +573,12 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId;
+      this.programId + "&limit=" + limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance leaners data
-  getLearnerData() {
+  getLearnerData(limitTo) {
     if (
       this.dateService.dateFilterBodyDetails["start_date"] &&
       this.dateService.dateFilterBodyDetails["end_date"]
@@ -601,7 +601,7 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId;
+      this.programId + "&limit=" + limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -666,7 +666,7 @@ export class LdDashboardService implements OnInit {
   }
 
   //content-performing
-  getContentData(filterbody) {
+  getContentData(filterbody, limitTo) {
     if (
       this.dateService.dateFilterBodyDetails["start_date"] &&
       this.dateService.dateFilterBodyDetails["end_date"]
@@ -689,7 +689,7 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId;
+      this.programId + "&limit=" + limitTo;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -714,5 +714,5 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

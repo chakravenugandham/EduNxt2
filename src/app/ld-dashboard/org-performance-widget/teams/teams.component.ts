@@ -17,6 +17,7 @@ export class TeamsComponent implements OnInit {
   sortType: string = "";
   parseFloat = parseFloat;
   sortOrder: string = "teamName";
+  limitTo: number = 5;
 
   constructor(
     private getData: LdDashboardService,
@@ -50,7 +51,7 @@ export class TeamsComponent implements OnInit {
   // }
 
   getDataFromService() {
-    this.getData.getTeamData().subscribe((res: any) => {
+    this.getData.getTeamData(this.limitTo).subscribe((res: any) => {
       this.teamsData = res.data;
       // this.order = this.teamsData.teamName;
     });

@@ -10,8 +10,60 @@
   // width: 90px;
   width: 140px;
 }
+
 .m-b-12 {
   margin-bottom: 12px;
+}
+
+.searchList {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.search-org-user {
+  position: relative;
+  input {
+    padding: 6px 12px;
+    color: #5584ff;
+    border-bottom: 1px solid #5584ff;
+    width: 195px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    i {
+      color: #2196f3a8;
+    }
+  }
+}
+
+.search-org-user {
+  position: relative;
+  input :focus {
+    padding: 6px 12px;
+    color: #5584ff;
+    border-bottom: 1px solid #5584ff;
+    width: 195px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.search-org-user input::placeholder {
+  color: #5584ff;
+}
+
+.search-org-user input::-ms-input-placeholder {
+  color: #5584ff;
+}
+
+.search-org-user input::-ms-input-placeholder {
+  color: #5584ff;
 }
 
 table {
@@ -25,6 +77,7 @@ table {
     }
   }
 }
+
 .action-items {
   margin-top: 12px;
   .compare-selected {
@@ -61,19 +114,15 @@ table {
 // .userName {
 //   margin-left: 33px;
 // }
-
 // .m-l-47 {
 //   margin-left: -47px;
 // }
-
 .imgActive {
-  position: relative;
-  // float: left;
+  position: relative; // float: left;
   img {
     height: 35px;
     width: 35px;
-    border-radius: 50%;
-    // margin-left: 10px;
+    border-radius: 50%; // margin-left: 10px;
     border: 1px solid #fff;
     z-index: 0;
   }
@@ -81,11 +130,7 @@ table {
     position: absolute;
     bottom: -12px;
     right: -4px;
-    background: linear-gradient(
-      to top left,
-      #00ff00 0%,
-      #ccff33 100%
-    ); // background-color: #befd45d9;
+    background: linear-gradient( to top left, #00ff00 0%, #ccff33 100%); // background-color: #befd45d9;
     border-radius: 50%;
     color: #fff;
     font-size: 14px;

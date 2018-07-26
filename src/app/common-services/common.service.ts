@@ -5,9 +5,7 @@ import { Injectable } from "@angular/core";
 })
 export class CommonService {
   filterbodyDetails = {};
-  tenantNames = [];
-
-  constructor() {}
+  constructor() { }
 
   set learnerFilterBodyDetails(data) {
     this.filterbodyDetails = data;

@@ -29,26 +29,36 @@
         <thead>
           <tr>
             <th scope="col">
-              <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+              <span *ngIf="!searchBox">
+                <span (click)="searchFn()">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <span class="text" (click)="sortByFn('teamName')">Team Name</span>
+                <span class="m-l-8">
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
               </span>
-              <span class="text">Team Name</span>
-              <span class="m-l-8">
-                <i class="fa fa-sort" aria-hidden="true"></i>
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
               </span>
             </th>
             <th scope="col">Completion %
-              <span class="m-l-8">
+              <span class="m-l-8" (click)="sortByFn('completion')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Completed Programs
-              <span class="m-l-8">
+              <span class="m-l-8" (click)="sortByFn('completedProgram')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Team Size
-              <span class="m-l-8">
+              <span class="m-l-8" (click)="sortByFn('teamsize')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
@@ -86,22 +96,22 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Trainer Name</span>
-              <span>
+              <span (click)="sortByFn('trainerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Trainings Conducted
-              <span>
+              <span (click)="sortByFn('trainingsConducted')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">People Trained
-              <span>
+              <span (click)="sortByFn('peopleTrained')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Avg. Rating
-              <span>
+              <span (click)="sortByFn('avgRating')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
@@ -140,7 +150,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Learner Name</span>
-              <span>
+              <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
@@ -149,22 +159,22 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Serial No.</span>
-              <span>
+              <span (click)="sortByFn('learnerSerialNumber')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Points Earned
-              <span>
+              <span (click)="sortByFn('pointsEarned')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Avg. Test Performance
-              <span>
+              <span (click)="sortByFn('avgTestPerformance')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Exam Score
-              <span>
+              <span (click)="sortByFn('examScore')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>

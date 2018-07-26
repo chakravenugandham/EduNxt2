@@ -9,6 +9,7 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 export class LearnersComponent implements OnInit {
   LearnersData = [];
   parseFloat = parseFloat;
+  limitTo: number = 5;
 
   sortOrder: string = "learnerName";
 
@@ -23,7 +24,7 @@ export class LearnersComponent implements OnInit {
   }
 
   getDataFromService() {
-    this.getData.getLearnerData().subscribe((res: any) => {
+    this.getData.getLearnerData(this.limitTo).subscribe((res: any) => {
       this.LearnersData = res.data;
     });
   }

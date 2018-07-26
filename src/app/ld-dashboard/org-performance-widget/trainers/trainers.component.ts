@@ -9,6 +9,7 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 export class TrainersComponent implements OnInit {
   trainersData = [];
   sortOrder: string = "trainerName";
+  limitTo: number = 5;
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -21,7 +22,7 @@ export class TrainersComponent implements OnInit {
   }
 
   getDataFromService() {
-    this.getData.getTrainersData().subscribe((res: any) => {
+    this.getData.getTrainersData(this.limitTo).subscribe((res: any) => {
       this.trainersData = res.data;
     });
   }

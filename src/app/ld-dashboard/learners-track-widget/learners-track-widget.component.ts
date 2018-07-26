@@ -48,6 +48,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPaceFn() {
     this.componentName = "pace";
     this.filtersData.currentModule = "pace";
+    console.log(this.filtersData)
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }

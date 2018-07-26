@@ -8,7 +8,7 @@ import * as d3 from "d3v4";
 export class ScoreChartDirective implements OnInit, OnChanges {
   @Input() data: any;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   chartRenderFn() {
     this.el.nativeElement.innerHTML = "";
@@ -77,10 +77,10 @@ export class ScoreChartDirective implements OnInit, OnChanges {
     //area line generator
     let area = d3
       .area()
-      .x(function(d) {
+      .x(function (d) {
         return xScale(d[0]);
       })
-      .y1(function(d) {
+      .y1(function (d) {
         return yScale(d[1]);
       })
       .curve(d3.curveCatmullRom.alpha(0.5));
@@ -96,7 +96,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
     svg
       .append("text")
       .text("No.of users")
-      .attr("transform", "rotate(-90),translate( " + height / 4 + ",0 )")
+      .attr("transform", "rotate(-90),translate( " + height / 8 + ",-10 )")
       .attr("x", -(height / 2))
       .attr("y", 20);
 
@@ -149,10 +149,10 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       ])
       .enter()
       .append("stop")
-      .attr("offset", function(d) {
+      .attr("offset", function (d) {
         return d.offset;
       })
-      .attr("stop-color", function(d) {
+      .attr("stop-color", function (d) {
         return d.color;
       });
 

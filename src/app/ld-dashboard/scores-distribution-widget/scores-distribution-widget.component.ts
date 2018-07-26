@@ -14,7 +14,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: ["batch"]
+    filterList: []
   };
   getValue: string = "test";
   filterbody = {};
@@ -39,16 +39,19 @@ export class ScoresDistributionWidgetComponent implements OnInit {
 
   testScoreFn() {
     this.getValue = "test";
+    this.filtersData.filterList = ["batch"];
     this.getDataFromService();
   }
 
   quizScoreFn() {
     this.getValue = "quiz";
+    this.filtersData.filterList = ["batch", "quiz"];
     this.getDataFromService();
   }
 
   assignmentFn() {
     this.getValue = "assignment";
+    this.filtersData.filterList = ["batch", "assignment"];
     this.getDataFromService();
   }
 
@@ -73,6 +76,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filtersData.filterList = ["batch"];
     this.getDataFromService();
   }
 }

@@ -8,10 +8,10 @@ declare let d3: any;
 })
 export class BarChartDirective implements OnInit, OnChanges {
   @Input() data;
-  dataset = [];
+  // dataset = [];
 
-  // dataset model
-  // dataset = [
+  // data model
+  // data = [
   //   { label: "Data Structures", Group1: 60 },
   //   { label: "Algo", Group1: 30 },
   //   { label: "Database", Group1: 40 },
@@ -70,9 +70,9 @@ export class BarChartDirective implements OnInit, OnChanges {
       height = 250,
       p = 50;
     let calculatedWidth =
-      this.dataset.length > 6 ? width + 46 * (this.dataset.length - 6) : width;
+      this.data.length > 6 ? width + 46 * (this.data.length - 6) : width;
 
-    if (this.dataset.length > 6) {
+    if (this.data.length > 6) {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
     }
 
@@ -112,18 +112,18 @@ export class BarChartDirective implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.dataset[0]).filter(function(key) {
+    let options = d3.keys(this.data[0]).filter(function(key) {
       return key !== "label";
     });
 
-    this.dataset.forEach(function(d: any) {
+    this.data.forEach(function(d: any) {
       d.valores = options.map(function(name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.dataset.map(function(d: any) {
+      this.data.map(function(d: any) {
         return d.label;
       })
     );
@@ -159,7 +159,7 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     let bar = svg
       .selectAll(".bar")
-      .data(this.dataset)
+      .data(this.data)
       .enter()
       .append("g")
       .attr("class", "rect")
@@ -209,7 +209,7 @@ export class BarChartDirective implements OnInit, OnChanges {
   }
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
-      this.dataset = this.data;
+      // this.dataset = this.data;
       this.performanceChart();
     }
   }

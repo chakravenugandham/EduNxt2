@@ -267,6 +267,9 @@ $grayThree: #e9e9e9;
     vertical-align: middle;
     text-align: left !important;
     cursor: pointer;
+    img {
+      border-radius: 50%;
+    }
   }
   table tr td img {
     height: 24px;
@@ -582,7 +585,7 @@ $grayThree: #e9e9e9;
     display: none;
   }
   .widget-block {
-    height: auto;
+    height: auto !important;
   }
 }
 

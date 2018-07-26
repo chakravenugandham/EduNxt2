@@ -694,17 +694,25 @@ export class LdDashboardService implements OnInit {
   }
 
   //get-filters
-  getFiltersData(filtersUrl, filtersList) {
-    let url = this.baseURL + filtersUrl;
-    // let filters = "";
-    // if (filtersList.length > 1) {
-    //   for (let i in filtersList) filters += filtersList[i] + ",";
-    //   filters = filters.slice(0, -1);
-    // }
-    // filters = filtersList[0];
-    // let url = this.baseURL + APIURL.FILTERS + "?type=" + filters;
+  getFiltersData(filtersList) {
+    // let url = this.baseURL + filtersUrl;
+    let filters = "";
+    if (filtersList.length > 1) {
+      for (let i in filtersList) filters += filtersList[i] + ",";
+      filters = filters.slice(0, -1);
+    }
+    filters = filtersList[0];
+    let url =
+      this.baseURL +
+      APIURL.FILTERS +
+      "?courseId=" +
+      this.courseId +
+      "&programId" +
+      this.programId +
+      "&type=" +
+      filters;
     return this.http.get(url);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

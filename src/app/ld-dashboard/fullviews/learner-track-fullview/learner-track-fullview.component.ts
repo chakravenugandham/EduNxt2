@@ -31,6 +31,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getDisplayObject($event) {
     this.selectType = $event;
+    console.log("this.selectType", this.selectType);
+
     this.getTableDataFromService();
   }
 
@@ -59,26 +61,46 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getFilterData() {
-    this.filterData.learnerFilterBodyDetails;
+    // this.filterData.learnerFilterBodyDetails;
     this.componentName = this.filterData.learnerFilterBodyDetails[
       "currentModule"
     ];
   }
 
   getTableDataFromService() {
-    if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'pace') {
+    console.log(
+      "getTableDataFromService",
+      this.filterData.learnerFilterBodyDetails["currentModule"]
+    );
+
+    if (
+      this.filterData.learnerFilterBodyDetails["currentModule"] == undefined
+    ) {
+      this.filterData.learnerFilterBodyDetails["currentModule"] = "performance";
+    }
+
+    if (this.filterData.learnerFilterBodyDetails["currentModule"] == "pace") {
       this.selectType = "aheadschedule";
       //this.getDisplayObject(this.selectType);
       this.dashboardService
-        .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
+        .getLearnerTrackDetails(
+          this.filterData.learnerFilterBodyDetails["currentModule"],
+          this.selectType,
+          this.filterbody
+        )
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
         });
-    }
-    if (this.filterData.learnerFilterBodyDetails['currentModule'] == 'performance') {
+    } else if (
+      this.filterData.learnerFilterBodyDetails["currentModule"] == "performance"
+    ) {
       this.selectType = "excelling";
       this.dashboardService
-        .getLearnerTrackDetails(this.filterData.learnerFilterBodyDetails['currentModule'], this.selectType, this.filterbody)
+        .getLearnerTrackDetails(
+          this.filterData.learnerFilterBodyDetails["currentModule"],
+          this.selectType,
+          this.filterbody
+        )
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
         });
@@ -86,51 +108,53 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getGraphDataFromService() {
-    this.dashboardService.getLearnerTrackData(this.filterbody).subscribe((res: any) => {
-      this.responseGraphDetails = res.data;
-      this.paceTrackValues = [
-        {
-          color: "#23b14d",
-          type: "classA",
-          number: this.responseGraphDetails.paceData["aheadSchedule"]
-        },
-        {
-          color: "#ffd630",
-          type: "classB",
-          number: this.responseGraphDetails.paceData["behindSchedule"]
-        },
-        {
-          color: "#f77f6c",
-          type: "classC",
-          number: this.responseGraphDetails.paceData["haveNotStarted"]
-        },
-        {
-          color: "#5584ff",
-          type: "classD",
-          number: this.responseGraphDetails.paceData["onTrack"]
-        }
-      ];
-      this.performanceTrackValues = [
-        {
-          color: "#23b14d",
-          type: "classA",
-          number: this.responseGraphDetails.performanceData["excelling"]
-        },
-        {
-          color: "#ffd630",
-          type: "classB",
-          number: this.responseGraphDetails.performanceData["passing"]
-        },
-        {
-          color: "#f77f6c",
-          type: "classD",
-          number: this.responseGraphDetails.performanceData["struggling"]
-        }
-      ];
-    });
+    this.dashboardService
+      .getLearnerTrackData(this.filterbody)
+      .subscribe((res: any) => {
+        this.responseGraphDetails = res.data;
+        this.paceTrackValues = [
+          {
+            color: "#23b14d",
+            type: "classA",
+            number: this.responseGraphDetails.paceData["aheadSchedule"]
+          },
+          {
+            color: "#ffd630",
+            type: "classB",
+            number: this.responseGraphDetails.paceData["behindSchedule"]
+          },
+          {
+            color: "#f77f6c",
+            type: "classC",
+            number: this.responseGraphDetails.paceData["haveNotStarted"]
+          },
+          {
+            color: "#5584ff",
+            type: "classD",
+            number: this.responseGraphDetails.paceData["onTrack"]
+          }
+        ];
+        this.performanceTrackValues = [
+          {
+            color: "#23b14d",
+            type: "classA",
+            number: this.responseGraphDetails.performanceData["excelling"]
+          },
+          {
+            color: "#ffd630",
+            type: "classB",
+            number: this.responseGraphDetails.performanceData["passing"]
+          },
+          {
+            color: "#f77f6c",
+            type: "classD",
+            number: this.responseGraphDetails.performanceData["struggling"]
+          }
+        ];
+      });
   }
 
-  ngOnCh
+  ngOnCh;
 
   ngOnInit() {
     this.getTableDataFromService();

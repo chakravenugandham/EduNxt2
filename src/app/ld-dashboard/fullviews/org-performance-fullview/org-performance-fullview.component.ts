@@ -19,10 +19,10 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   limitTo: number = 10;
   searchBox: boolean = false;
 
-  showDetails: string = "teams";
+  showDetails: string = 'teams';
   compareUsers = [];
 
-  componentName: string;
+  //componentName: string;
 
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -37,26 +37,25 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     });
   }
 
-  getFilterData() {
-    // this.filterData.learnerFilterBodyDetails;
-    this.componentName = this.filterData.learnerFilterBodyDetails[
-      "currentModule"
-    ];
-  }
-
   //api calls for trainers ,teams and learner
   getDataFromService() {
 
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails['currentModule'];
+      console.log(this.filterData.learnerFilterBodyDetails);
       this.dashboardService.getTrainersData(this.limitTo).subscribe((response: any) => {
         this.responseTrainersDetails = response.data;
       });
     } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails['currentModule'];
+      console.log(this.filterData.learnerFilterBodyDetails);
       this.dashboardService.getTeamData(this.limitTo).subscribe((response: any) => {
         this.responseTeamsDetails = response.data;
       });
     }
     else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails['currentModule'];
+      console.log(this.filterData.learnerFilterBodyDetails);
       this.dashboardService.getLearnerData(this.limitTo).subscribe((response: any) => {
         this.responseLeanersDetails = response.data;
       });

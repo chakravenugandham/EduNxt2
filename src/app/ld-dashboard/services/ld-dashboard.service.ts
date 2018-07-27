@@ -545,7 +545,9 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId + "&limit=" + limitTo;
+      this.programId +
+      "&limit=" +
+      limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -573,7 +575,9 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId + "&limit=" + limitTo;
+      this.programId +
+      "&limit=" +
+      limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -601,7 +605,9 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId + "&limit=" + limitTo;
+      this.programId +
+      "&limit=" +
+      limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -689,7 +695,9 @@ export class LdDashboardService implements OnInit {
       "&courseId=" +
       this.courseId +
       "&programId=" +
-      this.programId + "&limit=" + limitTo;
+      this.programId +
+      "&limit=" +
+      limitTo;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -715,5 +723,20 @@ export class LdDashboardService implements OnInit {
     return this.http.get(url, { headers: this.headers });
   }
 
-  ngOnInit() { }
+  //getSearchFilterData
+  getSearchFilterData(searchFilterData, searchTerm) {
+    let url =
+      this.baseURL +
+      searchFilterData.searchComponent +
+      "?courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId +
+      "&searchBy=" +
+      searchFilterData.searchBy +
+      "&searchTerm=" +
+      searchTerm;
+    return this.http.post(url, { headers: this.headers });
+  }
+  ngOnInit() {}
 }

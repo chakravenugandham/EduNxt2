@@ -65,7 +65,7 @@ export class BarChartDirective implements OnInit, OnChanges {
     //   );
     // }
 
-    let margin: number = 30,
+    let margin: number = 50,
       width = 500,
       height = 250,
       p = 50;
@@ -173,8 +173,8 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     svg
       .append("text")
-      .text("Performance")
-      .attr("transform", "rotate(-90)")
+      .text("No. of Users")
+      .attr("transform", "rotate(-90),translate( " + height / 4 + ",-50 )")
       .attr("x", -(height / 2))
       .attr("y", 14);
 

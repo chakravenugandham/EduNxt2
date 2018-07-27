@@ -27,25 +27,36 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     currentModule: string;
     viewDetailsFilters: boolean;
   };
-
   @Input() filterName: string[];
 
+  @Input()
+  searchFilterData: {
+    searchComponent: string;
+    searchBy: string;
+  };
+
   @Output() filterEvent = new EventEmitter<any>();
+  @Output() searchEvent = new EventEmitter<any>();
 
   displayDropdown: boolean = false;
   filtersData;
+
   filterArray = [];
+
+  searchList = [];
+  searchNames = [];
+
   viewDetailsDisplay: boolean = false;
   filterDisplayName = "Add a Filter";
 
   filterSelected: any = {
     batchId: [],
-    quizId: [],
-    assignmentId: [],
+    quizName: [],
+    assignmentName: [],
     locationId: [],
     teamId: [],
     zoneId: [],
-    contentTypeId: []
+    contentType: []
     // displayFor: ""
   };
 
@@ -107,7 +118,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         break;
       }
       case "quiz": {
-        filterTypeId = "quizId";
+        filterTypeId = "quizName";
+        break;
+      }
+      case "assignment": {
+        filterTypeId = "assignmentName";
         break;
       }
       case "team": {
@@ -123,7 +138,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         break;
       }
       case "contentType": {
-        filterTypeId = "contentTypeId";
+        filterTypeId = "contentType";
         break;
       }
     }
@@ -177,13 +192,48 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     this.router.navigate([this.viewData.routeTo]);
   }
 
+  searchItem($event) {
+    if ($event.target.value.length >= 3) {
+      // console.log("search Item from serach", $event.target.value);
+      this.displayDropdown = true;
+      // this.searchEvent.emit($event.target.value);
+      this.server
+        .getSearchFilterData(this.searchFilterData, $event.target.value)
+        .subscribe((respose: any) => {
+          this.searchList = respose.data;
+          console.log("searchList", this.searchList);
+        });
+    }
+  }
+
+  selectSearchItem(searchItem) {
+    if (!this.searchNames.includes(searchItem)) {
+      this.searchNames.push(searchItem);
+      console.log("added searchNames", this.searchNames);
+    } else {
+      let i = this.searchNames.indexOf(searchItem);
+      this.removeSearchName(i);
+      console.log("removed searchNames", this.searchNames);
+    }
+    this.searchEvent.emit(this.searchNames);
+  }
+  removeSearchName(i) {
+    this.searchNames.splice(i, 1);
+  }
+
   ngOnInit() {
+    if (this.viewData.filters) {
+      this.viewData.filterList = this.filterName;
+      this.filterDispalyNameFraming();
+    }
     this.viewDetailsDisplay = this.viewData.viewDetailsFilters;
-    this.filterDispalyNameFraming();
   }
 
   ngOnChanges(changes: any) {
-    this.viewData.filterList = this.filterName;
-    this.filterDispalyNameFraming();
+    if (this.viewData.filters) {
+      this.viewData.filterList = this.filterName;
+      this.filterDispalyNameFraming();
+    }
+    console.log("searchFilterData", this.searchFilterData);
   }
 }

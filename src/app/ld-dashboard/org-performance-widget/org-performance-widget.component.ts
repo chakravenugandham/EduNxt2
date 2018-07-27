@@ -13,64 +13,111 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   filtersData = {
     routeTo: "orgPerformanceFullView",
     filters: false,
-    search: false,
-    viewDetails: false,
+    search: true,
+    viewDetails: true,
     filterList: ["zone"],
     currentModule: this.getTab
   };
-  filterName = ["batch"];
 
-  responseData: any;
+  searchFilterData = {
+    searchComponent: "team-leaderboard",
+    searchBy: "teamName"
+  };
+
+  responseData: any[];
+  limitTo: number = 5;
 
   filterbody = {};
 
-  constructor(
-    private dashboardService: LdDashboardService,
-    private filterData: CommonService
-  ) {
+  searchFilterItem = [];
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
+  constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getServiceData();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getServiceData();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getServiceData();
     });
   }
 
   teamsFn() {
     this.getTab = "teams";
     this.filtersData.currentModule = "teams";
-    console.log(this.filterData.learnerFilterBodyDetails);
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
-    console.log(this.filterData.learnerFilterBodyDetails);
+    this.searchFilterData.searchComponent = "team-leaderboard";
+    this.searchFilterData.searchBy = "teamName";
+    this.getServiceData();
   }
   trainersFn() {
     this.getTab = "trainers";
     this.filtersData.currentModule = "trainers";
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.searchFilterData.searchComponent = "trainer-leaderboard";
+    this.searchFilterData.searchBy = "trainerName";
+    this.getServiceData();
   }
   learnersFn() {
     this.getTab = "learner";
     this.filtersData.currentModule = "learner";
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.searchFilterData.searchComponent = "learner-leaderboard";
+    this.searchFilterData.searchBy = "learnerName";
+    this.getServiceData();
   }
 
-  getDataFromService() {
-    this.dashboardService
-      .getScoresDistrubution(this.getTab, this.filterbody)
-      .subscribe((response: any) => {
-        this.responseData = response.data;
-      });
+  getServiceData() {
+    this.spinner_loader = true;
+    this.responseData = [];
+
+    console.log("searchFilterData", this.searchFilterData);
+
+    if (this.getTab == "teams") {
+      this.dashboardService
+        .getTeamData(this.limitTo)
+        .subscribe((response: any) => {
+          this.responseData = response.data;
+          this.spinner_loader = false;
+          this.noDataFlag = this.responseData.length == 0 ? true : false;
+        });
+    } else if (this.getTab == "trainers") {
+      this.dashboardService
+        .getTrainersData(this.limitTo)
+        .subscribe((response: any) => {
+          this.responseData = response.data;
+          this.spinner_loader = false;
+          this.noDataFlag = this.responseData.length == 0 ? true : false;
+        });
+    } else if ((this.getTab = "learner")) {
+      this.dashboardService
+        .getLearnerData(this.limitTo)
+        .subscribe((response: any) => {
+          this.responseData = response.data;
+          this.spinner_loader = false;
+          this.noDataFlag = this.responseData.length == 0 ? true : false;
+        });
+    }
   }
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getDataFromService();
+  getSearchItem($event) {
+    console.log("search item in component", $event);
+    console.log("responseData before filter", this.responseData);
+
+    this.searchFilterItem = $event;
+    for (let i in this.searchFilterItem) {
+      this.responseData.splice(this.responseData[this.responseData.length], 1);
+    }
+    // this.responseData.concat(this.searchFilterItem);
+    console.log("responseData after filter", this.responseData);
+    // this.responseData.splice(this.searchFilterItem.length,)
+    // this.searchFilterData.searchItem = $event;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getServiceData();
+  }
 }

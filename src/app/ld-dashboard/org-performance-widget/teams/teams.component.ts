@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 import {
   NgbModal,
@@ -12,8 +12,9 @@ import {
   styleUrls: ["./teams.component.scss"]
 })
 export class TeamsComponent implements OnInit {
+  @Input() teamsData;
   closeResult: string;
-  teamsData: any[];
+  // teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
   sortOrder: string = "teamName";
@@ -32,24 +33,6 @@ export class TeamsComponent implements OnInit {
     this.sortOrder = sortByName;
   }
 
-  // open(content) {
-  //   this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-  //     this.closeResult = `Closed with: ${result}`;
-  //   }, (reason) => {
-  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //   });
-  // }
-
-  // private getDismissReason(reason: any): string {
-  //   if (reason === ModalDismissReasons.ESC) {
-  //     return 'by pressing ESC';
-  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return 'by clicking on a backdrop';
-  //   } else {
-  //     return `with: ${reason}`;
-  //   }
-  // }
-
   getDataFromService() {
     this.getData.getTeamData(this.limitTo).subscribe((res: any) => {
       this.teamsData = res.data;
@@ -58,6 +41,6 @@ export class TeamsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    // this.getDataFromService();
   }
 }

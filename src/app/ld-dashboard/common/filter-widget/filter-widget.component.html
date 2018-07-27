@@ -1,14 +1,45 @@
 <div class="filterComponent" *ngIf="!viewDetailsDisplay">
   <div>
     <ul class="float-left">
+
       <li class="list-inline-item searchList" *ngIf="viewData.search">
         <div class="search-org-user">
           <span class="search-icon">
             <i class="fas fa-search"></i>
           </span>
-          <input type="text" placeholder="Search">
+          <input type="text" [ngModel]="serachName" (keyup)="searchItem($event)" placeholder="Search"> {{serachName}}
+        </div>
+
+        <div>
+          <div class="showFilter-list" *ngIf="displayDropdown && searchList.length>2">
+            <span class="closeDropdown text-warning" (click)="closeDropDown()">
+              <i class="far fa-times-circle fa-lg"></i>
+            </span>
+            <ul>
+              <li class="list-unstyled">
+                <span>
+                  <b>Select for</b> (Upto 5 people)
+                </span>
+                <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">
+                  <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span>
+                  <span>{{searchItem.teamName}} </span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </li>
+
+      <li class="list-inline-item" *ngFor="let searchName of searchNames; let i = index">
+        <span>{{searchName.teamName}}</span>
+        <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i);"></i>
+      </li>
+
+      <!-- <li class="list-inline-item" *ngFor="let searchItem of searchList; let i = index">
+        <span>{{searchItem}}</span>
+        <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
+      </li> -->
+
       <li class="list-inline-item filter" *ngIf="viewData.filters">
         <div class="filterSelect">
           <div class="getFilter" (click)="showFilter()">

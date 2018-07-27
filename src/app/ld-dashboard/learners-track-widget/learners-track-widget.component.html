@@ -53,8 +53,18 @@
     </div>
   </div>
 
-  <app-learner-pace *ngIf="componentName == 'pace'" [paceData]="widgetData.pace"></app-learner-pace>
-  <app-learner-performance *ngIf="componentName == 'performance'" [performanceData]="widgetData.performance"></app-learner-performance>
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+  <div *ngIf="responseData.length > 0">
+    <app-learner-pace *ngIf="componentName == 'pace'" [paceData]="widgetData.pace"></app-learner-pace>
+    <app-learner-performance *ngIf="componentName == 'performance'" [performanceData]="widgetData.performance"></app-learner-performance>
+  </div>
 
   <app-filter-widget [viewData]="filtersData" [filterName]="filterName" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 </div>

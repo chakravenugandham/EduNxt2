@@ -19,14 +19,17 @@ export class LearnersTrackWidgetComponent implements OnInit {
     currentModule: this.componentName
   };
   filterName = ["batch"];
+  responseData = [];
 
-  // filtersData = {};
   widgetData = {
     pace: "",
     performance: ""
   };
 
   filterbody = {};
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   constructor(
     private dashboardService: LdDashboardService,
@@ -48,7 +51,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPaceFn() {
     this.componentName = "pace";
     this.filtersData.currentModule = "pace";
-    console.log(this.filtersData);
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
@@ -61,11 +63,16 @@ export class LearnersTrackWidgetComponent implements OnInit {
   }
 
   getDataFromService() {
+    this.responseData = [];
+    this.spinner_loader = true;
     this.dashboardService
       .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
+        this.responseData.push(response.data);
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       });
   }
 
@@ -73,12 +80,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.filterbody = $event;
     this.getDataFromService();
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes.filterbody) {
-  //     this.getDataFromService();
-  //   }
-  // }
 
   ngOnInit() {
     this.learnerPaceFn();

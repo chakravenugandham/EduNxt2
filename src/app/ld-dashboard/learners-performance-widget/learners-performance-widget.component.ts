@@ -12,10 +12,10 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     routeTo: "learnerPerformanceFullView",
     filters: false,
     search: false,
-    viewDetails: true,
+    viewDetails: false,
     filterList: []
   };
-  filterName = ["batch"];
+  // filterName = ["batch"];
   getTab: string = "performance";
   responseData = [];
   filterbody = {};

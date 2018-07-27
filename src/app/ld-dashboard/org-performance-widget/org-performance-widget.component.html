@@ -4,7 +4,9 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
+
 <div class="widget-block">
+
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -55,10 +57,13 @@
       </span>
     </div>
   </div>
+
   <div class="org-performance">
     <app-teams *ngIf="getTab == 'teams'"></app-teams>
     <app-trainers *ngIf="getTab == 'trainers'"></app-trainers>
     <app-learners *ngIf="getTab == 'learner'"></app-learners>
   </div>
+
   <app-filter-widget [viewData]="filtersData" [filterName]="filterName" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+
 </div>

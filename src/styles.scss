@@ -1,6 +1,4 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
-//@import "~bootstrap/scss/_modal.scss";
-// @import "~font-awesome/css/font-awesome.min.css";
 @import "./fonts.scss";
 
 $blue: #0146f9;
@@ -34,7 +32,6 @@ $grayThree: #e9e9e9;
   font-family: "Muli";
   padding: 0;
   .dashboard {
-    // background-color: #eef2f5;
     background-color: $grayTwo;
     padding: 16px 36px;
     .widget-row {
@@ -68,12 +65,19 @@ $grayThree: #e9e9e9;
     margin-right: 8px;
   }
 
-  .big-positive-number {
+  .positive-number {
     color: $lightBlue;
   }
 
-  .cursor-pointer {
-    cursor: pointer;
+  .negative-number {
+    color: $orange;
+  }
+
+  .highNumber {
+    color: $green;
+  }
+  .lowNumber {
+    color: $orange;
   }
 
   .changeNumber {
@@ -90,6 +94,10 @@ $grayThree: #e9e9e9;
     padding-top: 7px !important;
     font-size: 12px;
   }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
 }
 
 .font-weight-bold {
@@ -99,11 +107,6 @@ $grayThree: #e9e9e9;
 
 .activity-widgets .widget-block {
   height: 280px;
-  .big-danger-class {
-    color: $orange;
-    font-weight: 600;
-    margin-right: 8px;
-  }
   .text-fix-bottom {
     position: absolute;
     width: 100%;
@@ -185,7 +188,6 @@ $grayThree: #e9e9e9;
     margin-right: 12px;
   }
   i {
-    // color: #ff5722;
     color: $orange;
     border-radius: 50%;
     right: 8px;
@@ -240,6 +242,7 @@ $grayThree: #e9e9e9;
 }
 
 //Table CSS
+
 .org-performance,
 .content-perform,
 .learner-track-fullview,
@@ -252,7 +255,6 @@ $grayThree: #e9e9e9;
     }
     .userName {
       vertical-align: middle;
-      padding-left: 4px;
     }
   }
   table tr td {
@@ -272,19 +274,59 @@ $grayThree: #e9e9e9;
     }
   }
   table tr td img {
-    height: 24px;
-    width: 24px;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
+  }
+
+  table tr {
+    .action_icon {
+      img {
+        height: 16px;
+        width: 16px;
+      }
+    }
   }
 }
 
+.org-performance {
+  table {
+    tr td,
+    tr th {
+      padding: 12px 4px;
+    }
+  }
+  tr td {
+    .imgActive {
+      position: relative;
+      float: left;
+      margin-right: 10px;
+      img {
+        // height: 35px;
+        // width: 35px;
+        // border-radius: 50%;
+        margin-left: -10px;
+        // border: 1px solid #fff;
+        // z-index: 0;
+      }
+      i {
+        position: absolute;
+        bottom: -4px;
+        right: -4px;
+        background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 14px;
+      }
+    }
+  }
+}
 .content-perform,
 .content-fullview {
   table tbody tr th {
     color: $lightBlue;
   }
 }
-
 .org-performanace {
   .search-org-user {
     position: relative;
@@ -306,13 +348,13 @@ $grayThree: #e9e9e9;
     }
   }
 }
-
 .org-performanace input::placeholder {
   color: $blue;
   font-size: 10px;
 }
 
-//Line Graph CSS
+// Line Graph CSS
+
 #activeUserGraph {
   .line1 {
     stroke: $orange;
@@ -355,8 +397,7 @@ $grayThree: #e9e9e9;
     stroke-width: 0;
   }
 }
-
-//view details CSS
+// view details CSS
 .widget-heading .fa-angle-left {
   margin-right: 6px;
   border-radius: 50%;
@@ -365,23 +406,19 @@ $grayThree: #e9e9e9;
   padding-right: 2px;
   cursor: pointer;
 }
-
 .ellipse {
   color: $lightBlue !important;
 }
-
-//graph badge CSS
+// graph badge CSS
 .graph-badges {
   text-align: center;
   margin-top: 12px;
   font-weight: 600;
 }
-
 .graph-badges i {
   border-radius: 50%;
   border: none;
 }
-
 #performanceGraph,
 #progressGraph,
 #notification_graph {
@@ -427,7 +464,6 @@ $grayThree: #e9e9e9;
   }
   .axis {
     path {
-      // stroke-dasharray: 4px;
       fill: #fff;
     }
   }
@@ -457,7 +493,6 @@ $grayThree: #e9e9e9;
 
 #testScoresGraph {
   .y-axis path {
-    // stroke-width: 0 !important;
     stroke: none !important;
   }
   .axis path {
@@ -494,19 +529,6 @@ $grayThree: #e9e9e9;
   }
 }
 
-.bar-chart-graph ::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
 .bar-chart-graph {
   overflow-x: scroll;
   .y {
@@ -529,13 +551,9 @@ $grayThree: #e9e9e9;
       }
     }
   }
-
   .y-axis path {
     stroke-width: 0 !important;
   }
-  // .x text {
-  //   transform: rotate(354deg);
-  // }
   .axis path {
     fill: none;
     stroke: $darkGray;
@@ -590,7 +608,9 @@ $grayThree: #e9e9e9;
 }
 
 // Media Queries
-//samller devices
+
+// samller devices
+
 @media (max-width: 576px) {
   .dashboard {
     padding: 8px 16px !important;
@@ -617,20 +637,17 @@ $grayThree: #e9e9e9;
       padding: 2px;
     }
   }
-
   .bigNumber {
     margin-right: 2px !important;
   }
   .graph-badges {
     font-size: 0.8em;
   }
-
-  //activity-widget
+  // activity-widget
   .activity-widgets .widget-block {
     min-width: 280px;
   }
-
-  //tables data
+  // tables data
   .org-performance,
   .content-perform,
   .learner-track-fullview,
@@ -646,7 +663,7 @@ $grayThree: #e9e9e9;
 }
 
 // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
+
 @media (max-width: 768px) {
   .dashboard {
     padding: 8px 16px;
@@ -673,7 +690,6 @@ $grayThree: #e9e9e9;
       padding: 2px;
     }
   }
-
   .userImages .imgActive:first-child img {
     margin-left: 0;
   }
@@ -684,13 +700,16 @@ $grayThree: #e9e9e9;
 }
 
 // Medium devices (tablets, 768px and up)
+
 @media (min-width: 768px) {
 }
 
 // Large devices (desktops, 992px and up)
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
 }
 
 // Extra large devices (large desktops, 1200px and up)
+
 @media (min-width: 1200px) {
 }

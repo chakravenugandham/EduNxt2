@@ -26,7 +26,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="d-flex p-r-20">
 
-        <div class="bigNumber float-left" [ngClass]="{'big-positive-number': responseData.timeSpent >= responseData.expectedTimeSpent, 'big-danger-class': responseData.timeSpent < responseData.expectedTimeSpent}">
+        <div class="bigNumber float-left" [ngClass]="{'positive-number': responseData.timeSpent >= responseData.expectedTimeSpent, 'negative-number': responseData.timeSpent < responseData.expectedTimeSpent}">
           {{responseData.timeSpent}}%
         </div>
 

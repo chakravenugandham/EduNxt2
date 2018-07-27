@@ -25,7 +25,7 @@ export class TeamsComponent implements OnInit {
     private modalService: NgbModal
   ) {
     this.getData.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      // this.getDataFromService();
     });
   }
 
@@ -33,12 +33,32 @@ export class TeamsComponent implements OnInit {
     this.sortOrder = sortByName;
   }
 
-  getDataFromService() {
-    this.getData.getTeamData(this.limitTo).subscribe((res: any) => {
-      this.teamsData = res.data;
-      // this.order = this.teamsData.teamName;
-    });
+  open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
   }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  // getDataFromService() {
+  //   this.getData.getTeamData(this.limitTo).subscribe((res: any) => {
+  //     this.teamsData = res.data;
+  //   });
+  // }
 
   ngOnInit() {
     // this.getDataFromService();

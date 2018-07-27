@@ -10,6 +10,13 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class OrgInterestFullviewComponent implements OnInit {
   //global variable declarations
   responseData = [];
+  filtersData = {
+    routeTo: "orgInterestFullView",
+    filters: false,
+    search: true,
+    viewDetails: true,
+    filterList: ["zone"]
+  };
 
   //dropdown display values
   displayFor = {};

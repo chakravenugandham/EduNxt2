@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
 
@@ -7,7 +7,7 @@ import { CommonService } from "../../../common-services/common.service";
   templateUrl: "./org-performance-fullview.component.html",
   styleUrls: ["./org-performance-fullview.component.scss"]
 })
-export class OrgPerformanceFullviewComponent implements OnInit {
+export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   responseTeamsDetails: any;
   responseTrainersDetails: any;
   responseLeanersDetails: any;
@@ -19,10 +19,10 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   limitTo: number = 10;
   searchBox: boolean = false;
 
-  showDetails: string = "teams";
+  showDetails: string = 'teams';
   compareUsers = [];
 
-  componentName: string;
+  //componentName: string;
 
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -37,28 +37,30 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     });
   }
 
-  getFilterData() {
-    // this.filterData.learnerFilterBodyDetails;
-    this.componentName = this.filterData.learnerFilterBodyDetails[
-      "currentModule"
-    ];
-  }
-
   //api calls for trainers ,teams and learner
   getDataFromService() {
 
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
-      this.dashboardService.getTrainersData(this.limitTo).subscribe((response: any) => {
-        this.responseTrainersDetails = response.data;
-      });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails['currentModule'];
+      console.log(this.showDetails);
       this.dashboardService.getTeamData(this.limitTo).subscribe((response: any) => {
         this.responseTeamsDetails = response.data;
+        console.log(this.responseTeamsDetails);
+      });
+    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails['currentModule'];
+      console.log(this.showDetails);
+      this.dashboardService.getTrainersData(this.limitTo).subscribe((response: any) => {
+        this.responseTrainersDetails = response.data;
+        console.log(this.responseTrainersDetails);
       });
     }
     else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails['currentModule'];
+      console.log(this.showDetails);
       this.dashboardService.getLearnerData(this.limitTo).subscribe((response: any) => {
         this.responseLeanersDetails = response.data;
+        console.log(this.responseLeanersDetails);
       });
     }
   }
@@ -77,6 +79,13 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   closeSearchFn() {
     this.searchBox = false;
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.showDetails.currentValue) {
+      this.getDataFromService();
+    }
+
   }
 
   ngOnInit() {

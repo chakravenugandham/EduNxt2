@@ -78,7 +78,6 @@ import { BarChartDirective } from "./ld-dashboard/directives/bar-chart.directive
 import { ScoreChartDirective } from "./ld-dashboard/directives/score-chart.directive";
 import { BestProgramsWidgetComponent } from "./org-head/best-programs-widget/best-programs-widget.component";
 import { ProgramsComponent } from "./org-head/best-programs-widget/programs/programs.component";
-import { ModalComponent } from "./ld-dashboard/common/modal/modal.component";
 import { TrackofgoalsComponent } from "./org-head/trackofgoals/trackofgoals.component";
 import { GoalsComponent } from "./org-head/trackofgoals/goals/goals.component";
 import { GoalcardsComponent } from "./org-head/common/goalcards/goalcards.component";
@@ -110,6 +109,7 @@ import { LearnerTimeSpentComponent } from './learner/learner-activity-widget/lea
 import { LearnerScoreCardComponent } from './learner/learner-activity-widget/learner-score-card/learner-score-card.component';
 import { LearnerCoursePerformanceComponent } from './learner/learner-course-performance/learner-course-performance.component';
 import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -168,7 +168,6 @@ import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-p
     ScoreChartDirective,
     BestProgramsWidgetComponent,
     ProgramsComponent,
-    ModalComponent,
     TrackofgoalsComponent,
     GoalsComponent,
     GoalcardsComponent,
@@ -216,4 +215,4 @@ import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-p
   providers: [GoogleChartsBaseService, { provide: Window, useValue: window }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

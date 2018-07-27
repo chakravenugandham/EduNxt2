@@ -9,7 +9,7 @@ export class LearnerPerformanceComponent implements OnInit {
   @Input() performanceData: any;
   chartValues = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnChanges(changes: any) {
     if (changes.performanceData.currentValue) {
@@ -26,12 +26,12 @@ export class LearnerPerformanceComponent implements OnInit {
         },
         {
           color: "#f77f6c",
-          type: "classD",
+          type: "classC",
           number: this.performanceData.struggling
         }
       ];
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-
 @Component({
   selector: "app-content-consumption-fullview",
   templateUrl: "./content-consumption-fullview.component.html",
@@ -13,14 +12,18 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   limitTo = 10;
   sortOrder: string = "contentName";
   searchBox: boolean = false;
+  paginationData = {};
   filtersData = {
-    routeTo: "learnerTrackFullView",
+    routeTo: "contentConsumptionFullView",
     filters: true,
     search: false,
     viewDetails: false,
-    filterList: ["batch"],
+    filterList: ["contentType"],
     viewDetailsFilters: true
   };
+  page: number;
+  total_records: number;
+  selectPage: string;
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -52,11 +55,21 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.sortOrder = sortByName;
   }
 
+  goToPage(v) {
+    this.selectPage = v;
+    console.log(this.selectPage);
+    alert("hello");
+  }
+
   getDataFromService() {
     this.dashboardService
       .getContentData(this.filterbody, this.limitTo)
       .subscribe((res: any) => {
         this.contentData = res.data;
+        this.paginationData = res.pagination;
+        this.page = this.paginationData['page'];
+        this.total_records = this.paginationData['total'];
+        console.log(this.paginationData);
       });
   }
 

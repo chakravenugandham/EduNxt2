@@ -12,9 +12,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   filtersData = {
     routeTo: "orgPerformanceFullView",
-    filters: false,
+    filters: true,
     search: false,
-    viewDetails: false,
+    viewDetails: true,
     filterList: ["zone"],
     currentModule: this.getTab
   };
@@ -44,7 +44,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   teamsFn() {
     this.getTab = "teams";
     this.filtersData.currentModule = "teams";
-    console.log(this.filterData.learnerFilterBodyDetails);
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     console.log(this.filterData.learnerFilterBodyDetails);
   }
@@ -52,11 +51,13 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.getTab = "trainers";
     this.filtersData.currentModule = "trainers";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
+    console.log(this.filterData.learnerFilterBodyDetails);
   }
   learnersFn() {
     this.getTab = "learner";
     this.filtersData.currentModule = "learner";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
+    console.log(this.filterData.learnerFilterBodyDetails);
   }
 
   getDataFromService() {
@@ -72,5 +73,5 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.getDataFromService();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

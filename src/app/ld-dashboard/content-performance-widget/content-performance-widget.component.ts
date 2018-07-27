@@ -14,7 +14,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: [],
+    filterList: ["contentType"],
     viewDetailsFilters: false
   };
   filterName = ["contentType"];

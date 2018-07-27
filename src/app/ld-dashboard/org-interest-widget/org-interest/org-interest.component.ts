@@ -14,8 +14,8 @@ export class OrgInterestComponent implements OnInit {
   orgData = {};
   options: CloudOptions = {
     width: 300,
-    height: 200,
-    overflow: false
+    height: 300,
+    overflow: true
   };
 
   wordData = [];
@@ -31,12 +31,13 @@ export class OrgInterestComponent implements OnInit {
     this.getData.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
       for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
-        let wordWeight = Math.floor(Math.random() * 3 + 1);
+        //let wordWeight = Math.floor(Math.random() * 3 + 1);
         this.wordData.push({
           text: this.orgData["popularTopicsData"][i].courseName,
-          weight: wordWeight
+          weight: this.orgData["popularTopicsData"][i].rank
         });
       }
+      console.log(this.orgData);
       const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
       myObservable.subscribe(res => (this.data = res));
     });

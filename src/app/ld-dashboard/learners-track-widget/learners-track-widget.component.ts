@@ -48,7 +48,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPaceFn() {
     this.componentName = "pace";
     this.filtersData.currentModule = "pace";
-    console.log(this.filtersData);
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
@@ -73,12 +72,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.filterbody = $event;
     this.getDataFromService();
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes.filterbody) {
-  //     this.getDataFromService();
-  //   }
-  // }
 
   ngOnInit() {
     this.learnerPaceFn();

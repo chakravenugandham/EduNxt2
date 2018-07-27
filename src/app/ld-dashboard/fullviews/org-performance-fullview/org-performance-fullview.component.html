@@ -81,9 +81,13 @@
             <td class="">{{parseFloat(teamData.completion).toFixed(2)}}</td>
             <td class="">{{teamData.completedProgram}}</td>
             <td class="">{{teamData.teamsize}}</td>
-            <td class="text-primary">
-              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-              <span>Congratulate</span>
+            <td>
+              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.completion > 75">
+                <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span class="negative-number cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.completion <= 75">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
             </td>
           </tr>
         </tbody>
@@ -134,10 +138,15 @@
             <td class="">
               <span>
                 <i class="far fa-star"></i>
-              </span>{{trainerData.avgRating}}</td>
-            <td class="text-primary">
-              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-              <span>Congratulate</span>
+              </span>{{trainerData.avgRating}}
+            </td>
+            <td>
+              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.completion > 75">
+                <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span class="negative-number cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.completion <= 75">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
             </td>
           </tr>
         </tbody>
@@ -197,9 +206,13 @@
             <td class="">{{learnerData.pointsEarned}}</td>
             <td class="">{{learnerData.avgTestPerformance}}</td>
             <td class="">{{learnerData.examScore}}</td>
-            <td class="text-primary">
-              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-              <span>Congratulate</span>
+            <td>
+              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.completion > 75">
+                <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span class="negative-number cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.completion <= 75">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
             </td>
           </tr>
         </tbody>
@@ -207,3 +220,61 @@
     </div>
   </div>
 </div>
+
+
+
+<ng-template #followUpContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Send an alert</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Send to</label>
+        <div class="input-group">
+          <input type="email" class="form-control" placeholder="enter an email">
+        </div>
+        <br/>
+        <label for="dateOfBirth">Message</label>
+        <div class="input-group">
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('Save click')">Send Alert</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #congratsContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Send a new message</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Send to</label>
+        <div class="input-group">
+          <input type="email" class="form-control" placeholder="enter an email">
+        </div>
+        <br/>
+        <label for="dateOfBirth">Message</label>
+        <div class="input-group">
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c('Save click')">Send Message</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+  </div>
+</ng-template>

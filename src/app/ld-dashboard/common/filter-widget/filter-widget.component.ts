@@ -17,8 +17,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./filter-widget.component.scss"]
 })
 export class FilterWidgetComponent implements OnInit, OnChanges {
-  @Input()
-  viewData: {
+  @Input() viewData: {
     routeTo: string;
     filters: boolean;
     search: boolean;
@@ -51,7 +50,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   filterFullObj = [];
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
 
   filterDispalyNameFraming() {
     if (this.viewData.filterList.length > 1) {

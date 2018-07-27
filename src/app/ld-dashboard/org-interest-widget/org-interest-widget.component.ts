@@ -12,17 +12,17 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     filters: false,
     search: true,
     viewDetails: true,
-    filterList: ["zone"]
+    filterList: []
   };
 
   filterbody = {};
 
-  constructor() {}
+  constructor() { }
 
   getFilterObject($event) {
     this.filterbody = $event;
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {

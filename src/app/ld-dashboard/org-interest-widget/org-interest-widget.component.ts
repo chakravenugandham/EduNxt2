@@ -22,6 +22,7 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   };
   orgData = {};
   filterbody = {};
+  orgPopularTopicData = {};
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -49,6 +50,10 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
       // const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
       // myObservable.subscribe(res => (this.data = res));
     });
+
+    this.getData.getOrgPopulatTopicsData().subscribe((response: any) => {
+      this.orgPopularTopicData = response.data;
+    })
   }
 
   ngOnInit() {

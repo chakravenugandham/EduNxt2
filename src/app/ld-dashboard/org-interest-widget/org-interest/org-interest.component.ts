@@ -11,7 +11,8 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
   styleUrls: ["./org-interest.component.scss"]
 })
 export class OrgInterestComponent implements OnInit, OnChanges {
-  @Input() orgInterestData: any;
+  @Input() orgInterestData: any
+  @Input() orgPopularData: any;
   //orgData = {};
   options: CloudOptions = {
     width: 300,

@@ -9,14 +9,12 @@ export class APIURL {
   public static ACTIVE_USERS_GRAPH = "active-users-graph";
   public static LOCATION = "activity-by-location";
   public static LEARNER_PACE_PERFORMANCE = "learner-pace-performance";
-  public static LEARNER_PACE_PERFORMANCE_DETAILS =
-    "learner-pace-performance-details";
+  public static LEARNER_PACE_PERFORMANCE_DETAILS = "learner-pace-performance-details";
   public static LEARNER_PERFORMANCE_PROGRESS = "learner-performance-progress";
-  public static LEARNER_PERFORMANCE_PROGRESS_DETAILS =
-    "learner-performance-progress-details";
+  public static LEARNER_PERFORMANCE_PROGRESS_DETAILS = "learner-performance-progress-details";
   public static ORGANISATION_INTEREST = "organization-interests";
-  public static ORGANISATION_INTEREST_DETAILS =
-    "organization-interests-details";
+  public static ORGANISATION_POPULAR_TOPICS = "organization-popular-topics";
+  public static ORGANISATION_INTEREST_DETAILS = "organization-interests-details";
   public static TEAMS_LEADERBOARD = "team-leaderboard";
   public static TRAINER_LEADERBOARD = "trainer-leaderboard";
   public static LEARNER_LEADERBOARD = "learner-leaderboard";

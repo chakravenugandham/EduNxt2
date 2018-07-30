@@ -499,6 +499,30 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
+  getOrgPopulatTopicsData() {
+    if (
+      this.dateService.dateFilterBodyDetails["start_date"] &&
+      this.dateService.dateFilterBodyDetails["end_date"]
+    ) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
+        "start_date"
+      ];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
+        "end_date"
+      ];
+    }
+
+    let url = this.baseURL + APIURL.ORGANISATION_POPULAR_TOPICS + "?start_date=" +
+      this.dateFilterObj.start_date +
+      "&end_date=" +
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
+    return this.http.post(url, null, { headers: this.headers });
+  }
+
   //org-interest full details
   getOrgInterestDetailsData() {
     if (
@@ -744,5 +768,5 @@ export class LdDashboardService implements OnInit {
       searchTerm;
     return this.http.post(url, { headers: this.headers });
   }
-  ngOnInit() {}
+  ngOnInit() { }
 }

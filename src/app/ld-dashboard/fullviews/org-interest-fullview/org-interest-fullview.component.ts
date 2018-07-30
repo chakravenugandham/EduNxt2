@@ -18,6 +18,13 @@ export class OrgInterestFullviewComponent implements OnInit {
     filterList: ["zone"]
   };
 
+  sortOrder: string = "learnerName";
+  searchBox: boolean = false;
+  page: number;
+  total_records: number;
+  selectPage: string;
+  paginationData = {};
+
   //dropdown display values
   displayFor = {};
 
@@ -34,6 +41,25 @@ export class OrgInterestFullviewComponent implements OnInit {
       this.getDataFromService();
     });
   }
+
+  searchFn() {
+    this.searchBox = true;
+  }
+
+  closeSearchFn() {
+    this.searchBox = false;
+  }
+
+  // onSearchChange(searchValue: string) {
+  //   console.log(searchValue);
+  // }
+
+  goToPage(v) {
+    this.selectPage = v;
+    console.log(this.selectPage);
+    alert("hello");
+  }
+
   getDisplayObject($event) {
     this.displayFor = $event;
   }
@@ -42,7 +68,14 @@ export class OrgInterestFullviewComponent implements OnInit {
   getDataFromService() {
     this.dashboardService.getOrgInterestDetailsData().subscribe((res: any) => {
       this.responseData = res.data;
+      this.paginationData = res.pagination;
+      this.page = this.paginationData['page'];
+      this.total_records = this.paginationData['total'];
     });
+  }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
   }
 
   ngOnInit() {

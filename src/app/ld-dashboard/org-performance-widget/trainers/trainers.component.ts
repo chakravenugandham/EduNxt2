@@ -11,6 +11,7 @@ export class TrainersComponent implements OnInit {
   @Input() trainersData;
   // trainersData = [];
   sortOrder: string = "trainerName";
+  reverse: boolean = false;
   limitTo: number = 5;
   closeResult: string;
 
@@ -46,6 +47,7 @@ export class TrainersComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   // getDataFromService() {

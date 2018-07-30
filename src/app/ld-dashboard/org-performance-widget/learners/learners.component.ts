@@ -20,6 +20,7 @@ export class LearnersComponent implements OnInit {
   limitTo: number = 5;
 
   sortOrder: string = "learnerName";
+  reverse: boolean = false;
 
   constructor(
     private getData: LdDashboardService,
@@ -53,6 +54,7 @@ export class LearnersComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   // getDataFromService() {

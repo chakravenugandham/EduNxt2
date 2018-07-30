@@ -83,7 +83,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("width", calculatedWidth)
       .attr("height", height + margin * 2)
       .append("g")
-      .attr("transform", "translate(" + margin + "," + (margin - 20) + ")");
+      .attr("transform", "translate(" + margin + "," + (margin - 30) + ")");
 
     let x0 = d3.scale.ordinal().rangeRoundBands([0, calculatedWidth], 0.5, 0.5);
 

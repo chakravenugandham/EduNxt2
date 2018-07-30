@@ -25,21 +25,26 @@
     <div class="text-fix-bottom">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6 col-6">
-          <p class="bigNumber behindSchedule">{{numberFormat(responseData.behindSchedule)}}</p>
+          <p class="bigNumber behindSchedule">
+            <!-- {{(responseData.behindSchedule)}} -->
+            {{responseData.behindSchedule | customNumber}}
+          </p>
           <p class="m-t-10">Behind Schedule</p>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6 col-6">
-          <p class="bigNumber havenotStarted">{{numberFormat(responseData.haveNotStarted)}}</p>
+          <p class="bigNumber havenotStarted">
+            {{responseData.haveNotStarted | customNumber}}
+          </p>
           <p class="m-t-10">Haven't Started</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-6 col-6">
-          <p class="bigNumber aheadOfScheduleColor">{{numberFormat(responseData.aheadSchedule)}}</p>
+          <p class="bigNumber aheadOfScheduleColor">{{responseData.aheadSchedule | customNumber}}</p>
           <p class="m-t-10 m-b-0">Ahead of Schedule</p>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6 col-6">
-          <p class="bigNumber onTrackClass">{{numberFormat(responseData.onTrack)}}</p>
+          <p class="bigNumber onTrackClass">{{responseData.onTrack | customNumber}}</p>
           <p class="m-t-10 m-b-0">On Track</p>
         </div>
       </div>

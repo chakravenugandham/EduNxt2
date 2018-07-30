@@ -38,10 +38,10 @@
           </div>
           <p class="font-color">
             <span [ngClass]="{'changeNumber': responseData.timeSpent >= responseData.expectedTimeSpent, 'changeNumberLow': responseData.timeSpent < responseData.expectedTimeSpent}">
-              {{numberFormat(responseData.durationSpent)}}
+              {{responseData.durationSpent | customNumber}}
             </span>
             <span>
-              of {{numberFormat(responseData.courseDuration)}} hours spent on learning activities
+              of {{responseData.courseDuration | customNumber}} hours spent on learning activities
             </span>
           </p>
         </div>

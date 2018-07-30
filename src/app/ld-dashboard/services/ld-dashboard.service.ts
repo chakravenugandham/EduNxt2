@@ -89,6 +89,12 @@ export class LdDashboardService implements OnInit {
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
+    if (tenantName == "SMUDE") {
+      this.headers = new HttpHeaders()
+        .set("LnDUserId", "725440")
+        .set("user-type", "LND")
+        .set("tenant-name", tenantName);
+    }
     this.tenantName$.next();
     // this.courseAndProgram();
     this.refreshAPI$.next();

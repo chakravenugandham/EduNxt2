@@ -225,6 +225,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
   removeSearchName(i) {
     this.searchNames.splice(i, 1);
+    this.searchEvent.emit(this.searchNames);
   }
 
   ngOnInit() {

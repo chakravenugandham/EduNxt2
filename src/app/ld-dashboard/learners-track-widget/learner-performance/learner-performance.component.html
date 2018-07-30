@@ -8,17 +8,17 @@
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
       <i class="far fa-circle excelling"></i>
       <span class="text-font"> Excelling</span>
-      <p> {{performanceData?.excelling}} </p>
+      <p> {{performanceData?.excelling | customNumber}} </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
       <i class="far fa-circle passing"></i>
       <span class="text-font"> Passing</span>
-      <p> {{performanceData?.passing}} </p>
+      <p> {{performanceData?.passing | customNumber}} </p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
       <i class="far fa-circle struggling"></i>
       <span class="text-font"> Struggling</span>
-      <p> {{performanceData?.struggling}} </p>
+      <p> {{performanceData?.struggling | customNumber}} </p>
     </div>
   </div>
 </div>

@@ -39,13 +39,13 @@
           <b class="userName">{{tableData.learnerName}}</b>
         </td>
 
-        <td class="arrow-space">{{tableData.pointsEarned}}
+        <td class="arrow-space">{{tableData.pointsEarned | customNumber}}
           <span class="highNumber small" *ngIf="tableData.pointsEarned>=tableData.pointsEarnedSinceLastMonth">
-            <img src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth}}
+            <img src="assets/IconsSVGs/up_arrow.svg" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth | customNumber}}
           </span>
 
           <span class="negative-number small" *ngIf="tableData.pointsEarned<tableData.pointsEarnedSinceLastMonth">
-            <img src="assets/IconsSVGs/down_arrow.svg" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth}}
+            <img src="assets/IconsSVGs/down_arrow.svg" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth | customNumber}}
           </span>
 
         </td>

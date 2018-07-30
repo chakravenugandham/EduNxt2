@@ -36,10 +36,6 @@ export class TimespentComponent implements OnInit {
       });
   }
 
-  numberFormat(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-
   ngOnInit() {
     this.getDataFromService();
   }

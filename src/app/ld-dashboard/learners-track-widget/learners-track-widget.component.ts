@@ -14,7 +14,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
-    viewDetails: true,
+    viewDetails: false,
     filterList: [],
     currentModule: this.componentName
   };

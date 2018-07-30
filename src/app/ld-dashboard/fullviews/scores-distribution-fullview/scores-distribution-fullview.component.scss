@@ -63,6 +63,15 @@ select {
   }
 }
 
+.m-l-8 {
+  margin-left: 8px;
+}
+
+.w-90 {
+  // width: 90px;
+  width: 140px;
+}
+
 .search-org-user input::placeholder {
   color: #5584ff;
 }
@@ -73,4 +82,10 @@ select {
 
 .search-org-user input::-ms-input-placeholder {
   color: #5584ff;
+}
+
+.fullviewComponent {
+  .widget-block {
+    height: 950px !important;
+  }
 }

@@ -56,9 +56,9 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
-  onSearchChange(searchValue: string) {
-    console.log(searchValue);
-  }
+  // onSearchChange(searchValue: string) {
+  //   console.log(searchValue);
+  // }
 
   goToPage(v) {
     this.selectPage = v;

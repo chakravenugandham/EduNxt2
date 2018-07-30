@@ -51,7 +51,7 @@ export class PaceComponent implements OnInit, OnChanges {
         },
         {
           color: "#F77F6C",
-          type: "classC",
+          type: "classF",
           number: this.responseData["haveNotStarted"]
         },
         {

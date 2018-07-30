@@ -69,7 +69,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
         this.paginationData = res.pagination;
         this.page = this.paginationData['page'];
         this.total_records = this.paginationData['total'];
-        console.log(this.paginationData);
+        //console.log(this.paginationData);
       });
   }
 

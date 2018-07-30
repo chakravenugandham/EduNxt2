@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { CloudData, CloudOptions } from "angular-tag-cloud-module";
 import { Observable } from "rxjs";
 import { of as observableOf } from "rxjs";
@@ -10,8 +10,9 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
   templateUrl: "./org-interest.component.html",
   styleUrls: ["./org-interest.component.scss"]
 })
-export class OrgInterestComponent implements OnInit {
-  orgData = {};
+export class OrgInterestComponent implements OnInit, OnChanges {
+  @Input() orgInterestData: any;
+  //orgData = {};
   options: CloudOptions = {
     width: 300,
     height: 300,
@@ -21,30 +22,25 @@ export class OrgInterestComponent implements OnInit {
   wordData = [];
   data: CloudData[];
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
-      this.getDataFromService();
-    });
   }
 
-  getDataFromService() {
-    this.options.width = document.getElementById("word-cloud").offsetWidth;
-    this.getData.getOrgInterestData().subscribe((res: any) => {
-      this.orgData = res.data;
+  ngOnChanges(changes: any) {
+    if (changes.orgInterestData && changes.orgInterestData.currentValue) {
+      this.options.width = document.getElementById("word-cloud").offsetWidth;
       this.wordData = [];
-      for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
-        //let wordWeight = Math.floor(Math.random() * 3 + 1);
+      for (let i = 0; i < this.orgInterestData["popularTopicsData"].length; i++) {
         this.wordData.push({
-          text: this.orgData["popularTopicsData"][i].courseName,
-          weight: this.orgData["popularTopicsData"][i].rank
+          text: this.orgInterestData["popularTopicsData"][i].courseName,
+          weight: this.orgInterestData["popularTopicsData"][i].rank
         });
       }
-      console.log(this.orgData);
       const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
       myObservable.subscribe(res => (this.data = res));
-    });
+    }
+
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    //this.getDataFromService();
   }
 }

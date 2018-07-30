@@ -12,8 +12,9 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     routeTo: "scoreDistributionFullView",
     filters: true,
     search: false,
-    viewDetails: false,
+    viewDetails: true,
     filterList: []
+    // viewDetailsFilters: true
   };
   filterName = ["batch"];
 

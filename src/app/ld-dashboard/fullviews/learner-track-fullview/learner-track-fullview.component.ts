@@ -138,7 +138,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
           },
           {
             color: "#f77f6c",
-            type: "classD",
+            type: "classC",
             number: this.responseGraphDetails.performanceData["struggling"]
           }
         ];
@@ -150,5 +150,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.getGraphDataFromService();
     this.getFilterData();
     this.getDisplayObject(this.selectType);
+
+    // if(this.filtersData.viewDetailsFilters){
+
+    // }
   }
 }

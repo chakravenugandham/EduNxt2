@@ -8,22 +8,22 @@
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle aheadOfSchedule"></i>
       <span class="text-font">Ahead of Schedule</span>
-      <p> {{paceData?.aheadSchedule}} </p>
+      <p> {{paceData?.aheadSchedule | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle onTrack"></i>
       <span class="text-font"> On Track</span>
-      <p> {{paceData?.onTrack}} </p>
+      <p> {{paceData?.onTrack | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle behindSchedule"></i>
       <span class="text-font"> Behind Schedule</span>
-      <p> {{paceData?.behindSchedule}} </p>
+      <p> {{paceData?.behindSchedule | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle haveNotStarted"></i>
       <span class="text-font"> Haven't Started</span>
-      <p> {{paceData?.haveNotStarted}} </p>
+      <p> {{paceData?.haveNotStarted | customNumber}} </p>
     </div>
   </div>
 </div>

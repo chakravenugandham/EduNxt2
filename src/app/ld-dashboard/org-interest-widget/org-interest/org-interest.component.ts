@@ -26,13 +26,13 @@ export class OrgInterestComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: any) {
-    if (changes.orgInterestData && changes.orgInterestData.currentValue) {
+    if (changes.orgPopularData && changes.orgPopularData.currentValue) {
       this.options.width = document.getElementById("word-cloud").offsetWidth;
       this.wordData = [];
-      for (let i = 0; i < this.orgInterestData["popularTopicsData"].length; i++) {
+      for (let i = 0; i < this.orgPopularData.length; i++) {
         this.wordData.push({
-          text: this.orgInterestData["popularTopicsData"][i].courseName,
-          weight: this.orgInterestData["popularTopicsData"][i].rank
+          text: this.orgPopularData[i].courseName,
+          weight: this.orgPopularData[i].rank
         });
       }
       const myObservable: Observable<CloudData[]> = observableOf(this.wordData);

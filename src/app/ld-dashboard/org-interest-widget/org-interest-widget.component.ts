@@ -38,7 +38,6 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     //this.options.width = document.getElementById("word-cloud").offsetWidth;
     this.getData.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
-      console.log(this.orgData);
       //this.wordData = [];
       // for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
       //   //let wordWeight = Math.floor(Math.random() * 3 + 1);
@@ -60,5 +59,5 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     this.getDataFromService();
   }
 
-  ngOnChanges(changes: SimpleChanges) {}
+  ngOnChanges(changes: SimpleChanges) { }
 }

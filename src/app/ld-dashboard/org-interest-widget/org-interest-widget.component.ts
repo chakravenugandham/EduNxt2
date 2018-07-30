@@ -11,8 +11,8 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   filtersData = {
     routeTo: "orgInterestFullView",
     filters: false,
-    search: true,
-    viewDetails: true,
+    search: false,
+    viewDetails: false,
     filterList: []
   };
 
@@ -55,6 +55,5 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     this.getDataFromService();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 }

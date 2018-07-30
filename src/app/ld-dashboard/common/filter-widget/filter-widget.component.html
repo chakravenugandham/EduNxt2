@@ -22,7 +22,8 @@
                 </span>
                 <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">
                   <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span>
-                  <span>{{searchItem.teamName}} </span>
+                  <!-- <span>{{searchItem.teamName}} </span> -->
+                  <span>{{searchItem[searchFilterData.searchBy]}} </span>
                 </div>
               </li>
             </ul>
@@ -31,7 +32,8 @@
       </li>
 
       <li class="list-inline-item" *ngFor="let searchName of searchNames; let i = index">
-        <span>{{searchName.teamName}}</span>
+        <!-- <span>{{searchName.teamName}}</span> -->
+        <span>{{searchName[searchFilterData.searchBy]}} </span>
         <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i);"></i>
       </li>
 

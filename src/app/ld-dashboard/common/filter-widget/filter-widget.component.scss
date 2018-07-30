@@ -133,7 +133,7 @@
   z-index: 1;
   width: 220px;
   ul {
-    height: 140px;
+    max-height: 140px;
     padding: 0;
     overflow: scroll;
     overflow-x: hidden;

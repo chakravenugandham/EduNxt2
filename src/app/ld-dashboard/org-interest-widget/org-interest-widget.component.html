@@ -50,7 +50,7 @@
     </div>
   </div>
   <app-org-interest></app-org-interest>
-  <!-- <div>
-    <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
-  </div> -->
+  <div>
+    <app-filter-widget [viewData]="filtersData" [searchFilterData]="searchFilterData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  </div>
 </div>

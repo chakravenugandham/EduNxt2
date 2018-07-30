@@ -21,15 +21,16 @@ export class OrgInterestComponent implements OnInit {
   wordData = [];
   data: CloudData[];
   constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe((result) => {
+    this.getData.refreshAPI.subscribe(result => {
       this.getDataFromService();
-    })
+    });
   }
 
   getDataFromService() {
     this.options.width = document.getElementById("word-cloud").offsetWidth;
     this.getData.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
+      this.wordData = [];
       for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
         //let wordWeight = Math.floor(Math.random() * 3 + 1);
         this.wordData.push({

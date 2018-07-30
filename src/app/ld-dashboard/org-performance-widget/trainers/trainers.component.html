@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tableData of trainersData | orderBy: sortOrder">
+        <tr *ngFor="let tableData of trainersData | orderBy: sortOrder" [ngClass]="{'new-added-table': tableData.hasOwnProperty('new')}">
           <td scope="row">
             <span class="imgActive">
               <img src="/assets/images/user.png" alt="userImg">

@@ -15,14 +15,19 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     filterList: []
   };
 
+  searchFilterData = {
+    searchComponent: "organization-interests",
+    searchBy: "courseName"
+  };
+
   filterbody = {};
 
-  constructor() { }
+  constructor() {}
 
   getFilterObject($event) {
     this.filterbody = $event;
   }
-  ngOnInit() { }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.filterbody) {

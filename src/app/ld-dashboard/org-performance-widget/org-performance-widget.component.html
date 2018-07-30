@@ -72,6 +72,7 @@
     <app-teams *ngIf="getTab == 'teams' && responseData.length > 0" [teamsData]="responseData"></app-teams>
     <app-trainers *ngIf="getTab == 'trainers' && responseData.length > 0" [trainersData]="responseData"></app-trainers>
     <app-learners *ngIf="getTab == 'learner' && responseData.length > 0" [LearnersData]="responseData"></app-learners>
+
   </div>
 
   <app-filter-widget [viewData]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>

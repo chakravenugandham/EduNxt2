@@ -24,7 +24,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     searchBy: "teamName"
   };
 
-  responseData: any[];
+  responseData = [];
+
+  actualResponseData = [];
   limitTo: number = 5;
 
   filterbody = {};
@@ -80,7 +82,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.dashboardService
         .getTeamData(this.limitTo)
         .subscribe((response: any) => {
-          this.responseData = response.data;
+          this.responseData = this.actualResponseData = response.data;
+          // this.actualResponseData = response.data;
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
@@ -88,7 +91,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.dashboardService
         .getTrainersData(this.limitTo)
         .subscribe((response: any) => {
-          this.responseData = response.data;
+          this.responseData = this.actualResponseData = response.data;
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
@@ -96,21 +99,37 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.dashboardService
         .getLearnerData(this.limitTo)
         .subscribe((response: any) => {
-          this.responseData = response.data;
+          this.responseData = this.actualResponseData = response.data;
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
     }
+    // this.actualResponseData = this.responseData;
   }
 
   getSearchItem($event) {
-    console.log("search item in component", $event);
-    console.log("responseData before filter", this.responseData);
-
+    console.log("filter item", $event);
     this.searchFilterItem = $event;
     for (let i in this.searchFilterItem) {
-      this.responseData.splice(this.responseData[this.responseData.length], 1);
+      this.searchFilterItem[i]["new"] = true;
     }
+    // this.responseData = [];
+    // this.responseData = this.actualResponseData;
+    this.responseData = JSON.parse(JSON.stringify(this.actualResponseData));
+    console.log("responseData before filter", this.responseData);
+
+    if (this.searchFilterItem.length > 0)
+      this.responseData.splice(-this.searchFilterItem.length);
+    console.log("spliced last length", this.responseData);
+    console.log("actualResponseData", this.actualResponseData);
+
+    this.responseData = this.responseData.concat(this.searchFilterItem);
+    console.log("concatinated with search item", this.responseData);
+
+    // this.responseData = this.responseData.concat(this.searchFilterItem);
+    // for (let i in this.searchFilterItem) {
+    //   this.responseData.splice(this.responseData[this.responseData.length], 1);
+    // }
     // this.responseData.concat(this.searchFilterItem);
     console.log("responseData after filter", this.responseData);
     // this.responseData.splice(this.searchFilterItem.length,)

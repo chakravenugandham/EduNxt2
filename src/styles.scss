@@ -353,6 +353,12 @@ $grayThree: #e9e9e9;
   font-size: 10px;
 }
 
+.new-added-table {
+  border-top: 3px dotted $orange !important;
+  border-bottom: 3px dotted $orange !important;
+  background-color: #f77f6c14;
+}
+
 // Line Graph CSS
 
 #activeUserGraph {
@@ -690,9 +696,9 @@ $grayThree: #e9e9e9;
       padding: 2px;
     }
   }
-  .userImages .imgActive:first-child img {
-    margin-left: 0;
-  }
+  // .userImages .imgActive:first-child img {
+  //   margin-left: 0;
+  // }
   .userImages .imgActive img {
     height: 42px !important;
     width: 42px !important;

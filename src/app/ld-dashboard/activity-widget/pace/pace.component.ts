@@ -51,7 +51,7 @@ export class PaceComponent implements OnInit, OnChanges {
         },
         {
           color: "#F77F6C",
-          type: "classC",
+          type: "classF",
           number: this.responseData["haveNotStarted"]
         },
         {
@@ -67,7 +67,7 @@ export class PaceComponent implements OnInit, OnChanges {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

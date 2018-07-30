@@ -1,6 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "./fonts.scss";
-
 $blue: #0146f9;
 $lightBlue: #5584ff;
 $white: #ffffff;
@@ -15,7 +14,6 @@ $darkGray: #707070;
 $grayOne: #f6f6f6;
 $grayTwo: #eef2f5;
 $grayThree: #e9e9e9;
-
 //set defaults
 .row {
   margin: 0;
@@ -58,46 +56,42 @@ $grayThree: #e9e9e9;
   .font-color {
     color: $darkGray;
   }
-
   .bigNumber {
     font-size: 22px;
     font-weight: 600;
     margin-right: 8px;
   }
-
   .positive-number {
     color: $lightBlue;
   }
-
   .negative-number {
     color: $orange;
   }
-
   .highNumber {
     color: $green;
   }
   .lowNumber {
     color: $orange;
   }
-
   .changeNumber {
     color: $green;
     font-weight: 600;
   }
-
   .changeNumberLow {
     color: $orange;
     font-weight: 600;
   }
-
   .small-font {
     padding-top: 7px !important;
     font-size: 12px;
   }
-
   .cursor-pointer {
     cursor: pointer;
   }
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .font-weight-bold {
@@ -242,7 +236,6 @@ $grayThree: #e9e9e9;
 }
 
 //Table CSS
-
 .org-performance,
 .content-perform,
 .learner-track-fullview,
@@ -278,7 +271,6 @@ $grayThree: #e9e9e9;
     width: 28px;
     border-radius: 50%;
   }
-
   table tr {
     .action_icon {
       img {
@@ -305,8 +297,7 @@ $grayThree: #e9e9e9;
         // height: 35px;
         // width: 35px;
         // border-radius: 50%;
-        margin-left: -10px;
-        // border: 1px solid #fff;
+        margin-left: -10px; // border: 1px solid #fff;
         // z-index: 0;
       }
       i {
@@ -321,12 +312,14 @@ $grayThree: #e9e9e9;
     }
   }
 }
+
 .content-perform,
 .content-fullview {
   table tbody tr th {
     color: $lightBlue;
   }
 }
+
 .org-performanace {
   .search-org-user {
     position: relative;
@@ -348,6 +341,7 @@ $grayThree: #e9e9e9;
     }
   }
 }
+
 .org-performanace input::placeholder {
   color: $blue;
   font-size: 10px;
@@ -360,7 +354,6 @@ $grayThree: #e9e9e9;
 }
 
 // Line Graph CSS
-
 #activeUserGraph {
   .line1 {
     stroke: $orange;
@@ -403,6 +396,7 @@ $grayThree: #e9e9e9;
     stroke-width: 0;
   }
 }
+
 // view details CSS
 .widget-heading .fa-angle-left {
   margin-right: 6px;
@@ -412,19 +406,23 @@ $grayThree: #e9e9e9;
   padding-right: 2px;
   cursor: pointer;
 }
+
 .ellipse {
   color: $lightBlue !important;
 }
+
 // graph badge CSS
 .graph-badges {
   text-align: center;
   margin-top: 12px;
   font-weight: 600;
 }
+
 .graph-badges i {
   border-radius: 50%;
   border: none;
 }
+
 #performanceGraph,
 #progressGraph,
 #notification_graph {
@@ -614,9 +612,7 @@ $grayThree: #e9e9e9;
 }
 
 // Media Queries
-
 // samller devices
-
 @media (max-width: 576px) {
   .dashboard {
     padding: 8px 16px !important;
@@ -648,12 +644,10 @@ $grayThree: #e9e9e9;
   }
   .graph-badges {
     font-size: 0.8em;
-  }
-  // activity-widget
+  } // activity-widget
   .activity-widgets .widget-block {
     min-width: 280px;
-  }
-  // tables data
+  } // tables data
   .org-performance,
   .content-perform,
   .learner-track-fullview,
@@ -669,7 +663,6 @@ $grayThree: #e9e9e9;
 }
 
 // Small devices (landscape phones, 576px and up)
-
 @media (max-width: 768px) {
   .dashboard {
     padding: 8px 16px;
@@ -695,8 +688,7 @@ $grayThree: #e9e9e9;
       font-size: 13px;
       padding: 2px;
     }
-  }
-  // .userImages .imgActive:first-child img {
+  } // .userImages .imgActive:first-child img {
   //   margin-left: 0;
   // }
   .userImages .imgActive img {
@@ -706,16 +698,10 @@ $grayThree: #e9e9e9;
 }
 
 // Medium devices (tablets, 768px and up)
-
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
+@media (min-width: 992px) and (max-width: 1199.98px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}

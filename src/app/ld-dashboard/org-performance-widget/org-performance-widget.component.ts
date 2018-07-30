@@ -75,9 +75,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   getServiceData() {
     this.spinner_loader = true;
     this.responseData = [];
-
-    console.log("searchFilterData", this.searchFilterData);
-
     if (this.getTab == "teams") {
       this.dashboardService
         .getTeamData(this.limitTo)

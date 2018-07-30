@@ -75,7 +75,7 @@ export class DonutChartDirective implements OnChanges {
       .attr("dy", "1em")
       .style("font-weight", "bold")
       .text(function (d) {
-        if (d.data.type === "classD") {
+        if (d.data.type === "classC") {
           return "Haven't Started";
         }
       });

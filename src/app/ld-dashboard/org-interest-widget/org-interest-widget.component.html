@@ -49,7 +49,7 @@
       </span>
     </div>
   </div>
-  <app-org-interest></app-org-interest>
+  <app-org-interest [orgInterestData]='orgData'></app-org-interest>
   <div>
     <app-filter-widget [viewData]="filtersData" [searchFilterData]="searchFilterData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
   </div>

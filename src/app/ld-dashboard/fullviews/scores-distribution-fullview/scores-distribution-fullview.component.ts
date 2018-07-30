@@ -11,9 +11,14 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   responseGraphData: any;
 
   dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
-  //[[0, 0], [20, 100], [40, 600], [60, 1000], [80, 600], [100, 100], [110, 0]];
 
   showDetails: string = "test";
+  sortOrder: string = "learnerName";
+  searchBox: boolean = false;
+  page: number;
+  total_records: number;
+  selectPage: string;
+  paginationData = {};
 
   filterbody = {};
   filtersData = {
@@ -43,11 +48,33 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     });
   }
 
+  searchFn() {
+    this.searchBox = true;
+  }
+
+  closeSearchFn() {
+    this.searchBox = false;
+  }
+
+  onSearchChange(searchValue: string) {
+    console.log(searchValue);
+  }
+
+  goToPage(v) {
+    this.selectPage = v;
+    console.log(this.selectPage);
+    alert("hello");
+  }
+
   getDataFromService() {
     this.dashboardService
       .getScoresDetails(this.showDetails, this.filterbody)
       .subscribe((response: any) => {
         this.responseScoreDetails = response.data;
+        this.paginationData = response.pagination;
+        this.page = this.paginationData['page'];
+        this.total_records = this.paginationData['total'];
+        //console.log(this.paginationData);
       });
     this.dashboardService
       .getScoresDistrubution(this.showDetails, this.filterbody)
@@ -58,6 +85,10 @@ export class ScoresDistributionFullviewComponent implements OnInit {
         }
         this.dataSet = [...this.dataSet];
       });
+  }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
   }
 
   //api call for score details based on component

@@ -3,7 +3,7 @@
     Most watched topics and interests
   </p>
   <div class="row" style="margin-left: 2px">
-    <div class="widget-heading col-md-5">
+    <div class="widget-heading col-md-5" *ngIf="orgInterestData.length > 0">
       <div class="heading clearfix">
         <p class="float-left bold-text">
           Top Interests
@@ -12,20 +12,20 @@
           <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Need Help?"></i>
         </p>
       </div>
-      <div *ngFor="let orgInterestData of orgInterestData">
+      <div *ngFor="let orgInterest of orgInterestData">
         <!-- {{orgInterestData}} -->
         <div class="card-block">
           <p class="bold-text">
-            {{orgInterestData.courseName}}
+            {{orgInterest.courseName}}
           </p>
           <p class="nop bold-text">
-            <span>{{orgInterestData.hits | customNumber}}</span>
+            <span>{{orgInterest.hits | customNumber}}</span>
             <span style="margin-left: 5px;">People</span>
           </p>
           <p>
             <span class="changeNumber">
               <i class="fa fa-arrow-up" aria-hidden="true"></i>
-              <span style="margin-left: 5px;">{{orgInterestData.hitsSinceLastMonth}}</span>
+              <span style="margin-left: 5px;">{{orgInterest.hitsSinceLastMonth}}</span>
             </span>
             <span style="margin-left: 5px;font-weight: 100">Hits since last month</span>
           </p>

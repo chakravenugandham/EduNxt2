@@ -17,7 +17,8 @@ export class TeamsComponent implements OnInit {
   // teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
-  sortOrder: string = "teamName";
+  // sortOrder: string = "teamName";
+  sortOrder: string;
   reverse: boolean = false;
   limitTo: number = 5;
 

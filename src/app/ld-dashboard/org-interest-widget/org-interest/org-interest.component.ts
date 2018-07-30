@@ -11,8 +11,8 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
   styleUrls: ["./org-interest.component.scss"]
 })
 export class OrgInterestComponent implements OnInit, OnChanges {
-  @Input() orgInterestData: any
-  @Input() orgPopularData: any;
+  @Input() orgInterestData: any[];
+  @Input() orgPopularData: any[];
   //orgData = {};
   options: CloudOptions = {
     width: 300,
@@ -22,14 +22,15 @@ export class OrgInterestComponent implements OnInit, OnChanges {
 
   wordData = [];
   data: CloudData[];
-  constructor(private getData: LdDashboardService) {
-  }
+  constructor(private getData: LdDashboardService) {}
 
   ngOnChanges(changes: any) {
+    console.log("this.orgInterestData", this.orgInterestData);
+
     if (changes.orgPopularData && changes.orgPopularData.currentValue) {
       this.options.width = document.getElementById("word-cloud").offsetWidth;
       this.wordData = [];
-      for (let i = 0; i < this.orgPopularData.length; i++) {
+      for (let i in this.orgPopularData) {
         this.wordData.push({
           text: this.orgPopularData[i].courseName,
           weight: this.orgPopularData[i].rank
@@ -38,7 +39,6 @@ export class OrgInterestComponent implements OnInit, OnChanges {
       const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
       myObservable.subscribe(res => (this.data = res));
     }
-
   }
 
   ngOnInit() {

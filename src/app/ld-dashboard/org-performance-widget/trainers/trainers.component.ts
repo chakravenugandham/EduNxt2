@@ -10,7 +10,8 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 export class TrainersComponent implements OnInit {
   @Input() trainersData;
   // trainersData = [];
-  sortOrder: string = "trainerName";
+  // sortOrder: string = "trainerName";
+  sortOrder: string;
   reverse: boolean = false;
   limitTo: number = 5;
   closeResult: string;

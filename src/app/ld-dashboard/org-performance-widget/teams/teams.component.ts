@@ -18,6 +18,7 @@ export class TeamsComponent implements OnInit {
   sortType: string = "";
   parseFloat = parseFloat;
   sortOrder: string = "teamName";
+  reverse: boolean = false;
   limitTo: number = 5;
 
   constructor(
@@ -31,6 +32,7 @@ export class TeamsComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   open(content) {

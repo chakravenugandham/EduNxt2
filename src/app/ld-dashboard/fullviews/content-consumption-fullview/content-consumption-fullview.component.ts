@@ -58,8 +58,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   goToPage(v) {
     this.selectPage = v;
-    console.log(this.selectPage);
-    alert("hello");
   }
 
   getDataFromService() {
@@ -68,9 +66,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
       .subscribe((res: any) => {
         this.contentData = res.data;
         this.paginationData = res.pagination;
-        this.page = this.paginationData['page'];
-        this.total_records = this.paginationData['total'];
-        //console.log(this.paginationData);
+        this.page = this.paginationData["page"];
+        this.total_records = this.paginationData["total"];
       });
   }
 

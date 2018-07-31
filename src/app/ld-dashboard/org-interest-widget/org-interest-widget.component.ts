@@ -11,8 +11,8 @@ export class OrgInterestWidgetComponent implements OnInit {
   filtersData = {
     routeTo: "orgInterestFullView",
     filters: false,
-    search: false,
-    viewDetails: true,
+    search: true,
+    viewDetails: false,
     filterList: []
   };
 
@@ -20,9 +20,13 @@ export class OrgInterestWidgetComponent implements OnInit {
     searchComponent: "organization-interests",
     searchBy: "courseName"
   };
-  orgData = {};
+
   filterbody = {};
-  orgPopularTopicData = {};
+  orgData: any[];
+  orgPopularTopicData: any[];
+  actualResponseData: any[];
+
+  searchFilterItem = [];
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -38,18 +42,33 @@ export class OrgInterestWidgetComponent implements OnInit {
     this.filterbody = $event;
   }
 
+  getSearchItem($event) {
+    this.searchFilterItem = $event;
+    for (let i in this.searchFilterItem) {
+      this.searchFilterItem[i]["new"] = true;
+    }
+
+    this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
+
+    if (this.searchFilterItem.length > 0)
+      this.orgData.splice(-this.searchFilterItem.length);
+
+    this.orgData = this.orgData.concat(this.searchFilterItem);
+  }
+
   getDataFromService() {
     this.dashboardService.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
     });
 
-    this.dashboardService.getOrgPopulatTopicsData().subscribe((response: any) => {
-      this.orgPopularTopicData = response.data;
-    })
+    this.dashboardService
+      .getOrgPopulatTopicsData()
+      .subscribe((response: any) => {
+        this.orgPopularTopicData = response.data;
+      });
   }
 
   ngOnInit() {
     this.getDataFromService();
   }
-
 }

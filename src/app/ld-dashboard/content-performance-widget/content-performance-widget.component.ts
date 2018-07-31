@@ -21,6 +21,9 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   filterbody = {};
   contentData = [];
 
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -40,10 +43,14 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
+    this.contentData = [];
     this.dashboardService
       .getContentData(this.filterbody, this.limitTo)
       .subscribe((res: any) => {
         this.contentData = res.data;
+        this.spinner_loader = false;
+        this.noDataFlag = this.contentData.length == 0 ? true : false;
       });
   }
 

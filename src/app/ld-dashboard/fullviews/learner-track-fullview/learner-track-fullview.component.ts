@@ -56,6 +56,11 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.getGraphDataFromService();
       this.getTableDataFromService();
     });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getGraphDataFromService();
+      this.getTableDataFromService();
+    });
   }
 
   getFilterData() {

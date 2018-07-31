@@ -6,13 +6,13 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./org-interest-widget.component.html",
   styleUrls: ["./org-interest-widget.component.scss"]
 })
-export class OrgInterestWidgetComponent implements OnInit, OnChanges {
+export class OrgInterestWidgetComponent implements OnInit {
   routePath: string = "orgInterestFullView";
   filtersData = {
     routeTo: "orgInterestFullView",
     filters: false,
     search: false,
-    viewDetails: false,
+    viewDetails: true,
     filterList: []
   };
 
@@ -24,8 +24,12 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   filterbody = {};
   orgPopularTopicData = {};
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -35,22 +39,11 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
-    //this.options.width = document.getElementById("word-cloud").offsetWidth;
-    this.getData.getOrgInterestData().subscribe((res: any) => {
+    this.dashboardService.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
-      //this.wordData = [];
-      // for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
-      //   //let wordWeight = Math.floor(Math.random() * 3 + 1);
-      //   this.wordData.push({
-      //     text: this.orgData["popularTopicsData"][i].courseName,
-      //     weight: this.orgData["popularTopicsData"][i].rank
-      //   });
-      // }
-      // const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
-      // myObservable.subscribe(res => (this.data = res));
     });
 
-    this.getData.getOrgPopulatTopicsData().subscribe((response: any) => {
+    this.dashboardService.getOrgPopulatTopicsData().subscribe((response: any) => {
       this.orgPopularTopicData = response.data;
     })
   }
@@ -59,5 +52,4 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     this.getDataFromService();
   }
 
-  ngOnChanges(changes: SimpleChanges) { }
 }

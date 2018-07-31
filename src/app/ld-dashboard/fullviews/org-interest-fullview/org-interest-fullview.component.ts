@@ -10,12 +10,14 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class OrgInterestFullviewComponent implements OnInit {
   //global variable declarations
   responseData = [];
+  filterbody = {};
   filtersData = {
     routeTo: "orgInterestFullView",
     filters: false,
     search: true,
-    viewDetails: true,
-    filterList: ["zone"]
+    viewDetails: false,
+    filterList: ["zone"],
+    viewDetailsFilters: false
   };
 
   sortOrder: string = "learnerName";
@@ -38,6 +40,10 @@ export class OrgInterestFullviewComponent implements OnInit {
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
   }

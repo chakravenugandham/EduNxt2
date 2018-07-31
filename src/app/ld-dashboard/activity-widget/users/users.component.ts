@@ -40,6 +40,9 @@ export class UsersComponent implements OnInit {
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getAPIData();
     });
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getAPIData();
+    });
   }
 
   getAPIData() {
@@ -93,7 +96,7 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getAPIData();

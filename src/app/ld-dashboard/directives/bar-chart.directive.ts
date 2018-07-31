@@ -122,19 +122,20 @@ export class BarChartDirective implements OnInit, OnChanges {
       });
     });
 
+    const orgLabels = {};
     x0.domain(
       this.data.map(function (d: any) {
         //return d.label.slice(0, 3) + "...";
-        d.label = d.label.slice(0, 3) + "...";
+        const label = d.label.slice(0, 3) + "...";
+        orgLabels[label] = d.label;
+        d.label = label;
         return d.label;
       })
     );
 
-    var div = d3.select(".bar-chart-graph").append("div")
+    var div = d3.select("body").append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
-
-
 
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
 
@@ -146,18 +147,24 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-
-    d3.select('.x-axis').selectAll('.tick').forEach(function (d1) {
-      debugger;
+    d3.select('.x-axis').selectAll('.tick')[0].forEach(function (d1) {
       var data = d3.select(d1).data();//get the data asociated with y axis
-      d1.on("mouseover", function (d) {
-        console.log('->', d);
-      })
-        .on("mouseout", function (d) {
-
-        });
-
-    })
+      d3.select(d1).on("mouseover", function (d) {
+        div.transition()
+          .duration(200)
+          .style("opacity", 1)
+          .style("color", "black")
+          .style("background", "gray");
+        div.html(orgLabels[data])
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      }).on("mouseout", function (d) {
+        //on mouse out hide the tooltip
+        div.transition()
+          .duration(500)
+          .style("opacity", 0);
+      });
+    });
     svg
       .append("g")
       .attr("class", "y axis")

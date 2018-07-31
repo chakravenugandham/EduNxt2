@@ -1,10 +1,13 @@
 <div class="dashboard fullviewComponent learner-performance-fullview">
-  <div class="widget-heading clear-fix">
-    <div class="float-left">
+  <div class="row">
+    <div class="widget-heading col-md-6">
       <span>
         <i class="fas fa-angle-left" routerLink="/"></i>
       </span>
       <span> What is my organization interested in?</span>
+    </div>
+    <div class="col-md-6">
+      <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
     </div>
   </div>
   <div class="widget-block">

@@ -48,6 +48,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getServiceData();
     });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getServiceData();
+    });
   }
 
   teamsFn() {

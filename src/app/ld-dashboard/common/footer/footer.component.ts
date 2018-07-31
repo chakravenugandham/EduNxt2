@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LdDashboardService } from '../../services/ld-dashboard.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dashboardService: LdDashboardService) { }
+
+  refreshReportFn() {
+    this.dashboardService.refreshRepotAPI$.next();
+  }
 
   ngOnInit() {
   }

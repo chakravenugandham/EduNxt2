@@ -22,6 +22,9 @@ export class UserstrainedComponent implements OnInit {
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {

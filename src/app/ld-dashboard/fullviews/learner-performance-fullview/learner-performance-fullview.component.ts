@@ -37,6 +37,11 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
       this.getDataFromService();
       this.getDataForGraph();
     });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getDataFromService();
+      this.getDataForGraph();
+    });
   }
 
   onchange(componentName) {

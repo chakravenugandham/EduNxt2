@@ -22,14 +22,7 @@ export class TeamsComponent implements OnInit {
   reverse: boolean = false;
   limitTo: number = 5;
 
-  constructor(
-    private getData: LdDashboardService,
-    private modalService: NgbModal
-  ) {
-    this.getData.refreshAPI.subscribe(result => {
-      // this.getDataFromService();
-    });
-  }
+  constructor(private getData: LdDashboardService, private modalService: NgbModal) { }
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;

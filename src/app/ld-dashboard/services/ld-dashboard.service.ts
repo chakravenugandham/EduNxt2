@@ -17,18 +17,16 @@ export class LdDashboardService implements OnInit {
 
   constructDate() {
     let today = new Date();
-    this.dateFilterObj.end_date =
-      today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
-
+    this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     let last_date = new Date(today.setDate(today.getDate() - 30));
-    this.dateFilterObj.start_date =
-      last_date.getMonth() +
-      1 +
-      "/" +
-      last_date.getDate() +
-      "/" +
-      last_date.getFullYear();
+    this.dateFilterObj.start_date = last_date.getMonth() + 1 + "/" + last_date.getDate() + "/" + last_date.getFullYear();
     return this.dateFilterObj;
+  }
+
+  refreshRepotAPI$ = new Subject<any>();
+
+  get refreshReportAPI() {
+    return this.refreshRepotAPI$.asObservable();
   }
 
   refreshAPI$ = new Subject<any>();
@@ -58,9 +56,6 @@ export class LdDashboardService implements OnInit {
     private _window: Window,
     private getTenantName: CommonService
   ) {
-    // this._baseUrl = this._window.location.href;
-    // let base = this._baseUrl.split('/')[3];
-    // base = base.substring(0, base.length - 1);
     this.constructDate();
   }
 
@@ -70,7 +65,6 @@ export class LdDashboardService implements OnInit {
     .set("tenant-name", "MAIT");
 
   selectTenantName(tenantName?: any) {
-    //for (let i = 0; i < this.getTenantName.tenantsNameDetails.length; i++) {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "57142")
@@ -96,7 +90,6 @@ export class LdDashboardService implements OnInit {
         .set("tenant-name", tenantName);
     }
     this.tenantName$.next();
-    // this.courseAndProgram();
     this.refreshAPI$.next();
   }
 
@@ -104,8 +97,7 @@ export class LdDashboardService implements OnInit {
   programId = 0;
 
   courseAndProgram(config?: any) {
-    let courseId;
-    let programId;
+    let courseId, programId;
     for (let key in config) {
       courseId = config.courseId;
       programId = config.programId;
@@ -116,13 +108,10 @@ export class LdDashboardService implements OnInit {
     this.refreshAPI$.next();
   }
 
+  //date change
   getDateChange() {
-    this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-      "start_date"
-    ];
-    this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-      "end_date"
-    ];
+    this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+    this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
   }
 
   //courses dropdown
@@ -132,29 +121,11 @@ export class LdDashboardService implements OnInit {
   }
 
   getActiveUsersWidgetData() {
-    if (
-      this.dateService.dateFilterBodyDetails["start_date"] &&
-      this.dateService.dateFilterBodyDetails["end_date"]
-    ) {
-      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-        "start_date"
-      ];
-      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-        "end_date"
-      ];
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
-
-    let url =
-      this.baseURL +
-      APIURL.ACTIVE_USERS +
-      "?start_date=" +
-      this.dateFilterObj.start_date +
-      "&end_date=" +
-      this.dateFilterObj.end_date +
-      "&courseId=" +
-      this.courseId +
-      "&programId=" +
-      this.programId;
+    let url = this.baseURL + APIURL.ACTIVE_USERS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
     return this.http.get(url, { headers: this.headers });
   }
 

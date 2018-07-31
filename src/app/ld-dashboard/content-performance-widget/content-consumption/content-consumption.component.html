@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentData | orderBy: sortOrder">
+      <tr *ngFor="let content of contentData | orderBy: sortOrder : reverse">
         <th scope="row"> {{content.contentName}} </th>
         <td> {{content.author}} </td>
         <td> {{content.views | customNumber}} </td>

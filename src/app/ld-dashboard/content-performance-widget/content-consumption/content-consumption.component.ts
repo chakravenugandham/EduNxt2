@@ -10,8 +10,10 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class ContentConsumptionComponent implements OnInit, OnChanges {
   @Input() contentData;
   sortOrder: string = "contentName";
+  reverse: boolean = false;
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
   constructor() {}
 

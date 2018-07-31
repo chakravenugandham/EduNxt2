@@ -11,6 +11,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   filterbody = {};
   limitTo = 10;
   sortOrder: string = "contentName";
+  reverse: boolean = false;
   searchBox: boolean = false;
   paginationData = {};
   filtersData = {
@@ -50,13 +51,9 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
-  onSearchChange(searchValue: string) {
-    console.log(searchValue);
-
-  }
-
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   goToPage(v) {

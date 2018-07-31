@@ -14,6 +14,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   showDetails: string = "test";
   sortOrder: string = "learnerName";
+  reverse: boolean = false;
   searchBox: boolean = false;
   page: number;
   total_records: number;
@@ -60,10 +61,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
-  // onSearchChange(searchValue: string) {
-  //   console.log(searchValue);
-  // }
-
   goToPage(v) {
     this.selectPage = v;
     console.log(this.selectPage);
@@ -93,6 +90,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   //api call for score details based on component

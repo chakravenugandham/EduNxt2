@@ -14,7 +14,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   checkBoxValue: boolean = false;
   sortOrder: string = "teamName";
-
+  reverse: boolean = false;
   parseFloat = parseFloat;
   limitTo: number = 10;
   searchBox: boolean = false;
@@ -75,6 +75,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   searchFn() {

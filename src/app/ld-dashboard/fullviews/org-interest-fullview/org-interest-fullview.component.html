@@ -59,7 +59,7 @@
           </th>
         </tr>
       </thead>
-      <tbody *ngFor="let data of responseData | orderBy: sortOrder">
+      <tbody *ngFor="let data of responseData | orderBy: sortOrder : reverse">
         <tr>
           <td class="">{{data.courseName}}</td>
           <td class="">

@@ -56,13 +56,8 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
-  // onSearchChange(searchValue: string) {
-  //   console.log(searchValue);
-  // }
-
   goToPage(v) {
     this.selectPage = v;
-    console.log(this.selectPage);
     alert("hello");
   }
 
@@ -72,9 +67,8 @@ export class ScoresDistributionFullviewComponent implements OnInit {
       .subscribe((response: any) => {
         this.responseScoreDetails = response.data;
         this.paginationData = response.pagination;
-        this.page = this.paginationData['page'];
-        this.total_records = this.paginationData['total'];
-        //console.log(this.paginationData);
+        this.page = this.paginationData["page"];
+        this.total_records = this.paginationData["total"];
       });
     this.dashboardService
       .getScoresDistrubution(this.showDetails, this.filterbody)

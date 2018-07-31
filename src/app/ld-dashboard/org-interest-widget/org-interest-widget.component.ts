@@ -11,7 +11,7 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   filtersData = {
     routeTo: "orgInterestFullView",
     filters: false,
-    search: false,
+    search: true,
     viewDetails: false,
     filterList: []
   };
@@ -20,9 +20,13 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     searchComponent: "organization-interests",
     searchBy: "courseName"
   };
-  orgData = {};
+
   filterbody = {};
-  orgPopularTopicData = {};
+  orgData: any[];
+  orgPopularTopicData: any[];
+  actualResponseData: any[];
+
+  searchFilterItem = [];
 
   constructor(private getData: LdDashboardService) {
     this.getData.refreshAPI.subscribe(result => {
@@ -34,30 +38,33 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
     this.filterbody = $event;
   }
 
+  getSearchItem($event) {
+    this.searchFilterItem = $event;
+    for (let i in this.searchFilterItem) {
+      this.searchFilterItem[i]["new"] = true;
+    }
+
+    this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
+
+    if (this.searchFilterItem.length > 0)
+      this.orgData.splice(-this.searchFilterItem.length);
+
+    this.orgData = this.orgData.concat(this.searchFilterItem);
+  }
+
   getDataFromService() {
-    //this.options.width = document.getElementById("word-cloud").offsetWidth;
-    this.getData.getOrgInterestData().subscribe((res: any) => {
-      this.orgData = res.data;
-      //this.wordData = [];
-      // for (let i = 0; i < this.orgData["popularTopicsData"].length; i++) {
-      //   //let wordWeight = Math.floor(Math.random() * 3 + 1);
-      //   this.wordData.push({
-      //     text: this.orgData["popularTopicsData"][i].courseName,
-      //     weight: this.orgData["popularTopicsData"][i].rank
-      //   });
-      // }
-      // const myObservable: Observable<CloudData[]> = observableOf(this.wordData);
-      // myObservable.subscribe(res => (this.data = res));
+    this.getData.getOrgInterestData().subscribe((response: any) => {
+      this.orgData = this.actualResponseData = response.data;
     });
 
     this.getData.getOrgPopulatTopicsData().subscribe((response: any) => {
       this.orgPopularTopicData = response.data;
-    })
+    });
   }
 
   ngOnInit() {
     this.getDataFromService();
   }
 
-  ngOnChanges(changes: SimpleChanges) { }
+  ngOnChanges(changes: SimpleChanges) {}
 }

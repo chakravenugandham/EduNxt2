@@ -25,8 +25,6 @@ export class OrgInterestComponent implements OnInit, OnChanges {
   constructor(private getData: LdDashboardService) {}
 
   ngOnChanges(changes: any) {
-    console.log("this.orgInterestData", this.orgInterestData);
-
     if (changes.orgPopularData && changes.orgPopularData.currentValue) {
       this.options.width = document.getElementById("word-cloud").offsetWidth;
       this.wordData = [];

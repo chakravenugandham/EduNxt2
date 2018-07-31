@@ -67,8 +67,6 @@ export class DonutChartDirective implements OnChanges {
       .style("font-weight", "bold")
       .text(function(d) {
         if (d.data.type === "classC") {
-          console.log("d", d);
-          // return d.data.number;
           return d.data.number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
       });

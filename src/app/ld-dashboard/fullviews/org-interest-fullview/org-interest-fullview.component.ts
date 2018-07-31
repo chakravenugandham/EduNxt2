@@ -50,13 +50,8 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
-  // onSearchChange(searchValue: string) {
-  //   console.log(searchValue);
-  // }
-
   goToPage(v) {
     this.selectPage = v;
-    console.log(this.selectPage);
     alert("hello");
   }
 
@@ -69,8 +64,8 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.dashboardService.getOrgInterestDetailsData().subscribe((res: any) => {
       this.responseData = res.data;
       this.paginationData = res.pagination;
-      this.page = this.paginationData['page'];
-      this.total_records = this.paginationData['total'];
+      this.page = this.paginationData["page"];
+      this.total_records = this.paginationData["total"];
     });
   }
 

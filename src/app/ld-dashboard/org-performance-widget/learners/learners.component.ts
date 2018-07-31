@@ -25,12 +25,7 @@ export class LearnersComponent implements OnInit {
 
   constructor(
     private getData: LdDashboardService,
-    private modalService: NgbModal
-  ) {
-    this.getData.refreshAPI.subscribe(result => {
-      // this.getDataFromService();
-    });
-  }
+    private modalService: NgbModal) { }
 
   open(content) {
     this.modalService.open(content).result.then(

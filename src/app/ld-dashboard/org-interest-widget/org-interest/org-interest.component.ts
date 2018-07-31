@@ -13,7 +13,7 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 export class OrgInterestComponent implements OnInit, OnChanges {
   @Input() orgInterestData: any[];
   @Input() orgPopularData: any[];
-  //orgData = {};
+
   options: CloudOptions = {
     width: 300,
     height: 300,
@@ -22,7 +22,7 @@ export class OrgInterestComponent implements OnInit, OnChanges {
 
   wordData = [];
   data: CloudData[];
-  constructor(private getData: LdDashboardService) {}
+  constructor(private getData: LdDashboardService) { }
 
   ngOnChanges(changes: any) {
     if (changes.orgPopularData && changes.orgPopularData.currentValue) {
@@ -40,6 +40,5 @@ export class OrgInterestComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    //this.getDataFromService();
   }
 }

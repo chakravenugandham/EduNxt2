@@ -24,6 +24,11 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
       this.getActiveUsersData();
       this.getLocationData();
     });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getActiveUsersData();
+      this.getLocationData();
+    });
   }
 
   //fliter object for payload

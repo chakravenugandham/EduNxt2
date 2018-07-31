@@ -37,6 +37,10 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   testScoreFn() {

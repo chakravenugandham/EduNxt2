@@ -12,14 +12,18 @@ export class TimeFrameComponent implements OnInit {
   today: Date = new Date();
   selectCourse: any = "All Courses";
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
 
   getDataFromService() {
-    this.getData.getCoursesData().subscribe((res: any) => {
+    this.dashboardService.getCoursesData().subscribe((res: any) => {
       this.coursesData = res.data;
     });
   }
@@ -42,7 +46,7 @@ export class TimeFrameComponent implements OnInit {
         }
       }
     }
-    this.getData.courseAndProgram({
+    this.dashboardService.courseAndProgram({
       courseId: courseIdSelected,
       programId: programIdSelected
     });

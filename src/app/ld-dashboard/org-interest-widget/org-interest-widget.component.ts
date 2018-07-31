@@ -6,7 +6,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./org-interest-widget.component.html",
   styleUrls: ["./org-interest-widget.component.scss"]
 })
-export class OrgInterestWidgetComponent implements OnInit, OnChanges {
+export class OrgInterestWidgetComponent implements OnInit {
   routePath: string = "orgInterestFullView";
   filtersData = {
     routeTo: "orgInterestFullView",
@@ -28,8 +28,12 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
 
   searchFilterItem = [];
 
-  constructor(private getData: LdDashboardService) {
-    this.getData.refreshAPI.subscribe(result => {
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
   }
@@ -53,18 +57,18 @@ export class OrgInterestWidgetComponent implements OnInit, OnChanges {
   }
 
   getDataFromService() {
-    this.getData.getOrgInterestData().subscribe((response: any) => {
-      this.orgData = this.actualResponseData = response.data;
+    this.dashboardService.getOrgInterestData().subscribe((res: any) => {
+      this.orgData = res.data;
     });
 
-    this.getData.getOrgPopulatTopicsData().subscribe((response: any) => {
-      this.orgPopularTopicData = response.data;
-    });
+    this.dashboardService
+      .getOrgPopulatTopicsData()
+      .subscribe((response: any) => {
+        this.orgPopularTopicData = response.data;
+      });
   }
 
   ngOnInit() {
     this.getDataFromService();
   }
-
-  ngOnChanges(changes: SimpleChanges) {}
 }

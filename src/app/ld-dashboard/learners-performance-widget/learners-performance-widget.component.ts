@@ -37,6 +37,10 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   performanceFn() {

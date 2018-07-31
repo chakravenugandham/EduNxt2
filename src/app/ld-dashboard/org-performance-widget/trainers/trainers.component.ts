@@ -16,14 +16,7 @@ export class TrainersComponent implements OnInit {
   limitTo: number = 5;
   closeResult: string;
 
-  constructor(
-    private getData: LdDashboardService,
-    private modalService: NgbModal
-  ) {
-    this.getData.refreshAPI.subscribe(result => {
-      // this.getDataFromService();
-    });
-  }
+  constructor(private getData: LdDashboardService, private modalService: NgbModal) { }
 
   open(Content) {
     this.modalService.open(Content).result.then(

@@ -64,7 +64,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   filterComponent: string;
 
-  constructor(private router: Router, private server: LdDashboardService) { }
+  constructor(private router: Router, private server: LdDashboardService) {}
 
   filterDispalyNameFraming() {
     if (this.viewData.filterList.length > 1) {
@@ -196,30 +196,23 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   searchItem($event) {
     if ($event.target.value.length >= 3) {
-      // console.log("search Item from serach", $event.target.value);
       this.displayDropdown = true;
-      // this.searchEvent.emit($event.target.value);
-      //console.log("this.searchFilterData", this.searchFilterData);
-
       this.server
         .getSearchFilterData(this.searchFilterData, $event.target.value)
         .subscribe((respose: any) => {
           this.searchList = respose.data;
-          //console.log("searchList", this.searchList);
         });
     } else {
-      // this.displayDropdown = false;
+      this.displayDropdown = false;
     }
   }
 
   selectSearchItem(searchItem) {
     if (!this.searchNames.includes(searchItem)) {
       this.searchNames.push(searchItem);
-      // console.log("added searchNames", this.searchNames);
     } else {
       let i = this.searchNames.indexOf(searchItem);
       this.removeSearchName(i);
-      // console.log("removed searchNames", this.searchNames);
     }
     this.searchEvent.emit(this.searchNames);
   }
@@ -241,6 +234,5 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       this.viewData.filterList = this.filterName;
       this.filterDispalyNameFraming();
     }
-    //console.log("searchFilterData", this.searchFilterData);
   }
 }

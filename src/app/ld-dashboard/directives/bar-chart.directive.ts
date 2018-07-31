@@ -27,7 +27,7 @@ export class BarChartDirective implements OnInit, OnChanges {
   //   { label: "Problem Solving4", Group1: 60 }
   // ];
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
@@ -112,21 +112,29 @@ export class BarChartDirective implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.data[0]).filter(function(key) {
+    let options = d3.keys(this.data[0]).filter(function (key) {
       return key !== "label";
     });
 
-    this.data.forEach(function(d: any) {
-      d.valores = options.map(function(name) {
+    this.data.forEach(function (d: any) {
+      d.valores = options.map(function (name) {
         return { name: name, value: +d[name] };
       });
     });
 
     x0.domain(
-      this.data.map(function(d: any) {
+      this.data.map(function (d: any) {
+        //return d.label.slice(0, 3) + "...";
+        d.label = d.label.slice(0, 3) + "...";
         return d.label;
       })
     );
+
+    var div = d3.select(".bar-chart-graph").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+
 
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
 
@@ -134,10 +142,22 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     svg
       .append("g")
-      .attr("class", "x axis")
+      .attr("class", "x axis x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
+
+    d3.select('.x-axis').selectAll('.tick').forEach(function (d1) {
+      debugger;
+      var data = d3.select(d1).data();//get the data asociated with y axis
+      d1.on("mouseover", function (d) {
+        console.log('->', d);
+      })
+        .on("mouseout", function (d) {
+
+        });
+
+    })
     svg
       .append("g")
       .attr("class", "y axis")
@@ -163,7 +183,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function(d) {
+      .attr("transform", function (d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -180,26 +200,26 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     bar
       .selectAll("rect")
-      .data(function(d: any) {
+      .data(function (d: any) {
         return d.valores;
       })
       .enter()
       .append("rect")
       // .attr("width", x1.rangeBand() - 8)
       .attr("width", 18)
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         return x1(d.name);
       })
-      .attr("y", function(d) {
+      .attr("y", function (d) {
         return y(d.value);
       })
-      .attr("value", function(d) {
+      .attr("value", function (d) {
         return d.name;
       })
-      .attr("height", function(d) {
+      .attr("height", function (d) {
         return height - y(d.value);
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return color(d.name);
       });
   }

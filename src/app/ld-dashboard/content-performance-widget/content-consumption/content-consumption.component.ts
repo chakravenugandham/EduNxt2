@@ -15,12 +15,10 @@ export class ContentConsumptionComponent implements OnInit, OnChanges {
     this.sortOrder = sortByName;
     this.reverse = !this.reverse;
   }
-  constructor() {}
+  constructor() { }
 
   ngOnChanges(changes: any) {
-    if (changes.contentData.currentValue) {
-    }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

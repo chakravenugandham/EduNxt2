@@ -21,6 +21,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   };
 
   sortOrder: string = "learnerName";
+  reverse: boolean = false;
   searchBox: boolean = false;
   page: number;
   total_records: number;
@@ -77,6 +78,7 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   ngOnInit() {

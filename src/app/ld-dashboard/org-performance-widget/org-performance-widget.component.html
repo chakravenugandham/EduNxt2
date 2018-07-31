@@ -66,12 +66,12 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <!-- <div *ngIf="responseData.length > 0" class="org-performance"> -->
-  <div class="org-performance">
+  <div *ngIf="responseData.length > 0" class="org-performance">
+    <!-- <div class="org-performance"> -->
 
-    <app-teams *ngIf="getTab == 'teams' && responseData.length > 0" [teamsData]="responseData"></app-teams>
-    <app-trainers *ngIf="getTab == 'trainers' && responseData.length > 0" [trainersData]="responseData"></app-trainers>
-    <app-learners *ngIf="getTab == 'learner' && responseData.length > 0" [LearnersData]="responseData"></app-learners>
+    <app-teams *ngIf="getTab == 'teams'" [teamsData]="responseData"></app-teams>
+    <app-trainers *ngIf="getTab == 'trainers'" [trainersData]="responseData"></app-trainers>
+    <app-learners *ngIf="getTab == 'learner'" [LearnersData]="responseData"></app-learners>
 
   </div>
 

@@ -49,8 +49,19 @@
       </span>
     </div>
   </div>
-  <app-org-interest [orgInterestData]='orgData' [orgPopularData]='orgPopularTopicData'></app-org-interest>
-  <div>
-    <app-filter-widget [viewData]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
   </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+  <div *ngIf="orgData.length > 0">
+    <app-org-interest [orgInterestData]='orgData' [orgPopularData]='orgPopularTopicData'></app-org-interest>
+  </div>
+
+  <app-filter-widget [viewData]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>
+
 </div>

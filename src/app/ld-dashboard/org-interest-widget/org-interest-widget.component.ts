@@ -28,6 +28,9 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   searchFilterItem = [];
 
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -57,8 +60,12 @@ export class OrgInterestWidgetComponent implements OnInit {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
+    this.orgData = [];
     this.dashboardService.getOrgInterestData().subscribe((res: any) => {
       this.orgData = res.data;
+      this.spinner_loader = false;
+      this.noDataFlag = this.orgData.length == 0 ? true : false;
     });
 
     this.dashboardService

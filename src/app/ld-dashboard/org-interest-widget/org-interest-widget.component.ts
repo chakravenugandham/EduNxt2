@@ -41,12 +41,26 @@ export class OrgInterestWidgetComponent implements OnInit {
     });
   }
 
-  getFilterObject($event) {
-    this.filterbody = $event;
+  getDataFromService() {
+    this.spinner_loader = true;
+    this.orgData = [];
+    this.dashboardService.getOrgInterestData().subscribe((res: any) => {
+      this.orgData = this.actualResponseData = res.data;
+      this.spinner_loader = false;
+      this.noDataFlag = this.orgData.length == 0 ? true : false;
+    });
+
+    this.dashboardService
+      .getOrgPopulatTopicsData()
+      .subscribe((response: any) => {
+        this.orgPopularTopicData = response.data;
+      });
   }
 
   getSearchItem($event) {
     this.searchFilterItem = $event;
+    console.log("this.searchFilterItem", this.searchFilterItem);
+
     for (let i in this.searchFilterItem) {
       this.searchFilterItem[i]["new"] = true;
     }
@@ -57,22 +71,6 @@ export class OrgInterestWidgetComponent implements OnInit {
       this.orgData.splice(-this.searchFilterItem.length);
 
     this.orgData = this.orgData.concat(this.searchFilterItem);
-  }
-
-  getDataFromService() {
-    this.spinner_loader = true;
-    this.orgData = [];
-    this.dashboardService.getOrgInterestData().subscribe((res: any) => {
-      this.orgData = res.data;
-      this.spinner_loader = false;
-      this.noDataFlag = this.orgData.length == 0 ? true : false;
-    });
-
-    this.dashboardService
-      .getOrgPopulatTopicsData()
-      .subscribe((response: any) => {
-        this.orgPopularTopicData = response.data;
-      });
   }
 
   ngOnInit() {

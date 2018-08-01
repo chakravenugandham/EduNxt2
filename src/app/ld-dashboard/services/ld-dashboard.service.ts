@@ -735,7 +735,7 @@ export class LdDashboardService implements OnInit {
       searchFilterData.searchBy +
       "&searchTerm=" +
       searchTerm;
-    return this.http.post(url, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
   ngOnInit() { }
 }

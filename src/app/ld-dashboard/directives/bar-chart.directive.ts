@@ -31,6 +31,7 @@ export class BarChartDirective implements OnInit, OnChanges {
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
+
     // let chartDiv = document.createElement("div");
 
     // function rightRoundedRect(x, y, width, height, radius) {
@@ -133,13 +134,24 @@ export class BarChartDirective implements OnInit, OnChanges {
       })
     );
 
-    var div = d3.select("body").append("div")
+    var div = d3
+      .select("body")
+      .append("div")
       .attr("class", "tooltip")
       .style("opacity", 0);
 
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
 
-    y.domain([0, 100]);
+    // let maxPorgress = d3.max(this.data, d => {
+    //   return d.Group1;
+    // });
+
+    y.domain([
+      0,
+      d3.max(this.data, d => {
+        return d.Group1;
+      })
+    ]);
 
     svg
       .append("g")

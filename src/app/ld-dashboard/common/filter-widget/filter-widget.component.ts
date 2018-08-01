@@ -196,6 +196,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   searchItem($event) {
     if ($event.target.value.length >= 3) {
       this.displayDropdown = true;
+      this.searchList = [];
       this.server
         .getSearchFilterData(this.searchFilterData, $event.target.value)
         .subscribe((respose: any) => {

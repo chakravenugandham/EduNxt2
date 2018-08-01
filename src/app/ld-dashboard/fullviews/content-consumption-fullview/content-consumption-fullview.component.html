@@ -84,11 +84,11 @@
     </table>
     <div class="row float-right">
       <ngb-pagination class="d-flex justify-content-end" [collectionSize]=total_records [(page)]=page [maxSize]="5"></ngb-pagination>
-      <span style="padding-left: 10px;padding-top: 7px;">Go to page</span>
-      <span style="padding-left: 10px;padding-top: 3px;">
+      <span class="p-l-10 p-t-7">Go to page</span>
+      <span class="p-l-10 p-t-3">
         <input style="border:1px solid #007bff;height: 28px;" type="text" [(ngModel)]="selectPage">
       </span>
-      <span style="padding-left: 10px;">
+      <span class="p-l-10">
         <button class="btn btn-primary" (click)="goToPage(selectPage)" style="width: 90px;">Go</button>
       </span>
     </div>

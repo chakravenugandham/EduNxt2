@@ -26,8 +26,13 @@ export class LearnerPerformanceComponent implements OnInit {
         },
         {
           color: "#f77f6c",
-          type: "classC",
+          type: "classE",
           number: this.performanceData.struggling
+        },
+        {
+          color: "#f77f6c",
+          type: "classC",
+          number: this.performanceData.haveNotStarted
         }
       ];
     }

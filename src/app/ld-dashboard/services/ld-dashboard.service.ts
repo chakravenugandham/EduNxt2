@@ -128,43 +128,19 @@ export class LdDashboardService implements OnInit {
   }
 
   getEngagementWidgetData() {
-    if (
-      this.dateService.dateFilterBodyDetails["start_date"] &&
-      this.dateService.dateFilterBodyDetails["end_date"]
-    ) {
-      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-        "start_date"
-      ];
-      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-        "end_date"
-      ];
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
-    let url =
-      this.baseURL +
-      APIURL.LEARNER_ENGAGEMENT +
-      "?start_date=" +
-      this.dateFilterObj.start_date +
-      "&end_date=" +
-      this.dateFilterObj.end_date +
-      "&courseId=" +
-      this.courseId +
-      "&programId=" +
-      this.programId;
+    let url = this.baseURL + APIURL.LEARNER_ENGAGEMENT + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
     return this.http.get(url, { headers: this.headers });
   }
 
   getPaceWidgetData() {
-    if (
-      this.dateService.dateFilterBodyDetails["start_date"] &&
-      this.dateService.dateFilterBodyDetails["end_date"]
-    ) {
-      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-        "start_date"
-      ];
-      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-        "end_date"
-      ];
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
     let url =

@@ -3,7 +3,6 @@ import {
   OnInit,
   Input,
   OnChanges,
-  SimpleChanges,
   EventEmitter,
   Output
 } from "@angular/core";
@@ -64,7 +63,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   filterComponent: string;
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
 
   filterDispalyNameFraming() {
     if (this.viewData.filterList.length > 1) {

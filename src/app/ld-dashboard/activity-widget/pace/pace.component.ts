@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
 import * as d3 from "d3v4";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -9,8 +7,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./pace.component.html",
   styleUrls: ["./pace.component.scss"]
 })
-export class PaceComponent implements OnInit, OnChanges {
-  // @Input() paceDataElement;
+export class PaceComponent implements OnInit {
   paceTrackValues = [];
   graphSize = "smallGraph";
 
@@ -59,15 +56,13 @@ export class PaceComponent implements OnInit, OnChanges {
           number: this.responseData["haveNotStarted"]
         },
         {
-          color: "#39EA37",
+          color: "#23b14d",
           type: "classE",
           number: this.responseData["onTrack"]
         }
       ];
     });
   }
-
-  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { observable } from "rxjs";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({

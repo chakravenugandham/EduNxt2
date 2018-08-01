@@ -7,9 +7,8 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class UsersDataComponent implements OnInit {
   @Input() config: Config;
-  // @Input() numberFontColor: boolean;
 
-  constructor() {}
+  constructor() { }
   monthFullName: string;
   constructPreviousMonth() {
     const monthNames = [

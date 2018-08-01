@@ -52,9 +52,7 @@ export class LdDashboardService implements OnInit {
   baseURL = environment.baseUrl;
   constructor(
     private http: HttpClient,
-    private dateService: DateserviceService,
-    private _window: Window,
-    private getTenantName: CommonService
+    private dateService: DateserviceService
   ) {
     this.constructDate();
   }

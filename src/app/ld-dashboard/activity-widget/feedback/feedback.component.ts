@@ -1,9 +1,6 @@
 import {
   Component,
-  OnInit,
-  Input,
-  OnChanges,
-  SimpleChanges
+  OnInit
 } from "@angular/core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
@@ -13,8 +10,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./feedback.component.html",
   styleUrls: ["./feedback.component.scss"]
 })
-export class FeedbackComponent implements OnInit, OnChanges {
-  //@Input() feedbackDataElement;
+export class FeedbackComponent implements OnInit {
 
   learnerSatisfaction: any;
   learnerSatisfationBy: number;
@@ -72,11 +68,6 @@ export class FeedbackComponent implements OnInit, OnChanges {
         Math.round(this.responseData["contentRatingBy"])
       );
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    // if (changes.feedbackDataElement.currentValue) {
-    // }
   }
 
   ngOnInit() {

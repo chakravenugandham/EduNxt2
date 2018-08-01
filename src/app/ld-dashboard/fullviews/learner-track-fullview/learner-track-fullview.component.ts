@@ -1,5 +1,4 @@
 import { Component, OnInit, OnChanges, Input } from "@angular/core";
-import { Observable } from "rxjs";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
 
@@ -155,9 +154,5 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.getGraphDataFromService();
     this.getFilterData();
     this.getDisplayObject(this.selectType);
-
-    // if(this.filtersData.viewDetailsFilters){
-
-    // }
   }
 }

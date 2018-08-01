@@ -8,8 +8,6 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
-  // @Input() userElement;
-  // @Input() imageElement;
 
   activeUserCount: Config;
   enrolledConfig: Config;
@@ -17,8 +15,6 @@ export class UsersComponent implements OnInit {
   noDataFlag: boolean = false;
 
   responseData = {};
-  // activeUserChange: boolean = false;
-  // enrolledUserChange: boolean = false;
 
   userImages: string[] = [
     "/assets/images/user.png",

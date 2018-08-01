@@ -27,7 +27,7 @@ export class BarChartDirective implements OnInit, OnChanges {
   //   { label: "Problem Solving4", Group1: 60 }
   // ];
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
@@ -71,7 +71,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       height = 220,
       p = 50;
     let calculatedWidth =
-      this.data.length > 6 ? width + 46 * (this.data.length - 6) : width;
+      this.data.length > 6 ? width + 20 * (this.data.length - 6) : width;
 
     if (this.data.length > 6) {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
@@ -113,19 +113,19 @@ export class BarChartDirective implements OnInit, OnChanges {
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.data[0]).filter(function(key) {
+    let options = d3.keys(this.data[0]).filter(function (key) {
       return key !== "label";
     });
 
-    this.data.forEach(function(d: any) {
-      d.valores = options.map(function(name) {
+    this.data.forEach(function (d: any) {
+      d.valores = options.map(function (name) {
         return { name: name, value: +d[name] };
       });
     });
 
     const orgLabels = {};
     x0.domain(
-      this.data.map(function(d: any) {
+      this.data.map(function (d: any) {
         //return d.label.slice(0, 3) + "...";
         const label = d.label.slice(0, 3) + "...";
         orgLabels[label] = d.label;
@@ -159,31 +159,25 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-    d3.select(".x-axis")
-      .selectAll(".tick")[0]
-      .forEach(function(d1) {
-        var data = d3.select(d1).data(); //get the data asociated with y axis
-        d3.select(d1)
-          .on("mouseover", function(d) {
-            div
-              .transition()
-              .duration(200)
-              .style("opacity", 1)
-              .style("color", "black")
-              .style("background", "gray");
-            div
-              .html(orgLabels[data])
-              .style("left", d3.event.pageX + "px")
-              .style("top", d3.event.pageY - 28 + "px");
-          })
-          .on("mouseout", function(d) {
-            //on mouse out hide the tooltip
-            div
-              .transition()
-              .duration(500)
-              .style("opacity", 0);
-          });
+    d3.select('.x-axis').selectAll('.tick')[0].forEach(function (d1) {
+      //d3.select(d1).style("text-align", "left");//get the data asociated with y axis
+      var data = d3.select(d1).data();
+      d3.select(d1).on("mouseover", function (d) {
+        div.transition()
+          .duration(200)
+          .style("opacity", 1)
+          .style("color", "black")
+          .style("background", "gray");
+        div.html(orgLabels[data])
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      }).on("mouseout", function (d) {
+        //on mouse out hide the tooltip
+        div.transition()
+          .duration(500)
+          .style("opacity", 0);
       });
+    });
     svg
       .append("g")
       .attr("class", "y axis")
@@ -209,7 +203,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       .enter()
       .append("g")
       .attr("class", "rect")
-      .attr("transform", function(d) {
+      .attr("transform", function (d) {
         return "translate(" + x0(d.label) + ",0)";
       });
 
@@ -226,26 +220,26 @@ export class BarChartDirective implements OnInit, OnChanges {
 
     bar
       .selectAll("rect")
-      .data(function(d: any) {
+      .data(function (d: any) {
         return d.valores;
       })
       .enter()
       .append("rect")
       // .attr("width", x1.rangeBand() - 8)
       .attr("width", 18)
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         return x1(d.name);
       })
-      .attr("y", function(d) {
+      .attr("y", function (d) {
         return y(d.value);
       })
-      .attr("value", function(d) {
+      .attr("value", function (d) {
         return d.name;
       })
-      .attr("height", function(d) {
+      .attr("height", function (d) {
         return height - y(d.value);
       })
-      .style("fill", function(d) {
+      .style("fill", function (d) {
         return color(d.name);
       });
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
-import { observable } from "rxjs";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
@@ -7,7 +6,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./learners-performance-widget.component.html",
   styleUrls: ["./learners-performance-widget.component.scss"]
 })
-export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
+export class LearnersPerformanceWidgetComponent implements OnInit {
   filtersData = {
     routeTo: "learnerPerformanceFullView",
     filters: false,
@@ -116,11 +115,5 @@ export class LearnersPerformanceWidgetComponent implements OnInit, OnChanges {
   }
   ngOnInit() {
     this.getDataFromService();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.filterbody) {
-      // this.getDataFromService();
-    }
   }
 }

@@ -70,7 +70,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       height = 220,
       p = 50;
     let calculatedWidth =
-      this.data.length > 6 ? width + 46 * (this.data.length - 6) : width;
+      this.data.length > 6 ? width + 20 * (this.data.length - 6) : width;
 
     if (this.data.length > 6) {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
@@ -148,7 +148,8 @@ export class BarChartDirective implements OnInit, OnChanges {
       .call(xAxis);
 
     d3.select('.x-axis').selectAll('.tick')[0].forEach(function (d1) {
-      var data = d3.select(d1).data();//get the data asociated with y axis
+      //d3.select(d1).style("text-align", "left");//get the data asociated with y axis
+      var data = d3.select(d1).data();
       d3.select(d1).on("mouseover", function (d) {
         div.transition()
           .duration(200)

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -7,7 +7,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./engagement.component.html",
   styleUrls: ["./engagement.component.scss"]
 })
-export class EngagementComponent implements OnInit, OnChanges {
+export class EngagementComponent implements OnInit {
   config: Config;
   percentageChange: number;
   expectedChange: boolean;
@@ -71,8 +71,6 @@ export class EngagementComponent implements OnInit, OnChanges {
         // this.expectedChange = this.percentageChange < 50 ? false : true;
       });
   }
-
-  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     this.getDataFromService();

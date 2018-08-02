@@ -1,7 +1,7 @@
 <div>
   <div class="learnerPaceText">
     <span>View learner performance across </span>
-    <span class="text-primary font-weight-bold"> All courses </span>
+    <span class="text-primary font-weight-bold"> Batch </span>
   </div>
   <div appDonutChart [data]="chartValues"></div>
   <div class="row graph-badges">
@@ -21,7 +21,7 @@
       <p> {{performanceData?.struggling | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <i class="far fa-circle struggling"></i>
+      <i class="far fa-circle haveNotStarted"></i>
       <span class="text-font"> Haven't Started</span>
       <p> {{performanceData?.haveNotStarted | customNumber}} </p>
     </div>

@@ -10,7 +10,17 @@
       <!-- <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget> -->
     </div>
   </div>
-  <div class="widget-block">
+
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+
+  <div class="widget-block" *ngIf="!spinner_loader && !noDataFlag">
     <table class="table table-borderless">
       <thead>
         <tr>
@@ -78,7 +88,7 @@
             </span>
             <span> {{content.avgRating.toFixed(2)}} </span>
           </td>
-          <td> {{content.duration}} </td>
+          <td> {{content.duration.toFixed(2)}} Min </td>
         </tr>
       </tbody>
     </table>

@@ -8,7 +8,6 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
-
   activeUserCount: Config;
   enrolledConfig: Config;
   spinner_loader: boolean = false;
@@ -50,18 +49,6 @@ export class UsersComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-        // this.activeUserChange =
-        //   this.responseData["activeUsers"] <
-        //   this.responseData["activeUsersSinceLastMonth"]
-        //     ? false
-        //     : true;
-
-        // this.enrolledUserChange =
-        //   this.responseData["enrolledUsers"] <
-        //   this.responseData["enrolledUsersSinceLastMonth"]
-        //     ? false
-        //     : true;
-
         this.activeUserCount = {
           peopleCurrentlyEnrolled: Number(this.responseData["activeUsers"]),
 
@@ -92,7 +79,7 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ngOnChanges(changes: any) { }
+  ngOnChanges(changes: any) {}
 
   ngOnInit() {
     this.getAPIData();

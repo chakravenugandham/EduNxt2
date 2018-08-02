@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 
+// import * as _ from "underscore";
+
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 
@@ -53,15 +55,15 @@ export class LearnersTrackWidgetComponent implements OnInit {
   }
 
   learnerPaceFn() {
-    this.componentName = "pace";
-    this.filtersData.currentModule = "pace";
+    this.componentName = this.filtersData.currentModule = "pace";
+    // this.filtersData.currentModule = "pace";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
-    this.componentName = "performance";
-    this.filtersData.currentModule = "performance";
+    this.componentName = this.filtersData.currentModule = "performance";
+    // this.filtersData.currentModule = "performance";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
@@ -76,7 +78,15 @@ export class LearnersTrackWidgetComponent implements OnInit {
         this.widgetData.pace = response.data.paceData;
         this.widgetData.performance = response.data.performanceData;
         this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+        // this.noDataFlag = _.isEmpty(this.widgetData.pace) ? true : false;
+        if (this.componentName == "pace") {
+          this.noDataFlag =
+            Object.keys(this.widgetData.pace).length === 0 ? true : false;
+        } else if (this.componentName == "performance")
+          this.noDataFlag =
+            Object.keys(this.widgetData.performance).length === 0
+              ? true
+              : false;
       });
   }
 

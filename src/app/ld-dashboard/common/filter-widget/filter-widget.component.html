@@ -11,7 +11,7 @@
         </div>
 
         <div>
-          <div class="showFilter-list" *ngIf="displayDropdown && searchList.length>0">
+          <div class="showFilter-list" *ngIf="displayDropdown">
             <span class="closeDropdown text-warning" (click)="closeDropDown()">
               <i class="far fa-times-circle fa-lg"></i>
             </span>
@@ -20,11 +20,17 @@
                 <span>
                   <b>Select for</b> (Upto 5 people)
                 </span>
-                <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">
-                  <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span>
-                  <!-- <span>{{searchItem.teamName}} </span> -->
-                  <span>{{searchItem[searchFilterData.searchBy]}} </span>
+                <div *ngIf="searchList.length>0">
+                  <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">
+                    <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span>
+                    <!-- <span>{{searchItem.teamName}} </span> -->
+                    <span>{{searchItem[searchFilterData.searchBy]}} </span>
+                  </div>
                 </div>
+                <div *ngIf="noSearchResultFlag">
+                  <span>No search results found</span>
+                </div>
+
               </li>
             </ul>
           </div>

@@ -59,7 +59,6 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   getSearchItem($event) {
     this.searchFilterItem = $event;
-    console.log("this.searchFilterItem", this.searchFilterItem);
 
     for (let i in this.searchFilterItem) {
       this.searchFilterItem[i]["new"] = true;

@@ -12,8 +12,6 @@ export class FooterComponent implements OnInit {
   refreshTime = new Date();
   refreshReportFn() {
     this.refreshTime = new Date();
-    console.log("this.refreshTime", this.refreshTime);
-
     this.dashboardService.refreshRepotAPI$.next();
   }
 

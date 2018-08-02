@@ -113,3 +113,8 @@
 .new-interest {
   box-shadow: 1px 3px 1px 1px #ff4e00;
 }
+.courseName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -160,7 +160,6 @@ export class BarChartDirective implements OnInit, OnChanges {
       .call(xAxis);
 
     d3.select('.x-axis').selectAll('.tick')[0].forEach(function (d1) {
-      //d3.select(d1).style("text-align", "left");//get the data asociated with y axis
       var data = d3.select(d1).data();
       d3.select(d1).on("mouseover", function (d) {
         div.transition()

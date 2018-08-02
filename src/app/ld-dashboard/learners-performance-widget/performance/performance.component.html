@@ -3,7 +3,8 @@
     View Performance across courses
   </div>
 
-  <div class="bar-chart-graph" appBarChart [data]="barChartData"></div>
+  <div class="bar-chart-graph" appBarChart [data]="barChartData" [getTab]="getTab"></div>
+  <!-- <div class="bar-chart-graph" appSinglebar></div> -->
 
   <div class="row graph-badges">
     <div *ngFor="let batch of batchNames" class="col-md">

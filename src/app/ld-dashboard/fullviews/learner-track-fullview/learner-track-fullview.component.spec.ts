@@ -9,7 +9,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 
 describe('LearnerTrackFullviewComponent', () => {
   let component: LearnerTrackFullviewComponent;

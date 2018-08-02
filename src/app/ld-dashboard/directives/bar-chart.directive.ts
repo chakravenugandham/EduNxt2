@@ -127,7 +127,7 @@ export class BarChartDirective implements OnInit, OnChanges {
     x0.domain(
       this.data.map(function (d: any) {
         //return d.label.slice(0, 3) + "...";
-        const label = d.label.slice(0, 3) + "...";
+        const label = d.label.slice(0, 5) + "...";
         orgLabels[label] = d.label;
         d.label = label;
         return d.label;

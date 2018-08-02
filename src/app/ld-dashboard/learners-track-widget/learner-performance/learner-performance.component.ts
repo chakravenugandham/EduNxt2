@@ -26,7 +26,7 @@ export class LearnerPerformanceComponent implements OnInit {
         },
         {
           color: "#f77f6c",
-          type: "classE",
+          type: "classD",
           number: this.performanceData.struggling
         },
         {

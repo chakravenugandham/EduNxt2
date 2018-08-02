@@ -5,20 +5,25 @@
   </div>
   <div appDonutChart [data]="chartValues"></div>
   <div class="row graph-badges">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle excelling"></i>
       <span class="text-font"> Excelling</span>
       <p> {{performanceData?.excelling | customNumber}} </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle passing"></i>
       <span class="text-font"> Passing</span>
       <p> {{performanceData?.passing | customNumber}} </p>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-3">
       <i class="far fa-circle struggling"></i>
       <span class="text-font"> Struggling</span>
       <p> {{performanceData?.struggling | customNumber}} </p>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+      <i class="far fa-circle struggling"></i>
+      <span class="text-font"> Haven't Started</span>
+      <p> {{performanceData?.haveNotStarted | customNumber}} </p>
     </div>
   </div>
 </div>

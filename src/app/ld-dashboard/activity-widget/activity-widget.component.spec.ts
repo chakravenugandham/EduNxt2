@@ -51,8 +51,4 @@ fdescribe('ActivityWidgetComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('getDataFromService should be defined', () => {
-    component.getDataFromService();
-    expect(component.getDataFromService).toBeDefined();
-  });
 });

@@ -50,8 +50,6 @@ import { NotificationPerformanceFullviewComponent } from '../ld-dashboard/fullvi
 import { OrgInterestFullviewComponent } from '../ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 // import { GoogleChartsBaseService } from "../ld-dashboard/services/googleChartService";
 import { UsersDataComponent } from '../ld-dashboard/common/users-data/users-data.component';
-import { BestProgramsWidgetComponent } from '../ld-dashboard/best-programs-widget/best-programs-widget.component';
-import { ProgramsComponent } from '../ld-dashboard/best-programs-widget/programs/programs.component';
 import { LdDashboardService } from "./services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -118,9 +116,8 @@ describe('LdDashboardComponent', () => {
         HalfdonutchartDirective,
         DonutChartDirective,
         BarChartDirective,
-        ScoreChartDirective,
-        BestProgramsWidgetComponent,
-        ProgramsComponent],
+        ScoreChartDirective
+      ],
       providers: [LdDashboardService],
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([])]
     })

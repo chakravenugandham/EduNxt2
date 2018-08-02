@@ -22,7 +22,6 @@ fdescribe('EngagementComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EngagementComponent);
     component = fixture.componentInstance;
-    component.engageData = {};
     fixture.detectChanges();
   });
 

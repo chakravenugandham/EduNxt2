@@ -81,7 +81,6 @@ import { ProgramsComponent } from "./org-head/best-programs-widget/programs/prog
 import { TrackofgoalsComponent } from "./org-head/trackofgoals/trackofgoals.component";
 import { GoalsComponent } from "./org-head/trackofgoals/goals/goals.component";
 import { GoalcardsComponent } from "./org-head/common/goalcards/goalcards.component";
-import { LinegraphDirective } from "./ld-dashboard/directives/linegraph.directive";
 import { HalfdonutComponent } from "./ld-dashboard/common/halfdonut/halfdonut.component";
 import { FacultyperformanceComponent } from "./faculty/facultyactivitywidget/facultyperformance/facultyperformance.component";
 import { FacultylearnerprogressComponent } from "./faculty/facultyactivitywidget/facultylearnerprogress/facultylearnerprogress.component";
@@ -111,6 +110,7 @@ import { LearnerCoursePerformanceComponent } from './learner/learner-course-perf
 import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component';
 import { CommonModule } from "@angular/common";
 import { CustomNumberPipe } from './custom-number.pipe';
+
 
 @NgModule({
   declarations: [
@@ -172,7 +172,6 @@ import { CustomNumberPipe } from './custom-number.pipe';
     TrackofgoalsComponent,
     GoalsComponent,
     GoalcardsComponent,
-    LinegraphDirective,
     HalfdonutComponent,
     FacultyperformanceComponent,
     FacultylearnerprogressComponent,
@@ -200,7 +199,8 @@ import { CustomNumberPipe } from './custom-number.pipe';
     LearnerScoreCardComponent,
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
-    CustomNumberPipe
+    CustomNumberPipe,
+    SinglebarDirective
   ],
   imports: [
     BrowserModule,

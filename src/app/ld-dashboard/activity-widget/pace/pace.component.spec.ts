@@ -20,7 +20,6 @@ fdescribe('PaceComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PaceComponent);
     component = fixture.componentInstance;
-    component.paceDataElement = [];
     fixture.detectChanges();
   });
 

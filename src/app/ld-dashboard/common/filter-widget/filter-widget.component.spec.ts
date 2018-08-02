@@ -43,14 +43,14 @@ fdescribe('FilterWidgetComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FilterWidgetComponent);
     component = fixture.componentInstance;
-    component.viewData = {
-      routeTo: "string",
-      filters: true,
-      search: true,
-      viewDetails: true,
-      filterList: ['string', 'string'],
-      currentModule: 'string'
-    };
+    // component.viewData = {
+    //   routeTo: "string",
+    //   filters: true,
+    //   search: true,
+    //   viewDetails: true,
+    //   filterList: ['string', 'string'],
+    //   currentModule: 'string'
+    // };
     fixture.detectChanges();
   });
 

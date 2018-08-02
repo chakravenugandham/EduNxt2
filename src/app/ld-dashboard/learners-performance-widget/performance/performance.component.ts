@@ -16,14 +16,19 @@ export class PerformanceComponent implements OnInit, OnChanges {
   @Input() batches: string[];
   barChartData;
   batchNames = [];
-  constructor() {}
+  getTab = '';
 
-  ngOnInit() {}
+  getTabData = "performance";
+  constructor() { }
+
+  ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
+
     if (changes.performanceData) {
       this.barChartData = this.performanceData;
       this.batchNames = this.batches;
+      this.getTab = this.getTabData;
     }
   }
 }

@@ -20,7 +20,6 @@ fdescribe('UserstrainedComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserstrainedComponent);
     component = fixture.componentInstance;
-    component.usersData = {};
     fixture.detectChanges();
   });
 

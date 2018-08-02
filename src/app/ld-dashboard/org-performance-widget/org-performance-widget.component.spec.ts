@@ -10,7 +10,7 @@ import { LearnersComponent } from "./learners/learners.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
 
 fdescribe('OrgPerformanceComponent', () => {
   let component: OrgPerformanceWidgetComponent;
@@ -50,11 +50,11 @@ fdescribe('OrgPerformanceComponent', () => {
     expect(component.learnersFn).toBeTruthy();
   });
 
-  it('should create getFilterObject', () => {
-    let $event;
-    component.getFilterObject($event);
-    expect(component.getFilterObject).toBeTruthy();
-  });
+  // it('should create getFilterObject', () => {
+  //   let $event;
+  //   component.getFilterObject($event);
+  //   expect(component.getFilterObject).toBeTruthy();
+  // });
 
   it('should create getData', () => {
     component.getDataFromService();

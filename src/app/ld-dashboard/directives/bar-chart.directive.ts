@@ -8,11 +8,12 @@ declare let d3: any;
 })
 export class BarChartDirective implements OnInit, OnChanges {
   @Input() data;
+  @Input() getTab;
   // dataset = [];
 
   // data model
   // data = [
-  //   { label: "Data Structures", Group1: 60 },
+  //   { label: "Data Structures", "Data Structures": 60 },
   //   { label: "Algo", Group1: 30 },
   //   { label: "Database", Group1: 40 },
   //   { label: "ML", Group1: 50 },
@@ -32,44 +33,12 @@ export class BarChartDirective implements OnInit, OnChanges {
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
 
-    // let chartDiv = document.createElement("div");
-
-    // function rightRoundedRect(x, y, width, height, radius) {
-    //   return (
-    //     "M" +
-    //     x +
-    //     "," +
-    //     y +
-    //     "h" +
-    //     (width - radius) +
-    //     "a" +
-    //     radius +
-    //     "," +
-    //     radius +
-    //     " 0 0 1 " +
-    //     radius +
-    //     "," +
-    //     radius +
-    //     "v" +
-    //     (height - 2 * radius) +
-    //     "a" +
-    //     radius +
-    //     "," +
-    //     radius +
-    //     " 0 0 1 " +
-    //     -radius +
-    //     "," +
-    //     radius +
-    //     "h" +
-    //     (radius - width) +
-    //     "z"
-    //   );
-    // }
-
     let margin: number = 50,
       width = 500,
-      height = 220,
+      h = 220,
       p = 50;
+
+    //this.data = { label: "Data Structures", Group1: 60 };
     let calculatedWidth =
       this.data.length > 6 ? width + 20 * (this.data.length - 6) : width;
 
@@ -77,62 +46,80 @@ export class BarChartDirective implements OnInit, OnChanges {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
     }
 
+
     let svg = d3
       .select(this.el.nativeElement)
       .append("svg")
       // .attr("min-width", width)
       .attr("width", calculatedWidth)
-      .attr("height", height + margin * 2)
+      .attr("height", h + margin * 2)
       .append("g")
       .attr("transform", "translate(" + margin + "," + (margin - 30) + ")");
 
-    let x0 = d3.scale.ordinal().rangeRoundBands([0, calculatedWidth], 0.5, 0.5);
+    var x0 = d3.scale.ordinal()
+      .rangeRoundBands([0, calculatedWidth], 0.5, 0.5);
+    //.rangeRoundBands([0, width], .3);
+    //.paddingInner(0.4);
 
-    let x1 = d3.scale.ordinal();
+    var x1 = d3.scale.ordinal();
 
-    let y = d3.scale.linear().range([height, 0]);
+    var y = d3.scale.linear()
+      .range([h, 0]);
 
-    // ---- create xScale ----
-    // var yScale = d3
-    //   .scaleLinear()
-    //   .domain([0, 100])
-    //   .range([p, calculatedWidth - 15]);
-
-    // function make_y_gridlines() {
-    //   return d3.axisLeft(yScale).ticks(5);
-    // }
-
-    let xAxis = d3.svg
-      .axis()
+    var xAxis = d3.svg.axis()
       .scale(x0)
       .orient("bottom");
 
-    let yAxis = d3.svg
-      .axis()
+    var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left")
       .tickFormat(d3.format(".2s"));
 
-    let options = d3.keys(this.data[0]).filter(function (key) {
-      return key !== "label";
-    });
+    var options = d3.keys(this.data[0]).filter(function (key) { return key !== "label"; });
 
-    this.data.forEach(function (d: any) {
+    this.data.forEach(function (d) {
       d.valores = options.map(function (name) {
-        return { name: name, value: +d[name] };
+        return {
+          name: name,
+          value: +d[name],
+          label: d.label
+        };
       });
     });
 
     const orgLabels = {};
-    x0.domain(
-      this.data.map(function (d: any) {
-        //return d.label.slice(0, 3) + "...";
-        const label = d.label.slice(0, 5) + "...";
-        orgLabels[label] = d.label;
-        d.label = label;
-        return d.label;
-      })
-    );
+
+    x0.domain(this.data.map(function (d) {
+      const label = d.label.slice(0, 5) + "...";
+      orgLabels[label] = d.label;
+      d.label = label;
+      return d.label;
+    }));
+
+    x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
+    y.domain([0, 100]);
+
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + (h) + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+
+    var bar = svg.selectAll(".bar")
+      .data(this.data)
+      .enter().append("g")
+      .attr("class", "rect")
+      .attr("transform", function (d) { return "translate(" + x0(d.label) + ",0)"; });
+
+
+    var color = d3.scale.ordinal().range(['#5584FF']);
+
 
     var div = d3
       .select("body")
@@ -140,114 +127,49 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("class", "tooltip")
       .style("opacity", 0);
 
-    x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
+    let tooltip = d3.select("body").append('div')
+      .style('position', 'absolute')
+      .style('background', '#fff')
+      .style('padding', '5px')
+      .style('border', '1px #5584ff solid')
+      .style('border-radius', '2px')
+      .style('opacity', '0')
+      .style('font-size', '12px')
 
-    // let maxPorgress = d3.max(this.data, d => {
-    //   return d.Group1;
-    // });
 
-    y.domain([
-      0,
-      d3.max(this.data, d => {
-        return d.Group1;
-      })
-    ]);
-
-    svg
-      .append("g")
-      .attr("class", "x axis x-axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-    d3.select('.x-axis').selectAll('.tick')[0].forEach(function (d1) {
-      var data = d3.select(d1).data();
-      d3.select(d1).on("mouseover", function (d) {
-        div.transition()
-          .duration(200)
-          .style("opacity", 1)
-          .style("color", "black")
-          .style("background", "gray");
-        div.html(orgLabels[data])
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      }).on("mouseout", function (d) {
-        //on mouse out hide the tooltip
-        div.transition()
-          .duration(500)
-          .style("opacity", 0);
-      });
-    });
-    svg
-      .append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6);
-
-    // ---- add the Y gridlines ----
-    // svg
-    //   .append("g")
-    //   .attr("class", "y-grid grid")
-    //   .attr("transform", "translate(" + p + ", 0)")
-    //   .call(
-    //     make_y_gridlines()
-    //       .tickSize(-(calculatedWidth - p - p / 2))
-    //       .tickFormat("")
-    //   );
-
-    let bar = svg
-      .selectAll(".bar")
-      .data(this.data)
-      .enter()
-      .append("g")
-      .attr("class", "rect")
-      .attr("transform", function (d) {
-        return "translate(" + x0(d.label) + ",0)";
-      });
-
-    let color = d3.scale
-      .ordinal()
-      .range(["#5584FF", "#F77F6C", "#FFD630", "#23B14D"]);
-
-    svg
-      .append("text")
-      .text("No. of Users")
-      .attr("transform", "rotate(-90),translate( " + height / 4 + ",-50 )")
-      .attr("x", -(height / 2))
-      .attr("y", 14);
-
-    bar
-      .selectAll("rect")
-      .data(function (d: any) {
+    bar.selectAll("rect")
+      .data(function (d) {
         return d.valores;
       })
-      .enter()
-      .append("rect")
-      // .attr("width", x1.rangeBand() - 8)
-      .attr("width", 18)
-      .attr("x", function (d) {
-        return x1(d.name);
+      .enter().append("rect")
+      .attr("width", (x1.rangeBand() - 3))
+      .attr("x", function (d) { return x1(d.name); })
+      .attr("y", function (d) { return y(d.value); })
+      .attr("value", function (d) { return d.name; })
+      .attr("height", function (d) { return h - y(d.value); })
+      .style("fill", function (d) { return color(d.name); })
+      .on('mouseover', function (d) {
+        //var data = d3.select(d).data();
+        tooltip.transition().style('opacity', 1)
+        tooltip.html(d.label).style('left', (d3.event.pageX) + 'px')
+          .style('top', (d3.event.pageY) + 'px')
       })
-      .attr("y", function (d) {
-        return y(d.value);
+      .on('mouseout', function (d) {
+        tooltip.transition()
+          .style('opacity', 0)
       })
-      .attr("value", function (d) {
-        return d.name;
-      })
-      .attr("height", function (d) {
-        return height - y(d.value);
-      })
-      .style("fill", function (d) {
-        return color(d.name);
-      });
+
   }
+
 
   ngOnInit() {
     // this.performanceChart();
   }
   ngOnChanges(changes: any) {
+    //console.log(this.dataSet);
+
     if (changes.data && changes.data.currentValue) {
+      console.log(this.getTab);
       // this.dataset = this.data;
       this.performanceChart();
     }

@@ -5,7 +5,7 @@ import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-char
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FilterWidgetComponent } from "../../shared/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 fdescribe('QuizComponent', () => {

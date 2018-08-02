@@ -38,19 +38,19 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getServiceData();
+      this.getDataFromService();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getServiceData();
+      this.getDataFromService();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getServiceData();
+      this.getDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getServiceData();
+      this.getDataFromService();
     });
   }
 
@@ -59,24 +59,24 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.currentModule = "teams";
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
-    this.getServiceData();
+    this.getDataFromService();
   }
   trainersFn() {
     this.getTab = "trainers";
     this.filtersData.currentModule = "trainers";
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
-    this.getServiceData();
+    this.getDataFromService();
   }
   learnersFn() {
     this.getTab = "learner";
     this.filtersData.currentModule = "learner";
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
-    this.getServiceData();
+    this.getDataFromService();
   }
 
-  getServiceData() {
+  getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
     if (this.getTab == "teams") {
@@ -121,6 +121,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getServiceData();
+    this.getDataFromService();
   }
 }

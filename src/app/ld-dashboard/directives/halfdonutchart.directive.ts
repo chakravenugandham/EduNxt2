@@ -6,7 +6,7 @@ import * as d3 from "d3";
 export class HalfdonutchartDirective implements OnInit, OnChanges {
   @Input() data: any;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   chartRenderFn(chartData) {
     this.el.nativeElement.innerHTML = "";
@@ -26,7 +26,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .outerRadius(100)
       .cornerRadius(10)
       .startAngle(-90 * (Math.PI / 180))
-      .endAngle(function(d) {
+      .endAngle(function (d) {
         if (<any>d == 50) {
           return 0;
         } else if (<any>d > 50) {
@@ -35,6 +35,11 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
           return -90 * (Math.PI / 180) + (<any>d * 1.8 * Math.PI) / 180;
         }
       });
+
+    // let colors = d3.scale.linear()
+    //   .domain([0, chartData])
+    //   .range(['#0146f9', '#5584ff']);
+
 
     let donutWidth = 280;
     let donutHeight = 170;
@@ -50,7 +55,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .data(chartData)
       .enter()
       .append("g")
-      .attr("transform", function(d, i) {
+      .attr("transform", function (d, i) {
         return "translate(130,100)";
       });
 

@@ -8,7 +8,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 import { ActiveUsersComponent } from "./active-users/active-users.component";
 import { LocationComponent } from "./location/location.component";
 import { ModeOfDeliveryComponent } from "./mode-of-delivery/mode-of-delivery.component";
-import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 

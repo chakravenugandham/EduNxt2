@@ -6,7 +6,7 @@ import { LearnersTrackWidgetComponent } from './learners-track-widget.component'
 import { DonutChartDirective } from "../../ld-dashboard/directives/donut-chart.directive";
 import { LearnerPaceComponent } from "./learner-pace/learner-pace.component";
 import { LearnerPerformanceComponent } from "./learner-performance/learner-performance.component";
-import { FilterWidgetComponent } from "../shared/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

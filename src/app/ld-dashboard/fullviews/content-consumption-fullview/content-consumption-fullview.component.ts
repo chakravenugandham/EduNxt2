@@ -28,6 +28,10 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   // page: number;
   total_records: number;
   // selectPage: string;
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -66,12 +70,20 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   getDataFromService() {
+    this.spinner_loader = true;
     this.dashboardService
       .getContentData(this.filterbody, this.pagination)
-      .subscribe((res: any) => {
-        this.contentData = res.data;
-        this.pagination.total = res.pagination.total_pages;
-        this.paginationData = res.pagination;
+      .subscribe((response: any) => {
+        this.contentData = response.data;
+
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
+
+        console.log("spinner_loader", this.spinner_loader);
+        console.log("noDataFlag", this.noDataFlag);
+
+        this.pagination.total = response.pagination.total_pages;
+        this.paginationData = response.pagination;
         // this.page = this.paginationData["page"];
         this.total_records = this.paginationData["total"];
       });

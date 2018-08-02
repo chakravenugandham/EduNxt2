@@ -61,7 +61,7 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div *ngIf="responseData.length > 0">
+  <div *ngIf="!spinner_loader && !noDataFlag">
     <app-learner-pace *ngIf="componentName == 'pace'" [paceData]="widgetData.pace"></app-learner-pace>
     <app-learner-performance *ngIf="componentName == 'performance'" [performanceData]="widgetData.performance"></app-learner-performance>
   </div>

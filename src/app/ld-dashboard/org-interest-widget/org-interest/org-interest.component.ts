@@ -22,11 +22,12 @@ export class OrgInterestComponent implements OnInit, OnChanges {
 
   wordData = [];
   data: CloudData[];
-  constructor(private getData: LdDashboardService) { }
+  constructor(private getData: LdDashboardService) {}
 
   ngOnChanges(changes: any) {
     if (changes.orgPopularData && changes.orgPopularData.currentValue) {
       this.options.width = document.getElementById("word-cloud").offsetWidth;
+
       this.wordData = [];
       for (let i in this.orgPopularData) {
         this.wordData.push({
@@ -39,6 +40,5 @@ export class OrgInterestComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

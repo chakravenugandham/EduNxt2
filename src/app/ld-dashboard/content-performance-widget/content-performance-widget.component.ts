@@ -8,7 +8,12 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
   routePath: string = "contentConsumptionFullView";
-  limitTo = 5;
+  // limitTo = 5;
+  pagination = {
+    page: 1,
+    limitTo: 5,
+    total: 0
+  };
   filtersData = {
     routeTo: "contentConsumptionFullView",
     filters: true,
@@ -46,7 +51,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     this.spinner_loader = true;
     this.contentData = [];
     this.dashboardService
-      .getContentData(this.filterbody, this.limitTo)
+      .getContentData(this.filterbody, this.pagination)
       .subscribe((res: any) => {
         this.contentData = res.data;
         this.spinner_loader = false;

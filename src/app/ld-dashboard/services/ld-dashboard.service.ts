@@ -17,9 +17,16 @@ export class LdDashboardService implements OnInit {
 
   constructDate() {
     let today = new Date();
-    this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
+    this.dateFilterObj.end_date =
+      today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     let last_date = new Date(today.setDate(today.getDate() - 30));
-    this.dateFilterObj.start_date = last_date.getMonth() + 1 + "/" + last_date.getDate() + "/" + last_date.getFullYear();
+    this.dateFilterObj.start_date =
+      last_date.getMonth() +
+      1 +
+      "/" +
+      last_date.getDate() +
+      "/" +
+      last_date.getFullYear();
     return this.dateFilterObj;
   }
 
@@ -108,8 +115,12 @@ export class LdDashboardService implements OnInit {
 
   //date change
   getDateChange() {
-    this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
-    this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
+      "start_date"
+    ];
+    this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
+      "end_date"
+    ];
   }
 
   //courses dropdown
@@ -119,11 +130,28 @@ export class LdDashboardService implements OnInit {
   }
 
   getActiveUsersWidgetData() {
-    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
-      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
-      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    if (
+      this.dateService.dateFilterBodyDetails["start_date"] &&
+      this.dateService.dateFilterBodyDetails["end_date"]
+    ) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
+        "start_date"
+      ];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
+        "end_date"
+      ];
     }
-    let url = this.baseURL + APIURL.ACTIVE_USERS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    let url =
+      this.baseURL +
+      APIURL.ACTIVE_USERS +
+      "?start_date=" +
+      this.dateFilterObj.start_date +
+      "&end_date=" +
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId;
     return this.http.get(url, { headers: this.headers });
   }
 
@@ -457,7 +485,10 @@ export class LdDashboardService implements OnInit {
       ];
     }
 
-    let url = this.baseURL + APIURL.ORGANISATION_POPULAR_TOPICS + "?start_date=" +
+    let url =
+      this.baseURL +
+      APIURL.ORGANISATION_POPULAR_TOPICS +
+      "?start_date=" +
       this.dateFilterObj.start_date +
       "&end_date=" +
       this.dateFilterObj.end_date +
@@ -647,7 +678,7 @@ export class LdDashboardService implements OnInit {
   }
 
   //content-performing
-  getContentData(filterbody, limitTo) {
+  getContentData(filterbody, pagination) {
     if (
       this.dateService.dateFilterBodyDetails["start_date"] &&
       this.dateService.dateFilterBodyDetails["end_date"]
@@ -671,8 +702,10 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId +
+      "&page=" +
+      pagination.page +
       "&limit=" +
-      limitTo;
+      pagination.limitTo;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -713,5 +746,5 @@ export class LdDashboardService implements OnInit {
       searchTerm;
     return this.http.post(url, null, { headers: this.headers });
   }
-  ngOnInit() { }
+  ngOnInit() {}
 }

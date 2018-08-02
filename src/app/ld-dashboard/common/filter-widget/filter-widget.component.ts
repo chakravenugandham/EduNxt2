@@ -37,8 +37,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   @Output() filterEvent = new EventEmitter<any>();
   @Output() searchEvent = new EventEmitter<any>();
 
-  displayDropdown: boolean = false;
   filtersData;
+  displayDropdown: boolean = false;
+  noSearchResultFlag: boolean = true;
 
   filterArray = [];
 
@@ -56,14 +57,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     teamId: [],
     zoneId: [],
     contentType: []
-    // displayFor: ""
   };
 
   filterFullObj = [];
 
   filterComponent: string;
 
-  constructor(private router: Router, private server: LdDashboardService) { }
+  constructor(private router: Router, private server: LdDashboardService) {}
 
   filterDispalyNameFraming() {
     if (this.viewData.filterList.length > 1) {
@@ -197,10 +197,12 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     if ($event.target.value.length >= 3) {
       this.displayDropdown = true;
       this.searchList = [];
+      this.noSearchResultFlag = false;
       this.server
         .getSearchFilterData(this.searchFilterData, $event.target.value)
         .subscribe((respose: any) => {
           this.searchList = respose.data;
+          this.noSearchResultFlag = this.searchList.length > 0 ? false : true;
         });
     } else {
       this.displayDropdown = false;

@@ -8,7 +8,11 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
   filterbody = {};
-  limitTo = 10;
+  pagination = {
+    page: 1,
+    limitTo: 10,
+    total: 0
+  };
   sortOrder: string = "contentName";
   reverse: boolean = false;
   searchBox: boolean = false;
@@ -21,9 +25,9 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     filterList: ["contentType"],
     viewDetailsFilters: true
   };
-  page: number;
+  // page: number;
   total_records: number;
-  selectPage: string;
+  // selectPage: string;
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -55,17 +59,20 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
-  goToPage(v) {
-    this.selectPage = v;
+  goToPage(pageNo) {
+    this.pagination.page = pageNo;
+    console.log("this.pagination.page", this.pagination.page);
+    this.getDataFromService();
   }
 
   getDataFromService() {
     this.dashboardService
-      .getContentData(this.filterbody, this.limitTo)
+      .getContentData(this.filterbody, this.pagination)
       .subscribe((res: any) => {
         this.contentData = res.data;
+        this.pagination.total = res.pagination.total_pages;
         this.paginationData = res.pagination;
-        this.page = this.paginationData["page"];
+        // this.page = this.paginationData["page"];
         this.total_records = this.paginationData["total"];
       });
   }

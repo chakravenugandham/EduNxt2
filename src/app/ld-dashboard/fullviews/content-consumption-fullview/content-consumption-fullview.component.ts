@@ -65,7 +65,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   goToPage(pageNo) {
     this.pagination.page = pageNo;
-    console.log("this.pagination.page", this.pagination.page);
     this.getDataFromService();
   }
 
@@ -78,9 +77,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
-
-        console.log("spinner_loader", this.spinner_loader);
-        console.log("noDataFlag", this.noDataFlag);
 
         this.pagination.total = response.pagination.total_pages;
         this.paginationData = response.pagination;

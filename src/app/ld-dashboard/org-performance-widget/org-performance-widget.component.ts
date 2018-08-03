@@ -20,8 +20,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   };
 
   searchFilterData = {
-    searchComponent: "team-leaderboard",
-    searchBy: "teamName"
+    searchComponent: "learner-leaderboard",
+    searchBy: "learnerName"
   };
 
   responseData = [];

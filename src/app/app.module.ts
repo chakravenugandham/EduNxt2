@@ -104,13 +104,12 @@ import { LearnerComponent } from "./learner/learner.component";
 import { LearnerActivityWidgetComponent } from "./learner/learner-activity-widget/learner-activity-widget.component";
 import { LearnerPacerComponent } from "./learner/learner-activity-widget/learner-pacer/learner-pacer.component";
 import { LearnerProgressComponent } from "./learner/learner-activity-widget/learner-progress/learner-progress.component";
-import { LearnerTimeSpentComponent } from './learner/learner-activity-widget/learner-time-spent/learner-time-spent.component';
-import { LearnerScoreCardComponent } from './learner/learner-activity-widget/learner-score-card/learner-score-card.component';
-import { LearnerCoursePerformanceComponent } from './learner/learner-course-performance/learner-course-performance.component';
-import { LearnerAvgCoursePerformanceComponent } from './learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component';
+import { LearnerTimeSpentComponent } from "./learner/learner-activity-widget/learner-time-spent/learner-time-spent.component";
+import { LearnerScoreCardComponent } from "./learner/learner-activity-widget/learner-score-card/learner-score-card.component";
+import { LearnerCoursePerformanceComponent } from "./learner/learner-course-performance/learner-course-performance.component";
+import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component";
 import { CommonModule } from "@angular/common";
-import { CustomNumberPipe } from './custom-number.pipe';
-
+import { CustomNumberPipe } from "./custom-number.pipe";
 
 @NgModule({
   declarations: [
@@ -199,8 +198,7 @@ import { CustomNumberPipe } from './custom-number.pipe';
     LearnerScoreCardComponent,
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
-    CustomNumberPipe,
-    SinglebarDirective
+    CustomNumberPipe
   ],
   imports: [
     BrowserModule,
@@ -217,4 +215,4 @@ import { CustomNumberPipe } from './custom-number.pipe';
   providers: [GoogleChartsBaseService, { provide: Window, useValue: window }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -210,9 +210,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   selectSearchItem(searchItem) {
-    if (!this.searchNames.includes(searchItem)) {
+    if (!this.searchNames.includes(searchItem) && this.searchNames.length < 3) {
       this.searchNames.push(searchItem);
-    } else {
+    } else if (this.searchNames.includes(searchItem)) {
       let i = this.searchNames.indexOf(searchItem);
       this.removeSearchName(i);
     }

@@ -8,7 +8,7 @@ import { CommonService } from "../../common-services/common.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-  getTab: string = "teams";
+  getTab: string = "learner";
 
   filtersData = {
     routeTo: "orgPerformanceFullView",
@@ -20,8 +20,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   };
 
   searchFilterData = {
-    searchComponent: "team-leaderboard",
-    searchBy: "teamName"
+    searchComponent: "learner-leaderboard",
+    searchBy: "learnerName"
   };
 
   responseData = [];

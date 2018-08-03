@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-fdescribe('FilterWidgetComponent', () => {
+describe('FilterWidgetComponent', () => {
   let component: FilterWidgetComponent;
   let fixture: ComponentFixture<FilterWidgetComponent>;
   let inputEl: DebugElement;

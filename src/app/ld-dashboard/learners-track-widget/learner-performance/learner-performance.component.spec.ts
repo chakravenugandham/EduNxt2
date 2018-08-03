@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { LearnerPerformanceComponent } from './learner-performance.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 
-fdescribe('LearnerPerformanceComponent', () => {
+describe('LearnerPerformanceComponent', () => {
   let component: LearnerPerformanceComponent;
   let fixture: ComponentFixture<LearnerPerformanceComponent>;
   let inputEl: DebugElement;

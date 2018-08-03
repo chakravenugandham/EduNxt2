@@ -11,7 +11,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('OrgInterestWidgetComponent', () => {
+describe('OrgInterestWidgetComponent', () => {
   let component: OrgInterestWidgetComponent;
   let fixture: ComponentFixture<OrgInterestWidgetComponent>;
 

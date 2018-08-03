@@ -8,7 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-fdescribe('TestScoresComponent', () => {
+describe('TestScoresComponent', () => {
   let component: TestScoresComponent;
   let fixture: ComponentFixture<TestScoresComponent>;
 

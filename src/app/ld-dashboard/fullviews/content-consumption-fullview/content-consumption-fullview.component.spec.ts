@@ -6,7 +6,7 @@ import { ContentConsumptionFullviewComponent } from './content-consumption-fullv
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-fdescribe('ContentConsumptionFullviewComponent', () => {
+describe('ContentConsumptionFullviewComponent', () => {
   let component: ContentConsumptionFullviewComponent;
   let fixture: ComponentFixture<ContentConsumptionFullviewComponent>;
   let inputEl: DebugElement;

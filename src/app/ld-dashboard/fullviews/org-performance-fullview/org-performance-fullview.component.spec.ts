@@ -7,7 +7,7 @@ import { LdDashboardService } from '../../services/ld-dashboard.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-fdescribe('OrgPerformanceFullviewComponent', () => {
+describe('OrgPerformanceFullviewComponent', () => {
   let component: OrgPerformanceFullviewComponent;
   let fixture: ComponentFixture<OrgPerformanceFullviewComponent>;
   let inputEl: DebugElement;

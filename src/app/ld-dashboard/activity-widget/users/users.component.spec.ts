@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { UsersComponent } from './users.component';
 import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
 
-fdescribe('UsersComponent', () => {
+describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
   let inputEl: DebugElement;

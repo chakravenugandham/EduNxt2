@@ -5,7 +5,7 @@ import { ScheduledDeliveredComponent } from "../../notification-performance-widg
 import { SeenRespondedComponent } from "../../notification-performance-widget/seen-responded/seen-responded.component";
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 
-fdescribe('NotificationPerformanceFullviewComponent', () => {
+describe('NotificationPerformanceFullviewComponent', () => {
   let component: NotificationPerformanceFullviewComponent;
   let fixture: ComponentFixture<NotificationPerformanceFullviewComponent>;
 

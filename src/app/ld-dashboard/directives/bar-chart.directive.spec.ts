@@ -12,7 +12,7 @@ class TestComponent {
   values = [];
 }
 
-fdescribe('BarChartDirective', () => {
+describe('BarChartDirective', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
   let input: DebugElement;

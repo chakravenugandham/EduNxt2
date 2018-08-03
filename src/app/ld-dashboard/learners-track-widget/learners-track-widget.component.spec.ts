@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
 
-fdescribe('LearnersTrackWidgetComponent', () => {
+describe('LearnersTrackWidgetComponent', () => {
   let component: LearnersTrackWidgetComponent;
   let fixture: ComponentFixture<LearnersTrackWidgetComponent>;
   let inputEl: DebugElement;

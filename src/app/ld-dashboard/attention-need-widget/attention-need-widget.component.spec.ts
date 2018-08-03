@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AttentionNeedWidgetComponent } from './attention-need-widget.component';
 
-fdescribe('AttentionNeedWidgetComponent', () => {
+describe('AttentionNeedWidgetComponent', () => {
   let component: AttentionNeedWidgetComponent;
   let fixture: ComponentFixture<AttentionNeedWidgetComponent>;
 

@@ -4,7 +4,7 @@ import { By } from "@angular/platform-browser";
 
 import { ModeOfDeliveryComponent } from './mode-of-delivery.component';
 
-fdescribe('ModeOfDeliveryComponent', () => {
+describe('ModeOfDeliveryComponent', () => {
   let component: ModeOfDeliveryComponent;
   let fixture: ComponentFixture<ModeOfDeliveryComponent>;
   let inputEl: DebugElement;

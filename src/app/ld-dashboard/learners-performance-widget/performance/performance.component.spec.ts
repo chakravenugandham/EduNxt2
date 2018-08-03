@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { PerformanceComponent } from './performance.component';
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 
-fdescribe('PerformanceComponent', () => {
+describe('PerformanceComponent', () => {
   let component: PerformanceComponent;
   let fixture: ComponentFixture<PerformanceComponent>;
   let inputEl: DebugElement;

@@ -8,7 +8,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
 
-fdescribe('ScoresDistributionFullviewComponent', () => {
+describe('ScoresDistributionFullviewComponent', () => {
   let component: ScoresDistributionFullviewComponent;
   let fixture: ComponentFixture<ScoresDistributionFullviewComponent>;
 

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
 
-fdescribe('MpDatepickerRangeComponent', () => {
+describe('MpDatepickerRangeComponent', () => {
   let component: MpDatepickerRangeComponent;
   let fixture: ComponentFixture<MpDatepickerRangeComponent>;
 

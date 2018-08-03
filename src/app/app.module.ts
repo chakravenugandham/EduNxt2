@@ -199,8 +199,7 @@ import { CustomNumberPipe } from './custom-number.pipe';
     LearnerScoreCardComponent,
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
-    CustomNumberPipe,
-    SinglebarDirective
+    CustomNumberPipe
   ],
   imports: [
     BrowserModule,

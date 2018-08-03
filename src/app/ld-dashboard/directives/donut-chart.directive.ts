@@ -47,6 +47,22 @@ export class DonutChartDirective implements OnChanges {
       return d.number;
     })(chartData);
 
+    var div = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+    let tooltip = d3.select("body").append('div')
+      .style('position', 'absolute')
+      .style('background', '#fff')
+      .style('padding', '5px')
+      .style('border', '1px #5584ff solid')
+      .style('border-radius', '2px')
+      .style('opacity', '0')
+      .style('font-size', '12px')
+
+
     let arcPath = g
       .selectAll("path")
       .data(arcs)
@@ -69,6 +85,21 @@ export class DonutChartDirective implements OnChanges {
         if (d.data.type === "classC") {
           return d.data.number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+      })
+      .on('mouseover', function (d) {
+        //var data = d3.select(d).data();
+        tooltip.transition().style('opacity', 1)
+        tooltip.html(
+          "<div style='color:#0146F9'>" +
+          d.label + "</div>" +
+          "<div style='color:#0146F9'>" +
+          d.value + "</div>"
+        ).style('left', (d3.event.pageX) + 'px')
+          .style('top', (d3.event.pageY) + 'px')
+      })
+      .on('mouseout', function (d) {
+        tooltip.transition()
+          .style('opacity', 0)
       });
 
     arcPath

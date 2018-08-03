@@ -11,24 +11,13 @@ export class BarChartDirective implements OnInit, OnChanges {
   @Input() getTab;
   // dataset = [];
 
-  // data model
-  // data = [
-  //   { label: "Data Structures", "Data Structures": 60 },
-  //   { label: "Algo", Group1: 30 },
-  //   { label: "Database", Group1: 40 },
-  //   { label: "ML", Group1: 50 },
-  //   { label: "Problem Solving", Group1: 60 },
-  //   { label: "DB 2", Group1: 30 },
-  //   { label: "D S 2", Group1: 20 },
-  //   { label: "Algorithms1", Group1: 70 },
-  //   { label: "ML 2", Group1: 40 },
-  //   { label: "Problem", Group1: 50 },
-  //   { label: "ML 3", Group1: 30 },
-  //   { label: "Database 3", Group1: 80 },
-  //   { label: "Problem Solving4", Group1: 60 }
-  // ];
-
   constructor(private el: ElementRef) { }
+
+  rightRoundedRect(x, y, width, height, radius) {
+    return ("M" + x + "," + y + "h" + (width - radius) + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius + "v" + (height - 2 * radius) + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius + "h" + (radius - width) + "z"
+    );
+  }
+
 
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
@@ -136,7 +125,6 @@ export class BarChartDirective implements OnInit, OnChanges {
       .style('opacity', '0')
       .style('font-size', '12px')
 
-
     bar.selectAll("rect")
       .data(function (d) {
         return d.valores;
@@ -147,17 +135,44 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("y", function (d) { return y(d.value); })
       .attr("value", function (d) { return d.name; })
       .attr("height", function (d) { return h - y(d.value); })
+      //.attr("d", function (d, i) { return this.rightRoundedRect(10 + 40 * i, 100 - d, 20, d, 5) })
       .style("fill", function (d) { return color(d.name); })
       .on('mouseover', function (d) {
         //var data = d3.select(d).data();
         tooltip.transition().style('opacity', 1)
-        tooltip.html(d.label).style('left', (d3.event.pageX) + 'px')
+        tooltip.html(
+          "<div style='color:#0146F9'>" +
+          d.label + "</div>" +
+          "<div style='color:#0146F9'>" +
+          d.value + "</div>"
+        ).style('left', (d3.event.pageX) + 'px')
           .style('top', (d3.event.pageY) + 'px')
       })
       .on('mouseout', function (d) {
         tooltip.transition()
           .style('opacity', 0)
-      })
+      });
+
+
+    if (this.getTab == "performance") {
+      svg
+        .append("text")
+        .text("Performance")
+        .attr("transform", "rotate(-90),translate( " + h / 4 + ",-50 )")
+        .attr("x", -(h / 2))
+        .attr("y", 14);
+    }
+
+    if (this.getTab == "progress") {
+      svg
+        .append("text")
+        .text("Progress")
+        .attr("transform", "rotate(-90),translate( " + h / 4 + ",-50 )")
+        .attr("x", -(h / 2))
+        .attr("y", 14);
+    }
+
+
 
   }
 
@@ -169,7 +184,7 @@ export class BarChartDirective implements OnInit, OnChanges {
     //console.log(this.dataSet);
 
     if (changes.data && changes.data.currentValue) {
-      console.log(this.getTab);
+      //console.log(this.getTab);
       // this.dataset = this.data;
       this.performanceChart();
     }

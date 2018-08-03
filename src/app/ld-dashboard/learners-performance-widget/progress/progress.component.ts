@@ -22,7 +22,6 @@ export class ProgressComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(this.progressData);
     if (changes.progressData) {
       this.barChartData = this.progressData;
       this.batchNames = this.batches;

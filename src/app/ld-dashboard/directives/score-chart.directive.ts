@@ -8,7 +8,7 @@ import * as d3 from "d3v4";
 export class ScoreChartDirective implements OnInit, OnChanges {
   @Input() data: any;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef) { }
 
   chartRenderFn() {
     this.el.nativeElement.innerHTML = "";
@@ -77,21 +77,38 @@ export class ScoreChartDirective implements OnInit, OnChanges {
     //area line generator
     let area = d3
       .area()
-      .x(function(d) {
+      .x(function (d) {
         return xScale(d[0]);
       })
-      .y1(function(d) {
+      .y1(function (d) {
         return yScale(d[1]);
       })
       .curve(d3.curveCatmullRom.alpha(0.5));
 
     area.y0(yScale(0));
 
+    var div = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+
+    let tooltip = d3.select("body").append('div')
+      .style('position', 'absolute')
+      .style('background', '#fff')
+      .style('padding', '5px')
+      .style('border', '1px #5584ff solid')
+      .style('border-radius', '2px')
+      .style('opacity', '0')
+      .style('font-size', '12px')
+
+    let arrayValue;
+
     svg
       .append("path")
       .datum(this.data) // Binds data to the line
       .attr("class", "area-color")
-      .attr("d", area); // Calls the area generator
+      .attr("d", area) // Calls the area generator
 
     svg
       .append("text")
@@ -143,16 +160,16 @@ export class ScoreChartDirective implements OnInit, OnChanges {
         { offset: "60%", color: "#FFD630" },
         { offset: "80%", color: "#FFD630" },
         { offset: "80%", color: "#39EA37" },
-        { offset: "90%", color: "#39EA37" },
-        { offset: "90%", color: "#5584FF" },
+        { offset: "100%", color: "#39EA37" },
+        { offset: "100%", color: "#5584FF" },
         { offset: "0%", color: "#5584FF" }
       ])
       .enter()
       .append("stop")
-      .attr("offset", function(d) {
+      .attr("offset", function (d) {
         return d.offset;
       })
-      .attr("stop-color", function(d) {
+      .attr("stop-color", function (d) {
         return d.color;
       });
 
@@ -161,7 +178,24 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .append("g")
       .attr("class", "axis")
       .attr("transform", "translate(0," + (height - padding) + ")")
-      .call(d3.axisBottom(xScale).ticks(5));
+      .call(d3.axisBottom(xScale).ticks(5))
+    // .on('mouseover', function (d) {
+    //   console.log(d);
+    //   d.forEach((i) => {
+    //     arrayValue = i[1];
+    //   })
+    //   console.log(arrayValue);
+    //   tooltip.transition().style('opacity', 1)
+    //   tooltip.html(
+    //     "<div style='color:#0146F9'>" +
+    //     arrayValue + "</div>"
+    //   ).style('left', (d3.event.pageX) + 'px')
+    //     .style('top', (d3.event.pageY) + 'px')
+    // })
+    // .on('mouseout', function (d) {
+    //   tooltip.transition()
+    //     .style('opacity', 0)
+    // });
   }
 
   ngOnInit() {

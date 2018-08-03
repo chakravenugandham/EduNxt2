@@ -15,7 +15,7 @@
       </div>
       <div *ngFor="let orgInterest of orgInterestData" [ngClass]="{'new-interest': orgInterest.hasOwnProperty('new')}">
         <div class="card-block">
-          <p class="courseName bold-text">
+          <p class="courseName bold-text" data-toggle="tooltip" data-placement="top" title="{{orgInterest.courseName}}">
             {{orgInterest.courseName}}
           </p>
           <p class="nop bold-text">

@@ -12,7 +12,7 @@ import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.com
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('ActiveUserWidgetComponent', () => {
+describe('ActiveUserWidgetComponent', () => {
   let component: ActiveUserWidgetComponent;
   let fixture: ComponentFixture<ActiveUserWidgetComponent>;
 
@@ -35,4 +35,28 @@ fdescribe('ActiveUserWidgetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create getActiveUsersData', () => {
+    component.getActiveUsersData();
+    expect(component.getActiveUsersData).toBeTruthy();
+  });
+
+  it('should create getLocationData', () => {
+    component.getLocationData();
+    expect(component.getLocationData).toBeTruthy();
+  });
+
+  it('should create modeDeliveryFn', () => {
+    component.modeDeliveryFn();
+    expect(component.modeDeliveryFn).toBeTruthy();
+  });
+
+  it('should create locationFn', () => {
+    component.locationFn();
+    expect(component.locationFn).toBeTruthy();
+  });
+
+
+
+
 });

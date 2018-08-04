@@ -10,7 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 
 
-fdescribe('LearnersComponent', () => {
+describe('LearnersComponent', () => {
   let component: LearnersComponent;
   let fixture: ComponentFixture<LearnersComponent>;
 

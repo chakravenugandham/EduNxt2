@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { UserstrainedComponent } from './userstrained.component';
 import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
 
-fdescribe('UserstrainedComponent', () => {
+describe('UserstrainedComponent', () => {
   let component: UserstrainedComponent;
   let fixture: ComponentFixture<UserstrainedComponent>;
   let inputEl: DebugElement;

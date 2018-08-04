@@ -9,7 +9,7 @@ import { ProgressComponent } from "../../learners-performance-widget/progress/pr
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-fdescribe('LearnerPerformanceFullviewComponent', () => {
+describe('LearnerPerformanceFullviewComponent', () => {
   let component: LearnerPerformanceFullviewComponent;
   let fixture: ComponentFixture<LearnerPerformanceFullviewComponent>;
   //let inputEl: DebugElement;

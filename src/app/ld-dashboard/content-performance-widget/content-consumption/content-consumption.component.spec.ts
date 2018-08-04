@@ -5,7 +5,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-fdescribe('ContentConsumptionComponent', () => {
+describe('ContentConsumptionComponent', () => {
   let component: ContentConsumptionComponent;
   let fixture: ComponentFixture<ContentConsumptionComponent>;
 

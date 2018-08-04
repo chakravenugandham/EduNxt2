@@ -7,7 +7,7 @@ import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-d
 import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
 
 
-fdescribe('EngagementComponent', () => {
+describe('EngagementComponent', () => {
   let component: EngagementComponent;
   let fixture: ComponentFixture<EngagementComponent>;
   let inputEl: DebugElement;

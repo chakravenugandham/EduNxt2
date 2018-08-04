@@ -6,7 +6,7 @@ import { OrgInterestFullviewComponent } from './org-interest-fullview.component'
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-fdescribe('OrgInterestFullviewComponent', () => {
+describe('OrgInterestFullviewComponent', () => {
   let component: OrgInterestFullviewComponent;
   let fixture: ComponentFixture<OrgInterestFullviewComponent>;
   let inputEl: DebugElement;

@@ -6,7 +6,7 @@ import { ContentConsumptionComponent } from "./content-consumption/content-consu
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('ContentPerformanceComponent', () => {
+describe('ContentPerformanceComponent', () => {
   let component: ContentPerformanceWidgetComponent;
   let fixture: ComponentFixture<ContentPerformanceWidgetComponent>;
 

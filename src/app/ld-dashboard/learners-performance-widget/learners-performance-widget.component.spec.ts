@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
 import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('LearnersPerformanceWidgetComponent', () => {
+describe('LearnersPerformanceWidgetComponent', () => {
   let component: LearnersPerformanceWidgetComponent;
   let fixture: ComponentFixture<LearnersPerformanceWidgetComponent>;
 

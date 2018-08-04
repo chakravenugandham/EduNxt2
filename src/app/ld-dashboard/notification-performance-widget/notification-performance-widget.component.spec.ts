@@ -11,7 +11,7 @@ import { BarChartDirective } from "../../ld-dashboard/directives/bar-chart.direc
 import { ScheduledDeliveredComponent } from "./scheduled-delivered/scheduled-delivered.component";
 import { SeenRespondedComponent } from "./seen-responded/seen-responded.component";
 
-fdescribe('NotificationPerformanceComponent', () => {
+describe('NotificationPerformanceComponent', () => {
   let component: NotificationPerformanceWidgetComponent;
   let fixture: ComponentFixture<NotificationPerformanceWidgetComponent>;
 

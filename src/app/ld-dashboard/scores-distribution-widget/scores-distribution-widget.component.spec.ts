@@ -13,7 +13,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
 import { ScoreChartDirective } from "../../ld-dashboard/directives/score-chart.directive";
 
-fdescribe('ScoresDistributionWidgetComponent', () => {
+describe('ScoresDistributionWidgetComponent', () => {
   let component: ScoresDistributionWidgetComponent;
   let fixture: ComponentFixture<ScoresDistributionWidgetComponent>;
 

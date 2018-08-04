@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { PaceComponent } from './pace.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 
-fdescribe('PaceComponent', () => {
+describe('PaceComponent', () => {
   let component: PaceComponent;
   let fixture: ComponentFixture<PaceComponent>;
   let inputEl: DebugElement;

@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { LocationComponent } from './location.component';
 import { GoogleChartsBaseService } from "../../services/googleChartService";
 
-fdescribe('LocationComponent', () => {
+describe('LocationComponent', () => {
   let component: LocationComponent;
   let fixture: ComponentFixture<LocationComponent>;
   let inputEl: DebugElement;

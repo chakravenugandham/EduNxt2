@@ -4,7 +4,7 @@ import { By } from "@angular/platform-browser";
 
 import { ActiveUsersComponent } from './active-users.component';
 
-fdescribe('ActiveUsersComponent', () => {
+describe('ActiveUsersComponent', () => {
   let component: ActiveUsersComponent;
   let fixture: ComponentFixture<ActiveUsersComponent>;
   let inputEl: DebugElement;

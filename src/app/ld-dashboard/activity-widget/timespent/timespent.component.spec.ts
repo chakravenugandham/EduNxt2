@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { TimespentComponent } from './timespent.component';
 import { HalfdonutchartDirective } from "../../../ld-dashboard/directives/halfdonutchart.directive";
 
-fdescribe('TimespentComponent', () => {
+describe('TimespentComponent', () => {
   let component: TimespentComponent;
   let fixture: ComponentFixture<TimespentComponent>;
   let inputEl: DebugElement;

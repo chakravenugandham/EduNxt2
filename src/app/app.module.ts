@@ -110,6 +110,7 @@ import { LearnerCoursePerformanceComponent } from "./learner/learner-course-perf
 import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component";
 import { CommonModule } from "@angular/common";
 import { CustomNumberPipe } from "./custom-number.pipe";
+import { NullHandlePipe } from './null-handle.pipe';
 
 @NgModule({
   declarations: [
@@ -198,7 +199,8 @@ import { CustomNumberPipe } from "./custom-number.pipe";
     LearnerScoreCardComponent,
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
-    CustomNumberPipe
+    CustomNumberPipe,
+    NullHandlePipe
   ],
   imports: [
     BrowserModule,

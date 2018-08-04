@@ -19,8 +19,8 @@ export class LearnersComponent implements OnInit {
   parseFloat = parseFloat;
   limitTo: number = 5;
 
-  // sortOrder: string = "learnerName";
-  sortOrder: string;
+  sortOrder: string = "pointsEarned";
+  // sortOrder: string;
   reverse: boolean = false;
 
   constructor(

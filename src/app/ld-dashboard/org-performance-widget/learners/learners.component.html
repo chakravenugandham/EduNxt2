@@ -50,10 +50,10 @@
 
         </td>
 
-        <td>{{tableData.testPerformance}}</td>
+        <td>{{tableData.testPerformance | nullHandle}}</td>
 
         <td>
-          {{parseFloat(tableData.examScore).toFixed(2)}}
+          {{parseFloat(tableData.examScore).toFixed(2) | nullHandle}}
         </td>
 
         <td>

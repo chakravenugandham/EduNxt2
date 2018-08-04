@@ -38,7 +38,7 @@
             <b>{{tableData.teamName}}</b>
           </span>
         </td>
-        <td>{{parseFloat(tableData.completion).toFixed(0)}}</td>
+        <td>{{parseFloat(tableData.completion).toFixed(0) | nullHandle}}</td>
         <td>{{tableData.completedProgram | customNumber}}</td>
         <td>{{tableData.teamSize | customNumber}}</td>
         <td>

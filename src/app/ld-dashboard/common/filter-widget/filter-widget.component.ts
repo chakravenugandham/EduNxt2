@@ -4,12 +4,10 @@ import {
   Input,
   OnChanges,
   EventEmitter,
-  Output,
-  HostListener
+  Output
 } from "@angular/core";
 import { Router } from "@angular/router";
 import { _ } from "underscore";
-// import * as $ from "jquery";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -18,6 +16,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   templateUrl: "./filter-widget.component.html",
   styleUrls: ["./filter-widget.component.scss"]
 })
+
 export class FilterWidgetComponent implements OnInit, OnChanges {
   @Input()
   viewData: {
@@ -30,7 +29,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     viewDetailsFilters: boolean;
   };
   @Input() filterName: string[];
-
   @Input()
   searchFilterData: {
     searchComponent: string;
@@ -69,16 +67,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   constructor(private router: Router, private server: LdDashboardService) { }
 
-  // clickedInside($event: Event) {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   console.log("CLICKED INSIDE, MENU WON'T HIDE");
-  // }
-
-  // @HostListener('document:click', ['$event']) clickedOutside($event) {
-  //   console.log("event", $event);
-  // }
-
+  closeDropDown() {
+    this.displayDropdown = false;
+  }
 
   filterDispalyNameFraming() {
     if (this.viewData.filterList.length > 1) {
@@ -114,11 +105,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   showFilter() {
-    this.displayDropdown = true;
+    this.filtersData = [];
     this.server
       .getFiltersData(this.viewData.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
+        this.displayDropdown = this.filtersData.length > 0 ? true : false;
+        console.log("this.filtersData", this.filtersData);
       });
   }
 
@@ -159,6 +152,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       }
     }
 
+    // if(_.findIndex(this.searchNames, searchItem))
+
     if (!this.filterArray.includes(filterName.name)) {
       this.filterArray.push(filterName.name);
       this.filterSelected[filterTypeId].push(filterName.id);
@@ -182,10 +177,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
 
     this.filterEvent.emit(this.filterSelected);
-  }
-
-  closeDropDown() {
-    this.displayDropdown = false;
   }
 
   removeFromFilterBody(filterBodyName, index) {
@@ -230,19 +221,12 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   selectSearchItem(searchItem) {
-
     if (_.findIndex(this.searchNames, searchItem) == -1 && this.searchNames.length < 3) {
       this.searchNames.push(searchItem);
     }
     else if (_.findIndex(this.searchNames, searchItem) != -1) {
       this.removeSearchName(_.findIndex(this.searchNames, searchItem))
     }
-    // if (!this.searchNames.includes(searchItem) && this.searchNames.length < 3) {
-    //   this.searchNames.push(searchItem);
-    // } else if (this.searchNames.includes(searchItem)) {
-    //   let i = this.searchNames.indexOf(searchItem);
-    //   this.removeSearchName(i);
-    // }
     this.searchEvent.emit(this.searchNames);
   }
   removeSearchName(i) {

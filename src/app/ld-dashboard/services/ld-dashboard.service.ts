@@ -16,6 +16,7 @@ export class LdDashboardService implements OnInit {
     start_date: "",
     end_date: ""
   };
+  // user-id: string;
   LnDUserId: string;
 
   constructor(
@@ -67,37 +68,44 @@ export class LdDashboardService implements OnInit {
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  UserId = (this.cookieService.get('LnDUserId') == '') ? '57142' : this.cookieService.get('LnDUserId')
+  // UserId = (this.cookieService.get('user-id') == '') ? '57142' : this.cookieService.get('user-id')
+  UserId = "57142";
 
   headers = new HttpHeaders()
-    // .set("LnDUserId", "57142")
-    .set("LnDUserId", this.UserId)
+    // .set("user-id", "57142")
+    .set("user-id", this.UserId)
     .set("user-type", "LND")
     .set("tenant-name", "MAIT");
 
   selectTenantName(tenantName?: any) {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
-        // .set("LnDUserId", "57142")
-        .set("LnDUserId", this.UserId)
+        // .set("user-id", "57142")
+        .set("user-id", this.UserId)
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
     if (tenantName == "MAB") {
       this.headers = new HttpHeaders()
-        .set("LnDUserId", "26642")
+        .set("user-id", "26642")
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
     if (tenantName == "HDFC") {
       this.headers = new HttpHeaders()
-        .set("LnDUserId", "2")
+        .set("user-id", "2")
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
     if (tenantName == "SMUDE") {
       this.headers = new HttpHeaders()
-        .set("LnDUserId", "725440")
+        .set("user-id", "725440")
+        .set("user-type", "LND")
+        .set("tenant-name", tenantName);
+    }
+    if (tenantName == "PROLEARN") {
+      this.headers = new HttpHeaders()
+        .set("user-id", "95901")
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
@@ -356,7 +364,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    //let headers = new HttpHeaders().set("LnDUserId", "1001");
+    //let headers = new HttpHeaders().set("user-id", "1001");
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -389,7 +397,7 @@ export class LdDashboardService implements OnInit {
       this.courseId +
       "&programId=" +
       this.programId;
-    //let headers = new HttpHeaders().set("LnDUserId", "1001");
+    //let headers = new HttpHeaders().set("user-id", "1001");
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 

@@ -33,12 +33,12 @@
           <!-- <span>User</span> -->
         </li>
 
-        <li *ngIf="cookieFound" class="list-inline-item logoutBtn" style="padding-left: 10px;">
+        <!-- <li *ngIf="cookieFound" class="list-inline-item logoutBtn" style="padding-left: 10px;">
           <span class="cursor-pointer text-danger" (click)="logout()">
             <i class="fas fa-power-off"></i>
             Logout
           </span>
-        </li>
+        </li> -->
 
         <li *ngIf="!cookieFound" class="list-inline-item selectCourse" style="padding-left: 10px;">
           <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"

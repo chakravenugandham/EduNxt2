@@ -5,8 +5,13 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class CustomNumberPipe implements PipeTransform {
   transform(value: any): any {
-    return Number(value)
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    if (value === null || value === "NaN" || value === NaN) {
+      return 0;
+    }
+    else {
+      return Number(value)
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
   }
 }

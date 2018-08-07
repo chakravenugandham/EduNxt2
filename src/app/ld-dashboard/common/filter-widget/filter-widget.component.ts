@@ -4,9 +4,12 @@ import {
   Input,
   OnChanges,
   EventEmitter,
-  Output
+  Output,
+  HostListener
 } from "@angular/core";
 import { Router } from "@angular/router";
+import { _ } from "underscore";
+// import * as $ from "jquery";
 
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
@@ -62,8 +65,20 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   filterFullObj = [];
 
   filterComponent: string;
+  filterDisplay: boolean = false;
 
-  constructor(private router: Router, private server: LdDashboardService) {}
+  constructor(private router: Router, private server: LdDashboardService) { }
+
+  // clickedInside($event: Event) {
+  //   $event.preventDefault();
+  //   $event.stopPropagation();
+  //   console.log("CLICKED INSIDE, MENU WON'T HIDE");
+  // }
+
+  // @HostListener('document:click', ['$event']) clickedOutside($event) {
+  //   console.log("event", $event);
+  // }
+
 
   filterDispalyNameFraming() {
     if (this.viewData.filterList.length > 1) {
@@ -99,7 +114,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   showFilter() {
-    this.displayDropdown = !this.displayDropdown;
+    this.displayDropdown = true;
     this.server
       .getFiltersData(this.viewData.filterList)
       .subscribe((response: any) => {
@@ -209,13 +224,25 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
   }
 
+  checkItemInApplied(array, item) {
+    let itemFound = (_.findIndex(array, item) == -1) ? false : true;
+    return itemFound;
+  }
+
   selectSearchItem(searchItem) {
-    if (!this.searchNames.includes(searchItem) && this.searchNames.length < 3) {
+
+    if (_.findIndex(this.searchNames, searchItem) == -1 && this.searchNames.length < 3) {
       this.searchNames.push(searchItem);
-    } else if (this.searchNames.includes(searchItem)) {
-      let i = this.searchNames.indexOf(searchItem);
-      this.removeSearchName(i);
     }
+    else if (_.findIndex(this.searchNames, searchItem) != -1) {
+      this.removeSearchName(_.findIndex(this.searchNames, searchItem))
+    }
+    // if (!this.searchNames.includes(searchItem) && this.searchNames.length < 3) {
+    //   this.searchNames.push(searchItem);
+    // } else if (this.searchNames.includes(searchItem)) {
+    //   let i = this.searchNames.indexOf(searchItem);
+    //   this.removeSearchName(i);
+    // }
     this.searchEvent.emit(this.searchNames);
   }
   removeSearchName(i) {

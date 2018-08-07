@@ -6,6 +6,8 @@ import { APIURL } from "../../apiURL";
 import { DateserviceService } from "../../common-services/dateservice.service";
 import { CommonService } from "../../common-services/common.service";
 
+import { CookieService } from "ngx-cookie-service";
+
 @Injectable({
   providedIn: "root"
 })
@@ -14,6 +16,15 @@ export class LdDashboardService implements OnInit {
     start_date: "",
     end_date: ""
   };
+  LnDUserId: string;
+
+  constructor(
+    private http: HttpClient,
+    private dateService: DateserviceService,
+    private cookieService: CookieService
+  ) {
+    this.constructDate();
+  }
 
   constructDate() {
     let today = new Date();
@@ -54,18 +65,13 @@ export class LdDashboardService implements OnInit {
     return this.dateChange$.asObservable();
   }
 
-  _baseUrl;
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  constructor(
-    private http: HttpClient,
-    private dateService: DateserviceService
-  ) {
-    this.constructDate();
-  }
+
 
   headers = new HttpHeaders()
     .set("LnDUserId", "57142")
+    // .set("LnDUserId", this.cookieService.get("LnDUserId"))
     .set("user-type", "LND")
     .set("tenant-name", "MAIT");
 
@@ -73,6 +79,7 @@ export class LdDashboardService implements OnInit {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "57142")
+        // .set("LnDUserId", this.cookieService.get("LnDUserId"))
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
@@ -746,5 +753,10 @@ export class LdDashboardService implements OnInit {
       searchTerm;
     return this.http.post(url, null, { headers: this.headers });
   }
-  ngOnInit() {}
+
+  logout() {
+    let url = "http://172.24.1.53:8080/logout"
+    return this.http.get(url, { headers: this.headers });
+  }
+  ngOnInit() { }
 }

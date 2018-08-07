@@ -21,7 +21,8 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   getValue: string = "test";
   filterbody = {};
   responseData = [];
-  dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
+  // dataSet = [[0, 0], [20], [40], [60], [80], [100], [110, 0]];
+  dataSet = [[0, 0], [20], [40], [60], [80], [100]];
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 

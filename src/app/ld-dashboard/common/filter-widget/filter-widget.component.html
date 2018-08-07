@@ -22,7 +22,8 @@
                 </span>
                 <div *ngIf="searchList.length>0">
                   <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">
-                    <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span>
+                    <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(searchNames,searchItem) }"></span>
+                    <!-- <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span> -->
                     <!-- <span>{{searchItem.teamName}} </span> -->
                     <span>{{searchItem[searchFilterData.searchBy]}} </span>
                   </div>
@@ -103,21 +104,21 @@
             <i class="fas fa-plus"></i>
           </span>
         </div>
-        <div *ngIf="displayDropdown">
-          <div class="showFilter-list" *ngIf="filtersData">
-            <span class="closeDropdown text-warning" (click)="closeDropDown()">
-              <i class="far fa-times-circle fa-lg"></i>
-            </span>
-            <ul>
-              <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
-                <div class="boldText"> Select {{filter.type}} </div>
-                <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                  <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>
-                  <span>{{filterName.name}} </span>
-                </div>
-              </li>
-            </ul>
-          </div>
+      </div>
+      <div *ngIf="displayDropdown">
+        <div class="showFilter-list" *ngIf="filtersData">
+          <span class="closeDropdown text-warning" (click)="closeDropDown()">
+            <i class="far fa-times-circle fa-lg"></i>
+          </span>
+          <ul>
+            <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
+              <div class="boldText"> Select {{filter.type}} </div>
+              <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
+                <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>
+                <span>{{filterName.name}} </span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </li>

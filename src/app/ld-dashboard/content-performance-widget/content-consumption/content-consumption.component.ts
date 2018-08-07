@@ -7,7 +7,8 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 })
 export class ContentConsumptionComponent implements OnInit {
   @Input() contentData;
-  sortOrder: string = "contentName";
+  sortOrder: string ;
+  // sortOrder: string = "contentName";
   reverse: boolean = false;
   sortByFn(sortByName) {
     this.sortOrder = sortByName;

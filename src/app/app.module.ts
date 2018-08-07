@@ -23,6 +23,11 @@ import { RoutingModule } from "./routing.module";
 // Pipe
 import { OrderModule } from "ngx-order-pipe";
 
+import { CookieService } from "ngx-cookie-service";
+
+//click outside detect
+import { ClickOutsideModule } from 'ng4-click-outside';
+
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./ld-dashboard/common/header/header.component";
 import { TimeFrameComponent } from "./ld-dashboard/common/time-frame/time-frame.component";
@@ -108,9 +113,7 @@ import { LearnerTimeSpentComponent } from "./learner/learner-activity-widget/lea
 import { LearnerScoreCardComponent } from "./learner/learner-activity-widget/learner-score-card/learner-score-card.component";
 import { LearnerCoursePerformanceComponent } from "./learner/learner-course-performance/learner-course-performance.component";
 import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component";
-import { CommonModule } from "@angular/common";
 import { CustomNumberPipe } from "./custom-number.pipe";
-import { NullHandlePipe } from './null-handle.pipe';
 
 @NgModule({
   declarations: [
@@ -199,8 +202,7 @@ import { NullHandlePipe } from './null-handle.pipe';
     LearnerScoreCardComponent,
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
-    CustomNumberPipe,
-    NullHandlePipe
+    CustomNumberPipe
   ],
   imports: [
     BrowserModule,
@@ -212,9 +214,10 @@ import { NullHandlePipe } from './null-handle.pipe';
     FontAwesomeModule,
     Daterangepicker,
     FormsModule,
-    OrderModule
+    OrderModule,
+    ClickOutsideModule
   ],
-  providers: [GoogleChartsBaseService, { provide: Window, useValue: window }],
+  providers: [GoogleChartsBaseService, { provide: Window, useValue: window }, CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

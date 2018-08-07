@@ -67,19 +67,19 @@ export class LdDashboardService implements OnInit {
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-
+  UserId = (this.cookieService.get('LnDUserId') == '') ? '57142' : this.cookieService.get('LnDUserId')
 
   headers = new HttpHeaders()
-    .set("LnDUserId", "57142")
-    // .set("LnDUserId", this.cookieService.get("LnDUserId"))
+    // .set("LnDUserId", "57142")
+    .set("LnDUserId", this.UserId)
     .set("user-type", "LND")
     .set("tenant-name", "MAIT");
 
   selectTenantName(tenantName?: any) {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
-        .set("LnDUserId", "57142")
-        // .set("LnDUserId", this.cookieService.get("LnDUserId"))
+        // .set("LnDUserId", "57142")
+        .set("LnDUserId", this.UserId)
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }

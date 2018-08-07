@@ -15,28 +15,38 @@
         </li>
         <li class="nav-item p-l-10">
           <span>
-            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <i class="far fa-calendar-alt"></i>
           </span>
           <span class="p-l-5">Calendar</span>
         </li>
         <li class="nav-item p-l-10">
           <span>
-            <i class="fa fa-bell-o" aria-hidden="true"></i>
+            <i class="far fa-bell"></i>
           </span>
           <span class="p-l-5">Notifications</span>
         </li>
         <li class="nav-item p-l-10" style="border-left:1px solid black;margin-left:10px;">
           <span>
-            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <i class="far fa-user-circle fa-lg"></i>
           </span>
-          <span>User</span>
+          <span> {{userName}} </span>
+          <!-- <span>User</span> -->
         </li>
-        <li class="list-inline-item selectCourse" style="padding-left: 10px;">
+
+        <li class="list-inline-item logoutBtn" style="padding-left: 10px;">
+          <span class="cursor-pointer text-danger" (click)="logout()">
+            <i class="fas fa-power-off"></i>
+            Logout
+          </span>
+        </li>
+
+        <!-- <li class="list-inline-item selectCourse" style="padding-left: 10px;">
           <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"
             style="padding: 2px 20px;height: 24px;">
             <option class="course-item" *ngFor="let tenants of tenantsName" value="{{tenants}}">{{tenants}}</option>
           </select>
-        </li>
+        </li> -->
+
       </ul>
     </div>
   </nav>
@@ -46,7 +56,7 @@
       <img class="" src="/assets/images/user.png" alt="" height="68px">
     </div>
     <div class="float-left">
-      <div class="header-text">Hello User,</div>
+      <div class="header-text">Hello {{userName}} ,</div>
       <div class="description">Let's take a look at how your organization is learning.</div>
     </div>
   </div>

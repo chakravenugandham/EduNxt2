@@ -157,12 +157,12 @@ export class ScoreChartDirective implements OnInit, OnChanges {
         { offset: "40%", color: "#F77F6C" },
         { offset: "40%", color: "#f7cf00" },
         { offset: "60%", color: "#f7cf00" },
-        { offset: "60%", color: "#FFD630" },
-        { offset: "80%", color: "#FFD630" },
+        { offset: "60%", color: "#39EA37" },
         { offset: "80%", color: "#39EA37" },
-        { offset: "100%", color: "#39EA37" },
-        { offset: "100%", color: "#5584FF" },
-        { offset: "0%", color: "#5584FF" }
+        { offset: "80%", color: "#5584FF" },
+        { offset: "100%", color: "#5584FF" }
+        // { offset: "100%", color: "#FFD630" },
+        // { offset: "0%", color: "#FFD630" }
       ])
       .enter()
       .append("stop")
@@ -180,11 +180,9 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .attr("transform", "translate(0," + (height - padding) + ")")
       .call(d3.axisBottom(xScale).ticks(5))
     // .on('mouseover', function (d) {
-    //   console.log(d);
     //   d.forEach((i) => {
     //     arrayValue = i[1];
     //   })
-    //   console.log(arrayValue);
     //   tooltip.transition().style('opacity', 1)
     //   tooltip.html(
     //     "<div style='color:#0146F9'>" +

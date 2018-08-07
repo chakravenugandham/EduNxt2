@@ -86,7 +86,17 @@ export class BarChartDirective implements OnInit, OnChanges {
     }));
 
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
-    y.domain([0, 100]);
+    y.domain([0,
+      d3.max(this.data, d => {
+        let maxBar = Math.ceil(d.Group1)
+        if (maxBar <= 8) {
+          return 8;
+        }
+        else {
+          return maxBar;
+        }
+      })
+    ]);
 
     svg.append("g")
       .attr("class", "x axis")
@@ -171,21 +181,13 @@ export class BarChartDirective implements OnInit, OnChanges {
         .attr("x", -(h / 2))
         .attr("y", 14);
     }
-
-
-
   }
 
 
-  ngOnInit() {
-    // this.performanceChart();
-  }
+  ngOnInit() { }
+
   ngOnChanges(changes: any) {
-    //console.log(this.dataSet);
-
     if (changes.data && changes.data.currentValue) {
-      //console.log(this.getTab);
-      // this.dataset = this.data;
       this.performanceChart();
     }
   }

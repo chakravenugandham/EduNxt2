@@ -33,19 +33,19 @@
           <!-- <span>User</span> -->
         </li>
 
-        <li class="list-inline-item logoutBtn" style="padding-left: 10px;">
+        <li *ngIf="cookieFound" class="list-inline-item logoutBtn" style="padding-left: 10px;">
           <span class="cursor-pointer text-danger" (click)="logout()">
             <i class="fas fa-power-off"></i>
             Logout
           </span>
         </li>
 
-        <!-- <li class="list-inline-item selectCourse" style="padding-left: 10px;">
+        <li *ngIf="!cookieFound" class="list-inline-item selectCourse" style="padding-left: 10px;">
           <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"
             style="padding: 2px 20px;height: 24px;">
             <option class="course-item" *ngFor="let tenants of tenantsName" value="{{tenants}}">{{tenants}}</option>
           </select>
-        </li> -->
+        </li>
 
       </ul>
     </div>

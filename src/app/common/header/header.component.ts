@@ -11,11 +11,13 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HeaderComponent implements OnInit {
   selectTenantName: string = "MAIT";
-  tenantsName = ["MAIT", "MAB", "HDFC", "SMUDE"];
+  tenantsName = ["MAIT", "MAB", "HDFC", "SMUDE", "PROLEARN"];
   // userName: string;
   // cookieFound: boolean;
-  userName = (this.cookieService.get('userName') == '') ? 'User' : this.cookieService.get('userName');
-  cookieFound = (this.cookieService.get('userName') == '') ? false : true;
+  // userName = (this.cookieService.get('userName') == '') ? 'User' : this.cookieService.get('userName');
+  userName = "Praveen";
+  // cookieFound = (this.cookieService.get('userName') == '') ? false : true;
+  cookieFound = false;
 
   constructor(
     private getTenantName: CommonService,
@@ -32,14 +34,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.cookieService.get('userName') == '') {
-      console.log("1");
-
-    }
-    console.log("this.cookieService.get('userName')", this.cookieService.get('userName'));
-
     // this.cookieService.set('userName', "Praveen Kondani");
-    // this.userName = (this.cookieService.get('userName') == undefined || null) ? 'User' : this.cookieService.get('userName');
-    // this.cookieFound = (this.cookieService.get('userName') == undefined || null) ? false : true;
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { CommonService } from "../../../common-services/common.service";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { CommonService } from "../../common-services/common.service";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 import { CookieService } from 'ngx-cookie-service';
 

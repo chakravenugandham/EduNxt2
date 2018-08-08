@@ -4,7 +4,6 @@ import { environment } from "../../../environments/environment";
 import { Subject } from "rxjs";
 import { APIURL } from "../../apiURL";
 import { DateserviceService } from "../../common-services/dateservice.service";
-import { CommonService } from "../../common-services/common.service";
 
 import { CookieService } from "ngx-cookie-service";
 
@@ -18,26 +17,15 @@ export class LdDashboardService implements OnInit {
   };
   LnDUserId: string;
 
-  constructor(
-    private http: HttpClient,
-    private dateService: DateserviceService,
-    private cookieService: CookieService
-  ) {
+  constructor(private http: HttpClient, private dateService: DateserviceService, private cookieService: CookieService) {
     this.constructDate();
   }
 
   constructDate() {
     let today = new Date();
-    this.dateFilterObj.end_date =
-      today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
+    this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     let last_date = new Date(today.setDate(today.getDate() - 30));
-    this.dateFilterObj.start_date =
-      last_date.getMonth() +
-      1 +
-      "/" +
-      last_date.getDate() +
-      "/" +
-      last_date.getFullYear();
+    this.dateFilterObj.start_date = last_date.getMonth() + 1 + "/" + last_date.getDate() + "/" + last_date.getFullYear();
     return this.dateFilterObj;
   }
 
@@ -101,6 +89,12 @@ export class LdDashboardService implements OnInit {
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
+    if (tenantName == "PROLEARN") {
+      this.headers = new HttpHeaders()
+        .set("LnDUserId", "95901")
+        .set("user-type", "LND")
+        .set("tenant-name", tenantName);
+    }
     this.tenantName$.next();
     this.refreshAPI$.next();
   }
@@ -122,12 +116,8 @@ export class LdDashboardService implements OnInit {
 
   //date change
   getDateChange() {
-    this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-      "start_date"
-    ];
-    this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-      "end_date"
-    ];
+    this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+    this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
   }
 
   //courses dropdown
@@ -137,28 +127,11 @@ export class LdDashboardService implements OnInit {
   }
 
   getActiveUsersWidgetData() {
-    if (
-      this.dateService.dateFilterBodyDetails["start_date"] &&
-      this.dateService.dateFilterBodyDetails["end_date"]
-    ) {
-      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-        "start_date"
-      ];
-      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-        "end_date"
-      ];
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
-    let url =
-      this.baseURL +
-      APIURL.ACTIVE_USERS +
-      "?start_date=" +
-      this.dateFilterObj.start_date +
-      "&end_date=" +
-      this.dateFilterObj.end_date +
-      "&courseId=" +
-      this.courseId +
-      "&programId=" +
-      this.programId;
+    let url = this.baseURL + APIURL.ACTIVE_USERS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
     return this.http.get(url, { headers: this.headers });
   }
 
@@ -508,29 +481,12 @@ export class LdDashboardService implements OnInit {
 
   //org-interest full details
   getOrgInterestDetailsData() {
-    if (
-      this.dateService.dateFilterBodyDetails["start_date"] &&
-      this.dateService.dateFilterBodyDetails["end_date"]
-    ) {
-      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
-        "start_date"
-      ];
-      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
-        "end_date"
-      ];
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
-    let url =
-      this.baseURL +
-      APIURL.ORGANISATION_INTEREST_DETAILS +
-      "?start_date=" +
-      this.dateFilterObj.start_date +
-      "&end_date=" +
-      this.dateFilterObj.end_date +
-      "&courseId=" +
-      this.courseId +
-      "&programId=" +
-      this.programId;
+    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -754,9 +710,103 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
+  //LOGOUT API
   logout() {
     let url = "http://172.24.1.53:8080/logout"
     return this.http.get(url, { headers: this.headers });
   }
+
+
+  //ORG-HEAD APIS 
+
+  getProgramStatus() {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.PROGRAM_STATUS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId
+    return this.http.get(url, { headers: this.headers });
+  }
+
+
+  getBestPrograms() {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.BEST_PROGRAMS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId
+    return this.http.get(url, { headers: this.headers });
+  }
+
+  getBestProgramsDetails() {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.BEST_PROGRAMS_DETAILS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId
+    return this.http.get(url, { headers: this.headers });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //csv converted apis
+
+  getContentCsv() {
+    if (
+      this.dateService.dateFilterBodyDetails["start_date"] &&
+      this.dateService.dateFilterBodyDetails["end_date"]
+    ) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails[
+        "start_date"
+      ];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails[
+        "end_date"
+      ];
+    }
+
+    let url =
+      this.baseURL +
+      APIURL.CONTENT_CONSUMPTION + "/csv" +
+      "?start_date=" +
+      this.dateFilterObj.start_date +
+      "&end_date=" +
+      this.dateFilterObj.end_date +
+      "&courseId=" +
+      this.courseId +
+      "&programId=" +
+      this.programId +
+      "user-id=" + this.UserId +
+      "user-type=" + "LND" +
+      "tenant-name=" + "MAIT";
+
+    return this.http.get(url);
+  }
+
+
+
+
   ngOnInit() { }
 }

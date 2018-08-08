@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 import { _ } from "underscore";
 // import * as $ from "jquery";
 
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: "app-filter-widget",

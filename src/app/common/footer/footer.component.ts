@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: "app-footer",
@@ -7,7 +7,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./footer.component.scss"]
 })
 export class FooterComponent implements OnInit {
-  constructor(private dashboardService: LdDashboardService) {}
+  constructor(private dashboardService: LdDashboardService) { }
 
   refreshTime = new Date();
   refreshReportFn() {
@@ -15,5 +15,5 @@ export class FooterComponent implements OnInit {
     this.dashboardService.refreshRepotAPI$.next();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

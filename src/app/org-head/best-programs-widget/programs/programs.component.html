@@ -12,8 +12,8 @@
     <span class="text-success font-weight-bold"> 07 </span>
     <span>Programs are on schedule</span>
   </div>
-  <div class="row">
-    <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-12" *ngFor="let program of programData">
+  <div class="row" *ngFor="let program of programData">
+    <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-12">
       <div class="program-box">
         <div class="program-img">
           <img src={{program.imgUrl}} alt="">

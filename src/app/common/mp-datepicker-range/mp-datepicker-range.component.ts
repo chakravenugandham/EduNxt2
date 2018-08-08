@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
 import { DaterangePickerComponent } from "ng2-daterangepicker";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { DateserviceService } from "../../../common-services/dateservice.service";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
+import { DateserviceService } from "../../common-services/dateservice.service";
 
 @Component({
   selector: "app-mp-datepicker-range",

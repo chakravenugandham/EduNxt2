@@ -1,4 +1,5 @@
 export class APIURL {
+  //LND Dashboard apis
   public static COURSES_DROPDOWN = "courses-dropdown";
   public static ACTIVE_USERS = "active-users";
   public static LEARNER_ENGAGEMENT = "learner-engagement";
@@ -23,4 +24,11 @@ export class APIURL {
   public static CONTENT_CONSUMPTION = "content-consumption";
   public static FILTERS = "filters";
   public static SCORES_FILTERS = "scores-distribution-filters";
+
+
+  //Org-Head apis
+
+  public static PROGRAM_STATUS = "program-status";
+  public static BEST_PROGRAMS = "best-programs";
+  public static BEST_PROGRAMS_DETAILS = "best-programs-details";
 }

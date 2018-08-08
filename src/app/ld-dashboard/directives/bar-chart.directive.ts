@@ -117,8 +117,20 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("transform", function (d) { return "translate(" + x0(d.label) + ",0)"; });
 
 
-    var color = d3.scale.ordinal().range(['#5584FF']);
+    var color = d3.scale.ordinal().range(['#0146F9', '#5584FF']);
 
+    var svgDefs = svg.append('defs');
+
+    var mainGradient = svgDefs.append('linearGradient')
+      .attr('id', 'mainGradient');
+
+    mainGradient.append('stop')
+      .attr('class', 'stop-left')
+      .attr('offset', '0');
+
+    mainGradient.append('stop')
+      .attr('class', 'stop-right')
+      .attr('offset', '1');
 
     var div = d3
       .select("body")
@@ -146,7 +158,8 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("value", function (d) { return d.name; })
       .attr("height", function (d) { return h - y(d.value); })
       //.attr("d", function (d, i) { return this.rightRoundedRect(10 + 40 * i, 100 - d, 20, d, 5) })
-      .style("fill", function (d) { return color(d.name); })
+      // .style("fill", function (d) { return color(d.name); })
+      .classed('filled', true)
       .on('mouseover', function (d) {
         //var data = d3.select(d).data();
         tooltip.transition().style('opacity', 1)

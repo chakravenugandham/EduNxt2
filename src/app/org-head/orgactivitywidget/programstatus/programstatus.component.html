@@ -25,15 +25,11 @@
 
   <div class="row text-fix-bottom">
     <div class="col-md-6 col-sm-6 col-xs-6">
-      <div>
-        <app-users-data [config]="programStatusProgressConfig"></app-users-data>
-      </div>
+      <app-users-data [config]="programStatusProgressConfig"></app-users-data>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-6">
-      <div>
-        <app-users-data [config]="programStatusBehindConfig"></app-users-data>
-      </div>
-    </div>
+    <!-- <div class="col-md-6 col-sm-6 col-xs-6">
+      <app-users-data [config]="programStatusBehindConfig"></app-users-data>
+    </div> -->
   </div>
 
   <!-- <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">

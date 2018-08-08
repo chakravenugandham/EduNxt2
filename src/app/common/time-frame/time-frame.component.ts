@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
+import { ExcelService } from '../../common-services/excel.service'
 
 import { _ } from "underscore";
 
@@ -14,7 +15,21 @@ export class TimeFrameComponent implements OnInit {
   today: Date = new Date();
   selectCourse: any = "All Courses";
 
-  constructor(private dashboardService: LdDashboardService) {
+  data = [{
+    eid: 'e101',
+    ename: 'ravi',
+    esal: 1000
+  }, {
+    eid: 'e102',
+    ename: 'ram',
+    esal: 2000
+  }, {
+    eid: 'e103',
+    ename: 'rajesh',
+    esal: 3000
+  }];
+  csvResponse = [];
+  constructor(private dashboardService: LdDashboardService, private excelService: ExcelService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -62,12 +77,23 @@ export class TimeFrameComponent implements OnInit {
       "name": "201801"
     }
 
+
+
     // console.log("object", _.find(arrayOne, element1));
 
     let indexFoundAt = _.findIndex(arrayOne, element1);
 
     console.log("object", indexFoundAt);
 
+  }
+
+  exportAsXLSX() {
+    //this.excelService.exportAsExcelFile(this.data, 'sample');
+    this.dashboardService.getContentCsv().subscribe((response: any) => {
+      this.csvResponse = response.data;
+      console.log(this.csvResponse);
+
+    });
   }
 
   getDataFromService() {

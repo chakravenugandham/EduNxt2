@@ -2,11 +2,33 @@
   color: #ffd630;
   background-color: #ffd630;
 }
+
 .graph-badges .col-md:nth-child(2) i {
   color: #f77f6c;
   background-color: #f77f6c;
 }
+
 .graph-badges .col-md:nth-child(3) i {
   color: #5584ff;
   background-color: #5584ff;
+}
+
+.stop-left {
+  stop-color: #3f51b5;
+  /* Indigo */
+}
+
+.stop-right {
+  stop-color: #009688;
+  /* Teal */
+}
+
+.filled {
+  fill: url(#mainGradient);
+}
+
+.outlined {
+  fill: none;
+  stroke: url(#mainGradient);
+  stroke-width: 4;
 }

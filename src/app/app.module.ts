@@ -29,8 +29,8 @@ import { CookieService } from "ngx-cookie-service";
 import { ClickOutsideModule } from 'ng4-click-outside';
 
 import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./ld-dashboard/common/header/header.component";
-import { TimeFrameComponent } from "./ld-dashboard/common/time-frame/time-frame.component";
+import { HeaderComponent } from "./common/header/header.component";
+import { TimeFrameComponent } from "./common/time-frame/time-frame.component";
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
 import { ActivityWidgetComponent } from "./ld-dashboard/activity-widget/activity-widget.component";
 import { UsersComponent } from "./ld-dashboard/activity-widget/users/users.component";
@@ -64,12 +64,12 @@ import { OrgInterestWidgetComponent } from "./ld-dashboard/org-interest-widget/o
 import { OrgInterestComponent } from "./ld-dashboard/org-interest-widget/org-interest/org-interest.component";
 import { AttentionNeedWidgetComponent } from "./ld-dashboard/attention-need-widget/attention-need-widget.component";
 import { LearnerTrackFullviewComponent } from "./ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component";
-import { MpDatepickerRangeComponent } from "./ld-dashboard/common/mp-datepicker-range/mp-datepicker-range.component";
+import { MpDatepickerRangeComponent } from "./common/mp-datepicker-range/mp-datepicker-range.component";
 import { ContentConsumptionFullviewComponent } from "./ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component";
-import { FooterComponent } from "./ld-dashboard/common/footer/footer.component";
+import { FooterComponent } from "./common/footer/footer.component";
 import { TimespentComponent } from "./ld-dashboard/activity-widget/timespent/timespent.component";
 import { UserstrainedComponent } from "./ld-dashboard/activity-widget/userstrained/userstrained.component";
-import { FilterWidgetComponent } from "./ld-dashboard/common/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "./common/filter-widget/filter-widget.component";
 import { LearnerPerformanceFullviewComponent } from "./ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component";
 import { ScoresDistributionFullviewComponent } from "./ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component";
 import { OrgPerformanceFullviewComponent } from "./ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component";
@@ -86,7 +86,6 @@ import { ProgramsComponent } from "./org-head/best-programs-widget/programs/prog
 import { TrackofgoalsComponent } from "./org-head/trackofgoals/trackofgoals.component";
 import { GoalsComponent } from "./org-head/trackofgoals/goals/goals.component";
 import { GoalcardsComponent } from "./org-head/common/goalcards/goalcards.component";
-import { HalfdonutComponent } from "./ld-dashboard/common/halfdonut/halfdonut.component";
 import { FacultyperformanceComponent } from "./faculty/facultyactivitywidget/facultyperformance/facultyperformance.component";
 import { FacultylearnerprogressComponent } from "./faculty/facultyactivitywidget/facultylearnerprogress/facultylearnerprogress.component";
 import { OutliersComponent } from "./faculty/facultyactivitywidget/outliers/outliers.component";
@@ -175,7 +174,6 @@ import { CustomNumberPipe } from "./custom-number.pipe";
     TrackofgoalsComponent,
     GoalsComponent,
     GoalcardsComponent,
-    HalfdonutComponent,
     FacultyperformanceComponent,
     FacultylearnerprogressComponent,
     OutliersComponent,

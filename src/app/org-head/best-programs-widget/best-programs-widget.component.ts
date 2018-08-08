@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
   selector: "app-best-programs-widget",
@@ -14,7 +15,35 @@ export class BestProgramsWidgetComponent implements OnInit {
     filterList: ["program"],
     viewDetailsFilters: false
   };
-  constructor() {}
 
-  ngOnInit() {}
+  responseData = {};
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+  }
+
+  getDataFromService() {
+    this.dashboardService
+      .getBestPrograms()
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+      });
+  }
+
+  ngOnInit() {
+    this.getDataFromService();
+  }
 }

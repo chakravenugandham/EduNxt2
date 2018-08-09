@@ -90,6 +90,7 @@ export class TimeFrameComponent implements OnInit {
   exportAsXLSX() {
     //this.excelService.exportAsExcelFile(this.data, 'sample');
     this.dashboardService.getContentCsv().subscribe((response: any) => {
+      debugger;
       this.csvResponse = response.data;
       console.log(this.csvResponse);
 

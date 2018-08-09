@@ -15,8 +15,7 @@
       <span data-toggle="tooltip" data-placement="top" title="Need Help?">
         <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
-      <!-- <ng-template #popcontent>
-          [ngbPopover]="popcontent"
+      <ng-template #popcontent>
         <ul class="list-inline">
           <li class="list-inline-item">
             <span>
@@ -43,8 +42,8 @@
             </span>
           </li>
         </ul>
-      </ng-template> -->
-      <span class="p-l-20" placement="left">
+      </ng-template>
+      <span class="p-l-20" [ngbPopover]="popcontent" placement="left">
         <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
       </span>
     </div>

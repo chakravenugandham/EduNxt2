@@ -158,8 +158,8 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("value", function (d) { return d.name; })
       .attr("height", function (d) { return h - y(d.value); })
       //.attr("d", function (d, i) { return this.rightRoundedRect(10 + 40 * i, 100 - d, 20, d, 5) })
-      // .style("fill", function (d) { return color(d.name); })
-      .classed('filled', true)
+      .style("fill", function (d) { return color(d.name); })
+      //.classed('filled', true)
       .on('mouseover', function (d) {
         //var data = d3.select(d).data();
         tooltip.transition().style('opacity', 1)

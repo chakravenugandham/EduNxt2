@@ -6,7 +6,6 @@
 </div>
 
 <div class="widget-block">
-
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -23,7 +22,7 @@
       <span data-toggle="tooltip" data-placement="top" title="Need Help?">
         <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
-      <!-- <ng-template #popcontent>
+      <ng-template #popcontent>
         <ul class="list-inline">
           <li class="list-inline-item">
             <span>
@@ -50,9 +49,8 @@
             </span>
           </li>
         </ul>
-        [ngbPopover]="popcontent"
-      </ng-template> -->
-      <span class="p-l-20" placement="right">
+      </ng-template>
+      <span class="p-l-20" [ngbPopover]="popcontent" placement="right">
         <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
       </span>
     </div>

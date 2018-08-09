@@ -421,51 +421,93 @@ export class LdDashboardService implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   //csv converted apis
 
-  // getContentCsv() {
-  //   if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
-  //     this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
-  //     this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
-  //   }
-
-  //   let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "user-id=" + this.UserId + "user-type=" + "LND" + "tenant-name=" + "MAIT";
-  //   return this.http.get(url);
-  // }
-
-  getContentCsv() {
+  //learner-track full details
+  getLearnerTrackDetailsCsv(componentName, displayfor, filterbody) {
     if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
       this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
-    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "user-id=" + this.UserId + "user-type=" + "LND" + "tenant-name=" + "MAIT";
+    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + "?type=" + componentName + "&displayFor=" + displayfor + "&start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    return this.http.post(url, filterbody, { headers: this.headers });
+  }
+
+  getLearnerPerformanceDetailsCsv(filterbody) {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.LEARNER_PERFORMANCE_PROGRESS_DETAILS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" +
+      this.programId;
+    return this.http.post(url, filterbody, { headers: this.headers });
+  }
+
+  getScoresDetailsCsv(dropdownValue, filterbody) {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + "?type=" + dropdownValue + "&start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    return this.http.post(url, filterbody, { headers: this.headers });
+  }
+
+  getContentDetailsCsv() {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&user-id=" + this.UserId + "&user-type=" + "LND" + "&tenant-name=" + "MAIT";
     return this.http.get(url);
   }
 
+  //org-interest full details
+  getOrgInterestDetailsDataCsv() {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
 
+    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    return this.http.post(url, null, { headers: this.headers });
+  }
 
+  //org-performance trainers data
+  getTeamDataCsv(limitTo) {
+    if (this.dateService.dateFilterBodyDetails["start_date"] && this.dateService.dateFilterBodyDetails["end_date"]) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&limit=" + limitTo;
+    return this.http.post(url, null, { headers: this.headers });
+  }
+
+  //org-performance teams data
+  getTrainersDataCsv(limitTo) {
+    if (this.dateService.dateFilterBodyDetails["start_date"] && this.dateService.dateFilterBodyDetails["end_date"]) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.TRAINER_LEADERBOARD + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&limit=" + limitTo;
+    return this.http.post(url, null, { headers: this.headers });
+  }
+
+  //org-performance leaners data
+  getLearnerDataCsv(limitTo) {
+    if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
+      this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
+      this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
+    }
+
+    let url = this.baseURL + APIURL.LEARNER_LEADERBOARD + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&limit=" + limitTo;
+    return this.http.post(url, null, { headers: this.headers });
+  }
 
   ngOnInit() { }
 }

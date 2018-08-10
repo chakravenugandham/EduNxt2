@@ -16,7 +16,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
-    viewDetails: false,
+    viewDetails: true,
     filterList: [],
     currentModule: this.componentName
   };
@@ -56,14 +56,12 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   learnerPaceFn() {
     this.componentName = this.filtersData.currentModule = "pace";
-    // this.filtersData.currentModule = "pace";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
     this.componentName = this.filtersData.currentModule = "performance";
-    // this.filtersData.currentModule = "performance";
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
@@ -80,13 +78,9 @@ export class LearnersTrackWidgetComponent implements OnInit {
         this.spinner_loader = false;
         // this.noDataFlag = _.isEmpty(this.widgetData.pace) ? true : false;
         if (this.componentName == "pace") {
-          this.noDataFlag =
-            Object.keys(this.widgetData.pace).length === 0 ? true : false;
+          this.noDataFlag = Object.keys(this.widgetData.pace).length === 0 ? true : false;
         } else if (this.componentName == "performance")
-          this.noDataFlag =
-            Object.keys(this.widgetData.performance).length === 0
-              ? true
-              : false;
+          this.noDataFlag = Object.keys(this.widgetData.performance).length === 0 ? true : false;
       });
   }
 

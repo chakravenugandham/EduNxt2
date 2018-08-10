@@ -63,15 +63,11 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getFilterData() {
-    this.componentName = this.filterData.learnerFilterBodyDetails[
-      "currentModule"
-    ];
+    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
   }
 
   getTableDataFromService() {
-    if (
-      this.filterData.learnerFilterBodyDetails["currentModule"] == undefined
-    ) {
+    if (this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
       this.filterData.learnerFilterBodyDetails["currentModule"] = "performance";
     }
 

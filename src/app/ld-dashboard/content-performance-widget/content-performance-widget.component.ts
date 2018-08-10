@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
+import { CommonService } from "../../common-services/common.service";
 
 @Component({
   selector: "app-content-performance-widget",
@@ -29,7 +30,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(private dashboardService: LdDashboardService) {
+  constructor(private dashboardService: LdDashboardService, private commonService: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -45,6 +46,8 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.commonService.learnerFilterBodyDetails = this.filtersData;
   }
 
   getDataFromService() {

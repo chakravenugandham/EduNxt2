@@ -12,7 +12,7 @@ export class OrgInterestWidgetComponent implements OnInit {
     routeTo: "orgInterestFullView",
     filters: false,
     search: true,
-    viewDetails: false,
+    viewDetails: true,
     filterList: []
   };
 

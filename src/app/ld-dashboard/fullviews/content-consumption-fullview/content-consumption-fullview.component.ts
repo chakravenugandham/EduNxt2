@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: "app-content-consumption-fullview",
   templateUrl: "./content-consumption-fullview.component.html",
@@ -17,6 +19,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   reverse: boolean = false;
   searchBox: boolean = false;
   paginationData = {};
+  sub: any;
   filtersData = {
     routeTo: "contentConsumptionFullView",
     filters: true,
@@ -32,7 +35,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(private dashboardService: LdDashboardService) {
+  constructor(private dashboardService: LdDashboardService, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -48,6 +51,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+
   }
 
   searchFn() {

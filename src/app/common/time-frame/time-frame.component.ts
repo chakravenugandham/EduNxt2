@@ -1,35 +1,25 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 import { ExcelService } from '../../common-services/excel.service'
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { _ } from "underscore";
+import { CommonService } from "../../common-services/common.service";
 
 @Component({
   selector: "app-time-frame",
   templateUrl: "./time-frame.component.html",
   styleUrls: ["./time-frame.component.scss"]
 })
-export class TimeFrameComponent implements OnInit {
+export class TimeFrameComponent implements OnInit, OnChanges {
   @Output() filterEvent = new EventEmitter<any>();
   coursesData = [];
   today: Date = new Date();
   selectCourse: any = "All Courses";
-
-  data = [{
-    eid: 'e101',
-    ename: 'ravi',
-    esal: 1000
-  }, {
-    eid: 'e102',
-    ename: 'ram',
-    esal: 2000
-  }, {
-    eid: 'e103',
-    ename: 'rajesh',
-    esal: 3000
-  }];
+  downloadLink: string;
+  _baseUrl;
   csvResponse = [];
-  constructor(private dashboardService: LdDashboardService, private excelService: ExcelService) {
+  constructor(private dashboardService: LdDashboardService, private _window: Window) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -87,42 +77,16 @@ export class TimeFrameComponent implements OnInit {
 
   }
 
-  url = '';
-
   exportAsXLSX() {
+    // this.sub = this.route.params.subscribe(params => {
+    //   console.log(params);
+    // });
 
-    switch (name) {
-      case "learnerTrackDetails": {
-        this.url = "Location";
-        break;
-      }
-      case "learnerPerformanceDetails": {
-        this.url = "Location";
-        break;
-      }
-      case "scoreDistrubutionDetails": {
-        this.url = "Location";
-        break;
-      }
-      case "organizationPerforming": {
-        this.url = "Location";
-        break;
-      }
-      case "contentPerforming": {
-        this.url = "Location";
-        break;
-      }
-      case "organizationInterest": {
-        this.url = "Content Type";
-        break;
-      }
-    }
-    //this.excelService.exportAsExcelFile(this.data, 'sample');
-    this.dashboardService.getContentDetailsCsv().subscribe((response: any) => {
-      this.csvResponse = response.data;
-      console.log(this.csvResponse);
-
-    });
+    // this.sub = this.route.queryParams.subscribe(params => {
+    //   //this.loginName = params['username']; 
+    //   console.log(params);
+    // });
+    //setTimeout(() => { this.downloadLink = "sdcvbjytrd" }, 2000);
   }
 
   getDataFromService() {
@@ -155,7 +119,19 @@ export class TimeFrameComponent implements OnInit {
     });
   }
 
+  ngOnChanges(changes: any) {
+    if (changes._baseUrl.currentValue) {
+
+    }
+  }
+
   ngOnInit() {
     this.getDataFromService();
+    //setTimeout(() => { this.downloadLink = "sdcvbjytrd" }, 2000);
+    this._baseUrl = this._window.location.href;
+    // // let base = this._baseUrl.split('/')[3];
+    // // base = base.substring(0, base.length - 1);
+    console.log(this._baseUrl);
+
   }
 }

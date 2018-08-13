@@ -36,7 +36,9 @@
 }
 
 .paceDataSelect {
-  width: 155px;
+margin-left: 14px;
+padding: 4px 20px 4px 4px;
+border-radius: 3px;
 }
 
 .fullview-heading {
@@ -48,6 +50,19 @@
   position: relative !important;
 }
 
-.red-text {
-  color: red;
+table {
+  th, td{
+    font-size: 11px;
+    width: 11%;
+  }
+  .userName{
+    font-weight: 600;
+  }
+}
+.spinner_loading{
+  position: initial;
+  height: auto;
+  .spinner_inside{
+    top: 10px;
+  }
 }

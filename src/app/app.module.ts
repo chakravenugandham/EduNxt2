@@ -113,6 +113,7 @@ import { LearnerScoreCardComponent } from "./learner/learner-activity-widget/lea
 import { LearnerCoursePerformanceComponent } from "./learner/learner-course-performance/learner-course-performance.component";
 import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component";
 import { CustomNumberPipe } from "./custom-number.pipe";
+import { PaginateComponent } from './common/paginate/paginate.component';
 
 @NgModule({
   declarations: [
@@ -200,7 +201,8 @@ import { CustomNumberPipe } from "./custom-number.pipe";
     LearnerScoreCardComponent,
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
-    CustomNumberPipe
+    CustomNumberPipe,
+    PaginateComponent
   ],
   imports: [
     BrowserModule,

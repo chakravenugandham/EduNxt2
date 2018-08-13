@@ -14,7 +14,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     routeTo: "orgPerformanceFullView",
     filters: false,
     search: true,
-    viewDetails: true,
+    viewDetails: false,
     filterList: ["zone"],
     currentModule: this.getTab
   };

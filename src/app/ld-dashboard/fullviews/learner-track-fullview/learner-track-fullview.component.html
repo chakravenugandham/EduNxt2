@@ -7,7 +7,7 @@
       <span> Are my learners on track? </span>
     </div>
     <div class="col-md-6">
-      <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+      <!-- <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget> -->
     </div>
   </div>
   <div class="row">
@@ -64,6 +64,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="widget-block form-inline">
     <b>Display data for </b>
     <span *ngIf="componentName == 'pace'">
@@ -81,93 +83,100 @@
         <option value="struggling">Struggling</option>
       </select>
     </span>
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th scope="col">
-            <span>
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </span>
-            Learner Name
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Sl. No.
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Course Name
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Team
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Batch
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Team Leader
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Score in course
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Score Avg.
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Highest Score
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of responseTrackDetails">
-          <th scope="row">
-            <span>
-              <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
-            </span>
-            <span class="userName"> {{data.learnerName}} </span>
-          </th>
-          <td class=""> {{data.serialNumber}} </td>
-          <td class=""> {{data.courseName}} </td>
-          <td class=""> {{data.teamName}} </td>
-          <td class=""> {{data.batchName}} </td>
-          <td class=""> {{data.teamLeaderName}} </td>
-          <td class=""> {{data.scoreInCourse}} </td>
-          <td class=""> {{data.scoreAvg}} </td>
-          <td class=""> {{data.highestScore}} </td>
-          <td class="text-primary">
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
-            <span>Congratulate</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row">
-      <ngb-pagination class="d-flex justify-content-end" [collectionSize]="120" [(page)]="page" [maxSize]="5"></ngb-pagination>
-      <span style="padding-left: 10px;">Go to page</span>
-      <span style="padding-left: 10px;">
-        <input style="border:1px solid #007bff;" type="text">
-      </span>
-      <span style="padding-left: 10px;">
-        <button class="btn btn-primary">Go</button>
-      </span>
+
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+    </div>
+
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
+
+    <div *ngIf="!spinner_loader && responseTrackDetails.length>0">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+              Learner Name
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Sl. No.
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Course Name
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Team
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Batch
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <!-- <th scope="col">Team Leader
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th> -->
+            <th scope="col">Score in course
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Score Avg.
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Highest Score
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of responseTrackDetails">
+            <th scope="row">
+              <span>
+                <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
+              </span>
+              <span class="userName"> {{data.learnerName}} </span>
+            </th>
+            <td class=""> {{data.serialNumber}} </td>
+            <td class=""> {{data.courseName}} </td>
+            <td class=""> {{data.teamName}} </td>
+            <td class=""> {{data.batchName}} </td>
+            <!-- <td class=""> {{data.teamLeaderName}} </td> -->
+            <td class=""> {{data.scoreInCourse}} </td>
+            <td class=""> {{data.scoreAvg}} </td>
+            <td class=""> {{data.highestScore}} </td>
+            <td class="text-primary">
+              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15">
+              <span>Congratulate</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row float-right">
+
+        <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
+
+      </div>
     </div>
   </div>
 </div>

@@ -18,7 +18,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   sortOrder: string = "contentName";
   reverse: boolean = false;
   searchBox: boolean = false;
-  paginationData = {};
+  // paginationData = {};
   sub: any;
   filtersData = {
     routeTo: "contentConsumptionFullView",
@@ -68,8 +68,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
-  goToPage(pageNo) {
-    this.pagination.page = pageNo;
+  gotoPage($event) {
+    this.pagination.page = $event;
     this.getDataFromService();
   }
 
@@ -83,10 +83,9 @@ export class ContentConsumptionFullviewComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
 
-        this.pagination.total = response.pagination.total_pages;
-        this.paginationData = response.pagination;
-        // this.page = this.paginationData["page"];
-        this.total_records = this.paginationData["total"];
+        this.pagination.total = response.pagination.total;
+        // this.paginationData = response.pagination;
+        // this.total_records = this.paginationData["total"];
       });
   }
 

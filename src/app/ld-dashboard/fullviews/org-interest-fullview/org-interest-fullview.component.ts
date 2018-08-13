@@ -13,7 +13,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   filtersData = {
     routeTo: "orgInterestFullView",
     filters: false,
-    search: true,
+    search: false,
     viewDetails: false,
     filterList: ["zone"],
     viewDetailsFilters: false
@@ -22,10 +22,16 @@ export class OrgInterestFullviewComponent implements OnInit {
   sortOrder: string = "learnerName";
   reverse: boolean = false;
   searchBox: boolean = false;
-  page: number;
-  total_records: number;
-  selectPage: string;
-  paginationData = {};
+
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
+  pagination = {
+    page: 1,
+    limitTo: 10,
+    total: 0
+  };
 
   //dropdown display values
   displayFor = {};
@@ -56,10 +62,6 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
-  goToPage(v) {
-    this.selectPage = v;
-    alert("hello");
-  }
 
   getDisplayObject($event) {
     this.displayFor = $event;
@@ -67,12 +69,20 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   //api call for orgDetails based on component
   getDataFromService() {
-    this.dashboardService.getOrgInterestDetailsData().subscribe((res: any) => {
-      this.responseData = res.data;
-      this.paginationData = res.pagination;
-      this.page = this.paginationData["page"];
-      this.total_records = this.paginationData["total"];
+    this.spinner_loader = true;
+    this.responseData = [];
+    this.dashboardService.getOrgInterestDetailsData(this.pagination).subscribe((response: any) => {
+      this.responseData = response.data;
+      this.pagination.total = response.pagination.total;
+
+      this.spinner_loader = false;
+      this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
     });
+  }
+
+  gotoPage($event) {
+    this.pagination.page = $event;
+    this.getDataFromService();
   }
 
   sortByFn(sortByName) {

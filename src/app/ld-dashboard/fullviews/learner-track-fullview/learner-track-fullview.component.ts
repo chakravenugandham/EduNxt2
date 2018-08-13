@@ -8,8 +8,8 @@ import { CommonService } from "../../../common-services/common.service";
   styleUrls: ["./learner-track-fullview.component.scss"]
 })
 export class LearnerTrackFullviewComponent implements OnInit {
-  responseTrackDetails: any;
   responseGraphDetails: any;
+  responseTrackDetails = [];
   selectType: string;
   filterbody = {};
   filtersData = {
@@ -21,6 +21,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
     viewDetailsFilters: true
   };
   componentName: string;
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   getFilterObject($event) {
     this.filterbody = $event;
@@ -36,7 +39,11 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  page = 2;
+  pagination = {
+    page: 1,
+    limitTo: 10,
+    total: 0
+  };
 
   constructor(
     private dashboardService: LdDashboardService,
@@ -67,6 +74,10 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getTableDataFromService() {
+
+    this.responseTrackDetails = [];
+    this.spinner_loader = true;
+
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
       this.filterData.learnerFilterBodyDetails["currentModule"] = "performance";
     }
@@ -77,10 +88,15 @@ export class LearnerTrackFullviewComponent implements OnInit {
         .getLearnerTrackDetails(
           this.filterData.learnerFilterBodyDetails["currentModule"],
           this.selectType,
-          this.filterbody
+          this.filterbody,
+          this.pagination
         )
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
+          this.pagination.total = response.pagination.total;
+
+          this.spinner_loader = false;
+          this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
         });
     } else if (
       this.filterData.learnerFilterBodyDetails["currentModule"] == "performance"
@@ -90,12 +106,22 @@ export class LearnerTrackFullviewComponent implements OnInit {
         .getLearnerTrackDetails(
           this.filterData.learnerFilterBodyDetails["currentModule"],
           this.selectType,
-          this.filterbody
+          this.filterbody,
+          this.pagination
         )
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
+          this.pagination.total = response.pagination.total;
+
+          this.spinner_loader = false;
+          this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
         });
     }
+  }
+
+  gotoPage($event) {
+    this.pagination.page = $event;
+    this.getTableDataFromService();
   }
 
   getGraphDataFromService() {

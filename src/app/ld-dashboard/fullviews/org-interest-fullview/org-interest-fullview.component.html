@@ -6,97 +6,103 @@
       </span>
       <span> What is my organization interested in?</span>
     </div>
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
-    </div>
+    </div> -->
   </div>
   <div class="widget-block">
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th scope="col">
-            <span *ngIf="!searchBox">
-              <span (click)="searchFn()">
-                <i class="fa fa-search" aria-hidden="true"></i>
+
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+    </div>
+
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
+
+    <div *ngIf="!spinner_loader && responseData.length > 0">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span *ngIf="!searchBox">
+                <span (click)="searchFn()">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <span class="text" (click)="sortByFn('courseName')">Interest / Topic
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
               </span>
-              <span class="text" (click)="sortByFn('courseName')">Interest / Topic
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('hits')">Total Hits
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-            </span>
-            <span class="list-inline-item searchList" *ngIf="searchBox">
-              <div class="search-org-user">
-                <span class="search-icon" (click)="closeSearchFn()">
-                  <i class="fas fa-search"></i>
+            </th>
+            <th scope="col" (click)="sortByFn('noOfFollowers')">Followers
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('videoTags')">Video Tags
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('organizationInterets')">Article Tags
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let data of responseData | orderBy: sortOrder : reverse">
+          <tr>
+            <td class="">{{data.courseName}}</td>
+            <td class="">
+              <span>{{data.hits}}</span>
+              <span class="small-text">
+                <span class="changeNumber">
+                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                  <span style="margin-left: 5px;">{{data.hitsSinceLastMonth}}</span>
                 </span>
-                <input type="text" placeholder="Search">
-              </div>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('hits')">Total Hits
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('noOfFollowers')">Followers
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('videoTags')">Video Tags
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('organizationInterets')">Article Tags
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let data of responseData | orderBy: sortOrder : reverse">
-        <tr>
-          <td class="">{{data.courseName}}</td>
-          <td class="">
-            <span>{{data.hits}}</span>
-            <span class="small-text">
-              <span class="changeNumber">
-                <i class="fa fa-arrow-up" aria-hidden="true"></i>
-                <span style="margin-left: 5px;">{{data.hitsSinceLastMonth}}</span>
+                <span>since last month</span>
               </span>
-              <span>since last month</span>
-            </span>
-          </td>
-          <td class="">
-            <span class="numberDisplay">{{data.noOfFollowers}}</span>
-            <span class="small-text">
-              <span class="changeNumber">
-                <i class="fa fa-arrow-up" aria-hidden="true"></i>
-                <span style="margin-left: 5px;">{{data.followersSinceLastMonth}}</span>
+            </td>
+            <td class="">
+              <span class="numberDisplay">{{data.noOfFollowers}}</span>
+              <span class="small-text">
+                <span class="changeNumber">
+                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                  <span style="margin-left: 5px;">{{data.followersSinceLastMonth}}</span>
+                </span>
+                <span>since last month</span>
               </span>
-              <span>since last month</span>
-            </span>
-          </td>
-          <td class="">{{data.videoTags}}</td>
-          <td class="">{{data.organizationInterets}}</td>
-          <td class="">{{data.avgRating}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row float-right">
-      <ngb-pagination class="d-flex justify-content-end" [collectionSize]=total_records [(page)]=page [maxSize]="5"></ngb-pagination>
-      <span class="p-l-10 p-t-7">Go to page</span>
-      <span class="p-l-10 p-t-3">
-        <input class="text-box" type="text" [(ngModel)]="selectPage">
-      </span>
-      <span class="p-l-10">
-        <button class="btn btn-primary" (click)="goToPage(selectPage)" style="width: 90px;">Go</button>
-      </span>
+            </td>
+            <td class="">{{data.videoTags}}</td>
+            <td class="">{{data.organizationInterets}}</td>
+            <td class="">{{data.avgRating}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row float-right">
+        <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
+      </div>
+
     </div>
   </div>
 </div>

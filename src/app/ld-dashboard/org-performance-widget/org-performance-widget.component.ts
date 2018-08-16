@@ -52,6 +52,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    //this.filterData.learnerFilterBodyDetails = this.filtersData;
   }
 
   teamsFn() {

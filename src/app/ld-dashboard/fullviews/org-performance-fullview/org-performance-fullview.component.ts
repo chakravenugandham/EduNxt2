@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
+import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-org-performance-fullview",
@@ -27,7 +28,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   constructor(
     private dashboardService: LdDashboardService,
-    private filterData: CommonService
+    private filterData: CommonService,
+    private cookieService: CookieService
   ) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -53,6 +55,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
+    console.log(this.cookieService.get('org-perform-details'));
+
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       console.log(this.showDetails);

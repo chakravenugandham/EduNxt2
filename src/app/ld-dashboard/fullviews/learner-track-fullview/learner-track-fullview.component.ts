@@ -45,10 +45,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     total: 0
   };
 
-  constructor(
-    private dashboardService: LdDashboardService,
-    private filterData: CommonService
-  ) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
       this.getTableDataFromService();
@@ -86,10 +83,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.selectType = "aheadschedule";
       this.dashboardService
         .getLearnerTrackDetails(
-          this.filterData.learnerFilterBodyDetails["currentModule"],
-          this.selectType,
-          this.filterbody,
-          this.pagination
+          this.filterData.learnerFilterBodyDetails["currentModule"], this.selectType, this.filterbody, this.pagination
         )
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
@@ -104,10 +98,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.selectType = "excelling";
       this.dashboardService
         .getLearnerTrackDetails(
-          this.filterData.learnerFilterBodyDetails["currentModule"],
-          this.selectType,
-          this.filterbody,
-          this.pagination
+          this.filterData.learnerFilterBodyDetails["currentModule"], this.selectType, this.filterbody, this.pagination
         )
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;

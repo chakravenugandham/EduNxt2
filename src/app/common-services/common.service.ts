@@ -9,6 +9,8 @@ export class CommonService {
 
   set learnerFilterBodyDetails(data) {
     this.filterbodyDetails = data;
+    console.log(this.filterbodyDetails);
+
   }
 
   get learnerFilterBodyDetails() {

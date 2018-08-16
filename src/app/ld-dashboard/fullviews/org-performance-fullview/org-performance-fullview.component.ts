@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
-import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-org-performance-fullview",
@@ -14,21 +13,20 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   responseLeanersDetails: any;
 
   checkBoxValue: boolean = false;
-  sortOrder: string = "teamName";
+  sortOrder: string = "learner";
   reverse: boolean = false;
   parseFloat = parseFloat;
   limitTo: number = 10;
   searchBox: boolean = false;
 
-  showDetails: string = "teams";
+  showDetails: string = "learner";
   compareUsers = [];
 
   //componentName: string;
 
   constructor(
     private dashboardService: LdDashboardService,
-    private filterData: CommonService,
-    private cookieService: CookieService
+    private filterData: CommonService
   ) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -48,8 +46,6 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-    console.log(this.cookieService.get('org-perform-details'));
-
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
@@ -64,14 +60,15 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
         .subscribe((response: any) => {
           this.responseTrainersDetails = response.data;
         });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
+    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner" || this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getLearnerData(this.limitTo)
         .subscribe((response: any) => {
           this.responseLeanersDetails = response.data;
         });
     }
+
   }
 
   comapreUsers(teamData) {
@@ -90,7 +87,10 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   closeSearchFn() {
     this.searchBox = false;
   }
-
+  changeData(name) {
+    this.filterData.learnerFilterBodyDetails["currentModule"] = name;
+    this.getDataFromService();
+  }
   ngOnChanges(changes: any) {
     if (changes.showDetails.currentValue) {
       this.getDataFromService();
@@ -98,6 +98,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.filterData.learnerFilterBodyDetails["currentModule"] == "learner";
     this.getDataFromService();
   }
 }

@@ -23,7 +23,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   filterbody = {};
   filtersData = {
-    routeTo: "learnerTrackFullView",
+    routeTo: "scoreDistributionFullView",
     filters: true,
     search: false,
     viewDetails: false,

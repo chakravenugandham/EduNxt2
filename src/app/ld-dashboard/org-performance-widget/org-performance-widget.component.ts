@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
-import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-org-performance-widget",
@@ -17,7 +16,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     search: true,
     viewDetails: true,
     filterList: ["zone"],
-    currentModule: this.componentName
+    currentModule: "learner"
   };
 
   searchFilterData = {
@@ -37,7 +36,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(private dashboardService: LdDashboardService, private filterData: CommonService, private cookieService: CookieService) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -60,8 +59,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
-    this.cookieService.set('org-perform-details', 'teams');
-    console.log(document.cookie);
 
     this.getDataFromService();
   }
@@ -70,8 +67,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
-    this.cookieService.set('org-perform-details', 'trainers');
-    console.log(document.cookie);
 
     this.getDataFromService();
   }
@@ -80,8 +75,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
-    this.cookieService.set('org-perform-details', 'learner');
-    console.log(document.cookie);
 
     this.getDataFromService();
   }
@@ -131,7 +124,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cookieService.set('org-perform-details', 'learner');
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 }

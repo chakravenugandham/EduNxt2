@@ -131,7 +131,5 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this._baseUrl = this._window.location.href;
     // // let base = this._baseUrl.split('/')[3];
     // // base = base.substring(0, base.length - 1);
-    console.log(this._baseUrl);
-
   }
 }

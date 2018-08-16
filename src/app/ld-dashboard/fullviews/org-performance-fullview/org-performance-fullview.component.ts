@@ -47,34 +47,21 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   //api calls for trainers ,teams and learner
   getDataFromService() {
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails[
-        "currentModule"
-      ];
-
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getTeamData(this.limitTo)
         .subscribe((response: any) => {
           this.responseTeamsDetails = response.data;
         });
-    } else if (
-      this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers"
-    ) {
-      this.showDetails = this.filterData.learnerFilterBodyDetails[
-        "currentModule"
-      ];
-
+    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getTrainersData(this.limitTo)
         .subscribe((response: any) => {
           this.responseTrainersDetails = response.data;
         });
-    } else if (
-      this.filterData.learnerFilterBodyDetails["currentModule"] == "learner"
-    ) {
-      this.showDetails = this.filterData.learnerFilterBodyDetails[
-        "currentModule"
-      ];
-
+    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getLearnerData(this.limitTo)
         .subscribe((response: any) => {

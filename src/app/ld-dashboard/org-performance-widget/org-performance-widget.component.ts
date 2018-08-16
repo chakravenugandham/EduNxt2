@@ -8,15 +8,15 @@ import { CommonService } from "../../common-services/common.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-  getTab: string = "learner";
+  componentName: string = "learner";
 
   filtersData = {
     routeTo: "orgPerformanceFullView",
     filters: false,
     search: true,
-    viewDetails: false,
+    viewDetails: true,
     filterList: ["zone"],
-    currentModule: this.getTab
+    currentModule: this.componentName
   };
 
   searchFilterData = {
@@ -36,7 +36,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(private dashboardService: LdDashboardService) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -55,22 +55,22 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   teamsFn() {
-    this.getTab = "teams";
-    this.filtersData.currentModule = "teams";
+    this.componentName = this.filtersData.currentModule = "teams";
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
     this.getDataFromService();
   }
   trainersFn() {
-    this.getTab = "trainers";
-    this.filtersData.currentModule = "trainers";
+    this.componentName = this.filtersData.currentModule = "trainers";
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
     this.getDataFromService();
   }
   learnersFn() {
-    this.getTab = "learner";
-    this.filtersData.currentModule = "learner";
+    this.componentName = this.filtersData.currentModule = "learner";
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
     this.getDataFromService();
@@ -79,7 +79,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    if (this.getTab == "teams") {
+    if (this.componentName == "teams") {
       this.dashboardService
         .getTeamData(this.limitTo)
         .subscribe((response: any) => {
@@ -87,7 +87,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
-    } else if (this.getTab == "trainers") {
+    } else if (this.componentName == "trainers") {
       this.dashboardService
         .getTrainersData(this.limitTo)
         .subscribe((response: any) => {
@@ -95,7 +95,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
-    } else if ((this.getTab = "learner")) {
+    } else if ((this.componentName = "learner")) {
       this.dashboardService
         .getLearnerData(this.limitTo)
         .subscribe((response: any) => {

@@ -9,13 +9,13 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active' :getTab =='teams'}" (click)="teamsFn()">Teams</a>
+        <a class="nav-link" [ngClass]="{'active' :componentName =='teams'}" (click)="teamsFn()">Teams</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active' :getTab =='trainers'}" (click)="trainersFn()">Trainers</a>
+        <a class="nav-link" [ngClass]="{'active' :componentName =='trainers'}" (click)="trainersFn()">Trainers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active' :getTab =='learner'}" (click)="learnersFn()">Learners</a>
+        <a class="nav-link" [ngClass]="{'active' :componentName =='learner'}" (click)="learnersFn()">Learners</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -67,9 +67,9 @@
   <div *ngIf="responseData.length > 0" class="org-performance">
     <!-- <div class="org-performance"> -->
 
-    <app-teams *ngIf="getTab == 'teams'" [teamsData]="responseData"></app-teams>
-    <app-trainers *ngIf="getTab == 'trainers'" [trainersData]="responseData"></app-trainers>
-    <app-learners *ngIf="getTab == 'learner'" [LearnersData]="responseData"></app-learners>
+    <app-teams *ngIf="componentName == 'teams'" [teamsData]="responseData"></app-teams>
+    <app-trainers *ngIf="componentName == 'trainers'" [trainersData]="responseData"></app-trainers>
+    <app-learners *ngIf="componentName == 'learner'" [LearnersData]="responseData"></app-learners>
 
   </div>
 

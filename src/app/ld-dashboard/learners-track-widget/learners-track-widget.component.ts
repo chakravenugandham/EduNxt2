@@ -33,10 +33,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(
-    private dashboardService: LdDashboardService,
-    private filterData: CommonService
-  ) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });

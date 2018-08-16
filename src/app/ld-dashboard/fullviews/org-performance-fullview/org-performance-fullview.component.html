@@ -82,12 +82,14 @@
             <td class="">{{teamData.completedProgram}}</td>
             <td class="">{{teamData.teamsize}}</td>
             <td>
-              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.completion > 75">
+              <!-- *ngIf="tableData.completion > 75" -->
+              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)">
                 <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
               </span>
-              <span class="negative-number cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.completion <= 75">
+              <span class="negative-number cursor-pointer" (click)="open(followUpContent)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
+              <!-- *ngIf="tableData.completion <= 75" -->
             </td>
           </tr>
         </tbody>
@@ -141,17 +143,19 @@
               </span>{{trainerData.avgRating}}
             </td>
             <td>
-              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.completion > 75">
+              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)">
                 <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
               </span>
-              <span class="negative-number cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.completion <= 75">
+              <span class="negative-number cursor-pointer" (click)="open(followUpContent)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
+              <!-- *ngIf="tableData.completion > 75" -->
+              <!-- *ngIf="tableData.completion <= 75" -->
             </td>
           </tr>
         </tbody>
       </table>
-      <table class="table table-borderless" *ngIf="showDetails == 'learners'">
+      <table class="table table-borderless" *ngIf="showDetails == 'learner'">
         <thead>
           <tr>
             <th scope="col">
@@ -188,7 +192,6 @@
               </span>
             </th>
             <th scope="col">Action</th>
-
           </tr>
         </thead>
         <tbody *ngFor="let learnerData of responseLeanersDetails">
@@ -207,12 +210,14 @@
             <td class="">{{learnerData.avgTestPerformance}}</td>
             <td class="">{{learnerData.examScore}}</td>
             <td>
-              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.completion > 75">
+              <!-- *ngIf="tableData.completion > 75" -->
+              <span class="action_icon positive-number cursor-pointer" (click)="open(congratsContent)">
                 <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
               </span>
-              <span class="negative-number cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.completion <= 75">
+              <span class="negative-number cursor-pointer" (click)="open(followUpContent)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
+              <!-- *ngIf="tableData.completion <= 75" -->
             </td>
           </tr>
         </tbody>

@@ -29,54 +29,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     });
   }
 
-  check_obj() {
-    let arrayOne = [{
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 59,
-      "name": "201801"
-    },
-    {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 1,
-      "name": "Default"
-    },
-    {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 67,
-      "name": "201804"
-    },
-    {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 75,
-      "name": "201806"
-    }];
-
-    let element1 = {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 59,
-      "name": "201801"
-    }
-
-
-
-    // console.log("object", _.find(arrayOne, element1));
-
-    let indexFoundAt = _.findIndex(arrayOne, element1);
-
-    console.log("object", indexFoundAt);
-
-  }
-
   exportAsXLSX() {
     // this.sub = this.route.params.subscribe(params => {
     //   console.log(params);

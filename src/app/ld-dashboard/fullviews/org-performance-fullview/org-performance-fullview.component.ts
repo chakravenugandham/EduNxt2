@@ -13,7 +13,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   responseLeanersDetails: any;
 
   checkBoxValue: boolean = false;
-  sortOrder: string = "teamName";
+  sortOrder: string = "learner";
   reverse: boolean = false;
   parseFloat = parseFloat;
   limitTo: number = 10;
@@ -65,14 +65,15 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
         .subscribe((response: any) => {
           this.responseTrainersDetails = response.data;
         });
-    } else if (this.filterData.orgPerformanceDetails["currentModule"] == "learner") {
-      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
+    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner" || this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getLearnerData(this.limitTo)
         .subscribe((response: any) => {
           this.responseLeanersDetails = response.data;
         });
     }
+
   }
 
   comapreUsers(teamData) {
@@ -91,7 +92,10 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   closeSearchFn() {
     this.searchBox = false;
   }
-
+  changeData(name) {
+    this.filterData.learnerFilterBodyDetails["currentModule"] = name;
+    this.getDataFromService();
+  }
   ngOnChanges(changes: any) {
     if (changes.showDetails.currentValue) {
       this.getDataFromService();
@@ -99,7 +103,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.filterData.learnerFilterBodyDetails["currentModule"] == "learner";
     this.getDataFromService();
-    this.getFilterData();
+    // this.getFilterData();
   }
 }

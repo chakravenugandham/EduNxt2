@@ -16,7 +16,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     search: true,
     viewDetails: true,
     filterList: ["zone"],
-    currentModule: this.componentName
+    currentModule: "learner"
   };
 
   searchFilterData = {
@@ -123,6 +123,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.getDataFromService();
   }
 }

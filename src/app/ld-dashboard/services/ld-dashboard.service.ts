@@ -60,14 +60,14 @@ export class LdDashboardService implements OnInit {
   UserId = "57142";
 
   headers = new HttpHeaders()
-    .set("user-id", this.UserId)
+    .set("user-id", "57142")
     .set("user-type", "LND")
     .set("tenant-name", "MAIT");
 
   selectTenantName(tenantName?: any) {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
-        .set("user-id", this.UserId)
+        .set("user-id", "57142")
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
     }
@@ -108,14 +108,37 @@ export class LdDashboardService implements OnInit {
   courseId = 0;
   programId = 0;
 
+  programObj = {
+    programId: 0,
+    courseId: 0,
+    batchId: 0,
+    sectionId: 0
+  }
+  program_course: string = "&courseId=" + this.programObj.courseId + "&programId=" + this.programObj.programId;
+
   courseAndProgram(config?: any) {
-    let courseId, programId;
-    for (let key in config) {
-      courseId = config.courseId;
-      programId = config.programId;
-    }
-    this.courseId = courseId;
-    this.programId = programId;
+    console.log("config", config);
+
+    // let courseId, programId;
+    // for (let key in config) {
+    //   courseId = config.courseId;
+    //   programId = config.programId;
+    // }
+    // this.courseId = courseId;
+    // this.programId = programId;
+
+    this.programObj.programId = config.programId;
+    this.programObj.courseId = config.courseId;
+    this.programObj.batchId = config.batchId;
+    this.programObj.sectionId = config.sectionId;
+
+    this.courseId = config.courseId;
+    this.programId = config.programId;
+
+    console.log("this.programObj", this.programObj);
+
+    this.program_course = "&courseId=" + this.programObj.courseId + "&programId=" + this.programObj.programId
+
 
     this.refreshAPI$.next();
   }
@@ -129,8 +152,22 @@ export class LdDashboardService implements OnInit {
   // setDate = "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date;
 
   //courses dropdown
-  getCoursesData() {
-    let url = this.baseURL + APIURL.COURSES_DROPDOWN;
+  getProgramData() {
+    let url = this.baseURL + APIURL.PROGRAM_DROPDOWN;
+    return this.http.get(url, { headers: this.headers });
+  }
+  getCoursesData(programId) {
+    let url = this.baseURL + APIURL.COURSES_DROPDOWN + "?programId=" + programId;
+    return this.http.get(url, { headers: this.headers });
+  }
+
+  getBatchesData(programId, courseId) {
+    let url = this.baseURL + APIURL.BATCHES_DROPDOWN + "?programId=" + programId + "&courseId" + courseId;
+    return this.http.get(url, { headers: this.headers });
+  }
+
+  getSectionsData(programId, courseId, batchId) {
+    let url = this.baseURL + APIURL.SECTIONS_DROPDOWN + "?programId=" + programId + "&courseId" + courseId + "&batch=" + batchId + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date;
     return this.http.get(url, { headers: this.headers });
   }
 
@@ -139,7 +176,7 @@ export class LdDashboardService implements OnInit {
       this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
-    let url = this.baseURL + APIURL.ACTIVE_USERS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    let url = this.baseURL + APIURL.ACTIVE_USERS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 

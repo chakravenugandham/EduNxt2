@@ -9,6 +9,9 @@
     }
   }
   .selectCourse {
+    .labelName{
+      margin-right: 6px;
+    }
     select {
       color: #5584ff;
       border: 1px solid #5584ff;
@@ -37,6 +40,12 @@
       width: 16px;
       margin-right: 5px;
     }
+  }
+  .m-b-10{
+    margin-bottom: 10px;
+    padding: 4px;
+    // box-shadow: 1px 1px 2px 0px #2196F3;
+
   }
 }
 

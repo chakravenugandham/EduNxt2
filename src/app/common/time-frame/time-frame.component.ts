@@ -13,67 +13,65 @@ import { CommonService } from "../../common-services/common.service";
 export class TimeFrameComponent implements OnInit, OnChanges {
   @Output() filterEvent = new EventEmitter<any>();
   coursesData = [];
+  programsData = [];
+  batchesData = [];
+  sectionsData = [];
   today: Date = new Date();
   selectCourse: any = "All Courses";
-  downloadLink: string = 'vdsvdsds';
+  selectProgram = "All Programs";
+  selectBatch = "All Batches";
+  selectSection = "All Sections";
+  downloadLink: string;
   _baseUrl;
   csvResponse = [];
+  programObj = {
+    programId: 0,
+    courseId: 0,
+    batchId: 0,
+    sectionId: 0
+  }
   constructor(private dashboardService: LdDashboardService, private _window: Window) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getPrograms();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getPrograms();
     });
   }
 
-  check_obj() {
-    let arrayOne = [{
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 59,
-      "name": "201801"
-    },
-    {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 1,
-      "name": "Default"
-    },
-    {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 67,
-      "name": "201804"
-    },
-    {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 75,
-      "name": "201806"
-    }];
+  getPrograms() {
+    this.dashboardService.getProgramData().subscribe((res: any) => {
+      this.programsData = res.data;
+    });
+  }
 
-    let element1 = {
-      "noOfAttempts": 0,
-      "Progress": 0,
-      "scoreAvg": 0,
-      "id": 59,
-      "name": "201801"
-    }
+  getCourses(programId) {
+    this.dashboardService.getCoursesData(programId).subscribe((res: any) => {
+      this.coursesData = res.data;
+    });
+  }
 
+  getBatches(programId, courseId) {
+    this.dashboardService.getBatchesData(programId, courseId).subscribe((res: any) => {
+      this.batchesData = res.data;
+    });
+  }
 
+  getSections(programId, courseId, batchId) {
+    this.dashboardService.getSectionsData(programId, courseId, batchId).subscribe((res: any) => {
+      this.sectionsData = res.data;
+    });
+  }
 
-    // console.log("object", _.find(arrayOne, element1));
-
-    let indexFoundAt = _.findIndex(arrayOne, element1);
-
-    console.log("object", indexFoundAt);
-
+  changeProgram(programId) {
+    this.programObj.programId = programId == "All Programs" ? 0 : programId;
+    this.programObj.courseId = this.programObj.batchId = this.programObj.sectionId = 0;
+    this.selectCourse = "All Courses";
+    this.selectBatch = "All Batches";
+    this.selectSection = "All Sections";
+    this.coursesData = this.batchesData = this.sectionsData = [];
+    this.getCourses(this.programObj.programId);
   }
 
   csvFormatFn() {
@@ -82,38 +80,35 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     if (base == "contentConsumptionFullView") {
       this.downloadLink = this.dashboardService.getContentDetailsCsv();
     }
-    console.log(this.downloadLink);
+  }
+  changeCourse(courseId) {
+    this.programObj.courseId = courseId == "All Courses" ? 0 : courseId;
+    this.programObj.batchId = this.programObj.sectionId = 0;
+    this.selectBatch = "All Batches";
+    this.selectSection = "All Sections";
+    this.batchesData = this.sectionsData = [];
+    this.getBatches(this.programObj.programId, this.programObj.courseId);
   }
 
-  getDataFromService() {
-    this.dashboardService.getCoursesData().subscribe((res: any) => {
-      this.coursesData = res.data;
-    });
+  changeBatch(batchId) {
+    this.programObj.batchId = batchId == "All Batches" ? 0 : batchId;
+    this.programObj.sectionId = 0;
+    this.selectSection = "All Sections";
+    this.sectionsData = [];
+    this.getSections(this.programObj.programId, this.programObj.courseId, this.programObj.batchId);
+  }
+
+  changeSection(sectionId) {
+    this.programObj.sectionId = sectionId == "All Sections" ? 0 : sectionId;
+  }
+  applyPrograms() {
+    this.dashboardService.courseAndProgram(this.programObj);
   }
 
   onChangeCourse(courseId) {
     this.filterEvent.emit(courseId);
   }
 
-  changeCourse(selectCourse) {
-    let courseIdSelected;
-    let programIdSelected;
-    if (selectCourse == "All Courses") {
-      courseIdSelected = 0;
-      programIdSelected = 0;
-    } else {
-      for (let i in this.coursesData) {
-        if (selectCourse == this.coursesData[i].courseName) {
-          courseIdSelected = this.coursesData[i].courseId;
-          programIdSelected = this.coursesData[i].programId;
-        }
-      }
-    }
-    this.dashboardService.courseAndProgram({
-      courseId: courseIdSelected,
-      programId: programIdSelected
-    });
-  }
 
   ngOnChanges(changes: any) {
     if (changes.downloadLink.currentValue) {
@@ -121,7 +116,8 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    //this.getDataFromService();
     this.csvFormatFn();
+    this.getPrograms();
   }
 }

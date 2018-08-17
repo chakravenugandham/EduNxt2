@@ -1,58 +1,16 @@
 <div class="time-frame">
-  <div class="row">
-    <div class="col-md-7 col-12">
-      <ul class="list-inline">
-        <li class="list-inline-item select-time-frame">
-          <b> Select a Time Frame </b>
-        </li>
-        <li class="list-inline-item">
-          <app-mp-datepicker-range style="font-size: 12px;"></app-mp-datepicker-range>
-        </li>
-
-        <!-- <li class="list-inline-item select-time-frame">
-          <b>Program</b>
-        </li>
-        <li class="list-inline-item selectCourse">
-          <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-            <option style="color: #5584ff" value="All Courses">All Courses</option>
-            <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseName}}">{{courses.courseName}}</option>
-          </select>
-        </li> -->
-        <li class="list-inline-item select-time-frame">
-          <b>Select a Course</b>
-        </li>
-        <li class="list-inline-item selectCourse">
-          <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-            <option style="color: #5584ff" value="All Courses">All Courses</option>
-            <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseName}}">{{courses.courseName}}</option>
-          </select>
-        </li>
-        <!-- <li class="list-inline-item select-time-frame">
-          <b>Batch</b>
-        </li>
-        <li class="list-inline-item selectCourse">
-          <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-            <option style="color: #5584ff" value="All Courses">All Courses</option>
-            <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseName}}">{{courses.courseName}}</option>
-          </select>
-        </li>
-        <li class="list-inline-item select-time-frame">
-          <b> Section </b>
-        </li>
-        <li class="list-inline-item selectCourse">
-          <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-            <option style="color: #5584ff" value="All Courses">All Courses</option>
-            <option class="course-item" *ngFor="let courses of coursesData" value="{{courses.courseName}}">{{courses.courseName}}</option>
-          </select>
-        </li>
-        <span>
-          <button class=" btn-primary">Apply</button>
-        </span> -->
-      </ul>
+  <div class="row m-b-10 select-time-frame">
+    <div class="col-md-6 col-6">
+      <li class="list-inline-item select-time-frame">
+        <b> Select a Time Frame </b>
+      </li>
+      <li class="list-inline-item">
+        <app-mp-datepicker-range style="font-size: 12px;"></app-mp-datepicker-range>
+      </li>
     </div>
-    <div class="col-md-5 col-12 m-t-7">
+    <div class="col-md-6 col-6 m-t-7">
       <ul class="list-inline report-menu">
-        <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Save this view" (click)="check_obj()">
+        <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Save this view">
           <span>
             <img src="../../assets/IconsSVGs/SAve.svg">
           </span>
@@ -78,5 +36,52 @@
         </li>
       </ul>
     </div>
+  </div>
+
+  <div>
+    <ul class="list-inline">
+      <li class="list-inline-item selectCourse">
+        <span class="labelName">
+          <b>Program</b>
+        </span>
+        <select class="custom-select" [(ngModel)]="selectProgram" (change)="changeProgram(selectProgram)" id="selectProgram">
+          <option style="color: #5584ff" value="All Programs">All Programs</option>
+          <option class="course-item" *ngFor="let program of programsData" value="{{program.id}}">{{program.name}}</option>
+        </select>
+      </li>
+
+      <li class="list-inline-item selectCourse">
+        <span class="labelName">
+          <b>Course</b>
+        </span>
+        <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
+          <option style="color: #5584ff" value="All Courses">All Courses</option>
+          <option class="course-item" *ngFor="let course of coursesData" value="{{course.id}}">{{course.name}}</option>
+        </select>
+      </li>
+
+      <li class="list-inline-item selectCourse">
+        <span class="labelName">
+          <b>Batch</b>
+        </span>
+        <select class="custom-select" [(ngModel)]="selectBatch" (change)="changeBatch(selectBatch)" id="selectBatch">
+          <option style="color: #5584ff" value="All Batches">All Batches</option>
+          <option class="course-item" *ngFor="let batch of batchesData" value="{{batch.id}}">{{batch.name}}</option>
+        </select>
+      </li>
+
+      <li class="list-inline-item selectCourse">
+        <span class="labelName">
+          <b>Section</b>
+        </span>
+        <select class="custom-select" [(ngModel)]="selectSection" (change)="changeSection(selectSection)" id="selectSection">
+          <option style="color: #5584ff" value="All Sections">All Sections</option>
+          <option class="course-item" *ngFor="let section of sectionsData" value="{{section.id}}">{{section.name}}</option>
+        </select>
+      </li>
+      <span>
+        <button class=" btn-primary" (click)="applyPrograms()">Apply</button>
+      </span>
+    </ul>
   </div>
 </div>

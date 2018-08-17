@@ -64,13 +64,17 @@
           </span>
           <span class="font-color">Email this report</span>
         </li>
-        <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Download this report" (click)="exportAsXLSX()">
+        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block">
           <span>
             <img src="../../assets/IconsSVGs/Download.svg">
           </span>
-          <span class="font-color">
-            <a [attr.href]="downloadLink">Download this report</a>
+          <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
+            Download this report
           </span>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item cursor-pointer">Download PDF</button>
+            <a [attr.href]="downloadLink" class="dropdown-item cursor-pointer">Download CSV</a>
+          </div>
         </li>
       </ul>
     </div>

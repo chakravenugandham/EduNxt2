@@ -430,8 +430,8 @@ export class LdDashboardService implements OnInit {
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
-    return this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&displayFor=" + displayfor + "?type=" + componentName + "&courseId=" + this.courseId + "&programId=" + this.programId;
-    //return this.http.post(url, filterbody, { headers: this.headers });
+    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&displayFor=" + displayfor + "&type=" + componentName + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    return this.http.get(url);
   }
 
   getLearnerPerformanceDetailsCsv() {
@@ -444,13 +444,13 @@ export class LdDashboardService implements OnInit {
       this.programId;
   }
 
-  getScoresDetailsCsv(dropdownValue, filterbody) {
+  getScoresDetailsCsv(dropdownValue) {
     if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
       this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
-    return this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "?type=" + dropdownValue + "&courseId=" + this.courseId + "&programId=" + this.programId;
+    return this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&type=" + dropdownValue + "&courseId=" + this.courseId + "&programId=" + this.programId;
   }
 
   getContentDetailsCsv() {
@@ -459,7 +459,11 @@ export class LdDashboardService implements OnInit {
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
     }
 
+    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&user-id=" + this.UserId + "&user-type=" + "LND" + "&tenant-name=" + "MAIT"
+    //return this.http.get(url);
+    console.log(this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&user-id=" + this.UserId + "&user-type=" + "LND" + "&tenant-name=" + "MAIT");
     return this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date + "&courseId=" + this.courseId + "&programId=" + this.programId + "&user-id=" + this.UserId + "&user-type=" + "LND" + "&tenant-name=" + "MAIT";
+
   }
 
   //org-interest full details

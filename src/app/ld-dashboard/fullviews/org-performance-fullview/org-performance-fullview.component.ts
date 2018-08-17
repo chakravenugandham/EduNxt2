@@ -51,15 +51,15 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-    if ((this.filterData.orgPerformanceDetails["currentModule"] == "teams") || (this.showDetails == 'teams')) {
-      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
+    if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getTeamData(this.limitTo)
         .subscribe((response: any) => {
           this.responseTeamsDetails = response.data;
         });
-    } else if (this.filterData.orgPerformanceDetails["currentModule"] == "trainers") {
-      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
+    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
         .getTrainersData(this.limitTo)
         .subscribe((response: any) => {

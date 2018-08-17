@@ -15,7 +15,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   coursesData = [];
   today: Date = new Date();
   selectCourse: any = "All Courses";
-  downloadLink: string;
+  downloadLink: string = 'vdsvdsds';
   _baseUrl;
   csvResponse = [];
   constructor(private dashboardService: LdDashboardService, private _window: Window) {
@@ -76,18 +76,13 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   }
 
-  getRouteData(urlname) {
+  csvFormatFn() {
     this._baseUrl = this._window.location.href;
     let base = this._baseUrl.split('/')[4];
-    //base = base.substring(1, base.length);
-    console.log(this._baseUrl);
-    console.log(base);
-
-    // if(base == 'contentConsumptionFullView'){
-    //   this.dashboardService.getContentDetailsCsv().subscribe((res:any)=>{
-
-    //   })
-    // }
+    if (base == "contentConsumptionFullView") {
+      this.downloadLink = this.dashboardService.getContentDetailsCsv();
+    }
+    console.log(this.downloadLink);
   }
 
   getDataFromService() {
@@ -121,12 +116,12 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: any) {
-    if (changes._baseUrl.currentValue) {
-      this._baseUrl = this._window.location.href;
+    if (changes.downloadLink.currentValue) {
     }
   }
 
   ngOnInit() {
     this.getDataFromService();
+    this.csvFormatFn();
   }
 }

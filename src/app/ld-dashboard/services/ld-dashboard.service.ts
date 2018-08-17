@@ -15,7 +15,7 @@ export class LdDashboardService implements OnInit {
     start_date: "",
     end_date: ""
   };
-  // user-id: string;
+
   LnDUserId: string;
 
   constructor(private http: HttpClient, private dateService: DateserviceService, private cookieService: CookieService) {
@@ -24,9 +24,12 @@ export class LdDashboardService implements OnInit {
 
   constructDate() {
     let today = new Date();
+
     this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
     let last_date = new Date(today.setDate(today.getDate() - 30));
+
     this.dateFilterObj.start_date = last_date.getMonth() + 1 + "/" + last_date.getDate() + "/" + last_date.getFullYear();
+
     return this.dateFilterObj;
   }
 
@@ -114,19 +117,10 @@ export class LdDashboardService implements OnInit {
     batchId: 0,
     sectionId: 0
   }
+
   program_course: string = "&courseId=" + this.programObj.courseId + "&programId=" + this.programObj.programId;
 
   courseAndProgram(config?: any) {
-    console.log("config", config);
-
-    // let courseId, programId;
-    // for (let key in config) {
-    //   courseId = config.courseId;
-    //   programId = config.programId;
-    // }
-    // this.courseId = courseId;
-    // this.programId = programId;
-
     this.programObj.programId = config.programId;
     this.programObj.courseId = config.courseId;
     this.programObj.batchId = config.batchId;
@@ -135,10 +129,7 @@ export class LdDashboardService implements OnInit {
     this.courseId = config.courseId;
     this.programId = config.programId;
 
-    console.log("this.programObj", this.programObj);
-
     this.program_course = "&courseId=" + this.programObj.courseId + "&programId=" + this.programObj.programId
-
 
     this.refreshAPI$.next();
   }

@@ -7,11 +7,6 @@ export class DateserviceService {
 
   dateObj = {};
 
-  dateFilterObj = {
-    start_date: "",
-    end_date: ""
-  };
-
   constructor() {
   }
 

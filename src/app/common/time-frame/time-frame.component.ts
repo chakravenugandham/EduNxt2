@@ -1,9 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { _ } from "underscore";
-import { CommonService } from "../../common-services/common.service";
 
 @Component({
   selector: "app-time-frame",

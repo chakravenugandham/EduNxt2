@@ -52,6 +52,7 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
       this.daterange.end._d.getDate() +
       "/" +
       this.daterange.end._d.getFullYear();
+
     this.getDateService.dateFilterBodyDetails = this.dateFilterObj;
     this.dashboardService.dateChange$.next(this.dateFilterObj);
   }

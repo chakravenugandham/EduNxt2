@@ -1,7 +1,6 @@
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
-import { CookieService } from "ngx-cookie-service";
 
 @Component({
   selector: "app-org-performance-fullview",
@@ -20,7 +19,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   limitTo: number = 10;
   searchBox: boolean = false;
 
-  showDetails: string = "teams";
+  showDetails: string = "learner";
   componentName: string;
   compareUsers = [];
 
@@ -28,8 +27,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   constructor(
     private dashboardService: LdDashboardService,
-    private filterData: CommonService,
-    private cookieService: CookieService
+    private filterData: CommonService
   ) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -48,34 +46,27 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
 
   getFilterData() {
-    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-    console.log(this.componentName);
-
+    this.componentName = this.filterData.orgPerformanceDetails["currentModule"];
   }
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-    console.log(this.cookieService.get('org-perform-details'));
-
-    if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
-      console.log(this.showDetails);
+    if ((this.filterData.orgPerformanceDetails["currentModule"] == "teams") || (this.showDetails == 'teams')) {
+      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
       this.dashboardService
         .getTeamData(this.limitTo)
         .subscribe((response: any) => {
           this.responseTeamsDetails = response.data;
         });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
-      console.log(this.showDetails);
+    } else if (this.filterData.orgPerformanceDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
       this.dashboardService
         .getTrainersData(this.limitTo)
         .subscribe((response: any) => {
           this.responseTrainersDetails = response.data;
         });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
-      console.log(this.showDetails);
+    } else if (this.filterData.orgPerformanceDetails["currentModule"] == "learner") {
+      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
       this.dashboardService
         .getLearnerData(this.limitTo)
         .subscribe((response: any) => {

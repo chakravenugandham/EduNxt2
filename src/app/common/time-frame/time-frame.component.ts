@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-import { ExcelService } from '../../common-services/excel.service'
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { _ } from "underscore";
@@ -77,16 +76,18 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   }
 
-  exportAsXLSX() {
-    // this.sub = this.route.params.subscribe(params => {
-    //   console.log(params);
-    // });
+  getRouteData(urlname) {
+    this._baseUrl = this._window.location.href;
+    let base = this._baseUrl.split('/')[4];
+    //base = base.substring(1, base.length);
+    console.log(this._baseUrl);
+    console.log(base);
 
-    // this.sub = this.route.queryParams.subscribe(params => {
-    //   //this.loginName = params['username']; 
-    //   console.log(params);
-    // });
-    //setTimeout(() => { this.downloadLink = "sdcvbjytrd" }, 2000);
+    // if(base == 'contentConsumptionFullView'){
+    //   this.dashboardService.getContentDetailsCsv().subscribe((res:any)=>{
+
+    //   })
+    // }
   }
 
   getDataFromService() {
@@ -121,17 +122,11 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes._baseUrl.currentValue) {
-
+      this._baseUrl = this._window.location.href;
     }
   }
 
   ngOnInit() {
     this.getDataFromService();
-    //setTimeout(() => { this.downloadLink = "sdcvbjytrd" }, 2000);
-    this._baseUrl = this._window.location.href;
-    // // let base = this._baseUrl.split('/')[3];
-    // // base = base.substring(0, base.length - 1);
-    console.log(this._baseUrl);
-
   }
 }

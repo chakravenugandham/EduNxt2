@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-import { ExcelService } from '../../common-services/excel.service'
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { _ } from "underscore";
@@ -34,11 +33,8 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     //   console.log(params);
     // });
 
-    // this.sub = this.route.queryParams.subscribe(params => {
-    //   //this.loginName = params['username']; 
-    //   console.log(params);
-    // });
-    //setTimeout(() => { this.downloadLink = "sdcvbjytrd" }, 2000);
+    //   })
+    // }
   }
 
   getDataFromService() {
@@ -73,15 +69,11 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes._baseUrl.currentValue) {
-
+      this._baseUrl = this._window.location.href;
     }
   }
 
   ngOnInit() {
     this.getDataFromService();
-    //setTimeout(() => { this.downloadLink = "sdcvbjytrd" }, 2000);
-    this._baseUrl = this._window.location.href;
-    // // let base = this._baseUrl.split('/')[3];
-    // // base = base.substring(0, base.length - 1);
   }
 }

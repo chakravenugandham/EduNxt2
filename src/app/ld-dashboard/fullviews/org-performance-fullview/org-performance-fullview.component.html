@@ -11,6 +11,7 @@
         <span>
           <b>Display Leaderboard for </b>
         </span>
+        <!-- <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails" (change)='getDataFromService()'> -->
         <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
           <option [value]="'teams'">Teams</option>
           <option [value]="'trainers'">Trainers</option>

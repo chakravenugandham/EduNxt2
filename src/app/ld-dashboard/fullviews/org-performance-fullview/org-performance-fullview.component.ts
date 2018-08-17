@@ -20,6 +20,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   searchBox: boolean = false;
 
   showDetails: string = "learner";
+  componentName: string;
   compareUsers = [];
 
   //componentName: string;
@@ -44,24 +45,21 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     });
   }
 
-  // getFilterData() {
-  //   this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-
-  // }
+  getFilterData() {
+    this.componentName = this.filterData.orgPerformanceDetails["currentModule"];
+  }
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-    if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
-      console.log(this.showDetails);
+    if ((this.filterData.orgPerformanceDetails["currentModule"] == "teams") || (this.showDetails == 'teams')) {
+      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
       this.dashboardService
         .getTeamData(this.limitTo)
         .subscribe((response: any) => {
           this.responseTeamsDetails = response.data;
         });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
-      console.log(this.showDetails);
+    } else if (this.filterData.orgPerformanceDetails["currentModule"] == "trainers") {
+      this.showDetails = this.filterData.orgPerformanceDetails["currentModule"];
       this.dashboardService
         .getTrainersData(this.limitTo)
         .subscribe((response: any) => {

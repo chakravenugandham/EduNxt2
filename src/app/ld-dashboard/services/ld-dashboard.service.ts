@@ -60,7 +60,6 @@ export class LdDashboardService implements OnInit {
   UserId = "57142";
 
   headers = new HttpHeaders()
-    // .set("user-id", "57142")
     .set("user-id", this.UserId)
     .set("user-type", "LND")
     .set("tenant-name", "MAIT");
@@ -68,7 +67,6 @@ export class LdDashboardService implements OnInit {
   selectTenantName(tenantName?: any) {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
-        // .set("user-id", "57142")
         .set("user-id", this.UserId)
         .set("user-type", "LND")
         .set("tenant-name", tenantName);
@@ -426,7 +424,7 @@ export class LdDashboardService implements OnInit {
   //csv converted apis
 
   //learner-track full details
-  getLearnerTrackDetailsCsv(componentName, displayfor, filterbody) {
+  getLearnerTrackDetailsCsv(componentName, displayfor) {
     if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
       this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];
@@ -436,7 +434,7 @@ export class LdDashboardService implements OnInit {
     //return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  getLearnerPerformanceDetailsCsv(filterbody) {
+  getLearnerPerformanceDetailsCsv() {
     if ((this.dateService.dateFilterBodyDetails["start_date"]) && (this.dateService.dateFilterBodyDetails["end_date"])) {
       this.dateFilterObj.start_date = this.dateService.dateFilterBodyDetails["start_date"];
       this.dateFilterObj.end_date = this.dateService.dateFilterBodyDetails["end_date"];

@@ -97,6 +97,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   changeSection(sectionId) {
     this.programObj.sectionId = sectionId == "All Sections" ? 0 : sectionId;
   }
+
   applyPrograms() {
     this.dashboardService.courseAndProgram(this.programObj);
   }

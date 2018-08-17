@@ -30,11 +30,13 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     start: this.dateTest.start_date,
     end: this.dateTest.end_date,
     label: ""
+    // maxDate: this.dateTest.end_date
   };
 
   dateFilterObj = {};
 
   public selectedDate(value: any) {
+
     this.daterange.start = value.start;
     this.daterange.end = value.end;
     this.dateFilterObj["start_date"] =
@@ -54,10 +56,13 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
       this.daterange.end._d.getFullYear();
 
     this.getDateService.dateFilterBodyDetails = this.dateFilterObj;
+    this.dashboardService.changeDate(this.dateFilterObj);
     this.dashboardService.dateChange$.next(this.dateFilterObj);
   }
 
   ngAfterViewInit() {
-    this.picker.datePicker.setStartDate(this.date);
+    this.picker.datePicker.setStartDate(new Date(this.daterange.start));
+    this.picker.datePicker.setEndDate(new Date(this.daterange.end));
+    // this.picker.datePicker.setMaximumDate(new Date(this.daterange.end));
   }
 }

@@ -26,7 +26,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     batchId: 0,
     sectionId: 0
   }
-  constructor(private dashboardService: LdDashboardService, private _window: Window) {
+  constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getPrograms();
     });
@@ -70,13 +70,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.getCourses(this.programObj.programId);
   }
 
-  csvFormatFn() {
-    this._baseUrl = this._window.location.href;
-    let base = this._baseUrl.split('/')[4];
-    if (base == "contentConsumptionFullView") {
-      this.downloadLink = this.dashboardService.getContentDetailsCsv();
-    }
-  }
   changeCourse(courseId) {
     this.programObj.courseId = courseId == "All Courses" ? 0 : courseId;
     this.programObj.batchId = this.programObj.sectionId = 0;
@@ -104,6 +97,15 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   onChangeCourse(courseId) {
     this.filterEvent.emit(courseId);
+  }
+
+  csvFormatFn() {
+    // this._baseUrl = this._window.location.href;
+    this._baseUrl = window.location.href;
+    let base = this._baseUrl.split('/')[4];
+    if (base == "contentConsumptionFullView") {
+      this.downloadLink = this.dashboardService.getContentDetailsCsv();
+    }
   }
 
 

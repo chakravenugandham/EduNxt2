@@ -44,9 +44,6 @@ export class LdDashboardService implements OnInit {
 
     this.setDateObj = "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date;
 
-    console.log("this.dateFilterObj", this.dateFilterObj);
-
-
     return this.dateFilterObj;
   }
 
@@ -256,20 +253,20 @@ export class LdDashboardService implements OnInit {
   }
 
   //org-performance trainers data
-  getTeamData(limitTo) {
-    let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + this.setDateObj + this.program_course + "&limit=" + limitTo;
+  getTeamData(pagination) {
+    let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + this.setDateObj + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance teams data
-  getTrainersData(limitTo) {
-    let url = this.baseURL + APIURL.TRAINER_LEADERBOARD + this.setDateObj + this.program_course + "&limit=" + limitTo;
+  getTrainersData(pagination) {
+    let url = this.baseURL + APIURL.TRAINER_LEADERBOARD + this.setDateObj + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance leaners data
-  getLearnerData(limitTo) {
-    let url = this.baseURL + APIURL.LEARNER_LEADERBOARD + this.setDateObj + this.program_course + "&limit=" + limitTo;
+  getLearnerData(pagination) {
+    let url = this.baseURL + APIURL.LEARNER_LEADERBOARD + this.setDateObj + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 

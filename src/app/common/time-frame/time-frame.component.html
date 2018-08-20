@@ -38,7 +38,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="course-selection">
     <ul class="list-inline">
       <li class="list-inline-item selectCourse">
         <span class="labelName">
@@ -79,9 +79,9 @@
           <option class="course-item" *ngFor="let section of sectionsData" value="{{section.id}}">{{section.name}}</option>
         </select>
       </li>
-      <span>
+      <li class="list-inline-item selectCourse">
         <button class=" btn-primary" (click)="applyPrograms()">Apply</button>
-      </span>
+      </li>
     </ul>
   </div>
 </div>

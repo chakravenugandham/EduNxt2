@@ -27,7 +27,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   responseData = [];
 
   actualResponseData = [];
-  limitTo: number = 5;
+  // limitTo: number = 5;
 
   filterbody = {};
 
@@ -35,6 +35,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
+
+  pagination = {
+    limitTo: 5
+  };
 
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -83,7 +87,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.responseData = [];
     if (this.componentName == "teams") {
       this.dashboardService
-        .getTeamData(this.limitTo)
+        .getTeamData(this.pagination)
         .subscribe((response: any) => {
           this.responseData = this.actualResponseData = response.data;
           this.spinner_loader = false;
@@ -91,7 +95,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
         });
     } else if (this.componentName == "trainers") {
       this.dashboardService
-        .getTrainersData(this.limitTo)
+        .getTrainersData(this.pagination)
         .subscribe((response: any) => {
           this.responseData = this.actualResponseData = response.data;
           this.spinner_loader = false;
@@ -99,7 +103,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
         });
     } else if ((this.componentName = "learner")) {
       this.dashboardService
-        .getLearnerData(this.limitTo)
+        .getLearnerData(this.pagination)
         .subscribe((response: any) => {
           this.responseData = this.actualResponseData = response.data;
           this.spinner_loader = false;

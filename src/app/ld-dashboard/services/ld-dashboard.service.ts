@@ -344,13 +344,7 @@ export class LdDashboardService implements OnInit {
 
   //learner-track full details
   getLearnerTrackDetailsCsv(componentName, displayfor) {
-    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "&displayFor=" + displayfor + "&type=" + componentName + this.program_course;
-    return this.http.get(url);
-  }
-
-  getLearnerPerformanceDetailsCsv() {
-    return this.baseURL + APIURL.LEARNER_PERFORMANCE_PROGRESS_DETAILS + this.setDateObj + "&courseId=" + this.courseId + "&programId=" +
-      this.programId;
+    return this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "&displayFor=" + displayfor + "&type=" + componentName + this.program_course;
   }
 
   getScoresDetailsCsv(dropdownValue) {
@@ -358,29 +352,28 @@ export class LdDashboardService implements OnInit {
   }
 
   getContentDetailsCsv() {
-
     return this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user-id=" + this.UserId + "&user-type=" + "LND" + "&tenant-name=" + "MAIT";
 
   }
 
   //org-interest full details
   getOrgInterestDetailsDataCsv() {
-    return this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "/csv" + this.setDateObj + this.program_course;
   }
 
   //org-performance trainers data
   getTeamDataCsv() {
-    return this.baseURL + APIURL.TEAMS_LEADERBOARD + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course;
   }
 
   //org-performance teams data
   getTrainersDataCsv() {
-    return this.baseURL + APIURL.TRAINER_LEADERBOARD + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.TRAINER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course;
   }
 
   //org-performance leaners data
   getLearnerDataCsv() {
-    return this.baseURL + APIURL.LEARNER_LEADERBOARD + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.LEARNER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course;
   }
 
   ngOnInit() { }

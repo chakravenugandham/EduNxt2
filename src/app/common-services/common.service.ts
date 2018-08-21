@@ -9,6 +9,7 @@ export class CommonService {
   constructor() { }
 
   set learnerFilterBodyDetails(data) {
+    console.log(data);
     this.filterbodyDetails = data;
   }
 

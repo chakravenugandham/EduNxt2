@@ -5,7 +5,7 @@
         <b> Select a Time Frame </b>
       </li>
       <li class="list-inline-item">
-        <app-mp-datepicker-range style="font-size: 12px;"></app-mp-datepicker-range>
+        <app-mp-datepicker-range class="calender-font"></app-mp-datepicker-range>
       </li>
       <li class="list-inline-item selectCourse">
         <span class="labelName">
@@ -54,7 +54,7 @@
           <b>Program</b>
         </span>
         <select class="custom-select" [(ngModel)]="selectProgram" (change)="changeProgram(selectProgram)" id="selectProgram">
-          <option style="color: #5584ff" value="All Programs">All Programs</option>
+          <option class="options-text-color" value="All Programs">All Programs</option>
           <option class="course-item" *ngFor="let program of programsData" value="{{program.id}}">{{program.name}}</option>
         </select>
       </li>
@@ -64,7 +64,7 @@
           <b>Course</b>
         </span>
         <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-          <option style="color: #5584ff" value="All Courses">All Courses</option>
+          <option class="options-text-color" value="All Courses">All Courses</option>
           <option class="course-item" *ngFor="let course of coursesData" value="{{course.id}}">{{course.name}}</option>
         </select>
       </li>
@@ -74,7 +74,7 @@
           <b>Batch</b>
         </span>
         <select class="custom-select" [(ngModel)]="selectBatch" (change)="changeBatch(selectBatch)" id="selectBatch">
-          <option style="color: #5584ff" value="All Batches">All Batches</option>
+          <option class="options-text-color" value="All Batches">All Batches</option>
           <option class="course-item" *ngFor="let batch of batchesData" value="{{batch.id}}">{{batch.name}}</option>
         </select>
       </li>
@@ -84,7 +84,7 @@
           <b>Section</b>
         </span>
         <select class="custom-select" [(ngModel)]="selectSection" (change)="changeSection(selectSection)" id="selectSection">
-          <option style="color: #5584ff" value="All Sections">All Sections</option>
+          <option class="options-text-color" value="All Sections">All Sections</option>
           <option class="course-item" *ngFor="let section of sectionsData" value="{{section.id}}">{{section.name}}</option>
         </select>
       </li>

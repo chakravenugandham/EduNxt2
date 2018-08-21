@@ -79,12 +79,20 @@
   padding-right: 6px;
 }
 
-.p-l-20 {
-  padding-left: 20px;
+.p-l-7 {
+  padding-left: 7px;
 }
 
-.p-l-10 {
-  padding-left: 10px;
+.m-l-2 {
+  margin-left: 2px;
+}
+
+.m-l-5 {
+  margin-left: 5px;
+}
+
+.f-w-100 {
+  font-weight: 100;
 }
 
 .list-inline {
@@ -110,9 +118,11 @@
     color: #0146f9;
   }
 }
+
 .new-interest {
   box-shadow: 1px 3px 1px 1px #ff4e00;
 }
+
 .courseName {
   white-space: nowrap;
   overflow: hidden;

@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
+import { CommonService } from "../../common-services/common.service";
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-time-frame",
@@ -28,13 +31,22 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     batchId: 0,
     sectionId: 0
   }
-  constructor(private dashboardService: LdDashboardService) {
+  componentName: string;
+
+  constructor(private dashboardService: LdDashboardService, private _window: Window, private filterData: CommonService, private router: Router, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      // this.getAllCourses();
+      this.getAllCourses();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      // this.getAllCourses();
+      this.getAllCourses();
+    });
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this._baseUrl = event.url.replace(/\//g, '');
+        this.csvFormatFn();
+      }
     });
   }
 
@@ -58,6 +70,49 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       }
     }
     this.dashboardService.courseAndProgram(this.programObj);
+  }
+
+  getFilterData() {
+    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+    console.log(this.componentName);
+    return this.componentName;
+  }
+
+  csvFormatFn() {
+    let base = this._baseUrl;
+    if (base == "contentConsumptionFullView") {
+      this.downloadLink = this.dashboardService.getContentDetailsCsv();
+    }
+    if (base == "learnerTrackFullView") {
+      //this.getFilterData();
+      //this.downloadLink = this.dashboardService.getLearnerTrackDetailsCsv();
+    }
+    // if (base == "scoreDistributionFullView") {
+    //   this.downloadLink = this.dashboardService.getScoresDetailsCsv();
+    // }
+    if (base == "orgPerformanceFullView") {
+      let getTab = this.getFilterData();
+      console.log(getTab);
+      //this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+      if (getTab == 'team') {
+        // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+        // console.log(this.componentName);
+        this.downloadLink = this.dashboardService.getTeamDataCsv();
+      }
+      if (getTab == 'trainer') {
+        // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+        // console.log(this.componentName);
+        this.downloadLink = this.dashboardService.getTrainersDataCsv();
+      }
+      if (getTab == 'learner') {
+        // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
+        // console.log(this.componentName);
+        this.downloadLink = this.dashboardService.getLearnerDataCsv();
+      }
+    }
+    if (base == "orgInterestFullView") {
+      this.downloadLink = this.dashboardService.getOrgInterestDetailsDataCsv();
+    }
   }
 
   // getPrograms() {
@@ -123,14 +178,14 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.filterEvent.emit(courseId);
   }
 
-  csvFormatFn() {
-    // this._baseUrl = this._window.location.href;
-    this._baseUrl = window.location.href;
-    let base = this._baseUrl.split('/')[4];
-    if (base == "contentConsumptionFullView") {
-      this.downloadLink = this.dashboardService.getContentDetailsCsv();
-    }
-  }
+  // csvFormatFn() {
+  //   // this._baseUrl = this._window.location.href;
+  //   this._baseUrl = window.location.href;
+  //   let base = this._baseUrl.split('/')[4];
+  //   if (base == "contentConsumptionFullView") {
+  //     this.downloadLink = this.dashboardService.getContentDetailsCsv();
+  //   }
+  // }
 
 
   ngOnChanges(changes: any) {

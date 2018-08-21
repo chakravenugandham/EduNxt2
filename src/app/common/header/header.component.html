@@ -25,7 +25,7 @@
           </span>
           <span class="p-l-5">Notifications</span>
         </li>
-        <li class="nav-item p-l-10" style="border-left:1px solid black;margin-left:10px;">
+        <li class="nav-item p-l-10 user">
           <span>
             <i class="far fa-user-circle fa-lg"></i>
           </span>
@@ -40,7 +40,7 @@
           </span>
         </li> -->
 
-        <li *ngIf="!cookieFound" class="list-inline-item selectCourse" style="padding-left: 10px;">
+        <li *ngIf="!cookieFound" class="list-inline-item selectCourse p-l-10">
           <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"
             style="padding: 2px 20px;height: 24px;">
             <option class="course-item" *ngFor="let tenants of tenantsName" value="{{tenants}}">{{tenants}}</option>

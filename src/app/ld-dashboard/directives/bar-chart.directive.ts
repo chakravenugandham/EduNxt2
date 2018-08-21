@@ -117,7 +117,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("transform", function (d) { return "translate(" + x0(d.label) + ",0)"; });
 
 
-    var color = d3.scale.ordinal().range(['#0146F9', '#5584FF']);
+    var color = d3.scale.ordinal().range(['#5584FF']);
 
     var svgDefs = svg.append('defs');
 

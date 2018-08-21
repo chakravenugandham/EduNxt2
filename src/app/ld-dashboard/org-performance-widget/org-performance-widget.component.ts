@@ -57,26 +57,26 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
   }
 
   teamsFn() {
     this.componentName = this.filtersData.currentModule = "teams";
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
     this.getDataFromService();
   }
   trainersFn() {
     this.componentName = this.filtersData.currentModule = "trainers";
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
     this.getDataFromService();
   }
   learnersFn() {
     this.componentName = this.filtersData.currentModule = "learner";
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filterData.learnerFilterBodyDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
     this.getDataFromService();

@@ -55,7 +55,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
 
   getFilterData() {
-    this.componentName = this.filterData.orgPerformanceDetails["currentModule"];
+    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
   }
 
   //api calls for trainers ,teams and learner

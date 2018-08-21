@@ -23,12 +23,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   componentName: string;
   compareUsers = [];
 
-  //componentName: string;
-
-  constructor(
-    private dashboardService: LdDashboardService,
-    private filterData: CommonService
-  ) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -46,7 +41,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
 
   getFilterData() {
-    this.componentName = this.filterData.orgPerformanceDetails["currentModule"];
+    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
   }
 
   //api calls for trainers ,teams and learner

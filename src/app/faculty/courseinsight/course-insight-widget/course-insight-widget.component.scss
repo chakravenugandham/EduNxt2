@@ -26,6 +26,17 @@
   margin-top: 20px;
 }
 
+.graph-badges {
+  .learner {
+    color: #fca104;
+    background-color: #fca104;
+  }
+  .faculty {
+    color: #5584FF;
+    background-color: #5584FF;
+  }
+}
+
 .tool-tip {
   position: absolute;
   z-index: 10;

@@ -9,7 +9,7 @@
     }
   }
   .selectCourse {
-    .labelName{
+    .labelName {
       margin-right: 6px;
     }
     select {
@@ -41,12 +41,18 @@
       margin-right: 5px;
     }
   }
-  .m-b-10{
+  .m-b-10 {
     margin-bottom: 10px;
-    padding: 4px;
-    // box-shadow: 1px 1px 2px 0px #2196F3;
-
+    padding: 4px; // box-shadow: 1px 1px 2px 0px #2196F3;
   }
+}
+
+.calender-font {
+  font-size: 12px;
+}
+
+.options-text-color {
+  color: #5584ff;
 }
 
 @media (max-width: 576px) {

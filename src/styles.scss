@@ -25,7 +25,7 @@ $grayThree: #e9e9e9;
   padding: 0;
 }
 
-ul{
+ul {
   margin: 0;
 }
 
@@ -96,6 +96,18 @@ ul{
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.p-r-6 {
+  padding-right: 6px;
+}
+
+.p-l-20 {
+  padding-left: 20px;
+}
+
+.p-l-10 {
+  padding-left: 10px;
 }
 
 .font-weight-bold {
@@ -240,7 +252,7 @@ ul{
 }
 
 //pagination
-.paginationSpace{
+.paginationSpace {
   display: inline-flex;
 }
 
@@ -721,13 +733,10 @@ ul{
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-}
+@media (min-width: 768px) {}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
+@media (min-width: 992px) and (max-width: 1199.98px) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-}
+@media (min-width: 1200px) {}

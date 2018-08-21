@@ -11,88 +11,87 @@
     </div>
   </div>
 
-  <div *ngIf="spinner_loader" class="spinner_loading">
-    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
-  </div>
+  <div class="widget-block">
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+    </div>
 
-  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data found</span>
-  </div>
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
 
-
-  <div class="widget-block" *ngIf="!spinner_loader && !noDataFlag">
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th scope="col">
-            <span *ngIf="!searchBox">
-              <span (click)="searchFn()">
-                <i class="fa fa-search" aria-hidden="true"></i>
+    <div *ngIf="!spinner_loader && !noDataFlag">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">
+              <span *ngIf="!searchBox">
+                <span (click)="searchFn()">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <span (click)="sortByFn('contentName')">
+                  Content Name
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
               </span>
-              <span (click)="sortByFn('contentName')">
-                Content Name
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('contentType')">Content Type
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-            </span>
-            <span class="list-inline-item searchList" *ngIf="searchBox">
-              <div class="search-org-user">
-                <span class="search-icon" (click)="closeSearchFn()">
-                  <i class="fas fa-search"></i>
-                </span>
-                <input type="text" placeholder="Search">
-              </div>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('contentType')">Content Type
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('courseName')">Course Name
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('author')">Author
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('views')">Views
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-          <th scope="col" (click)="sortByFn('duration')">Duration
-            <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
-            </span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let content of contentData | orderBy: sortOrder: reverse">
-          <th scope="row"> {{content.contentName}} </th>
-          <td> {{content.contentType}} </td>
-          <td> {{content.courseName}} </td>
-          <td> {{content.author}} </td>
-          <td> {{content.views}} </td>
-          <td>
-            <span>
-              <i class="far fa-star text-warning"></i>
-            </span>
-            <span> {{content.avgRating.toFixed(2)}} </span>
-          </td>
-          <td> {{content.duration.toFixed(2)}} Min </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row float-right">
+            </th>
+            <th scope="col" (click)="sortByFn('courseName')">Course Name
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('author')">Author
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('views')">Views
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('duration')">Duration
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let content of contentData | orderBy: sortOrder: reverse">
+            <th scope="row"> {{content.contentName}} </th>
+            <td> {{content.contentType}} </td>
+            <td> {{content.courseName}} </td>
+            <td> {{content.author}} </td>
+            <td> {{content.views}} </td>
+            <td>
+              <span>
+                <i class="far fa-star text-warning"></i>
+              </span>
+              <span> {{content.avgRating.toFixed(2)}} </span>
+            </td>
+            <td> {{content.duration.toFixed(2)}} Min </td>
+          </tr>
+        </tbody>
+      </table>
 
       <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
 

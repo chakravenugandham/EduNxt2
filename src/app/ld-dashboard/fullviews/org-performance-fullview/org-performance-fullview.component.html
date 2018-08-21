@@ -6,12 +6,20 @@
     <span> How is my organization performing? </span>
   </div>
   <div class="widget-block">
+
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+    </div>
+
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
+
     <div class="m-b-12">
       <div class="float-left form-inline">
         <span>
           <b>Display Leaderboard for </b>
         </span>
-        <!-- <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails" (change)='getDataFromService()'> -->
         <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
           <option [value]="'teams'">Teams</option>
           <option [value]="'trainers'">Trainers</option>
@@ -19,13 +27,13 @@
         </select>
       </div>
       <div class="action-items float-right">
-        <span class="compare-selected">Add to compare</span>
+        <span class="compare-selected" (click)="compareSelected()">Add to compare</span>
         <span class="clear-selected">Clear all</span>
         <!-- <button type="button" class="btn btn-primary">Add to compare</button>
         <button type="button" class="btn btn-secondary m-l-20">Clear all</button> -->
       </div>
     </div>
-    <div>
+    <div *ngIf="!spinner_loader && !noDataFlag">
       <table class="table table-borderless" *ngIf="showDetails == 'teams'">
         <thead>
           <tr>
@@ -69,12 +77,10 @@
         </thead>
         <tbody *ngFor="let teamData of responseTeamsDetails">
           <tr>
-            <th scope="row" (click)="comapreUsers(teamData)">
-              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(teamData.teamId)}">
-                <!-- <input type="checkbox" [(ngModel)]="checkBoxValue"> -->
-              </span>
+            <th scope="row" (click)="selectToCompare(teamData.teamName)">
+              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(teamData.teamName)}"></span>
               <span class="imgActive">
-                <img src="/assets/images/user.png" alt="userImg">
+                <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
                 <i class="far fa-circle"></i>
               </span>
               <span class="userName">{{teamData.teamName}}</span>
@@ -125,15 +131,15 @@
         </thead>
         <tbody *ngFor="let trainerData of responseTrainersDetails">
           <tr>
-            <th scope="row">
-              <span>
-                <input type="checkbox" aria-label="Checkbox for following text input" value="">
-              </span>
-              <span>
+            <th scope="row" (click)="selectToCompare(trainerData.trainerName)">
+              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(trainerData.trainerName)}"></span>
+              <span class="imgActive">
                 <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
+                <i class="far fa-circle"></i>
               </span>
               <span class="userName">{{trainerData.trainerName}}</span>
             </th>
+
             <td class="">{{trainerData.trainingsConducted}}</td>
             <td class="">{{trainerData.peopleTrained}}</td>
             <td class="">
@@ -195,12 +201,11 @@
         </thead>
         <tbody *ngFor="let learnerData of responseLeanersDetails">
           <tr>
-            <th scope="row">
-              <span>
-                <input type="checkbox" aria-label="Checkbox for following text input" value="">
-              </span>
-              <span>
+            <th scope="row" (click)="selectToCompare(learnerData.person_id)">
+              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(learnerData.person_id)}"></span>
+              <span class="imgActive">
                 <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
+                <i class="far fa-circle"></i>
               </span>
               <span class="userName">{{learnerData.learnerName}}</span>
             </th>
@@ -221,10 +226,9 @@
           </tr>
         </tbody>
       </table>
-    </div>
 
-    <div class="row float-right">
       <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
+
     </div>
 
   </div>

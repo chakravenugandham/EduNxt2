@@ -29,6 +29,9 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     total: 0
   };
 
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   //componentName: string;
 
   constructor(
@@ -57,7 +60,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-    console.log(this.filterData.learnerFilterBodyDetails["currentModule"]);
+
+    this.spinner_loader = true;
 
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
@@ -66,6 +70,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
         .subscribe((response: any) => {
           this.responseTeamsDetails = response.data;
           this.pagination.total = response.pagination.total;
+          this.spinner_loader = false;
+          this.noDataFlag = response.data.length == 0 ? true : false;
         });
     } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
@@ -74,6 +80,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
         .subscribe((response: any) => {
           this.responseTrainersDetails = response.data;
           this.pagination.total = response.pagination.total;
+          this.spinner_loader = false;
+          this.noDataFlag = response.data.length == 0 ? true : false;
         });
     } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner" || this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
@@ -82,6 +90,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
         .subscribe((response: any) => {
           this.responseLeanersDetails = response.data;
           this.pagination.total = response.pagination.total;
+          this.spinner_loader = false;
+          this.noDataFlag = response.data.length == 0 ? true : false;
         });
     }
 
@@ -92,8 +102,16 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     this.getDataFromService();
   }
 
-  comapreUsers(teamData) {
-    this.compareUsers.push(teamData.teamId);
+  selectToCompare(user) {
+    if (this.compareUsers.includes(user)) {
+      this.compareUsers.splice(this.compareUsers.indexOf(user), 1)
+    }
+    else {
+      this.compareUsers.push(user);
+    }
+  }
+  compareSelected() {
+    console.log("compareUsers", this.compareUsers.length);
   }
 
   sortByFn(sortByName) {
@@ -111,6 +129,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   changeData(name) {
     this.filterData.learnerFilterBodyDetails["currentModule"] = name;
     this.pagination.page = 1;
+    this.compareUsers = [];
     this.getDataFromService();
   }
   ngOnChanges(changes: any) {

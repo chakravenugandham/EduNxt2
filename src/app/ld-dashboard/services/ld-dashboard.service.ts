@@ -123,6 +123,8 @@ export class LdDashboardService implements OnInit {
   }
 
   courseAndProgram(config?: any) {
+    console.log(config);
+
     this.programObj.programId = config.programId;
     this.programObj.courseId = config.courseId;
     this.programObj.batchId = config.batchId;
@@ -151,10 +153,14 @@ export class LdDashboardService implements OnInit {
     let url = this.baseURL + APIURL.PROGRAM_DROPDOWN;
     return this.http.get(url, { headers: this.headers });
   }
-  getCoursesData(programId) {
-    let url = this.baseURL + APIURL.COURSES_DROPDOWN + "?programId=" + programId;
+  getCoursesProgramData() {
+    let url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN;
     return this.http.get(url, { headers: this.headers });
   }
+  // getCoursesData(programId) {
+  //   let url = this.baseURL + APIURL.COURSES_DROPDOWN + "?programId=" + programId;
+  //   return this.http.get(url, { headers: this.headers });
+  // }
 
   getBatchesData(programId, courseId) {
     let url = this.baseURL + APIURL.BATCHES_DROPDOWN + "?programId=" + programId + "&courseId" + courseId;

@@ -8,10 +8,14 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':componentName == 'pace'}" (click)="learnerPaceFn()">Learner Pace</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':componentName == 'pace'}" (click)="learnerPaceFn()">Learner
+          Pace
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':componentName == 'performance'}" (click)="learnerPerfFn()">Learner Performance</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':componentName == 'performance'}" (click)="learnerPerfFn()">Learner
+          Performance
+        </a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -65,5 +69,6 @@
     <app-learner-performance *ngIf="componentName == 'performance'" [performanceData]="widgetData.performance"></app-learner-performance>
   </div>
 
-  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" [appliedFilters]="appliedFilters" (filterEvent)="getFilterObject($event)"
+    (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
 </div>

@@ -32,6 +32,10 @@
             <i class="far fa-circle struggling"></i> Struggling
             <div> {{responseGraphDetails?.performanceData.struggling}} </div>
           </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <i class="far fa-circle perfHaveNotStarted"></i> Haven't Started
+            <div> {{responseGraphDetails?.performanceData.haveNotStarted}} </div>
+          </div>
         </div>
       </div>
     </div>
@@ -92,7 +96,7 @@
       <span class="spinner_inside">No data found</span>
     </div>
 
-    <div *ngIf="!spinner_loader && responseTrackDetails.length>0">
+    <div *ngIf="responseTrackDetails.length>0">
       <table class="table table-borderless">
         <thead>
           <tr>
@@ -172,11 +176,8 @@
         </tbody>
       </table>
 
-      <div class="row float-right">
+      <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
 
-        <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
-
-      </div>
     </div>
   </div>
 </div>

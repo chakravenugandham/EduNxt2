@@ -1,9 +1,9 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
-
-// import * as _ from "underscore";
+import { Component, OnInit } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
+
+import { _ } from "underscore";
 
 @Component({
   selector: "app-learners-track-widget",
@@ -29,6 +29,35 @@ export class LearnersTrackWidgetComponent implements OnInit {
   };
 
   filterbody = {};
+
+  appliedFilters: any[];
+  paceFilters = [{
+    type: "batch",
+    filters: [
+      {
+        id: 59,
+        name: "201801"
+      },
+      {
+        id: 79,
+        name: "201806AAA"
+      }
+    ]
+  }];
+
+  performanceFilters = [{
+    type: "batch",
+    filters: [
+      {
+        id: 36,
+        name: "201706"
+      },
+      {
+        id: 37,
+        name: "201711"
+      }
+    ]
+  }]
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -66,6 +95,9 @@ export class LearnersTrackWidgetComponent implements OnInit {
   getDataFromService() {
     this.responseData = [];
     this.spinner_loader = true;
+
+    this.appliedFilters = this.componentName == "pace" ? this.paceFilters : this.performanceFilters;
+
     this.dashboardService
       .getLearnerTrackData(this.filterbody)
       .subscribe((response: any) => {
@@ -84,6 +116,12 @@ export class LearnersTrackWidgetComponent implements OnInit {
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
+  }
+  removedFilters($event) {
+    for (let i in this.appliedFilters) {
+      let indexF = _.findIndex(this.appliedFilters[i].filters, $event);
+      this.appliedFilters[i].filters.splice(indexF, 1);
+    }
   }
 
   ngOnInit() {

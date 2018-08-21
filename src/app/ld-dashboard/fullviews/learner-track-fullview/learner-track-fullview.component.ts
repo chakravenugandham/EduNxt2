@@ -150,13 +150,18 @@ export class LearnerTrackFullviewComponent implements OnInit {
             number: this.responseGraphDetails.performanceData["excelling"]
           },
           {
-            color: "#ffd630",
+            color: "#5584ff",
             type: "classB",
             number: this.responseGraphDetails.performanceData["passing"]
           },
           {
             color: "#f77f6c",
             type: "classC",
+            number: this.responseGraphDetails.performanceData["haveNotStarted"]
+          },
+          {
+            color: "#ffd630",
+            type: "classD",
             number: this.responseGraphDetails.performanceData["struggling"]
           }
         ];

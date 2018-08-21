@@ -1,5 +1,7 @@
 export class APIURL {
   //LND Dashboard apis
+  public static COURSES_PROGRAM_DROPDOWN = "courses-programs-dropdown";
+
   public static PROGRAM_DROPDOWN = "programs-dropdown";
   public static COURSES_DROPDOWN = "courses-dropdown";
   public static BATCHES_DROPDOWN = "batches-dropdown";

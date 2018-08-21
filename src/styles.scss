@@ -113,8 +113,11 @@ ul{
 }
 
 .spinner_loading {
-  position: relative;
-  height: 200px;
+  // position: relative;
+  // height: 200px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .spinner_inside {
@@ -242,6 +245,9 @@ ul{
 //pagination
 .paginationSpace{
   display: inline-flex;
+  position: absolute;
+  right: 14px;
+  bottom: 8px;
 }
 
 //Table CSS
@@ -630,7 +636,10 @@ ul{
     display: none;
   }
   .widget-block {
+    position: relative;
+    min-height: 100px;
     height: auto !important;
+    padding-bottom: 32px;
   }
 }
 

@@ -29,6 +29,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     viewDetailsFilters: boolean;
   };
   @Input() filterName: string[];
+  @Input() appliedFilters: any[];
+
   @Input()
   searchFilterData: {
     searchComponent: string;
@@ -37,6 +39,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   @Output() filterEvent = new EventEmitter<any>();
   @Output() searchEvent = new EventEmitter<any>();
+  @Output() removeFilterEmit = new EventEmitter<any>();
 
   filtersData;
   displayDropdown: boolean = false;
@@ -192,6 +195,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         this.filterEvent.emit(this.filterSelected);
       }
     }
+  }
+
+  removeFilter(filter) {
+    console.log(filter);
+    this.removeFilterEmit.emit(filter);
   }
 
   routetoFullview() {

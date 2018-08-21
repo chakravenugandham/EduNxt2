@@ -84,6 +84,7 @@ table {
     color: #fff;
     background-color: #5584ff;
     margin-right: 8px;
+    cursor:pointer;
   }
   .clear-selected {
     color: #fff;
@@ -95,6 +96,9 @@ table {
   }
 }
 
+// .spinner_loading{
+//   height: auto;
+// }
 .check-box {
   width: 12px;
   height: 12px;

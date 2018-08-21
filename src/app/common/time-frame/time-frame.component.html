@@ -1,14 +1,23 @@
 <div class="time-frame">
-  <div class="row m-b-10 select-time-frame">
-    <div class="col-md-6 col-6">
+  <div class="row select-time-frame">
+    <div class="col-md-7 col-7">
       <li class="list-inline-item select-time-frame">
         <b> Select a Time Frame </b>
       </li>
       <li class="list-inline-item">
         <app-mp-datepicker-range style="font-size: 12px;"></app-mp-datepicker-range>
       </li>
+      <li class="list-inline-item selectCourse">
+        <span class="labelName">
+          <b>Course</b>
+        </span>
+        <select class="custom-select" [(ngModel)]="selectCourse" (change)="courseSelected(selectCourse)" id="selectCourse">
+          <option style="color: #5584ff" value="All Courses">All Courses</option>
+          <option class="course-item" *ngFor="let course of coursesData" value="{{course.courseName}}">{{course.courseName}}</option>
+        </select>
+      </li>
     </div>
-    <div class="col-md-6 col-6 m-t-7">
+    <div class="col-md-5 col-5 m-t-7">
       <ul class="list-inline report-menu">
         <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Save this view">
           <span>
@@ -38,7 +47,7 @@
     </div>
   </div>
 
-  <div class="course-selection">
+  <!-- <div class="course-selection">
     <ul class="list-inline">
       <li class="list-inline-item selectCourse">
         <span class="labelName">
@@ -83,5 +92,5 @@
         <button class=" btn-primary" (click)="applyPrograms()">Apply</button>
       </li>
     </ul>
-  </div>
+  </div> -->
 </div>

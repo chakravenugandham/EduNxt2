@@ -153,6 +153,15 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.filterEvent.emit(courseId);
   }
 
+  // csvFormatFn() {
+  //   // this._baseUrl = this._window.location.href;
+  //   this._baseUrl = window.location.href;
+  //   let base = this._baseUrl.split('/')[4];
+  //   if (base == "contentConsumptionFullView") {
+  //     this.downloadLink = this.dashboardService.getContentDetailsCsv();
+  //   }
+  // }
+
 
   ngOnChanges(changes: any) {
     if (changes.downloadLink.currentValue) {

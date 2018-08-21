@@ -16,14 +16,25 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   sortOrder: string = "learner";
   reverse: boolean = false;
   parseFloat = parseFloat;
-  limitTo: number = 10;
+  // limitTo: number = 10;
   searchBox: boolean = false;
 
   showDetails: string = "learner";
   componentName: string;
   compareUsers = [];
 
-  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
+  pagination = {
+    page: 1,
+    limitTo: 10,
+    total: 0
+  };
+
+  //componentName: string;
+
+  constructor(
+    private dashboardService: LdDashboardService,
+    private filterData: CommonService
+  ) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -46,29 +57,39 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
+    console.log(this.filterData.learnerFilterBodyDetails["currentModule"]);
+
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
-        .getTeamData(this.limitTo)
+        .getTeamData(this.pagination)
         .subscribe((response: any) => {
           this.responseTeamsDetails = response.data;
+          this.pagination.total = response.pagination.total;
         });
     } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
-        .getTrainersData(this.limitTo)
+        .getTrainersData(this.pagination)
         .subscribe((response: any) => {
           this.responseTrainersDetails = response.data;
+          this.pagination.total = response.pagination.total;
         });
     } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner" || this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
       this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
       this.dashboardService
-        .getLearnerData(this.limitTo)
+        .getLearnerData(this.pagination)
         .subscribe((response: any) => {
           this.responseLeanersDetails = response.data;
+          this.pagination.total = response.pagination.total;
         });
     }
 
+  }
+
+  gotoPage($event) {
+    this.pagination.page = $event;
+    this.getDataFromService();
   }
 
   comapreUsers(teamData) {
@@ -89,6 +110,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
   changeData(name) {
     this.filterData.learnerFilterBodyDetails["currentModule"] = name;
+    this.pagination.page = 1;
     this.getDataFromService();
   }
   ngOnChanges(changes: any) {

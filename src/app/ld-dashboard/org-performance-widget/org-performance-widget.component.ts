@@ -40,6 +40,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     limitTo: 5
   };
 
+  myStorage = window.localStorage;
+
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -57,26 +59,27 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.myStorage.setItem('orgPerformanceCurrentModule', this.filtersData.currentModule);
+    console.log(this.myStorage);
   }
 
   teamsFn() {
     this.componentName = this.filtersData.currentModule = "teams";
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
     this.getDataFromService();
   }
   trainersFn() {
     this.componentName = this.filtersData.currentModule = "trainers";
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
     this.getDataFromService();
   }
   learnersFn() {
     this.componentName = this.filtersData.currentModule = "learner";
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
     this.getDataFromService();
@@ -127,7 +130,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
+    this.filterData.orgPerformanceDetails = this.filtersData;
     this.getDataFromService();
   }
 }

@@ -46,8 +46,6 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
-
-    this.commonService.learnerFilterBodyDetails = this.filtersData;
   }
 
   getDataFromService() {

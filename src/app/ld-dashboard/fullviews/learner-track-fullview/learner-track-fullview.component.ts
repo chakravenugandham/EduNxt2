@@ -33,6 +33,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getDisplayObject($event) {
     this.selectType = $event;
+    this.myStorage.setItem('displayFor', this.selectType);
+    console.log(this.myStorage.getItem('displayFor'));
     this.getTableDataFromService();
   }
 
@@ -44,6 +46,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
     limitTo: 10,
     total: 0
   };
+
+  myStorage = window.localStorage;
 
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -64,42 +68,27 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.getGraphDataFromService();
       this.getTableDataFromService();
     });
-  }
 
-  getFilterData() {
-    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+    this.componentName = this.myStorage.getItem('learnerTrackCurrentModule');
+    console.log(this.componentName);
   }
 
   getTableDataFromService() {
-
-    // this.responseTrackDetails = [];
     this.spinner_loader = true;
-
-    if (this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
-      this.filterData.learnerFilterBodyDetails["currentModule"] = "performance";
-    }
-
-    if (this.filterData.learnerFilterBodyDetails["currentModule"] == "pace") {
+    if (this.componentName == "pace") {
       this.selectType = "aheadschedule";
-      this.dashboardService
-        .getLearnerTrackDetails(
-          this.filterData.learnerFilterBodyDetails["currentModule"], this.selectType, this.filterbody, this.pagination
-        )
+      this.myStorage.setItem('displayFor', this.selectType);
+      this.dashboardService.getLearnerTrackDetails(this.componentName, this.selectType, this.filterbody, this.pagination)
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
           this.pagination.total = response.pagination.total;
-
           this.spinner_loader = false;
           this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
         });
-    } else if (
-      this.filterData.learnerFilterBodyDetails["currentModule"] == "performance"
-    ) {
+    } else if (this.componentName == "performance") {
       this.selectType = "excelling";
-      this.dashboardService
-        .getLearnerTrackDetails(
-          this.filterData.learnerFilterBodyDetails["currentModule"], this.selectType, this.filterbody, this.pagination
-        )
+      this.myStorage.setItem('displayFor', this.selectType);
+      this.dashboardService.getLearnerTrackDetails(this.componentName, this.selectType, this.filterbody, this.pagination)
         .subscribe((response: any) => {
           this.responseTrackDetails = response.data;
           this.pagination.total = response.pagination.total;
@@ -171,7 +160,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   ngOnInit() {
     this.getTableDataFromService();
     this.getGraphDataFromService();
-    this.getFilterData();
     this.getDisplayObject(this.selectType);
   }
 }

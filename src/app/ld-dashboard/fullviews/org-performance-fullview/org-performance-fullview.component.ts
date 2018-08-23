@@ -32,7 +32,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  //componentName: string;
+  myStorage = window.localStorage;
 
   constructor(
     private dashboardService: LdDashboardService,
@@ -52,10 +52,9 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
-  }
 
-  getFilterData() {
-    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+    this.componentName = this.myStorage.getItem('orgPerformanceCurrentModule');
+    console.log(this.componentName);
   }
 
   //api calls for trainers ,teams and learner
@@ -63,8 +62,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
     this.spinner_loader = true;
 
-    if (this.filterData.learnerFilterBodyDetails["currentModule"] == "teams") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
+    if (this.componentName == "teams") {
+      this.showDetails = this.componentName;
       this.dashboardService
         .getTeamData(this.pagination)
         .subscribe((response: any) => {
@@ -73,8 +72,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
           this.spinner_loader = false;
           this.noDataFlag = response.data.length == 0 ? true : false;
         });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "trainers") {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"];
+    } else if (this.componentName == "trainers") {
+      this.showDetails = this.componentName;
       this.dashboardService
         .getTrainersData(this.pagination)
         .subscribe((response: any) => {
@@ -83,8 +82,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
           this.spinner_loader = false;
           this.noDataFlag = response.data.length == 0 ? true : false;
         });
-    } else if (this.filterData.learnerFilterBodyDetails["currentModule"] == "learner" || this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {
-      this.showDetails = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
+    } else if (this.componentName) {
+      this.showDetails = this.componentName;
       this.dashboardService
         .getLearnerData(this.pagination)
         .subscribe((response: any) => {
@@ -127,7 +126,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     this.searchBox = false;
   }
   changeData(name) {
-    this.filterData.learnerFilterBodyDetails["currentModule"] = name;
+    this.componentName = name;
     this.pagination.page = 1;
     this.compareUsers = [];
     this.getDataFromService();
@@ -139,7 +138,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.filterData.learnerFilterBodyDetails["currentModule"] == "learner";
+    this.componentName == "learner";
     this.getDataFromService();
     // this.getFilterData();
   }

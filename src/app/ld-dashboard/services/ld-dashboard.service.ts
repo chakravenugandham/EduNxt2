@@ -77,46 +77,46 @@ export class LdDashboardService implements OnInit {
   UserId = "57142";
 
   headers = new HttpHeaders()
-    .set("user-id", "57142")
-    .set("user-type", "LND")
-    .set("tenant-name", "MAIT");
+    .set("user_id", "57142")
+    .set("user_type", "LND")
+    .set("tenant_name", "MAIT");
 
   selectTenantName(tenantName?: any) {
     if (tenantName == "MAIT") {
       this.headers = new HttpHeaders()
-        .set("user-id", "57142")
-        .set("user-type", "LND")
-        .set("tenant-name", tenantName);
+        .set("user_id", "57142")
+        .set("user_type", "LND")
+        .set("tenant_name", tenantName);
     }
     if (tenantName == "MAB") {
       this.headers = new HttpHeaders()
-        .set("user-id", "26642")
-        .set("user-type", "LND")
-        .set("tenant-name", tenantName);
+        .set("user_id", "26642")
+        .set("user_type", "LND")
+        .set("tenant_name", tenantName);
     }
     if (tenantName == "HDFC") {
       this.headers = new HttpHeaders()
-        .set("user-id", "2")
-        .set("user-type", "LND")
-        .set("tenant-name", tenantName);
+        .set("user_id", "2")
+        .set("user_type", "LND")
+        .set("tenant_name", tenantName);
     }
     if (tenantName == "SMUDE") {
       this.headers = new HttpHeaders()
-        .set("user-id", "725440")
-        .set("user-type", "LND")
-        .set("tenant-name", tenantName);
+        .set("user_id", "725440")
+        .set("user_type", "LND")
+        .set("tenant_name", tenantName);
     }
     if (tenantName == "PROLEARN") {
       this.headers = new HttpHeaders()
-        .set("user-id", "95901")
-        .set("user-type", "LND")
-        .set("tenant-name", tenantName);
+        .set("user_id", "95901")
+        .set("user_type", "LND")
+        .set("tenant_name", tenantName);
     }
     if (tenantName == "PROLEARN") {
       this.headers = new HttpHeaders()
         .set("LnDUserId", "95901")
-        .set("user-type", "LND")
-        .set("tenant-name", tenantName);
+        .set("user_type", "LND")
+        .set("tenant_name", tenantName);
     }
     this.tenantName$.next();
     this.refreshAPI$.next();
@@ -343,37 +343,38 @@ export class LdDashboardService implements OnInit {
   //csv converted apis
 
   //learner-track full details
-  getLearnerTrackDetailsCsv(componentName, displayfor) {
-    return this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "&displayFor=" + displayfor + "&type=" + componentName + this.program_course;
+  getLearnerTrackDetailsCsv(componentName) {
+    return this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "&type=" + componentName + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    //"&displayFor=" + displayfor +
   }
 
   getScoresDetailsCsv(dropdownValue) {
-    return this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + "&type=" + dropdownValue + this.program_course;
+    return this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
   }
 
   getContentDetailsCsv() {
-    return this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user-id=" + this.UserId + "&user-type=" + "LND" + "&tenant-name=" + "MAIT";
+    return this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
 
   }
 
   //org-interest full details
   getOrgInterestDetailsDataCsv() {
-    return this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "/csv" + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
   }
 
   //org-performance trainers data
   getTeamDataCsv() {
-    return this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
   }
 
   //org-performance teams data
   getTrainersDataCsv() {
-    return this.baseURL + APIURL.TRAINER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.TRAINER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
   }
 
   //org-performance leaners data
   getLearnerDataCsv() {
-    return this.baseURL + APIURL.LEARNER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course;
+    return this.baseURL + APIURL.LEARNER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
   }
 
   ngOnInit() { }

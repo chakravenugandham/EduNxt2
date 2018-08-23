@@ -33,21 +33,24 @@ export class LearnersTrackWidgetComponent implements OnInit {
   appliedFilters: any[];
   performanceFilters = [];
   paceFilters = [];
-  // paceFilters = [
+
+  // testFilters = [
   //   {
   //     type: "batch",
   //     id: 59,
   //     name: "Batch1"
   //   },
   //   {
-  //     type: "batch",
-  //     id: 79,
-  //     name: "Batch2"
-  //   }, {
   //     type: "quiz",
   //     id: 109,
   //     name: "Quiz1"
-  //   }, {
+  //   },
+  //   {
+  //     type: "batch",
+  //     id: 79,
+  //     name: "Batch2"
+  //   },
+  //   {
   //     type: "quiz",
   //     id: 143,
   //     name: "Quiz2"
@@ -123,10 +126,10 @@ export class LearnersTrackWidgetComponent implements OnInit {
       });
   }
 
-  // getFilterObject($event) {
-  //   this.filterbody = $event;
-  //   this.getDataFromService();
-  // }
+  getFilterObject($event) {
+    this.filterbody = $event;
+    this.getDataFromService();
+  }
 
   addFilters($event) {
     this.appliedFilters.push($event);
@@ -138,6 +141,23 @@ export class LearnersTrackWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log(this.testFilters);
+    // let filterQuery = "";
+    // for (let i in this.testFilters) {
+    //   switch (this.testFilters[i].type) {
+    //     case "batch": {
+    //       filterQuery += this.testFilters[i].id + ",";
+    //       continue;
+    //     }
+    //     case "quiz": {
+    //       filterQuery += this.testFilters[i].id + ",";
+    //       continue;
+    //     }
+    //   }
+    // }
+    // console.log(filterQuery);
+
+
     this.appliedFilters = this.paceFilters;
     this.learnerPaceFn();
     this.getDataFromService();

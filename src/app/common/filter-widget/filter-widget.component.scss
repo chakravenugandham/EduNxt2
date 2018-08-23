@@ -1,3 +1,5 @@
+@import "../../../app/shared/variables.scss";
+
 .filterComponent {
   position: absolute;
   width: calc(100% - 40px);
@@ -11,17 +13,18 @@
     padding-right: 72px;
     .filter {
       background-color: #fff;
-      color: #5584ff;
+      color: $lightBlue;
       cursor: pointer;
     }
     li {
       position: relative;
       font-size: 12px;
       padding: 6px 32px 6px 6px;
-      border: 1px solid #5584ff;
-      background-color: #5584ff;
+      border: 1px solid $lightBlue;
+      background-color: $lightBlue;
       color: white;
       margin-right: 6px;
+      // overflow: hidden;
       i {
         position: absolute;
         top: 8px;
@@ -37,8 +40,8 @@
   .filterSelect {
     position: relative;
     padding: 6px 32px 6px 6px;
-    border: 1px solid #5584ff;
-    color: #5584ff;
+    border: 1px solid $lightBlue;
+    color: $lightBlue;
   }
   i {
     position: absolute;
@@ -49,7 +52,7 @@
     position: relative;
     padding: 6px 32px 6px 6px;
     color: #fff;
-    background-color: #5584ff;
+    background-color: $lightBlue;
   }
   .showFilter-list {
     right: 0px;
@@ -61,12 +64,12 @@
   position: absolute;
   right: 0;
   top: 50%;
-  color: #5584ff;
+  color: $lightBlue;
   font-size: 12px;
   font-weight: 600;
   i {
     padding: 2px 4px 2px 4px;
-    border: 1px solid #5584ff;
+    border: 1px solid $lightBlue;
     border-radius: 50%;
     margin-left: 4px;
     font-weight: 600;
@@ -82,8 +85,8 @@
   position: relative;
   input {
     padding: 6px 12px;
-    color: #5584ff;
-    border: 1px solid #5584ff;
+    color: $lightBlue;
+    border: 1px solid $lightBlue;
     width: 124px;
   }
   .search-icon {
@@ -91,18 +94,18 @@
     right: 0px;
     top: 3px;
     i {
-      color: #2196f3a8;
+      color: $lightBlue;
     }
   }
 }
 .search-org-user input::placeholder {
-  color: #5584ff;
+  color: $lightBlue;
 }
 .search-org-user input::-ms-input-placeholder {
-  color: #5584ff;
+  color: $lightBlue;
 }
 .search-org-user input::-ms-input-placeholder {
-  color: #5584ff;
+  color: $lightBlue;
 }
 
 .check-box {
@@ -118,7 +121,7 @@
 }
 
 .checked-box {
-  background-color: orange !important;
+  background-color: $lightOrange !important;
 }
 
 //dropdown
@@ -134,7 +137,7 @@
   padding: 8px;
   z-index: 1;
   width: 220px;
-  box-shadow: 1px 1px 2px 0px #5584ff;
+  box-shadow: 1px 1px 2px 0px $lightBlue;
   ul {
     max-height: 140px;
     padding: 0;
@@ -157,7 +160,7 @@
   cursor: pointer;
   i {
     border-radius: 50%;
-    border: 1px solid #5584ff;
+    border: 1px solid $lightBlue;
     padding: 2px;
     font-size: 9px;
     top: 7px !important;
@@ -168,6 +171,12 @@
   padding: 4px 0px;
 }
 
+// .applied-filter{
+//   width: 84px;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
 .apply-filters {
   position: absolute;
   bottom: 0;

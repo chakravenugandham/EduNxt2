@@ -84,7 +84,7 @@
       </span> -->
 
 
-      <li class="list-inline-item" *ngFor="let filter of appliedFilters">
+      <li class="list-inline-item applied-filter" *ngFor="let filter of appliedFilters">
         <span> {{filter.name}} </span>
         <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
       </li>

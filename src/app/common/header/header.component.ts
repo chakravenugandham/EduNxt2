@@ -4,6 +4,7 @@ import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.ser
 
 import { CookieService } from 'ngx-cookie-service';
 
+
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -13,12 +14,9 @@ export class HeaderComponent implements OnInit {
   selectTenantName: string = "MAIT";
   tenantsName = ["MAIT", "MAB", "HDFC", "SMUDE", "PROLEARN"];
 
-  userName = (this.cookieService.get('user_name') == '') ? 'User' : this.cookieService.get('user_name');
-  cookieFound = (this.cookieService.get('user_name') == '') ? false : true;
-
-
+  userName = 'User'
   // userName = this.cookieService.get('user_name');
-  // cookieFound = true;
+  cookieFound = false;
 
   constructor(
     private dashboardService: LdDashboardService,

@@ -57,7 +57,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     this.spinner_loader = true;
     this.contentData = [];
     this.dashboardService
-      .getContentData(this.filterbody, this.pagination)
+      .getContentData(this.appliedFilters, this.pagination)
       .subscribe((res: any) => {
         this.contentData = res.data;
         this.spinner_loader = false;
@@ -67,11 +67,13 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   addFilters($event) {
     this.appliedFilters.push($event);
+    this.getDataFromService();
   }
 
   removedFilters($event) {
     let indexF = _.findIndex(this.appliedFilters, $event);
     this.appliedFilters.splice(indexF, 1);
+    this.getDataFromService();
   }
 
   ngOnInit() {

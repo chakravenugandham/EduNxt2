@@ -1,8 +1,6 @@
 import { Directive, ElementRef, Input, OnChanges, OnInit } from "@angular/core";
 import * as d3 from "d3v4";
 
-import { CustomNumberPipe } from "../../custom-number.pipe";
-
 @Directive({
   selector: "[appDonutChart]"
 })

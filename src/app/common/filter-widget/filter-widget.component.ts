@@ -114,6 +114,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       .getFiltersData(this.viewData.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
+        console.log("filtersData", this.filtersData);
+
         this.displayDropdown = this.filtersData.length > 0 ? true : false;
       });
   }

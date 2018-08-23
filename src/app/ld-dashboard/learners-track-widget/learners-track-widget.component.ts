@@ -98,12 +98,14 @@ export class LearnersTrackWidgetComponent implements OnInit {
   learnerPaceFn() {
     this.componentName = "pace";
     this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
+    this.appliedFilters = this.paceFilters;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
     this.componentName = "performance";
     this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
+    this.appliedFilters = this.performanceFilters;
     this.getDataFromService();
   }
 
@@ -114,7 +116,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     // this.appliedFilters = this.componentName == "pace" ? this.paceFilters : this.performanceFilters;
 
     this.dashboardService
-      .getLearnerTrackData(this.filterbody)
+      .getLearnerTrackData(this.appliedFilters)
       .subscribe((response: any) => {
         this.responseData.push(response.data);
         this.widgetData.pace = response.data.paceData;
@@ -128,18 +130,20 @@ export class LearnersTrackWidgetComponent implements OnInit {
       });
   }
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getDataFromService();
-  }
+  // getFilterObject($event) {
+  //   this.filterbody = $event;
+  //   this.getDataFromService();
+  // }
 
   addFilters($event) {
     this.appliedFilters.push($event);
+    this.getDataFromService();
   }
 
   removedFilters($event) {
     let indexF = _.findIndex(this.appliedFilters, $event);
     this.appliedFilters.splice(indexF, 1);
+    this.getDataFromService();
   }
 
   ngOnInit() {

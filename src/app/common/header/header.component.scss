@@ -1,3 +1,5 @@
+@import "../../../app/shared/variables.scss";
+
 .header-class {
   border: 0;
   position: relative;
@@ -7,8 +9,8 @@
   display: flex;
   height: 80px;
   padding: 12px 36px;
-  color: #fff;
-  background-color: #5584ff;
+  color: $white;
+  background-color: $lightBlue;
   img {
     height: 55px;
     width: 60px; // border: 1px solid #fff;
@@ -32,9 +34,9 @@
 .navbar-right {
   position: absolute;
   right: 50px;
-  color: #707070;
+  color: $darkGray;
   .user {
-    border-left: 1px solid black;
+    border-left: 1px solid $black;
     margin-left: 10px;
   }
   .p-l-5 {

@@ -74,8 +74,8 @@ export class LdDashboardService implements OnInit {
   //baseURL from enviornment
   baseURL = environment.baseUrl;
 
-  UserId = (this.cookieService.get('user_id') == '') ? '57142' : this.cookieService.get('user_id');
-  // UserId = "57142";
+  // UserId = this.cookieService.get('user_id');
+  UserId = "57142";
 
   headers = new HttpHeaders()
     .set("user_id", this.UserId)

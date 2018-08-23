@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 
+import { _ } from "underscore";
+
 @Component({
   selector: "app-content-performance-widget",
   templateUrl: "./content-performance-widget.component.html",
@@ -26,6 +28,9 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   filterName = ["contentType"];
   filterbody = {};
   contentData = [];
+
+  appliedFilters = [];
+  contentFilters = [];
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -62,12 +67,17 @@ export class ContentPerformanceWidgetComponent implements OnInit {
       });
   }
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getDataFromService();
+  addFilters($event) {
+    this.appliedFilters.push($event);
+  }
+
+  removedFilters($event) {
+    let indexF = _.findIndex(this.appliedFilters, $event);
+    this.appliedFilters.splice(indexF, 1);
   }
 
   ngOnInit() {
+    this.appliedFilters = this.contentFilters;
     this.getDataFromService();
   }
 }

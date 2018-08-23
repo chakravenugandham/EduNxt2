@@ -39,6 +39,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
   @Output() filterEvent = new EventEmitter<any>();
   @Output() searchEvent = new EventEmitter<any>();
+  @Output() addFilterEmit = new EventEmitter<any>();
   @Output() removeFilterEmit = new EventEmitter<any>();
 
   filtersData;
@@ -118,67 +119,78 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   selectFilter(filter, filterName) {
-    let filterTypeId = "";
-    switch (filter.type) {
-      case "location": {
-        filterTypeId = "locationId";
-        break;
-      }
-      case "batch": {
-        filterTypeId = "batchId";
-        break;
-      }
-      case "quiz": {
-        filterTypeId = "quizName";
-        break;
-      }
-      case "assignment": {
-        filterTypeId = "assignmentName";
-        break;
-      }
-      case "team": {
-        filterTypeId = "teamId";
-        break;
-      }
-      case "course": {
-        filterTypeId = "courseId";
-        break;
-      }
-      case "zone": {
-        filterTypeId = "zoneId";
-        break;
-      }
-      case "contentType": {
-        filterTypeId = "contentType";
-        break;
-      }
+    let selectedFilter = {
+      type: filter.type,
+      id: filterName.id,
+      name: filterName.name
     }
 
-    // if(_.findIndex(this.searchNames, searchItem))
-
-    if (!this.filterArray.includes(filterName.name)) {
-      this.filterArray.push(filterName.name);
-      this.filterSelected[filterTypeId].push(filterName.id);
-
-      this.filterFullObj.push({
-        type: filterTypeId,
-        id: filterName.id,
-        name: filterName.name
-      });
-    } else {
-      let i = this.filterArray.indexOf(filterName.name);
-      this.filterArray.splice(i, 1);
-      let j = this.filterSelected[filterTypeId].indexOf(filterName.name);
-      this.filterSelected[filterTypeId].splice(j, 1);
-
-      for (let k in this.filterFullObj) {
-        if (filterName.name == this.filterFullObj[k].name) {
-          this.filterFullObj.splice(0, 1);
-        }
-      }
+    if (_.findIndex(this.appliedFilters, selectedFilter) == -1) {
+      this.addFilterEmit.emit(selectedFilter);
+    }
+    else if (_.findIndex(this.appliedFilters, selectedFilter) != -1) {
+      this.removeFilterEmit.emit(selectedFilter);
     }
 
-    this.filterEvent.emit(this.filterSelected);
+    // let filterTypeId = "";
+    // switch (filter.type) {
+    //   case "location": {
+    //     filterTypeId = "locationId";
+    //     break;
+    //   }
+    //   case "batch": {
+    //     filterTypeId = "batchId";
+    //     break;
+    //   }
+    //   case "quiz": {
+    //     filterTypeId = "quizName";
+    //     break;
+    //   }
+    //   case "assignment": {
+    //     filterTypeId = "assignmentName";
+    //     break;
+    //   }
+    //   case "team": {
+    //     filterTypeId = "teamId";
+    //     break;
+    //   }
+    //   case "course": {
+    //     filterTypeId = "courseId";
+    //     break;
+    //   }
+    //   case "zone": {
+    //     filterTypeId = "zoneId";
+    //     break;
+    //   }
+    //   case "contentType": {
+    //     filterTypeId = "contentType";
+    //     break;
+    //   }
+    // }
+
+    // if (!this.filterArray.includes(filterName.name)) {
+    //   this.filterArray.push(filterName.name);
+    //   this.filterSelected[filterTypeId].push(filterName.id);
+
+    //   this.filterFullObj.push({
+    //     type: filterTypeId,
+    //     id: filterName.id,
+    //     name: filterName.name
+    //   });
+    // } else {
+    //   let i = this.filterArray.indexOf(filterName.name);
+    //   this.filterArray.splice(i, 1);
+    //   let j = this.filterSelected[filterTypeId].indexOf(filterName.name);
+    //   this.filterSelected[filterTypeId].splice(j, 1);
+
+    //   for (let k in this.filterFullObj) {
+    //     if (filterName.name == this.filterFullObj[k].name) {
+    //       this.filterFullObj.splice(0, 1);
+    //     }
+    //   }
+    // }
+
+    // this.filterEvent.emit(this.filterSelected);
   }
 
   removeFromFilterBody(filterBodyName, index) {
@@ -198,7 +210,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   removeFilter(filter) {
-    console.log(filter);
     this.removeFilterEmit.emit(filter);
   }
 

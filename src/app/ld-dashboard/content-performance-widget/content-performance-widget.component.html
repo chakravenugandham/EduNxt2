@@ -61,6 +61,7 @@
     <app-content-consumption [contentData]='contentData'></app-content-consumption>
   </div>
 
-  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" [appliedFilters]="appliedFilters" (addFilterEmit)="addFilters($event)"
+    (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
 
 </div>

@@ -4,6 +4,10 @@ import { CommonService } from "../../common-services/common.service";
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
+import * as jspdf from 'jspdf';
+
+import html2canvas from 'html2canvas';
+
 @Component({
   selector: "app-time-frame",
   templateUrl: "./time-frame.component.html",
@@ -74,45 +78,62 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   getFilterData() {
     this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-    console.log(this.componentName);
     return this.componentName;
   }
 
   csvFormatFn() {
     let base = this._baseUrl;
+
     if (base == "contentConsumptionFullView") {
       this.downloadLink = this.dashboardService.getContentDetailsCsv();
     }
-    if (base == "learnerTrackFullView") {
-      //this.getFilterData();
-      //this.downloadLink = this.dashboardService.getLearnerTrackDetailsCsv();
-    }
+
+    // if (base == "learnerTrackFullView") {
+    //   this.downloadLink = this.dashboardService.getLearnerTrackDetailsCsv();
+    // }
+
     // if (base == "scoreDistributionFullView") {
     //   this.downloadLink = this.dashboardService.getScoresDetailsCsv();
     // }
+
     if (base == "orgPerformanceFullView") {
       let getTab = this.getFilterData();
-      console.log(getTab);
       //this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
       if (getTab == 'team') {
         // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-        // console.log(this.componentName);
         this.downloadLink = this.dashboardService.getTeamDataCsv();
       }
       if (getTab == 'trainer') {
         // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-        // console.log(this.componentName);
         this.downloadLink = this.dashboardService.getTrainersDataCsv();
       }
       if (getTab == 'learner') {
         // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
-        // console.log(this.componentName);
         this.downloadLink = this.dashboardService.getLearnerDataCsv();
       }
     }
     if (base == "orgInterestFullView") {
       this.downloadLink = this.dashboardService.getOrgInterestDetailsDataCsv();
     }
+  }
+
+  captureScreen() {
+    let htmlTemp = document.getElementById("screenToCaputre");
+    html2canvas(htmlTemp).then(canvas => {
+      // Few necessary setting options  
+      let imgWidth = 208;
+      let pageHeight = 295;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('./');
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      let position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+
+      pdf.save('MYPdf.pdf'); // Generated PDF   
+    });
+
   }
 
   // getPrograms() {

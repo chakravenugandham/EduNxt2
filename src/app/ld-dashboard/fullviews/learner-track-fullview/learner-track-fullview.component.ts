@@ -71,8 +71,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getTableDataFromService() {
-
-    // this.responseTrackDetails = [];
     this.spinner_loader = true;
 
     if (this.filterData.learnerFilterBodyDetails["currentModule"] == undefined) {

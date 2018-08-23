@@ -9,7 +9,9 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':getValue == 'test'}" (click)="testScoreFn()">Test Scores</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':getValue == 'test'}" (click)="testScoreFn()">Test
+          Scores
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':getValue == 'quiz'}" (click)="quizScoreFn()">Quizzes</a>
@@ -70,6 +72,7 @@
     <app-assignment *ngIf="responseData.length > 0 && getValue == 'assignment'" [testData]="dataSet"></app-assignment>
   </div>
 
-  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  <app-filter-widget [viewData]="filtersData" [filterName]="filterName" [appliedFilters]="appliedFilters" (addFilterEmit)="addFilters($event)"
+    (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
 
 </div>

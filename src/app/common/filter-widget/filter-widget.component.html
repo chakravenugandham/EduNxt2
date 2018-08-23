@@ -66,7 +66,7 @@
                 <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
                   <div class="boldText"> Select {{filter.type}} </div>
                   <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                    <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>
+                    <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(appliedFilters,{name:filterName.name})}"></span>
                     <span>{{filterName.name}} </span>
                   </div>
                 </li>
@@ -76,19 +76,18 @@
         </div>
       </li>
 
-      <span *ngIf="filterArray">
+      <!-- <span *ngIf="filterArray">
         <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">
           <span>{{filter}}</span>
           <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
         </li>
-      </span>
-
-      <!-- <span *ngFor="let filters of appliedFilters">
-        <li class="list-inline-item" *ngFor="let name of filters.filters">
-          {{name.name}}
-          <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(name)"></i>
-        </li>
       </span> -->
+
+
+      <li class="list-inline-item" *ngFor="let filter of appliedFilters">
+        <span> {{filter.name}} </span>
+        <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
+      </li>
 
     </ul>
 

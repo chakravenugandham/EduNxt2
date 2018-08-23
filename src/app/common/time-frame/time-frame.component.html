@@ -39,7 +39,7 @@
             Download this report
           </span>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item cursor-pointer">Download PDF</button>
+            <button class="dropdown-item cursor-pointer" (click)="captureScreen()">Download PDF</button>
             <a [attr.href]="downloadLink" class="dropdown-item cursor-pointer">Download CSV</a>
           </div>
         </li>

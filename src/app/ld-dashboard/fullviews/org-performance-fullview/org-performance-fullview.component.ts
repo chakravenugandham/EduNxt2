@@ -55,7 +55,6 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     });
 
     this.componentName = this.myStorage.getItem('orgPerformanceCurrentModule');
-    console.log(this.componentName);
   }
 
   //api calls for trainers ,teams and learner

@@ -59,7 +59,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformanceCurrentModule');
     this.learnerTrackComponentName = this.myStorage.getItem('learnerTrackCurrentModule');
     this.learnerDisplayFor = this.myStorage.getItem('displayFor');
-    console.log(this.learnerDisplayFor);
   }
 
   getAllCourses() {
@@ -91,8 +90,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.downloadLink = this.dashboardService.getContentDetailsCsv();
     }
     if (base == "learnerTrackFullView") {
-      console.log(this.learnerTrackComponentName);
-      console.log(this.learnerDisplayFor);
       this.downloadLink = this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName);
     }
     // if (base == "scoreDistributionFullView") {

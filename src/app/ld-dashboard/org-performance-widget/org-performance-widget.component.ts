@@ -60,7 +60,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     });
 
     this.myStorage.setItem('orgPerformanceCurrentModule', this.filtersData.currentModule);
-    console.log(this.myStorage);
+
   }
 
   teamsFn() {

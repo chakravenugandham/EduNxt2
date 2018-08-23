@@ -73,11 +73,12 @@ export class LdDashboardService implements OnInit {
 
   //baseURL from enviornment
   baseURL = environment.baseUrl;
-  // UserId = (this.cookieService.get('user-id') == '') ? '57142' : this.cookieService.get('user-id')
-  UserId = "57142";
+
+  UserId = (this.cookieService.get('user_id') == '') ? '57142' : this.cookieService.get('user_id');
+  // UserId = "57142";
 
   headers = new HttpHeaders()
-    .set("user_id", "57142")
+    .set("user_id", this.UserId)
     .set("user_type", "LND")
     .set("tenant_name", "MAIT");
 
@@ -114,7 +115,7 @@ export class LdDashboardService implements OnInit {
     }
     if (tenantName == "PROLEARN") {
       this.headers = new HttpHeaders()
-        .set("LnDUserId", "95901")
+        .set("user_id", "95901")
         .set("user_type", "LND")
         .set("tenant_name", tenantName);
     }
@@ -315,7 +316,7 @@ export class LdDashboardService implements OnInit {
 
   //LOGOUT API
   logout() {
-    let url = "http://172.24.1.53:8080/logout"
+    let url = environment.logoutUrl;
     return this.http.get(url, { headers: this.headers });
   }
 

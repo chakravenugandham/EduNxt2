@@ -93,7 +93,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
     });
 
     this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
-    console.log(this.myStorage);
   }
 
   learnerPaceFn() {

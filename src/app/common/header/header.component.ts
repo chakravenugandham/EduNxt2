@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
   selectTenantName: string = "MAIT";
   tenantsName = ["MAIT", "MAB", "HDFC", "SMUDE", "PROLEARN"];
 
-  userName = (this.cookieService.get('userName') == '') ? 'User' : this.cookieService.get('userName');
-  cookieFound = (this.cookieService.get('userName') == '') ? false : true;
+  userName = (this.cookieService.get('user_name') == '') ? 'User' : this.cookieService.get('user_name');
+  cookieFound = (this.cookieService.get('user_name') == '') ? false : true;
 
 
   // userName = this.cookieService.get('user_name');

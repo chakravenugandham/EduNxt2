@@ -73,6 +73,8 @@ export class LearnersTrackWidgetComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
+  myStorage = window.localStorage;
+
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -89,19 +91,20 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
+    console.log(this.myStorage);
   }
 
   learnerPaceFn() {
-    this.componentName = this.filtersData.currentModule = "pace";
-    this.filterData.learnerFilterBodyDetails = this.filtersData;
-    this.appliedFilters = this.paceFilters;
+    this.componentName = "pace";
+    this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
     this.getDataFromService();
   }
 
   learnerPerfFn() {
-    this.componentName = this.filtersData.currentModule = "performance";
-    this.filterData.learnerFilterBodyDetails = this.performanceFilters;
-    this.appliedFilters = this.performanceFilters;
+    this.componentName = "performance";
+    this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
     this.getDataFromService();
   }
 
@@ -156,7 +159,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
     //   }
     // }
     // console.log(filterQuery);
-
 
     this.appliedFilters = this.paceFilters;
     this.learnerPaceFn();

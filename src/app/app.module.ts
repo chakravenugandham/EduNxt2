@@ -28,6 +28,7 @@ import { CookieService } from "ngx-cookie-service";
 //click outside detect
 import { ClickOutsideModule } from 'ng4-click-outside';
 
+
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./common/header/header.component";
 import { TimeFrameComponent } from "./common/time-frame/time-frame.component";

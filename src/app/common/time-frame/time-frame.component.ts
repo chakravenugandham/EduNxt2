@@ -35,7 +35,10 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     batchId: 0,
     sectionId: 0
   }
-  componentName: string;
+  myStorage = window.localStorage;
+  orgPerformanceComponentName: string;
+  learnerTrackComponentName: string;
+  learnerDisplayFor: string;
 
   constructor(private dashboardService: LdDashboardService, private _window: Window, private filterData: CommonService, private router: Router, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -52,6 +55,11 @@ export class TimeFrameComponent implements OnInit, OnChanges {
         this.csvFormatFn();
       }
     });
+
+    this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformanceCurrentModule');
+    this.learnerTrackComponentName = this.myStorage.getItem('learnerTrackCurrentModule');
+    this.learnerDisplayFor = this.myStorage.getItem('displayFor');
+    console.log(this.learnerDisplayFor);
   }
 
   getAllCourses() {
@@ -68,17 +76,12 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     else {
       for (let i in this.coursesData) {
         if (courseName == this.coursesData[i].courseName) {
-          this.programObj.programId = this.coursesData[i].programId
-          this.programObj.courseId = this.coursesData[i].courseId
+          this.programObj.programId = this.coursesData[i].programId;
+          this.programObj.courseId = this.coursesData[i].courseId;
         }
       }
     }
     this.dashboardService.courseAndProgram(this.programObj);
-  }
-
-  getFilterData() {
-    this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-    return this.componentName;
   }
 
   csvFormatFn() {
@@ -87,28 +90,23 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     if (base == "contentConsumptionFullView") {
       this.downloadLink = this.dashboardService.getContentDetailsCsv();
     }
-
-    // if (base == "learnerTrackFullView") {
-    //   this.downloadLink = this.dashboardService.getLearnerTrackDetailsCsv();
-    // }
-
+    if (base == "learnerTrackFullView") {
+      console.log(this.learnerTrackComponentName);
+      console.log(this.learnerDisplayFor);
+      this.downloadLink = this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName);
+    }
     // if (base == "scoreDistributionFullView") {
     //   this.downloadLink = this.dashboardService.getScoresDetailsCsv();
     // }
 
     if (base == "orgPerformanceFullView") {
-      let getTab = this.getFilterData();
-      //this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
-      if (getTab == 'team') {
-        // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+      if (this.orgPerformanceComponentName == 'team') {
         this.downloadLink = this.dashboardService.getTeamDataCsv();
       }
-      if (getTab == 'trainer') {
-        // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"];
+      if (this.orgPerformanceComponentName == 'trainer') {
         this.downloadLink = this.dashboardService.getTrainersDataCsv();
       }
-      if (getTab == 'learner') {
-        // this.componentName = this.filterData.learnerFilterBodyDetails["currentModule"] == undefined ? "learner" : this.filterData.learnerFilterBodyDetails["currentModule"];
+      if (this.orgPerformanceComponentName == 'learner') {
         this.downloadLink = this.dashboardService.getLearnerDataCsv();
       }
     }

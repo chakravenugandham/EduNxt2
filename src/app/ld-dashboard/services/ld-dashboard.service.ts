@@ -123,7 +123,6 @@ export class LdDashboardService implements OnInit {
   }
 
   courseAndProgram(config?: any) {
-    console.log(config);
 
     this.programObj.programId = config.programId;
     this.programObj.courseId = config.courseId;

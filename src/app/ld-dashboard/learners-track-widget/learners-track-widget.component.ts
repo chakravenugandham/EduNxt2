@@ -17,7 +17,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: [],
+    filterList: ["batch"],
     currentModule: this.componentName
   };
   filterName = ["batch"];
@@ -31,33 +31,41 @@ export class LearnersTrackWidgetComponent implements OnInit {
   filterbody = {};
 
   appliedFilters: any[];
-  paceFilters = [{
-    type: "batch",
-    filters: [
-      {
-        id: 59,
-        name: "201801"
-      },
-      {
-        id: 79,
-        name: "201806AAA"
-      }
-    ]
-  }];
+  performanceFilters = [];
+  paceFilters = [];
+  // paceFilters = [
+  //   {
+  //     type: "batch",
+  //     id: 59,
+  //     name: "Batch1"
+  //   },
+  //   {
+  //     type: "batch",
+  //     id: 79,
+  //     name: "Batch2"
+  //   }, {
+  //     type: "quiz",
+  //     id: 109,
+  //     name: "Quiz1"
+  //   }, {
+  //     type: "quiz",
+  //     id: 143,
+  //     name: "Quiz2"
+  //   }
+  // ];
 
-  performanceFilters = [{
-    type: "batch",
-    filters: [
-      {
-        id: 36,
-        name: "201706"
-      },
-      {
-        id: 37,
-        name: "201711"
-      }
-    ]
-  }]
+  // performanceFilters = [
+  //   {
+  //     type: "batch",
+  //     id: 59,
+  //     name: "Batch1"
+  //   },
+  //   {
+  //     type: "quiz",
+  //     id: 143,
+  //     name: "Quiz2"
+  //   }
+  // ];
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -101,7 +109,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.responseData = [];
     this.spinner_loader = true;
 
-    this.appliedFilters = this.componentName == "pace" ? this.paceFilters : this.performanceFilters;
+    // this.appliedFilters = this.componentName == "pace" ? this.paceFilters : this.performanceFilters;
 
     this.dashboardService
       .getLearnerTrackData(this.filterbody)
@@ -118,19 +126,23 @@ export class LearnersTrackWidgetComponent implements OnInit {
       });
   }
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getDataFromService();
+  // getFilterObject($event) {
+  //   this.filterbody = $event;
+  //   this.getDataFromService();
+  // }
+
+  addFilters($event) {
+    this.appliedFilters.push($event);
   }
+
   removedFilters($event) {
-    for (let i in this.appliedFilters) {
-      let indexF = _.findIndex(this.appliedFilters[i].filters, $event);
-      this.appliedFilters[i].filters.splice(indexF, 1);
-    }
+    let indexF = _.findIndex(this.appliedFilters, $event);
+    this.appliedFilters.splice(indexF, 1);
   }
 
   ngOnInit() {
     this.myStorage.removeItem('currentModuleName');
+    this.appliedFilters = this.paceFilters;
     this.learnerPaceFn();
     this.getDataFromService();
   }

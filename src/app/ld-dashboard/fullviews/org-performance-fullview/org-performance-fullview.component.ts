@@ -13,7 +13,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   responseLeanersDetails: any;
 
   checkBoxValue: boolean = false;
-  sortOrder: string = "learner";
+  sortOrder: string;
+  // sortOrder: string = "learnerName";
   reverse: boolean = false;
   parseFloat = parseFloat;
   // limitTo: number = 10;

@@ -139,12 +139,9 @@ export class LdDashboardService implements OnInit {
   }
 
   changeDate(dateObj) {
-
     this.dateFilterObj.start_date = dateObj.start_date;
     this.dateFilterObj.end_date = dateObj.end_date;
-
     this.setDateObj = "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date;
-
   }
 
 
@@ -224,7 +221,7 @@ export class LdDashboardService implements OnInit {
 
   //learner-track full details
   getLearnerTrackDetails(componentName, displayfor, filterbody, pagination) {
-    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "displayFor=" + displayfor + "&type=" + componentName + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "&displayFor=" + displayfor + "&type=" + componentName + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -247,6 +244,7 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
+  //org-popular topics data
   getOrgPopulatTopicsData() {
     let url = this.baseURL + APIURL.ORGANISATION_POPULAR_TOPICS + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
@@ -344,37 +342,43 @@ export class LdDashboardService implements OnInit {
 
   //learner-track full details
   getLearnerTrackDetailsCsv(componentName) {
-    return this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + "&type=" + componentName + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + '/csv' + this.setDateObj + "&type=" + componentName + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
     //"&displayFor=" + displayfor +
+    return this.http.post(url, null, { headers: this.headers });
   }
 
-  getScoresDetailsCsv(dropdownValue) {
-    return this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+  getScoresDetailsCsv(dropdownValue, filterbody) {
+    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  getContentDetailsCsv() {
-    return this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
-
+  getContentDetailsCsv(filterbody) {
+    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //org-interest full details
   getOrgInterestDetailsDataCsv() {
-    return this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance trainers data
   getTeamDataCsv() {
-    return this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance teams data
   getTrainersDataCsv() {
-    return this.baseURL + APIURL.TRAINER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    let url = this.baseURL + APIURL.TRAINER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-performance leaners data
   getLearnerDataCsv() {
-    return this.baseURL + APIURL.LEARNER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    let url = this.baseURL + APIURL.LEARNER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   ngOnInit() { }

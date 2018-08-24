@@ -62,34 +62,28 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     this.spinner_loader = true;
     if (this.componentName == "teams") {
       this.showDetails = this.componentName;
-      this.dashboardService
-        .getTeamData(this.pagination)
-        .subscribe((response: any) => {
-          this.responseTeamsDetails = response.data;
-          this.pagination.total = response.pagination.total;
-          this.spinner_loader = false;
-          this.noDataFlag = response.data.length == 0 ? true : false;
-        });
+      this.dashboardService.getTeamData(this.pagination).subscribe((response: any) => {
+        this.responseTeamsDetails = response.data;
+        this.pagination.total = response.pagination.total;
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
+      });
     } else if (this.componentName == "trainers") {
       this.showDetails = this.componentName;
-      this.dashboardService
-        .getTrainersData(this.pagination)
-        .subscribe((response: any) => {
-          this.responseTrainersDetails = response.data;
-          this.pagination.total = response.pagination.total;
-          this.spinner_loader = false;
-          this.noDataFlag = response.data.length == 0 ? true : false;
-        });
+      this.dashboardService.getTrainersData(this.pagination).subscribe((response: any) => {
+        this.responseTrainersDetails = response.data;
+        this.pagination.total = response.pagination.total;
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
+      });
     } else if (this.componentName) {
       this.showDetails = this.componentName;
-      this.dashboardService
-        .getLearnerData(this.pagination)
-        .subscribe((response: any) => {
-          this.responseLeanersDetails = response.data;
-          this.pagination.total = response.pagination.total;
-          this.spinner_loader = false;
-          this.noDataFlag = response.data.length == 0 ? true : false;
-        });
+      this.dashboardService.getLearnerData(this.pagination).subscribe((response: any) => {
+        this.responseLeanersDetails = response.data;
+        this.pagination.total = response.pagination.total;
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
+      });
     }
 
   }
@@ -125,8 +119,10 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
   changeData(name) {
     this.componentName = name;
+    // this.filterData.orgPerformanceDetails(this.filterData);
     this.myStorage.setItem('orgPerformShowDetails', this.componentName);
     console.log(this.myStorage.getItem('orgPerformShowDetails'));
+
     this.pagination.page = 1;
     this.compareUsers = [];
     this.getDataFromService();

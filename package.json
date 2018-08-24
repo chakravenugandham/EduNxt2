@@ -27,6 +27,7 @@
     "angular-tag-cloud-module": "3.0.0",
     "bootstrap": "4.1.1",
     "chart.js": "2.5.0",
+    "classlist.js": "^1.1.20150312",
     "core-js": "2.5.4",
     "d3": "3.5.17",
     "d3v4": "4.2.2",
@@ -47,6 +48,7 @@
     "rxjs": "6.0.0",
     "socket.io": "2.1.1",
     "underscore": "1.9.0",
+    "web-animations-js": "^2.3.1",
     "xlsx": "0.13.3",
     "zone.js": "0.8.26"
   },

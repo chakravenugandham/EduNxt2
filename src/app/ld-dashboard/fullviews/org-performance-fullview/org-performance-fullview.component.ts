@@ -55,14 +55,11 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     });
 
     this.componentName = this.myStorage.getItem('orgPerformanceCurrentModule');
-    console.log(this.componentName);
   }
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
-
     this.spinner_loader = true;
-
     if (this.componentName == "teams") {
       this.showDetails = this.componentName;
       this.dashboardService
@@ -128,6 +125,8 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   }
   changeData(name) {
     this.componentName = name;
+    this.myStorage.setItem('orgPerformShowDetails', this.componentName);
+    console.log(this.myStorage.getItem('orgPerformShowDetails'));
     this.pagination.page = 1;
     this.compareUsers = [];
     this.getDataFromService();
@@ -140,6 +139,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.componentName == "learner";
+    this.myStorage.setItem('orgPerformShowDetails', this.showDetails);
     this.getDataFromService();
     // this.getFilterData();
   }

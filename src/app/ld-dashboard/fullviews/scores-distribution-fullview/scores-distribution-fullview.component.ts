@@ -39,6 +39,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     limitTo: 10,
     total: 0
   };
+  myStorage = window.localStorage;
 
   getFilterObject($event) {
     this.filterbody = $event;
@@ -72,12 +73,13 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   getDataFromService() {
     this.responseGraphData = [];
+    this.myStorage.setItem('displayGraphFor', this.showDetails);
+    console.log(this.myStorage.getItem('displayGraphFor'));
 
     this.dashboardService
       .getScoresDistrubution(this.showDetails, this.filterbody)
       .subscribe((response: any) => {
         this.responseGraphData = response.data;
-
         for (let i = 1; i <= this.responseGraphData.length; i++) {
           this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
         }
@@ -112,6 +114,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   //api call for score details based on component
   ngOnInit() {
+    this.myStorage.setItem('orgPerformShowDetails', this.showDetails);
     this.getDataFromService();
     this.getScoreDetails();
   }

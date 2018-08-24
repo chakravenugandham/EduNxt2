@@ -17,7 +17,6 @@ export class CommonService {
   }
 
   set orgPerformanceDetails(data) {
-    console.log(data);
     this.orgPerformanceData = data;
   }
 

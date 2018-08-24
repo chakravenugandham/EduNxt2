@@ -39,6 +39,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   orgPerformanceComponentName: string;
   learnerTrackComponentName: string;
   learnerDisplayFor: string;
+  orgPerformtab: string;
 
   constructor(private dashboardService: LdDashboardService, private _window: Window, private filterData: CommonService, private router: Router, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -59,6 +60,8 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformanceCurrentModule');
     this.learnerTrackComponentName = this.myStorage.getItem('learnerTrackCurrentModule');
     this.learnerDisplayFor = this.myStorage.getItem('displayFor');
+    this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
+    console.log(this.orgPerformtab);
     console.log(this.learnerDisplayFor);
   }
 
@@ -197,18 +200,10 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.filterEvent.emit(courseId);
   }
 
-  // csvFormatFn() {
-  //   // this._baseUrl = this._window.location.href;
-  //   this._baseUrl = window.location.href;
-  //   let base = this._baseUrl.split('/')[4];
-  //   if (base == "contentConsumptionFullView") {
-  //     this.downloadLink = this.dashboardService.getContentDetailsCsv();
-  //   }
-  // }
-
-
   ngOnChanges(changes: any) {
-    if (changes.downloadLink.currentValue) {
+    if (changes.orgPerformtab.currentValue) {
+      this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
+      console.log(this.orgPerformtab);
     }
   }
 
@@ -218,3 +213,4 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.getAllCourses();
   }
 }
+

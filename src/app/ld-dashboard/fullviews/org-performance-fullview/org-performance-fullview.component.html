@@ -37,13 +37,13 @@
       <table class="table table-borderless" *ngIf="showDetails == 'teams'">
         <thead>
           <tr>
-            <th scope="col" (click)="sortByFn('teamName')">
+            <th scope="col">
               <span *ngIf="!searchBox">
                 <span (click)="searchFn()">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <span class="text">Team Name</span>
-                <span class="m-l-8">
+                <span class="m-l-8" (click)="sortByFn('teamName')">
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
               </span>
@@ -102,13 +102,21 @@
       <table class="table table-borderless" *ngIf="showDetails == 'trainers'">
         <thead>
           <tr>
-            <th scope="col" (click)="sortByFn('trainerName')">
-              <span>
+            <th scope="col">
+              <span *ngIf="!searchBox" (click)="searchFn()">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Trainer Name</span>
-              <span>
+              <span (click)="sortByFn('trainerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
@@ -163,13 +171,21 @@
       <table class="table table-borderless" *ngIf="showDetails == 'learner'">
         <thead>
           <tr>
-            <th scope="col" (click)="sortByFn('learnerName')">
-              <span>
+            <th scope="col">
+              <span *ngIf="!searchBox">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Learner Name</span>
-              <span>
+              <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('learnerSerialNumber')">

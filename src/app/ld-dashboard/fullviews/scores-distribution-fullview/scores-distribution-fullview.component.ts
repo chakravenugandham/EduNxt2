@@ -74,7 +74,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   getDataFromService() {
     this.responseGraphData = [];
     this.myStorage.setItem('displayGraphFor', this.showDetails);
-    console.log(this.myStorage.getItem('displayGraphFor'));
 
     this.dashboardService
       .getScoresDistrubution(this.showDetails, this.filterbody)

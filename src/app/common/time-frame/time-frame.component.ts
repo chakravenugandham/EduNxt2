@@ -61,8 +61,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.learnerTrackComponentName = this.myStorage.getItem('learnerTrackCurrentModule');
     this.learnerDisplayFor = this.myStorage.getItem('displayFor');
     this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
-    console.log(this.orgPerformtab);
-    console.log(this.learnerDisplayFor);
+
   }
 
   getAllCourses() {
@@ -223,7 +222,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   ngOnChanges(changes: any) {
     if (changes.orgPerformtab.currentValue) {
       this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
-      console.log(this.orgPerformtab);
     }
   }
 

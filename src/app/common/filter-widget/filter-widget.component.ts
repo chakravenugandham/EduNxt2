@@ -20,16 +20,17 @@ import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.ser
 export class FilterWidgetComponent implements OnInit, OnChanges {
   @Input()
   filtersInfo: {
-    routeTo: string;
-    filters: boolean;
-    search: boolean;
-    viewDetails: boolean;
-    filterList: string[];
-    currentModule: string;
-    viewDetailsFilters: boolean;
+    routeTo: string,
+    filters: boolean,
+    search: boolean,
+    viewDetails: boolean,
+    filterList: string[],
+    currentModule: string,
+    viewDetailsFilters: boolean,
+    appliedFilters: any[]
   };
-  @Input() filterName: string[];
-  @Input() appliedFilters: any[];
+  // @Input() filterName: string[];
+  // @Input() appliedFilters: any[];
 
   @Input()
   searchFilterData: {
@@ -42,7 +43,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   @Output() addFilterEmit = new EventEmitter<any>();
   @Output() removeFilterEmit = new EventEmitter<any>();
 
-  filtersData;
+  filtersList;
   displayDropdown: boolean = false;
   noSearchResultFlag: boolean = true;
 
@@ -52,6 +53,8 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   searchNames = [];
 
   viewDetailsDisplay: boolean = false;
+
+  // filterDisplayName = "";
   filterDisplayName = "Add a Filter";
 
   filterSelected: any = {
@@ -76,123 +79,64 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   filterDispalyNameFraming() {
+
     if (this.filtersInfo.filterList.length > 1) {
       this.filterDisplayName = "Add a Filter";
     } else {
-      switch (this.filtersInfo.filterList[0]) {
-        case "location": {
-          this.filterDisplayName = "Location";
-          break;
-        }
-        case "batch": {
-          this.filterDisplayName = "Batch";
-          break;
-        }
-        case "team": {
-          this.filterDisplayName = "Team";
-          break;
-        }
-        case "course": {
-          this.filterDisplayName = "Course";
-          break;
-        }
-        case "zone": {
-          this.filterDisplayName = "Zone";
-          break;
-        }
-        case "contentType": {
-          this.filterDisplayName = "Content Type";
-          break;
-        }
-      }
+      this.filterDisplayName = this.filtersInfo.filterList[0].replace(/^\w/, c => c.toUpperCase());
+      // switch (this.filtersInfo.filterList[0]) {
+      //   case "location": {
+      //     this.filterDisplayName = "Location";
+      //     break;
+      //   }
+      //   case "batch": {
+      //     this.filterDisplayName = "Batch";
+      //     break;
+      //   }
+      //   case "team": {
+      //     this.filterDisplayName = "Team";
+      //     break;
+      //   }
+      //   case "course": {
+      //     this.filterDisplayName = "Course";
+      //     break;
+      //   }
+      //   case "zone": {
+      //     this.filterDisplayName = "Zone";
+      //     break;
+      //   }
+      //   case "contentType": {
+      //     this.filterDisplayName = "Content Type";
+      //     break;
+      //   }
+      // }
     }
   }
 
   showFilter() {
-    this.filtersData = [];
+    this.filtersList = [];
     this.server
       .getFiltersData(this.filtersInfo.filterList)
       .subscribe((response: any) => {
-        this.filtersData = response.data;
-        console.log("filtersData", this.filtersData);
-
-        this.displayDropdown = this.filtersData.length > 0 ? true : false;
+        this.filtersList = response.data;
+        this.displayDropdown = this.filtersList.length > 0 ? true : false;
       });
   }
 
-  selectFilter(filter, filterName) {
+  selectFilter(filterType, filterObj) {
     let selectedFilter = {
-      type: filter.type,
-      id: filterName.id,
-      name: filterName.name
+      type: filterType.type,
+      id: filterObj.id,
+      name: filterObj.name
     }
 
-    if (_.findIndex(this.appliedFilters, selectedFilter) == -1) {
+    if (_.findIndex(this.filtersInfo.appliedFilters, selectedFilter) == -1) {
       this.addFilterEmit.emit(selectedFilter);
     }
-    else if (_.findIndex(this.appliedFilters, selectedFilter) != -1) {
+    else if (_.findIndex(this.filtersInfo.appliedFilters, selectedFilter) != -1) {
       this.removeFilterEmit.emit(selectedFilter);
     }
 
-    // let filterTypeId = "";
-    // switch (filter.type) {
-    //   case "location": {
-    //     filterTypeId = "locationId";
-    //     break;
-    //   }
-    //   case "batch": {
-    //     filterTypeId = "batchId";
-    //     break;
-    //   }
-    //   case "quiz": {
-    //     filterTypeId = "quizName";
-    //     break;
-    //   }
-    //   case "assignment": {
-    //     filterTypeId = "assignmentName";
-    //     break;
-    //   }
-    //   case "team": {
-    //     filterTypeId = "teamId";
-    //     break;
-    //   }
-    //   case "course": {
-    //     filterTypeId = "courseId";
-    //     break;
-    //   }
-    //   case "zone": {
-    //     filterTypeId = "zoneId";
-    //     break;
-    //   }
-    //   case "contentType": {
-    //     filterTypeId = "contentType";
-    //     break;
-    //   }
-    // }
-
-    // if (!this.filterArray.includes(filterName.name)) {
-    //   this.filterArray.push(filterName.name);
-    //   this.filterSelected[filterTypeId].push(filterName.id);
-
-    //   this.filterFullObj.push({
-    //     type: filterTypeId,
-    //     id: filterName.id,
-    //     name: filterName.name
-    //   });
-    // } else {
-    //   let i = this.filterArray.indexOf(filterName.name);
-    //   this.filterArray.splice(i, 1);
-    //   let j = this.filterSelected[filterTypeId].indexOf(filterName.name);
-    //   this.filterSelected[filterTypeId].splice(j, 1);
-
-    //   for (let k in this.filterFullObj) {
-    //     if (filterName.name == this.filterFullObj[k].name) {
-    //       this.filterFullObj.splice(0, 1);
-    //     }
-    //   }
-    // }
-
-    // this.filterEvent.emit(this.filterSelected);
   }
 
   removeFromFilterBody(filterBodyName, index) {
@@ -255,17 +199,13 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.filtersInfo.filters) {
-      this.filtersInfo.filterList = this.filterName;
-      this.filterDispalyNameFraming();
-    }
-    this.viewDetailsDisplay = this.filtersInfo.viewDetailsFilters;
+    // this.filterDispalyNameFraming();
   }
 
   ngOnChanges(changes: any) {
-    if (this.filtersInfo.filters) {
-      this.filtersInfo.filterList = this.filterName;
-      this.filterDispalyNameFraming();
-    }
+    // if (changes.filtersInfo.filterList) {
+    //   this.filterDispalyNameFraming();
+    // }
+    // this.filterDispalyNameFraming();
   }
 }

@@ -9,15 +9,15 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':getValue == 'test'}" (click)="testScoreFn()">Test
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'test'}" (click)="testScoreFn()">Test
           Scores
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':getValue == 'quiz'}" (click)="quizScoreFn()">Quizzes</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'quiz'}" (click)="quizScoreFn()">Quizzes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':getValue == 'assignment'}" (click)="assignmentFn()">Assignments</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'assignment'}" (click)="assignmentFn()">Assignments</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -66,13 +66,12 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div *ngIf="responseData.length>0">
-    <app-test-scores *ngIf=" getValue == 'test'" [testData]="dataSet"></app-test-scores>
-    <app-quiz *ngIf="getValue == 'quiz'" [testData]="dataSet"></app-quiz>
-    <app-assignment *ngIf="responseData.length > 0 && getValue == 'assignment'" [testData]="dataSet"></app-assignment>
+  <div *ngIf="responseData.length>0 && !noDataFlag">
+    <app-test-scores *ngIf=" filtersData.currentModule == 'test'" [testData]="dataSet"></app-test-scores>
+    <app-quiz *ngIf="filtersData.currentModule == 'quiz'" [testData]="dataSet"></app-quiz>
+    <app-assignment *ngIf="responseData.length > 0 && filtersData.currentModule == 'assignment'" [testData]="dataSet"></app-assignment>
   </div>
 
-  <app-filter-widget [filtersInfo]="filtersData" [filterName]="filterName" [appliedFilters]="appliedFilters" (addFilterEmit)="addFilters($event)"
-    (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
+  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)" (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
 
 </div>

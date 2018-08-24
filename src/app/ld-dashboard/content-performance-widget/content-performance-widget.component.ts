@@ -10,8 +10,7 @@ import { _ } from "underscore";
   styleUrls: ["./content-performance-widget.component.scss"]
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
-  // routePath: string = "contentConsumptionFullView";
-  // limitTo = 5;
+
   pagination = {
     page: 1,
     limitTo: 5,
@@ -27,18 +26,12 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     viewDetailsFilters: false,
     appliedFilters: []
   };
-  // filterName = ["contentType"];
-  filterbody = {};
-  contentData = [];
 
   contentObject = {
     filters: ["contentType"],
     appliedFilters: [],
     responseData: []
   }
-
-  // appliedFilters = [];
-  // contentFilters = [];
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -63,7 +56,6 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   getDataFromService() {
     this.spinner_loader = true;
-    // this.contentObject.responseData = [];
     this.dashboardService
       .getContentData(this.filtersData.appliedFilters, this.pagination)
       .subscribe((res: any) => {
@@ -75,13 +67,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   }
 
   addFilters($event) {
-    this.filtersData.appliedFilters.push($event);
-    this.getDataFromService();
-  }
-
-  removedFilters($event) {
-    let indexF = _.findIndex(this.filtersData.appliedFilters, $event);
-    this.filtersData.appliedFilters.splice(indexF, 1);
+    this.filtersData.appliedFilters = $event;
     this.getDataFromService();
   }
 

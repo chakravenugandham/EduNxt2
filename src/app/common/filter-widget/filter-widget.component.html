@@ -38,22 +38,15 @@
       </li>
 
       <li class="list-inline-item" *ngFor="let searchName of searchNames; let i = index">
-        <!-- <span>{{searchName.teamName}}</span> -->
         <span>{{searchName[searchFilterData.searchBy]}} </span>
         <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i);"></i>
       </li>
-
-      <!-- <li class="list-inline-item" *ngFor="let searchItem of searchList; let i = index">
-        <span>{{searchItem}}</span>
-        <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
-      </li> -->
 
       <li class="list-inline-item filter" *ngIf="filtersInfo.filters">
         <div class="filterSelect">
           <div class="getFilter" (click)="showFilter()">
             <span>{{filterDisplayName}}</span>
             <span>
-              <!-- <i class="fas fa-plus-circle"></i> -->
               <i class="fas fa-plus"></i>
             </span>
           </div>
@@ -75,14 +68,6 @@
           </div>
         </div>
       </li>
-
-      <!-- <span *ngIf="filterArray">
-        <li class="list-inline-item" *ngFor="let filter of filterArray; let i = index">
-          <span>{{filter}}</span>
-          <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
-        </li>
-      </span> -->
-
 
       <li class="list-inline-item applied-filter" *ngFor="let filter of filtersInfo.appliedFilters">
         <span> {{filter.name}} </span>

@@ -18,6 +18,7 @@ import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.ser
 })
 
 export class FilterWidgetComponent implements OnInit, OnChanges {
+
   @Input()
   filtersInfo: {
     routeTo: string,
@@ -29,8 +30,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     viewDetailsFilters: boolean,
     appliedFilters: any[]
   };
-  // @Input() filterName: string[];
-  // @Input() appliedFilters: any[];
 
   @Input()
   searchFilterData: {
@@ -38,39 +37,17 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     searchBy: string;
   };
 
-  @Output() filterEvent = new EventEmitter<any>();
   @Output() searchEvent = new EventEmitter<any>();
   @Output() addFilterEmit = new EventEmitter<any>();
-  @Output() removeFilterEmit = new EventEmitter<any>();
 
-  filtersList;
+  filtersList: any[];
   displayDropdown: boolean = false;
   noSearchResultFlag: boolean = true;
-
-  filterArray = [];
 
   searchList = [];
   searchNames = [];
 
-  viewDetailsDisplay: boolean = false;
-
-  // filterDisplayName = "";
   filterDisplayName = "Add a Filter";
-
-  filterSelected: any = {
-    batchId: [],
-    quizName: [],
-    assignmentName: [],
-    locationId: [],
-    teamId: [],
-    zoneId: [],
-    contentType: []
-  };
-
-  filterFullObj = [];
-
-  filterComponent: string;
-  filterDisplay: boolean = false;
 
   constructor(private router: Router, private server: LdDashboardService) { }
 
@@ -82,34 +59,9 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
     if (this.filtersInfo.filterList.length > 1) {
       this.filterDisplayName = "Add a Filter";
-    } else {
+    }
+    else {
       this.filterDisplayName = this.filtersInfo.filterList[0].replace(/^\w/, c => c.toUpperCase());
-      // switch (this.filtersInfo.filterList[0]) {
-      //   case "location": {
-      //     this.filterDisplayName = "Location";
-      //     break;
-      //   }
-      //   case "batch": {
-      //     this.filterDisplayName = "Batch";
-      //     break;
-      //   }
-      //   case "team": {
-      //     this.filterDisplayName = "Team";
-      //     break;
-      //   }
-      //   case "course": {
-      //     this.filterDisplayName = "Course";
-      //     break;
-      //   }
-      //   case "zone": {
-      //     this.filterDisplayName = "Zone";
-      //     break;
-      //   }
-      //   case "contentType": {
-      //     this.filterDisplayName = "Content Type";
-      //     break;
-      //   }
-      // }
     }
   }
 
@@ -130,33 +82,20 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       name: filterObj.name
     }
 
-    if (_.findIndex(this.filtersInfo.appliedFilters, selectedFilter) == -1) {
-      this.addFilterEmit.emit(selectedFilter);
+    let indexF = _.findIndex(this.filtersInfo.appliedFilters, selectedFilter);
+    if (indexF == -1) {
+      this.filtersInfo.appliedFilters.push(selectedFilter);
+      this.addFilterEmit.emit(this.filtersInfo.appliedFilters);
     }
-    else if (_.findIndex(this.filtersInfo.appliedFilters, selectedFilter) != -1) {
-      this.removeFilterEmit.emit(selectedFilter);
-    }
-
-  }
-
-  removeFromFilterBody(filterBodyName, index) {
-    for (let i in this.filterFullObj) {
-      if (filterBodyName == this.filterFullObj[i].name) {
-        this.filterSelected[this.filterFullObj[i].type].splice(
-          this.filterSelected[this.filterFullObj[i].type].indexOf(
-            this.filterFullObj[i].id
-          ),
-          1
-        );
-        this.filterFullObj.splice(this.filterFullObj[i], 1);
-        this.filterArray.splice(index, 1);
-        this.filterEvent.emit(this.filterSelected);
-      }
+    else {
+      this.filtersInfo.appliedFilters.splice(indexF, 1);
+      this.addFilterEmit.emit(this.filtersInfo.appliedFilters);
     }
   }
 
   removeFilter(filter) {
-    this.removeFilterEmit.emit(filter);
+    this.filtersInfo.appliedFilters.splice(_.findIndex(this.filtersInfo.appliedFilters, filter), 1);
+    this.addFilterEmit.emit(this.filtersInfo.appliedFilters);
   }
 
   routetoFullview() {

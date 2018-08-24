@@ -69,5 +69,5 @@
     <app-learner-performance *ngIf="filtersData.currentModule == 'performance'" [performanceData]="performanceObject.responseData"></app-learner-performance>
   </div>
 
-  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)" (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
+  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
 </div>

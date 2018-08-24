@@ -8,6 +8,7 @@ import { CommonService } from "../../../common-services/common.service";
   styleUrls: ["./learner-track-fullview.component.scss"]
 })
 export class LearnerTrackFullviewComponent implements OnInit {
+
   responseGraphDetails: any;
   responseTrackDetails = [];
   selectType: string;
@@ -25,18 +26,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getTableDataFromService();
-    this.getGraphDataFromService();
-  }
-
-  getDisplayObject($event) {
-    this.selectType = $event;
-    this.myStorage.setItem('displayFor', this.selectType);
-    this.getTableDataFromService();
-  }
-
   paceTrackValues = [];
   performanceTrackValues = [];
 
@@ -46,9 +35,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     total: 0
   };
 
-  myStorage = window.localStorage;
-
-  constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
+  constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
       this.getTableDataFromService();
@@ -68,39 +55,23 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.getTableDataFromService();
     });
 
-    this.componentName = this.myStorage.getItem('learnerTrackCurrentModule');
+    // this.componentName = this.myStorage.getItem('learnerTrackCurrentModule');
   }
 
-  getTableDataFromService() {
-    this.spinner_loader = true;
+  getModule() {
+    this.componentName = localStorage.getItem('trackComponent');
     if (this.componentName == "pace") {
       this.selectType = "aheadschedule";
-      this.myStorage.setItem('displayFor', this.selectType);
-      this.dashboardService.getLearnerTrackDetails(this.componentName, this.selectType, this.filterbody, this.pagination)
-        .subscribe((response: any) => {
-          this.responseTrackDetails = response.data;
-          this.pagination.total = response.pagination.total;
-          this.spinner_loader = false;
-          this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-        });
-    } else if (this.componentName == "performance") {
-      this.selectType = "excelling";
-      this.myStorage.setItem('displayFor', this.selectType);
-      this.dashboardService.getLearnerTrackDetails(this.componentName, this.selectType, this.filterbody, this.pagination)
-        .subscribe((response: any) => {
-          this.responseTrackDetails = response.data;
-          this.pagination.total = response.pagination.total;
-
-          this.spinner_loader = false;
-          this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-        });
+      localStorage.setItem('trackDisplayFor', this.selectType);
     }
-  }
+    else if (this.componentName == "performance") {
+      this.selectType = "excelling";
+      localStorage.setItem('trackDisplayFor', this.selectType);
+    }
 
-  gotoPage($event) {
-    window.scrollTo(0, 200);
-    this.pagination.page = $event;
     this.getTableDataFromService();
+    this.getGraphDataFromService();
+
   }
 
   getGraphDataFromService() {
@@ -155,9 +126,32 @@ export class LearnerTrackFullviewComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
+  getTableDataFromService() {
+    this.spinner_loader = true;
+
+    this.dashboardService.getLearnerTrackDetails(this.componentName, this.selectType, this.filterbody, this.pagination)
+      .subscribe((response: any) => {
+        this.responseTrackDetails = response.data;
+        this.pagination.total = response.pagination.total;
+
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+      });
+  }
+
+  getDisplayObject($event) {
+    this.selectType = $event;
+    localStorage.setItem('trackDisplayFor', this.selectType);
     this.getTableDataFromService();
-    this.getGraphDataFromService();
-    this.getDisplayObject(this.selectType);
+  }
+
+  gotoPage($event) {
+    window.scrollTo(0, 200);
+    this.pagination.page = $event;
+    this.getTableDataFromService();
+  }
+
+  ngOnInit() {
+    this.getModule();
   }
 }

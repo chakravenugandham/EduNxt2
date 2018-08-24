@@ -5,15 +5,20 @@
 .m-l-10{
     margin-left: 10px;
   }
-    input{
-      border: 1px solid #5584ff;
-      width: 82px;
-    }
-    .goToPage{
-      background-color:#5584ff;
-      color: #FFF;
-      padding: 4px 24px;
-      font-size: 11px;
-      cursor: pointer;
-    }
+input{
+  border: 1px solid #5584ff;
+  width: 82px;
+}
+.goToPage{
+  background-color:#5584ff;
+  color: #FFF;
+  padding: 4px 24px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.disable{
+  pointer-events: none;
+  background-color: #CCC;
+}
+    
   

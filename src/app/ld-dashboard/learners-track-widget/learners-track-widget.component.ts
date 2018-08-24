@@ -22,9 +22,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
     appliedFilters: []
   };
 
-  appliedFilters: any[];
-
-
   paceObject = {
     filters: ["batch"],
     appliedFilters: [],
@@ -82,21 +79,21 @@ export class LearnersTrackWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    // this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
   }
 
   learnerPaceFn() {
-
     this.filtersData.currentModule = "pace";
-    this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    // this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    localStorage.setItem("trackComponent", "pace");
     this.filtersData.appliedFilters = this.paceObject.appliedFilters;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
-
     this.filtersData.currentModule = "performance";
-    this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    // this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    localStorage.setItem("trackComponent", "performance");
     this.filtersData.appliedFilters = this.performanceObject.appliedFilters;
     this.getDataFromService();
   }
@@ -119,23 +116,13 @@ export class LearnersTrackWidgetComponent implements OnInit {
       });
   }
 
-  // getFilterObject($event) {
-  //   this.getDataFromService();
-  // }
-
   addFilters($event) {
-    this.filtersData.appliedFilters.push($event);
-    this.getDataFromService();
-  }
-
-  removedFilters($event) {
-    let indexF = _.findIndex(this.filtersData.appliedFilters, $event);
-    this.filtersData.appliedFilters.splice(indexF, 1);
+    this.filtersData.appliedFilters = $event;
     this.getDataFromService();
   }
 
   ngOnInit() {
-    this.filtersData.appliedFilters = this.paceObject.appliedFilters;
+    localStorage.setItem("trackComponent", "pace");
     this.learnerPaceFn();
   }
 }

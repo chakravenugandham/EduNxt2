@@ -59,19 +59,20 @@
   </div>
 
   <div *ngIf="spinner_loader" class="spinner_loading">
-    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+    <!-- <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i> -->
+    <i class="fas fa-spinner fa-pulse fa-3x spinner_inside"></i>
   </div>
 
   <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div *ngIf="responseData.length>0 && !noDataFlag">
-    <app-test-scores *ngIf=" filtersData.currentModule == 'test'" [testData]="dataSet"></app-test-scores>
+  <div *ngIf="responseData.length > 0 && !noDataFlag">
+    <app-test-scores *ngIf="filtersData.currentModule == 'test'" [testData]="dataSet"></app-test-scores>
     <app-quiz *ngIf="filtersData.currentModule == 'quiz'" [testData]="dataSet"></app-quiz>
-    <app-assignment *ngIf="responseData.length > 0 && filtersData.currentModule == 'assignment'" [testData]="dataSet"></app-assignment>
+    <app-assignment *ngIf="filtersData.currentModule == 'assignment'" [testData]="dataSet"></app-assignment>
   </div>
 
-  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)" (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
+  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
 
 </div>

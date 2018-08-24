@@ -10,6 +10,7 @@ import { _ } from "underscore";
   styleUrls: ["./scores-distribution-widget.component.scss"]
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
+
   filtersData = {
     routeTo: "scoreDistributionFullView",
     filters: true,
@@ -17,15 +18,16 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     viewDetails: true,
     filterList: [],
     currentModule: '',
-    // viewDetailsFilters: true,
     appliedFilters: []
   };
 
-
-  getValue: string = "test";
-  filterbody = {};
   responseData = [];
 
+  testScoresObj = {
+    filters: ["batch"],
+    appliedFilters: [],
+    responseData: []
+  }
 
   testFilters = [];
   quizFilters = [];
@@ -64,8 +66,6 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   quizScoreFn() {
     this.filtersData.currentModule = "quiz";
     this.filtersData.filterList = ["batch", "quiz"];
-    // this.filterName = this.filtersData.filterList = ["batch", "quiz"];
-    // this.appliedFilters = this.quizFilters;
     this.filtersData.appliedFilters = this.quizFilters;
     this.getDataFromService();
   }
@@ -73,16 +73,9 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   assignmentFn() {
     this.filtersData.currentModule = "assignment";
     this.filtersData.filterList = ["batch", "assignment"];
-    // this.filterName = this.filtersData.filterList = ["batch", "assignment"];
-    // this.appliedFilters = this.assignmentFilters;
     this.filtersData.appliedFilters = this.assignmentFilters;
     this.getDataFromService();
   }
-
-  // getFilterObject($event) {
-  //   this.filterbody = $event;
-  //   this.getDataFromService();
-  // }
 
   getDataFromService() {
     this.responseData = [];
@@ -92,28 +85,23 @@ export class ScoresDistributionWidgetComponent implements OnInit {
       .getScoresDistrubution(this.filtersData.currentModule, this.filtersData.appliedFilters)
       .subscribe((response: any) => {
         this.responseData = response.data;
+
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
+
         for (let i = 1; i <= this.responseData.length; i++) {
           this.dataSet[i][1] = this.responseData[i - 1].numberOfUsers;
         }
       });
   }
 
-  addFilters($event) {
-    this.filtersData.appliedFilters.push($event);
-    this.getDataFromService();
-  }
 
-  removedFilters($event) {
-    let indexF = _.findIndex(this.filtersData.appliedFilters, $event);
-    this.filtersData.appliedFilters.splice(indexF, 1);
+  addFilters($event) {
+    this.filtersData.appliedFilters = $event;
     this.getDataFromService();
   }
 
   ngOnInit() {
-    // this.filtersData.appliedFilters = this.testFilters;
-    // this.getDataFromService();
     this.testScoreFn();
   }
 }

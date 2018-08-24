@@ -11,30 +11,33 @@ import { _ } from "underscore";
   styleUrls: ["./learners-track-widget.component.scss"]
 })
 export class LearnersTrackWidgetComponent implements OnInit {
-  componentName: string = "pace";
+
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
     search: false,
     viewDetails: true,
     filterList: ["batch"],
-    currentModule: this.componentName
+    currentModule: '',
+    appliedFilters: []
   };
-  filterName = ["batch"];
-  responseData = [];
-
-  widgetData = {
-    pace: "",
-    performance: ""
-  };
-
-  filterbody = {};
 
   appliedFilters: any[];
-  performanceFilters = [];
-  paceFilters = [];
 
-  // testFilters = [
+
+  paceObject = {
+    filters: ["batch"],
+    appliedFilters: [],
+    responseData: []
+  }
+
+  performanceObject = {
+    filters: ["batch"],
+    appliedFilters: [],
+    responseData: []
+  }
+
+  // paceObject.appliedFilters = [
   //   {
   //     type: "batch",
   //     id: 59,
@@ -49,19 +52,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
   //     type: "batch",
   //     id: 79,
   //     name: "Batch2"
-  //   },
-  //   {
-  //     type: "quiz",
-  //     id: 143,
-  //     name: "Quiz2"
-  //   }
-  // ];
-
-  // performanceFilters = [
-  //   {
-  //     type: "batch",
-  //     id: 59,
-  //     name: "Batch1"
   //   },
   //   {
   //     type: "quiz",
@@ -92,79 +82,60 @@ export class LearnersTrackWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
+    this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
   }
 
   learnerPaceFn() {
-    this.componentName = "pace";
-    this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
-    this.appliedFilters = this.paceFilters;
+
+    this.filtersData.currentModule = "pace";
+    this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    this.filtersData.appliedFilters = this.paceObject.appliedFilters;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
-    this.componentName = "performance";
-    this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
-    this.appliedFilters = this.performanceFilters;
+
+    this.filtersData.currentModule = "performance";
+    this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
+    this.filtersData.appliedFilters = this.performanceObject.appliedFilters;
     this.getDataFromService();
   }
 
   getDataFromService() {
-    this.responseData = [];
     this.spinner_loader = true;
 
-    // this.appliedFilters = this.componentName == "pace" ? this.paceFilters : this.performanceFilters;
-
     this.dashboardService
-      .getLearnerTrackData(this.appliedFilters)
+      .getLearnerTrackData(this.filtersData.appliedFilters)
       .subscribe((response: any) => {
-        this.responseData.push(response.data);
-        this.widgetData.pace = response.data.paceData;
-        this.widgetData.performance = response.data.performanceData;
         this.spinner_loader = false;
-        // this.noDataFlag = _.isEmpty(this.widgetData.pace) ? true : false;
-        if (this.componentName == "pace") {
-          this.noDataFlag = Object.keys(this.widgetData.pace).length === 0 ? true : false;
-        } else if (this.componentName == "performance")
-          this.noDataFlag = Object.keys(this.widgetData.performance).length === 0 ? true : false;
+
+        this.paceObject.responseData = response.data.paceData;
+        this.performanceObject.responseData = response.data.performanceData;
+
+        if (this.filtersData.currentModule == "pace") {
+          this.noDataFlag = _.isEmpty(this.paceObject.responseData) ? true : false;
+        } else if (this.filtersData.currentModule == "performance")
+          this.noDataFlag = _.isEmpty(this.performanceObject.responseData) ? true : false;
       });
   }
 
   // getFilterObject($event) {
-  //   this.filterbody = $event;
   //   this.getDataFromService();
   // }
 
   addFilters($event) {
-    this.appliedFilters.push($event);
+    this.filtersData.appliedFilters.push($event);
     this.getDataFromService();
   }
 
   removedFilters($event) {
-    let indexF = _.findIndex(this.appliedFilters, $event);
-    this.appliedFilters.splice(indexF, 1);
+    let indexF = _.findIndex(this.filtersData.appliedFilters, $event);
+    this.filtersData.appliedFilters.splice(indexF, 1);
     this.getDataFromService();
   }
 
   ngOnInit() {
-    // console.log(this.testFilters);
-    // let filterQuery = "";
-    // for (let i in this.testFilters) {
-    //   switch (this.testFilters[i].type) {
-    //     case "batch": {
-    //       filterQuery += this.testFilters[i].id + ",";
-    //       continue;
-    //     }
-    //     case "quiz": {
-    //       filterQuery += this.testFilters[i].id + ",";
-    //       continue;
-    //     }
-    //   }
-    // }
-    // console.log(filterQuery);
-
-    this.appliedFilters = this.paceFilters;
+    this.filtersData.appliedFilters = this.paceObject.appliedFilters;
     this.learnerPaceFn();
-    this.getDataFromService();
   }
 }

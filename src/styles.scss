@@ -121,8 +121,8 @@ ul {
 .spinner_loading {
   // position: relative;
   // height: 200px;
+  // position: absolute;
   margin: auto;
-  position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
@@ -131,6 +131,7 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: #17a2b8;
 }
 
 .arrow-space {

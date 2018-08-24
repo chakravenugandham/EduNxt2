@@ -15,16 +15,18 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: []
-    // viewDetailsFilters: true
+    filterList: [],
+    currentModule: '',
+    // viewDetailsFilters: true,
+    appliedFilters: []
   };
-  filterName = ["batch"];
+
 
   getValue: string = "test";
   filterbody = {};
   responseData = [];
 
-  appliedFilters = [];
+
   testFilters = [];
   quizFilters = [];
   assignmentFilters = [];
@@ -53,23 +55,27 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   }
 
   testScoreFn() {
-    this.getValue = "test";
-    this.filterName = ["batch"];
-    this.appliedFilters = this.testFilters;
+    this.filtersData.currentModule = "test";
+    this.filtersData.filterList = ["batch"];
+    this.filtersData.appliedFilters = this.testFilters;
     this.getDataFromService();
   }
 
   quizScoreFn() {
-    this.getValue = "quiz";
-    this.filterName = ["batch", "quiz"];
-    this.appliedFilters = this.quizFilters;
+    this.filtersData.currentModule = "quiz";
+    this.filtersData.filterList = ["batch", "quiz"];
+    // this.filterName = this.filtersData.filterList = ["batch", "quiz"];
+    // this.appliedFilters = this.quizFilters;
+    this.filtersData.appliedFilters = this.quizFilters;
     this.getDataFromService();
   }
 
   assignmentFn() {
-    this.getValue = "assignment";
-    this.filterName = ["batch", "assignment"];
-    this.appliedFilters = this.assignmentFilters;
+    this.filtersData.currentModule = "assignment";
+    this.filtersData.filterList = ["batch", "assignment"];
+    // this.filterName = this.filtersData.filterList = ["batch", "assignment"];
+    // this.appliedFilters = this.assignmentFilters;
+    this.filtersData.appliedFilters = this.assignmentFilters;
     this.getDataFromService();
   }
 
@@ -83,11 +89,11 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.spinner_loader = true;
 
     this.dashboardService
-      .getScoresDistrubution(this.getValue, this.appliedFilters)
+      .getScoresDistrubution(this.filtersData.currentModule, this.filtersData.appliedFilters)
       .subscribe((response: any) => {
         this.responseData = response.data;
         this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
         for (let i = 1; i <= this.responseData.length; i++) {
           this.dataSet[i][1] = this.responseData[i - 1].numberOfUsers;
         }
@@ -95,18 +101,19 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   }
 
   addFilters($event) {
-    this.appliedFilters.push($event);
+    this.filtersData.appliedFilters.push($event);
     this.getDataFromService();
   }
 
   removedFilters($event) {
-    let indexF = _.findIndex(this.appliedFilters, $event);
-    this.appliedFilters.splice(indexF, 1);
+    let indexF = _.findIndex(this.filtersData.appliedFilters, $event);
+    this.filtersData.appliedFilters.splice(indexF, 1);
     this.getDataFromService();
   }
 
   ngOnInit() {
-    this.appliedFilters = this.testFilters;
-    this.getDataFromService();
+    // this.filtersData.appliedFilters = this.testFilters;
+    // this.getDataFromService();
+    this.testScoreFn();
   }
 }

@@ -1,4 +1,4 @@
-<div class="filterComponent" *ngIf="!viewDetailsDisplay">
+<div class="filterComponent" *ngIf="!filtersInfo.viewDetailsFilters">
   <div>
     <ul class="float-left">
 
@@ -63,11 +63,11 @@
                 <i class="far fa-times-circle fa-lg"></i>
               </span>
               <ul>
-                <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
-                  <div class="boldText"> Select {{filter.type}} </div>
-                  <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                    <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(appliedFilters,{name:filterName.name})}"></span>
-                    <span>{{filterName.name}} </span>
+                <li class="list-unstyled" *ngFor="let filterType of filtersList; index as i">
+                  <div class="boldText"> Select {{filterType.type}} </div>
+                  <div class="filter-name" *ngFor="let filterObj of filterType.data; index as j" (click)="selectFilter(filterType, filterObj)">
+                    <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(filtersInfo.appliedFilters,{name:filterObj.name})}"></span>
+                    <span>{{filterObj.name}} </span>
                   </div>
                 </li>
               </ul>
@@ -84,7 +84,7 @@
       </span> -->
 
 
-      <li class="list-inline-item applied-filter" *ngFor="let filter of appliedFilters">
+      <li class="list-inline-item applied-filter" *ngFor="let filter of filtersInfo.appliedFilters">
         <span> {{filter.name}} </span>
         <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
       </li>
@@ -99,7 +99,7 @@
     </div>
   </div>
 </div>
-<div class="filterComponentDetails" *ngIf="viewDetailsDisplay">
+<div class="filterComponentDetails" *ngIf="filtersInfo.viewDetailsFilters">
   <ul class="float-left">
     <li class="list-inline-item filter" *ngIf="filtersInfo.filters">
       <div class="filterSelect">
@@ -111,12 +111,12 @@
         </div>
       </div>
       <div *ngIf="displayDropdown">
-        <div class="showFilter-list" *ngIf="filtersData">
+        <div class="showFilter-list" *ngIf="filtersList">
           <span class="closeDropdown text-warning" (click)="closeDropDown()">
             <i class="far fa-times-circle fa-lg"></i>
           </span>
           <ul>
-            <li class="list-unstyled" *ngFor="let filter of filtersData; index as i">
+            <li class="list-unstyled" *ngFor="let filter of filtersList; index as i">
               <div class="boldText"> Select {{filter.type}} </div>
               <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
                 <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>

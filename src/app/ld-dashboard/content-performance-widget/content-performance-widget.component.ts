@@ -10,27 +10,35 @@ import { _ } from "underscore";
   styleUrls: ["./content-performance-widget.component.scss"]
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
-  routePath: string = "contentConsumptionFullView";
+  // routePath: string = "contentConsumptionFullView";
   // limitTo = 5;
   pagination = {
     page: 1,
     limitTo: 5,
     total: 0
   };
+
   filtersData = {
     routeTo: "contentConsumptionFullView",
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: [],
-    viewDetailsFilters: false
+    filterList: ["contentType"],
+    viewDetailsFilters: false,
+    appliedFilters: []
   };
-  filterName = ["contentType"];
+  // filterName = ["contentType"];
   filterbody = {};
   contentData = [];
 
-  appliedFilters = [];
-  contentFilters = [];
+  contentObject = {
+    filters: ["contentType"],
+    appliedFilters: [],
+    responseData: []
+  }
+
+  // appliedFilters = [];
+  // contentFilters = [];
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -55,29 +63,30 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   getDataFromService() {
     this.spinner_loader = true;
-    this.contentData = [];
+    // this.contentObject.responseData = [];
     this.dashboardService
-      .getContentData(this.appliedFilters, this.pagination)
+      .getContentData(this.filtersData.appliedFilters, this.pagination)
       .subscribe((res: any) => {
-        this.contentData = res.data;
+        this.contentObject.responseData = res.data;
+
         this.spinner_loader = false;
-        this.noDataFlag = this.contentData.length == 0 ? true : false;
+        this.noDataFlag = this.contentObject.responseData.length == 0 ? true : false;
       });
   }
 
   addFilters($event) {
-    this.appliedFilters.push($event);
+    this.filtersData.appliedFilters.push($event);
     this.getDataFromService();
   }
 
   removedFilters($event) {
-    let indexF = _.findIndex(this.appliedFilters, $event);
-    this.appliedFilters.splice(indexF, 1);
+    let indexF = _.findIndex(this.filtersData.appliedFilters, $event);
+    this.filtersData.appliedFilters.splice(indexF, 1);
     this.getDataFromService();
   }
 
   ngOnInit() {
-    this.appliedFilters = this.contentFilters;
+    this.filtersData.appliedFilters = this.contentObject.appliedFilters;
     this.getDataFromService();
   }
 }

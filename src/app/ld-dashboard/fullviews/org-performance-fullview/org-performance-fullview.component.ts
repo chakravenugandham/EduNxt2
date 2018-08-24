@@ -126,7 +126,6 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   changeData(name) {
     this.componentName = name;
     this.myStorage.setItem('orgPerformShowDetails', this.componentName);
-    console.log(this.myStorage.getItem('orgPerformShowDetails'));
     this.pagination.page = 1;
     this.compareUsers = [];
     this.getDataFromService();

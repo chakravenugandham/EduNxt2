@@ -57,11 +57,10 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div class="content-perform" *ngIf="contentData.length > 0">
-    <app-content-consumption [contentData]='contentData'></app-content-consumption>
+  <div class="content-perform" *ngIf="contentObject.responseData.length > 0">
+    <app-content-consumption [contentData]='contentObject.responseData'></app-content-consumption>
   </div>
 
-  <app-filter-widget [filtersInfo]="filtersData" [filterName]="filterName" [appliedFilters]="appliedFilters" (addFilterEmit)="addFilters($event)"
-    (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
+  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)" (removeFilterEmit)="removedFilters($event)"></app-filter-widget>
 
 </div>

@@ -73,16 +73,17 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.getDataFromService();
   }
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getDataFromService();
-  }
+  // getFilterObject($event) {
+  //   this.filterbody = $event;
+  //   this.getDataFromService();
+  // }
 
   getDataFromService() {
     this.responseData = [];
     this.spinner_loader = true;
+
     this.dashboardService
-      .getScoresDistrubution(this.getValue, this.filterbody)
+      .getScoresDistrubution(this.getValue, this.appliedFilters)
       .subscribe((response: any) => {
         this.responseData = response.data;
         this.spinner_loader = false;
@@ -95,11 +96,13 @@ export class ScoresDistributionWidgetComponent implements OnInit {
 
   addFilters($event) {
     this.appliedFilters.push($event);
+    this.getDataFromService();
   }
 
   removedFilters($event) {
     let indexF = _.findIndex(this.appliedFilters, $event);
     this.appliedFilters.splice(indexF, 1);
+    this.getDataFromService();
   }
 
   ngOnInit() {

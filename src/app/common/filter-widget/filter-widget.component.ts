@@ -19,7 +19,7 @@ import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.ser
 
 export class FilterWidgetComponent implements OnInit, OnChanges {
   @Input()
-  viewData: {
+  filtersInfo: {
     routeTo: string;
     filters: boolean;
     search: boolean;
@@ -76,10 +76,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   filterDispalyNameFraming() {
-    if (this.viewData.filterList.length > 1) {
+    if (this.filtersInfo.filterList.length > 1) {
       this.filterDisplayName = "Add a Filter";
     } else {
-      switch (this.viewData.filterList[0]) {
+      switch (this.filtersInfo.filterList[0]) {
         case "location": {
           this.filterDisplayName = "Location";
           break;
@@ -111,9 +111,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   showFilter() {
     this.filtersData = [];
     this.server
-      .getFiltersData(this.viewData.filterList)
+      .getFiltersData(this.filtersInfo.filterList)
       .subscribe((response: any) => {
         this.filtersData = response.data;
+        console.log("filtersData", this.filtersData);
+
         this.displayDropdown = this.filtersData.length > 0 ? true : false;
       });
   }
@@ -214,7 +216,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   routetoFullview() {
-    this.router.navigate([this.viewData.routeTo]);
+    this.router.navigate([this.filtersInfo.routeTo]);
   }
 
   searchItem($event) {
@@ -253,16 +255,16 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.viewData.filters) {
-      this.viewData.filterList = this.filterName;
+    if (this.filtersInfo.filters) {
+      this.filtersInfo.filterList = this.filterName;
       this.filterDispalyNameFraming();
     }
-    this.viewDetailsDisplay = this.viewData.viewDetailsFilters;
+    this.viewDetailsDisplay = this.filtersInfo.viewDetailsFilters;
   }
 
   ngOnChanges(changes: any) {
-    if (this.viewData.filters) {
-      this.viewData.filterList = this.filterName;
+    if (this.filtersInfo.filters) {
+      this.filtersInfo.filterList = this.filterName;
       this.filterDispalyNameFraming();
     }
   }

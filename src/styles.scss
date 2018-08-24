@@ -1,19 +1,7 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "./fonts.scss";
-$blue: #0146f9;
-$lightBlue: #5584ff;
-$white: #ffffff;
-$black: #262626;
-$green: #23b14d;
-$lightGreen: #39ea37;
-$orange: #ff4e00;
-$lightOrange: #ffd630;
-$pink: #f77f6c;
-$gray: #eaeaea;
-$darkGray: #707070;
-$grayOne: #f6f6f6;
-$grayTwo: #eef2f5;
-$grayThree: #e9e9e9;
+@import "./app/shared/variables.scss";
+
 //set defaults
 .row {
   margin: 0;
@@ -40,6 +28,12 @@ ul {
       margin: 0;
     }
   }
+  .positive-color {
+    color: $lightBlue !important;
+  }
+  .negative-color {
+    color: $orange !important;
+  }
 }
 
 .widget-block {
@@ -65,10 +59,10 @@ ul {
     font-weight: 600;
     margin-right: 8px;
   }
-  .positive-number {
+  .positive-color {
     color: $lightBlue;
   }
-  .negative-number {
+  .negative-color {
     color: $orange;
   }
   .highNumber {

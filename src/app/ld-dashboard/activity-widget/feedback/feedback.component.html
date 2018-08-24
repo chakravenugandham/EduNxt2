@@ -31,7 +31,7 @@
 
       <div class="col-md-6 col-sm-6 col-xs-6 col-6">
         <div class="arrow-space">
-          <span class="bigNumber" [ngClass]="{'positive-number': learnerSatisfaction >= 50, 'negative-number': learnerSatisfaction < 50}">
+          <span class="bigNumber" [ngClass]="{'positive-color': learnerSatisfaction >= 50, 'negative-color': learnerSatisfaction < 50}">
             {{learnerSatisfaction}}% </span>
           <span class="small-font">
             <img *ngIf="learnerSatisfationBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
@@ -50,7 +50,7 @@
     <div class="row text-fix-bottom">
       <div class="col-md-6 col-sm-6 col-xs-6 col-6 col-6">
         <div class="arrow-space">
-          <span class="bigNumber m-r-3" [ngClass]="{'positive-number': trainerRating >= 3, 'negative-number': trainerRating < 3}">{{trainerRating}}</span>
+          <span class="bigNumber m-r-3" [ngClass]="{'positive-color': trainerRating >= 3, 'negative-color': trainerRating < 3}">{{trainerRating}}</span>
           <span class="small-font">
 
             <img *ngIf="responseData.trainerRatingBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">
@@ -66,7 +66,7 @@
 
       <div class="col-md-6 col-sm-6 col-xs-6 col-6">
         <div class="arrow-space">
-          <span class="bigNumber m-r-3" [ngClass]="{'positive-number': contentRating >= 3, 'negative-number': contentRating < 3}">{{contentRating}}</span>
+          <span class="bigNumber m-r-3" [ngClass]="{'positive-color': contentRating >= 3, 'negative-color': contentRating < 3}">{{contentRating}}</span>
           <span class="small-font">
 
             <img *ngIf="responseData.contentRatingBy <= 0" src="assets/IconsSVGs/down_arrow.svg" alt="down_arrow">

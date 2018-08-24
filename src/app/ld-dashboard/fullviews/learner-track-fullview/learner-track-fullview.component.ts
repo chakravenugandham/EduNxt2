@@ -34,7 +34,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getDisplayObject($event) {
     this.selectType = $event;
     this.myStorage.setItem('displayFor', this.selectType);
-    console.log(this.myStorage.getItem('displayFor'));
     this.getTableDataFromService();
   }
 
@@ -70,7 +69,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
     });
 
     this.componentName = this.myStorage.getItem('learnerTrackCurrentModule');
-    console.log(this.componentName);
   }
 
   getTableDataFromService() {

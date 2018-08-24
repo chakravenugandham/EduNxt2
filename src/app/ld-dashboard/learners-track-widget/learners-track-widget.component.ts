@@ -33,21 +33,24 @@ export class LearnersTrackWidgetComponent implements OnInit {
   appliedFilters: any[];
   performanceFilters = [];
   paceFilters = [];
-  // paceFilters = [
+
+  // testFilters = [
   //   {
   //     type: "batch",
   //     id: 59,
   //     name: "Batch1"
   //   },
   //   {
-  //     type: "batch",
-  //     id: 79,
-  //     name: "Batch2"
-  //   }, {
   //     type: "quiz",
   //     id: 109,
   //     name: "Quiz1"
-  //   }, {
+  //   },
+  //   {
+  //     type: "batch",
+  //     id: 79,
+  //     name: "Batch2"
+  //   },
+  //   {
   //     type: "quiz",
   //     id: 143,
   //     name: "Quiz2"
@@ -90,18 +93,19 @@ export class LearnersTrackWidgetComponent implements OnInit {
     });
 
     this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
-    console.log(this.myStorage);
   }
 
   learnerPaceFn() {
     this.componentName = "pace";
     this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
+    this.appliedFilters = this.paceFilters;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
     this.componentName = "performance";
     this.myStorage.setItem('learnerTrackCurrentModule', this.componentName);
+    this.appliedFilters = this.performanceFilters;
     this.getDataFromService();
   }
 
@@ -112,7 +116,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     // this.appliedFilters = this.componentName == "pace" ? this.paceFilters : this.performanceFilters;
 
     this.dashboardService
-      .getLearnerTrackData(this.filterbody)
+      .getLearnerTrackData(this.appliedFilters)
       .subscribe((response: any) => {
         this.responseData.push(response.data);
         this.widgetData.pace = response.data.paceData;
@@ -133,15 +137,32 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   addFilters($event) {
     this.appliedFilters.push($event);
+    this.getDataFromService();
   }
 
   removedFilters($event) {
     let indexF = _.findIndex(this.appliedFilters, $event);
     this.appliedFilters.splice(indexF, 1);
+    this.getDataFromService();
   }
 
   ngOnInit() {
-    this.myStorage.removeItem('currentModuleName');
+    // console.log(this.testFilters);
+    // let filterQuery = "";
+    // for (let i in this.testFilters) {
+    //   switch (this.testFilters[i].type) {
+    //     case "batch": {
+    //       filterQuery += this.testFilters[i].id + ",";
+    //       continue;
+    //     }
+    //     case "quiz": {
+    //       filterQuery += this.testFilters[i].id + ",";
+    //       continue;
+    //     }
+    //   }
+    // }
+    // console.log(filterQuery);
+
     this.appliedFilters = this.paceFilters;
     this.learnerPaceFn();
     this.getDataFromService();

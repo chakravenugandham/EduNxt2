@@ -113,7 +113,7 @@ import { LearnerTimeSpentComponent } from "./learner/learner-activity-widget/lea
 import { LearnerScoreCardComponent } from "./learner/learner-activity-widget/learner-score-card/learner-score-card.component";
 import { LearnerCoursePerformanceComponent } from "./learner/learner-course-performance/learner-course-performance.component";
 import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component";
-import { CustomNumberPipe } from "./custom-number.pipe";
+import { CustomNumberPipe } from "../app/shared/custom-number.pipe";
 import { PaginateComponent } from './common/paginate/paginate.component';
 
 @NgModule({

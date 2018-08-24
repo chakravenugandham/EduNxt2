@@ -1,7 +1,9 @@
+@import "../../../app/shared/variables.scss";
+
 .footerContent {
   font-size: 0.8em;
   font-weight: 100;
-  background-color: #eef2f5;
+  background-color: $grayTwo;
   padding: 20px 0;
 }
 

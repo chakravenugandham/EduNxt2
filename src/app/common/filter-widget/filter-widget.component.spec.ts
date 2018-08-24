@@ -6,7 +6,7 @@ import { FilterWidgetComponent } from './filter-widget.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 describe('FilterWidgetComponent', () => {
   let component: FilterWidgetComponent;
@@ -43,7 +43,7 @@ describe('FilterWidgetComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FilterWidgetComponent);
     component = fixture.componentInstance;
-    // component.viewData = {
+    // component.filtersInfo = {
     //   routeTo: "string",
     //   filters: true,
     //   search: true,

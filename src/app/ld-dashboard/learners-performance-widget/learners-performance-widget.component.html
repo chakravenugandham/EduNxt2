@@ -11,7 +11,8 @@
         <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='performance'}" (click)="performanceFn()">Performance</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab == 'progress'}" (click)="progressFn()">Progress Completion</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab == 'progress'}" (click)="progressFn()">Progress
+          Completion</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -66,5 +67,5 @@
     <app-progress *ngIf="progressDataSet.length > 0 && getTab == 'progress'" [progressData]="progressDataSet" [batches]="batches"></app-progress>
   </div>
 
-  <app-filter-widget [viewData]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+  <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
 </div>

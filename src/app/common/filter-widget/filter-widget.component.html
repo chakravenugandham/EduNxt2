@@ -2,7 +2,7 @@
   <div>
     <ul class="float-left">
 
-      <li class="list-inline-item searchList" *ngIf="viewData.search">
+      <li class="list-inline-item searchList" *ngIf="filtersInfo.search">
         <div class="search-org-user">
           <span class="search-icon">
             <i class="fas fa-search"></i>
@@ -48,7 +48,7 @@
         <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
       </li> -->
 
-      <li class="list-inline-item filter" *ngIf="viewData.filters">
+      <li class="list-inline-item filter" *ngIf="filtersInfo.filters">
         <div class="filterSelect">
           <div class="getFilter" (click)="showFilter()">
             <span>{{filterDisplayName}}</span>
@@ -91,7 +91,7 @@
 
     </ul>
 
-    <div class="viewDetails" *ngIf="viewData.viewDetails" (click)="routetoFullview()">
+    <div class="viewDetails" *ngIf="filtersInfo.viewDetails" (click)="routetoFullview()">
       <span class="text-primary float-right" class="cursor-pointer"> View Details</span>
       <span>
         <i class="fas fa-angle-right"></i>
@@ -101,7 +101,7 @@
 </div>
 <div class="filterComponentDetails" *ngIf="viewDetailsDisplay">
   <ul class="float-left">
-    <li class="list-inline-item filter" *ngIf="viewData.filters">
+    <li class="list-inline-item filter" *ngIf="filtersInfo.filters">
       <div class="filterSelect">
         <div class="getFilter" (click)="showFilter()">
           <span>{{filterDisplayName}}</span>

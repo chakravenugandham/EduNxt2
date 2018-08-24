@@ -32,6 +32,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   filterbody = {};
 
   searchFilterItem = [];
+  teamsSearchItems = [];
+  trainersSearchItems = [];
+  learnersSearchItems = [];
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -68,6 +71,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
+    this.searchFilterItem = this.teamsSearchItems;
     this.getDataFromService();
   }
   trainersFn() {
@@ -75,6 +79,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
+    this.searchFilterItem = this.trainersSearchItems;
     this.getDataFromService();
   }
   learnersFn() {
@@ -82,6 +87,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
+    this.searchFilterItem = this.learnersSearchItems;
     this.getDataFromService();
   }
 
@@ -89,6 +95,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.spinner_loader = true;
     this.responseData = [];
     if (this.componentName == "teams") {
+
       this.dashboardService
         .getTeamData(this.pagination)
         .subscribe((response: any) => {
@@ -96,7 +103,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
-    } else if (this.componentName == "trainers") {
+    }
+    else if (this.componentName == "trainers") {
+
       this.dashboardService
         .getTrainersData(this.pagination)
         .subscribe((response: any) => {
@@ -104,7 +113,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
-    } else if ((this.componentName = "learner")) {
+    }
+    else if ((this.componentName = "learner")) {
+
       this.dashboardService
         .getLearnerData(this.pagination)
         .subscribe((response: any) => {
@@ -131,6 +142,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.filterData.orgPerformanceDetails = this.filtersData;
+    this.searchFilterItem = this.learnersSearchItems;
     this.getDataFromService();
   }
 }

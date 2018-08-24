@@ -8,7 +8,7 @@ import { CommonService } from "../../common-services/common.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-  componentName: string = "learner";
+  // componentName: string = "learner";
 
   filtersData = {
     routeTo: "orgPerformanceFullView",
@@ -16,7 +16,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     search: true,
     viewDetails: true,
     filterList: ["zone"],
-    currentModule: "learner"
+    currentModule: ""
   };
 
   searchFilterData = {
@@ -43,8 +43,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     limitTo: 5
   };
 
-  myStorage = window.localStorage;
-
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -62,40 +60,43 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    this.myStorage.setItem('orgPerformanceCurrentModule', this.filtersData.currentModule);
+    // this.myStorage.setItem('orgPerformanceCurrentModule', this.filtersData.currentModule);
 
   }
 
   teamsFn() {
-    this.componentName = this.filtersData.currentModule = "teams";
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filtersData.currentModule = "teams";
+    // this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
     this.searchFilterItem = this.teamsSearchItems;
+    localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
   }
   trainersFn() {
-    this.componentName = this.filtersData.currentModule = "trainers";
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filtersData.currentModule = "trainers";
+    // this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
     this.searchFilterItem = this.trainersSearchItems;
+    localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
   }
   learnersFn() {
-    this.componentName = this.filtersData.currentModule = "learner";
-    this.filterData.orgPerformanceDetails = this.filtersData;
+    this.filtersData.currentModule = "learner";
+    // this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
     this.searchFilterItem = this.learnersSearchItems;
+    localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
   }
 
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    if (this.componentName == "teams") {
 
+    if (this.filtersData.currentModule == "teams") {
       this.dashboardService
         .getTeamData(this.pagination)
         .subscribe((response: any) => {
@@ -104,8 +105,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
     }
-    else if (this.componentName == "trainers") {
 
+    else if (this.filtersData.currentModule == "trainers") {
       this.dashboardService
         .getTrainersData(this.pagination)
         .subscribe((response: any) => {
@@ -114,8 +115,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
     }
-    else if ((this.componentName = "learner")) {
 
+    else if ((this.filtersData.currentModule = "learner")) {
       this.dashboardService
         .getLearnerData(this.pagination)
         .subscribe((response: any) => {
@@ -124,7 +125,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
           this.noDataFlag = this.responseData.length == 0 ? true : false;
         });
     }
-    // this.actualResponseData = this.responseData;
+
   }
 
   getSearchItem($event) {
@@ -141,8 +142,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterData.orgPerformanceDetails = this.filtersData;
-    this.searchFilterItem = this.learnersSearchItems;
-    this.getDataFromService();
+    // this.filterData.orgPerformanceDetails = this.filtersData;
+    // this.searchFilterItem = this.learnersSearchItems;
+    this.learnersFn();
+    // this.getDataFromService();
   }
 }

@@ -60,6 +60,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.filtersData.currentModule = "test";
     this.filtersData.filterList = ["batch"];
     this.filtersData.appliedFilters = this.testFilters;
+    localStorage.setItem("scoreComponent", this.filtersData.currentModule);
     this.getDataFromService();
   }
 
@@ -67,6 +68,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.filtersData.currentModule = "quiz";
     this.filtersData.filterList = ["batch", "quiz"];
     this.filtersData.appliedFilters = this.quizFilters;
+    localStorage.setItem("scoreComponent", this.filtersData.currentModule);
     this.getDataFromService();
   }
 
@@ -74,6 +76,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.filtersData.currentModule = "assignment";
     this.filtersData.filterList = ["batch", "assignment"];
     this.filtersData.appliedFilters = this.assignmentFilters;
+    localStorage.setItem("scoreComponent", this.filtersData.currentModule);
     this.getDataFromService();
   }
 

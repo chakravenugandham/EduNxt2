@@ -17,7 +17,7 @@
       <span>
         <b>Display Graph for </b>
       </span>
-      <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails" (change)='getDataFromService()' id="inputGroupSelect02">
+      <select class="custom-select w-90 m-l-8" [(ngModel)]="moduleName" (change)='changeModule(moduleName)' id="inputGroupSelect02">
         <option [value]="'test'">Test Scores</option>
         <option [value]="'quiz'">Quizzes</option>
         <option [value]="'assignment'">Assignments</option>
@@ -89,7 +89,7 @@
             </th>
           </tr>
         </thead>
-        <tbody *ngIf="showDetails == 'test'">
+        <tbody *ngIf="moduleName == 'test'">
           <tr *ngFor="let testData of responseScoreDetails | orderBy: sortOrder">
             <td class="">{{testData.learnerName}}</td>
             <td class="">{{testData.serialNumber}}</td>
@@ -100,7 +100,7 @@
             <td class="">{{testData.Progress}}</td>
           </tr>
         </tbody>
-        <tbody *ngIf="showDetails == 'quiz'">
+        <tbody *ngIf="moduleName == 'quiz'">
           <tr *ngFor="let quizData of responseScoreDetails | orderBy: sortOrder">
             <td class="">{{quizData.learnerName}}</td>
             <td class="">{{quizData.serialNumber}}</td>
@@ -111,7 +111,7 @@
             <td class="">{{quizData.Progress}}</td>
           </tr>
         </tbody>
-        <tbody *ngIf="showDetails == 'assignment'">
+        <tbody *ngIf="moduleName == 'assignment'">
           <tr *ngFor="let assignmentData of responseScoreDetails | orderBy: sortOrder">
             <td class="">{{assignmentData.learnerName}}</td>
             <td class="">{{assignmentData.serialNumber}}</td>

@@ -39,7 +39,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   orgPerformanceComponentName: string;
   learnerTrackComponentName: string;
   learnerDisplayFor: string;
-  orgPerformtab: string;
+  scoreComponent: string;
 
   constructor(private dashboardService: LdDashboardService, private _window: Window, private filterData: CommonService, private router: Router, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -57,10 +57,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       }
     });
 
-    this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformanceCurrentModule');
-    this.learnerTrackComponentName = this.myStorage.getItem('learnerTrackCurrentModule');
-    this.learnerDisplayFor = this.myStorage.getItem('displayFor');
-    this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
 
   }
 
@@ -90,49 +86,58 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   csvFormatFn() {
     let base = this._baseUrl;
 
-    // if (base == "contentConsumptionFullView") {
-    //   this.dashboardService.getContentDetailsCsv().subscribe((res: any) => {
-    //     this.downloadLink = res.data;
-    //     console.log(this.downloadLink);
-    //   });
-    // }
+    if (base == "contentConsumptionFullView") {
+      this.dashboardService.getContentDetailsCsv().subscribe((res: any) => {
+        this.downloadLink = res.data;
+        console.log(this.downloadLink);
+      });
+    }
+
     if (base == "learnerTrackFullView") {
+      this.learnerTrackComponentName = this.myStorage.getItem('trackComponent');
+      this.learnerDisplayFor = this.myStorage.getItem('trackDisplayFor');
       this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName).subscribe((res: any) => {
         this.downloadLink = res.data;
         console.log(this.downloadLink);
       });
     }
-    // if (base == "scoreDistributionFullView") {
-    //   this.dashboardService.getScoresDetailsCsv().subscribe((res: any) => {
-    //     this.downloadLink = res.data;
-    //     console.log(this.downloadLink);
-    //   });
-    // }
+
+    if (base == "scoreDistributionFullView") {
+      this.scoreComponent = this.myStorage.getItem('scoreComponent');
+      this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+        this.downloadLink = res.data;
+        console.log(this.downloadLink);
+      });
+    }
 
     if (base == "orgPerformanceFullView") {
-      if (this.orgPerformanceComponentName == 'team') {
+      this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformaModule');
+
+      if (this.orgPerformanceComponentName === 'teams') {
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           console.log(this.downloadLink);
         });
       }
-      if (this.orgPerformanceComponentName == 'trainer') {
+      else if (this.orgPerformanceComponentName === 'trainers') {
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           console.log(this.downloadLink);
         });
       }
-      if (this.orgPerformanceComponentName == 'learner') {
+      else if (this.orgPerformanceComponentName === 'learner') {
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           console.log(this.downloadLink);
         });
       }
     }
+
     if (base == "orgInterestFullView") {
       this.dashboardService.getOrgInterestDetailsDataCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
         console.log(this.downloadLink);
+
       });
     }
   }
@@ -221,7 +226,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.orgPerformtab.currentValue) {
-      this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
+      // this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
     }
   }
 

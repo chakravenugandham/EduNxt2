@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
 
@@ -7,20 +7,18 @@ import { CommonService } from "../../../common-services/common.service";
   templateUrl: "./org-performance-fullview.component.html",
   styleUrls: ["./org-performance-fullview.component.scss"]
 })
-export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
+export class OrgPerformanceFullviewComponent implements OnInit {
   responseTeamsDetails: any;
   responseTrainersDetails: any;
   responseLeanersDetails: any;
 
   checkBoxValue: boolean = false;
   sortOrder: string;
-  // sortOrder: string = "learnerName";
   reverse: boolean = false;
-  parseFloat = parseFloat;
-  // limitTo: number = 10;
+
   searchBox: boolean = false;
 
-  showDetails: string = "learner";
+  showDetails: string;
   componentName: string;
   compareUsers = [];
 
@@ -30,10 +28,10 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
     total: 0
   };
 
+  parseFloat = parseFloat;
+
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
-
-  myStorage = window.localStorage;
 
   constructor(
     private dashboardService: LdDashboardService,
@@ -54,33 +52,37 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
       this.getDataFromService();
     });
 
-    this.componentName = this.myStorage.getItem('orgPerformanceCurrentModule');
   }
 
   //api calls for trainers ,teams and learner
   getDataFromService() {
     this.spinner_loader = true;
+
     if (this.componentName == "teams") {
-      this.showDetails = this.componentName;
       this.dashboardService.getTeamData(this.pagination).subscribe((response: any) => {
         this.responseTeamsDetails = response.data;
         this.pagination.total = response.pagination.total;
+
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
       });
-    } else if (this.componentName == "trainers") {
-      this.showDetails = this.componentName;
+    }
+
+    else if (this.componentName == "trainers") {
       this.dashboardService.getTrainersData(this.pagination).subscribe((response: any) => {
         this.responseTrainersDetails = response.data;
         this.pagination.total = response.pagination.total;
+
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
       });
-    } else if (this.componentName) {
-      this.showDetails = this.componentName;
+    }
+
+    else if (this.componentName) {
       this.dashboardService.getLearnerData(this.pagination).subscribe((response: any) => {
         this.responseLeanersDetails = response.data;
         this.pagination.total = response.pagination.total;
+
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
       });
@@ -101,6 +103,7 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
       this.compareUsers.push(user);
     }
   }
+
   compareSelected() {
     console.log("compareUsers", this.compareUsers.length);
   }
@@ -117,26 +120,18 @@ export class OrgPerformanceFullviewComponent implements OnInit, OnChanges {
   closeSearchFn() {
     this.searchBox = false;
   }
+
   changeData(name) {
     this.componentName = name;
-    // this.filterData.orgPerformanceDetails(this.filterData);
-    this.myStorage.setItem('orgPerformShowDetails', this.componentName);
-    console.log(this.myStorage.getItem('orgPerformShowDetails'));
-
+    localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];
     this.getDataFromService();
   }
-  ngOnChanges(changes: any) {
-    if (changes.showDetails.currentValue) {
-      this.getDataFromService();
-    }
-  }
+
 
   ngOnInit() {
-    this.componentName == "learner";
-    this.myStorage.setItem('orgPerformShowDetails', this.showDetails);
+    this.componentName = this.showDetails = localStorage.getItem('orgPerformaModule');
     this.getDataFromService();
-    // this.getFilterData();
   }
 }

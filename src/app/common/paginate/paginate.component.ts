@@ -1,11 +1,11 @@
-import { Component, OnInit, OnChanges, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-paginate',
   templateUrl: './paginate.component.html',
   styleUrls: ['./paginate.component.scss']
 })
-export class PaginateComponent implements OnInit, OnChanges {
+export class PaginateComponent implements OnInit {
   @Input() pageInfo: any;
   @Output() gotoPage = new EventEmitter<any>();
   constructor() { }
@@ -16,8 +16,6 @@ export class PaginateComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-  }
-  ngOnChanges(changes: any) {
   }
 
 }

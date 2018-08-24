@@ -72,7 +72,7 @@
 
   <div class="widget-block form-inline">
     <b>Display data for </b>
-    <span *ngIf="componentName == 'pace'">
+    <span *ngIf="filtersData.currentModule == 'pace'">
       <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
         <option value="aheadschedule">Ahead of Schedule</option>
         <option value="ontrack">On Track</option>
@@ -80,7 +80,7 @@
         <option value="have not started">Haven't Started</option>
       </select>
     </span>
-    <span *ngIf="componentName == 'performance'">
+    <span *ngIf="filtersData.currentModule == 'performance'">
       <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
         <option value="excelling">Excelling</option>
         <option value="passing">Passing</option>

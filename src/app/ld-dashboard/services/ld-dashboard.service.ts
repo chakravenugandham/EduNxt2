@@ -347,14 +347,14 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  getScoresDetailsCsv(dropdownValue, filterbody) {
+  getScoresDetailsCsv(dropdownValue) {
     let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
-    return this.http.post(url, filterbody, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
-  getContentDetailsCsv(filterbody) {
+  getContentDetailsCsv() {
     let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
-    return this.http.post(url, filterbody, { headers: this.headers });
+    return this.http.post(url, null, { headers: this.headers });
   }
 
   //org-interest full details

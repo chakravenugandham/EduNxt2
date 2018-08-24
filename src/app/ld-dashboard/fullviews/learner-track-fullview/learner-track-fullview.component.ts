@@ -18,9 +18,12 @@ export class LearnerTrackFullviewComponent implements OnInit {
     filters: true,
     search: false,
     viewDetails: false,
+    viewDetailsFilters: true,
     filterList: ["batch"],
-    viewDetailsFilters: true
+    currentModule: '',
+    appliedFilters: []
   };
+
   componentName: string;
 
   spinner_loader: boolean = false;
@@ -55,16 +58,16 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.getTableDataFromService();
     });
 
-    // this.componentName = this.myStorage.getItem('learnerTrackCurrentModule');
+    // this.filtersData.currentModule = this.myStorage.getItem('learnerTrackCurrentModule');
   }
 
   getModule() {
-    this.componentName = localStorage.getItem('trackComponent');
-    if (this.componentName == "pace") {
+    this.filtersData.currentModule = localStorage.getItem('trackComponent');
+    if (this.filtersData.currentModule == "pace") {
       this.selectType = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.selectType);
     }
-    else if (this.componentName == "performance") {
+    else if (this.filtersData.currentModule == "performance") {
       this.selectType = "excelling";
       localStorage.setItem('trackDisplayFor', this.selectType);
     }
@@ -76,7 +79,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getGraphDataFromService() {
     this.dashboardService
-      .getLearnerTrackData(this.filterbody)
+      .getLearnerTrackData(this.filtersData.appliedFilters)
       .subscribe((res: any) => {
         this.responseGraphDetails = res.data;
         this.paceTrackValues = [
@@ -129,7 +132,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getTableDataFromService() {
     this.spinner_loader = true;
 
-    this.dashboardService.getLearnerTrackDetails(this.componentName, this.selectType, this.filterbody, this.pagination)
+    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.selectType, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         this.pagination.total = response.pagination.total;

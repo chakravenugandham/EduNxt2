@@ -7,29 +7,28 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./scores-distribution-fullview.component.scss"]
 })
 export class ScoresDistributionFullviewComponent implements OnInit {
-  responseGraphData = [];
-  responseScoreDetails = [];
 
-  dataSet = [[0, 0], [20], [40], [60], [80], [100]];
-
-  showDetails: string = "test";
-  sortOrder: string = "learnerName";
-  reverse: boolean = false;
-  searchBox: boolean = false;
-  page: number;
-  total_records: number;
-  selectPage: string;
-  paginationData = {};
-
-  filterbody = {};
   filtersData = {
     routeTo: "scoreDistributionFullView",
     filters: true,
     search: false,
     viewDetails: false,
+    viewDetailsFilters: true,
     filterList: ["batch"],
-    viewDetailsFilters: true
+    currentModule: '',
+    appliedFilters: []
   };
+
+  moduleName: string;
+
+  responseGraphData = [];
+  responseScoreDetails = [];
+
+  dataSet = [[0, 0], [20], [40], [60], [80], [100]];
+
+  sortOrder: string = "learnerName";
+  reverse: boolean = false;
+  searchBox: boolean = false;
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -39,12 +38,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     limitTo: 10,
     total: 0
   };
-  myStorage = window.localStorage;
 
-  getFilterObject($event) {
-    this.filterbody = $event;
-    this.getDataFromService();
-  }
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -63,20 +57,11 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     });
   }
 
-  searchFn() {
-    this.searchBox = true;
-  }
-
-  closeSearchFn() {
-    this.searchBox = false;
-  }
-
   getDataFromService() {
-    this.responseGraphData = [];
-    this.myStorage.setItem('displayGraphFor', this.showDetails);
+    // this.responseGraphData = [];
 
     this.dashboardService
-      .getScoresDistrubution(this.showDetails, this.filterbody)
+      .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
       .subscribe((response: any) => {
         this.responseGraphData = response.data;
         for (let i = 1; i <= this.responseGraphData.length; i++) {
@@ -87,11 +72,11 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   }
 
   getScoreDetails() {
-    this.responseScoreDetails = [];
+    // this.responseScoreDetails = [];
     this.spinner_loader = true;
 
     this.dashboardService
-      .getScoresDetails(this.showDetails, this.filterbody, this.pagination)
+      .getScoresDetails(this.moduleName, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.responseScoreDetails = response.data;
         this.pagination.total = response.pagination.total;
@@ -99,6 +84,13 @@ export class ScoresDistributionFullviewComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       });
+  }
+
+  changeModule(module) {
+    this.moduleName = module;
+    localStorage.setItem('scoreComponent', module);
+    this.getDataFromService();
+    this.getScoreDetails();
   }
 
   gotoPage($event) {
@@ -111,9 +103,17 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
+  searchFn() {
+    this.searchBox = true;
+  }
+
+  closeSearchFn() {
+    this.searchBox = false;
+  }
+
   //api call for score details based on component
   ngOnInit() {
-    this.myStorage.setItem('orgPerformShowDetails', this.showDetails);
+    this.moduleName = localStorage.getItem('scoreComponent');
     this.getDataFromService();
     this.getScoreDetails();
   }

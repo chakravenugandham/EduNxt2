@@ -79,21 +79,18 @@ export class LearnersTrackWidgetComponent implements OnInit {
       this.getDataFromService();
     });
 
-    // this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
   }
 
   learnerPaceFn() {
     this.filtersData.currentModule = "pace";
-    // this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
-    localStorage.setItem("trackComponent", "pace");
+    localStorage.setItem("trackComponent", this.filtersData.currentModule);
     this.filtersData.appliedFilters = this.paceObject.appliedFilters;
     this.getDataFromService();
   }
 
   learnerPerfFn() {
     this.filtersData.currentModule = "performance";
-    // this.myStorage.setItem('learnerTrackCurrentModule', this.filtersData.currentModule);
-    localStorage.setItem("trackComponent", "performance");
+    localStorage.setItem("trackComponent", this.filtersData.currentModule);
     this.filtersData.appliedFilters = this.performanceObject.appliedFilters;
     this.getDataFromService();
   }
@@ -122,7 +119,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    localStorage.setItem("trackComponent", "pace");
     this.learnerPaceFn();
   }
 }

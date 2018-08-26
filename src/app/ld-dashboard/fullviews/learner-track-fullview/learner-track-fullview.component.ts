@@ -35,7 +35,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
   pagination = {
     page: 1,
     limitTo: 10,
-    total: 0
+    total: 0,
+    total_pages: 0
   };
 
   constructor(private dashboardService: LdDashboardService) {
@@ -136,6 +137,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
 
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
@@ -152,6 +154,12 @@ export class LearnerTrackFullviewComponent implements OnInit {
     window.scrollTo(0, 200);
     this.pagination.page = $event;
     this.getTableDataFromService();
+  }
+
+  addFilters($event) {
+    this.filtersData.appliedFilters = $event;
+    this.getTableDataFromService();
+    this.getGraphDataFromService();
   }
 
   ngOnInit() {

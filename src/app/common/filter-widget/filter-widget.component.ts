@@ -56,11 +56,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   filterDispalyNameFraming() {
-
+    console.log(this.filtersInfo.filterList);
     if (this.filtersInfo.filterList.length > 1) {
       this.filterDisplayName = "Add a Filter";
     }
-    else {
+    else if (this.filtersInfo.filterList.length == 1) {
       this.filterDisplayName = this.filtersInfo.filterList[0].replace(/^\w/, c => c.toUpperCase());
     }
   }
@@ -132,19 +132,22 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
     this.searchEvent.emit(this.searchNames);
   }
+
   removeSearchName(i) {
     this.searchNames.splice(i, 1);
     this.searchEvent.emit(this.searchNames);
   }
 
   ngOnInit() {
-    // this.filterDispalyNameFraming();
+    if (this.filtersInfo.filters == true) {
+      this.filterDispalyNameFraming();
+    }
   }
 
   ngOnChanges(changes: any) {
-    // if (changes.filtersInfo.filterList) {
-    //   this.filterDispalyNameFraming();
-    // }
-    // this.filterDispalyNameFraming();
+
+    if (this.filtersInfo.filterList) {
+      this.filterDispalyNameFraming();
+    }
   }
 }

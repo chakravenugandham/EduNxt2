@@ -11,8 +11,10 @@ export class PaginateComponent implements OnInit {
   constructor() { }
 
   loadPage(event) {
-    this.pageInfo.page = event > Math.ceil(this.pageInfo.total / 10) ? Math.ceil(this.pageInfo.total / 10) : event;
-    this.gotoPage.emit(this.pageInfo.page);
+    if (event !== undefined) {
+      event = event > this.pageInfo.total_pages ? this.pageInfo.total_pages : event;
+      this.gotoPage.emit(event);
+    }
   }
 
   ngOnInit() {

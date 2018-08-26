@@ -25,7 +25,8 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   pagination = {
     page: 1,
     limitTo: 10,
-    total: 0
+    total: 0,
+    total_pages: 0
   };
 
   parseFloat = parseFloat;
@@ -62,6 +63,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
       this.dashboardService.getTeamData(this.pagination).subscribe((response: any) => {
         this.responseTeamsDetails = response.data;
         this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
 
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;

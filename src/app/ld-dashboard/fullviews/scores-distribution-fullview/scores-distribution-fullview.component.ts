@@ -14,7 +14,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     search: false,
     viewDetails: false,
     viewDetailsFilters: true,
-    filterList: ["batch"],
+    filterList: [],
     currentModule: '',
     appliedFilters: []
   };
@@ -36,7 +36,8 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   pagination = {
     page: 1,
     limitTo: 10,
-    total: 0
+    total: 0,
+    total_pages: 0
   };
 
   constructor(private dashboardService: LdDashboardService) {
@@ -57,9 +58,22 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     });
   }
 
-  getDataFromService() {
-    // this.responseGraphData = [];
+  setConfigModule() {
+    if (this.moduleName == 'test') {
+      this, this.filtersData.filterList = ["batch"];
+    }
+    else if (this.moduleName == 'quiz') {
+      this, this.filtersData.filterList = ["batch", "quiz"];
+    }
+    else if (this.moduleName == 'assignment') {
+      this, this.filtersData.filterList = ["batch", "assignment"];
+    }
+    this.getDataFromService();
+    this.getScoreDetails();
+  }
 
+  getDataFromService() {
+    this.responseGraphData = [];
     this.dashboardService
       .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
       .subscribe((response: any) => {
@@ -72,7 +86,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   }
 
   getScoreDetails() {
-    // this.responseScoreDetails = [];
+    this.responseScoreDetails = [];
     this.spinner_loader = true;
 
     this.dashboardService
@@ -80,6 +94,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
       .subscribe((response: any) => {
         this.responseScoreDetails = response.data;
         this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
 
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
@@ -89,8 +104,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   changeModule(module) {
     this.moduleName = module;
     localStorage.setItem('scoreComponent', module);
-    this.getDataFromService();
-    this.getScoreDetails();
+    this.setConfigModule();
   }
 
   gotoPage($event) {
@@ -111,10 +125,15 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.searchBox = false;
   }
 
+  addFilters($event) {
+    this.filtersData.appliedFilters = $event;
+    this.getDataFromService();
+    this.getScoreDetails();
+  }
+
   //api call for score details based on component
   ngOnInit() {
     this.moduleName = localStorage.getItem('scoreComponent');
-    this.getDataFromService();
-    this.getScoreDetails();
+    this.setConfigModule();
   }
 }

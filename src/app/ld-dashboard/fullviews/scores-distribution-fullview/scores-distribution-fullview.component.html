@@ -6,9 +6,9 @@
       </span>
       <span> Score Distribution </span>
     </div>
-    <!-- <div class="col-md-6">
-      <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
-    </div> -->
+    <div class="col-md-6">
+      <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
+    </div>
   </div>
 
   <div class="widget-block">
@@ -34,7 +34,7 @@
       <span class="spinner_inside">No data found</span>
     </div>
 
-    <div *ngIf="responseScoreDetails.length > 0">
+    <div class="b-t-2" *ngIf="responseScoreDetails.length > 0">
       <table class="table table-borderless">
         <thead>
           <tr>

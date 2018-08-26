@@ -1,16 +1,12 @@
 @import "../../../app/shared/variables.scss";
 
-.filterComponent {
+.filter-widget{
   position: absolute;
-  width: calc(100% - 40px);
-  min-height: 45px;
-  bottom: 20px;
-  padding-top: 12px;
-  border-top: 1px dotted #ddd;
+  
   ul {
     padding: 0;
     margin: 0;
-    padding-right: 72px;
+    
     .filter {
       background-color: #fff;
       color: $lightBlue;
@@ -27,52 +23,81 @@
       // overflow: hidden;
       i {
         position: absolute;
-        top: 8px;
+        top: 8px !important;
         right: 8px;
+      }
+      .showFilter-list {
+        position: absolute;
+        top: 32px;
+        background-color: #fff;
+        padding: 8px;
+        z-index: 1;
+        width: 220px;
+        box-shadow: 1px 1px 2px 0px $lightBlue;
+        ul {
+          max-height: 140px;
+          padding: 0;
+          overflow: scroll;
+          overflow-x: hidden;
+          margin-bottom: 6px;
+          li {
+            border: none;
+            background-color: #fff;
+            color: #333;
+            input {
+              margin-right: 4px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .viewDetails {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    color: $lightBlue;
+    font-size: 12px;
+    font-weight: 600;
+    i {
+      padding: 2px 4px 2px 4px;
+      border: 1px solid $lightBlue;
+      border-radius: 50%;
+      margin-left: 4px;
+      font-weight: 600;
+    }
+  }
+}
+
+.filterComponent {
+  width: calc(100% - 40px);
+  min-height: 45px;
+  bottom: 20px;
+  padding-top: 12px;
+  border-top: 1px dotted #ddd;
+  ul{
+    padding-right: 72px;
+    li{
+      .showFilter-list{
+        left: 0px;
       }
     }
   }
 }
 
 .filterComponentDetails {
-  position: absolute;
   right: 0;
-  .filterSelect {
-    position: relative;
-    padding: 6px 32px 6px 6px;
-    border: 1px solid $lightBlue;
-    color: $lightBlue;
-  }
-  i {
-    position: absolute;
-    right: 8px;
-    top: 8px !important;
-  }
-  .filterName {
-    position: relative;
-    padding: 6px 32px 6px 6px;
-    color: #fff;
-    background-color: $lightBlue;
-  }
-  .showFilter-list {
-    right: 0px;
-    left: auto;
-  }
-}
-
-.viewDetails {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  color: $lightBlue;
-  font-size: 12px;
-  font-weight: 600;
-  i {
-    padding: 2px 4px 2px 4px;
-    border: 1px solid $lightBlue;
-    border-radius: 50%;
-    margin-left: 4px;
-    font-weight: 600;
+  ul{
+    li{
+      .showFilter-list{
+        right: 0px;
+      }
+    }
+    .filter{
+      background-color: $grayTwo;
+    }
   }
 }
 
@@ -127,33 +152,6 @@
 //dropdown
 .dropdown-toggle::after {
   display: none;
-}
-
-.showFilter-list {
-  position: absolute;
-  top: 32px;
-  left: 0px;
-  background-color: #fff;
-  padding: 8px;
-  z-index: 1;
-  width: 220px;
-  box-shadow: 1px 1px 2px 0px $lightBlue;
-  ul {
-    max-height: 140px;
-    padding: 0;
-    overflow: scroll;
-    overflow-x: hidden;
-    margin-bottom: 6px;
-    li {
-      border: none;
-      background-color: #fff;
-      color: #333;
-      input {
-        margin-right: 4px;
-        vertical-align: middle;
-      }
-    }
-  }
 }
 
 .getFilter {

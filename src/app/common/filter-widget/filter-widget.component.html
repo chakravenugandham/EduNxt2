@@ -1,4 +1,4 @@
-<div class="filterComponent" *ngIf="!filtersInfo.viewDetailsFilters">
+<div class="filter-widget" [ngClass]="{'filterComponent': !filtersInfo.viewDetailsFilters, 'filterComponentDetails': filtersInfo.viewDetailsFilters}">
   <div>
     <ul class="float-left">
 
@@ -82,41 +82,6 @@
         <i class="fas fa-angle-right"></i>
       </span>
     </div>
+
   </div>
-</div>
-<div class="filterComponentDetails" *ngIf="filtersInfo.viewDetailsFilters">
-  <ul class="float-left">
-    <li class="list-inline-item filter" *ngIf="filtersInfo.filters">
-      <div class="filterSelect">
-        <div class="getFilter" (click)="showFilter()">
-          <span>{{filterDisplayName}}</span>
-          <span>
-            <i class="fas fa-plus"></i>
-          </span>
-        </div>
-      </div>
-      <div *ngIf="displayDropdown">
-        <div class="showFilter-list" *ngIf="filtersList">
-          <span class="closeDropdown text-warning" (click)="closeDropDown()">
-            <i class="far fa-times-circle fa-lg"></i>
-          </span>
-          <ul>
-            <li class="list-unstyled" *ngFor="let filter of filtersList; index as i">
-              <div class="boldText"> Select {{filter.type}} </div>
-              <div class="filter-name" *ngFor="let filterName of filter.data; index as j" (click)="selectFilter(filter, filterName)">
-                <span class="check-box" [ngClass]="{'checked-box': filterArray.includes(filterName.name)}"></span>
-                <span>{{filterName.name}} </span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </li>
-    <span *ngIf="filterArray">
-      <li class="list-inline-item filterName" *ngFor="let filter of filterArray; let i = index">
-        <span>{{filter}}</span>
-        <i class="far fa-times-circle cursor-pointer" (click)="removeFromFilterBody(filter,i);"></i>
-      </li>
-    </span>
-  </ul>
 </div>

@@ -8,14 +8,12 @@ import { CommonService } from "../../common-services/common.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
-  // componentName: string = "learner";
-
   filtersData = {
     routeTo: "orgPerformanceFullView",
     filters: false,
     search: true,
     viewDetails: true,
-    filterList: ["zone"],
+    filterList: [],
     currentModule: ""
   };
 
@@ -27,9 +25,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   responseData = [];
 
   actualResponseData = [];
-  // limitTo: number = 5;
-
-  filterbody = {};
 
   searchFilterItem = [];
   teamsSearchItems = [];
@@ -59,14 +54,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
-
-    // this.myStorage.setItem('orgPerformanceCurrentModule', this.filtersData.currentModule);
-
   }
 
   teamsFn() {
     this.filtersData.currentModule = "teams";
-    // this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
     this.searchFilterItem = this.teamsSearchItems;
@@ -75,7 +66,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
   trainersFn() {
     this.filtersData.currentModule = "trainers";
-    // this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
     this.searchFilterItem = this.trainersSearchItems;
@@ -84,7 +74,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
   learnersFn() {
     this.filtersData.currentModule = "learner";
-    // this.filterData.orgPerformanceDetails = this.filtersData;
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
     this.searchFilterItem = this.learnersSearchItems;
@@ -142,9 +131,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.filterData.orgPerformanceDetails = this.filtersData;
-    // this.searchFilterItem = this.learnersSearchItems;
     this.learnersFn();
-    // this.getDataFromService();
   }
 }

@@ -8,29 +8,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ["./content-consumption-fullview.component.scss"]
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
-  contentData = [];
-  filterbody = {};
-  pagination = {
-    page: 1,
-    limitTo: 10,
-    total: 0
-  };
-  sortOrder: string = "contentName";
-  reverse: boolean = false;
-  searchBox: boolean = false;
-  // paginationData = {};
-  sub: any;
+
   filtersData = {
     routeTo: "contentConsumptionFullView",
     filters: true,
     search: false,
     viewDetails: false,
     filterList: ["contentType"],
-    viewDetailsFilters: true
+    viewDetailsFilters: true,
+    currentModule: '',
+    appliedFilters: []
   };
-  // page: number;
-  total_records: number;
-  // selectPage: string;
+
+  contentData = [];
+
+  pagination = {
+    page: 1,
+    limitTo: 10,
+    total: 0,
+    total_pages: 0
+  };
+
+  sortOrder: string = "contentName";
+  reverse: boolean = false;
+  searchBox: boolean = false;
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -51,8 +52,19 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
+  }
 
-
+  getDataFromService() {
+    this.spinner_loader = true;
+    this.dashboardService
+      .getContentData(this.filtersData.appliedFilters, this.pagination)
+      .subscribe((response: any) => {
+        this.contentData = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
+      });
   }
 
   searchFn() {
@@ -73,24 +85,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
-  getDataFromService() {
-    this.spinner_loader = true;
-    this.dashboardService
-      .getContentData(this.filterbody, this.pagination)
-      .subscribe((response: any) => {
-        this.contentData = response.data;
-
-        this.spinner_loader = false;
-        this.noDataFlag = response.data.length == 0 ? true : false;
-
-        this.pagination.total = response.pagination.total;
-        // this.paginationData = response.pagination;
-        // this.total_records = this.paginationData["total"];
-      });
-  }
-
-  getFilterObject($event) {
-    this.filterbody = $event;
+  addFilters($event) {
+    this.filtersData.appliedFilters = $event;
     this.getDataFromService();
   }
 

@@ -30,7 +30,8 @@ export class OrgInterestFullviewComponent implements OnInit {
   pagination = {
     page: 1,
     limitTo: 10,
-    total: 0
+    total: 0,
+    total_pages: 0
   };
 
   //dropdown display values
@@ -74,6 +75,7 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.dashboardService.getOrgInterestDetailsData(this.pagination).subscribe((response: any) => {
       this.responseData = response.data;
       this.pagination.total = response.pagination.total;
+      this.pagination.total_pages = response.pagination.total_pages;
 
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;

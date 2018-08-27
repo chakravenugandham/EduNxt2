@@ -12,7 +12,8 @@ export class APIURL {
   public static FEEDBACK = "feedback";
   public static TIME_SPENT = "time-spent";
   public static USERS_TRAINED = "users-trained";
-  public static ACTIVE_USERS_GRAPH = "active-users-graph";
+  public static ACTIVE_USERS_GRAPH = "active-users-line-graph";
+  public static MODE_OF_DELIVERY = "mode-of-delivery";
   public static LOCATION = "activity-by-location";
   public static LEARNER_PACE_PERFORMANCE = "learner-pace-performance";
   public static LEARNER_PACE_PERFORMANCE_DETAILS = "learner-pace-performance-details";

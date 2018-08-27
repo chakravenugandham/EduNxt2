@@ -1,38 +1,35 @@
 <div class="widget-heading clearfix font-weight-bold">
   <p *ngIf="" class="float-left">How active are the users?</p>
-  <p *ngIf="" class="float-left">What is the activity on my course?</p>
-  <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="Need Help?">
+  <!-- <p *ngIf="" class="float-left">What is the activity on my course?</p> -->
+  <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="How active are the users?">
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
-<!-- <div class="widget-block" (window:resize)="onResize($event)"> -->
 <div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='activeUser'}" (click)="activeUsersFn()">Active
-          Users</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='activeUser'}" (click)="activeUsersFn()">Active Users
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='modeDelivery'}" (click)="modeDeliveryFn()">Mode
-          of Delivery</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='modeDelivery'}" (click)="modeDeliveryFn()">Mode of Delivery</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='location'}" (click)="locationFn()">Location</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
-      <span data-toggle="tooltip" data-placement="top" title="Need Help?">
+      <span data-toggle="tooltip" data-placement="top" title="tooltipText">
         <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
-      <!-- <ng-template #popcontent>
-        [ngbPopover]="popcontent"
+      <ng-template #popcontent>
         <ul class="list-inline">
           <li class="list-inline-item">
             <span>
               <img src="../../assets/IconsSVGs/SAve.svg">
             </span>
-            <span class="font-color p-l-10">
+            <span class="font-color p-l-10 cursor-pointer">
               <b>Save this view</b>
             </span>
           </li>
@@ -40,7 +37,7 @@
             <span>
               <img src="../../assets/IconsSVGs/mail.svg">
             </span>
-            <span class="font-color p-l-10">
+            <span class="font-color p-l-10 cursor-pointer">
               <b>Email this report</b>
             </span>
           </li>
@@ -48,21 +45,24 @@
             <span>
               <img src="../../assets/IconsSVGs/Download.svg">
             </span>
-            <span class="font-color p-l-10">
+            <span class="font-color p-l-10 cursor-pointer">
               <b>Download this report</b>
             </span>
           </li>
         </ul>
-      </ng-template> -->
-      <span class="p-l-20" placement="right">
+      </ng-template>
+      <span class="p-l-20" placement="right" [ngbPopover]="popcontent">
         <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
       </span>
     </div>
   </div>
   <div>
-    <app-active-users [usersData]="responseData.activeUserData" *ngIf="getTab=='activeUser'"></app-active-users>
-    <app-mode-of-delivery [usersData]="responseData.activeUserData" *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
-    <app-location [locationData]="responseData.locationData" *ngIf="getTab=='location'"></app-location>
+    <app-active-users *ngIf="getTab=='activeUser'"></app-active-users>
+    <!-- [usersData]="responseData.activeUserData" -->
+    <app-mode-of-delivery *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
+    <!-- [usersData]="responseData.modeOfDelivery" -->
+    <app-location *ngIf="getTab=='location'"></app-location>
+    <!-- [locationData]="responseData.locationData" -->
   </div>
   <div>
     <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>

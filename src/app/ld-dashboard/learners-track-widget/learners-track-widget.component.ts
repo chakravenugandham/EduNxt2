@@ -12,6 +12,8 @@ import { _ } from "underscore";
 })
 export class LearnersTrackWidgetComponent implements OnInit {
 
+  tooltipText:string = '';
+
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
@@ -99,8 +101,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
     this.spinner_loader = true;
 
     this.dashboardService
-      .getLearnerTrackData(this.filtersData.appliedFilters)
-      .subscribe((response: any) => {
+      .getLearnerTrackData(this.filtersData.appliedFilters).subscribe((response: any) => {
         this.spinner_loader = false;
 
         this.paceObject.responseData = response.data.paceData;
@@ -108,8 +109,10 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
         if (this.filtersData.currentModule == "pace") {
           this.noDataFlag = _.isEmpty(this.paceObject.responseData) ? true : false;
-        } else if (this.filtersData.currentModule == "performance")
+        }
+        else if (this.filtersData.currentModule == "performance") {
           this.noDataFlag = _.isEmpty(this.performanceObject.responseData) ? true : false;
+        }
       });
   }
 

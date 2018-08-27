@@ -85,8 +85,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.spinner_loader = true;
 
     this.dashboardService
-      .getScoresDistrubution(this.filtersData.currentModule, this.filtersData.appliedFilters)
-      .subscribe((response: any) => {
+      .getScoresDistrubution(this.filtersData.currentModule, this.filtersData.appliedFilters).subscribe((response: any) => {
         this.responseData = response.data;
 
         this.spinner_loader = false;

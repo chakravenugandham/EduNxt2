@@ -2,15 +2,19 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
 
+import { _ } from "underscore";
+
 @Component({
   selector: "app-org-performance-fullview",
   templateUrl: "./org-performance-fullview.component.html",
   styleUrls: ["./org-performance-fullview.component.scss"]
 })
 export class OrgPerformanceFullviewComponent implements OnInit {
-  responseTeamsDetails: any;
-  responseTrainersDetails: any;
-  responseLeanersDetails: any;
+  // responseTeamsDetails: any;
+  // responseTrainersDetails: any;
+  // responseLeanersDetails: any;
+
+  responseData: any[];
 
   checkBoxValue: boolean = false;
   sortOrder: string;
@@ -27,6 +31,11 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     limitTo: 10,
     total: 0,
     total_pages: 0
+  };
+
+  searchFilterData = {
+    searchComponent: "learner-leaderboard",
+    searchBy: "learnerName"
   };
 
   parseFloat = parseFloat;
@@ -61,7 +70,8 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
     if (this.componentName == "teams") {
       this.dashboardService.getTeamData(this.pagination).subscribe((response: any) => {
-        this.responseTeamsDetails = response.data;
+        this.responseData = response.data;
+        // this.responseTeamsDetails = response.data;
         this.pagination.total = response.pagination.total;
         this.pagination.total_pages = response.pagination.total_pages;
 
@@ -72,18 +82,22 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
     else if (this.componentName == "trainers") {
       this.dashboardService.getTrainersData(this.pagination).subscribe((response: any) => {
-        this.responseTrainersDetails = response.data;
+        this.responseData = response.data;
+        // this.responseTrainersDetails = response.data;
         this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
 
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
       });
     }
 
-    else if (this.componentName) {
+    else if (this.componentName == "learner") {
       this.dashboardService.getLearnerData(this.pagination).subscribe((response: any) => {
-        this.responseLeanersDetails = response.data;
+        this.responseData = response.data;
+        // this.responseLeanersDetails = response.data;
         this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
 
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
@@ -98,16 +112,36 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   selectToCompare(user) {
-    if (this.compareUsers.includes(user)) {
-      this.compareUsers.splice(this.compareUsers.indexOf(user), 1)
+    if (_.findIndex(this.compareUsers, user) == -1) {
+      this.compareUsers.push(user);
     }
     else {
-      this.compareUsers.push(user);
+      this.compareUsers.splice(_.findIndex(this.compareUsers, user), 1)
     }
   }
 
+  clearSelected() {
+    this.compareUsers = [];
+    this.pagination.page = 1;
+    this.getDataFromService();
+  }
+
+  checkItemInApplied(item) {
+    let itemFound = (_.findIndex(this.compareUsers, item) == -1) ? false : true;
+    return itemFound;
+  }
+
   compareSelected() {
+    this.responseData = this.compareUsers;
     console.log("compareUsers", this.compareUsers.length);
+  }
+
+  searchItem($event) {
+    this.dashboardService
+      .getSearchFilterData(this.searchFilterData, $event.target.value)
+      .subscribe((respose: any) => {
+        this.responseData = respose.data;
+      });
   }
 
   sortByFn(sortByName) {
@@ -115,19 +149,23 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
-  searchFn() {
-    this.searchBox = true;
-  }
-
-  closeSearchFn() {
-    this.searchBox = false;
-  }
-
   changeData(name) {
     this.componentName = name;
     localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];
+    if (this.componentName == "teams") {
+      this.searchFilterData.searchComponent = "team-leaderboard";
+      this.searchFilterData.searchBy = "teamName";
+    }
+    if (this.componentName == "trainers") {
+      this.searchFilterData.searchComponent = "trainer-leaderboard";
+      this.searchFilterData.searchBy = "trainerName";
+    }
+    if (this.componentName == "learner") {
+      this.searchFilterData.searchComponent = "learner-leaderboard";
+      this.searchFilterData.searchBy = "learnerName";
+    }
     this.getDataFromService();
   }
 

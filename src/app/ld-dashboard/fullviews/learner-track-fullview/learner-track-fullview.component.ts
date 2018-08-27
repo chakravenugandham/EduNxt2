@@ -147,6 +147,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getDisplayObject($event) {
     this.selectType = $event;
     localStorage.setItem('trackDisplayFor', this.selectType);
+    this.pagination.page = 1;
     this.getTableDataFromService();
   }
 

@@ -37,24 +37,28 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     page: 1,
     limitTo: 10,
     total: 0,
-    total_pages: 0
+    total_pages: 1
   };
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
+      this.getScoreDetails();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
+      this.getScoreDetails();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
+      this.getScoreDetails();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
+      this.getScoreDetails();
     });
   }
 
@@ -104,7 +108,9 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   changeModule(module) {
     this.moduleName = module;
     localStorage.setItem('scoreComponent', module);
+    this.pagination.page = 1;
     this.setConfigModule();
+
   }
 
   gotoPage($event) {

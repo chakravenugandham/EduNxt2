@@ -28,15 +28,25 @@
       </div>
       <div class="action-items float-right">
         <span class="compare-selected" (click)="compareSelected()">Add to compare</span>
-        <span class="clear-selected">Clear all</span>
+        <span class="clear-selected" (click)="clearSelected()">Clear all</span>
       </div>
     </div>
     <div *ngIf="!spinner_loader && !noDataFlag">
+
       <table class="table table-borderless" *ngIf="showDetails == 'teams'">
         <thead>
           <tr>
             <th scope="col">
-              <span *ngIf="!searchBox">
+              <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+              <span>
+                <input type="text" placeholder="Team Name" (keyup)="searchItem($event)">
+              </span>
+              <span (click)="sortByFn('teamName')">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+              <!-- <span *ngIf="!searchBox">
                 <span (click)="searchFn()">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
@@ -52,7 +62,7 @@
                   </span>
                   <input type="text" placeholder="Search">
                 </div>
-              </span>
+              </span> -->
             </th>
             <th scope="col" (click)="sortByFn('completion')">Completion %
               <span class="m-l-8">
@@ -74,9 +84,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let teamData of responseTeamsDetails | orderBy: sortOrder : reverse">
-            <th scope="row" (click)="selectToCompare(teamData.teamName)">
-              <span class="m-l-47 check-box" [ngClass]="{'checked-box': compareUsers.includes(teamData.teamName)}"></span>
+          <tr *ngFor="let teamData of responseData | orderBy: sortOrder : reverse">
+            <th scope="row" (click)="selectToCompare(teamData)">
+              <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(teamData)} "></span>
               <span class="imgActive">
                 <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
                 <i class="far fa-circle"></i>
@@ -97,11 +107,20 @@
           </tr>
         </tbody>
       </table>
-      <table class="table table-borderless" *ngIf="showDetails == 'trainers'">
+      <table class="table table-borderless learnerTable" *ngIf="showDetails == 'trainers'">
         <thead>
           <tr>
             <th scope="col">
-              <span *ngIf="!searchBox" (click)="searchFn()">
+              <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+              <span>
+                <input type="text" placeholder="Trainer Name" (keyup)="searchItem($event)">
+              </span>
+              <span (click)="sortByFn('trainerName')">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+              <!-- <span *ngIf="!searchBox" (click)="searchFn()">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Trainer Name</span>
@@ -115,7 +134,7 @@
                   </span>
                   <input type="text" placeholder="Search">
                 </div>
-              </span>
+              </span> -->
             </th>
             <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
               <span>
@@ -136,9 +155,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let trainerData of responseTrainersDetails | orderBy: sortOrder : reverse ">
-            <th scope="row " (click)="selectToCompare(trainerData.trainerName) ">
-              <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': compareUsers.includes(trainerData.trainerName)} "></span>
+          <tr *ngFor="let trainerData of responseData | orderBy: sortOrder : reverse ">
+            <th scope="row " (click)="selectToCompare(trainerData) ">
+              <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(trainerData)} "></span>
               <span class="imgActive ">
                 <img src="/assets/images/user.png " alt="userImg " height="20 " width="20 ">
                 <i class="far fa-circle "></i>
@@ -160,8 +179,6 @@
               <span *ngIf="trainerData.avgRating <= 3.5" class="negative-color cursor-pointer" (click)="open(followUpContent)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
-              <!-- *ngIf="tableData.completion > 75" -->
-              <!-- *ngIf="tableData.completion <= 75" -->
             </td>
           </tr>
         </tbody>
@@ -170,7 +187,17 @@
         <thead>
           <tr>
             <th scope="col">
-              <span *ngIf="!searchBox">
+              <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+              <span>
+                <input type="text" placeholder="Learner Name" (keyup)="searchItem($event)">
+              </span>
+              <span (click)="sortByFn('learnerName')">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+
+              <!-- <span *ngIf="!searchBox">
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span class="text">Learner Name</span>
@@ -184,7 +211,7 @@
                   </span>
                   <input type="text" placeholder="Search">
                 </div>
-              </span>
+              </span> -->
             </th>
             <th scope="col" (click)="sortByFn('learnerSerialNumber')">
               <span>
@@ -214,9 +241,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let learnerData of responseLeanersDetails| orderBy: sortOrder : reverse">
-            <th scope="row " (click)="selectToCompare(learnerData.person_id) ">
-              <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': compareUsers.includes(learnerData.person_id)} "></span>
+          <tr *ngFor="let learnerData of responseData| orderBy: sortOrder : reverse">
+            <th scope="row " (click)="selectToCompare(learnerData) ">
+              <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(learnerData)} "></span>
               <span class="imgActive ">
                 <img src="/assets/images/user.png " alt="userImg " height="20 " width="20 ">
                 <i class="far fa-circle "></i>
@@ -228,14 +255,12 @@
             <td class=" ">{{learnerData.avgTestPerformance}}</td>
             <td class=" ">{{learnerData.examScore}}</td>
             <td>
-              <!-- *ngIf="tableData.completion> 75" -->
               <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent)">
                 <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="learnerData.examScore <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
-              <!-- *ngIf="tableData.completion <= 75" -->
             </td>
           </tr>
         </tbody>

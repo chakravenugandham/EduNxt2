@@ -13,6 +13,8 @@ export class PaginateComponent implements OnInit {
   loadPage(event) {
     if (event !== undefined) {
       event = event > this.pageInfo.total_pages ? this.pageInfo.total_pages : event;
+      console.log("event", event);
+
       this.gotoPage.emit(event);
     }
   }

@@ -1,34 +1,47 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import * as d3 from "d3v4";
 import * as _ from "underscore";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-active-users",
   templateUrl: "./active-users.component.html",
   styleUrls: ["./active-users.component.scss"]
 })
-export class ActiveUsersComponent implements OnInit, OnChanges {
+export class ActiveUsersComponent implements OnInit {
   @Input() usersData;
   chartData = [];
 
-  dataSet =
-    [
-      [1518307200000, 300, 400],
-      [1518393600000, 350, 550],
-      [1518480000000, 400, 600],
-      [1518566400000, 450, 650],
-      [1518652800000, 500, 700],
-      [1518739200000, 550, 750],
-      [1518825600000, 600, 800],
-    ]
+  // dataSet = [
+  //     [1518307200000, 300, 400],
+  //     [1518393600000, 350, 550],
+  //     [1518480000000, 400, 600],
+  //     [1518566400000, 450, 650],
+  //     [1518652800000, 500, 700],
+  //     [1518739200000, 550, 750],
+  //     [1518825600000, 600, 800],
+  //   ];
+  responseData = [];
 
-  constructor() { }
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getActiveUsersData();
+    });
 
-  onResize() {
-    this.usersChartRender(this.chartData);
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getActiveUsersData();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getActiveUsersData();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getActiveUsersData();
+    });
   }
 
-  usersChartRender(dataSet) {
+  usersChartRender(data) {
     d3.select("#activeUserGraph svg").remove();
     let w = d3
       .select("#activeUserGraph")
@@ -41,14 +54,14 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     var xScale = d3
       .scaleTime()
       .domain(
-        d3.extent(dataSet, function (d) {
+        d3.extent(data, function (d) {
           return d[0];
         })
       )
       .range([p, w - p / 2]);
 
     // create yScale
-    var yMax = d3.max(dataSet, function (d) {
+    var yMax = d3.max(data, function (d) {
       var max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
@@ -120,7 +133,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     var path = svg
       .append("path")
-      .datum(dataSet)
+      .datum(data)
       .attr("class", "line1")
       .attr("d", line);
 
@@ -135,7 +148,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     svg
       .append("path")
-      .datum(dataSet) // Binds data to the line
+      .datum(data) // Binds data to the line
       .attr("class", "line2") // Assign a class for styling
       .attr("d", line2); // Calls the line generator
 
@@ -143,7 +156,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
     //Creating dots
     svg
       .selectAll("circles")
-      .data(dataSet)
+      .data(data)
       .enter()
       .append("circle")
       .attr("r", 3)
@@ -161,7 +174,7 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     svg
       .selectAll("circles")
-      .data(dataSet)
+      .data(data)
       .enter()
       .append("circle")
       .attr("r", 3)
@@ -223,33 +236,30 @@ export class ActiveUsersComponent implements OnInit, OnChanges {
 
     svg.on("mouseout", function () {
       vertline.attr("opacity", "0");
-      var tooltip = d3.select(".tool-tip");
+      let tooltip = d3.select(".tool-tip");
       tooltip.style("visibility", "hidden");
     });
   }
 
-  ngOnInit() {
-    this.usersChartRender(this.dataSet);
-  }
-
-  ngOnChanges(changes: any) {
-    if (changes.usersData.currentValue && this.chartData) {
-      for (var i = 0; i < this.usersData.graphData.length; i++) {
-        var date = new Date(this.usersData.graphData[i].date);
-        var timeStamp = date.getTime();
-        var activeLearners = parseInt(
-          this.usersData.graphData[i].activeLearners
-        );
-        var activeFacultiesAndAdmins = parseInt(
-          this.usersData.graphData[i].activeFacultiesAndAdmins
-        );
+  getActiveUsersData() {
+    this.dashboardService.getActiveUsersData().subscribe((response: any) => {
+      this.responseData = response.data;
+      for (var i = 0; i < this.responseData.length; i++) {
+        let date = new Date(this.responseData[i].date);
+        let timeStamp = date.getTime();
+        let activeLearners = parseInt(this.responseData[i].learnerCount);
+        let activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
         this.chartData.push([
           timeStamp,
           activeLearners,
           activeFacultiesAndAdmins
         ]);
+        this.usersChartRender(this.chartData);
       }
-      this.usersChartRender(this.chartData);
-    }
+    });
+  }
+
+  ngOnInit() {
+    this.getActiveUsersData();
   }
 }

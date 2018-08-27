@@ -56,7 +56,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   filterDispalyNameFraming() {
-    console.log(this.filtersInfo.filterList);
     if (this.filtersInfo.filterList.length > 1) {
       this.filterDisplayName = "Add a Filter";
     }

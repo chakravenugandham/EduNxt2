@@ -2,17 +2,36 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import * as d3 from "d3v4";
 import * as _ from "underscore";
 import * as moment from "moment";
+import { LdDashboardService } from '../../services/ld-dashboard.service';
 
 @Component({
   selector: 'app-mode-of-delivery',
   templateUrl: './mode-of-delivery.component.html',
   styleUrls: ['./mode-of-delivery.component.scss']
 })
-export class ModeOfDeliveryComponent implements OnInit, OnChanges {
+export class ModeOfDeliveryComponent implements OnInit {
+
+  chartData = [];
 
   @Input() usersData;
 
-  constructor() { }
+  constructor(private dashboardService: LdDashboardService) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getModeOfDeliveryData();
+    });
+
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getModeOfDeliveryData();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getModeOfDeliveryData();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getModeOfDeliveryData();
+    });
+  }
 
   usersChartRender(dataSet) {
     d3.select("#modeOfDeliveryGraph svg").remove();
@@ -210,21 +229,31 @@ export class ModeOfDeliveryComponent implements OnInit, OnChanges {
       tooltip.style("visibility", "hidden");
     });
   }
-  chartData = [];
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.usersData.currentValue && this.chartData) {
-      for (var i = 0; i < this.usersData.graphData.length; i++) {
-        var date = new Date(this.usersData.graphData[i].date);
+
+  responseData = [];
+
+  getModeOfDeliveryData() {
+    this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
+      this.responseData = response.data;
+      console.log(this.responseData);
+      for (var i = 0; i < this.responseData.length; i++) {
+        var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();
-        var activeLearners = parseInt(this.usersData.graphData[i].activeLearners);
-        var activeFacultiesAndAdmins = parseInt(this.usersData.graphData[i].activeFacultiesAndAdmins);
+        if ((this.responseData[i].onlineCount == null) || (this.responseData[i].offlineCount == null)) {
+          var activeLearners = 0;
+          var activeFacultiesAndAdmins = 0;
+        }
+        var activeLearners = parseInt(this.responseData[i].onlineCount);
+        var activeFacultiesAndAdmins = parseInt(this.responseData[i].offlineCount);
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
-    }
+      console.log(this.chartData);
+    });
   }
 
   ngOnInit() {
+    this.getModeOfDeliveryData();
   }
 
 }

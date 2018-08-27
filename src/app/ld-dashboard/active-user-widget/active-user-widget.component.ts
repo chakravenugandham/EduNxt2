@@ -7,35 +7,17 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   templateUrl: "./active-user-widget.component.html",
   styleUrls: ["./active-user-widget.component.scss"]
 })
-export class ActiveUserWidgetComponent implements OnInit, OnChanges {
+export class ActiveUserWidgetComponent implements OnInit {
   getTab = "activeUser";
-  constructor(private dashboardService: LdDashboardService) {
-    this.dashboardService.refreshAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getLocationData();
-    });
+  constructor(private dashboardService: LdDashboardService) { }
 
-    this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getLocationData();
-    });
-
-    this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getLocationData();
-    });
-
-    this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getLocationData();
-    });
-  }
+  tooltipText = 'Active users data';
 
   //fliter object for payload
 
   filtersData = {
     routeTo: "",
-    filters: true,
+    filters: false,
     search: false,
     viewDetails: false,
     filterList: ["location"],
@@ -50,53 +32,25 @@ export class ActiveUserWidgetComponent implements OnInit, OnChanges {
 
   activeUsersFn() {
     this.getTab = "activeUser";
+    this.tooltipText = 'Active users data';
   }
 
   modeDeliveryFn() {
     this.getTab = "modeDelivery";
+    this.tooltipText = 'View Online vs Offline delivery over the last 30 days';
   }
 
   locationFn() {
     this.getTab = "location";
-    this.getLocationData();
-  }
-
-  responseData = {
-    activeUserData: "",
-    locationData: ""
-  };
-
-  getActiveUsersData() {
-    this.dashboardService
-      .getActiveUsersData(this.filterbody)
-      .subscribe((response: any) => {
-        this.responseData.activeUserData = response.data;
-      });
-  }
-
-  getLocationData() {
-    this.dashboardService
-      .getLocationData(this.filterbody)
-      .subscribe((response: any) => {
-        this.responseData.locationData = response.data;
-      });
+    this.tooltipText = 'Activity by Location';
   }
 
   getFilterObject($event) {
     this.filterbody = $event;
-    this.getActiveUsersData();
-    this.getLocationData();
   }
 
   ngOnInit() {
-    this.getActiveUsersData();
-    // this.getLocationData();
+    this.tooltipText = 'Active users data';
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.filterbody) {
-      this.getActiveUsersData();
-      this.getLocationData();
-    }
-  }
 }

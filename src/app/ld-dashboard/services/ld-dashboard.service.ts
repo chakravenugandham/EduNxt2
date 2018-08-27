@@ -201,16 +201,21 @@ export class LdDashboardService implements OnInit {
 
   //active users & mode of delivery data
 
-  getActiveUsersData(filterbody) {
+  getActiveUsersData() {
     let url = this.baseURL + APIURL.ACTIVE_USERS_GRAPH + this.setDateObj + this.program_course;
-    return this.http.post(url, filterbody, { headers: this.headers });
+    return this.http.get(url, { headers: this.headers });
+  }
+
+  getModeOfDeliveryData() {
+    let url = this.baseURL + APIURL.MODE_OF_DELIVERY + this.setDateObj + this.program_course;
+    return this.http.get(url, { headers: this.headers });
   }
 
   //location data
 
-  getLocationData(filterbody) {
+  getLocationData() {
     let url = this.baseURL + APIURL.LOCATION + this.setDateObj + this.program_course;
-    return this.http.post(url, filterbody, { headers: this.headers });
+    return this.http.get(url, { headers: this.headers });
   }
 
   //learner-track widget data

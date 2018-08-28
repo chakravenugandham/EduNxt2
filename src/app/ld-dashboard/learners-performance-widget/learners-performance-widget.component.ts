@@ -7,6 +7,10 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
   styleUrls: ["./learners-performance-widget.component.scss"]
 })
 export class LearnersPerformanceWidgetComponent implements OnInit {
+
+  tooltipText: string;
+
+  //filter object defined
   filtersData = {
     routeTo: "learnerPerformanceFullView",
     filters: false,
@@ -42,18 +46,21 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
     });
   }
 
+  //performance function
   performanceFn() {
-    if (this.getTab != "performance") {
-      this.getTab = "performance";
-      this.getDataFromService();
-    }
+    this.tooltipText = 'performance';
+    this.getTab = "performance";
+    this.getDataFromService();
   }
+
+  //progress function
   progressFn() {
-    if (this.getTab != "progress") {
-      this.getTab = "progress";
-      this.getDataFromService();
-    }
+    this.tooltipText = 'progress';
+    this.getTab = "progress";
+    this.getDataFromService();
   }
+
+  //filter object function
   getFilterObject($event) {
     this.filterbody = $event;
     this.getDataFromService();
@@ -61,14 +68,14 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
 
   testData = [];
 
+  //service call for apis
   getDataFromService() {
     this.performanceDataSet = [];
     this.progressDataSet = [];
     this.spinner_loader = true;
 
     this.dashboardService
-      .getLearnerPerformanceData(this.getTab)
-      .subscribe((response: any) => {
+      .getLearnerPerformanceData(this.getTab).subscribe((response: any) => {
         this.responseData = response.data;
 
         this.spinner_loader = false;
@@ -114,6 +121,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
       });
   }
   ngOnInit() {
-    this.getDataFromService();
+    this.progressFn();
   }
 }

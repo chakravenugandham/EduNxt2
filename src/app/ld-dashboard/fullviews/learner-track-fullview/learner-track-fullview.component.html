@@ -101,52 +101,57 @@
         <thead>
           <tr>
             <th scope="col">
-              <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+              <span *ngIf="!searchBox">
+                <span (click)="searchFn()">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <span>
+                  Learner Name
+                  <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('learnerName')"></i>
+                </span>
               </span>
-              Learner Name
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+              <span class="list-inline-item searchList" *ngIf="searchBox">
+                <div class="search-org-user">
+                  <span class="search-icon" (click)="closeSearchFn()">
+                    <i class="fas fa-search"></i>
+                  </span>
+                  <input type="text" placeholder="Search">
+                </div>
               </span>
             </th>
             <th scope="col">Sl. No.
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('serialNumber')"></i>
               </span>
             </th>
             <th scope="col">Course Name
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('courseName')"></i>
               </span>
             </th>
             <th scope="col">Team
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('teamName')"></i>
               </span>
             </th>
             <th scope="col">Batch
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('batchName')"></i>
               </span>
             </th>
-            <!-- <th scope="col">Team Leader
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th> -->
             <th scope="col">Score in course
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('scoreInCourse')"></i>
               </span>
             </th>
             <th scope="col">Score Avg.
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('scoreAvg')"></i>
               </span>
             </th>
             <th scope="col">Highest Score
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <i class="fa fa-sort" aria-hidden="true" (click)="sortByFn('highestScore')"></i>
               </span>
             </th>
             <th scope="col">Action</th>

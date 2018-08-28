@@ -8,6 +8,10 @@ import { CommonService } from "../../common-services/common.service";
   styleUrls: ["./org-performance-widget.component.scss"]
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
+
+  tooltipText: string;
+
+  //filters data
   filtersData = {
     routeTo: "orgPerformanceFullView",
     filters: false,
@@ -57,6 +61,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   teamsFn() {
+    this.tooltipText = 'Teams';
     this.filtersData.currentModule = "teams";
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
@@ -65,6 +70,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.getDataFromService();
   }
   trainersFn() {
+    this.tooltipText = 'Trainers';
     this.filtersData.currentModule = "trainers";
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
@@ -73,6 +79,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.getDataFromService();
   }
   learnersFn() {
+    this.tooltipText = 'Learners';
     this.filtersData.currentModule = "learner";
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";

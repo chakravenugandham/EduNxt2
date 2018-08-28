@@ -24,6 +24,10 @@ export class LearnerTrackFullviewComponent implements OnInit {
     appliedFilters: []
   };
 
+  searchBox: boolean = false;
+  sortOrder: string = "learnerName";
+  reverse: boolean = false;
+
   componentName: string;
 
   spinner_loader: boolean = false;
@@ -154,6 +158,19 @@ export class LearnerTrackFullviewComponent implements OnInit {
     window.scrollTo(0, 200);
     this.pagination.page = $event;
     this.getTableDataFromService();
+  }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
+  }
+
+  searchFn() {
+    this.searchBox = true;
+  }
+
+  closeSearchFn() {
+    this.searchBox = false;
   }
 
   addFilters($event) {

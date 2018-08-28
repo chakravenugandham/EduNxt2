@@ -33,6 +33,16 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
+  spinner_loader_graph: boolean = false;
+  noDataFlag_graph: boolean = false;
+
+  searchFilterData = {
+    component: "",
+    searchComponent: "scores-distribution-details",
+    searchBy: "learnerName"
+  };
+  searchString: string = "";
+
   pagination = {
     page: 1,
     limitTo: 10,
@@ -65,41 +75,51 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   setConfigModule() {
     if (this.moduleName == 'test') {
       this, this.filtersData.filterList = ["batch"];
+      this.searchFilterData.component = "test"
     }
     else if (this.moduleName == 'quiz') {
       this, this.filtersData.filterList = ["batch", "quiz"];
+      this.searchFilterData.component = "quiz"
     }
     else if (this.moduleName == 'assignment') {
       this, this.filtersData.filterList = ["batch", "assignment"];
+      this.searchFilterData.component = "assignment"
     }
     this.getDataFromService();
     this.getScoreDetails();
   }
 
   getDataFromService() {
-    this.responseGraphData = [];
+    // this.responseGraphData = [];
+    this.spinner_loader_graph = true;
     this.dashboardService
       .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
       .subscribe((response: any) => {
         this.responseGraphData = response.data;
-        for (let i = 1; i <= this.responseGraphData.length; i++) {
-          this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
+
+        this.spinner_loader_graph = false;
+
+        if (this.responseGraphData.length > 0) {
+          for (let i = 1; i <= this.responseGraphData.length; i++) {
+            this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
+          }
+          this.dataSet = [...this.dataSet];
         }
-        this.dataSet = [...this.dataSet];
+
+        this.noDataFlag_graph = this.responseGraphData.length == 0 ? true : false;
+
       });
   }
 
   getScoreDetails() {
-    this.responseScoreDetails = [];
+    // this.responseScoreDetails = [];
     this.spinner_loader = true;
-
     this.dashboardService
-      .getScoresDetails(this.moduleName, this.filtersData.appliedFilters, this.pagination)
+      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.responseScoreDetails = response.data;
         this.pagination.total = response.pagination.total;
         this.pagination.total_pages = response.pagination.total_pages;
-
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       });
@@ -108,10 +128,22 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   changeModule(module) {
     this.moduleName = module;
     localStorage.setItem('scoreComponent', module);
+    this.searchString = "";
     this.pagination.page = 1;
     this.setConfigModule();
-
   }
+
+  // searchItem($event) {
+  //   this.dashboardService
+  //     .getSearchFilterComponentData(this.searchFilterData, $event.target.value)
+  //     .subscribe((response: any) => {
+  //       this.responseScoreDetails = response.data;
+  //       this.pagination.total = response.pagination.total;
+  //       this.pagination.total_pages = response.pagination.total_pages;
+  //       this.spinner_loader = false;
+  //       this.noDataFlag = response.data.length == 0 ? true : false;
+  //     });
+  // }
 
   gotoPage($event) {
     this.pagination.page = $event;
@@ -121,14 +153,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
     this.reverse = !this.reverse;
-  }
-
-  searchFn() {
-    this.searchBox = true;
-  }
-
-  closeSearchFn() {
-    this.searchBox = false;
   }
 
   addFilters($event) {

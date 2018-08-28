@@ -33,6 +33,13 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     responseData: []
   }
 
+  searchFilterData = {
+    searchComponent: "content-consumption",
+    searchBy: "contentName"
+  };
+
+  searchString: string = "";
+
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
@@ -57,7 +64,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
-      .getContentData(this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((res: any) => {
         this.contentObject.responseData = res.data;
 

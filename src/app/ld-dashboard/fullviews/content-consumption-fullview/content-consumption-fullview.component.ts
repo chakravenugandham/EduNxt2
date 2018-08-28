@@ -22,6 +22,13 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   contentData = [];
 
+  searchFilterData = {
+    searchComponent: "content-consumption",
+    searchBy: "contentName"
+  };
+
+  searchString: string = "";
+
   pagination = {
     page: 1,
     limitTo: 10,
@@ -57,7 +64,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
-      .getContentData(this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.contentData = response.data;
         this.pagination.total = response.pagination.total;
@@ -65,14 +72,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = response.data.length == 0 ? true : false;
       });
-  }
-
-  searchFn() {
-    this.searchBox = true;
-  }
-
-  closeSearchFn() {
-    this.searchBox = false;
   }
 
   sortByFn(sortByName) {

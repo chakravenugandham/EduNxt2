@@ -27,6 +27,13 @@ export class OrgInterestFullviewComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
+  searchFilterData = {
+    searchComponent: "content-consumption",
+    searchBy: "contentName"
+  };
+
+  searchString: string = "";
+
   pagination = {
     page: 1,
     limitTo: 10,
@@ -72,7 +79,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    this.dashboardService.getOrgInterestDetailsData(this.pagination).subscribe((response: any) => {
+    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
       this.responseData = response.data;
       this.pagination.total = response.pagination.total;
       this.pagination.total_pages = response.pagination.total_pages;

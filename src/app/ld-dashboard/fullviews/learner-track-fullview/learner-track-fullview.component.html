@@ -70,23 +70,25 @@
   </div>
 
 
-  <div class="widget-block form-inline">
-    <b>Display data for </b>
-    <span *ngIf="filtersData.currentModule == 'pace'">
-      <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
-        <option value="aheadschedule">Ahead of Schedule</option>
-        <option value="ontrack">On Track</option>
-        <option value="behindschedule">Behind Schedule</option>
-        <option value="have not started">Haven't Started</option>
-      </select>
-    </span>
-    <span *ngIf="filtersData.currentModule == 'performance'">
-      <select class="custom-select paceDataSelect" [(ngModel)]="selectType" (change)="getDisplayObject(selectType)">
-        <option value="excelling">Excelling</option>
-        <option value="passing">Passing</option>
-        <option value="struggling">Struggling</option>
-      </select>
-    </span>
+  <div class="widget-block">
+    <div>
+      <b>Display data for </b>
+      <span *ngIf="filtersData.currentModule == 'pace'">
+        <select class="custom-select paceDataSelect" [(ngModel)]="displayfor" (change)="getDisplayObject(displayfor)">
+          <option value="aheadschedule">Ahead of Schedule</option>
+          <option value="ontrack">On Track</option>
+          <option value="behindschedule">Behind Schedule</option>
+          <option value="have not started">Haven't Started</option>
+        </select>
+      </span>
+      <span *ngIf="filtersData.currentModule == 'performance'">
+        <select class="custom-select paceDataSelect" [(ngModel)]="displayfor" (change)="getDisplayObject(displayfor)">
+          <option value="excelling">Excelling</option>
+          <option value="passing">Passing</option>
+          <option value="struggling">Struggling</option>
+        </select>
+      </span>
+    </div>
 
     <div *ngIf="spinner_loader" class="spinner_loading">
       <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
@@ -96,56 +98,58 @@
       <span class="spinner_inside">No data found</span>
     </div>
 
-    <div *ngIf="responseTrackDetails.length>0">
+    <div>
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th scope="col">
+            <th scope="col" style="display:flex">
               <span>
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
-              Learner Name
               <span>
+                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getTableDataFromService()">
+              </span>
+              <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Sl. No.
-              <span>
+              <span (click)="sortByFn('serialNumber')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Course Name
-              <span>
+              <span (click)="sortByFn('courseName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Team
-              <span>
+              <span (click)="sortByFn('teamName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Batch
-              <span>
+              <span (click)="sortByFn('batchName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <!-- <th scope="col">Team Leader
-              <span>
+              <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th> -->
             <th scope="col">Score in course
-              <span>
+              <span (click)="sortByFn('scoreInCourse')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Score Avg.
-              <span>
+              <span (click)="sortByFn('scoreAvg')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col">Highest Score
-              <span>
+              <span (click)="sortByFn('highestScore')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
@@ -153,7 +157,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of responseTrackDetails">
+          <tr *ngFor="let data of responseTrackDetails | orderBy: sortOrder : reverse">
             <th scope="row">
               <span>
                 <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
@@ -176,7 +180,7 @@
         </tbody>
       </table>
 
-      <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
+      <app-paginate *ngIf="pagination.total_pages > 1" class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
 
     </div>
   </div>

@@ -20,7 +20,7 @@
         <span>
           <b>Display Leaderboard for </b>
         </span>
-        <select class="custom-select w-90 m-l-8" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
+        <select class="custom-select w-90" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
           <option [value]="'teams'">Teams</option>
           <option [value]="'trainers'">Trainers</option>
           <option [value]="'learner'">Learners</option>
@@ -31,7 +31,7 @@
         <span class="clear-selected" (click)="clearSelected()">Clear all</span>
       </div>
     </div>
-    <div *ngIf="!spinner_loader && !noDataFlag">
+    <div>
 
       <table class="table table-borderless" *ngIf="showDetails == 'teams'">
         <thead>
@@ -46,36 +46,19 @@
               <span (click)="sortByFn('teamName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-              <!-- <span *ngIf="!searchBox">
-                <span (click)="searchFn()">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </span>
-                <span class="text">Team Name</span>
-                <span class="m-l-8" (click)="sortByFn('teamName')">
-                  <i class="fa fa-sort" aria-hidden="true"></i>
-                </span>
-              </span>
-              <span class="list-inline-item searchList" *ngIf="searchBox">
-                <div class="search-org-user">
-                  <span class="search-icon" (click)="closeSearchFn()">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text" placeholder="Search">
-                </div>
-              </span> -->
             </th>
             <th scope="col" (click)="sortByFn('completion')">Completion %
-              <span class="m-l-8">
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('completedProgram')">Completed Programs
-              <span class="m-l-8">
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('teamsize')">Team Size
-              <span class="m-l-8">
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
@@ -120,21 +103,6 @@
               <span (click)="sortByFn('trainerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-              <!-- <span *ngIf="!searchBox" (click)="searchFn()">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-              <span class="text">Trainer Name</span>
-              <span (click)="sortByFn('trainerName')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-              <span class="list-inline-item searchList" *ngIf="searchBox">
-                <div class="search-org-user">
-                  <span class="search-icon" (click)="closeSearchFn()">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text" placeholder="Search">
-                </div>
-              </span> -->
             </th>
             <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
               <span>
@@ -165,9 +133,9 @@
               <span class="userName ">{{trainerData.trainerName}}</span>
             </th>
 
-            <td class=" ">{{trainerData.trainingsConducted}}</td>
-            <td class=" ">{{trainerData.peopleTrained}}</td>
-            <td class=" ">
+            <td>{{trainerData.trainingsConducted}}</td>
+            <td>{{trainerData.peopleTrained}}</td>
+            <td>
               <span>
                 <i class="far fa-star "></i>
               </span>{{trainerData.avgRating}}
@@ -196,22 +164,6 @@
               <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-
-              <!-- <span *ngIf="!searchBox">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-              <span class="text">Learner Name</span>
-              <span (click)="sortByFn('learnerName')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-              <span class="list-inline-item searchList" *ngIf="searchBox">
-                <div class="search-org-user">
-                  <span class="search-icon" (click)="closeSearchFn()">
-                    <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text" placeholder="Search">
-                </div>
-              </span> -->
             </th>
             <th scope="col" (click)="sortByFn('learnerSerialNumber')">
               <span>
@@ -250,10 +202,10 @@
               </span>
               <span class="userName ">{{learnerData.learnerName}}</span>
             </th>
-            <td class=" ">{{learnerData.learnerSerialNumber}}</td>
-            <td class=" ">{{learnerData.pointsEarned}}</td>
-            <td class=" ">{{learnerData.avgTestPerformance}}</td>
-            <td class=" ">{{learnerData.examScore}}</td>
+            <td>{{learnerData.learnerSerialNumber}}</td>
+            <td>{{learnerData.pointsEarned}}</td>
+            <td>{{learnerData.avgTestPerformance}}</td>
+            <td>{{learnerData.examScore}}</td>
             <td>
               <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent)">
                 <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
@@ -266,7 +218,7 @@
         </tbody>
       </table>
 
-      <app-paginate class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
+      <app-paginate *ngIf="pagination.total_pages > 1" class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
 
     </div>
 

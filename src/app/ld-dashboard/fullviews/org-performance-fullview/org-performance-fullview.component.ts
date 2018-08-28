@@ -106,6 +106,21 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   }
 
+  setConfigObj() {
+    if (this.componentName == "teams") {
+      this.searchFilterData.searchComponent = "team-leaderboard";
+      this.searchFilterData.searchBy = "teamName";
+    }
+    if (this.componentName == "trainers") {
+      this.searchFilterData.searchComponent = "trainer-leaderboard";
+      this.searchFilterData.searchBy = "trainerName";
+    }
+    if (this.componentName == "learner") {
+      this.searchFilterData.searchComponent = "learner-leaderboard";
+      this.searchFilterData.searchBy = "learnerName";
+    }
+  }
+
   gotoPage($event) {
     this.pagination.page = $event;
     this.getDataFromService();
@@ -137,10 +152,15 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   searchItem($event) {
+    this.spinner_loader = true;
     this.dashboardService
       .getSearchFilterData(this.searchFilterData, $event.target.value)
-      .subscribe((respose: any) => {
-        this.responseData = respose.data;
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length == 0 ? true : false;
       });
   }
 
@@ -154,24 +174,14 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];
-    if (this.componentName == "teams") {
-      this.searchFilterData.searchComponent = "team-leaderboard";
-      this.searchFilterData.searchBy = "teamName";
-    }
-    if (this.componentName == "trainers") {
-      this.searchFilterData.searchComponent = "trainer-leaderboard";
-      this.searchFilterData.searchBy = "trainerName";
-    }
-    if (this.componentName == "learner") {
-      this.searchFilterData.searchComponent = "learner-leaderboard";
-      this.searchFilterData.searchBy = "learnerName";
-    }
+    this.setConfigObj();
     this.getDataFromService();
   }
 
 
   ngOnInit() {
     this.componentName = this.showDetails = localStorage.getItem('orgPerformaModule');
+    this.setConfigObj();
     this.getDataFromService();
   }
 }

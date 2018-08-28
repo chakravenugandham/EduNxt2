@@ -8,18 +8,16 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class PaginateComponent implements OnInit {
   @Input() pageInfo: any;
   @Output() gotoPage = new EventEmitter<any>();
+  selectPage: number;;
   constructor() { }
 
   loadPage(event) {
     if (event !== undefined) {
       event = event > this.pageInfo.total_pages ? this.pageInfo.total_pages : event;
-      console.log("event", event);
-
       this.gotoPage.emit(event);
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

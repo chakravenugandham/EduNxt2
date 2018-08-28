@@ -11,7 +11,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   responseGraphDetails: any;
   responseTrackDetails = [];
-  selectType: string;
+  displayfor: string;
   filterbody = {};
   filtersData = {
     routeTo: "learnerTrackFullView",
@@ -31,6 +31,15 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   paceTrackValues = [];
   performanceTrackValues = [];
+
+  sortOrder: string;
+  reverse: boolean = false;
+
+  searchFilterData = {
+    searchComponent: "learner-pace-performance-details",
+    searchBy: "learnerName"
+  };
+  searchString: string = "";
 
   pagination = {
     page: 1,
@@ -65,12 +74,12 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getModule() {
     this.filtersData.currentModule = localStorage.getItem('trackComponent');
     if (this.filtersData.currentModule == "pace") {
-      this.selectType = "aheadschedule";
-      localStorage.setItem('trackDisplayFor', this.selectType);
+      this.displayfor = "aheadschedule";
+      localStorage.setItem('trackDisplayFor', this.displayfor);
     }
     else if (this.filtersData.currentModule == "performance") {
-      this.selectType = "excelling";
-      localStorage.setItem('trackDisplayFor', this.selectType);
+      this.displayfor = "excelling";
+      localStorage.setItem('trackDisplayFor', this.displayfor);
     }
 
     this.getTableDataFromService();
@@ -133,7 +142,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   getTableDataFromService() {
     this.spinner_loader = true;
 
-    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.selectType, this.filtersData.appliedFilters, this.pagination)
+    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         this.pagination.total = response.pagination.total;
@@ -145,9 +154,10 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getDisplayObject($event) {
-    this.selectType = $event;
-    localStorage.setItem('trackDisplayFor', this.selectType);
+    this.displayfor = $event;
+    localStorage.setItem('trackDisplayFor', this.displayfor);
     this.pagination.page = 1;
+    this.searchString = "";
     this.getTableDataFromService();
   }
 
@@ -161,6 +171,24 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.filtersData.appliedFilters = $event;
     this.getTableDataFromService();
     this.getGraphDataFromService();
+  }
+
+  // searchItem($event) {
+  //   this.spinner_loader = true;
+  //   this.dashboardService
+  //     .getSearchFilterData(this.searchFilterData, $event.target.value)
+  //     .subscribe((response: any) => {
+  //       this.responseTrackDetails = response.data;
+  //       this.pagination.total = response.pagination.total;
+  //       this.pagination.total_pages = response.pagination.total_pages;
+  //       this.spinner_loader = false;
+  //       this.noDataFlag = response.data.length == 0 ? true : false;
+  //     });
+  // }
+
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
   }
 
   ngOnInit() {

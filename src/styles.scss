@@ -263,41 +263,55 @@ ul {
 .learner-track-fullview,
 .content-fullview,
 .learner-performance-fullview {
-  table tr {
-    border-bottom: 2px dotted $grayOne;
-    tr:last-child {
-      border-bottom: none;
-    }
-    .userName {
-      vertical-align: middle;
-    }
-  }
-  table tr td {
-    padding: 15px 8px;
-    vertical-align: middle;
-    font-size: 12px;
-  }
-  table tr th {
-    padding: 15px 8px;
-    font-size: 12px;
-    font-weight: 600;
-    vertical-align: middle;
-    text-align: left !important;
-    cursor: pointer;
-    img {
-      border-radius: 50%;
-    }
-  }
-  table tr td img {
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-  }
-  table tr {
-    .action_icon {
-      img {
-        height: 16px;
-        width: 16px;
+  table {
+    tr {
+      border-bottom: 2px dotted $grayOne;
+      tr:last-child {
+        border-bottom: none;
+      }
+      .userName {
+        vertical-align: middle;
+      }
+      .action_icon {
+        img {
+          height: 16px;
+          width: 16px;
+        }
+      }
+      th {
+        padding: 15px 8px;
+        font-size: 12px;
+        font-weight: 600;
+        vertical-align: middle;
+        text-align: left !important;
+        cursor: pointer;
+        img {
+          border-radius: 50%;
+        }
+        input{
+          border: none;
+          margin-left: 4px;
+        }
+        input::placeholder{
+          color: #000;
+          font-weight: 600;
+        }
+        input:focus{
+          outline: none;
+          // padding: 2px;
+          border-bottom: 1px solid $lightBlue;
+          color: $lightBlue;
+        }
+      }
+      td {
+        padding: 15px 8px;
+        vertical-align: middle;
+        font-size: 12px;
+        img {
+          height: 18px;
+          width: 18px;
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -635,7 +649,7 @@ ul {
     border: 1px solid $lightBlue;
     color: $lightBlue;
     padding: 2px;
-    margin-left: 4px;
+    margin-left: 8px;
     height: 28px;
     padding: 0px 8px;
   }
@@ -644,7 +658,7 @@ ul {
   }
   .widget-block {
     position: relative;
-    min-height: 100px;
+    min-height: 300px;
     height: auto !important;
     padding-bottom: 32px;
   }

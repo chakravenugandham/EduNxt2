@@ -28,7 +28,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   noDataFlag: boolean = false;
 
   searchFilterData = {
-    searchBy: "contentName"
+    searchBy: "courseName"
   };
 
   searchString: string = "";

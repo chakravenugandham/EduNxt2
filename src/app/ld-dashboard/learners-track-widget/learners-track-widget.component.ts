@@ -12,7 +12,9 @@ import { _ } from "underscore";
 })
 export class LearnersTrackWidgetComponent implements OnInit {
 
-  tooltipText:string = '';
+  tooltipText: string = '';
+
+  //filter object
 
   filtersData = {
     routeTo: "learnerTrackFullView",
@@ -24,12 +26,15 @@ export class LearnersTrackWidgetComponent implements OnInit {
     appliedFilters: []
   };
 
+
+  //pace object defined
   paceObject = {
     filters: ["batch"],
     appliedFilters: [],
     responseData: []
   }
 
+  //performance object defined
   performanceObject = {
     filters: ["batch"],
     appliedFilters: [],
@@ -83,20 +88,25 @@ export class LearnersTrackWidgetComponent implements OnInit {
 
   }
 
+  //learnerpace function
   learnerPaceFn() {
+    this.tooltipText = 'Pace';
     this.filtersData.currentModule = "pace";
     localStorage.setItem("trackComponent", this.filtersData.currentModule);
     this.filtersData.appliedFilters = this.paceObject.appliedFilters;
     this.getDataFromService();
   }
 
+  //learner performance function
   learnerPerfFn() {
+    this.tooltipText = 'Performance';
     this.filtersData.currentModule = "performance";
     localStorage.setItem("trackComponent", this.filtersData.currentModule);
     this.filtersData.appliedFilters = this.performanceObject.appliedFilters;
     this.getDataFromService();
   }
 
+  //service call for apis
   getDataFromService() {
     this.spinner_loader = true;
 
@@ -116,6 +126,7 @@ export class LearnersTrackWidgetComponent implements OnInit {
       });
   }
 
+  //filters function
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
     this.getDataFromService();

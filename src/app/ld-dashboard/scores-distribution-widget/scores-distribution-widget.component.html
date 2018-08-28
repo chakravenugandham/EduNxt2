@@ -1,6 +1,6 @@
 <div class="widget-heading clearfix font-weight-bold">
   <p class="float-left">How are scores distributed?</p>
-  <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="Need Help?">
+  <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="How are scores distributed?">
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
@@ -9,8 +9,7 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'test'}" (click)="testScoreFn()">Test
-          Scores
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'test'}" (click)="testScoreFn()">Test Scores
         </a>
       </li>
       <li class="nav-item">
@@ -21,7 +20,7 @@
       </li>
     </ul>
     <div class="float-right widget-menu">
-      <span data-toggle="tooltip" data-placement="top" title="Need Help?">
+      <span data-toggle="tooltip" data-placement="top" title="{{tooltipText}}">
         <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
       <ng-template #popcontent>

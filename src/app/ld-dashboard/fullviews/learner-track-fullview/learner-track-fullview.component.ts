@@ -24,6 +24,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     appliedFilters: []
   };
 
+  searchBox: boolean = false;
   componentName: string;
 
   spinner_loader: boolean = false;
@@ -167,28 +168,15 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.getTableDataFromService();
   }
 
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    this.reverse = !this.reverse;
+  }
+
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
     this.getTableDataFromService();
     this.getGraphDataFromService();
-  }
-
-  // searchItem($event) {
-  //   this.spinner_loader = true;
-  //   this.dashboardService
-  //     .getSearchFilterData(this.searchFilterData, $event.target.value)
-  //     .subscribe((response: any) => {
-  //       this.responseTrackDetails = response.data;
-  //       this.pagination.total = response.pagination.total;
-  //       this.pagination.total_pages = response.pagination.total_pages;
-  //       this.spinner_loader = false;
-  //       this.noDataFlag = response.data.length == 0 ? true : false;
-  //     });
-  // }
-
-  sortByFn(sortByName) {
-    this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
   }
 
   ngOnInit() {

@@ -11,6 +11,9 @@ import { _ } from "underscore";
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
 
+  tooltipText: string;
+
+  //filters data
   filtersData = {
     routeTo: "scoreDistributionFullView",
     filters: true,
@@ -21,8 +24,10 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     appliedFilters: []
   };
 
+  //response data
   responseData = [];
 
+  //filter object defined
   testScoresObj = {
     filters: ["batch"],
     appliedFilters: [],
@@ -56,7 +61,9 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     });
   }
 
+  //testscore function defined
   testScoreFn() {
+    this.tooltipText = 'Test Score';
     this.filtersData.currentModule = "test";
     this.filtersData.filterList = ["batch"];
     this.filtersData.appliedFilters = this.testFilters;
@@ -64,7 +71,9 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.getDataFromService();
   }
 
+  //quizscore function defined
   quizScoreFn() {
+    this.tooltipText = 'Quizzes';
     this.filtersData.currentModule = "quiz";
     this.filtersData.filterList = ["batch", "quiz"];
     this.filtersData.appliedFilters = this.quizFilters;
@@ -72,7 +81,9 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.getDataFromService();
   }
 
+  //assignment function defined
   assignmentFn() {
+    this.tooltipText = 'Assignments';
     this.filtersData.currentModule = "assignment";
     this.filtersData.filterList = ["batch", "assignment"];
     this.filtersData.appliedFilters = this.assignmentFilters;
@@ -80,6 +91,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.getDataFromService();
   }
 
+  //service call for test,quiz,assignment
   getDataFromService() {
     this.responseData = [];
     this.spinner_loader = true;
@@ -97,7 +109,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
       });
   }
 
-
+  //filters function
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
     this.getDataFromService();

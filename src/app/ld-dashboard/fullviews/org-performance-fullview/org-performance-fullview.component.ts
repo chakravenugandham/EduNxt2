@@ -37,6 +37,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     searchComponent: "learner-leaderboard",
     searchBy: "learnerName"
   };
+  searchString: string = "";
 
   parseFloat = parseFloat;
 
@@ -68,41 +69,15 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
 
-    if (this.componentName == "teams") {
-      this.dashboardService.getTeamData(this.pagination).subscribe((response: any) => {
-        this.responseData = response.data;
-        // this.responseTeamsDetails = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
+    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
+      this.responseData = response.data;
+      // this.responseLeanersDetails = response.data;
+      this.pagination.total = response.pagination.total;
+      this.pagination.total_pages = response.pagination.total_pages;
 
-        this.spinner_loader = false;
-        this.noDataFlag = response.data.length == 0 ? true : false;
-      });
-    }
-
-    else if (this.componentName == "trainers") {
-      this.dashboardService.getTrainersData(this.pagination).subscribe((response: any) => {
-        this.responseData = response.data;
-        // this.responseTrainersDetails = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-
-        this.spinner_loader = false;
-        this.noDataFlag = response.data.length == 0 ? true : false;
-      });
-    }
-
-    else if (this.componentName == "learner") {
-      this.dashboardService.getLearnerData(this.pagination).subscribe((response: any) => {
-        this.responseData = response.data;
-        // this.responseLeanersDetails = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-
-        this.spinner_loader = false;
-        this.noDataFlag = response.data.length == 0 ? true : false;
-      });
-    }
+      this.spinner_loader = false;
+      this.noDataFlag = response.data.length == 0 ? true : false;
+    });
 
   }
 
@@ -115,7 +90,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
       this.searchFilterData.searchComponent = "trainer-leaderboard";
       this.searchFilterData.searchBy = "trainerName";
     }
-    if (this.componentName == "learner") {
+    if (this.componentName == "learners") {
       this.searchFilterData.searchComponent = "learner-leaderboard";
       this.searchFilterData.searchBy = "learnerName";
     }
@@ -151,19 +126,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     console.log("compareUsers", this.compareUsers.length);
   }
 
-  searchItem($event) {
-    this.spinner_loader = true;
-    this.dashboardService
-      .getSearchFilterData(this.searchFilterData, $event.target.value)
-      .subscribe((response: any) => {
-        this.responseData = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-        this.spinner_loader = false;
-        this.noDataFlag = response.data.length == 0 ? true : false;
-      });
-  }
-
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
     this.reverse = !this.reverse;
@@ -174,6 +136,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];
+    this.searchString = "";
     this.setConfigObj();
     this.getDataFromService();
   }

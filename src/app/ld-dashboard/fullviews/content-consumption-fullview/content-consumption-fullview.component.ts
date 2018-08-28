@@ -23,7 +23,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
 
   searchFilterData = {
-    searchComponent: "content-consumption",
     searchBy: "contentName"
   };
 

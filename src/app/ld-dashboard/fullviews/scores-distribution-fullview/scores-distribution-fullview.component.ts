@@ -38,7 +38,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   searchFilterData = {
     component: "",
-    searchComponent: "scores-distribution-details",
     searchBy: "learnerName"
   };
   searchString: string = "";

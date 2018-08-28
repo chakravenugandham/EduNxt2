@@ -259,21 +259,9 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //org-performance trainers data
-  getTeamData(pagination) {
-    let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + this.setDateObj + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
-    return this.http.post(url, null, { headers: this.headers });
-  }
-
-  //org-performance teams data
-  getTrainersData(pagination) {
-    let url = this.baseURL + APIURL.TRAINER_LEADERBOARD + this.setDateObj + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
-    return this.http.post(url, null, { headers: this.headers });
-  }
-
-  //org-performance leaners data
-  getLearnerData(pagination) {
-    let url = this.baseURL + APIURL.LEARNER_LEADERBOARD + this.setDateObj + this.program_course + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+  //org-performance trainers, teams and learners data
+  getPerformanceDetails(searchFilterData, searchTerm, pagination) {
+    let url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -312,11 +300,6 @@ export class LdDashboardService implements OnInit {
   //getSearchFilterData
   getSearchFilterData(searchFilterData, searchTerm) {
     let url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm;
-    return this.http.post(url, null, { headers: this.headers });
-  }
-
-  getSearchFilterComponentData(searchFilterData, searchTerm) {
-    let url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + "&type=" + searchFilterData.component + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm;
     return this.http.post(url, null, { headers: this.headers });
   }
 

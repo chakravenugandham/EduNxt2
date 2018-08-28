@@ -25,6 +25,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     searchComponent: "learner-leaderboard",
     searchBy: "learnerName"
   };
+  searchString: string = "";
 
   responseData = [];
 
@@ -80,7 +81,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
   learnersFn() {
     this.tooltipText = 'Learners';
-    this.filtersData.currentModule = "learner";
+    this.filtersData.currentModule = "learners";
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
     this.searchFilterItem = this.learnersSearchItems;
@@ -92,35 +93,14 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.spinner_loader = true;
     this.responseData = [];
 
-    if (this.filtersData.currentModule == "teams") {
-      this.dashboardService
-        .getTeamData(this.pagination)
-        .subscribe((response: any) => {
-          this.responseData = this.actualResponseData = response.data;
-          this.spinner_loader = false;
-          this.noDataFlag = this.responseData.length == 0 ? true : false;
-        });
-    }
+    this.dashboardService
+      .getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination)
+      .subscribe((response: any) => {
+        this.responseData = this.actualResponseData = response.data;
+        this.spinner_loader = false;
+        this.noDataFlag = this.responseData.length == 0 ? true : false;
+      });
 
-    else if (this.filtersData.currentModule == "trainers") {
-      this.dashboardService
-        .getTrainersData(this.pagination)
-        .subscribe((response: any) => {
-          this.responseData = this.actualResponseData = response.data;
-          this.spinner_loader = false;
-          this.noDataFlag = this.responseData.length == 0 ? true : false;
-        });
-    }
-
-    else if ((this.filtersData.currentModule = "learner")) {
-      this.dashboardService
-        .getLearnerData(this.pagination)
-        .subscribe((response: any) => {
-          this.responseData = this.actualResponseData = response.data;
-          this.spinner_loader = false;
-          this.noDataFlag = this.responseData.length == 0 ? true : false;
-        });
-    }
 
   }
 

@@ -34,7 +34,6 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   }
 
   searchFilterData = {
-    searchComponent: "content-consumption",
     searchBy: "contentName"
   };
 

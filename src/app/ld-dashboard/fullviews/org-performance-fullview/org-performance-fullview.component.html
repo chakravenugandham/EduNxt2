@@ -23,10 +23,11 @@
         <select class="custom-select w-90" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
           <option [value]="'teams'">Teams</option>
           <option [value]="'trainers'">Trainers</option>
-          <option [value]="'learner'">Learners</option>
+          <option [value]="'learners'">Learners</option>
         </select>
       </div>
       <div class="action-items float-right">
+        <span *ngIf="compareUsers.length>0"> {{compareUsers.length}} {{componentName}} selected </span>
         <span class="compare-selected" (click)="compareSelected()">Add to compare</span>
         <span class="clear-selected" (click)="clearSelected()">Clear all</span>
       </div>
@@ -41,7 +42,8 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <input type="text" placeholder="Team Name" (keyup)="searchItem($event)">
+                <!-- <input type="text" placeholder="Team Name" (keyup)="searchItem($event)"> -->
+                <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="getDataFromService()">
               </span>
               <span (click)="sortByFn('teamName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -98,7 +100,8 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <input type="text" placeholder="Trainer Name" (keyup)="searchItem($event)">
+                <!-- <input type="text" placeholder="Trainer Name" (keyup)="searchItem($event)"> -->
+                <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="getDataFromService()">
               </span>
               <span (click)="sortByFn('trainerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -151,7 +154,7 @@
           </tr>
         </tbody>
       </table>
-      <table class="table table-borderless" *ngIf="showDetails == 'learner'">
+      <table class="table table-borderless" *ngIf="showDetails == 'learners'">
         <thead>
           <tr>
             <th scope="col">
@@ -159,7 +162,8 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <input type="text" placeholder="Learner Name" (keyup)="searchItem($event)">
+                <!-- <input type="text" placeholder="Learner Name" (keyup)="searchItem($event)"> -->
+                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getDataFromService()">
               </span>
               <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>

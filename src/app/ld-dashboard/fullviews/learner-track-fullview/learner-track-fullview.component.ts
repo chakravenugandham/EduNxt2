@@ -37,7 +37,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   reverse: boolean = false;
 
   searchFilterData = {
-    searchComponent: "learner-pace-performance-details",
     searchBy: "learnerName"
   };
   searchString: string = "";

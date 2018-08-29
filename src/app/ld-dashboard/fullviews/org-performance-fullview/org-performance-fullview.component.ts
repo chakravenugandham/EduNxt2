@@ -68,6 +68,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   //api calls for trainers ,teams and learner
   getDataFromService() {
     this.spinner_loader = true;
+    this.responseData = [];
 
     this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
       this.responseData = response.data;

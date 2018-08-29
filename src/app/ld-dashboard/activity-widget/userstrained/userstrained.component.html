@@ -13,7 +13,7 @@
   </div>
 
   <div *ngIf="spinner_loader" class="spinner_loading">
-    <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+    <app-spinner></app-spinner>
   </div>
 
   <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">

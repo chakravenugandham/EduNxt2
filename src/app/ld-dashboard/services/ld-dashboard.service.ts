@@ -303,6 +303,13 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
+  //email report
+
+  emailReportService(emailBody) {
+    let url = this.baseURL + APIURL.EMAIL_SERVICE;
+    return this.http.post(url, emailBody, { headers: this.headers });
+  }
+
   //LOGOUT API
   logout() {
     let url = environment.logoutUrl;

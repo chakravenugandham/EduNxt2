@@ -30,6 +30,7 @@ export class APIURL {
   public static CONTENT_CONSUMPTION = "content-consumption";
   public static FILTERS = "filters";
   public static SCORES_FILTERS = "scores-distribution-filters";
+  public static EMAIL_SERVICE = "email";
 
 
   //Org-Head apis

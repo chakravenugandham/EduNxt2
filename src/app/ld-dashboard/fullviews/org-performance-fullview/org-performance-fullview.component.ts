@@ -38,7 +38,14 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     searchComponent: "learner-leaderboard",
     searchBy: "learnerName"
   };
+
   searchString: string = "";
+
+  emailData = {
+    to: "rajeshadhikari72@gmail.com",
+    subject: "manipal user",
+    text: "Hi"
+  }
   parseFloat = parseFloat;
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -142,9 +149,13 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
+        // this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+        //   console.log(response);
+        // });
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        console.log(this.closeResult);
       }
     );
   }

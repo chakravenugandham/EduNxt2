@@ -31,12 +31,13 @@
           </span>
           <span class="font-color">Email this report</span>
         </li>
-        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Download this report">
-          <span>
+        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom"
+          title="Download this report">
+          <!-- <span>
             <img src="../../assets/IconsSVGs/Download.svg">
-          </span>
+          </span> -->
           <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
-            Download this report
+            <img src="../../assets/IconsSVGs/Download.svg"> Download this report
           </span>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button class="dropdown-item cursor-pointer" (click)="captureScreen()">Download PDF</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnChanges } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, OnChanges, Inject } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
@@ -41,7 +41,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   learnerDisplayFor: string;
   scoreComponent: string;
 
-  constructor(private dashboardService: LdDashboardService, private _window: Window, private filterData: CommonService, private router: Router, private route: ActivatedRoute) {
+  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getAllCourses();
     });

@@ -141,7 +141,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getTableDataFromService() {
     this.spinner_loader = true;
-
+    this.responseTrackDetails = [];
     this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;

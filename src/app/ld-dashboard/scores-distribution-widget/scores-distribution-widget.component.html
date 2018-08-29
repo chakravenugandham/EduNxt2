@@ -9,7 +9,8 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'test'}" (click)="testScoreFn()">Test Scores
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'test'}" (click)="testScoreFn()">Test
+          Scores
         </a>
       </li>
       <li class="nav-item">
@@ -58,8 +59,8 @@
   </div>
 
   <div *ngIf="spinner_loader" class="spinner_loading">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i> -->
-    <i class="fas fa-spinner fa-pulse fa-3x spinner_inside"></i>
+    <app-spinner></app-spinner>
+
   </div>
 
   <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">

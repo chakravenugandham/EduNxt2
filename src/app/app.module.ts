@@ -115,6 +115,7 @@ import { LearnerCoursePerformanceComponent } from "./learner/learner-course-perf
 import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-performance/learner-avg-course-performance/learner-avg-course-performance.component";
 import { CustomNumberPipe } from "../app/shared/custom-number.pipe";
 import { PaginateComponent } from './common/paginate/paginate.component';
+import { SpinnerComponent } from './common/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -203,7 +204,8 @@ import { PaginateComponent } from './common/paginate/paginate.component';
     LearnerCoursePerformanceComponent,
     LearnerAvgCoursePerformanceComponent,
     CustomNumberPipe,
-    PaginateComponent
+    PaginateComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

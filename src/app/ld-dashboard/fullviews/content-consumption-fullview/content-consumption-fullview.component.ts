@@ -62,6 +62,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   getDataFromService() {
     this.spinner_loader = true;
+    this.contentData = [];
+
     this.dashboardService
       .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {

@@ -5,29 +5,20 @@
     </p>
   </div>
 
-  <div *ngIf="!usersData" class="spinner_loading text-center">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-    <p>No data found</p>
-  </div>
-
-  <div class="line-block" *ngIf="usersData">
+  <div class="line-block">
     <div id="modeOfDeliveryGraph">
       <svg></svg>
     </div>
     <div class="tool-tip">
       <table>
         <tr>
-          <td class="ttip-div ttip-date">
-            May 01
-          </td>
+          <td class="ttip-div ttip-date"></td>
         </tr>
         <tr>
-          <td class="ttip-div ttip-learners">
-          </td>
+          <td class="ttip-div ttip-learners"></td>
         </tr>
         <tr>
-          <td class="ttip-div ttip-faculty">
-          </td>
+          <td class="ttip-div ttip-faculty"></td>
         </tr>
       </table>
     </div>

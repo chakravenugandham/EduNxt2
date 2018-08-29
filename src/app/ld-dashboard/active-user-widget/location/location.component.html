@@ -3,12 +3,7 @@
     <b>Activity by Location</b>
   </p>
 
-  <div *ngIf="!locationData" class="spinner_loading text-center">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-    <p>No data found</p>
-  </div>
-
-  <div class="row" *ngIf="locationData">
+  <div class="row">
     <div class="col-md-7">
       <div class="locationGraph">
         <div id="regions_div"></div>

@@ -13,119 +13,124 @@
 
   <div class="widget-block">
 
-    <div class="float-left form-inline">
-      <span>
-        <b>Display Graph for </b>
-      </span>
-      <select class="custom-select w-90 m-l-8" [(ngModel)]="moduleName" (change)='changeModule(moduleName)' id="inputGroupSelect02">
-        <option [value]="'test'">Test Scores</option>
-        <option [value]="'quiz'">Quizzes</option>
-        <option [value]="'assignment'">Assignments</option>
-      </select>
+    <div class="graph-space">
+      <div class="float-left form-inline">
+        <span class="font-weight-bold">Display Graph for</span>
+        <select class="custom-select w-90 m-l-8" [(ngModel)]="moduleName" (change)='changeModule(moduleName)' id="inputGroupSelect02">
+          <option [value]="'test'">Test Scores</option>
+          <option [value]="'quiz'">Quizzes</option>
+          <option [value]="'assignment'">Assignments</option>
+        </select>
+      </div>
+
+      <div *ngIf="spinner_loader_graph" class="spinner_loading">
+        <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+      </div>
+
+      <div *ngIf="!spinner_loader_graph && noDataFlag_graph" class="spinner_loading">
+        <span class="spinner_inside">No Graph data found</span>
+      </div>
+
+      <div class="col-md-12" *ngIf="!spinner_loader_graph && !noDataFlag_graph" appScoreChart [data]='dataSet'></div>
+
     </div>
 
-    <div *ngIf="spinner_loader_graph" class="spinner_loading">
-      <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
-    </div>
+    <div class="table-space">
 
-    <div *ngIf="!spinner_loader_graph && noDataFlag_graph" class="spinner_loading">
-      <span class="spinner_inside">No Graph data found</span>
-    </div>
+      <div *ngIf="spinner_loader" class="spinner_loading">
+        <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
+      </div>
 
-    <div class="col-md-12 score-graph" *ngIf="!spinner_loader_graph && !noDataFlag_graph" appScoreChart [data]='dataSet'></div>
+      <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+        <span class="spinner_inside">No data found</span>
+      </div>
 
-    <div *ngIf="spinner_loader" class="spinner_loading">
-      <i class="fas fa-spinner fa-spin fa-3x spinner_inside"></i>
-    </div>
+      <div class="b-t-2">
 
-    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-      <span class="spinner_inside">No data found</span>
-    </div>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">
+                <span>
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+                <span>
+                  <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getScoreDetails()">
+                </span>
+                <span (click)="sortByFn('learnerName')">
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+              <th scope="col" (click)="sortByFn('serialNumber')">Sl.No
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+              <th scope="col" (click)="sortByFn('team')">Team
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+              <th scope="col" (click)="sortByFn('batchName')">Batch
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+              <th scope="col" (click)="sortByFn('scoreAvg')">Score Avg
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+              <th scope="col" (click)="sortByFn('noOfAttempts')">No of Re-Attempts
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+              <th scope="col" (click)="sortByFn('Progress')">Progress %
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="moduleName == 'test'">
+            <tr *ngFor="let testData of responseScoreDetails | orderBy: sortOrder : reverse">
+              <td class="">{{testData.learnerName}}</td>
+              <td class="">{{testData.serialNumber}}</td>
+              <td class="">{{testData.team}}</td>
+              <td class="">{{testData.batchName}}</td>
+              <td class="">{{testData.scoreAvg}}</td>
+              <td class="">{{testData.noOfAttempts}}</td>
+              <td class="">{{testData.Progress}}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="moduleName == 'quiz'">
+            <tr *ngFor="let quizData of responseScoreDetails | orderBy: sortOrder : reverse">
+              <td class="">{{quizData.learnerName}}</td>
+              <td class="">{{quizData.serialNumber}}</td>
+              <td class="">{{quizData.team}}</td>
+              <td class="">{{quizData.batchName}}</td>
+              <td class="">{{quizData.scoreAvg}}</td>
+              <td class="">{{quizData.noOfAttempts}}</td>
+              <td class="">{{quizData.Progress}}</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="moduleName == 'assignment'">
+            <tr *ngFor="let assignmentData of responseScoreDetails | orderBy: sortOrder : reverse">
+              <td class="">{{assignmentData.learnerName}}</td>
+              <td class="">{{assignmentData.serialNumber}}</td>
+              <td class="">{{assignmentData.team}}</td>
+              <td class="">{{assignmentData.batchName}}</td>
+              <td class="">{{assignmentData.scoreAvg}}</td>
+              <td class="">{{assignmentData.noOfAttempts}}</td>
+              <td class="">{{assignmentData.Progress}}</td>
+            </tr>
+          </tbody>
+        </table>
 
-    <div class="b-t-2">
+        <app-paginate *ngIf="pagination.total_pages > 1" class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
 
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">
-              <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-              <span>
-                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getScoreDetails()">
-              </span>
-              <span (click)="sortByFn('learnerName')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col" (click)="sortByFn('serialNumber')">Sl.No
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col" (click)="sortByFn('team')">Team
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col" (click)="sortByFn('batchName')">Batch
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col" (click)="sortByFn('scoreAvg')">Score Avg
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col" (click)="sortByFn('noOfAttempts')">No of Re-Attempts
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-            <th scope="col" (click)="sortByFn('Progress')">Progress %
-              <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
-              </span>
-            </th>
-          </tr>
-        </thead>
-        <tbody *ngIf="moduleName == 'test'">
-          <tr *ngFor="let testData of responseScoreDetails | orderBy: sortOrder : reverse">
-            <td class="">{{testData.learnerName}}</td>
-            <td class="">{{testData.serialNumber}}</td>
-            <td class="">{{testData.team}}</td>
-            <td class="">{{testData.batchName}}</td>
-            <td class="">{{testData.scoreAvg}}</td>
-            <td class="">{{testData.noOfAttempts}}</td>
-            <td class="">{{testData.Progress}}</td>
-          </tr>
-        </tbody>
-        <tbody *ngIf="moduleName == 'quiz'">
-          <tr *ngFor="let quizData of responseScoreDetails | orderBy: sortOrder : reverse">
-            <td class="">{{quizData.learnerName}}</td>
-            <td class="">{{quizData.serialNumber}}</td>
-            <td class="">{{quizData.team}}</td>
-            <td class="">{{quizData.batchName}}</td>
-            <td class="">{{quizData.scoreAvg}}</td>
-            <td class="">{{quizData.noOfAttempts}}</td>
-            <td class="">{{quizData.Progress}}</td>
-          </tr>
-        </tbody>
-        <tbody *ngIf="moduleName == 'assignment'">
-          <tr *ngFor="let assignmentData of responseScoreDetails | orderBy: sortOrder : reverse">
-            <td class="">{{assignmentData.learnerName}}</td>
-            <td class="">{{assignmentData.serialNumber}}</td>
-            <td class="">{{assignmentData.team}}</td>
-            <td class="">{{assignmentData.batchName}}</td>
-            <td class="">{{assignmentData.scoreAvg}}</td>
-            <td class="">{{assignmentData.noOfAttempts}}</td>
-            <td class="">{{assignmentData.Progress}}</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <app-paginate *ngIf="pagination.total_pages > 1" class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
+      </div>
 
     </div>
   </div>

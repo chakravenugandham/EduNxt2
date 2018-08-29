@@ -1,3 +1,4 @@
+@import "../../../shared/variables.scss";
 .m-l-8 {
   margin-left: 8px;
 }
@@ -11,14 +12,15 @@
   margin-bottom: 12px;
 }
 
+.negative-color {
+  color: $orange !important;
+}
+
 table {
   tbody {
     td {
       font-size: 12px;
       font-weight: 100;
-    }
-    i {
-      color: #ffd630;
     }
   }
 }
@@ -37,7 +39,7 @@ table {
   .compare-selected,
   .clear-selected {
     padding: 8px;
-    cursor:pointer;
+    cursor: pointer;
   }
 }
 
@@ -56,7 +58,6 @@ table {
 .checked-box {
   background-color: orange !important;
 }
-
 
 .imgActive {
   position: relative; // float: left;

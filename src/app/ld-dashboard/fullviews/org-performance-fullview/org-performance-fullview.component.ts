@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
-
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 import { _ } from "underscore";
 
 @Component({
@@ -15,6 +15,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   // responseLeanersDetails: any;
 
   responseData: any[];
+  closeResult: string;
 
   checkBoxValue: boolean = false;
   sortOrder: string;
@@ -38,16 +39,11 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     searchBy: "learnerName"
   };
   searchString: string = "";
-
   parseFloat = parseFloat;
-
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(
-    private dashboardService: LdDashboardService,
-    private filterData: CommonService
-  ) {
+  constructor(private dashboardService: LdDashboardService, private filterData: CommonService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -141,7 +137,26 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
+  open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
 
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
   ngOnInit() {
     this.componentName = this.showDetails = localStorage.getItem('orgPerformaModule');
     this.setConfigObj();

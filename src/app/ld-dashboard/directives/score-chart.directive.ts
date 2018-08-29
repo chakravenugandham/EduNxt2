@@ -122,8 +122,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .text("Score Ranges")
       .attr(
         "transform",
-        "translate(" + (width - 104) + "," + (height - 10) + ")"
-      );
+        "translate(" + (width - 104) + "," + (height - 10) + ")");
 
     function make_x_gridlines() {
       return d3.axisBottom(xScale).ticks(5);

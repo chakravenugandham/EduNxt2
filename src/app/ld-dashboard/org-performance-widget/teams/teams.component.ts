@@ -1,10 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
-import {
-  NgbModal,
-  ModalDismissReasons,
-  NgbModalOptions
-} from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-teams",

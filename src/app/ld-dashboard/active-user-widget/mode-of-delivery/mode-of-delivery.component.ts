@@ -190,6 +190,19 @@ export class ModeOfDeliveryComponent implements OnInit {
       .attr("stroke", "black")
       .attr("stroke-width", 1)
       .attr("opacity", "0");
+    svg
+      .append("text")
+      .text("No.of users")
+      .attr("transform", "rotate(-90),translate( " + h / 8 + ",-10 )")
+      .attr("x", -(h / 2))
+      .attr("y", 20);
+
+    svg
+      .append("text")
+      .text("Dates")
+      .attr(
+        "transform",
+        "translate(" + (w - 104) + "," + (h - 10) + ")");
 
     svg.on("mousemove", function () {
       let mouseX = d3.event.pageX - p;

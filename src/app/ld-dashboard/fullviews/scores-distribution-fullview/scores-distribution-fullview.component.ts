@@ -111,7 +111,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   }
 
   getScoreDetails() {
-    // this.responseScoreDetails = [];
+    this.responseScoreDetails = [];
     this.spinner_loader = true;
     this.dashboardService
       .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)

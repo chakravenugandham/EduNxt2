@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, OnChanges, Inject } from "@ang
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 import { Location } from '@angular/common';
 
 import * as jspdf from 'jspdf';
@@ -29,6 +30,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   downloadLink: string;
   _baseUrl;
   csvResponse = [];
+  closeResult: string;
   programObj = {
     programId: 0,
     courseId: 0,
@@ -47,7 +49,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   learnerDisplayFor: string;
   scoreComponent: string;
 
-  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute) {
+  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute,@Inject(NgbModal)  private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getAllCourses();
     });
@@ -148,6 +150,34 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     }
   }
 
+  open(content) {
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        console.log(this.closeResult);
+      }
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  sendEmail(){
+    this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+    console.log(response);
+    });
+  }
+
   downloadPdf() {
     let htmlTemp = document.getElementById("screenToCaputre");
     html2canvas(htmlTemp).then(canvas => {
@@ -160,6 +190,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       const contentDataURL = canvas.toDataURL('./');
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
       let position = 0;
+      pdf.addPage(2);
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
       pdf.save('MYPdf.pdf'); // Generated PDF   

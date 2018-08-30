@@ -17,19 +17,19 @@
               <span>
                 <i class="far fa-circle location-name"></i>
               </span>
-              <span class="font-weight-bold"> {{locationData.locationName}} </span>
+              <span class="font-weight-bold"> {{locationData.location}} </span>
             </td>
             <td class="users">
               <p>
-                <span class="font-weight-bold"> {{locationData.totalActiveUsers}} </span>
+                <span class="font-weight-bold"> {{locationData.learnerCount}} </span>
                 <span> Users </span>
               </p>
               <p class="arrow-text">
-                <span class="font-weight-bold" [ngClass]="{'text-success': locationData.activeUsersSinceLastMonth >50 , 'text-danger': locationData.activeUsersSinceLastMonth <=50}">
+                <span class="font-weight-bold" [ngClass]="{'text-success': locationData.facultyCount >50 , 'text-danger': locationData.facultyCount <=50}">
                   <span>
                     <i class="fa fa-arrow-up" aria-hidden="true"></i>
                   </span>
-                  <span>{{locationData.activeUsersSinceLastMonth}}</span>
+                  <span>{{locationData.facultyCount}}</span>
                 </span>
                 <span> Since Last Month</span>
               </p>

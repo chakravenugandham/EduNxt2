@@ -75,6 +75,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
     this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
       this.responseData = response.data;
+      console.log(this.responseData);
       // this.responseLeanersDetails = response.data;
       this.pagination.total = response.pagination.total;
       this.pagination.total_pages = response.pagination.total_pages;
@@ -145,13 +146,14 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
-  open(content) {
+  open(content,learnerData) {
+    console.log(learnerData);
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
-        // this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-        //   console.log(response);
-        // });
+        this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+          console.log(response);
+        });
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

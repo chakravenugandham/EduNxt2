@@ -29,7 +29,7 @@
           <span>
             <img src="../../assets/IconsSVGs/mail.svg">
           </span>
-          <span class="font-color" (click)="emailReport()">Email this report</span>
+          <span class="font-color" (click)="open(followUpContent)">Email this report</span>
         </li>
         <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Download this report">
           <!-- <span>
@@ -94,3 +94,33 @@
     </ul>
   </div> -->
 </div>
+
+<ng-template #followUpContent let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Send a new message</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Send to</label>
+        <div class="input-group">
+          <input type="email" class="form-control" placeholder="enter an email">
+        </div>
+        <br/>
+        <label for="dateOfBirth">Subject</label>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Subject">
+        </div>
+        <br/>
+        <label for="dateOfBirth">Message</label>
+        <div class="input-group">
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="sendEmail()">Send Mail</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+  </div>
+</ng-template>

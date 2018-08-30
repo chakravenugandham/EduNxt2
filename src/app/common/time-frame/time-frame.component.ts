@@ -35,6 +35,12 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     batchId: 0,
     sectionId: 0
   }
+
+  emailData = {
+    to: "rajeshadhikari72@gmail.com",
+    subject: "manipal user",
+    text: ""
+  }
   myStorage = window.localStorage;
   orgPerformanceComponentName: string;
   learnerTrackComponentName: string;
@@ -142,7 +148,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     }
   }
 
-  captureScreen() {
+  downloadPdf() {
     let htmlTemp = document.getElementById("screenToCaputre");
     html2canvas(htmlTemp).then(canvas => {
       // Few necessary setting options  
@@ -159,6 +165,13 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });
 
+  }
+
+  emailReport() {
+    this.emailData.text = document.getElementById("screenToCaputre").innerHTML;
+    // this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+    //   console.log(response);
+    // });
   }
 
   // getPrograms() {

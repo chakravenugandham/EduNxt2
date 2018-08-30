@@ -12,6 +12,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 })
 export class FeedbackComponent implements OnInit {
 
+  //variable declaration
   learnerSatisfaction: any;
   learnerSatisfationBy: number;
   trainerRating: any;
@@ -42,6 +43,7 @@ export class FeedbackComponent implements OnInit {
     });
   }
 
+  //service call for apis
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService.getFeedbackWidgetData().subscribe((response: any) => {
@@ -71,6 +73,7 @@ export class FeedbackComponent implements OnInit {
   }
 
   ngOnInit() {
+    //service call initiated
     this.getDataFromService();
   }
 }

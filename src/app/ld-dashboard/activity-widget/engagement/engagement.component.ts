@@ -8,7 +8,10 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./engagement.component.scss"]
 })
 export class EngagementComponent implements OnInit {
+  //user data custom component
   config: Config;
+
+  //variable declarations
   percentageChange: number;
   expectedChange: boolean;
   spinner_loader: boolean = false;
@@ -16,6 +19,7 @@ export class EngagementComponent implements OnInit {
   engageUserChange: boolean = false;
 
   responseData = {};
+
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
@@ -31,6 +35,8 @@ export class EngagementComponent implements OnInit {
     });
   }
 
+
+  //service call for api
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
@@ -73,6 +79,7 @@ export class EngagementComponent implements OnInit {
   }
 
   ngOnInit() {
+    //service call initiated
     this.getDataFromService();
   }
 }

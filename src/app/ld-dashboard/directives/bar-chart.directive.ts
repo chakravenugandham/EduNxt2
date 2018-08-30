@@ -9,16 +9,15 @@ declare let d3: any;
 export class BarChartDirective implements OnInit, OnChanges {
   @Input() data;
   @Input() getTab;
-  // dataset = [];
 
   constructor(private el: ElementRef) { }
 
-  rightRoundedRect(x, y, width, height, radius) {
-    return ("M" + x + "," + y + "h" + (width - radius) + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius + "v" + (height - 2 * radius) + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius + "h" + (radius - width) + "z"
-    );
-  }
+  // rightRoundedRect(x, y, width, height, radius) {
+  //   return ("M" + x + "," + y + "h" + (width - radius) + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius + "v" + (height - 2 * radius) + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius + "h" + (radius - width) + "z"
+  //   );
+  // }
 
-
+  //chart function
   performanceChart() {
     this.el.nativeElement.innerHTML = "";
 
@@ -159,9 +158,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       .attr("height", function (d) { return h - y(d.value); })
       //.attr("d", function (d, i) { return this.rightRoundedRect(10 + 40 * i, 100 - d, 20, d, 5) })
       .style("fill", function (d) { return color(d.name); })
-      //.classed('filled', true)
       .on('mouseover', function (d) {
-        //var data = d3.select(d).data();
         tooltip.transition().style('opacity', 1)
         tooltip.html(
           "<div style='color:#0146F9'>" +
@@ -195,7 +192,6 @@ export class BarChartDirective implements OnInit, OnChanges {
         .attr("y", 14);
     }
   }
-
 
   ngOnInit() { }
 

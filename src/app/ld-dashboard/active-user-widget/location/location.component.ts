@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { GoogleChartsBaseService } from "../../services/googleChartService";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
 
 @Component({
   selector: "app-location",
@@ -7,7 +8,8 @@ import { GoogleChartsBaseService } from "../../services/googleChartService";
   styleUrls: ["./location.component.scss"]
 })
 export class LocationComponent implements OnInit, OnChanges {
-  @Input() locationData;
+
+  //variable declarations
   someData = [
     ["Location", "LocLatLong"],
     ["Uttar Pradesh", 199581477],
@@ -23,16 +25,39 @@ export class LocationComponent implements OnInit, OnChanges {
   data = [];
   totalActiveUsers: number;
 
-  constructor(private googleChartsBaseService: GoogleChartsBaseService) {}
+  responseData = [];
 
-  ngOnInit() {}
+  constructor(private googleChartsBaseService: GoogleChartsBaseService, private dashboardService: LdDashboardService) { }
+
+  getActiveUsersData() {
+    this.dashboardService.getLocationData().subscribe((response: any) => {
+      this.responseData = response.data;
+      console.log(this.responseData);
+      // for (var i = 0; i < this.responseData.length; i++) {
+      //   let date = new Date(this.responseData[i].date);
+      //   let timeStamp = date.getTime();
+      //   let activeLearners = parseInt(this.responseData[i].learnerCount);
+      //   let activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
+      //   this.chartData.push([
+      //     timeStamp,
+      //     activeLearners,
+      //     activeFacultiesAndAdmins
+      //   ]);
+      //   this.usersChartRender(this.chartData);
+      // }
+    });
+  }
+
+  ngOnInit() {
+    this.getActiveUsersData();
+  }
 
   ngOnChanges(changes: any) {
-    if (changes.locationData.currentValue && this.locationData) {
-      for (var i = 0; i < this.locationData.length; i++) {
-        this.totalActiveUsers = parseInt(this.locationData[i].totalActiveUsers);
+    if (changes.responseData.currentValue && this.responseData) {
+      for (var i = 0; i < this.responseData.length; i++) {
+        this.totalActiveUsers = parseInt(this.responseData[i].totalActiveUsers);
         this.data.push(
-          this.locationData[i].locationName,
+          this.responseData[i].locationName,
           this.totalActiveUsers
         );
       }

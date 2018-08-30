@@ -8,8 +8,12 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
+
+  //custom component declaration
   activeUserCount: Config;
   enrolledConfig: Config;
+
+  //variable declaration
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
@@ -40,6 +44,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  //service call for api
   getAPIData() {
     this.spinner_loader = true;
     this.dashboardService
@@ -79,9 +84,10 @@ export class UsersComponent implements OnInit {
       });
   }
 
-  ngOnChanges(changes: any) {}
+  ngOnChanges(changes: any) { }
 
   ngOnInit() {
+    //service call initiated
     this.getAPIData();
   }
 }

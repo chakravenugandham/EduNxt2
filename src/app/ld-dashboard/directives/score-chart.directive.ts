@@ -10,6 +10,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
 
   constructor(private el: ElementRef) { }
 
+  //chartfunction
   chartRenderFn() {
     this.el.nativeElement.innerHTML = "";
     d3.select(this.el.nativeElement)
@@ -178,21 +179,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .attr("class", "axis")
       .attr("transform", "translate(0," + (height - padding) + ")")
       .call(d3.axisBottom(xScale).ticks(5))
-    // .on('mouseover', function (d) {
-    //   d.forEach((i) => {
-    //     arrayValue = i[1];
-    //   })
-    //   tooltip.transition().style('opacity', 1)
-    //   tooltip.html(
-    //     "<div style='color:#0146F9'>" +
-    //     arrayValue + "</div>"
-    //   ).style('left', (d3.event.pageX) + 'px')
-    //     .style('top', (d3.event.pageY) + 'px')
-    // })
-    // .on('mouseout', function (d) {
-    //   tooltip.transition()
-    //     .style('opacity', 0)
-    // });
+
   }
 
   ngOnInit() {

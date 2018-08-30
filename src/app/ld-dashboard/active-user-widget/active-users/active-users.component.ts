@@ -9,7 +9,8 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./active-users.component.scss"]
 })
 export class ActiveUsersComponent implements OnInit {
-  @Input() usersData;
+
+  //variable declaration
   chartData = [];
 
   // dataSet = [
@@ -41,11 +42,13 @@ export class ActiveUsersComponent implements OnInit {
     });
   }
 
+
+  //chart function
   usersChartRender(data) {
     d3.select("#activeUserGraph svg").remove();
     let w = d3.select("#activeUserGraph").node().getBoundingClientRect().width;
     var h = 250;
-    var p = 40;
+    var p = 70;
 
     // create xScale
     var xScale = d3
@@ -252,25 +255,49 @@ export class ActiveUsersComponent implements OnInit {
     });
   }
 
+  date;
+  timeStamp;
+  activeLearners;
+  activeFacultiesAndAdmins;
+
+  customArray = [];
+  //service call for apis
   getActiveUsersData() {
     this.dashboardService.getActiveUsersData().subscribe((response: any) => {
       this.responseData = response.data;
       for (var i = 0; i < this.responseData.length; i++) {
-        let date = new Date(this.responseData[i].date);
-        let timeStamp = date.getTime();
-        let activeLearners = parseInt(this.responseData[i].learnerCount);
-        let activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
+        if (this.responseData.length == 1) {
+          this.date = new Date(this.responseData[i].date);
+          this.customArray.push([this.timeStamp = this.date.getTime() - 1,
+          this.activeLearners = 0,
+          this.activeFacultiesAndAdmins = 0],
+            [this.timeStamp = this.date.getTime(),
+            this.activeLearners = parseInt(this.responseData[i].learnerCount),
+            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
+            [this.timeStamp = this.date.getTime() + 1,
+            this.activeLearners = 0,
+            this.activeFacultiesAndAdmins = 0]);
+          //this.chartData.push(this.customArray);
+          //console.log(this.chartData);
+        }
+        console.log(this.customArray);
+        this.date = new Date(this.responseData[i].date);
+        this.timeStamp = this.date.getTime();
+        this.activeLearners = parseInt(this.responseData[i].learnerCount);
+        this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
         this.chartData.push([
-          timeStamp,
-          activeLearners,
-          activeFacultiesAndAdmins
+          this.timeStamp,
+          this.activeLearners,
+          this.activeFacultiesAndAdmins
         ]);
+        console.log(this.chartData);
         this.usersChartRender(this.chartData);
       }
     });
   }
 
   ngOnInit() {
+    //service call initiated
     this.getActiveUsersData();
   }
 }

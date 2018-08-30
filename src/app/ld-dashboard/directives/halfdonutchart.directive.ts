@@ -36,9 +36,6 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
         }
       });
 
-    // let colors = d3.scale.linear()
-    //   .domain([0, chartData])
-    //   .range(['#0146f9', '#5584ff']);
 
 
     let donutWidth = 280;

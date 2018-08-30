@@ -7,6 +7,8 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./userstrained.component.scss"]
 })
 export class UserstrainedComponent implements OnInit {
+
+  //variable declaration
   responseData: any = {};
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -27,6 +29,7 @@ export class UserstrainedComponent implements OnInit {
     });
   }
 
+  //service call for api
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
@@ -39,6 +42,7 @@ export class UserstrainedComponent implements OnInit {
   }
 
   ngOnInit() {
+    //service call initiated
     this.getDataFromService();
   }
 }

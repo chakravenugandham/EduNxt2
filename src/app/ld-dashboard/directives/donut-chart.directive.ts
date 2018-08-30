@@ -10,6 +10,7 @@ export class DonutChartDirective implements OnChanges {
 
   constructor(private el: ElementRef) { }
 
+  //chart function 
   chartRenderFn(chartData) {
     this.el.nativeElement.innerHTML = "";
 

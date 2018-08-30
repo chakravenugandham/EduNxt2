@@ -8,6 +8,8 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
   styleUrls: ["./pace.component.scss"]
 })
 export class PaceComponent implements OnInit {
+
+  //variable declaration
   paceTrackValues = [];
   graphSize = "smallGraph";
 
@@ -33,6 +35,7 @@ export class PaceComponent implements OnInit {
     });
   }
 
+  //service call for api 
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService.getPaceWidgetData().subscribe((response: any) => {
@@ -65,6 +68,7 @@ export class PaceComponent implements OnInit {
   }
 
   ngOnInit() {
+    //service call initiated
     this.getDataFromService();
   }
 }

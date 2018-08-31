@@ -9,11 +9,13 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='activeUser'}" (click)="activeUsersFn()">Active Users
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='activeUser'}" (click)="activeUsersFn()">Active
+          Users
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='modeDelivery'}" (click)="modeDeliveryFn()">Mode of Delivery</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='modeDelivery'}" (click)="modeDeliveryFn()">Mode
+          of Delivery</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" class="cursor-pointer" [ngClass]="{'active' :getTab =='location'}" (click)="locationFn()">Location</a>
@@ -25,7 +27,7 @@
       </span>
       <ng-template #popcontent>
         <ul class="list-inline">
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/SAve.svg">
             </span>
@@ -33,7 +35,7 @@
               <b>Save this view</b>
             </span>
           </li>
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer" (click)="open(followUpContent)">
             <span>
               <img src="../../assets/IconsSVGs/mail.svg">
             </span>
@@ -41,7 +43,7 @@
               <b>Email this report</b>
             </span>
           </li>
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
             <span>
               <img src="../../assets/IconsSVGs/Download.svg">
             </span>
@@ -56,13 +58,17 @@
       </span>
     </div>
   </div>
-  <div>
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+  <div *ngIf="!spinner_loader && !noDataFlag">
     <app-active-users *ngIf="getTab=='activeUser'"></app-active-users>
-    <!-- [usersData]="responseData.activeUserData" -->
     <app-mode-of-delivery *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
-    <!-- [usersData]="responseData.modeOfDelivery" -->
     <app-location *ngIf="getTab=='location'"></app-location>
-    <!-- [locationData]="responseData.locationData" -->
   </div>
   <div>
     <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>

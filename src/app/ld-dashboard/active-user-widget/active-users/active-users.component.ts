@@ -44,7 +44,7 @@ export class ActiveUsersComponent implements OnInit {
 
 
   //chart function
-  usersChartRender(data) {
+  usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
     let w = d3.select("#activeUserGraph").node().getBoundingClientRect().width;
     var h = 250;
@@ -54,14 +54,14 @@ export class ActiveUsersComponent implements OnInit {
     var xScale = d3
       .scaleTime()
       .domain(
-        d3.extent(data, function (d) {
+        d3.extent(dataSet, function (d) {
           return d[0];
         })
       )
       .range([p, w - p / 2]);
 
     // create yScale
-    var yMax = d3.max(data, function (d) {
+    var yMax = d3.max(dataSet, function (d) {
       var max = d[1] > d[2] ? d[1] : d[2];
       return max;
     });
@@ -133,7 +133,7 @@ export class ActiveUsersComponent implements OnInit {
 
     var path = svg
       .append("path")
-      .datum(data)
+      .datum(dataSet)
       .attr("class", "line1")
       .attr("d", line);
 
@@ -148,7 +148,7 @@ export class ActiveUsersComponent implements OnInit {
 
     svg
       .append("path")
-      .datum(data) // Binds data to the line
+      .datum(dataSet) // Binds data to the line
       .attr("class", "line2") // Assign a class for styling
       .attr("d", line2); // Calls the line generator
 
@@ -156,7 +156,7 @@ export class ActiveUsersComponent implements OnInit {
     //Creating dots
     svg
       .selectAll("circles")
-      .data(data)
+      .data(dataSet)
       .enter()
       .append("circle")
       .attr("r", 3)
@@ -174,7 +174,7 @@ export class ActiveUsersComponent implements OnInit {
 
     svg
       .selectAll("circles")
-      .data(data)
+      .data(dataSet)
       .enter()
       .append("circle")
       .attr("r", 3)
@@ -226,15 +226,19 @@ export class ActiveUsersComponent implements OnInit {
       });
       if (nearest) {
         vertline.attr("x1", nearest).attr("x2", nearest);
-        d3.select(".ttip-date").html(
-          d3.timeFormat("%b %d %Y")(new Date(dataPoints[nearest][0][0]))
-        );
-        d3.select(".ttip-learners").html("<span style='color:#0146F9'>" +
-          dataPoints[nearest][0][1] + "</span> Active Learner"
-        );
-        d3.select(".ttip-faculty").html("<span style='color:#0146F9'>" +
-          dataPoints[nearest][0][2] + "</span> Active Faculty and admins"
-        );
+        d3
+          .select(".ttip-date")
+          .html(d3.timeFormat("%b %d %Y")(new Date(dataPoints[nearest][0][0])));
+        d3
+          .select(".ttip-learners")
+          .html("<span style='color:#0146F9'>" +
+            dataPoints[nearest][0][1] + "</span> Active Learner"
+          );
+        d3
+          .select(".ttip-faculty")
+          .html("<span style='color:#0146F9'>" +
+            dataPoints[nearest][0][2] + "</span> Active Faculty and admins"
+          );
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");
         //tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
@@ -270,18 +274,18 @@ export class ActiveUsersComponent implements OnInit {
           this.date = new Date(this.responseData[i].date);
 
           this.customArray.push(
-          [this.timeStamp = this.date.getTime() - 1,
-          this.activeLearners = 0,
-          this.activeFacultiesAndAdmins = 0],
-          [this.timeStamp = this.date.getTime(),
-          this.activeLearners = parseInt(this.responseData[i].learnerCount),
-          this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
-          [this.timeStamp = this.date.getTime() + 1,
-          this.activeLearners = parseInt(this.responseData[i].learnerCount),
-          this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
+            [this.timeStamp = this.date.getTime() - 1,
+            this.activeLearners = 0,
+            this.activeFacultiesAndAdmins = 0],
+            [this.timeStamp = this.date.getTime(),
+            this.activeLearners = parseInt(this.responseData[i].learnerCount),
+            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
+            [this.timeStamp = this.date.getTime() + 1,
+            this.activeLearners = parseInt(this.responseData[i].learnerCount),
+            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
           );
 
-          this.chartData=[ ...this.customArray];
+          this.chartData = [...this.customArray];
 
         }
 
@@ -294,7 +298,7 @@ export class ActiveUsersComponent implements OnInit {
           this.activeLearners,
           this.activeFacultiesAndAdmins
         ]);
-        
+
         this.usersChartRender(this.chartData);
       }
     });

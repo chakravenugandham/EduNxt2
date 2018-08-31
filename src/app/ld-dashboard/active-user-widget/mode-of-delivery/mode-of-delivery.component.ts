@@ -35,9 +35,9 @@ export class ModeOfDeliveryComponent implements OnInit {
 
   usersChartRender(dataSet) {
     d3.select("#modeOfDeliveryGraph svg").remove();
-    var w = 520;
-    var h = 240;
-    var p = 40;
+    let w = d3.select("#modeOfDeliveryGraph").node().getBoundingClientRect().width;
+    var h = 250;
+    var p = 70;
 
     // create xScale
     var xScale = d3
@@ -216,13 +216,15 @@ export class ModeOfDeliveryComponent implements OnInit {
         vertline.attr("x1", nearest).attr("x2", nearest);
         d3
           .select(".ttip-date")
-          .html(d3.timeFormat("%d %b")(new Date(dataPoints[nearest][0][0])));
+          .html(d3.timeFormat("%b %d %Y")(new Date(dataPoints[nearest][0][0])));
         d3
           .select(".ttip-learners")
-          .html(dataPoints[nearest][0][1] + " Active Learner");
+          .html("<span style='color:#0146F9'>" +
+            dataPoints[nearest][0][1] + "</span> Active Learner");
         d3
           .select(".ttip-faculty")
-          .html(dataPoints[nearest][0][2] + " Active Faculty");
+          .html("<span style='color:#0146F9'>" +
+            dataPoints[nearest][0][2] + "</span> Active Faculty and admins");
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");
         //tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
@@ -251,12 +253,8 @@ export class ModeOfDeliveryComponent implements OnInit {
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();
-        if ((this.responseData[i].onlineCount == null) || (this.responseData[i].offlineCount == null)) {
-          var activeLearners = 0;
-          var activeFacultiesAndAdmins = 0;
-        }
         var activeLearners = parseInt(this.responseData[i].onlineCount);
-        var activeFacultiesAndAdmins = parseInt(this.responseData[i].offlineCount);
+        var activeFacultiesAndAdmins = this.responseData[i].offlineCount == null ? 0 : parseInt(this.responseData[i].offlineCount);
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);

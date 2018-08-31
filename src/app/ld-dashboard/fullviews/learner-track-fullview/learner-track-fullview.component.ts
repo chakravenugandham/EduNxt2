@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { CommonService } from "../../../common-services/common.service";
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "app-learner-track-fullview",
@@ -13,6 +13,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   responseTrackDetails = [];
   displayfor: string;
   filterbody = {};
+  closeResult: string;
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,
@@ -48,7 +49,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
     total_pages: 0
   };
 
-  constructor(private dashboardService: LdDashboardService) {
+  emailData = {
+    to: "rajeshadhikari72@gmail.com",
+    subject: "manipal user",
+    text: "Hi"
+  };
+
+  constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
       this.getTableDataFromService();
@@ -170,6 +177,32 @@ export class LearnerTrackFullviewComponent implements OnInit {
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
     this.reverse = !this.reverse;
+  }
+
+  open(content, learnerData) {
+    console.log(learnerData);
+    this.modalService.open(content).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+        this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+          console.log(response);
+        });
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        console.log(this.closeResult);
+      }
+    );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   addFilters($event) {

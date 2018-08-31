@@ -50,7 +50,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
-  constructor(private dashboardService: LdDashboardService, private filterData: CommonService, private modalService: NgbModal) {
+  constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
     });
@@ -145,6 +145,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   open(content, learnerData) {
+    console.log(learnerData);
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;

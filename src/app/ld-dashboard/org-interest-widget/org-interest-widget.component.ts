@@ -39,6 +39,14 @@ export class OrgInterestWidgetComponent implements OnInit {
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
     });
+
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getDataFromService();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getDataFromService();
+    });
   }
 
   getDataFromService() {

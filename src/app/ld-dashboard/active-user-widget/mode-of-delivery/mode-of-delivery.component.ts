@@ -248,7 +248,6 @@ export class ModeOfDeliveryComponent implements OnInit {
   getModeOfDeliveryData() {
     this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
       this.responseData = response.data;
-      console.log(this.responseData);
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();
@@ -261,7 +260,6 @@ export class ModeOfDeliveryComponent implements OnInit {
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
-      console.log(this.chartData);
     });
   }
 

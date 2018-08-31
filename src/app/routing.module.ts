@@ -1,10 +1,14 @@
 import { NgModule, Component } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "./_guards";
+import { AuthComponent } from "./auth";
 
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
 import { FacultyComponent } from "./faculty/faculty.component";
 import { OrgHeadComponent } from "./org-head/org-head.component";
 import { LearnerComponent } from "./learner/learner.component";
+
+
 
 import { LearnerTrackFullviewComponent } from "./ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component";
 import { ContentConsumptionFullviewComponent } from "./ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component";
@@ -15,37 +19,44 @@ import { NotificationPerformanceFullviewComponent } from "./ld-dashboard/fullvie
 import { OrgInterestFullviewComponent } from "./ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component";
 import { LearnersQuizFullviewComponent } from "./faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component";
 import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprogramsfullview/bestprogramsfullview.component";
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "LnD", pathMatch: "full" },
-  { path: "LnD", component: LdDashboardComponent },
-  { path: "faculty", component: FacultyComponent },
-  { path: "orgHead", component: OrgHeadComponent },
-  { path: "learner", component: LearnerComponent },
-  { path: "learnerTrackFullView", component: LearnerTrackFullviewComponent },
+  { path: "", component: LdDashboardComponent },
+  { path: "auth", component: AuthComponent },
+  { path: "LnD", component: LdDashboardComponent, canActivate: [AuthGuard] },
+  { path: "faculty", component: FacultyComponent, canActivate: [AuthGuard] },
+  { path: "orgHead", component: OrgHeadComponent, canActivate: [AuthGuard] },
+  { path: "learner", component: LearnerComponent, canActivate: [AuthGuard] },
+  { path: "learnerTrackFullView", component: LearnerTrackFullviewComponent, canActivate: [AuthGuard] },
   {
     path: "learnerPerformanceFullView",
-    component: LearnerPerformanceFullviewComponent
+    component: LearnerPerformanceFullviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "scoreDistributionFullView",
-    component: ScoresDistributionFullviewComponent
+    component: ScoresDistributionFullviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "orgPerformanceFullView",
-    component: OrgPerformanceFullviewComponent
+    component: OrgPerformanceFullviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "contentConsumptionFullView",
-    component: ContentConsumptionFullviewComponent
+    component: ContentConsumptionFullviewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "notificationPerformanceFullView",
-    component: NotificationPerformanceFullviewComponent
+    component: NotificationPerformanceFullviewComponent,
+    canActivate: [AuthGuard]
   },
-  { path: "orgInterestFullView", component: OrgInterestFullviewComponent },
-  { path: "learnerQuizFullView", component: LearnersQuizFullviewComponent },
-  { path: "bestprogramsfullview", component: BestprogramsfullviewComponent }
+  { path: "orgInterestFullView", component: OrgInterestFullviewComponent, canActivate: [AuthGuard] },
+  { path: "learnerQuizFullView", component: LearnersQuizFullviewComponent, canActivate: [AuthGuard] },
+  { path: "bestprogramsfullview", component: BestprogramsfullviewComponent, canActivate: [AuthGuard] }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],

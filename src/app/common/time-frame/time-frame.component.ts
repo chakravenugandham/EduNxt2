@@ -49,7 +49,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   learnerDisplayFor: string;
   scoreComponent: string;
 
-  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute,@Inject(NgbModal)  private modalService: NgbModal) {
+  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(NgbModal) private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getAllCourses();
     });
@@ -172,9 +172,9 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     }
   }
 
-  sendEmail(){
+  sendEmail() {
     this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-    console.log(response);
+      console.log(response);
     });
   }
 
@@ -195,7 +195,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });
-
   }
 
   emailReport() {

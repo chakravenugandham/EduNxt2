@@ -30,6 +30,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 
 
 import { AppComponent } from "./app.component";
+import { AuthComponent } from "./auth";
 import { HeaderComponent } from "./common/header/header.component";
 import { TimeFrameComponent } from "./common/time-frame/time-frame.component";
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
@@ -120,6 +121,7 @@ import { SpinnerComponent } from './common/spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
     HeaderComponent,
     TimeFrameComponent,
     LdDashboardComponent,

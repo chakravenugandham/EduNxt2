@@ -11,7 +11,7 @@ export class LocationComponent implements OnInit {
 
   //variable declarations
   someData = [
-     ["Location", "learnerCount"],
+    ["Location", "learnerCount"],
     // ["Uttar Pradesh", 199581477],
     // ["Maharashtra", 112372972],
     // ["Bihar", 103804637],
@@ -32,7 +32,6 @@ export class LocationComponent implements OnInit {
   getLocationData() {
     this.dashboardService.getLocationData().subscribe((response: any) => {
       this.responseData = response.data;
-      console.log(this.responseData);
       this.someData.push([
         this.responseData['location'],
         this.responseData['learnerCount']
@@ -54,6 +53,6 @@ export class LocationComponent implements OnInit {
   //   //       this.totalActiveUsers
   //   //     );
   //   //   }
-      
+
   //   }
-  }
+}

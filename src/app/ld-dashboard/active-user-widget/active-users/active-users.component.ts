@@ -279,10 +279,8 @@ export class ActiveUsersComponent implements OnInit {
             this.activeLearners = parseInt(this.responseData[i].learnerCount),
             this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]);
 
-          this.chartData=[ ...this.customArray];
-          console.log(this.chartData);
+          this.chartData = [...this.customArray];
         }
-        console.log(this.customArray);
         this.date = new Date(this.responseData[i].date);
         this.timeStamp = this.date.getTime();
         this.activeLearners = parseInt(this.responseData[i].learnerCount);
@@ -292,7 +290,6 @@ export class ActiveUsersComponent implements OnInit {
           this.activeLearners,
           this.activeFacultiesAndAdmins
         ]);
-        console.log(this.chartData);
         this.usersChartRender(this.chartData);
       }
     });

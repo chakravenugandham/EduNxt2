@@ -269,20 +269,22 @@ export class ActiveUsersComponent implements OnInit {
         if (this.responseData.length == 1) {
           this.date = new Date(this.responseData[i].date);
 
-          this.customArray.push([this.timeStamp = this.date.getTime() - 1,
+          this.customArray.push(
+          [this.timeStamp = this.date.getTime() - 1,
           this.activeLearners = 0,
           this.activeFacultiesAndAdmins = 0],
-            [this.timeStamp = this.date.getTime(),
-            this.activeLearners = parseInt(this.responseData[i].learnerCount),
-            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
-            [this.timeStamp = this.date.getTime() + 1,
-            this.activeLearners = parseInt(this.responseData[i].learnerCount),
-            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]);
+          [this.timeStamp = this.date.getTime(),
+          this.activeLearners = parseInt(this.responseData[i].learnerCount),
+          this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
+          [this.timeStamp = this.date.getTime() + 1,
+          this.activeLearners = parseInt(this.responseData[i].learnerCount),
+          this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
+          );
 
           this.chartData=[ ...this.customArray];
-          console.log(this.chartData);
+
         }
-        console.log(this.customArray);
+
         this.date = new Date(this.responseData[i].date);
         this.timeStamp = this.date.getTime();
         this.activeLearners = parseInt(this.responseData[i].learnerCount);
@@ -292,7 +294,7 @@ export class ActiveUsersComponent implements OnInit {
           this.activeLearners,
           this.activeFacultiesAndAdmins
         ]);
-        console.log(this.chartData);
+        
         this.usersChartRender(this.chartData);
       }
     });

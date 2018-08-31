@@ -194,7 +194,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });
-
   }
 
   emailReport() {

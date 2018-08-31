@@ -16,7 +16,27 @@ import html2canvas from 'html2canvas';
 })
 export class ActiveUserWidgetComponent implements OnInit {
   getTab = "activeUser";
-  constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) { }
+  constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
+    this.dashboardService.refreshAPI.subscribe(result => {
+      this.getActiveUsersData();
+      this.getModeOfDeliveryData();
+    });
+
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getActiveUsersData();
+      this.getModeOfDeliveryData();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getActiveUsersData();
+      this.getModeOfDeliveryData();
+    });
+
+    this.dashboardService.refreshReportAPI.subscribe(result => {
+      this.getActiveUsersData();
+      this.getModeOfDeliveryData();
+    });
+  }
 
   tooltipText = 'Active users data';
   closeResult: string;

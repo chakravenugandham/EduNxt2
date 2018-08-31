@@ -74,7 +74,7 @@ export class LdDashboardService implements OnInit {
   //baseURL from enviornment
   baseURL = environment.baseUrl;
 
-  // UserId = this.cookieService.get('user_id');
+  // UserId = (this.cookieService.get('user_id') == '') ? '57142' : this.cookieService.get('user_id');
   UserId = "57142";
 
   headers = new HttpHeaders()
@@ -119,6 +119,15 @@ export class LdDashboardService implements OnInit {
         .set("user_type", "LND")
         .set("tenant_name", tenantName);
     }
+    this.tenantName$.next();
+    this.refreshAPI$.next();
+  }
+
+  selectTenantNameV2(tenantName?: any, user_id?: any) {
+    this.headers = new HttpHeaders()
+      .set("user_id", user_id)
+      .set("user_type", "LND")
+      .set("tenant_name", tenantName);
     this.tenantName$.next();
     this.refreshAPI$.next();
   }

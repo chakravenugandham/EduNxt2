@@ -43,16 +43,4 @@ export class LocationComponent implements OnInit {
   ngOnInit() {
     this.getLocationData();
   }
-
-  // ngOnChanges(changes: any) {
-  //   // if (changes.responseData.currentValue && this.responseData) {
-  //   //   for (var i = 0; i < this.responseData.length; i++) {
-  //   //     this.totalActiveUsers = parseInt(this.responseData[i].totalActiveUsers);
-  //   //     this.data.push(
-  //   //       this.responseData[i].locationName,
-  //   //       this.totalActiveUsers
-  //   //     );
-  //   //   }
-
-  //   }
 }

@@ -269,18 +269,22 @@ export class ActiveUsersComponent implements OnInit {
         if (this.responseData.length == 1) {
           this.date = new Date(this.responseData[i].date);
 
-          this.customArray.push([this.timeStamp = this.date.getTime() - 1,
-          this.activeLearners = 0,
-          this.activeFacultiesAndAdmins = 0],
+          this.customArray.push(
+            [this.timeStamp = this.date.getTime() - 1,
+            this.activeLearners = 0,
+            this.activeFacultiesAndAdmins = 0],
             [this.timeStamp = this.date.getTime(),
             this.activeLearners = parseInt(this.responseData[i].learnerCount),
             this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
             [this.timeStamp = this.date.getTime() + 1,
             this.activeLearners = parseInt(this.responseData[i].learnerCount),
-            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]);
+            this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
+          );
 
           this.chartData = [...this.customArray];
+
         }
+
         this.date = new Date(this.responseData[i].date);
         this.timeStamp = this.date.getTime();
         this.activeLearners = parseInt(this.responseData[i].learnerCount);
@@ -290,6 +294,7 @@ export class ActiveUsersComponent implements OnInit {
           this.activeLearners,
           this.activeFacultiesAndAdmins
         ]);
+
         this.usersChartRender(this.chartData);
       }
     });

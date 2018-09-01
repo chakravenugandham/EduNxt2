@@ -210,6 +210,7 @@ ul {
 //date-picker CSS
 .daterangepicker {
   font-size: 12px;
+  padding-bottom: 30px !important;
   .input-mini {
     color: $lightBlue !important;
     border: none !important;
@@ -230,6 +231,9 @@ ul {
     }
   }
   .ranges {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
     .range_inputs {
       .cancelBtn {
         display: none;
@@ -391,7 +395,7 @@ ul {
 }
 
 // Line Graph CSS
-#activeUserGraph {
+#activeUserGraph, #modeOfDeliveryGraph {
   .line1 {
     stroke: $orange;
     stroke-width: 6px;

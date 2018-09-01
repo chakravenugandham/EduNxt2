@@ -18,7 +18,8 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   searchFilterData = {
     searchComponent: "organization-interests",
-    searchBy: "courseName"
+    searchBy: "courseName",
+    searchCount: "3"
   };
 
   filterbody = {};

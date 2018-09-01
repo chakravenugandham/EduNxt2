@@ -35,6 +35,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   searchFilterData: {
     searchComponent: string;
     searchBy: string;
+    searchCount: number;
   };
 
   @Output() searchEvent = new EventEmitter<any>();
@@ -123,7 +124,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   selectSearchItem(searchItem) {
-    if (_.findIndex(this.searchNames, searchItem) == -1 && this.searchNames.length < 3) {
+    if (_.findIndex(this.searchNames, searchItem) == -1 && this.searchNames.length < this.searchFilterData.searchCount) {
       this.searchNames.push(searchItem);
     }
     else if (_.findIndex(this.searchNames, searchItem) != -1) {
@@ -144,7 +145,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: any) {
-
     if (this.filtersInfo.filterList) {
       this.filterDispalyNameFraming();
     }

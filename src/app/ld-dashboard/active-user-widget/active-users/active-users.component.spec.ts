@@ -19,7 +19,7 @@ describe('ActiveUsersComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ActiveUsersComponent);
     component = fixture.componentInstance;
-    component.usersData = [];
+    // component.usersData = [];
     fixture.detectChanges();
   });
 

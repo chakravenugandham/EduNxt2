@@ -23,7 +23,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   searchFilterData = {
     searchComponent: "learner-leaderboard",
-    searchBy: "learnerName"
+    searchBy: "learnerName",
+    searchCount: "5",
+    searchedUsers: []
   };
   searchString: string = "";
 

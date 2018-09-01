@@ -319,6 +319,11 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, emailBody, { headers: this.headers });
   }
 
+  getEmailAddress(personId) {
+    let url = this.baseURL + APIURL.GET_EMAIL + "?personId=" + personId;
+    return this.http.get(url, { headers: this.headers });
+  }
+
   //LOGOUT API
   logout() {
     let url = environment.logoutUrl;

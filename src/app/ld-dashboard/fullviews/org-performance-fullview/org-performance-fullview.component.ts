@@ -42,9 +42,9 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   searchString: string = "";
 
   emailData = {
-    to: "rajeshadhikari72@gmail.com",
-    subject: "manipal user",
-    text: "Hi"
+    to: "praveen@gmail.com",
+    subject: "Performance Review",
+    text: ""
   }
   parseFloat = parseFloat;
   spinner_loader: boolean = false;
@@ -144,18 +144,27 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
-  open(content, learnerData) {
-    console.log(learnerData);
-    this.modalService.open(content).result.then(
-      result => {
-        this.closeResult = `Closed with: ${result}`;
-        this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-        });
-      },
-      reason => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      }
-    );
+  open(content, type, personId) {
+    this.dashboardService.getEmailAddress(personId).subscribe((response: any) => {
+      this.emailData.to = response.data.email;
+      if (type == "followup")
+        this.emailData.text = "This mail is regarding the Follow up. Please have a look at your Performance";
+      else if (type == "congrats")
+        this.emailData.text = "Congratulations..! You did a great job on your performance. Keep going.";
+
+      this.modalService.open(content).result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+            console.log("email sent", response);
+          });
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+
+    })
   }
 
   private getDismissReason(reason: any): string {

@@ -31,6 +31,7 @@ export class APIURL {
   public static FILTERS = "filters";
   public static SCORES_FILTERS = "scores-distribution-filters";
   public static EMAIL_SERVICE = "email";
+  public static GET_EMAIL = "get-person-email";
 
 
   //Org-Head apis

@@ -17,7 +17,7 @@
           <ul>
             <li class="list-unstyled">
               <span>
-                <b>Select for</b> (Upto 3 people)
+                <b>Select for</b> (Upto {{searchFilterData.searchCount}} people)
               </span>
               <div *ngIf="searchList.length>0">
                 <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">

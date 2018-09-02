@@ -179,19 +179,20 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   }
 
   downloadPdf() {
-    let htmlTemp = document.getElementById("screenToCaputre");
+    let htmlTemp = document.getElementById("lnd-complete-dashboard");
     html2canvas(htmlTemp).then(canvas => {
       // Few necessary setting options  
       let imgWidth = 208;
       let pageHeight = 295;
-      let imgHeight = canvas.height * imgWidth / canvas.width;
+      // let imgHeight = canvas.height * imgWidth / canvas.width;
+      let imgHeight = (canvas.height * imgWidth / canvas.width) >= 400 ? 280 : canvas.height * imgWidth / canvas.width;
       let heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('./');
       let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
       let position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
       pdf.save('MYPdf.pdf'); // Generated PDF   
     });
   }

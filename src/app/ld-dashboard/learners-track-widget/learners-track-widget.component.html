@@ -13,8 +13,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'performance'}"
-          (click)="learnerPerfFn()">Learner
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'performance'}" (click)="learnerPerfFn()">Learner
           Performance
         </a>
       </li>
@@ -25,7 +24,7 @@
       </span>
       <ng-template #popcontent>
         <ul class="list-inline">
-          <li class="list-inline-item cursor-pointer">
+          <!-- <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/SAve.svg">
             </span>
@@ -40,7 +39,7 @@
             <span class="font-color p-l-10 cursor-pointer">
               <b>Email this report</b>
             </span>
-          </li>
+          </li> -->
           <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
             <span>
               <img src="../../assets/IconsSVGs/Download.svg">

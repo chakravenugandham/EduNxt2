@@ -17,8 +17,7 @@
         <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'quiz'}" (click)="quizScoreFn()">Quizzes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'assignment'}"
-          (click)="assignmentFn()">Assignments</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'assignment'}" (click)="assignmentFn()">Assignments</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -27,7 +26,7 @@
       </span>
       <ng-template #popcontent>
         <ul class="list-inline">
-          <li class="list-inline-item cursor-pointer">
+          <!-- <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/SAve.svg">
             </span>
@@ -42,7 +41,7 @@
             <span class="font-color p-l-10">
               <b>Email this report</b>
             </span>
-          </li>
+          </li> -->
           <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
             <span>
               <img src="../../assets/IconsSVGs/Download.svg">

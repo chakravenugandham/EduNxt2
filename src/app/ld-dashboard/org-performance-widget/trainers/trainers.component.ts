@@ -16,17 +16,34 @@ export class TrainersComponent implements OnInit {
   limitTo: number = 5;
   closeResult: string;
 
-  constructor(private getData: LdDashboardService, private modalService: NgbModal) { }
+  emailData = {
+    to: "",
+    subject: "Performance Review",
+    text: ""
+  }
 
-  open(Content) {
-    this.modalService.open(Content).result.then(
-      result => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      reason => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      }
-    );
+  constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) { }
+
+  open(content, type, personId) {
+    this.dashboardService.getEmailAddress(personId).subscribe((response: any) => {
+      this.emailData.to = response.data.email;
+      if (type == "followup")
+        this.emailData.text = "This mail is regarding the Follow up. Please have a look at your Performance";
+      else if (type == "congrats")
+        this.emailData.text = "Congratulations..! You did a great job on your performance. Keep going.";
+
+      this.modalService.open(content).result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+          this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
+          });
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+
+    })
   }
 
   private getDismissReason(reason: any): string {

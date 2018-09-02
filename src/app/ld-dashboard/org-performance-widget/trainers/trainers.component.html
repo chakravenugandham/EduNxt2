@@ -45,22 +45,12 @@
             </span> {{tableData.avgRating | customNumber}}
           </td>
           <td>
-
-            <span class="action_icon positive-color cursor-pointer" (click)="open(congratsContent)" *ngIf="tableData.avgRating > 3.5">
+            <span *ngIf="tableData.avgRating> 3.5" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',tableData.trainerId)">
               <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
             </span>
-
-            <span class="negative-color cursor-pointer" (click)="open(followUpContent)" *ngIf="tableData.avgRating <= 3.5">
+            <span class="negative-color cursor-pointer" *ngIf="tableData.avgRating <= 3.5" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',tableData.trainerId)">
               <i class="fas fa-exclamation-triangle"></i> Follow up
             </span>
-
-            <!-- <span *ngIf="tableData.avgRating>3.5">
-              <i class="fas fa-exclamation-triangle"></i> Congratulate
-            </span>
-
-            <span class="action_icon" *ngIf="tableData.avgRating<=3.5">
-              <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Follow up
-            </span> -->
           </td>
         </tr>
       </tbody>
@@ -71,55 +61,55 @@
 <ng-template #followUpContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Send an alert</h4>
-    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button> -->
+    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
   </div>
   <div class="modal-body">
     <form>
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" class="form-control" placeholder="enter an email">
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
+                an email ">
         </div>
         <br/>
-        <label for="dateOfBirth">Message</label>
-        <div class="input-group">
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+        <label for="dateOfBirth ">Message</label>
+        <div class="input-group ">
+          <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea"></textarea>
         </div>
       </div>
     </form>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer ">
     <button type="button" class="btn btn-primary" (click)="c('Save click')">Send Alert</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+    <button type="button" class="btn btn-secondary" (click)="d('Cross click')">Cancel</button>
   </div>
 </ng-template>
 
 <ng-template #congratsContent let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Send a new message</h4>
-    <!-- <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button> -->
+  <div class="modal-header ">
+    <h4 class="modal-title " id="modal-basic-title ">Send a new message</h4>
   </div>
-  <div class="modal-body">
+  <div class="modal-body ">
     <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Send to</label>
-        <div class="input-group">
-          <input type="email" class="form-control" placeholder="enter an email">
+      <div class="form-group ">
+        <label for="dateOfBirth ">Send to</label>
+        <div class="input-group ">
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
+                an email ">
         </div>
         <br/>
-        <label for="dateOfBirth">Message</label>
-        <div class="input-group">
-          <textarea class="form-control" aria-label="With textarea"></textarea>
+        <label for="dateOfBirth ">Message</label>
+        <div class="input-group ">
+          <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea "></textarea>
         </div>
       </div>
     </form>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer ">
     <button type="button" class="btn btn-primary" (click)="c('Save click')">Send Message</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+    <button type="button" class="btn btn-secondary" (click)="d('Cross click')">Cancel</button>
   </div>
 </ng-template>

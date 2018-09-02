@@ -42,7 +42,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   searchString: string = "";
 
   emailData = {
-    to: "praveen@gmail.com",
+    to: "",
     subject: "Performance Review",
     text: ""
   }

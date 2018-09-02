@@ -20,7 +20,8 @@ export class OrgInterestWidgetComponent implements OnInit {
     filters: false,
     search: true,
     viewDetails: true,
-    filterList: []
+    filterList: [],
+    appliedFilters: [],
   };
 
   searchFilterData = {
@@ -34,7 +35,7 @@ export class OrgInterestWidgetComponent implements OnInit {
   orgPopularTopicData: any[];
   actualResponseData: any[];
 
-  searchFilterItem = [];
+  // searchFilterItem = [];
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
@@ -93,18 +94,18 @@ export class OrgInterestWidgetComponent implements OnInit {
   }
 
   getSearchItem($event) {
-    this.searchFilterItem = $event;
+    this.filtersData.appliedFilters = $event;
 
-    for (let i in this.searchFilterItem) {
-      this.searchFilterItem[i]["new"] = true;
+    for (let i in this.filtersData.appliedFilters) {
+      this.filtersData.appliedFilters[i]["new"] = true;
     }
 
     this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
 
-    if (this.searchFilterItem.length > 0)
-      this.orgData.splice(-this.searchFilterItem.length);
+    if (this.filtersData.appliedFilters.length > 0)
+      this.orgData.splice(-this.filtersData.appliedFilters.length);
 
-    this.orgData = this.orgData.concat(this.searchFilterItem);
+    this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
   }
 
   ngOnInit() {

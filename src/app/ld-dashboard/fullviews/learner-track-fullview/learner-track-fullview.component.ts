@@ -180,17 +180,14 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   open(content, learnerData) {
-    console.log(learnerData);
     this.modalService.open(content).result.then(
       result => {
         this.closeResult = `Closed with: ${result}`;
         this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-          console.log(response);
         });
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        console.log(this.closeResult);
       }
     );
   }

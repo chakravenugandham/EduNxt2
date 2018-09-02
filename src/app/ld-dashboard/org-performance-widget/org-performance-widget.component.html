@@ -67,9 +67,9 @@
   <div *ngIf="responseData.length > 0" class="org-performance">
     <!-- <div class="org-performance"> -->
 
-    <app-teams *ngIf="filtersData.currentModule == 'teams'" [teamsData]="responseData"></app-teams>
-    <app-trainers *ngIf="filtersData.currentModule == 'trainers'" [trainersData]="responseData"></app-trainers>
-    <app-learners *ngIf="filtersData.currentModule == 'learners'" [LearnersData]="responseData"></app-learners>
+    <app-teams *ngIf="filtersData.currentModule == 'teams'" [teamsData]="displayData"></app-teams>
+    <app-trainers *ngIf="filtersData.currentModule == 'trainers'" [trainersData]="displayData"></app-trainers>
+    <app-learners *ngIf="filtersData.currentModule == 'learners'" [LearnersData]="displayData"></app-learners>
 
   </div>
 

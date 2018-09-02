@@ -27,6 +27,10 @@ export class LocationComponent implements OnInit {
   totalActiveUsers: number;
 
   responseData = [];
+  parseFloat = parseFloat;
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
 
   constructor(private googleChartsBaseService: GoogleChartsBaseService, private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -47,8 +51,11 @@ export class LocationComponent implements OnInit {
   }
 
   getLocationData() {
+    this.spinner_loader = true;
     this.dashboardService.getLocationData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
+      this.noDataFlag = this.responseData.length > 0 ? false : true;
       this.someData.push([
         this.responseData['location'],
         this.responseData['learnerCount']

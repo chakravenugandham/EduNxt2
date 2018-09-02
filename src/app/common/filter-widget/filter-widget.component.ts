@@ -46,7 +46,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   noSearchResultFlag: boolean = true;
 
   searchList = [];
-  searchNames = [];
+  // searchNames = [];
 
   filterDisplayName = "Add a Filter";
 
@@ -91,6 +91,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       this.filtersInfo.appliedFilters.splice(indexF, 1);
       this.addFilterEmit.emit(this.filtersInfo.appliedFilters);
     }
+    this.displayDropdown = false;
   }
 
   removeFilter(filter) {
@@ -118,24 +119,26 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
   }
 
-  checkItemInApplied(array, item) {
-    let itemFound = (_.findIndex(array, item) == -1) ? false : true;
-    return itemFound;
-  }
-
   selectSearchItem(searchItem) {
-    if (_.findIndex(this.searchNames, searchItem) == -1 && this.searchNames.length < this.searchFilterData.searchCount) {
-      this.searchNames.push(searchItem);
+    if (_.findIndex(this.filtersInfo.appliedFilters, searchItem) == -1 && this.filtersInfo.appliedFilters.length < this.searchFilterData.searchCount) {
+      this.filtersInfo.appliedFilters.push(searchItem);
     }
-    else if (_.findIndex(this.searchNames, searchItem) != -1) {
-      this.removeSearchName(_.findIndex(this.searchNames, searchItem))
+    else if (_.findIndex(this.filtersInfo.appliedFilters, searchItem) != -1) {
+      this.removeSearchName(_.findIndex(this.filtersInfo.appliedFilters, searchItem))
     }
-    this.searchEvent.emit(this.searchNames);
+
+    this.searchEvent.emit(this.filtersInfo.appliedFilters);
+    this.displayDropdown = false;
   }
 
   removeSearchName(i) {
-    this.searchNames.splice(i, 1);
-    this.searchEvent.emit(this.searchNames);
+    this.filtersInfo.appliedFilters.splice(i, 1);
+    this.searchEvent.emit(this.filtersInfo.appliedFilters);
+  }
+
+  checkItemInApplied(array, item) {
+    let itemFound = (_.findIndex(array, item) == -1) ? false : true;
+    return itemFound;
   }
 
   ngOnInit() {

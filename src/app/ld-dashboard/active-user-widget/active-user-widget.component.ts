@@ -21,25 +21,25 @@ export class ActiveUserWidgetComponent implements OnInit {
   noDataFlag: boolean = false;
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
-    this.dashboardService.refreshAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getModeOfDeliveryData();
-    });
+    // this.dashboardService.refreshAPI.subscribe(result => {
+    //   this.getActiveUsersData();
+    //   this.getModeOfDeliveryData();
+    // });
 
-    this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getModeOfDeliveryData();
-    });
+    // this.dashboardService.dateChangeAPI.subscribe(result => {
+    //   this.getActiveUsersData();
+    //   this.getModeOfDeliveryData();
+    // });
 
-    this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getModeOfDeliveryData();
-    });
+    // this.dashboardService.tenantNameAPI.subscribe(result => {
+    //   this.getActiveUsersData();
+    //   this.getModeOfDeliveryData();
+    // });
 
-    this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getActiveUsersData();
-      this.getModeOfDeliveryData();
-    });
+    // this.dashboardService.refreshReportAPI.subscribe(result => {
+    //   this.getActiveUsersData();
+    //   this.getModeOfDeliveryData();
+    // });
   }
 
   tooltipText = 'Active users data';
@@ -60,9 +60,6 @@ export class ActiveUserWidgetComponent implements OnInit {
   filterbody = {};
 
   date;
-  timeStamp;
-  activeLearners;
-  activeFacultiesAndAdmins;
 
   customArray = [];
 
@@ -71,7 +68,6 @@ export class ActiveUserWidgetComponent implements OnInit {
   chartData = [];
 
   usersChartRender(dataSet) {
-    console.log(dataSet);
     d3.select("#activeUserGraph svg").remove();
     let w = d3.select("#activeUserGraph").node().getBoundingClientRect().width;
     var h = 250;
@@ -286,78 +282,69 @@ export class ActiveUserWidgetComponent implements OnInit {
     });
   }
 
-  getActiveUsersData() {
-    this.spinner_loader = true
-    this.dashboardService.getActiveUsersData().subscribe((response: any) => {
-      this.responseData = response.data;
-      this.spinner_loader = false;
-      this.noDataFlag = this.responseData.length > 0 ? false : true;
+  // getActiveUsersData() {
+  //   this.spinner_loader = true
+  //   this.dashboardService.getActiveUsersData().subscribe((response: any) => {
+  //     this.responseData = response.data;
+  //     this.spinner_loader = false;
+  //     this.noDataFlag = this.responseData.length > 0 ? false : true;
+  //     for (var i = 0; i < this.responseData.length; i++) {
+  //       this.date = new Date(this.responseData[i].date);
+  //       var timeStamp = this.date.getTime();
+  //       var activeLearners = parseInt(this.responseData[i].learnerCount);
+  //       var activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
+  //       this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
+  //       this.usersChartRender(this.chartData);
+  //     }
+  //   });
+  // }
 
-      for (var i = 0; i < this.responseData.length; i++) {
-        this.date = new Date(this.responseData[i].date);
-        // if (this.responseData.length == 1) {
-        //   this.date = new Date(this.responseData[i].date);
+  // getModeOfDeliveryData() {
+  //   this.spinner_loader = true;
+  //   this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
+  //     this.responseData = response.data;
+  //     this.spinner_loader = false;
+  //     this.noDataFlag = this.responseData.length > 0 ? false : true;
+  //     for (var i = 0; i < this.responseData.length; i++) {
+  //       this.date = new Date(this.responseData[i].date);
+  //       var timeStamp = this.date.getTime();
+  //       var activeLearners = parseInt(this.responseData[i].onlineCount);
+  //       var activeFacultiesAndAdmins = this.responseData[i].offlineCount == null ? 0 : parseInt(this.responseData[i].offlineCount);
+  //       this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
+  //     }
+  //     this.usersChartRender(this.chartData);
+  //   });
+  // }
 
-        //   this.customArray.push(
-        //     [this.timeStamp = this.date.getTime() - 1,
-        //     this.activeLearners = 0,
-        //     this.activeFacultiesAndAdmins = 0],
-        //     [this.timeStamp = this.date.getTime(),
-        //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
-        //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
-        //     [this.timeStamp = this.date.getTime() + 1,
-        //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
-        //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
-        //   );
+  // if (this.responseData.length == 1) {
+  //   this.date = new Date(this.responseData[i].date);
 
-        //   this.chartData = [...this.customArray];
+  //   this.customArray.push(
+  //     [this.timeStamp = this.date.getTime() - 1,
+  //     this.activeLearners = 0,
+  //     this.activeFacultiesAndAdmins = 0],
+  //     [this.timeStamp = this.date.getTime(),
+  //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
+  //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
+  //     [this.timeStamp = this.date.getTime() + 1,
+  //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
+  //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
+  //   );
 
-        // }
+  //   this.chartData = [...this.customArray];
 
-        this.date = new Date(this.responseData[i].date);
-        this.timeStamp = this.date.getTime();
-        this.activeLearners = parseInt(this.responseData[i].learnerCount);
-        this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
-        this.chartData.push([
-          this.timeStamp,
-          this.activeLearners,
-          this.activeFacultiesAndAdmins
-        ]);
-
-        this.usersChartRender(this.chartData);
-        //console.log(this.chartData);
-      }
-    });
-  }
-
-  getModeOfDeliveryData() {
-    this.spinner_loader = true;
-    this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
-      this.responseData = response.data;
-      this.spinner_loader = false;
-      this.noDataFlag = this.responseData.length > 0 ? false : true;
-      for (var i = 0; i < this.responseData.length; i++) {
-        var date = new Date(this.responseData[i].date);
-        var timeStamp = date.getTime();
-        var activeLearners = parseInt(this.responseData[i].onlineCount);
-        var activeFacultiesAndAdmins = this.responseData[i].offlineCount == null ? 0 : parseInt(this.responseData[i].offlineCount);
-        this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
-      }
-      this.usersChartRender(this.chartData);
-      console.log(this.chartData);
-    });
-  }
+  // }
 
   activeUsersFn() {
     this.getTab = "activeUser";
     this.tooltipText = 'Active users data';
-    this.getActiveUsersData();
+    //this.getActiveUsersData();
   }
 
   modeDeliveryFn() {
     this.getTab = "modeDelivery";
     this.tooltipText = 'View Online vs Offline delivery over the last 30 days';
-    this.getModeOfDeliveryData();
+    //this.getModeOfDeliveryData();
   }
 
   locationFn() {

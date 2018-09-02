@@ -32,9 +32,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   responseData = [];
 
+  displayData = [];
+
   actualResponseData = [];
 
-  searchFilterItem = [];
   teamsSearchItems = [];
   trainersSearchItems = [];
   learnersSearchItems = [];
@@ -69,7 +70,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.currentModule = "teams";
     this.searchFilterData.searchComponent = "team-leaderboard";
     this.searchFilterData.searchBy = "teamName";
-    this.searchFilterItem = this.teamsSearchItems;
+    this.filtersData.appliedFilters = this.teamsSearchItems;
+    // this.filtersData.appliedFilters = []
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
   }
@@ -78,7 +80,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.currentModule = "trainers";
     this.searchFilterData.searchComponent = "trainer-leaderboard";
     this.searchFilterData.searchBy = "trainerName";
-    this.searchFilterItem = this.trainersSearchItems;
+    this.filtersData.appliedFilters = this.trainersSearchItems;
+    // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
   }
@@ -87,7 +90,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.currentModule = "learners";
     this.searchFilterData.searchComponent = "learner-leaderboard";
     this.searchFilterData.searchBy = "learnerName";
-    this.searchFilterItem = this.learnersSearchItems;
+    this.filtersData.appliedFilters = this.learnersSearchItems;
+    // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
   }
@@ -99,25 +103,54 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.dashboardService
       .getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination)
       .subscribe((response: any) => {
-        this.responseData = this.actualResponseData = response.data;
+        this.responseData = this.displayData = this.actualResponseData = response.data;
+
+        this.constructNewArray();
         this.spinner_loader = false;
         this.noDataFlag = this.responseData.length == 0 ? true : false;
       });
+  }
 
+  constructNewArray() {
+
+    for (let i in this.filtersData.appliedFilters) {
+      this.filtersData.appliedFilters[i]["new"] = true;
+    }
+
+    this.displayData = [];
+    let tempArray = [];
+
+    for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
+      tempArray.push(this.responseData[i]);
+    }
+    this.displayData = tempArray.concat(this.filtersData.appliedFilters);
 
   }
 
   getSearchItem($event) {
-    this.searchFilterItem = $event;
-    for (let i in this.searchFilterItem) {
-      this.searchFilterItem[i]["new"] = true;
-    }
-    this.responseData = JSON.parse(JSON.stringify(this.actualResponseData));
+    this.filtersData.appliedFilters = $event;
 
-    if (this.searchFilterItem.length > 0)
-      this.responseData.splice(-this.searchFilterItem.length);
+    this.constructNewArray();
 
-    this.responseData = this.responseData.concat(this.searchFilterItem);
+    // for (let i in this.filtersData.appliedFilters) {
+    //   this.filtersData.appliedFilters[i]["new"] = true;
+    // }
+
+    // this.responseData = JSON.parse(JSON.stringify(this.actualResponseData));
+
+    // if (this.filtersData.appliedFilters.length > 0)
+    //   this.responseData.splice(-this.filtersData.appliedFilters.length);
+
+    // this.displayData = [];
+    // let tempArray = [];
+
+    // for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
+    //   tempArray.push(this.responseData[i]);
+    // }
+    // this.displayData = tempArray.concat(this.filtersData.appliedFilters);
+
+
+    // this.responseData = this.responseData.concat(this.filtersData.appliedFilters);
   }
 
   ngOnInit() {

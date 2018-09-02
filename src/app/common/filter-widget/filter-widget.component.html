@@ -21,7 +21,7 @@
               </span>
               <div *ngIf="searchList.length>0">
                 <div class="filter-name" *ngFor="let searchItem of searchList; index as i" (click)="selectSearchItem(searchItem)">
-                  <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(searchNames,searchItem) }"></span>
+                  <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(filtersInfo.appliedFilters,searchItem) }"></span>
                   <!-- <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span> -->
                   <!-- <span>{{searchItem.teamName}} </span> -->
                   <span>{{searchItem[searchFilterData.searchBy]}} </span>
@@ -37,10 +37,12 @@
 
       </li>
 
-      <li class="list-inline-item" *ngFor="let searchName of searchNames; let i = index">
-        <span>{{searchName[searchFilterData.searchBy]}} </span>
-        <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i);"></i>
-      </li>
+      <span *ngIf="filtersInfo.search">
+        <li class="list-inline-item" *ngFor="let searchName of filtersInfo.appliedFilters; let i = index">
+          <span>{{searchName[searchFilterData.searchBy]}} </span>
+          <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i);"></i>
+        </li>
+      </span>
 
       <li class="list-inline-item filter" *ngIf="filtersInfo.filters">
         <div class="filterSelect">
@@ -69,10 +71,14 @@
         </div>
       </li>
 
-      <li class="list-inline-item applied-filter" *ngFor="let filter of filtersInfo.appliedFilters">
-        <span> {{filter.name}} </span>
-        <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
-      </li>
+      <span *ngIf="filtersInfo.filters">
+
+        <li class="list-inline-item applied-filter" *ngFor="let filter of filtersInfo.appliedFilters">
+          <span> {{filter.name}} </span>
+          <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
+        </li>
+
+      </span>
 
     </ul>
 

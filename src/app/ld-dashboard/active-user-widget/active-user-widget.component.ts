@@ -291,7 +291,6 @@ export class ActiveUserWidgetComponent implements OnInit {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length > 0 ? false : true;
-      console.log(this.noDataFlag);
 
       for (var i = 0; i < this.responseData.length; i++) {
         this.date = new Date(this.responseData[i].date);
@@ -376,7 +375,6 @@ export class ActiveUserWidgetComponent implements OnInit {
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        console.log(this.closeResult);
       }
     );
   }

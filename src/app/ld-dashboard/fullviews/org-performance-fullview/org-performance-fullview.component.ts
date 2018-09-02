@@ -156,7 +156,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
         result => {
           this.closeResult = `Closed with: ${result}`;
           this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-            console.log("email sent", response);
           });
         },
         reason => {

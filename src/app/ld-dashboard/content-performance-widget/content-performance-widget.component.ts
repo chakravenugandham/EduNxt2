@@ -84,7 +84,6 @@ export class ContentPerformanceWidgetComponent implements OnInit {
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        console.log(this.closeResult);
       }
     );
   }

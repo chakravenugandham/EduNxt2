@@ -26,6 +26,7 @@ export class LocationComponent implements OnInit {
   totalActiveUsers: number;
 
   responseData = [];
+  parseFloat = parseFloat;
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;

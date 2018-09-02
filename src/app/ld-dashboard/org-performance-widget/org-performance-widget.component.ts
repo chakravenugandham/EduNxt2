@@ -18,6 +18,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     search: true,
     viewDetails: true,
     filterList: [],
+    appliedFilters: [],
     currentModule: ""
   };
 

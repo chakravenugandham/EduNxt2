@@ -118,11 +118,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
   }
 
-  checkItemInApplied(array, item) {
-    let itemFound = (_.findIndex(array, item) == -1) ? false : true;
-    return itemFound;
-  }
-
   selectSearchItem(searchItem) {
     if (_.findIndex(this.searchNames, searchItem) == -1 && this.searchNames.length < this.searchFilterData.searchCount) {
       this.searchNames.push(searchItem);
@@ -136,6 +131,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   removeSearchName(i) {
     this.searchNames.splice(i, 1);
     this.searchEvent.emit(this.searchNames);
+  }
+
+  checkItemInApplied(array, item) {
+    let itemFound = (_.findIndex(array, item) == -1) ? false : true;
+    return itemFound;
   }
 
   ngOnInit() {

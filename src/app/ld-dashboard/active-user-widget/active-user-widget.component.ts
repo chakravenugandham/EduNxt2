@@ -69,6 +69,7 @@ export class ActiveUserWidgetComponent implements OnInit {
   chartData = [];
 
   usersChartRender(dataSet) {
+    console.log(dataSet);
     d3.select("#activeUserGraph svg").remove();
     let w = d3.select("#activeUserGraph").node().getBoundingClientRect().width;
     var h = 250;
@@ -334,7 +335,7 @@ export class ActiveUserWidgetComponent implements OnInit {
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
-      //console.log(this.chartData);
+      console.log(this.chartData);
     });
   }
 

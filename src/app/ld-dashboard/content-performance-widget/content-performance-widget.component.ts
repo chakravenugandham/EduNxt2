@@ -100,7 +100,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   }
 
   downloadPdf() {
-    let htmlTemp = document.getElementById("screenToCaputre");
+    let htmlTemp = document.getElementById("content-consumption");
     html2canvas(htmlTemp).then(canvas => {
       // Few necessary setting options  
       let imgWidth = 208;

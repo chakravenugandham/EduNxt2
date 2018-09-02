@@ -4,7 +4,7 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
-<div class="widget-block">
+<div class="widget-block" id="learner-track">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -13,7 +13,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'performance'}" (click)="learnerPerfFn()">Learner
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'performance'}"
+          (click)="learnerPerfFn()">Learner
           Performance
         </a>
       </li>
@@ -24,7 +25,7 @@
       </span>
       <ng-template #popcontent>
         <ul class="list-inline">
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/SAve.svg">
             </span>
@@ -32,7 +33,7 @@
               <b>Save this view</b>
             </span>
           </li>
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/mail.svg">
             </span>
@@ -40,7 +41,7 @@
               <b>Email this report</b>
             </span>
           </li>
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
             <span>
               <img src="../../assets/IconsSVGs/Download.svg">
             </span>

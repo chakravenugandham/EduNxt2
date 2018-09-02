@@ -5,7 +5,7 @@
   </p>
 </div>
 
-<div class="widget-block">
+<div class="widget-block" id="org-performance">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -24,7 +24,7 @@
       </span>
       <ng-template #popcontent>
         <ul class="list-inline">
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/SAve.svg">
             </span>
@@ -32,7 +32,7 @@
               <b>Save this view</b>
             </span>
           </li>
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer">
             <span>
               <img src="../../assets/IconsSVGs/mail.svg">
             </span>
@@ -40,7 +40,7 @@
               <b>Email this report</b>
             </span>
           </li>
-          <li class="list-inline-item">
+          <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
             <span>
               <img src="../../assets/IconsSVGs/Download.svg">
             </span>

@@ -32,7 +32,8 @@ export class HeaderComponent implements OnInit {
   }
 
   changeCourse(selectTenantName) {
-    //this.dashboardService.selectTenantName(selectTenantName);
+    this.dashboardService.selectTenantName(selectTenantName);
+    //this.dashboardService.selectTenantNameV2(this.tenantName, this.user_id);
   }
 
   logout() {
@@ -44,6 +45,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     //this.cookieService.set('user_name', "Praveen Kondani");
-    this.dashboardService.selectTenantNameV2(this.tenantName, this.user_id);
+    //this.dashboardService.selectTenantNameV2(this.tenantName, this.user_id);
   }
 }

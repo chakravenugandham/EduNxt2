@@ -2,6 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 
+
+import * as jspdf from 'jspdf';
+
+import html2canvas from 'html2canvas';
+
+import { _ } from "underscore";
+
 @Component({
   selector: "app-org-performance-widget",
   templateUrl: "./org-performance-widget.component.html",
@@ -89,6 +96,25 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterItem = this.learnersSearchItems;
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.getDataFromService();
+  }
+
+  downloadPdf() {
+    let htmlTemp = document.getElementById("org-performance");
+    html2canvas(htmlTemp).then(canvas => {
+      // Few necessary setting options  
+      let imgWidth = 208;
+      let pageHeight = 295;
+      let imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('./');
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      let position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+
+      pdf.save('MYPdf.pdf'); // Generated PDF   
+    });
+
   }
 
   getDataFromService() {

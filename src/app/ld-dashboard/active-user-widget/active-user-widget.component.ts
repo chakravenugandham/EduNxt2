@@ -16,6 +16,10 @@ import html2canvas from 'html2canvas';
 })
 export class ActiveUserWidgetComponent implements OnInit {
   getTab = "activeUser";
+
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getActiveUsersData();
@@ -40,6 +44,7 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   tooltipText = 'Active users data';
   closeResult: string;
+
   //fliter object for payload
 
   filtersData = {
@@ -51,9 +56,6 @@ export class ActiveUserWidgetComponent implements OnInit {
     currentModule: "",
     viewDetailsFilters: false
   };
-
-  activeUser: boolean = true;
-  modeDelivery: boolean = false;
 
   filterbody = {};
 
@@ -284,8 +286,13 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
 
   getActiveUsersData() {
+    this.spinner_loader = true
     this.dashboardService.getActiveUsersData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
+      this.noDataFlag = this.responseData.length > 0 ? false : true;
+      console.log(this.noDataFlag);
+
       for (var i = 0; i < this.responseData.length; i++) {
         this.date = new Date(this.responseData[i].date);
         // if (this.responseData.length == 1) {
@@ -324,8 +331,11 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
 
   getModeOfDeliveryData() {
+    this.spinner_loader = true;
     this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
+      this.noDataFlag = this.responseData.length > 0 ? false : true;
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();

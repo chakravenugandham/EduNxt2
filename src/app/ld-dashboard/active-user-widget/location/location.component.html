@@ -3,6 +3,15 @@
     <b>Activity by Location</b>
   </p>
 
+  <div *ngIf="spinner_loader" class="spinner_loading">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
+
   <div class="row">
     <div class="col-md-7">
       <div class="locationGraph">

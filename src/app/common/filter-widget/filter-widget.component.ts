@@ -128,7 +128,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
 
     this.searchEvent.emit(this.filtersInfo.appliedFilters);
-    this.displayDropdown = false;
+    // this.displayDropdown = false;
   }
 
   removeSearchName(i) {

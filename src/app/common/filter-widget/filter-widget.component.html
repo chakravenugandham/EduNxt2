@@ -7,10 +7,10 @@
           <span class="search-icon">
             <i class="fas fa-search"></i>
           </span>
-          <input type="text" [ngModel]="serachName" (keyup)="searchItem($event)" placeholder="Search"> {{serachName}}
+          <input type="text" [ngModel]="serachName" (keyup)="searchItem($event)" placeholder="Search">
         </div>
 
-        <div class="showFilter-list" *ngIf="displayDropdown">
+        <div class="showFilter-list" *ngIf="displayDropdown" (clickOutside)="onClickedOutside($event)" [exclude]="'.searchList,.search-org-user, .search-icon,.fa-search'">
           <span class="closeDropdown text-warning" (click)="closeDropDown()">
             <i class="far fa-times-circle fa-lg"></i>
           </span>

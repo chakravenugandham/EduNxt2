@@ -24,6 +24,7 @@ export class ActiveUsersComponent implements OnInit {
   //   ];
   responseData = [];
   spinner_loader = false;
+  noDataFlag = false;
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -46,6 +47,8 @@ export class ActiveUsersComponent implements OnInit {
 
   //chart function
   usersChartRender(dataSet) {
+    console.log(dataSet);
+
     d3.select("#activeUserGraph svg").remove();
     let w = d3.select("#activeUserGraph").node() ? d3.select("#activeUserGraph").node().getBoundingClientRect().width : 300;
     var h = 250;
@@ -267,6 +270,10 @@ export class ActiveUsersComponent implements OnInit {
       let tooltip = d3.select(".tool-tip");
       tooltip.style("visibility", "hidden");
     });
+
+    if (dataSet.length == 0) {
+      d3.select("#activeUserGraph svg").remove();
+    }
   }
 
   date;
@@ -281,7 +288,12 @@ export class ActiveUsersComponent implements OnInit {
     this.dashboardService.getActiveUsersData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
+      this.noDataFlag = this.responseData.length == 0 ? true : false;
+      console.log(this.spinner_loader);
+      console.log(this.noDataFlag);
+
       this.chartData = [];
+      // if (this.responseData.length > 0) {
       for (var i = 0; i < this.responseData.length; i++) {
         this.date = new Date(this.responseData[i].date);
         // if (this.responseData.length == 1) {
@@ -312,9 +324,10 @@ export class ActiveUsersComponent implements OnInit {
           this.activeLearners,
           this.activeFacultiesAndAdmins
         ]);
-
-        this.usersChartRender(this.chartData);
       }
+      this.usersChartRender(this.chartData);
+      // }
+
     });
   }
 

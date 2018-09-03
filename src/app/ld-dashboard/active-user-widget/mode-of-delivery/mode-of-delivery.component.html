@@ -9,6 +9,10 @@
     <app-spinner></app-spinner>
   </div>
 
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
   <div class="line-block">
     <div id="modeOfDeliveryGraph"></div>
     <div class="tool-tip">
@@ -24,7 +28,7 @@
         </tr>
       </table>
     </div>
-    <div class="row graph-badges" style="margin-top:50px;">
+    <div *ngIf="responseData.length>0" class="row graph-badges" style="margin-top:50px;">
       <div class="col-md-6 col-sm-6 col-6">
         <i class="far fa-circle faculty"></i> Online Mode
       </div>

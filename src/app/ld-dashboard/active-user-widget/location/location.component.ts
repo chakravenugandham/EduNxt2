@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { GoogleChartsBaseService } from "../../services/googleChartService";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
+import * as d3 from "d3v4";
+
 @Component({
   selector: "app-location",
   templateUrl: "./location.component.html",
@@ -12,9 +14,9 @@ export class LocationComponent implements OnInit {
   //variable declarations
   someData = [
     ["Location", "learnerCount"],
-    ["Andhra Pradesh", 49386799],
-    ["Karnataka", 61130704],
-    ["Madhya Pradesh", 72597565],
+    // ["Andhra Pradesh", 49386799],
+    // ["Karnataka", 61130704],
+    // ["Madhya Pradesh", 72597565],
     // ["Uttar Pradesh", 199581477],
     // ["Maharashtra", 112372972],
     // ["Bihar", 103804637],
@@ -55,16 +57,24 @@ export class LocationComponent implements OnInit {
 
   getLocationData() {
     this.spinner_loader = true;
+    this.someData = [["Location", "learnerCount"]];
     this.dashboardService.getLocationData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length > 0 ? false : true;
-      this.someData.push([
-        this.responseData['location'],
-        this.responseData['learnerCount']
-      ]);
-      console.log(this.someData);
-      this.googleChartsBaseService.setMap(this.someData);
+      if (this.responseData.length > 0) {
+        for (let i in this.responseData) {
+          this.someData.push([
+            this.responseData[i]['location'],
+            this.responseData[i]['learnerCount']
+          ]);
+        }
+        this.googleChartsBaseService.setMap(this.someData);
+      }
+      else if (this.responseData.length == 0) {
+        d3.select("#regions_div svg").remove();
+      }
+
     });
   }
 

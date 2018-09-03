@@ -34,6 +34,10 @@
     <app-spinner></app-spinner>
   </div>
 
+  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+    <span class="spinner_inside">No data found</span>
+  </div>
+
   <div class="line-block">
     <div id="activeUserGraph"></div>
     <!-- <div appLinegraph [data]="chartData"></div> -->
@@ -50,7 +54,7 @@
         </tr>
       </table>
     </div>
-    <div class="row graph-badges">
+    <div *ngIf="responseData.length>0" class="row graph-badges">
       <div class="col-md-6 col-sm-6 col-6">
         <i class="far fa-circle learner"></i> Learners
       </div>

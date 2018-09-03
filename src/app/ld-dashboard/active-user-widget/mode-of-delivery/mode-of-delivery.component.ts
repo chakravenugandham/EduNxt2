@@ -13,6 +13,7 @@ export class ModeOfDeliveryComponent implements OnInit {
 
   chartData = [];
   spinner_loader = false;
+  noDataFlag = false;
 
   @Input() usersData;
 
@@ -244,6 +245,10 @@ export class ModeOfDeliveryComponent implements OnInit {
       var tooltip = d3.select(".tool-tip");
       tooltip.style("visibility", "hidden");
     });
+
+    if (dataSet.length == 0) {
+      d3.select("#modeOfDeliveryGraph svg").remove();
+    }
   }
 
   responseData = [];
@@ -253,7 +258,9 @@ export class ModeOfDeliveryComponent implements OnInit {
     this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
+      this.noDataFlag = this.responseData.length == 0 ? true : false;
       this.chartData = [];
+      // if (this.responseData.length > 0) {
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();
@@ -262,6 +269,7 @@ export class ModeOfDeliveryComponent implements OnInit {
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       this.usersChartRender(this.chartData);
+      // }
     });
   }
 

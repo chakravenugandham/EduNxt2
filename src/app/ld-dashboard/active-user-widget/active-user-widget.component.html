@@ -1,4 +1,4 @@
-<div id="active-users">
+<div>
   <div class="widget-heading clearfix font-weight-bold">
     <p class="float-left">How active are the users?</p>
     <!-- <p *ngIf="" class="float-left">What is the activity on my course?</p> -->
@@ -60,16 +60,17 @@
       </div>
     </div>
 
-    <div *ngIf="spinner_loader" class="spinner_loading">
-      <app-spinner></app-spinner>
-    </div>
-
-    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-      <span class="spinner_inside">No data found</span>
-    </div>
-
     <!-- <div *ngIf="!spinner_loader && !noDataFlag"> -->
-    <div>
+    <div id="active-users">
+
+      <div *ngIf="spinner_loader" class="spinner_loading">
+        <app-spinner></app-spinner>
+      </div>
+
+      <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+        <span class="spinner_inside">No data found</span>
+      </div>
+
       <app-active-users *ngIf="getTab=='activeUser'"></app-active-users>
       <app-mode-of-delivery *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
       <app-location *ngIf="getTab=='location'"></app-location>

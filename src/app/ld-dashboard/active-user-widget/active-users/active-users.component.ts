@@ -308,6 +308,12 @@ export class ActiveUsersComponent implements OnInit {
     });
   }
 
+  ngOnchanges(changes: any) {
+    if (changes.chartData.currentValue != changes.chartData.previousValue) {
+      this.getActiveUsersData();
+    }
+  }
+
   ngOnInit() {
     //service call initiated
     this.getActiveUsersData();

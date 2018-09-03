@@ -133,7 +133,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
           console.log(this.downloadLink);
         });
       }
-      else if (this.orgPerformanceComponentName === 'learner') {
+      else if (this.orgPerformanceComponentName === 'learners') {
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           console.log(this.downloadLink);

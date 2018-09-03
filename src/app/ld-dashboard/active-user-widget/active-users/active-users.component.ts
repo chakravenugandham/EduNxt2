@@ -47,7 +47,7 @@ export class ActiveUsersComponent implements OnInit {
   //chart function
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
-    let w = d3.select("#activeUserGraph").node().getBoundingClientRect().width;
+    let w = d3.select("#activeUserGraph").node() ? d3.select("#activeUserGraph").node().getBoundingClientRect().width : 300;
     var h = 250;
     var p = 70;
 
@@ -281,6 +281,7 @@ export class ActiveUsersComponent implements OnInit {
     this.dashboardService.getActiveUsersData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
+      this.chartData = [];
       for (var i = 0; i < this.responseData.length; i++) {
         this.date = new Date(this.responseData[i].date);
         // if (this.responseData.length == 1) {
@@ -315,6 +316,12 @@ export class ActiveUsersComponent implements OnInit {
         this.usersChartRender(this.chartData);
       }
     });
+  }
+
+  ngOnchanges(changes: any) {
+    if (changes.chartData.currentValue != changes.chartData.previousValue) {
+      this.getActiveUsersData();
+    }
   }
 
   ngOnInit() {

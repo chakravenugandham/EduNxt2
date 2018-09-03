@@ -219,13 +219,13 @@ export class ModeOfDeliveryComponent implements OnInit {
           .select(".ttip-date")
           .html(d3.timeFormat("%b %d %Y")(new Date(dataPoints[nearest][0][0])));
         d3
-          .select(".ttip-learners")
+          .select(".ttip-online")
           .html("<span style='color:#0146F9'>" +
-            dataPoints[nearest][0][1] + "</span> Active Learner");
+            dataPoints[nearest][0][1] + "</span> Online Mode");
         d3
-          .select(".ttip-faculty")
+          .select(".ttip-offline")
           .html("<span style='color:#0146F9'>" +
-            dataPoints[nearest][0][2] + "</span> Active Faculty and admins");
+            dataPoints[nearest][0][2] + "</span> Offline Mode");
         var tooltip = d3.select(".tool-tip");
         tooltip.style("visibility", "visible");
         //tooltip.style("top", 150 + "px").style("left", nearest - 150 + "px");
@@ -253,6 +253,7 @@ export class ModeOfDeliveryComponent implements OnInit {
     this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
+      this.chartData = [];
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();

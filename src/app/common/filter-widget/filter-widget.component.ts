@@ -91,7 +91,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
       this.filtersInfo.appliedFilters.splice(indexF, 1);
       this.addFilterEmit.emit(this.filtersInfo.appliedFilters);
     }
-    this.displayDropdown = false;
+    // this.displayDropdown = false;
   }
 
   removeFilter(filter) {
@@ -115,7 +115,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
           this.noSearchResultFlag = this.searchList.length > 0 ? false : true;
         });
     } else {
-      this.displayDropdown = false;
+      // this.displayDropdown = false;
     }
   }
 
@@ -139,6 +139,11 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
   checkItemInApplied(array, item) {
     let itemFound = (_.findIndex(array, item) == -1) ? false : true;
     return itemFound;
+  }
+
+  onClickedOutside(e: Event) {
+    console.log('Clicked outside:', e);
+    this.displayDropdown = false;
   }
 
   ngOnInit() {

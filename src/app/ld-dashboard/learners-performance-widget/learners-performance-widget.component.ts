@@ -86,7 +86,7 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
       let position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
-      pdf.save('MYPdf.pdf'); // Generated PDF   
+      pdf.save('EduNxtReport.pdf'); // Generated PDF   
     });
 
   }

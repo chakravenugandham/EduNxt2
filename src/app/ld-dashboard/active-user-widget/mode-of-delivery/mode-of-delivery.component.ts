@@ -12,6 +12,7 @@ import { LdDashboardService } from '../../services/ld-dashboard.service';
 export class ModeOfDeliveryComponent implements OnInit {
 
   chartData = [];
+  spinner_loader = false;
 
   @Input() usersData;
 
@@ -248,8 +249,10 @@ export class ModeOfDeliveryComponent implements OnInit {
   responseData = [];
 
   getModeOfDeliveryData() {
+    this.spinner_loader = true;
     this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();

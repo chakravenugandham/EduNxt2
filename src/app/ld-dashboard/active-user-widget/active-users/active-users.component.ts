@@ -23,6 +23,7 @@ export class ActiveUsersComponent implements OnInit {
   //     [1518825600000, 600, 800],
   //   ];
   responseData = [];
+  spinner_loader = false;
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -267,8 +268,10 @@ export class ActiveUsersComponent implements OnInit {
   customArray = [];
   //service call for apis
   getActiveUsersData() {
+    this.spinner_loader = true;
     this.dashboardService.getActiveUsersData().subscribe((response: any) => {
       this.responseData = response.data;
+      this.spinner_loader = false;
       for (var i = 0; i < this.responseData.length; i++) {
         this.date = new Date(this.responseData[i].date);
         // if (this.responseData.length == 1) {

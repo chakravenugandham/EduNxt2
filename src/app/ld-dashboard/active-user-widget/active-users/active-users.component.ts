@@ -87,6 +87,9 @@ export class ActiveUsersComponent implements OnInit {
       .append("g")
       .attr("class", "grid")
       .attr("transform", "translate(" + p + ", 0)")
+      .style("stroke-opacity", "0.7")
+      .style("shape-rendering", "crispEdges")
+      .style("stroke-dasharray", "5, 5")
       .call(
         make_y_gridlines()
           .tickSize(-(w - p - p / 2))

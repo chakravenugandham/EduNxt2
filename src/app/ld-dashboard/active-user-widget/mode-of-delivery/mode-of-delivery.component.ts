@@ -253,6 +253,7 @@ export class ModeOfDeliveryComponent implements OnInit {
     this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
       this.responseData = response.data;
       this.spinner_loader = false;
+      this.chartData = [];
       for (var i = 0; i < this.responseData.length; i++) {
         var date = new Date(this.responseData[i].date);
         var timeStamp = date.getTime();

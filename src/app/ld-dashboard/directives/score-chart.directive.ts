@@ -110,6 +110,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .datum(this.data) // Binds data to the line
       .attr("class", "area-color")
       .attr("d", area) // Calls the area generator
+      .style("fill", "#5584ff");
 
     svg
       .append("text")

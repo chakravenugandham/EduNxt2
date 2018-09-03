@@ -642,7 +642,7 @@ ul {
 }
 
 .area-color {
-  fill: url(#area-gradient);
+  fill: url(#area-gradient) !important;
 }
 
 .fullviewComponent {

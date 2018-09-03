@@ -136,7 +136,10 @@ export class ActiveUsersComponent implements OnInit {
       .append("path")
       .datum(dataSet)
       .attr("class", "line1")
-      .attr("d", line);
+      .attr("d", line)
+      .style("fill", "none")
+      .style("stroke", "#ff4e00")
+      .style("stroke-width", "6px");
 
     var line2 = d3
       .line()
@@ -151,7 +154,10 @@ export class ActiveUsersComponent implements OnInit {
       .append("path")
       .datum(dataSet) // Binds data to the line
       .attr("class", "line2") // Assign a class for styling
-      .attr("d", line2); // Calls the line generator
+      .attr("d", line2) // Calls the line generator
+      .style("fill", "none")
+      .style("stroke", "#5584ff")
+      .style("stroke-width", "6px");
 
     var dataPoints = {};
     //Creating dots

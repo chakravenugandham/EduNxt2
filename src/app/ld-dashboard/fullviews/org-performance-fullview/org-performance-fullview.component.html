@@ -83,7 +83,7 @@
             <td class="">{{teamData.teamsize}}</td>
             <td>
               <span *ngIf="teamData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',teamData.teamId)">
-                <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="teamData.completion <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',teamData.teamId)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
@@ -145,7 +145,7 @@
             </td>
             <td>
               <span *ngIf="trainerData.avgRating> 3.5" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',trainerData.trainerId)">
-                <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span class="negative-color cursor-pointer" *ngIf="trainerData.avgRating <= 3.5" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',trainerData.trainerId)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
@@ -209,7 +209,7 @@
             <td>{{learnerData.examScore}}</td>
             <td>
               <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',learnerData.person_id)">
-                <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="learnerData.examScore <= 75" class="action_icon negative-color cursor-pointer" (click)="open(followUpContent,'followup',learnerData.person_id)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up

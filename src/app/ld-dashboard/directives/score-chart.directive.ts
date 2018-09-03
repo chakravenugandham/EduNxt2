@@ -62,6 +62,9 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .append("g")
       .attr("class", "y-grid grid")
       .attr("transform", "translate(" + padding + ", 0)")
+      .style("stroke-opacity", "0.7")
+      .style("shape-rendering", "crispEdges")
+      .style("stroke-dasharray", "5, 5")
       .call(
         make_y_gridlines()
           .tickSize(-(width - padding - padding / 2))
@@ -110,7 +113,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .datum(this.data) // Binds data to the line
       .attr("class", "area-color")
       .attr("d", area) // Calls the area generator
-      .style("fill", "#5584ff");
+      .style("fill", "#f77f6c")
 
     svg
       .append("text")
@@ -135,6 +138,9 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .append("g")
       .attr("class", "x-grid grid")
       .attr("transform", "translate(0," + (height - padding) + ")")
+      .style("stroke-opacity", "0.7")
+      .style("shape-rendering", "crispEdges")
+      .style("stroke-dasharray", "5, 5")
       .attr("y", padding)
       .call(
         make_x_gridlines()

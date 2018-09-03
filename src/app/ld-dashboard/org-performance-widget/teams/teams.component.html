@@ -43,7 +43,7 @@
         <td>{{tableData.teamSize | customNumber}}</td>
         <td>
           <span *ngIf="tableData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',tableData.teamId)">
-            <img src="/assets/IconsSVGs/congradulate.svg" alt="congrats" height="15" width="15"> Congratulate
+            <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
           </span>
           <span *ngIf="tableData.completion <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',tableData.teamId)">
             <i class="fas fa-exclamation-triangle"></i> Follow up

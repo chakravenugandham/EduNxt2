@@ -75,7 +75,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
     svg
       .append("g")
       .attr("class", "y-axis axis")
-      .attr("transform", "translate(" + (padding - 5) + ", 0)")
+      .attr("transform", "translate(" + (padding - 15) + ", 0)")
       .call(d3.axisLeft(yScale).ticks(5));
 
     //area line generator
@@ -87,7 +87,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .y1(function (d) {
         return yScale(d[1]);
       })
-      .curve(d3.curveCatmullRom.alpha(0.5));
+      .curve(d3.curveCatmullRom.alpha(1));
 
     area.y0(yScale(0));
 

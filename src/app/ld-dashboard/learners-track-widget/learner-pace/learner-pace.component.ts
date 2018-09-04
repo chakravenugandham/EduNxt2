@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { _ } from "underscore";
 
 @Component({
   selector: "app-learner-pace",
@@ -8,10 +9,14 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 export class LearnerPaceComponent implements OnInit, OnChanges {
   @Input() paceData: any;
   chartValues = [];
+  nodataFlag = false;
 
   constructor() { }
 
   ngOnChanges(changes: any) {
+    console.log(this.paceData);
+    this.nodataFlag = _.isEmpty(this.paceData) ? true : false;
+
     if (changes.paceData.currentValue) {
       this.chartValues = [
         {

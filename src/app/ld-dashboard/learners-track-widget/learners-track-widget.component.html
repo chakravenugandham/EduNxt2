@@ -4,7 +4,7 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
-<div class="widget-block" id="learner-track">
+<div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -56,17 +56,21 @@
     </div>
   </div>
 
-  <div *ngIf="spinner_loader" class="spinner_loading">
-    <app-spinner></app-spinner>
-  </div>
+  <div id="learner-track">
 
-  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data found</span>
-  </div>
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <app-spinner></app-spinner>
+    </div>
 
-  <div *ngIf="!spinner_loader && !noDataFlag">
-    <app-learner-pace *ngIf="filtersData.currentModule == 'pace'" [paceData]="paceObject.responseData"></app-learner-pace>
-    <app-learner-performance *ngIf="filtersData.currentModule == 'performance'" [performanceData]="performanceObject.responseData"></app-learner-performance>
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
+
+    <!-- <div *ngIf="!spinner_loader && !noDataFlag"> -->
+    <div *ngIf="!spinner_loader">
+      <app-learner-pace *ngIf="filtersData.currentModule == 'pace'" [paceData]="paceObject.responseData"></app-learner-pace>
+      <app-learner-performance *ngIf="filtersData.currentModule == 'performance'" [performanceData]="performanceObject.responseData"></app-learner-performance>
+    </div>
   </div>
 
   <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>

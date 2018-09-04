@@ -136,7 +136,7 @@
               <span class="userName ">{{trainerData.trainerName}}</span>
             </th>
 
-            <td>{{trainerData.trainingsConducted}}</td>
+            <td>{{trainerData.trainingsConducted | customNumber}}</td>
             <td>{{trainerData.peopleTrained}}</td>
             <td>
               <span>
@@ -204,7 +204,7 @@
               <span class="userName ">{{learnerData.learnerName}}</span>
             </th>
             <td>{{learnerData.learnerSerialNumber}}</td>
-            <td>{{learnerData.pointsEarned}}</td>
+            <td>{{learnerData.pointsEarned | customNumber}}</td>
             <td>{{learnerData.avgTestPerformance}}</td>
             <td>{{learnerData.examScore}}</td>
             <td>

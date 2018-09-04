@@ -63,11 +63,12 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.contentData = [];
-
+    // (<HTMLInputElement>document.getElementById("searchString")).disabled = true;
     this.dashboardService
       .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.contentData = response.data;
+        // (<HTMLInputElement>document.getElementById("searchString")).disabled = false;
         this.pagination.total = response.pagination.total;
         this.pagination.total_pages = response.pagination.total_pages;
         this.spinner_loader = false;

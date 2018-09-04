@@ -39,7 +39,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   }
 
   emailData = {
-    to: "rajeshadhikari72@gmail.com",
+    to: "",
     subject: "manipal user",
     text: ""
   }
@@ -61,7 +61,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._baseUrl = event.url.replace(/\//g, '');
-         this.csvFormatFn();
+        this.csvFormatFn();
       }
     });
 
@@ -101,7 +101,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       });
     }
 
-    if (base == "learnerTrackFullView") {
+    else if (base == "learnerTrackFullView") {
       this.learnerTrackComponentName = this.myStorage.getItem('trackComponent');
       this.learnerDisplayFor = this.myStorage.getItem('trackDisplayFor');
       this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName).subscribe((res: any) => {
@@ -110,7 +110,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       });
     }
 
-    if (base == "scoreDistributionFullView") {
+    else if (base == "scoreDistributionFullView") {
       this.scoreComponent = this.myStorage.getItem('scoreComponent');
       this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
         this.downloadLink = res.data;
@@ -118,7 +118,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       });
     }
 
-    if (base == "orgPerformanceFullView") {
+    else if (base == "orgPerformanceFullView") {
       this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformaModule');
 
       if (this.orgPerformanceComponentName === 'teams') {
@@ -141,13 +141,14 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       }
     }
 
-    if (base == "orgInterestFullView") {
+    else if (base == "orgInterestFullView") {
       this.dashboardService.getOrgInterestDetailsDataCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
         console.log(this.downloadLink);
 
       });
     }
+
   }
 
   open(content) {

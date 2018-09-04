@@ -5,7 +5,7 @@
 <span class="customPage" *ngIf="pageInfo.total>10">
   <span class="m-l-10">Go to page</span>
   <span class="m-l-10">
-    <input type="number" [(ngModel)]="selectPage">
+    <input type="number" min="1" [(ngModel)]="selectPage">
   </span>
   <span class="goToPage m-l-10" [class.disable]="selectPage == undefined || selectPage == ''" (click)="loadPage(selectPage)">Go</span>
 </span>

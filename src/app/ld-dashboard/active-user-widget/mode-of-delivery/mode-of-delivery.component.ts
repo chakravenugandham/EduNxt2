@@ -268,6 +268,18 @@ export class ModeOfDeliveryComponent implements OnInit {
         var activeFacultiesAndAdmins = this.responseData[i].offlineCount == null ? 0 : parseInt(this.responseData[i].offlineCount);
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
+      if (this.chartData.length == 1) {
+        this.chartData.unshift([
+          (this.chartData[0][0] - 86400000),
+          0,
+          0
+        ])
+        // this.chartData.push([
+        //   (this.chartData[1][0] + 86400000),
+        //   0,
+        //   0
+        // ])
+      }
       this.usersChartRender(this.chartData);
       // }
     });

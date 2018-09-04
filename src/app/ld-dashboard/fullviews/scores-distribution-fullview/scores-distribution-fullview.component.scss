@@ -36,9 +36,14 @@
 
   .b-t-2{
     border-top: 2px solid #333;
+    padding-bottom: 40px;
   }
   .graph-space, .table-space{
     position: relative;
     min-height: 200px;
   }
+}
+
+.fullviewComponent .widget-block{
+  padding-bottom: 0px;
 }

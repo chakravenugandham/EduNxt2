@@ -20,6 +20,8 @@
       <span class="spinner_inside">No data found</span>
     </div>
 
+    <!-- <div *ngIf="spinner_loader" class="overlay"></div> -->
+
     <div>
       <table class="table table-borderless">
         <thead>
@@ -29,7 +31,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <input type="text" [(ngModel)]="searchString" placeholder="Content Name" (keyup)="getDataFromService()">
+                <input type="text" [(ngModel)]="searchString" id="searchString" placeholder="Content Name" (keyup)="getDataFromService()">
               </span>
               <span (click)="sortByFn('contentName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -73,14 +75,14 @@
             <td> {{content.contentType}} </td>
             <td> {{content.courseName}} </td>
             <td> {{content.author}} </td>
-            <td> {{content.views}} </td>
+            <td> {{content.views | customNumber}} </td>
             <td>
               <span>
                 <i class="far fa-star text-warning"></i>
               </span>
               <span> {{content.avgRating.toFixed(2)}} </span>
             </td>
-            <td> {{content.duration.toFixed(2)}} </td>
+            <td> {{content.duration}} </td>
           </tr>
         </tbody>
       </table>

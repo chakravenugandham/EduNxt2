@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { _ } from "underscore";
 
 @Component({
   selector: "app-learner-performance",
@@ -8,10 +9,11 @@ import { Component, OnInit, Input } from "@angular/core";
 export class LearnerPerformanceComponent implements OnInit {
   @Input() performanceData: any;
   chartValues = [];
-
-  constructor() {}
+  nodataFlag = false;
+  constructor() { }
 
   ngOnChanges(changes: any) {
+    this.nodataFlag = _.isEmpty(this.performanceData) ? true : false;
     if (changes.performanceData.currentValue) {
       this.chartValues = [
         {
@@ -38,5 +40,5 @@ export class LearnerPerformanceComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

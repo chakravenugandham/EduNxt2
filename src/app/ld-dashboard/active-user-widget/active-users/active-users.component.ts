@@ -321,18 +321,26 @@ export class ActiveUsersComponent implements OnInit {
         ]);
       }
       console.log("before adding dup", this.chartData);
-      if (this.chartData.length == 1) {
+      if (this.chartData.length == 2) {
         this.chartData.unshift([
           (this.chartData[0][0] - 86400000),
           0,
           0
         ])
-        // this.chartData.push([
-        //   (this.chartData[1][0] + 86400000),
-        //   0,
-        //   0
-        // ])
       }
+      else if (this.chartData.length == 1) {
+        this.chartData.unshift([
+          (this.chartData[0][0] - 86400000),
+          0,
+          0
+        ])
+        this.chartData.unshift([
+          (this.chartData[0][0] - 86400000),
+          0,
+          0
+        ])
+      }
+
       console.log("after adding dup", this.chartData);
 
       this.usersChartRender(this.chartData);

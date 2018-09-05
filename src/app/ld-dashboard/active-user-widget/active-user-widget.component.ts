@@ -17,6 +17,8 @@ import html2canvas from 'html2canvas';
 export class ActiveUserWidgetComponent implements OnInit {
   getTab = "activeUser";
 
+  popclosing = false;
+
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 
@@ -393,11 +395,12 @@ export class ActiveUserWidgetComponent implements OnInit {
 
       pdf.save('EduNxtReport.pdf'); // Generated PDF   
     });
-
+    this.popclosing = true;
   }
 
   ngOnInit() {
     this.tooltipText = 'Active users data';
+    //this.popclosing = false;
     this.activeUsersFn();
   }
 

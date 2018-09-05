@@ -37,7 +37,10 @@ export class ModeOfDeliveryComponent implements OnInit {
 
   usersChartRender(dataSet) {
     d3.select("#modeOfDeliveryGraph svg").remove();
-    let w = d3.select("#modeOfDeliveryGraph").node().getBoundingClientRect().width;
+    let w;
+    if (d3.select("#modeOfDeliveryGraph").node()) {
+      w = d3.select("#modeOfDeliveryGraph").node().getBoundingClientRect().width;
+    }
     var h = 250;
     var p = 70;
 
@@ -278,25 +281,12 @@ export class ModeOfDeliveryComponent implements OnInit {
         this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
       }
       if (this.chartData.length == 2) {
-        this.chartData.unshift([
-          (this.chartData[0][0] - 86400000),
-          0,
-          0
-        ])
+        this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0])
       }
       else if (this.chartData.length == 1) {
-        this.chartData.unshift([
-          (this.chartData[0][0] - 86400000),
-          0,
-          0
-        ])
-        this.chartData.unshift([
-          (this.chartData[0][0] - 86400000),
-          0,
-          0
-        ])
+        this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0])
+        this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0])
       }
-
       this.usersChartRender(this.chartData);
       // }
     });

@@ -48,7 +48,10 @@ export class ActiveUsersComponent implements OnInit {
   //chart function
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
-    let w = d3.select("#activeUserGraph").node() ? d3.select("#activeUserGraph").node().getBoundingClientRect().width : 300;
+    let w;
+    if (d3.select("#activeUserGraph").node()) {
+      w = d3.select("#activeUserGraph").node().getBoundingClientRect().width;
+    }
     var h = 250;
     var p = 70;
 
@@ -279,7 +282,7 @@ export class ActiveUsersComponent implements OnInit {
   activeLearners;
   activeFacultiesAndAdmins;
 
-  customArray = [];
+  //customArray = [];
   //service call for apis
   getActiveUsersData() {
     this.spinner_loader = true;
@@ -320,32 +323,15 @@ export class ActiveUsersComponent implements OnInit {
           this.activeFacultiesAndAdmins
         ]);
       }
-      //console.log("before adding dup", this.chartData);
       if (this.chartData.length == 2) {
-        this.chartData.unshift([
-          (this.chartData[0][0] - 86400000),
-          0,
-          0
-        ])
+        this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0])
       }
       else if (this.chartData.length == 1) {
-        this.chartData.unshift([
-          (this.chartData[0][0] - 86400000),
-          0,
-          0
-        ])
-        this.chartData.unshift([
-          (this.chartData[0][0] - 86400000),
-          0,
-          0
+        this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0])
+        this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0
         ])
       }
-
-      //console.log("after adding dup", this.chartData);
-
       this.usersChartRender(this.chartData);
-      // }
-
     });
   }
 

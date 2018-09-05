@@ -286,8 +286,8 @@ export class ActiveUsersComponent implements OnInit {
   //service call for apis
   getActiveUsersData() {
     this.spinner_loader = true;
-    this.chartData = [];
     this.dashboardService.getActiveUsersData().subscribe((response: any) => {
+      this.chartData = [];
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length == 0 ? true : false;
@@ -335,11 +335,11 @@ export class ActiveUsersComponent implements OnInit {
     });
   }
 
-  ngOnchanges(changes: any) {
-    if (changes.chartData.currentValue != changes.chartData.previousValue) {
-      this.getActiveUsersData();
-    }
-  }
+  // ngOnchanges(changes: any) {
+  //   if (changes.chartData.currentValue != changes.chartData.previousValue) {
+  //     this.getActiveUsersData();
+  //   }
+  // }
 
   ngOnInit() {
     //service call initiated

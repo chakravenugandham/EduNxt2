@@ -30,6 +30,10 @@
   }
 }
 
+.dropdown-toggle::after{
+  display: none;
+}
+
 table th {
   padding: 0px 12px;
 }

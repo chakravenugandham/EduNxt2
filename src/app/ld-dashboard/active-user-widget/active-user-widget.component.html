@@ -26,24 +26,25 @@
         <span data-toggle="tooltip" data-placement="top" title="{{tooltipText}}">
           <i class="fa fa-question-circle" aria-hidden="true"></i>
         </span>
-        <ng-template #popcontent>
-          <ul class="list-inline">
+        <span class="p-l-20" ngbDropdown>
+          <i class="fa fa-ellipsis-v ellipse" aria-hidden="true" ngbDropdownToggle></i>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="list-inline">
             <!-- <li class="list-inline-item cursor-pointer">
-              <span>
-                <img src="../../assets/images/save.png">
-              </span>
-              <span class="font-color p-l-10 cursor-pointer">
-                <b>Save this view</b>
-              </span>
-            </li>
-            <li class="list-inline-item cursor-pointer" (click)="open(followUpContent)">
-              <span>
-                <img src="../../assets/images/mail.png">
-              </span>
-              <span class="font-color p-l-10 cursor-pointer">
-                <b>Email this report</b>
-              </span>
-            </li> -->
+                <span>
+                  <img src="../../assets/images/save.png">
+                </span>
+                <span class="font-color p-l-10 cursor-pointer">
+                  <b>Save this view</b>
+                </span>
+              </li>
+              <li class="list-inline-item cursor-pointer" (click)="open(followUpContent)">
+                <span>
+                  <img src="../../assets/images/mail.png">
+                </span>
+                <span class="font-color p-l-10 cursor-pointer">
+                  <b>Email this report</b>
+                </span>
+              </li> -->
             <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
               <span>
                 <img src="../../assets/images/download.png">
@@ -53,9 +54,6 @@
               </span>
             </li>
           </ul>
-        </ng-template>
-        <span class="p-l-20" placement="right" [ngbPopover]="popcontent">
-          <i class="fa fa-ellipsis-v ellipse" aria-hidden="true"></i>
         </span>
       </div>
     </div>

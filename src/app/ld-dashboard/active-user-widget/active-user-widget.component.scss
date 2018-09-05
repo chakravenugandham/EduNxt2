@@ -23,3 +23,7 @@
     width: 16px;
   }
 }
+
+.dropdown-toggle::after{
+  display: none;
+}

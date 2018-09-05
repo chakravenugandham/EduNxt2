@@ -69,7 +69,7 @@ export class LocationComponent implements OnInit {
             Number(this.responseData[i]['learnerCount'])
           ]);
         }
-        console.log(this.someData);
+        //console.log(this.someData);
 
         this.googleChartsBaseService.setMap(this.someData);
       }

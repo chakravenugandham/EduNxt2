@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "6.0.2",
     "@angular/router": "6.0.2",
     "@auth0/angular-jwt": "^2.0.0",
-    "@ng-bootstrap/ng-bootstrap": "2.0.0",
+    "@ng-bootstrap/ng-bootstrap": "3.0.0",
     "@ngx-pwa/local-storage": "^6.1.0",
     "@types/jquery": "3.2.12",
     "angular-bootstrap-md": "6.1.2",

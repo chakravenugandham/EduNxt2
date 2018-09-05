@@ -14,7 +14,7 @@ export class LearnerPaceComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: any) {
-    console.log(this.paceData);
+    //console.log(this.paceData);
     this.nodataFlag = _.isEmpty(this.paceData) ? true : false;
 
     if (changes.paceData.currentValue) {

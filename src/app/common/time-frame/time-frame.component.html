@@ -26,10 +26,8 @@
           <span class="font-color">Save this view</span>
         </li> -->
         <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Email this report">
-          <span>
-            <img src="../../assets/images/mail.png">
-          </span>
-          <span class="font-color" (click)="open(followUpContent)">Email this report</span>
+          <span (click)="open(followUpContent)">
+            <img src="../../assets/images/mail.png"> Email this report</span>
         </li>
         <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Download this report">
           <!-- <span>

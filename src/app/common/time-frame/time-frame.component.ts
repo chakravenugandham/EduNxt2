@@ -97,7 +97,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     if (base == "contentConsumptionFullView") {
       this.dashboardService.getContentDetailsCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
-        console.log(this.downloadLink);
+        //console.log(this.downloadLink);
       });
     }
 
@@ -106,7 +106,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.learnerDisplayFor = this.myStorage.getItem('trackDisplayFor');
       this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName).subscribe((res: any) => {
         this.downloadLink = res.data;
-        console.log(this.downloadLink);
+        //console.log(this.downloadLink);
       });
     }
 
@@ -114,7 +114,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.scoreComponent = this.myStorage.getItem('scoreComponent');
       this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
         this.downloadLink = res.data;
-        console.log(this.downloadLink);
+        //console.log(this.downloadLink);
       });
     }
 
@@ -124,19 +124,19 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       if (this.orgPerformanceComponentName === 'teams') {
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
-          console.log(this.downloadLink);
+          //console.log(this.downloadLink);
         });
       }
       else if (this.orgPerformanceComponentName === 'trainers') {
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
-          console.log(this.downloadLink);
+          //console.log(this.downloadLink);
         });
       }
       else if (this.orgPerformanceComponentName === 'learners') {
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
-          console.log(this.downloadLink);
+          //console.log(this.downloadLink);
         });
       }
     }
@@ -144,11 +144,9 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     else if (base == "orgInterestFullView") {
       this.dashboardService.getOrgInterestDetailsDataCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
-        console.log(this.downloadLink);
-
+        //console.log(this.downloadLink);
       });
     }
-
   }
 
   open(content) {
@@ -158,7 +156,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        console.log(this.closeResult);
+        //console.log(this.closeResult);
       }
     );
   }
@@ -175,7 +173,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   sendEmail() {
     this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-      console.log(response);
+      //console.log(response);
     });
   }
 

@@ -320,7 +320,7 @@ export class ActiveUsersComponent implements OnInit {
           this.activeFacultiesAndAdmins
         ]);
       }
-      console.log("before adding dup", this.chartData);
+      //console.log("before adding dup", this.chartData);
       if (this.chartData.length == 2) {
         this.chartData.unshift([
           (this.chartData[0][0] - 86400000),
@@ -341,7 +341,7 @@ export class ActiveUsersComponent implements OnInit {
         ])
       }
 
-      console.log("after adding dup", this.chartData);
+      //console.log("after adding dup", this.chartData);
 
       this.usersChartRender(this.chartData);
       // }

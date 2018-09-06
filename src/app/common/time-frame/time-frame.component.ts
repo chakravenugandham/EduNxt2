@@ -73,9 +73,9 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
       }
     });
-
-
   }
+
+  apiUrl = "learner-leaderboard";
 
   getAllCourses() {
     this.dashboardService.getCoursesProgramData().subscribe((res: any) => {
@@ -99,7 +99,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.dashboardService.courseAndProgram(this.programObj);
   }
 
-
+  dashboardName = '';
   csvFormatFn() {
     let base = this._baseUrl;
 
@@ -148,6 +148,23 @@ export class TimeFrameComponent implements OnInit, OnChanges {
           this.downloadLink = res.data;
         });
       }
+
+
+      // if (this.orgPerformanceComponentName === 'teams') {
+      //   this.apiUrl = "team-leaderboard";
+      // }
+      // else if (this.orgPerformanceComponentName === 'trainers') {
+      //   this.apiUrl = "trainer-leaderboard";
+      // }
+      // else if (this.orgPerformanceComponentName === 'learners') {
+      //   this.apiUrl = "learner-leaderboard";
+      // }
+      // this.dashboardService.getPerformanceDetailsCsv(this.apiUrl).subscribe((response: any) => {
+
+      //   console.log(this.apiUrl);
+      //   this.dashboardName = response.data;
+      // });
+
     }
 
     else if (base == "orgInterestFullView") {

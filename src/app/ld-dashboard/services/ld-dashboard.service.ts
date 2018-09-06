@@ -380,6 +380,11 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
+  // getPerformanceDetailsCsv(apiUrl) {
+  //   let url = this.baseURL + apiUrl + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+  //   return this.http.post(url, null, { headers: this.headers });
+  // }
+
   //org-performance trainers data
   getTeamDataCsv() {
     let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";

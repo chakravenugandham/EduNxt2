@@ -6,7 +6,7 @@
   <table class="table table-borderless">
     <thead>
       <tr>
-        <th scope="col" (click)="sortByFn('contentName')">Content
+        <th scope="col" style="width:30%" (click)="sortByFn('contentName')">Content
           <span>
             <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
@@ -30,7 +30,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let content of contentData | orderBy: sortOrder : reverse">
-        <th scope="row"> {{content.contentName}} </th>
+        <th scope="row" class="content-name"> {{content.contentName}} </th>
         <td> {{content.author}} </td>
         <td> {{content.views | customNumber}} </td>
         <td>

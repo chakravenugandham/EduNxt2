@@ -6,8 +6,24 @@ table {
     i {
       color: #ffd630;
     }
+    // thead{
+    //   tr{
+    //     th:first-child{
+    //       width: 30%;
+    //     }
+    //   }
+    // }
   }
 }
 p {
   margin: 0 !important;
+}
+.content-name{
+  width: 100%;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  height: 32px !important;
+  word-break: break-all;
 }

@@ -48,6 +48,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   learnerTrackComponentName: string;
   learnerDisplayFor: string;
   scoreComponent: string;
+  csvDownloadflag: boolean = false;
 
   constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(NgbModal) private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -58,10 +59,18 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.getAllCourses();
     });
 
+    this.dashboardService.changeInPerforamceAPI.subscribe(result => {
+      this.csvFormatFn();
+    });
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._baseUrl = event.url.replace(/\//g, '');
-        this.csvFormatFn();
+        this.csvDownloadflag = this._baseUrl != '' ? true : false
+        if (this._baseUrl != '') {
+          this.csvFormatFn();
+        }
+
       }
     });
 
@@ -122,21 +131,21 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformaModule');
 
       if (this.orgPerformanceComponentName === 'teams') {
+        this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
-          //console.log(this.downloadLink);
         });
       }
       else if (this.orgPerformanceComponentName === 'trainers') {
+        this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
-          //console.log(this.downloadLink);
         });
       }
       else if (this.orgPerformanceComponentName === 'learners') {
+        this.dashboardService.changeInperformance$.next();
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
-          //console.log(this.downloadLink);
         });
       }
     }
@@ -144,7 +153,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     else if (base == "orgInterestFullView") {
       this.dashboardService.getOrgInterestDetailsDataCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
-        //console.log(this.downloadLink);
       });
     }
   }

@@ -3,6 +3,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { CommonService } from "../../../common-services/common.service";
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 import { _ } from "underscore";
+import { Subject } from "rxjs";
 
 @Component({
   selector: "app-org-performance-fullview",
@@ -136,6 +137,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   changeData(name) {
     this.componentName = name;
+    this.dashboardService.changeInperformance$.next(name);
     localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];

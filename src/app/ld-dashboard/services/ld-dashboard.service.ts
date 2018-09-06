@@ -47,6 +47,12 @@ export class LdDashboardService implements OnInit {
     return this.dateFilterObj;
   }
 
+  changeInperformance$ = new Subject<any>();
+
+  get changeInPerforamceAPI() {
+    return this.changeInperformance$.asObservable();
+  }
+
   refreshRepotAPI$ = new Subject<any>();
 
   get refreshReportAPI() {

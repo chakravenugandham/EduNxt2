@@ -17,9 +17,14 @@
           <b> View Learner performance across </b>
           <span class="text-primary font-weight-bold"> Batch</span>
         </p>
-        <div appDonutChart [data]="performanceTrackValues">
+
+        <div *ngIf="!checkObjEmpty(responseGraphDetails?.performanceData)" class="spinner_loading">
+          <span class="spinner_inside">No data found</span>
         </div>
-        <div class="row graph-badges">
+
+        <div *ngIf="checkObjEmpty(responseGraphDetails?.performanceData)" appDonutChart [data]="performanceTrackValues"></div>
+
+        <div *ngIf="checkObjEmpty(responseGraphDetails?.performanceData)" class="row graph-badges">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
             <i class="far fa-circle excelling"></i> Excelling
             <div> {{responseGraphDetails?.performanceData.excelling}} </div>
@@ -45,9 +50,14 @@
           <b> View Learner pace across </b>
           <span class="text-primary font-weight-bold"> Batch</span>
         </p>
-        <div appDonutChart [data]="paceTrackValues">
+
+        <div *ngIf="!checkObjEmpty(responseGraphDetails?.paceData)" class="spinner_loading">
+          <span class="spinner_inside">No data found</span>
         </div>
-        <div class="row graph-badges">
+
+        <div *ngIf="checkObjEmpty(responseGraphDetails?.paceData)" appDonutChart [data]="paceTrackValues"></div>
+
+        <div *ngIf="checkObjEmpty(responseGraphDetails?.paceData)" class="row graph-badges">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
             <i class="far fa-circle aheadOfSchedule"></i> Ahead of Schedule
             <div> {{responseGraphDetails?.paceData.aheadSchedule}} </div>

@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges, Input } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 
+import { _ } from "underscore";
+
 @Component({
   selector: "app-learner-track-fullview",
   templateUrl: "./learner-track-fullview.component.html",
@@ -158,6 +160,15 @@ export class LearnerTrackFullviewComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
       });
+  }
+
+  checkObjEmpty(obj) {
+    if (_.isEmpty(obj)) {
+      return false;
+    }
+    else {
+      return true;
+    }
   }
 
   getDisplayObject($event) {

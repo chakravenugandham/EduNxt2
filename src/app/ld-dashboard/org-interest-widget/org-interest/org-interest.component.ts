@@ -15,8 +15,8 @@ export class OrgInterestComponent implements OnInit, OnChanges {
   @Input() orgPopularData: any[];
 
   options: CloudOptions = {
-    width: 300,
-    height: 300,
+    width: 400,
+    height: 400,
     overflow: false
   };
 

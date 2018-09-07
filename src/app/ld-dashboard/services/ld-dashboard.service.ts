@@ -153,6 +153,13 @@ export class LdDashboardService implements OnInit {
     this.refreshAPI$.next();
   }
 
+  orgperformanceName = '';
+  changeLeaderBoard(leaderBoardName) {
+    this.orgperformanceName = leaderBoardName;
+    console.log(this.orgperformanceName);
+    return this.orgperformanceName;
+  }
+
   changeDate(dateObj) {
     this.dateFilterObj.start_date = dateObj.start_date;
     this.dateFilterObj.end_date = dateObj.end_date;

@@ -129,42 +129,24 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
     else if (base == "orgPerformanceFullView") {
       this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformaModule');
-
       if (this.orgPerformanceComponentName === 'teams') {
-        this.dashboardService.changeInperformance$.next();
+        //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
         });
       }
       else if (this.orgPerformanceComponentName === 'trainers') {
-        this.dashboardService.changeInperformance$.next();
+        //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
         });
       }
       else if (this.orgPerformanceComponentName === 'learners') {
-        this.dashboardService.changeInperformance$.next();
+        //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
         });
       }
-
-
-      // if (this.orgPerformanceComponentName === 'teams') {
-      //   this.apiUrl = "team-leaderboard";
-      // }
-      // else if (this.orgPerformanceComponentName === 'trainers') {
-      //   this.apiUrl = "trainer-leaderboard";
-      // }
-      // else if (this.orgPerformanceComponentName === 'learners') {
-      //   this.apiUrl = "learner-leaderboard";
-      // }
-      // this.dashboardService.getPerformanceDetailsCsv(this.apiUrl).subscribe((response: any) => {
-
-      //   console.log(this.apiUrl);
-      //   this.dashboardName = response.data;
-      // });
-
     }
 
     else if (base == "orgInterestFullView") {

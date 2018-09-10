@@ -60,7 +60,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     });
 
     this.dashboardService.changeInPerforamceAPI.subscribe(result => {
-      this.csvFormatFn();
+      // this.csvFormatFn();
     });
 
     this.router.events.subscribe((event) => {
@@ -68,7 +68,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
         this._baseUrl = event.url.replace(/\//g, '');
         this.csvDownloadflag = this._baseUrl != '' ? true : false
         if (this._baseUrl != '') {
-          this.csvFormatFn();
+          // this.csvFormatFn();
         }
 
       }
@@ -106,6 +106,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     if (base == "contentConsumptionFullView") {
       this.dashboardService.getContentDetailsCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
+        window.open(res.data, "_self");
         //console.log(this.downloadLink);
       });
     }
@@ -115,6 +116,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.learnerDisplayFor = this.myStorage.getItem('trackDisplayFor');
       this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName).subscribe((res: any) => {
         this.downloadLink = res.data;
+        window.open(res.data, "_self");
         //console.log(this.downloadLink);
       });
     }
@@ -123,6 +125,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.scoreComponent = this.myStorage.getItem('scoreComponent');
       this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
         this.downloadLink = res.data;
+        window.open(res.data, "_self");
         //console.log(this.downloadLink);
       });
     }
@@ -133,18 +136,21 @@ export class TimeFrameComponent implements OnInit, OnChanges {
         //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
+          window.open(res.data, "_self");
         });
       }
       else if (this.orgPerformanceComponentName === 'trainers') {
         //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
+          window.open(res.data, "_self");
         });
       }
       else if (this.orgPerformanceComponentName === 'learners') {
         //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
+          window.open(res.data, "_self");
         });
       }
     }
@@ -152,6 +158,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     else if (base == "orgInterestFullView") {
       this.dashboardService.getOrgInterestDetailsDataCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
+        window.open(res.data, "_self");
       });
     }
   }

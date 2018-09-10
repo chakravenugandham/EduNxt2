@@ -22,15 +22,19 @@ export class BarChartDirective implements OnInit, OnChanges {
     this.el.nativeElement.innerHTML = "";
 
     let margin: number = 50,
-      width = 500,
+      // width = 500,
+      width = d3.select(this.el.nativeElement).node().getBoundingClientRect().width - 46,
       h = 220,
       p = 50;
+    let calWidth = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
+    console.log(calWidth);
+
 
     //this.data = { label: "Data Structures", Group1: 60 };
     let calculatedWidth =
-      this.data.length > 6 ? width + 20 * (this.data.length - 6) : width;
+      this.data.length > 5 ? width + 46 * (this.data.length - 5) : width;
 
-    if (this.data.length > 6) {
+    if (this.data.length > 5) {
       d3.select(".bar-chart-graph").attr("overflow-x", "scroll");
     }
 
@@ -152,6 +156,7 @@ export class BarChartDirective implements OnInit, OnChanges {
       })
       .enter().append("rect")
       .attr("width", (x1.rangeBand() - 3))
+      // .attr("width", "42")
       .attr("x", function (d) { return x1(d.name); })
       .attr("y", function (d) { return y(d.value); })
       .attr("value", function (d) { return d.name; })

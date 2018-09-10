@@ -29,7 +29,8 @@ export class OrgInterestComponent implements OnInit, OnChanges {
       this.options.width = document.getElementById("word-cloud").offsetWidth;
 
       this.wordData = [];
-      for (let i in this.orgPopularData) {
+      // for (let i in this.orgPopularData) {
+      for (let i = 0; i < 5; i++) {
         this.wordData.push({
           text: this.orgPopularData[i].courseName,
           weight: this.orgPopularData[i].rank

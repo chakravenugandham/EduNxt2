@@ -8,7 +8,10 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class PaginateComponent implements OnInit {
   @Input() pageInfo: any;
   @Output() gotoPage = new EventEmitter<any>();
-  selectPage: number;;
+  selectPage: number;
+
+  digitsOnly = /[1234567890]/g;
+
   constructor() { }
 
   loadPage(event) {

@@ -91,11 +91,10 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   getDataFromService() {
     // this.responseGraphData = [];
     this.spinner_loader_graph = true;
-    this.dashboardService
+    const request = this.dashboardService
       .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
       .subscribe((response: any) => {
         this.responseGraphData = response.data;
-
         this.spinner_loader_graph = false;
 
         if (this.responseGraphData.length > 0) {
@@ -104,10 +103,9 @@ export class ScoresDistributionFullviewComponent implements OnInit {
           }
           this.dataSet = [...this.dataSet];
         }
-
         this.noDataFlag_graph = this.responseGraphData.length == 0 ? true : false;
-
       });
+    // request.unsubscribe();
   }
 
   getScoreDetails() {

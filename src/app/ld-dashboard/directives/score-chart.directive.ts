@@ -87,7 +87,7 @@ export class ScoreChartDirective implements OnInit, OnChanges {
       .y1(function (d) {
         return yScale(d[1]);
       })
-      .curve(d3.curveCatmullRom.alpha(1));
+      .curve(d3.curveCatmullRom.alpha(1.5));
 
     area.y0(yScale(0));
 

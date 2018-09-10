@@ -185,6 +185,15 @@
             <td class=""> {{data.highestScore}} </td>
 
             <!-- <td>
+              <span *ngIf="data.scoreAvg > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',data.person_id)">
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span *ngIf="data.scoreAvg <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',data.person_id)">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
+            </td> -->
+
+            <!-- <td>
               <span *ngIf="data.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',learnerData.person_id)">
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>

@@ -41,14 +41,24 @@
         <td>{{parseFloat(tableData.completion).toFixed(0) | customNumber}}</td>
         <td>{{tableData.completedProgram | customNumber}}</td>
         <td>{{tableData.teamSize | customNumber}}</td>
+
         <td>
+          <span *ngIf="tableData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',tableData.person_id)">
+            <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
+          </span>
+          <span *ngIf="tableData.completion <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',tableData.person_id)">
+            <i class="fas fa-exclamation-triangle"></i> Follow up
+          </span>
+        </td>
+
+        <!-- <td>
           <span *ngIf="tableData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',tableData.teamId)">
             <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
           </span>
           <span *ngIf="tableData.completion <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',tableData.teamId)">
             <i class="fas fa-exclamation-triangle"></i> Follow up
           </span>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>

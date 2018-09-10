@@ -46,6 +46,19 @@ export class TrainersComponent implements OnInit {
     })
   }
 
+  composeEmail(type, personId) {
+    this.dashboardService.getEmailAddress(personId).subscribe((response: any) => {
+      this.emailData.to = response.data.email;
+
+      if (type == "followup")
+        this.emailData.text = "This mail is regarding the Follow up. Please have a look at your Performance";
+      else if (type == "congrats")
+        this.emailData.text = "Congratulations..! You did a great job on your performance. Keep going.";
+
+      window.open("mailto:" + this.emailData.to + "?subject=" + this.emailData.subject + "&body=" + this.emailData.text, "_self");
+    })
+  }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return "by pressing ESC";

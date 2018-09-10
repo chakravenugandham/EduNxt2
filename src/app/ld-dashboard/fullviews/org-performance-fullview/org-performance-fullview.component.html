@@ -64,8 +64,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Action
-            </th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -81,14 +80,24 @@
             <td class="">{{parseFloat(teamData.completion).toFixed(2)}}</td>
             <td class="">{{teamData.completedProgram}}</td>
             <td class="">{{teamData.teamsize}}</td>
+
             <td>
+              <span *ngIf="teamData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',teamData.teamId)">
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span *ngIf="teamData.completion <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',teamData.teamId)">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
+            </td>
+
+            <!-- <td>
               <span *ngIf="teamData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',teamData.teamId)">
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="teamData.completion <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',teamData.teamId)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
@@ -143,14 +152,24 @@
                 <i class="far fa-star "></i>
               </span>{{trainerData.avgRating}}
             </td>
+
             <td>
+              <span *ngIf="trainerData.avgRating> 3.5" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',trainerData.trainerId)">
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span *ngIf="trainerData.avgRating <= 3.5" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',trainerData.trainerId)">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
+            </td>
+
+            <!-- <td>
               <span *ngIf="trainerData.avgRating> 3.5" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',trainerData.trainerId)">
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span class="negative-color cursor-pointer" *ngIf="trainerData.avgRating <= 3.5" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',trainerData.trainerId)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
@@ -207,14 +226,24 @@
             <td>{{learnerData.pointsEarned | customNumber}}</td>
             <td>{{learnerData.avgTestPerformance}}</td>
             <td>{{learnerData.examScore}}</td>
+
             <td>
+              <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',learnerData.person_id)">
+                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
+              </span>
+              <span *ngIf="learnerData.examScore <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',learnerData.person_id)">
+                <i class="fas fa-exclamation-triangle"></i> Follow up
+              </span>
+            </td>
+
+            <!-- <td>
               <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',learnerData.person_id)">
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="learnerData.examScore <= 75" class="action_icon negative-color cursor-pointer" (click)="open(followUpContent,'followup',learnerData.person_id)">
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>

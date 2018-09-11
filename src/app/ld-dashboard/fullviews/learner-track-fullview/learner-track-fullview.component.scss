@@ -108,7 +108,10 @@ width: auto;
 }
 
 table {
-  th,
+  th{
+    font-size: 11px;
+    width:4%;
+  }
   td {
     font-size: 11px;
     width: 11%;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from "@angular/core";
 
 @Component({
   selector: "app-content-consumption",
@@ -7,12 +7,18 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 })
 export class ContentConsumptionComponent implements OnInit {
   @Input() contentData;
-  sortOrder: string ;
+  @Output() sortBy = new EventEmitter<any>();
+  sortOrder: string = 'contentName';
+  sortFlag: boolean = false;
+  order: string = 'desc';
+
   // sortOrder: string = "contentName";
   reverse: boolean = false;
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
   constructor() { }
 

@@ -15,6 +15,8 @@ import { _ } from "underscore";
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
 
+  sorting = {};
+
   pagination = {
     page: 1,
     limitTo: 5,
@@ -49,26 +51,31 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      //this.getDataFromService();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService();
+      //this.getDataFromService();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService();
+      //this.getDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService();
+      //this.getDataFromService();
     });
+  }
+
+  sortBy($event) {
+    this.sorting = $event;
+    console.log(this.sorting)
   }
 
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sorting['sortOrder'], this.sorting['order'])
       .subscribe((res: any) => {
         this.contentObject.responseData = res.data;
 
@@ -119,11 +126,11 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
-    this.getDataFromService();
+    //this.getDataFromService();
   }
 
   ngOnInit() {
     this.filtersData.appliedFilters = this.contentObject.appliedFilters;
-    this.getDataFromService();
+    //this.getDataFromService();
   }
 }

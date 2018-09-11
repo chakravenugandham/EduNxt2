@@ -56,7 +56,7 @@
   </div>
 
   <div class="content-perform" *ngIf="contentObject.responseData.length > 0">
-    <app-content-consumption [contentData]='contentObject.responseData'></app-content-consumption>
+    <app-content-consumption [contentData]='contentObject.responseData' (sortBy)="sortBy($event)"></app-content-consumption>
   </div>
 
   <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>

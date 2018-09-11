@@ -144,6 +144,16 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Exam Accessed
+              <span (click)="sortByFn('examAccessed')">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Exam Passed
+              <span (click)="sortByFn('examPassed')">
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
             <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Progress
               <span (click)="sortByFn('scorePercentage')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -179,6 +189,8 @@
             <td class=""> {{data.courseName}} </td>
             <td class=""> {{data.teamName}} </td>
             <td class=""> {{data.batchName}} </td>
+            <td class=""> {{data.examAccessed}} </td>
+            <td class=""> {{data.examPassed}} </td>
             <td class=""> {{data.scorePercentage}} </td>
             <td class=""> {{data.scoreInCourse}} </td>
             <td class=""> {{data.scoreAvg}} </td>

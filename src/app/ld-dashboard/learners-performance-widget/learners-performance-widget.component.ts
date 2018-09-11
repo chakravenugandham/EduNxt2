@@ -109,12 +109,12 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
         for (let i in this.responseData) {
           if (this.getTab == "performance") {
             this.performanceDataSet.push({
-              label: this.responseData[i].courseName,
+              label: this.responseData[i].sectionName,
               Group1: this.responseData[i].performance = this.responseData[i].performance > 100 ? 100 : this.responseData[i].performance
             });
           } else if (this.getTab == "progress") {
             this.progressDataSet.push({
-              label: this.responseData[i].courseName,
+              label: this.responseData[i].sectionName,
               Group1: this.responseData[i].progress = this.responseData[i].progress > 100 ? 100 : this.responseData[i].progress
             });
           }

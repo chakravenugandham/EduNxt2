@@ -27,8 +27,6 @@ export class BarChartDirective implements OnInit, OnChanges {
       h = 220,
       p = 50;
     let calWidth = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
-    console.log(calWidth);
-
 
     //this.data = { label: "Data Structures", Group1: 60 };
     let calculatedWidth =

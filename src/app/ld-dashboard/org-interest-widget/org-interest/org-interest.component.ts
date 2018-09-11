@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { CloudData, CloudOptions } from "angular-tag-cloud-module";
-import { Observable } from "rxjs";
-import { of as observableOf } from "rxjs";
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
+import { Observable } from 'rxjs';
+import { of as observableOf } from 'rxjs';
 
-import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
+import { LdDashboardService } from '../../../ld-dashboard/services/ld-dashboard.service';
 
 @Component({
-  selector: "app-org-interest",
-  templateUrl: "./org-interest.component.html",
-  styleUrls: ["./org-interest.component.scss"]
+  selector: 'app-org-interest',
+  templateUrl: './org-interest.component.html',
+  styleUrls: ['./org-interest.component.scss']
 })
 export class OrgInterestComponent implements OnInit, OnChanges {
   @Input() orgInterestData: any[];
@@ -26,11 +26,12 @@ export class OrgInterestComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.orgPopularData && changes.orgPopularData.currentValue) {
-      this.options.width = document.getElementById("word-cloud").offsetWidth;
+      this.options.width = document.getElementById('word-cloud').offsetWidth;
 
       this.wordData = [];
-      // for (let i in this.orgPopularData) {
-      for (let i = 0; i < 5; i++) {
+      // tslint:disable-next-line:forin
+      for (const i in this.orgPopularData) {
+        // for (let i = 0; i < 5; i++) {
         this.wordData.push({
           text: this.orgPopularData[i].courseName,
           weight: this.orgPopularData[i].rank

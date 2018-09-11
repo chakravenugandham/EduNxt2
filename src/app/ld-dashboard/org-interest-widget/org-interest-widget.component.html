@@ -4,7 +4,7 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
-<div class="widget-block" id="org-interest">
+<div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -75,18 +75,21 @@
     </div>
   </div>
 
-  <div *ngIf="spinner_loader" class="spinner_loading">
-    <app-spinner></app-spinner>
-  </div>
+  <div id="org-interest">
 
-  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data found</span>
-  </div>
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <app-spinner></app-spinner>
+    </div>
 
-  <div *ngIf="orgData.length > 0">
-    <app-org-interest [orgInterestData]='orgData' [orgPopularData]='orgPopularTopicData'></app-org-interest>
-  </div>
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
 
-  <app-filter-widget [filtersInfo]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>
+    <div *ngIf="orgData.length > 0">
+      <app-org-interest [orgInterestData]='orgData' [orgPopularData]='orgPopularTopicData'></app-org-interest>
+    </div>
+
+    <app-filter-widget [filtersInfo]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>
+  </div>
 
 </div>

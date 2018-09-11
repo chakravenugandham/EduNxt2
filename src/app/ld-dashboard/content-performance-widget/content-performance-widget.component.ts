@@ -51,19 +51,19 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      //this.getDataFromService();
+      this.getDataFromService();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      //this.getDataFromService();
+      this.getDataFromService();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      //this.getDataFromService();
+      this.getDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      //this.getDataFromService();
+      this.getDataFromService();
     });
   }
 
@@ -126,11 +126,11 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
-    //this.getDataFromService();
+    this.getDataFromService();
   }
 
   ngOnInit() {
     this.filtersData.appliedFilters = this.contentObject.appliedFilters;
-    //this.getDataFromService();
+    this.getDataFromService();
   }
 }

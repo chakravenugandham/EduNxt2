@@ -5,7 +5,7 @@
   </p>
 </div>
 
-<div class="widget-block" id="score-distribution">
+<div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -17,7 +17,8 @@
         <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'quiz'}" (click)="quizScoreFn()">Quizzes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'assignment'}" (click)="assignmentFn()">Assignments</a>
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'assignment'}"
+          (click)="assignmentFn()">Assignments</a>
       </li>
     </ul>
     <div class="float-right widget-menu">
@@ -84,21 +85,25 @@
     </div>
   </div>
 
-  <div *ngIf="spinner_loader" class="spinner_loading">
-    <app-spinner></app-spinner>
+  <div id="score-distribution">
 
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <app-spinner></app-spinner>
+
+    </div>
+
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
+
+    <div *ngIf="responseData.length > 0 && !noDataFlag">
+      <app-test-scores *ngIf="filtersData.currentModule == 'test'" [testData]="dataSet"></app-test-scores>
+      <app-quiz *ngIf="filtersData.currentModule == 'quiz'" [testData]="dataSet"></app-quiz>
+      <app-assignment *ngIf="filtersData.currentModule == 'assignment'" [testData]="dataSet"></app-assignment>
+    </div>
+
+
+    <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
   </div>
-
-  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data found</span>
-  </div>
-
-  <div *ngIf="responseData.length > 0 && !noDataFlag">
-    <app-test-scores *ngIf="filtersData.currentModule == 'test'" [testData]="dataSet"></app-test-scores>
-    <app-quiz *ngIf="filtersData.currentModule == 'quiz'" [testData]="dataSet"></app-quiz>
-    <app-assignment *ngIf="filtersData.currentModule == 'assignment'" [testData]="dataSet"></app-assignment>
-  </div>
-
-  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
 
 </div>

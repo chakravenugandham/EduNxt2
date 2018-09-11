@@ -17,7 +17,7 @@ export class OrgInterestComponent implements OnInit, OnChanges {
   options: CloudOptions = {
     width: 400,
     height: 400,
-    overflow: true
+    overflow: false
   };
 
   wordData = [];
@@ -33,7 +33,7 @@ export class OrgInterestComponent implements OnInit, OnChanges {
       for (const i in this.orgPopularData) {
         // for (let i = 0; i < 5; i++) {
         this.wordData.push({
-          text: this.orgPopularData[i].courseName,
+          text: this.orgPopularData[i].courseName.slice(0, 20) + '..',
           weight: this.orgPopularData[i].rank
         });
       }

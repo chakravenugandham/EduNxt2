@@ -144,11 +144,11 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <!-- <th scope="col">Team Leader
-              <span (click)="sortByFn('learnerName')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Progress
+              <span (click)="sortByFn('scorePercentage')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-            </th> -->
+            </th>
             <th scope="col">Score in course
               <span (click)="sortByFn('scoreInCourse')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -179,7 +179,7 @@
             <td class=""> {{data.courseName}} </td>
             <td class=""> {{data.teamName}} </td>
             <td class=""> {{data.batchName}} </td>
-            <!-- <td class=""> {{data.teamLeaderName}} </td> -->
+            <td class=""> {{data.scorePercentage}} </td>
             <td class=""> {{data.scoreInCourse}} </td>
             <td class=""> {{data.scoreAvg}} </td>
             <td class=""> {{data.highestScore}} </td>

@@ -26,6 +26,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     currentModule: '',
     appliedFilters: []
   };
+  order: string = 'desc';
 
   searchBox: boolean = false;
   componentName: string;
@@ -148,6 +149,12 @@ export class LearnerTrackFullviewComponent implements OnInit {
       });
   }
 
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    //this.getTableDataFromService();
+    //this.reverse = !this.reverse;
+  }
+  // , this.sortOrder, this.order
   getTableDataFromService() {
     this.spinner_loader = true;
     this.responseTrackDetails = [];
@@ -183,11 +190,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
     window.scrollTo(0, 200);
     this.pagination.page = $event;
     this.getTableDataFromService();
-  }
-
-  sortByFn(sortByName) {
-    this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
   }
 
   open(content, type, personId) {

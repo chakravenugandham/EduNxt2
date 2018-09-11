@@ -247,7 +247,7 @@ export class LdDashboardService implements OnInit {
     let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE + this.setDateObj + this.program_course;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
-
+  //+ "&sortBy=" + tracksortName + "&order=" + sort
   getLearnerTrackDetails(componentName, displayfor, searchFilterData, searchTerm, filterbody, pagination) {
     let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + this.program_course + "&displayFor=" + displayfor + "&type=" + componentName + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
     return this.http.post(url, filterbody, { headers: this.headers });

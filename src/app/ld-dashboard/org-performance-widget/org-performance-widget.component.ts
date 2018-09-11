@@ -1,41 +1,41 @@
-import { Component, OnInit } from "@angular/core";
-import { LdDashboardService } from "../services/ld-dashboard.service";
-import { CommonService } from "../../common-services/common.service";
+import { Component, OnInit } from '@angular/core';
+import { LdDashboardService } from '../services/ld-dashboard.service';
+import { CommonService } from '../../common-services/common.service';
 
 
 import * as jspdf from 'jspdf';
 
 import html2canvas from 'html2canvas';
 
-import { _ } from "underscore";
+import { _ } from 'underscore';
 
 @Component({
-  selector: "app-org-performance-widget",
-  templateUrl: "./org-performance-widget.component.html",
-  styleUrls: ["./org-performance-widget.component.scss"]
+  selector: 'app-org-performance-widget',
+  templateUrl: './org-performance-widget.component.html',
+  styleUrls: ['./org-performance-widget.component.scss']
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
 
   tooltipText: string;
 
-  //filters data
+  // filters data
   filtersData = {
-    routeTo: "orgPerformanceFullView",
+    routeTo: 'orgPerformanceFullView',
     filters: false,
     search: true,
     viewDetails: true,
     filterList: [],
     appliedFilters: [],
-    currentModule: ""
+    currentModule: ''
   };
 
   searchFilterData = {
-    searchComponent: "learner-leaderboard",
-    searchBy: "learnerName",
-    searchCount: "5",
+    searchComponent: 'learner-leaderboard',
+    searchBy: 'learnerName',
+    searchCount: '5',
     searchedUsers: []
   };
-  searchString: string = "";
+  searchString = '';
 
   responseData = [];
 
@@ -47,8 +47,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   trainersSearchItems = [];
   learnersSearchItems = [];
 
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
+  spinner_loader = false;
+  noDataFlag = false;
 
   pagination = {
     limitTo: 5
@@ -74,9 +74,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   teamsFn() {
     this.tooltipText = 'Teams';
-    this.filtersData.currentModule = "teams";
-    this.searchFilterData.searchComponent = "team-leaderboard";
-    this.searchFilterData.searchBy = "teamName";
+    this.filtersData.currentModule = 'teams';
+    this.searchFilterData.searchComponent = 'team-leaderboard';
+    this.searchFilterData.searchBy = 'teamName';
     this.filtersData.appliedFilters = this.teamsSearchItems;
     // this.filtersData.appliedFilters = []
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
@@ -84,9 +84,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
   trainersFn() {
     this.tooltipText = 'Trainers';
-    this.filtersData.currentModule = "trainers";
-    this.searchFilterData.searchComponent = "trainer-leaderboard";
-    this.searchFilterData.searchBy = "trainerName";
+    this.filtersData.currentModule = 'trainers';
+    this.searchFilterData.searchComponent = 'trainer-leaderboard';
+    this.searchFilterData.searchBy = 'trainerName';
     this.filtersData.appliedFilters = this.trainersSearchItems;
     // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
@@ -94,9 +94,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
   learnersFn() {
     this.tooltipText = 'Learners';
-    this.filtersData.currentModule = "learners";
-    this.searchFilterData.searchComponent = "learner-leaderboard";
-    this.searchFilterData.searchBy = "learnerName";
+    this.filtersData.currentModule = 'learners';
+    this.searchFilterData.searchComponent = 'learner-leaderboard';
+    this.searchFilterData.searchBy = 'learnerName';
     this.filtersData.appliedFilters = this.learnersSearchItems;
     // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
@@ -104,20 +104,20 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   downloadPdf() {
-    let htmlTemp = document.getElementById("org-performance");
+    const htmlTemp = document.getElementById('org-performance');
     html2canvas(htmlTemp).then(canvas => {
-      // Few necessary setting options  
-      let imgWidth = 208;
-      let pageHeight = 295;
-      let imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
+      // Few necessary setting options
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('./');
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 0;
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
-      pdf.save('EduNxtReport.pdf'); // Generated PDF   
+      pdf.save('EduNxtReport.pdf'); // Generated PDF
     });
 
   }
@@ -126,29 +126,65 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.spinner_loader = true;
     this.responseData = [];
 
-    const request = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
-      this.responseData = this.displayData = this.actualResponseData = response.data;
+    const request = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination)
+      .subscribe(
+        (response: any) => {
+          // this.responseData = this.displayData = this.actualResponseData = response.data;
+          this.responseData = this.actualResponseData = response.data;
 
-      this.constructNewArray();
-      this.spinner_loader = false;
-      this.noDataFlag = this.responseData.length == 0 ? true : false;
-    });
+          this.constructNewArray();
+          this.spinner_loader = false;
+          this.noDataFlag = this.responseData.length === 0 ? true : false;
+        });
     // request.unsubscribe();
   }
 
   constructNewArray() {
-
-    for (let i in this.filtersData.appliedFilters) {
-      this.filtersData.appliedFilters[i]["new"] = true;
-    }
-
+    const tempArray = [];
+    const firstArray = [];
     this.displayData = [];
-    let tempArray = [];
-
-    for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
-      tempArray.push(this.responseData[i]);
+    // tslint:disable-next-line:forin
+    for (const p in this.responseData) {
+      tempArray.push(this.responseData[p]);
     }
-    this.displayData = tempArray.concat(this.filtersData.appliedFilters);
+    console.log(tempArray);
+
+    if (this.filtersData.appliedFilters.length > 0) {
+      // tslint:disable-next-line:forin
+      for (const i in this.filtersData.appliedFilters) {
+        const foundAtIndex = _.findIndex(tempArray, this.filtersData.appliedFilters[i]);
+        // tempArray = _.without(tempArray, this.filtersData.appliedFilters[i]);
+        console.log(this.filtersData.appliedFilters[i]);
+        console.log(foundAtIndex);
+
+        if (foundAtIndex !== -1) {
+          tempArray.splice(foundAtIndex, 1);
+        }
+        this.filtersData.appliedFilters[i]['new'] = true;
+      }
+    }
+
+    // tslint:disable-next-line:forin
+    // for (const i in this.filtersData.appliedFilters) {
+    //   this.filtersData.appliedFilters[i]['new'] = true;
+    // }
+
+    // for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
+    //   tempArray.push(this.responseData[i]);
+    // }
+
+    for (let s = 0; s < (5 - this.filtersData.appliedFilters.length); s++) {
+      firstArray.push(tempArray[s]);
+    }
+    this.displayData = firstArray.concat(this.filtersData.appliedFilters);
+
+    // if (this.filtersData.appliedFilters.length === 0) {
+    //   this.displayData = tempArray;
+    // } else if (this.filtersData.appliedFilters.length > 1) {
+    //   this.displayData = tempArray.slice(0, -(this.filtersData.appliedFilters.length)).concat(this.filtersData.appliedFilters);
+    // }
+
+
 
   }
 

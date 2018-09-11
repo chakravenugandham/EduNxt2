@@ -247,9 +247,9 @@ export class LdDashboardService implements OnInit {
     let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE + this.setDateObj + this.program_course;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
-  //+ "&sortBy=" + tracksortName + "&order=" + sort
-  getLearnerTrackDetails(componentName, displayfor, searchFilterData, searchTerm, filterbody, pagination) {
-    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + this.program_course + "&displayFor=" + displayfor + "&type=" + componentName + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+  //
+  getLearnerTrackDetails(componentName, displayfor, searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
+    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + this.program_course + "&displayFor=" + displayfor + "&type=" + componentName + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
@@ -276,8 +276,8 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  getOrgInterestDetailsData(searchFilterData, searchTerm, pagination) {
-    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+  getOrgInterestDetailsData(searchFilterData, searchTerm, pagination, tracksortName, sort) {
+    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -294,14 +294,14 @@ export class LdDashboardService implements OnInit {
   }
 
   //scores full-details
-  getScoresDetails(dropdownValue, searchFilterData, searchTerm, filterbody, pagination) {
-    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+  getScoresDetails(dropdownValue, searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
+    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //content-performing
-  getContentData(searchFilterData, searchTerm, filterbody, pagination) {
-    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+  getContentData(searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
+    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 

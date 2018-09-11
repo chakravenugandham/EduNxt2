@@ -20,7 +20,8 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   checkBoxValue: boolean = false;
   sortOrder: string;
-  reverse: boolean = false;
+  order: string = 'desc';
+  sortFlag: boolean = false;
 
   searchBox: boolean = false;
 
@@ -53,24 +54,30 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
   }
 
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    this.getDataFromService(sortByName);
+    //this.reverse = !this.reverse;
+  }
+
   //api calls for trainers ,teams and learner
-  getDataFromService() {
+  getDataFromService(sortByName) {
     this.spinner_loader = true;
     this.responseData = [];
 
@@ -103,7 +110,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 
   selectToCompare(user) {
@@ -118,7 +125,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   clearSelected() {
     this.compareUsers = [];
     this.pagination.page = 1;
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 
   checkItemInApplied(item) {
@@ -130,11 +137,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.responseData = this.compareUsers;
   }
 
-  sortByFn(sortByName) {
-    this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
-  }
-
   changeData(name) {
     this.componentName = name;
     this.dashboardService.changeLeaderBoard(name);
@@ -144,7 +146,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.compareUsers = [];
     this.searchString = "";
     this.setConfigObj();
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 
   open(content, type, personId) {
@@ -194,6 +196,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   ngOnInit() {
     this.componentName = this.showDetails = localStorage.getItem('orgPerformaModule');
     this.setConfigObj();
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 }

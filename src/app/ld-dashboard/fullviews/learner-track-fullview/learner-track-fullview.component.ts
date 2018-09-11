@@ -37,8 +37,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  sortOrder: string;
-  reverse: boolean = false;
+  sortOrder: string = 'learnerName';
+  sortFlag: boolean = false;
 
   searchFilterData = {
     searchBy: "learnerName"
@@ -61,21 +61,21 @@ export class LearnerTrackFullviewComponent implements OnInit {
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService();
+      this.getTableDataFromService(this.sortOrder);
     });
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService();
+      this.getTableDataFromService(this.sortOrder);
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService();
+      this.getTableDataFromService(this.sortOrder);
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService();
+      this.getTableDataFromService(this.sortOrder);
     });
 
     // this.filtersData.currentModule = this.myStorage.getItem('learnerTrackCurrentModule');
@@ -92,7 +92,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
       localStorage.setItem('trackDisplayFor', this.displayfor);
     }
 
-    this.getTableDataFromService();
+    this.getTableDataFromService(this.sortOrder);
     this.getGraphDataFromService();
 
   }
@@ -150,15 +150,17 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    //this.getTableDataFromService();
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.getTableDataFromService(sortByName);
     //this.reverse = !this.reverse;
   }
   // , this.sortOrder, this.order
-  getTableDataFromService() {
+  getTableDataFromService(sortbyname) {
     this.spinner_loader = true;
     this.responseTrackDetails = [];
-    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortbyname, this.order)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         this.pagination.total = response.pagination.total;
@@ -183,13 +185,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
     localStorage.setItem('trackDisplayFor', this.displayfor);
     this.pagination.page = 1;
     this.searchString = "";
-    this.getTableDataFromService();
+    this.getTableDataFromService(this.sortOrder);
   }
 
   gotoPage($event) {
     window.scrollTo(0, 200);
     this.pagination.page = $event;
-    this.getTableDataFromService();
+    this.getTableDataFromService(this.sortOrder);
   }
 
   open(content, type, personId) {
@@ -239,11 +241,12 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
-    this.getTableDataFromService();
+    this.getTableDataFromService(this.sortOrder);
     this.getGraphDataFromService();
   }
 
   ngOnInit() {
+    this.sortByFn(this.sortOrder);
     this.getModule();
   }
 }

@@ -36,7 +36,8 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   };
 
   sortOrder: string = "contentName";
-  reverse: boolean = false;
+  order: string = 'desc';
+  sortFlag: boolean = false;
   searchBox: boolean = false;
 
   spinner_loader: boolean = false;
@@ -44,28 +45,35 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
   }
 
-  getDataFromService() {
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.getDataFromService(sortByName);
+    //this.reverse = !this.reverse;
+  }
+
+  getDataFromService(sortByName) {
     this.spinner_loader = true;
     this.contentData = [];
     // (<HTMLInputElement>document.getElementById("searchString")).disabled = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortByName, this.order)
       .subscribe((response: any) => {
         this.contentData = response.data;
         // (<HTMLInputElement>document.getElementById("searchString")).disabled = false;
@@ -76,22 +84,17 @@ export class ContentConsumptionFullviewComponent implements OnInit {
       });
   }
 
-  sortByFn(sortByName) {
-    this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
-  }
-
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 }

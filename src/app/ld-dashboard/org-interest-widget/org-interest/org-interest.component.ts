@@ -17,8 +17,7 @@ export class OrgInterestComponent implements OnInit, OnChanges {
   options: CloudOptions = {
     width: 400,
     height: 400,
-    // overflow: false
-    overflow: false
+    overflow: true
   };
 
   wordData = [];

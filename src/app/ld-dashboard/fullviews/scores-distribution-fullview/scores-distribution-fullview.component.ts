@@ -27,7 +27,8 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   dataSet = [[0, 0], [20], [40], [60], [80], [100]];
 
   sortOrder: string = "learnerName";
-  reverse: boolean = false;
+  order: string = 'desc';
+  sortFlag: boolean = false;
   searchBox: boolean = false;
 
   spinner_loader: boolean = false;
@@ -52,22 +53,22 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails();
+      this.getScoreDetails(this.sortOrder);
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails();
+      this.getScoreDetails(this.sortOrder);
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails();
+      this.getScoreDetails(this.sortOrder);
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails();
+      this.getScoreDetails(this.sortOrder);
     });
   }
 
@@ -85,7 +86,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
       this.searchFilterData.component = "assignment"
     }
     this.getDataFromService();
-    this.getScoreDetails();
+    this.getScoreDetails(this.sortOrder);
   }
 
   getDataFromService() {
@@ -108,11 +109,18 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     // request.unsubscribe();
   }
 
-  getScoreDetails() {
+  sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
+    this.sortOrder = sortByName;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.getScoreDetails(sortByName);
+  }
+
+  getScoreDetails(sortByName) {
     this.spinner_loader = true;
     this.responseScoreDetails = [];
     this.dashboardService
-      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortByName, this.order)
       .subscribe((response: any) => {
         this.responseScoreDetails = response.data;
         this.pagination.total = response.pagination.total;
@@ -144,18 +152,13 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getScoreDetails();
-  }
-
-  sortByFn(sortByName) {
-    this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
+    this.getScoreDetails(this.sortOrder);
   }
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
     this.getDataFromService();
-    this.getScoreDetails();
+    this.getScoreDetails(this.sortOrder);
   }
 
   //api call for score details based on component

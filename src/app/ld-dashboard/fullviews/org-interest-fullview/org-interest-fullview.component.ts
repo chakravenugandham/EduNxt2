@@ -19,8 +19,9 @@ export class OrgInterestFullviewComponent implements OnInit {
     viewDetailsFilters: false
   };
 
-  sortOrder: string = "learnerName";
-  reverse: boolean = false;
+  sortOrder: string = "courseName";
+  order: string = 'desc';
+  sortFlag: boolean = false;
   searchBox: boolean = false;
 
 
@@ -45,19 +46,19 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService();
+      this.getDataFromService(this.sortOrder);
     });
   }
 
@@ -74,11 +75,17 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.displayFor = $event;
   }
 
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.getDataFromService(sortByName);
+  }
+
   //api call for orgDetails based on component
-  getDataFromService() {
+  getDataFromService(sortByName) {
     this.spinner_loader = true;
     this.responseData = [];
-    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
+    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order).subscribe((response: any) => {
       this.responseData = response.data;
       this.pagination.total = response.pagination.total;
       this.pagination.total_pages = response.pagination.total_pages;
@@ -90,15 +97,10 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getDataFromService();
-  }
-
-  sortByFn(sortByName) {
-    this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
+    this.getDataFromService(this.sortOrder);
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    this.getDataFromService(this.sortOrder);
   }
 }

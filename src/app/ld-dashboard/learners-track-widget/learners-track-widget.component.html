@@ -13,7 +13,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'performance'}" (click)="learnerPerfFn()">Learner
+        <a class="nav-link" class="cursor-pointer" [ngClass]="{'active':filtersData.currentModule == 'performance'}"
+          (click)="learnerPerfFn()">Learner
           Performance
         </a>
       </li>
@@ -97,7 +98,8 @@
       <app-learner-pace *ngIf="filtersData.currentModule == 'pace'" [paceData]="paceObject.responseData"></app-learner-pace>
       <app-learner-performance *ngIf="filtersData.currentModule == 'performance'" [performanceData]="performanceObject.responseData"></app-learner-performance>
     </div>
-  </div>
 
-  <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
+
+    <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
+  </div>
 </div>

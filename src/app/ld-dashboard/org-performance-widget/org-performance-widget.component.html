@@ -5,7 +5,7 @@
   </p>
 </div>
 
-<div class="widget-block" id="org-performance">
+<div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -82,23 +82,27 @@
     </div>
   </div>
 
-  <div *ngIf="spinner_loader" class="spinner_loading">
-    <app-spinner></app-spinner>
+  <div id="org-performance">
+
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <app-spinner></app-spinner>
+    </div>
+
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
+
+    <div *ngIf="responseData.length > 0" class="org-performance">
+      <!-- <div class="org-performance"> -->
+
+      <app-teams *ngIf="filtersData.currentModule == 'teams'" [teamsData]="displayData"></app-teams>
+      <app-trainers *ngIf="filtersData.currentModule == 'trainers'" [trainersData]="displayData"></app-trainers>
+      <app-learners *ngIf="filtersData.currentModule == 'learners'" [LearnersData]="displayData"></app-learners>
+
+    </div>
+
+
+    <app-filter-widget [filtersInfo]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>
   </div>
-
-  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data found</span>
-  </div>
-
-  <div *ngIf="responseData.length > 0" class="org-performance">
-    <!-- <div class="org-performance"> -->
-
-    <app-teams *ngIf="filtersData.currentModule == 'teams'" [teamsData]="displayData"></app-teams>
-    <app-trainers *ngIf="filtersData.currentModule == 'trainers'" [trainersData]="displayData"></app-trainers>
-    <app-learners *ngIf="filtersData.currentModule == 'learners'" [LearnersData]="displayData"></app-learners>
-
-  </div>
-
-  <app-filter-widget [filtersInfo]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>
 
 </div>

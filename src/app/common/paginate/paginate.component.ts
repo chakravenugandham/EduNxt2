@@ -21,6 +21,13 @@ export class PaginateComponent implements OnInit {
     }
   }
 
+  blockSpecialChar(e) {
+    // console.log(e.keyCode);
+    if (e.keyCode === 189 || e.keyCode === 187) {
+      this.selectPage = undefined;
+    }
+  }
+
   ngOnInit() { }
 
 }

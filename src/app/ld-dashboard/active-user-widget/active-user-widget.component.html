@@ -72,9 +72,10 @@
       <app-active-users *ngIf="getTab=='activeUser'"></app-active-users>
       <app-mode-of-delivery *ngIf="getTab=='modeDelivery'"></app-mode-of-delivery>
       <app-location *ngIf="getTab=='location'"></app-location>
-    </div>
-    <div>
-      <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+
+      <div>
+        <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget>
+      </div>
     </div>
   </div>
 </div>

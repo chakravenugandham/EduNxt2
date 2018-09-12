@@ -4,7 +4,7 @@
     <i class="fa fa-question-circle" aria-hidden="true"></i>
   </p>
 </div>
-<div class="widget-block" id="learner-performance">
+<div class="widget-block">
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
@@ -52,19 +52,24 @@
     </div>
   </div>
 
-  <div *ngIf="spinner_loader" class="spinner_loading">
-    <app-spinner></app-spinner>
-  </div>
+  <div id="learner-performance">
 
-  <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
-    <span class="spinner_inside">No data found</span>
-  </div>
+    <div *ngIf="spinner_loader" class="spinner_loading">
+      <app-spinner></app-spinner>
+    </div>
 
-  <div *ngIf="responseData.length > 0">
-    <app-performance *ngIf="performanceDataSet.length > 0 && getTab == 'performance'" [performanceData]="performanceDataSet"
-      [batches]="batches"></app-performance>
-    <app-progress *ngIf="progressDataSet.length > 0 && getTab == 'progress'" [progressData]="progressDataSet" [batches]="batches"></app-progress>
-  </div>
+    <div *ngIf="!spinner_loader && noDataFlag" class="spinner_loading">
+      <span class="spinner_inside">No data found</span>
+    </div>
 
-  <!-- <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget> -->
+    <div *ngIf="responseData.length > 0">
+      <app-performance *ngIf="performanceDataSet.length > 0 && getTab == 'performance'" [performanceData]="performanceDataSet"
+        [batches]="batches"></app-performance>
+      <app-progress *ngIf="progressDataSet.length > 0 && getTab == 'progress'" [progressData]="progressDataSet"
+        [batches]="batches"></app-progress>
+    </div>
+
+
+    <!-- <app-filter-widget [filtersInfo]="filtersData" (filterEvent)="getFilterObject($event)"></app-filter-widget> -->
+  </div>
 </div>

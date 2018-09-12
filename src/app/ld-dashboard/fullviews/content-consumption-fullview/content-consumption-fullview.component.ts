@@ -36,7 +36,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   };
 
   sortOrder = 'contentName';
-  order = 'desc';
+  order = 'asc';
   sortFlag = false;
   searchBox = false;
 
@@ -45,19 +45,19 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
   }
 
@@ -65,36 +65,37 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
-    this.getDataFromService(sortByName);
+    this.getDataFromService();
   }
 
-  getDataFromService(sortByName) {
+  getDataFromService() {
     this.spinner_loader = true;
     this.contentData = [];
-    // (<HTMLInputElement>document.getElementById("searchString")).disabled = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortByName, this.order)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
+
       .subscribe((response: any) => {
         this.contentData = response.data;
-        // (<HTMLInputElement>document.getElementById("searchString")).disabled = false;
         this.pagination.total = response.pagination.total;
         this.pagination.total_pages = response.pagination.total_pages;
         this.spinner_loader = false;
         this.noDataFlag = response.data.length === 0 ? true : false;
       });
+
+    // result.unsubscribe();
   }
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 
   ngOnInit() {
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 }

@@ -86,7 +86,7 @@
     </div>
 
     <div *ngIf="orgData.length > 0">
-      <app-org-interest [orgInterestData]='orgData' [orgPopularData]='orgPopularTopicData'></app-org-interest>
+      <app-org-interest [orgInterestData]='displayData' [orgPopularData]='orgPopularTopicData'></app-org-interest>
     </div>
 
     <app-filter-widget [filtersInfo]="filtersData" [searchFilterData]="searchFilterData" (searchEvent)="getSearchItem($event)"></app-filter-widget>

@@ -1,22 +1,22 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
-import { LdDashboardService } from "../services/ld-dashboard.service";
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { LdDashboardService } from '../services/ld-dashboard.service';
 
 
 import * as jspdf from 'jspdf';
 
 import html2canvas from 'html2canvas';
 
-import { _ } from "underscore";
+import { _ } from 'underscore';
 
 @Component({
-  selector: "app-org-interest-widget",
-  templateUrl: "./org-interest-widget.component.html",
-  styleUrls: ["./org-interest-widget.component.scss"]
+  selector: 'app-org-interest-widget',
+  templateUrl: './org-interest-widget.component.html',
+  styleUrls: ['./org-interest-widget.component.scss']
 })
 export class OrgInterestWidgetComponent implements OnInit {
-  routePath: string = "orgInterestFullView";
+  routePath = 'orgInterestFullView';
   filtersData = {
-    routeTo: "orgInterestFullView",
+    routeTo: 'orgInterestFullView',
     filters: false,
     search: true,
     viewDetails: true,
@@ -25,9 +25,9 @@ export class OrgInterestWidgetComponent implements OnInit {
   };
 
   searchFilterData = {
-    searchComponent: "organization-interests",
-    searchBy: "courseName",
-    searchCount: "3"
+    searchComponent: 'organization-interests',
+    searchBy: 'courseName',
+    searchCount: '3'
   };
 
   filterbody = {};
@@ -35,10 +35,12 @@ export class OrgInterestWidgetComponent implements OnInit {
   orgPopularTopicData: any[];
   actualResponseData: any[];
 
+  displayData: any[];
+
   // searchFilterItem = [];
 
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
+  spinner_loader = false;
+  noDataFlag = false;
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -63,8 +65,9 @@ export class OrgInterestWidgetComponent implements OnInit {
     this.orgData = [];
     this.dashboardService.getOrgInterestData().subscribe((res: any) => {
       this.orgData = this.actualResponseData = res.data;
+      this.constructNewArray();
       this.spinner_loader = false;
-      this.noDataFlag = this.orgData.length == 0 ? true : false;
+      this.noDataFlag = this.orgData.length === 0 ? true : false;
     });
 
     this.dashboardService
@@ -75,37 +78,74 @@ export class OrgInterestWidgetComponent implements OnInit {
   }
 
   downloadPdf() {
-    let htmlTemp = document.getElementById("org-interest");
+    const htmlTemp = document.getElementById('org-interest');
     html2canvas(htmlTemp).then(canvas => {
-      // Few necessary setting options  
-      let imgWidth = 208;
-      let pageHeight = 295;
-      let imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
+      // Few necessary setting options
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('./');
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 0;
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
-      pdf.save('EduNxtReport.pdf'); // Generated PDF   
+      pdf.save('EduNxtReport.pdf'); // Generated PDF
     });
+
+  }
+
+  constructNewArray() {
+    const tempArray = [];
+    const firstArray = [];
+    this.displayData = [];
+    // tslint:disable-next-line:forin
+    for (const p in this.orgData) {
+      tempArray.push(this.orgData[p]);
+    }
+    console.log(tempArray);
+
+    if (this.filtersData.appliedFilters.length > 0) {
+      // tslint:disable-next-line:forin
+      for (const i in this.filtersData.appliedFilters) {
+        const foundAtIndex = _.findIndex(tempArray, this.filtersData.appliedFilters[i]);
+        // tempArray = _.without(tempArray, this.filtersData.appliedFilters[i]);
+        console.log(this.filtersData.appliedFilters[i]);
+        console.log(foundAtIndex);
+
+        if (foundAtIndex !== -1) {
+          tempArray.splice(foundAtIndex, 1);
+        }
+        this.filtersData.appliedFilters[i]['new'] = true;
+      }
+    }
+
+    for (let s = 0; s < (3 - this.filtersData.appliedFilters.length); s++) {
+      firstArray.push(tempArray[s]);
+    }
+    this.displayData = firstArray.concat(this.filtersData.appliedFilters);
+
+
 
   }
 
   getSearchItem($event) {
     this.filtersData.appliedFilters = $event;
+    this.constructNewArray();
 
-    for (let i in this.filtersData.appliedFilters) {
-      this.filtersData.appliedFilters[i]["new"] = true;
-    }
+    // tslint:disable-next-line:forin
+    // for (const i in this.filtersData.appliedFilters) {
+    //   this.filtersData.appliedFilters[i]['new'] = true;
+    // }
 
-    this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
+    // this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
 
-    if (this.filtersData.appliedFilters.length > 0)
-      this.orgData.splice(-this.filtersData.appliedFilters.length);
+    // if (this.filtersData.appliedFilters.length > 0) {
+    //   this.orgData.splice(-this.filtersData.appliedFilters.length);
+    // }
 
-    this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
+    // this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
   }
 
   ngOnInit() {

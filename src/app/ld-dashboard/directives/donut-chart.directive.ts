@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, OnInit, HostListener } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, HostListener } from '@angular/core';
 import * as d3 from 'd3v4';
 
 @Directive({
@@ -120,8 +120,12 @@ export class DonutChartDirective implements OnChanges {
     }
   }
 
-  @HostListener('resize') onresize() {
-    console.log('resize');
+  // @HostListener('window') onresize() {
+  //   console.log('resize');
+  //   this.chartRenderFn(this.data);
+  // }
+
+  @HostListener('window:resize') onresize() {
     this.chartRenderFn(this.data);
   }
 }

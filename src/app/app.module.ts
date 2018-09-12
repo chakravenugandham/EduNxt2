@@ -117,6 +117,7 @@ import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-p
 import { CustomNumberPipe } from "../app/shared/custom-number.pipe";
 import { PaginateComponent } from './common/paginate/paginate.component';
 import { SpinnerComponent } from './common/spinner/spinner.component';
+import { GraphChartComponent } from './common/graph-chart/graph-chart.component';
 
 @NgModule({
   declarations: [
@@ -207,7 +208,8 @@ import { SpinnerComponent } from './common/spinner/spinner.component';
     LearnerAvgCoursePerformanceComponent,
     CustomNumberPipe,
     PaginateComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    GraphChartComponent
   ],
   imports: [
     BrowserModule,

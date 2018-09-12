@@ -325,7 +325,7 @@ export class LdDashboardService implements OnInit {
       filters = filtersList[0];
     }
 
-    const url = this.baseURL + APIURL.FILTERS + '?courseId=' + this.courseId + '&programId=' + this.programId + '&type=' + filters;
+    const url = this.baseURL + APIURL.FILTERS + this.setDateObj + '&courseId=' + this.courseId + '&programId=' + this.programId + '&type=' + filters;
     return this.http.get(url, { headers: this.headers });
   }
 

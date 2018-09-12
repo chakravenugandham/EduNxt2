@@ -14,14 +14,15 @@ export class ContentConsumptionComponent implements OnInit {
 
   // sortOrder: string = "contentName";
   reverse: boolean = false;
+
+  constructor() { }
+
   sortByFn(sortByName) {
     this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
-
-  constructor() { }
 
   ngOnInit() { }
 }

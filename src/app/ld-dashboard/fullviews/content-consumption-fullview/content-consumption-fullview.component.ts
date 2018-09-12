@@ -73,7 +73,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.contentData = [];
     // (<HTMLInputElement>document.getElementById("searchString")).disabled = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortByName, this.order)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((response: any) => {
         this.contentData = response.data;
         // (<HTMLInputElement>document.getElementById("searchString")).disabled = false;

@@ -189,9 +189,9 @@
             <td class=""> {{data.courseName}} </td>
             <td class=""> {{data.teamName}} </td>
             <td class=""> {{data.batchName}} </td>
-            <td class=""> {{data.examAccessed}} </td>
-            <td class=""> {{data.examPassed}} </td>
-            <td class=""> {{data.scorePercentage}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examAccessed}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examPassed}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.scorePercentage}} </td>
             <td class=""> {{data.scoreInCourse}} </td>
             <td class=""> {{data.scoreAvg}} </td>
             <td class=""> {{data.highestScore}} </td>

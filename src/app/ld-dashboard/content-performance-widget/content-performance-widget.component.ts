@@ -72,13 +72,13 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     console.log(this.sorting)
   }
 
+  //, this.sorting['sortOrder'], this.sorting['order']
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sorting['sortOrder'], this.sorting['order'])
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
       .subscribe((res: any) => {
         this.contentObject.responseData = res.data;
-
         this.spinner_loader = false;
         this.noDataFlag = this.contentObject.responseData.length == 0 ? true : false;
       });

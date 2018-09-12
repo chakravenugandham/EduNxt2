@@ -154,9 +154,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.getTableDataFromService(sortByName);
-    //this.reverse = !this.reverse;
   }
-  // , this.sortOrder, this.order
+
+
   getTableDataFromService(sortbyname) {
     this.spinner_loader = true;
     this.responseTrackDetails = [];

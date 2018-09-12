@@ -1,20 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { Component, OnInit } from '@angular/core';
+import { LdDashboardService } from '../../services/ld-dashboard.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "app-content-consumption-fullview",
-  templateUrl: "./content-consumption-fullview.component.html",
-  styleUrls: ["./content-consumption-fullview.component.scss"]
+  selector: 'app-content-consumption-fullview',
+  templateUrl: './content-consumption-fullview.component.html',
+  styleUrls: ['./content-consumption-fullview.component.scss']
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
 
   filtersData = {
-    routeTo: "contentConsumptionFullView",
+    routeTo: 'contentConsumptionFullView',
     filters: true,
     search: false,
     viewDetails: false,
-    filterList: ["contentType"],
+    filterList: ['contentType'],
     viewDetailsFilters: true,
     currentModule: '',
     appliedFilters: []
@@ -23,10 +23,10 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   contentData = [];
 
   searchFilterData = {
-    searchBy: "contentName"
+    searchBy: 'contentName'
   };
 
-  searchString: string = "";
+  searchString = '';
 
   pagination = {
     page: 1,
@@ -35,13 +35,13 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     total_pages: 0
   };
 
-  sortOrder: string = "contentName";
-  order: string = 'desc';
-  sortFlag: boolean = false;
-  searchBox: boolean = false;
+  sortOrder = 'contentName';
+  order = 'desc';
+  sortFlag = false;
+  searchBox = false;
 
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
+  spinner_loader = false;
+  noDataFlag = false;
 
   constructor(private dashboardService: LdDashboardService, private route: ActivatedRoute) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -65,7 +65,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.getDataFromService(sortByName);
-    //this.reverse = !this.reverse;
+    // this.reverse = !this.reverse;
   }
 
   getDataFromService(sortByName) {
@@ -73,14 +73,15 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.contentData = [];
     // (<HTMLInputElement>document.getElementById("searchString")).disabled = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination,
+        this.sortOrder, this.order)
       .subscribe((response: any) => {
         this.contentData = response.data;
         // (<HTMLInputElement>document.getElementById("searchString")).disabled = false;
         this.pagination.total = response.pagination.total;
         this.pagination.total_pages = response.pagination.total_pages;
         this.spinner_loader = false;
-        this.noDataFlag = response.data.length == 0 ? true : false;
+        this.noDataFlag = response.data.length === 0 ? true : false;
       });
   }
 

@@ -75,7 +75,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     console.log(this.sorting);
   }
 
-  //, this.sorting['sortOrder'], this.sorting['order']
+  // this.sorting['sortOrder'], this.sorting['order']
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService

@@ -79,7 +79,8 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination,
+        this.sorting['sortOrder'], this.sorting['order'])
       .subscribe((res: any) => {
         this.contentObject.responseData = res.data;
         this.spinner_loader = false;

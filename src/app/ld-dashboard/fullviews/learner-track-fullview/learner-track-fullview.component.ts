@@ -86,14 +86,16 @@ export class LearnerTrackFullviewComponent implements OnInit {
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.displayfor);
+      this.getTableDataFromService(this.sortOrder);
+      this.getGraphDataFromService();
     }
     else if (this.filtersData.currentModule == "performance") {
       this.displayfor = "excelling";
       localStorage.setItem('trackDisplayFor', this.displayfor);
+      this.getTableDataFromService(this.sortOrder);
+      this.getGraphDataFromService();
     }
 
-    this.getTableDataFromService(this.sortOrder);
-    this.getGraphDataFromService();
 
   }
 

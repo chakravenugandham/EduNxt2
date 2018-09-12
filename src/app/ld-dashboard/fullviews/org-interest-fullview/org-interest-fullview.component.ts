@@ -19,10 +19,10 @@ export class OrgInterestFullviewComponent implements OnInit {
     viewDetailsFilters: false
   };
 
-  sortOrder = 'courseName';
-  order = 'desc';
-  sortFlag = false;
-  searchBox = false;
+  sortOrder: string = 'courseName';
+  order: string = 'desc';
+  sortFlag: boolean = false;
+  searchBox: boolean = false;
 
 
   spinner_loader = false;
@@ -78,11 +78,12 @@ export class OrgInterestFullviewComponent implements OnInit {
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
-    this.getDataFromService(sortByName);
+    this.getDataFromService(this.sortOrder);
   }
 
   // api call for orgDetails based on component
   getDataFromService(sortByName) {
+    //sortByName = this.searchString != ''? "courseName";
     this.spinner_loader = true;
     this.responseData = [];
     this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order)
@@ -102,6 +103,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDataFromService(this.sortOrder);
+    this.sortByFn(this.sortOrder);
+    //this.getDataFromService(this.sortOrder);
   }
 }

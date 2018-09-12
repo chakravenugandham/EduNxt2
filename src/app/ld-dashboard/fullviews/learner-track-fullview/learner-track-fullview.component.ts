@@ -86,14 +86,16 @@ export class LearnerTrackFullviewComponent implements OnInit {
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.displayfor);
+      this.getTableDataFromService(this.sortOrder);
+      this.getGraphDataFromService();
     }
     else if (this.filtersData.currentModule == "performance") {
       this.displayfor = "excelling";
       localStorage.setItem('trackDisplayFor', this.displayfor);
+      this.getTableDataFromService(this.sortOrder);
+      this.getGraphDataFromService();
     }
 
-    this.getTableDataFromService(this.sortOrder);
-    this.getGraphDataFromService();
 
   }
 
@@ -154,9 +156,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.getTableDataFromService(sortByName);
-    //this.reverse = !this.reverse;
   }
-  // , this.sortOrder, this.order
+
+
   getTableDataFromService(sortbyname) {
     this.spinner_loader = true;
     this.responseTrackDetails = [];

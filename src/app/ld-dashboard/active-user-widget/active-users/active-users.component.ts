@@ -52,7 +52,7 @@ export class ActiveUsersComponent implements OnInit {
     if (d3.select('#activeUserGraph').node()) {
       w = d3.select('#activeUserGraph').node().getBoundingClientRect().width;
     }
-    const h = 250;
+    const h = 240;
     const p = 70;
 
     // create xScale

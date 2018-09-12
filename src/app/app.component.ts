@@ -30,12 +30,11 @@ export class AppComponent implements OnInit {
         const decodedToken = helper.decodeToken(t);
         const expirationDate = helper.getTokenExpirationDate(t);
         const isExpired = helper.isTokenExpired(t);
-        let loginName = decodedToken.loginName;
-        let userName = loginName.split("_");
+        const loginName = decodedToken.loginName;
+        const userName = loginName.split('_');
         if (userName.length > 1) {
           this.cookieService.set('user_name', userName[1]);
-        }
-        else {
+        } else {
           this.cookieService.set('user_name', decodedToken.loginName);
         }
 
@@ -45,8 +44,7 @@ export class AppComponent implements OnInit {
         if (isExpired) {
           localStorage.removeItem('t');
           this.authTokenReceived = false;
-        }
-        else {
+        } else {
           localStorage.setItem('t', t);
           this.authTokenReceived = true;
           this.router.navigate(['/LnD']);

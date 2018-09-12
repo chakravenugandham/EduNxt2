@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Input, OnChanges, OnInit } from "@angular/core";
+import { Directive, ElementRef, Input, OnChanges, HostListener } from "@angular/core";
 import * as d3 from "d3v4";
 // import * as _ from "underscore";
 
 @Directive({
   selector: "[appScoreChart]"
 })
-export class ScoreChartDirective implements OnInit, OnChanges {
+export class ScoreChartDirective implements OnChanges {
   @Input() data: any;
 
   constructor(private el: ElementRef) { }
@@ -189,14 +189,14 @@ export class ScoreChartDirective implements OnInit, OnChanges {
 
   }
 
-  ngOnInit() {
-    // this.chartRenderFn();
-  }
-
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
       // this.data = changes.data.currentValue;
       this.chartRenderFn();
     }
+  }
+
+  @HostListener('window:resize') onresize() {
+    this.chartRenderFn();
   }
 }

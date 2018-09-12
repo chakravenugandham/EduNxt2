@@ -1,19 +1,19 @@
-import { Injectable, OnInit } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { environment } from "../../../environments/environment";
-import { Subject } from "rxjs";
-import { APIURL } from "../../apiURL";
-import { DateserviceService } from "../../common-services/dateservice.service";
+import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { Subject } from 'rxjs';
+import { APIURL } from '../../apiURL';
+import { DateserviceService } from '../../common-services/dateservice.service';
 
-import { CookieService } from "ngx-cookie-service";
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class LdDashboardService implements OnInit {
   dateFilterObj = {
-    start_date: "",
-    end_date: ""
+    start_date: '',
+    end_date: ''
   };
 
   LnDUserId: string;
@@ -26,23 +26,23 @@ export class LdDashboardService implements OnInit {
     courseId: 0,
     batchId: 0,
     sectionId: 0
-  }
+  };
 
-  program_course: string = "&programId=" + this.programObj.programId + "&courseId=" + this.programObj.courseId;
+  program_course: string = '&programId=' + this.programObj.programId + '&courseId=' + this.programObj.courseId;
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
     this.constructDate();
   }
 
   constructDate() {
-    let today = new Date();
+    const today = new Date();
 
-    this.dateFilterObj.end_date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
-    let last_date = new Date(today.setDate(today.getDate() - 30));
+    this.dateFilterObj.end_date = today.getMonth() + 1 + '/' + today.getDate() + '/' + today.getFullYear();
+    const last_date = new Date(today.setDate(today.getDate() - 30));
 
-    this.dateFilterObj.start_date = last_date.getMonth() + 1 + "/" + last_date.getDate() + "/" + last_date.getFullYear();
+    this.dateFilterObj.start_date = last_date.getMonth() + 1 + '/' + last_date.getDate() + '/' + last_date.getFullYear();
 
-    this.setDateObj = "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date;
+    this.setDateObj = '?start_date=' + this.dateFilterObj.start_date + '&end_date=' + this.dateFilterObj.end_date;
 
     return this.dateFilterObj;
   }
@@ -77,53 +77,53 @@ export class LdDashboardService implements OnInit {
     return this.dateChange$.asObservable();
   }
 
-  //baseURL from enviornment
+  // baseURL from enviornment
   baseURL = environment.baseUrl;
 
   // UserId = (this.cookieService.get('user_id') == '') ? '57142' : this.cookieService.get('user_id');
-  UserId = "57142";
+  UserId = '57142';
 
   headers = new HttpHeaders()
-    .set("user_id", this.UserId)
-    .set("user_type", "LND")
-    .set("tenant_name", "MAIT");
+    .set('user_id', this.UserId)
+    .set('user_type', 'LND')
+    .set('tenant_name', 'MAIT');
 
   selectTenantName(tenantName?: any) {
-    if (tenantName == "MAIT") {
+    if (tenantName === 'MAIT') {
       this.headers = new HttpHeaders()
-        .set("user_id", "57142")
-        .set("user_type", "LND")
-        .set("tenant_name", tenantName);
+        .set('user_id', '57142')
+        .set('user_type', 'LND')
+        .set('tenant_name', tenantName);
     }
-    if (tenantName == "MAB") {
+    if (tenantName === 'MAB') {
       this.headers = new HttpHeaders()
-        .set("user_id", "26642")
-        .set("user_type", "LND")
-        .set("tenant_name", tenantName);
+        .set('user_id', '26642')
+        .set('user_type', 'LND')
+        .set('tenant_name', tenantName);
     }
-    if (tenantName == "HDFC") {
+    if (tenantName === 'HDFC') {
       this.headers = new HttpHeaders()
-        .set("user_id", "2")
-        .set("user_type", "LND")
-        .set("tenant_name", tenantName);
+        .set('user_id', '2')
+        .set('user_type', 'LND')
+        .set('tenant_name', tenantName);
     }
-    if (tenantName == "SMUDE") {
+    if (tenantName === 'SMUDE') {
       this.headers = new HttpHeaders()
-        .set("user_id", "725440")
-        .set("user_type", "LND")
-        .set("tenant_name", tenantName);
+        .set('user_id', '725440')
+        .set('user_type', 'LND')
+        .set('tenant_name', tenantName);
     }
-    if (tenantName == "PROLEARN") {
+    if (tenantName === 'PROLEARN') {
       this.headers = new HttpHeaders()
-        .set("user_id", "95901")
-        .set("user_type", "LND")
-        .set("tenant_name", tenantName);
+        .set('user_id', '95901')
+        .set('user_type', 'LND')
+        .set('tenant_name', tenantName);
     }
-    if (tenantName == "PROLEARN") {
+    if (tenantName === 'PROLEARN') {
       this.headers = new HttpHeaders()
-        .set("user_id", "95901")
-        .set("user_type", "LND")
-        .set("tenant_name", tenantName);
+        .set('user_id', '95901')
+        .set('user_type', 'LND')
+        .set('tenant_name', tenantName);
     }
     this.tenantName$.next();
     this.refreshAPI$.next();
@@ -131,9 +131,9 @@ export class LdDashboardService implements OnInit {
 
   selectTenantNameV2(tenantName?: any, user_id?: any) {
     this.headers = new HttpHeaders()
-      .set("user_id", user_id)
-      .set("user_type", "LND")
-      .set("tenant_name", tenantName);
+      .set('user_id', user_id)
+      .set('user_type', 'LND')
+      .set('tenant_name', tenantName);
     this.tenantName$.next();
     this.refreshAPI$.next();
   }
@@ -148,7 +148,7 @@ export class LdDashboardService implements OnInit {
     this.courseId = config.courseId;
     this.programId = config.programId;
 
-    this.program_course = "&programId=" + this.programObj.programId + "&courseId=" + this.programObj.courseId;
+    this.program_course = '&programId=' + this.programObj.programId + '&courseId=' + this.programObj.courseId;
 
     this.refreshAPI$.next();
   }
@@ -163,14 +163,14 @@ export class LdDashboardService implements OnInit {
   changeDate(dateObj) {
     this.dateFilterObj.start_date = dateObj.start_date;
     this.dateFilterObj.end_date = dateObj.end_date;
-    this.setDateObj = "?start_date=" + this.dateFilterObj.start_date + "&end_date=" + this.dateFilterObj.end_date;
+    this.setDateObj = '?start_date=' + this.dateFilterObj.start_date + '&end_date=' + this.dateFilterObj.end_date;
   }
 
 
-  //courses dropdown
+  // courses dropdown
 
   getCoursesProgramData() {
-    let url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN;
+    const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN;
     return this.http.get(url, { headers: this.headers });
   }
 
@@ -195,89 +195,91 @@ export class LdDashboardService implements OnInit {
   // }
 
   getActiveUsersWidgetData() {
-    let url = this.baseURL + APIURL.ACTIVE_USERS + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.ACTIVE_USERS + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getEngagementWidgetData() {
-    let url = this.baseURL + APIURL.LEARNER_ENGAGEMENT + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.LEARNER_ENGAGEMENT + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getPaceWidgetData() {
-    let url = this.baseURL + APIURL.LEARNER_PACE + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.LEARNER_PACE + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getFeedbackWidgetData() {
-    let url = this.baseURL + APIURL.FEEDBACK + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.FEEDBACK + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getTimeSpentWidgetData() {
-    let url = this.baseURL + APIURL.TIME_SPENT + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.TIME_SPENT + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getUsersTrainedWidgetData() {
-    let url = this.baseURL + APIURL.USERS_TRAINED + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.USERS_TRAINED + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
-  //active users , mode of delivery & location API
+  // active users , mode of delivery & location API
 
   getActiveUsersData() {
-    let url = this.baseURL + APIURL.ACTIVE_USERS_GRAPH + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.ACTIVE_USERS_GRAPH + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getModeOfDeliveryData() {
-    let url = this.baseURL + APIURL.MODE_OF_DELIVERY + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.MODE_OF_DELIVERY + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getLocationData() {
-    let url = this.baseURL + APIURL.LOCATION + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.LOCATION + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
-  //learner-track widget & view details API
+  // learner-track widget & view details API
 
   getLearnerTrackData(filterbody) {
-    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE + this.setDateObj + this.program_course;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
   //
   getLearnerTrackDetails(componentName, displayfor, searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
-    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + this.program_course + "&displayFor=" + displayfor + "&type=" + componentName + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
+    const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + this.program_course + '&displayFor=' + displayfor + '&type=' + componentName + '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm + '&page=' + pagination.page + '&limit=' + pagination.limitTo + '&sortBy=' + tracksortName + '&order=' + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  //learner-performance & view details API
+  // learner-performance & view details API
   getLearnerPerformanceData(tab) {
-    let url = this.baseURL + APIURL.LEARNER_PERFORMANCE_PROGRESS + this.setDateObj + this.program_course + "&type=" + tab;
+    const url = this.baseURL + APIURL.LEARNER_PERFORMANCE_PROGRESS + this.setDateObj + this.program_course + '&type=' + tab;
     return this.http.get(url, { headers: this.headers });
   }
 
   getLearnerPerformanceDetails(filterbody) {
-    let url = this.baseURL + APIURL.LEARNER_PERFORMANCE_PROGRESS_DETAILS + this.setDateObj + "&courseId=" + this.courseId + "&programId=" +
+    const url = this.baseURL + APIURL.LEARNER_PERFORMANCE_PROGRESS_DETAILS + this.setDateObj + '&courseId=' + this.courseId + '&programId=' +
       this.programId;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  //org-interest, popular topics & view details API
+  // org-interest, popular topics & view details API
   getOrgInterestData() {
-    let url = this.baseURL + APIURL.ORGANISATION_INTEREST + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.ORGANISATION_INTEREST + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   getOrgPopulatTopicsData() {
-    let url = this.baseURL + APIURL.ORGANISATION_POPULAR_TOPICS + this.setDateObj + this.program_course;
+    const url = this.baseURL + APIURL.ORGANISATION_POPULAR_TOPICS + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
   getOrgInterestDetailsData(searchFilterData, searchTerm, pagination, tracksortName, sort) {
-    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
+    const url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + this.setDateObj + this.program_course +
+      '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm + '&page=' +
+      pagination.page + '&limit=' + pagination.limitTo + '&sortBy=' + tracksortName + '&order=' + sort;
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -287,105 +289,110 @@ export class LdDashboardService implements OnInit {
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //scores-distribution based on component type
+  // scores-distribution based on component type
   getScoresDistrubution(componentName, filterbody) {
-    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION + this.setDateObj + "&type=" + componentName + this.program_course;
+    const url = this.baseURL + APIURL.SCORES_DISTRUBUTION + this.setDateObj + '&type=' + componentName + this.program_course;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  //scores full-details
+  // scores full-details
   getScoresDetails(dropdownValue, searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
-    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
+    const url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + this.setDateObj + this.program_course +
+      '&type=' + dropdownValue + '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm +
+      '&page=' + pagination.page + '&limit=' + pagination.limitTo + '&sortBy=' + tracksortName + '&order=' + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
   //
   //
-  //content-performing
+  // content-performing
   getContentData(searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
-    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
+    const url = this.baseURL + APIURL.CONTENT_CONSUMPTION + this.setDateObj + this.program_course +
+      '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm +
+      '&page=' + pagination.page + '&limit=' + pagination.limitTo + '&sortBy=' + tracksortName + '&order=' + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
 
-  //get-filters
+  // get-filters
   getFiltersData(filtersList) {
-    let filters = "";
+    let filters = '';
     if (filtersList.length > 1) {
-      for (let i in filtersList) filters += filtersList[i] + ",";
+      // tslint:disable-next-line:forin
+      for (const i in filtersList) { filters += filtersList[i] + ','; }
       filters = filters.slice(0, -1);
     } else {
       filters = filtersList[0];
     }
 
-    let url = this.baseURL + APIURL.FILTERS + "?courseId=" + this.courseId + "&programId=" + this.programId + "&type=" + filters;
+    const url = this.baseURL + APIURL.FILTERS + this.setDateObj + '&courseId=' + this.courseId + '&programId=' + this.programId + '&type=' + filters;
     return this.http.get(url, { headers: this.headers });
   }
 
-  //getSearchFilterData
+  // getSearchFilterData
   getSearchFilterData(searchFilterData, searchTerm) {
-    let url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm;
+    const url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //email report
+  // email report
 
   emailReportService(emailBody) {
-    let url = this.baseURL + APIURL.EMAIL_SERVICE;
+    const url = this.baseURL + APIURL.EMAIL_SERVICE;
     return this.http.post(url, emailBody, { headers: this.headers });
   }
 
   getEmailAddress(personId) {
-    let url = this.baseURL + APIURL.GET_EMAIL + "?personId=" + personId;
+    const url = this.baseURL + APIURL.GET_EMAIL + '?personId=' + personId;
     return this.http.get(url, { headers: this.headers });
   }
 
-  //LOGOUT API
+  // LOGOUT API
   logout() {
-    let url = environment.logoutUrl;
+    const url = environment.logoutUrl;
     return this.http.get(url, { headers: this.headers });
   }
 
-  //ORG-HEAD APIS 
+  // ORG-HEAD APIS
 
   getProgramStatus() {
-    let url = this.baseURL + APIURL.PROGRAM_STATUS + this.setDateObj + this.program_course
+    const url = this.baseURL + APIURL.PROGRAM_STATUS + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
 
   getBestPrograms() {
-    let url = this.baseURL + APIURL.BEST_PROGRAMS + this.setDateObj + this.program_course
+    const url = this.baseURL + APIURL.BEST_PROGRAMS + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
   getBestProgramsDetails() {
-    let url = this.baseURL + APIURL.BEST_PROGRAMS_DETAILS + this.setDateObj + this.program_course
+    const url = this.baseURL + APIURL.BEST_PROGRAMS_DETAILS + this.setDateObj + this.program_course;
     return this.http.get(url, { headers: this.headers });
   }
 
 
-  //csv converted apis
+  // csv converted apis
 
-  //learner-track full details
+  // learner-track full details
   getLearnerTrackDetailsCsv(componentName) {
-    let url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + '/csv' + this.setDateObj + "&type=" + componentName + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
-    //"&displayFor=" + displayfor +
+    const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + '/csv' + this.setDateObj + '&type=' + componentName + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
+    // "&displayFor=" + displayfor +
     return this.http.post(url, null, { headers: this.headers });
   }
 
   getScoresDetailsCsv(dropdownValue) {
-    let url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + "&type=" + dropdownValue + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    const url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + '&type=' + dropdownValue + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
     return this.http.post(url, null, { headers: this.headers });
   }
 
   getContentDetailsCsv() {
-    let url = this.baseURL + APIURL.CONTENT_CONSUMPTION + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    const url = this.baseURL + APIURL.CONTENT_CONSUMPTION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //org-interest full details
+  // org-interest full details
   getOrgInterestDetailsDataCsv() {
-    let url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    const url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
     return this.http.post(url, null, { headers: this.headers });
   }
 
@@ -394,21 +401,21 @@ export class LdDashboardService implements OnInit {
   //   return this.http.post(url, null, { headers: this.headers });
   // }
 
-  //org-performance trainers data
+  // org-performance trainers data
   getTeamDataCsv() {
-    let url = this.baseURL + APIURL.TEAMS_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    const url = this.baseURL + APIURL.TEAMS_LEADERBOARD + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //org-performance teams data
+  // org-performance teams data
   getTrainersDataCsv() {
-    let url = this.baseURL + APIURL.TRAINER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    const url = this.baseURL + APIURL.TRAINER_LEADERBOARD + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //org-performance leaners data
+  // org-performance leaners data
   getLearnerDataCsv() {
-    let url = this.baseURL + APIURL.LEARNER_LEADERBOARD + "/csv" + this.setDateObj + this.program_course + "&user_id=" + this.UserId + "&user_type=" + "LND" + "&tenant_name=" + "MAIT";
+    const url = this.baseURL + APIURL.LEARNER_LEADERBOARD + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
     return this.http.post(url, null, { headers: this.headers });
   }
 

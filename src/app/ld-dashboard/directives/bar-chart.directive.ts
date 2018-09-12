@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, HostListener } from '@angular/core';
 
 // import * as d3 from "d3v4";
 declare let d3: any;
@@ -6,7 +6,7 @@ declare let d3: any;
 @Directive({
   selector: '[appBarChart]'
 })
-export class BarChartDirective implements OnInit, OnChanges {
+export class BarChartDirective implements OnChanges {
   @Input() data;
   @Input() getTab;
 
@@ -199,11 +199,13 @@ export class BarChartDirective implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit() { }
-
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
       this.performanceChart();
     }
+  }
+
+  @HostListener('window:resize') onresize() {
+    this.performanceChart();
   }
 }

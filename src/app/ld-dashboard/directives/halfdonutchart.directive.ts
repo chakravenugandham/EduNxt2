@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Input, OnChanges, OnInit } from "@angular/core";
+import { Directive, ElementRef, Input, OnChanges, HostListener } from "@angular/core";
 //import * as d3 from "d3";
 import * as d3 from "d3v4";
 
 @Directive({
   selector: "[appHalfdonutchart]"
 })
-export class HalfdonutchartDirective implements OnInit, OnChanges {
+export class HalfdonutchartDirective implements OnChanges {
   @Input() data: any;
 
   constructor(private el: ElementRef) { }
@@ -81,6 +81,7 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       .select(this.el.nativeElement)
       .node()
       .getBoundingClientRect().width;
+
     let h: number;
 
     let backgroundArc = d3
@@ -142,11 +143,6 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
     //this.el.nativeElement.append(chartDiv);
   }
 
-  ngOnInit() {
-    // this.chartRenderFn([this.data]);
-    // this.el.nativeElement.innerHTML = "";
-  }
-
   ngOnChanges(changes: any) {
     if (changes.data.currentValue != changes.data.previousValue) {
       // d3.select(".halfdonut")
@@ -154,5 +150,9 @@ export class HalfdonutchartDirective implements OnInit, OnChanges {
       //   .remove();
       this.chartRenderFn([this.data]);
     }
+  }
+
+  @HostListener('window:resize') onresize() {
+    this.chartRenderFn([this.data]);
   }
 }

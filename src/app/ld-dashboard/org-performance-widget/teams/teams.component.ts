@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 
@@ -9,12 +9,15 @@ import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng
 })
 export class TeamsComponent implements OnInit {
   @Input() teamsData;
+
+  @Output() sortBy = new EventEmitter<any>();
+  sortOrder: string = "teamName";
+  sortFlag: boolean = false;
+  order: string = 'desc';
+
   closeResult: string;
-  // teamsData: any[];
   sortType: string = "";
   parseFloat = parseFloat;
-  // sortOrder: string = "teamName";
-  sortOrder: string;
   reverse: boolean = false;
   limitTo: number = 5;
 
@@ -27,8 +30,10 @@ export class TeamsComponent implements OnInit {
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) { }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
 
   open(content, type, personId) {
@@ -76,13 +81,7 @@ export class TeamsComponent implements OnInit {
     }
   }
 
-  // getDataFromService() {
-  //   this.getData.getTeamData(this.limitTo).subscribe((res: any) => {
-  //     this.teamsData = res.data;
-  //   });
-  // }
 
   ngOnInit() {
-    // this.getDataFromService();
   }
 }

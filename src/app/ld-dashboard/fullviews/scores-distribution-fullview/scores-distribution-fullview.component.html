@@ -55,7 +55,7 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <span>
-                  <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getScoreDetails()">
+                  <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getScoreDetails(sortOrder)">
                 </span>
                 <span (click)="sortByFn('learnerName')">
                   <i class="fa fa-sort" aria-hidden="true"></i>

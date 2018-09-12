@@ -282,8 +282,8 @@ export class LdDashboardService implements OnInit {
   }
 
   //org-performance trainers, teams and learners data
-  getPerformanceDetails(searchFilterData, searchTerm, pagination) {
-    let url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo;
+  getPerformanceDetails(searchFilterData, searchTerm, pagination, tracksortName, sort) {
+    let url = this.baseURL + searchFilterData.searchComponent + this.setDateObj + this.program_course + "&searchBy=" + searchFilterData.searchBy + "&searchTerm=" + searchTerm + "&page=" + pagination.page + "&limit=" + pagination.limitTo + "&sortBy=" + tracksortName + "&order=" + sort;
     return this.http.post(url, null, { headers: this.headers });
   }
 

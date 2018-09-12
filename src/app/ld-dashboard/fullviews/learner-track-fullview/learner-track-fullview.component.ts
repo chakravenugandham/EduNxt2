@@ -95,8 +95,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.getTableDataFromService(this.sortOrder);
       this.getGraphDataFromService();
     }
-
-
   }
 
   getGraphDataFromService() {
@@ -160,6 +158,9 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
 
   getTableDataFromService(sortbyname) {
+    // if (!this.displayfor) {
+    //   return;
+    // }
     this.spinner_loader = true;
     this.responseTrackDetails = [];
     this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortbyname, this.order)
@@ -248,7 +249,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sortByFn(this.sortOrder);
     this.getModule();
+    //this.sortByFn(this.sortOrder);
   }
 }

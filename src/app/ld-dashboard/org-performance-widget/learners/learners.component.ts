@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 import {
   NgbModal,
@@ -13,15 +13,15 @@ import {
 })
 export class LearnersComponent implements OnInit {
   @Input() LearnersData;
-  // LearnersData = [];
+
+  @Output() sortBy = new EventEmitter<any>();
+  sortOrder: string = "learnerName";
+  sortFlag: boolean = false;
+  order: string = 'desc';
+
   closeResult: string;
-  // LearnersData = [];
   parseFloat = parseFloat;
   limitTo: number = 5;
-
-  // sortOrder: string = "pointsEarned";
-  sortOrder: string;
-  reverse: boolean = false;
 
   emailData = {
     to: "",
@@ -79,17 +79,12 @@ export class LearnersComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
 
-  // getDataFromService() {
-  //   this.getData.getLearnerData(this.limitTo).subscribe((res: any) => {
-  //     this.LearnersData = res.data;
-  //   });
-  // }
-
   ngOnInit() {
-    // this.getDataFromService();
   }
 }

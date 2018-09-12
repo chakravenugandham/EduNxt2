@@ -72,7 +72,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   sortBy($event) {
     this.sorting = $event;
-    console.log(this.sorting);
+    this.getDataFromService();
   }
 
   //, this.sorting['sortOrder'], this.sorting['order']

@@ -76,6 +76,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.getDataFromService(this.sortOrder);
@@ -83,7 +84,6 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   // api call for orgDetails based on component
   getDataFromService(sortByName) {
-    //sortByName = this.searchString != ''? "courseName";
     this.spinner_loader = true;
     this.responseData = [];
     this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order)

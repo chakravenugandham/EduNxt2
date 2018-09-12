@@ -111,9 +111,6 @@ export class OrgInterestWidgetComponent implements OnInit {
       for (const i in this.filtersData.appliedFilters) {
         const foundAtIndex = _.findIndex(tempArray, this.filtersData.appliedFilters[i]);
         // tempArray = _.without(tempArray, this.filtersData.appliedFilters[i]);
-        console.log(this.filtersData.appliedFilters[i]);
-        console.log(foundAtIndex);
-
         if (foundAtIndex !== -1) {
           tempArray.splice(foundAtIndex, 1);
         }

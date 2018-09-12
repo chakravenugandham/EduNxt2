@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
@@ -9,10 +9,12 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 })
 export class TrainersComponent implements OnInit {
   @Input() trainersData;
-  // trainersData = [];
-  // sortOrder: string = "trainerName";
-  sortOrder: string;
-  reverse: boolean = false;
+
+  @Output() sortBy = new EventEmitter<any>();
+  sortOrder: string = "trainerName";
+  sortFlag: boolean = false;
+  order: string = 'desc';
+
   limitTo: number = 5;
   closeResult: string;
 
@@ -70,17 +72,12 @@ export class TrainersComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.reverse = !this.reverse;
+    this.order = this.sortFlag ? 'asc' : 'desc';
+    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
 
-  // getDataFromService() {
-  //   this.getData.getTrainersData(this.limitTo).subscribe((res: any) => {
-  //     this.trainersData = res.data;
-  //   });
-  // }
-
   ngOnInit() {
-    // this.getDataFromService();
   }
 }

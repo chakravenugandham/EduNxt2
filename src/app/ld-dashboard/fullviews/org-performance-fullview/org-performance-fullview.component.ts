@@ -71,9 +71,9 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
     this.getDataFromService(sortByName);
-    //this.reverse = !this.reverse;
   }
 
   //api calls for trainers ,teams and learner
@@ -81,12 +81,10 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.spinner_loader = true;
     this.responseData = [];
 
-    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination).subscribe((response: any) => {
+    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order).subscribe((response: any) => {
       this.responseData = response.data;
-      // this.responseLeanersDetails = response.data;
       this.pagination.total = response.pagination.total;
       this.pagination.total_pages = response.pagination.total_pages;
-
       this.spinner_loader = false;
       this.noDataFlag = response.data.length == 0 ? true : false;
     });
@@ -97,14 +95,17 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     if (this.componentName == "teams") {
       this.searchFilterData.searchComponent = "team-leaderboard";
       this.searchFilterData.searchBy = "teamName";
+      this.sortOrder = 'teamName';
     }
     if (this.componentName == "trainers") {
       this.searchFilterData.searchComponent = "trainer-leaderboard";
       this.searchFilterData.searchBy = "trainerName";
+      this.sortOrder = 'trainerName';
     }
     if (this.componentName == "learners") {
       this.searchFilterData.searchComponent = "learner-leaderboard";
       this.searchFilterData.searchBy = "learnerName";
+      this.sortOrder = 'learnerName';
     }
   }
 

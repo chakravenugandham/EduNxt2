@@ -18,6 +18,11 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   tooltipText: string;
 
+  sorting = {
+    sortOrder: 'learnerName',
+    order: 'desc'
+  };
+
   // filters data
   filtersData = {
     routeTo: 'orgPerformanceFullView',
@@ -80,6 +85,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.appliedFilters = this.teamsSearchItems;
     // this.filtersData.appliedFilters = []
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
+    this.sorting = {
+      sortOrder: 'teamName',
+      order: 'desc'
+    };
     this.getDataFromService();
   }
   trainersFn() {
@@ -90,6 +99,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.appliedFilters = this.trainersSearchItems;
     // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
+    this.sorting = {
+      sortOrder: 'trainerName',
+      order: 'desc'
+    };
     this.getDataFromService();
   }
   learnersFn() {
@@ -100,6 +113,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.filtersData.appliedFilters = this.learnersSearchItems;
     // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
+    this.sorting = {
+      sortOrder: 'learnerName',
+      order: 'desc'
+    };
     this.getDataFromService();
   }
 
@@ -122,11 +139,16 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   }
 
+  sortBy($event) {
+    this.sorting = $event;
+    this.getDataFromService();
+  }
+
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
 
-    const request = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination)
+    const request = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sorting['sortOrder'], this.sorting['order'])
       .subscribe(
         (response: any) => {
           // this.responseData = this.displayData = this.actualResponseData = response.data;

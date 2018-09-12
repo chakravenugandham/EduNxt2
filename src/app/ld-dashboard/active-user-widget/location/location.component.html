@@ -22,7 +22,7 @@
       <table class="table table-borderless">
         <tbody>
           <tr *ngFor="let locationData of responseData | slice:0:3">
-            <td>
+            <td style="width: 125px;">
               <span>
                 <i class="far fa-circle location-name"></i>
               </span>
@@ -31,7 +31,6 @@
             <td class="users">
               <p>
                 <span class="font-weight-bold"> {{ parseFloat(locationData.learnerCount).toFixed(0) }} </span>
-
                 <span> Users </span>
               </p>
               <p class="arrow-text">

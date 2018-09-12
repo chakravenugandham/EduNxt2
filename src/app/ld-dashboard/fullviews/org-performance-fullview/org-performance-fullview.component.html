@@ -43,7 +43,7 @@
               </span>
               <span>
                 <!-- <input type="text" placeholder="Team Name" (keyup)="searchItem($event)"> -->
-                <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="getDataFromService()">
+                <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="getDataFromService(sortOrder)">
               </span>
               <span (click)="sortByFn('teamName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -110,7 +110,7 @@
               </span>
               <span>
                 <!-- <input type="text" placeholder="Trainer Name" (keyup)="searchItem($event)"> -->
-                <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="getDataFromService()">
+                <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="getDataFromService(sortOrder)">
               </span>
               <span (click)="sortByFn('trainerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -182,7 +182,7 @@
               </span>
               <span>
                 <!-- <input type="text" placeholder="Learner Name" (keyup)="searchItem($event)"> -->
-                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getDataFromService()">
+                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getDataFromService(sortOrder)">
               </span>
               <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>

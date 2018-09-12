@@ -62,10 +62,10 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
+    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.getDataFromService(sortByName);
-    //this.reverse = !this.reverse;
   }
 
   getDataFromService(sortByName) {
@@ -73,7 +73,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.contentData = [];
     // (<HTMLInputElement>document.getElementById("searchString")).disabled = true;
     this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination)
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortByName, this.order)
       .subscribe((response: any) => {
         this.contentData = response.data;
         // (<HTMLInputElement>document.getElementById("searchString")).disabled = false;

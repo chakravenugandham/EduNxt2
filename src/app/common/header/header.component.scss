@@ -11,38 +11,56 @@
   padding: 12px 36px;
   color: $white;
   background-color: $lightBlue;
+
   img {
     height: 55px;
     width: 60px; // border: 1px solid #fff;
     border-radius: 50%;
     margin-right: 18px;
   }
+
   p {
     margin-bottom: 0px;
     margin-top: 0px;
   }
+
   .header-text {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 0;
   }
+
   .description {
     font-size: 11px;
   }
 }
 
 .navbar-right {
-  position: absolute;
-  right: 50px;
+  float: right;
+  // position: absolute;
+  // right: 50px;
   color: $darkGray;
+
   .user {
     border-left: 1px solid $black;
     margin-left: 10px;
   }
+
   .p-l-5 {
     padding-left: 5px;
   }
 }
+
+.resol-header {
+  padding: 4px 36px;
+
+  .custom-select {
+    float: right;
+    width: auto;
+    margin-top: 7px;
+  }
+}
+
 
 // .logoutBtn{
 //   text-decoration: underline;

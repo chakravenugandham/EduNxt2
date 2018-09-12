@@ -2,16 +2,20 @@
   padding: 12px 36px;
   box-shadow: 1px 1px #ccc;
   background-color: #fff;
+
   ul {
     margin: 0;
+
     li {
       margin-right: 10px;
     }
   }
+
   .selectCourse {
     .labelName {
       margin-right: 6px;
     }
+
     select {
       color: #5584ff;
       border: 1px solid #5584ff;
@@ -20,35 +24,42 @@
       border-radius: 2px;
       margin-top: -1px;
       cursor: pointer;
+
       option {
         color: #5584ff;
       }
     }
+
     .course-item {
       border-bottom: 1px solid #eee;
       padding-top: 2px;
     }
   }
-  .course-selection{
-    ul{
-      li{
+
+  .course-selection {
+    ul {
+      li {
         width: 20%;
         margin: 0;
       }
     }
   }
+
   .report-menu {
     float: right;
     margin-top: 6px;
+
     li {
       cursor: pointer;
     }
+
     img {
       height: 16px;
       width: 16px;
       margin-right: 5px;
     }
   }
+
   .m-b-10 {
     margin-bottom: 10px;
     padding: 4px; // box-shadow: 1px 1px 2px 0px #2196F3;
@@ -66,18 +77,23 @@
 @media (max-width: 576px) {
   .time-frame {
     padding: 8px 16px;
+
     ul {
       font-size: 11px;
+
       li img {
         height: 10px;
         width: 10px;
       }
     }
-    .select-time-frame {
-      display: block;
-    }
+
+    // .select-time-frame {
+    //   display: block;
+    // }
+
     .report-menu {
       float: none;
+
       li {
         display: block;
         margin-bottom: 4px;

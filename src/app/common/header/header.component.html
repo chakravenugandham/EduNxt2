@@ -1,5 +1,6 @@
 <div class="header-class">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="my-2 my-lg-0">
       <a class="navbar-brand float-left" href="#">
         <img src="https://edunxt.smude.edu.in/sites/all/themes/edunxt/images/edunxt-logo.png" alt="">
@@ -30,7 +31,6 @@
             <i class="far fa-user-circle fa-lg"></i>
           </span>
           <span> {{userName}} </span>
-          <!-- <span>User</span> -->
         </li>
 
         <li *ngIf="cookieFound" class="list-inline-item logoutBtn" style="padding-left: 10px;">
@@ -49,7 +49,21 @@
 
       </ul>
     </div>
-  </nav>
+  </nav> -->
+
+  <div class="row resol-header bg-light">
+    <div class="col-4">
+      <a class="navbar-brand float-left" href="#">
+        <img src="https://edunxt.smude.edu.in/sites/all/themes/edunxt/images/edunxt-logo.png" alt="">
+      </a>
+    </div>
+    <div class="col-8 resol_tenant">
+      <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"
+        style="padding: 2px 20px;height: 24px;">
+        <option class="course-item" *ngFor="let tenants of tenantsName" value="{{tenants}}">{{tenants}}</option>
+      </select>
+    </div>
+  </div>
 
   <div class="welcome-user">
     <div class="float-left">

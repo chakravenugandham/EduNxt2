@@ -21,16 +21,20 @@ ul {
   font-size: 12px !important;
   font-family: "Muli";
   padding: 0;
+
   .dashboard {
     background-color: $grayTwo;
     padding: 16px 36px;
+
     .widget-row {
       margin: 0;
     }
   }
+
   .positive-color {
     color: $lightBlue !important;
   }
+
   .negative-color {
     color: $orange !important;
   }
@@ -43,46 +47,58 @@ ul {
   margin: 6px;
   padding: 10px 20px;
   box-shadow: 1px 1px $grayTwo;
+
   .boldText {
     font-size: 13px !important;
     font-weight: 600;
     color: $darkGray;
   }
+
   .changeInNumberText {
     font-size: 11px !important;
   }
+
   .font-color {
     color: $darkGray;
   }
+
   .bigNumber {
     font-size: 22px;
     font-weight: 600;
     margin-right: 8px;
   }
+
   .positive-color {
     color: $lightBlue;
   }
+
   .negative-color {
     color: $orange;
   }
+
   .highNumber {
     color: $green;
   }
+
   .lowNumber {
     color: $orange;
   }
+
   .changeNumber {
     color: $green;
     font-weight: 600;
   }
+
   .changeNumberLow {
     color: $orange;
     font-weight: 600;
   }
+
   .small-font {
     padding-top: 7px !important;
     font-size: 12px;
   }
+
   .cursor-pointer {
     cursor: pointer;
   }
@@ -111,6 +127,7 @@ ul {
 
 .activity-widgets .widget-block {
   height: 280px;
+
   .text-fix-bottom {
     position: absolute;
     width: 100%;
@@ -123,7 +140,10 @@ ul {
   // height: 200px;
   // position: absolute;
   margin: auto;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .spinner_inside {
@@ -145,6 +165,7 @@ ul {
 .activity-widgets .headingText,
 .attention-needed .headingText {
   margin-left: -20px;
+
   .nav-item a {
     font-weight: 700;
   }
@@ -158,6 +179,7 @@ ul {
   .boldText {
     margin-bottom: 0;
   }
+
   .m-t-10 {
     margin-top: -10px;
     font-size: 13px !important;
@@ -179,22 +201,27 @@ ul {
   padding-left: 12px;
   color: $black;
   position: relative;
+
   .nav .nav-link {
     padding: 4px;
   }
+
   .nav-item a {
     font-size: 14px;
     color: $black;
     padding: 6px;
     cursor: pointer;
   }
+
   .active {
     font-weight: 700;
     border-bottom: 2px solid $lightOrange;
   }
+
   ul li {
     margin-right: 12px;
   }
+
   i {
     color: $orange;
     border-radius: 50%;
@@ -202,6 +229,7 @@ ul {
     top: 8px;
     font-size: 14px;
   }
+
   .fa-times-circle {
     color: $lightBlue;
   }
@@ -211,6 +239,7 @@ ul {
 .daterangepicker {
   font-size: 12px;
   padding-bottom: 30px !important;
+
   .input-mini {
     color: $lightBlue !important;
     border: none !important;
@@ -218,9 +247,11 @@ ul {
     border-radius: 0% !important;
     text-align: center !important;
   }
+
   .daterangepicker_input i {
     display: none;
   }
+
   .calendar {
     .calendar-table {
       table {
@@ -230,10 +261,12 @@ ul {
       }
     }
   }
+
   .ranges {
     position: absolute;
     right: 4px;
     bottom: 2px;
+
     .range_inputs {
       .cancelBtn {
         display: none;
@@ -270,18 +303,22 @@ ul {
   table {
     tr {
       border-bottom: 2px dotted $grayOne;
+
       tr:last-child {
         border-bottom: none;
       }
+
       .userName {
         vertical-align: middle;
       }
+
       .action_icon {
         img {
           height: 16px;
           width: 16px;
         }
       }
+
       th {
         padding: 15px 8px;
         font-size: 12px;
@@ -289,18 +326,22 @@ ul {
         vertical-align: middle;
         text-align: left !important;
         cursor: pointer;
+
         img {
           border-radius: 50%;
         }
-        input{
+
+        input {
           border: none;
           margin-left: 4px;
         }
-        input::placeholder{
+
+        input::placeholder {
           color: #000;
           font-weight: 600;
         }
-        input:focus{
+
+        input:focus {
           outline: none;
           // padding: 2px;
           border-bottom: 1px solid $lightBlue;
@@ -308,10 +349,12 @@ ul {
           font-weight: 600;
         }
       }
+
       td {
         padding: 15px 8px;
         vertical-align: middle;
         font-size: 12px;
+
         img {
           height: 18px;
           width: 18px;
@@ -324,17 +367,20 @@ ul {
 
 .org-performance {
   table {
+
     tr td,
     tr th {
       padding: 12px 4px;
       font-size: 11px;
     }
   }
+
   tr td {
     .imgActive {
       position: relative;
       float: left;
       margin-right: 10px;
+
       img {
         // height: 35px;
         // width: 35px;
@@ -342,6 +388,7 @@ ul {
         margin-left: -10px; // border: 1px solid #fff;
         // z-index: 0;
       }
+
       i {
         position: absolute;
         bottom: -4px;
@@ -366,16 +413,19 @@ ul {
   .search-org-user {
     position: relative;
     margin-left: 12px;
+
     input {
       padding: 6px;
       padding-left: 36px;
       border: 1px solid $lightBlue;
       width: 280px;
     }
+
     .serach-icon {
       position: absolute;
       left: 12px;
       top: 8px;
+
       i {
         color: $lightBlue;
         font-size: 16px;
@@ -396,44 +446,52 @@ ul {
 }
 
 // Line Graph CSS
-#activeUserGraph, #modeOfDeliveryGraph {
+#activeUserGraph,
+#modeOfDeliveryGraph {
   .line1 {
     stroke: $orange;
     stroke-width: 6px;
     fill: none;
     opacity: 0.8;
   }
+
   .line2 {
     stroke: $lightBlue;
     stroke-width: 6px;
     fill: none;
     opacity: 0.8;
   }
+
   .y-axis path {
     stroke-width: 0 !important;
   }
+
   .axis path {
     fill: none;
     stroke: $darkGray;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
+
   .axis line {
     fill: none;
     stroke: $darkGray;
     shape-rendering: crispEdges;
   }
+
   .axis text {
     font-family: "Muli";
     font-size: 11px;
     fill: $darkGray;
   }
+
   .grid line {
     stroke: $darkGray;
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
   }
+
   .grid path {
     stroke-width: 0;
   }
@@ -471,28 +529,33 @@ ul {
   .y-axis path {
     stroke-width: 0 !important;
   }
+
   .axis path {
     fill: none;
     stroke: $darkGray;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
+
   .axis line {
     fill: none;
     stroke: $darkGray;
     shape-rendering: crispEdges;
   }
+
   .axis text {
     font-family: "Muli";
     font-size: 11px;
     fill: $darkGray;
   }
+
   .grid line {
     stroke: $darkGray;
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
   }
+
   .grid path {
     stroke-width: 0;
   }
@@ -500,23 +563,28 @@ ul {
 
 .testScoresGraph {
   width: 100%;
+
   .y-axis {
     path {
       stroke: none !important;
     }
+
     g line {
       stroke: none !important;
     }
   }
+
   .axis {
     path {
       fill: #fff;
     }
   }
+
   .y-grid {
     path {
       stroke: #fff;
     }
+
     g {
       line {
         stroke-dasharray: 4px;
@@ -524,10 +592,12 @@ ul {
       }
     }
   }
+
   .x-grid {
     path {
       stroke: #fff;
     }
+
     g {
       line {
         stroke-dasharray: 4px;
@@ -541,6 +611,7 @@ ul {
   .y-axis path {
     stroke: none !important;
   }
+
   .axis path {
     fill: none;
     stroke: $darkGray;
@@ -548,28 +619,33 @@ ul {
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
+
   .axis line {
     fill: none;
     stroke: $darkGray;
     stroke-opacity: 0.2;
     shape-rendering: crispEdges;
   }
+
   .axis text {
     font-family: "Muli";
     font-size: 11px;
     fill: lightgray;
   }
+
   .y-grid line {
     stroke: #e67474;
     stroke-opacity: 0.2;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
   }
+
   .x-grid line {
     stroke: $darkGray;
     stroke-opacity: 0.2;
     shape-rendering: crispEdges;
   }
+
   .grid path {
     stroke-width: 0;
   }
@@ -577,39 +653,48 @@ ul {
 
 .bar-chart-graph {
   overflow-x: scroll;
+
   .y {
     path {
       stroke: none !important;
     }
+
     g {
       line {
         stroke: none;
       }
     }
   }
+
   .x {
     g {
       line {
         stroke: none;
-      } // text {
+      }
+
+      // text {
       //   transform: rotate(-12deg) !important;
       // }
     }
   }
+
   .y-axis path {
     stroke-width: 0 !important;
   }
+
   .axis path {
     fill: none;
     stroke: $darkGray;
     stroke-width: 2;
     shape-rendering: crispEdges;
   }
+
   .axis line {
     fill: none;
     stroke: $darkGray;
     shape-rendering: crispEdges;
   }
+
   .axis text {
     font-family: "Muli";
     font-size: 11px;
@@ -617,12 +702,14 @@ ul {
     width: 60px !important;
     word-break: break-all !important;
   }
+
   .grid line {
     stroke: $darkGray;
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 5, 5;
   }
+
   .grid path {
     stroke-width: 0;
   }
@@ -651,6 +738,7 @@ ul {
     margin-bottom: 20px;
     height: auto;
   }
+
   select {
     border: 1px solid $lightBlue;
     color: $lightBlue;
@@ -659,9 +747,11 @@ ul {
     height: 28px;
     padding: 0px 8px;
   }
+
   select::-ms-expand {
     display: none;
   }
+
   .widget-block {
     position: relative;
     min-height: 300px;
@@ -676,37 +766,49 @@ ul {
   .dashboard {
     padding: 8px 16px !important;
   }
+
   .dashboard .row .col-md-12 .widget-block {
     font-size: 0.8em;
     height: auto;
+    min-height: 280px;
     padding-bottom: 52px;
   }
+
   .headingText {
     position: relative;
     margin-left: -10px;
     padding-left: 4px;
     margin-bottom: 4px;
+
     .widget-menu {
       position: absolute;
       right: 0;
     }
+
     ul li {
       margin-right: 2px;
     }
+
     .nav-item a {
       font-size: 13px;
       padding: 2px;
     }
   }
+
   .bigNumber {
     margin-right: 2px !important;
   }
+
   .graph-badges {
     font-size: 0.8em;
-  } // activity-widget
+  }
+
+  // activity-widget
   .activity-widgets .widget-block {
     min-width: 280px;
-  } // tables data
+  }
+
+  // tables data
   .org-performance,
   .content-perform,
   .learner-track-fullview,
@@ -715,6 +817,7 @@ ul {
       padding: 0;
       font-size: 10px;
     }
+
     table tr td {
       padding: 1px;
     }
@@ -726,28 +829,36 @@ ul {
   .dashboard {
     padding: 8px 16px;
   }
+
   .dashboard .row .col-md-12 .widget-block {
     font-size: 0.8em;
     height: auto;
+    min-height: 280px;
     padding-bottom: 52px;
   }
+
   .headingText {
     position: relative;
     margin-left: -16px;
     padding-left: 4px;
     margin-bottom: 4px;
+
     .widget-menu {
       position: absolute;
       right: 0;
     }
+
     ul li {
       margin-right: 4px;
     }
+
     .nav-item a {
       font-size: 13px;
       padding: 2px;
     }
-  } // .userImages .imgActive:first-child img {
+  }
+
+  // .userImages .imgActive:first-child img {
   //   margin-left: 0;
   // }
   .userImages .imgActive img {

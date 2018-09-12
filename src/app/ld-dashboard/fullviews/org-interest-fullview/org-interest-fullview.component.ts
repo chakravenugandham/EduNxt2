@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { Component, OnInit } from '@angular/core';
+import { LdDashboardService } from '../../services/ld-dashboard.service';
 
 @Component({
-  selector: "app-org-interest-fullview",
-  templateUrl: "./org-interest-fullview.component.html",
-  styleUrls: ["./org-interest-fullview.component.scss"]
+  selector: 'app-org-interest-fullview',
+  templateUrl: './org-interest-fullview.component.html',
+  styleUrls: ['./org-interest-fullview.component.scss']
 })
 export class OrgInterestFullviewComponent implements OnInit {
-  //global variable declarations
+  // global variable declarations
   responseData = [];
   filterbody = {};
   filtersData = {
-    routeTo: "orgInterestFullView",
+    routeTo: 'orgInterestFullView',
     filters: false,
     search: false,
     viewDetails: false,
-    filterList: ["zone"],
+    filterList: ['zone'],
     viewDetailsFilters: false
   };
 
@@ -25,14 +25,14 @@ export class OrgInterestFullviewComponent implements OnInit {
   searchBox: boolean = false;
 
 
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
+  spinner_loader = false;
+  noDataFlag = false;
 
   searchFilterData = {
-    searchBy: "courseName"
+    searchBy: 'courseName'
   };
 
-  searchString: string = "";
+  searchString = '';
 
   pagination = {
     page: 1,
@@ -41,7 +41,7 @@ export class OrgInterestFullviewComponent implements OnInit {
     total_pages: 0
   };
 
-  //dropdown display values
+  // dropdown display values
   displayFor = {};
 
   constructor(private dashboardService: LdDashboardService) {
@@ -81,19 +81,20 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.getDataFromService(this.sortOrder);
   }
 
-  //api call for orgDetails based on component
+  // api call for orgDetails based on component
   getDataFromService(sortByName) {
     //sortByName = this.searchString != ''? "courseName";
     this.spinner_loader = true;
     this.responseData = [];
-    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order).subscribe((response: any) => {
-      this.responseData = response.data;
-      this.pagination.total = response.pagination.total;
-      this.pagination.total_pages = response.pagination.total_pages;
+    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order)
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
 
-      this.spinner_loader = false;
-      this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-    });
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length === 0 ? true : false;
+      });
   }
 
   gotoPage($event) {

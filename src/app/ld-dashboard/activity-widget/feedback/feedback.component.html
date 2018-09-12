@@ -22,7 +22,7 @@
 
   <div *ngIf="!spinner_loader && !noDataFlag">
     <div class="row p-t-18">
-      <div class="col-md-6 col-sm-6 col-xs-6 col-6 feedback-emoji">
+      <div class="col-md-5 col-sm-5 col-xs-5 col-5 feedback-emoji">
 
         <!-- <img src="/assets/IconsSVGs/happy_emoji.svg" alt="happy" *ngIf="learnerSatisfaction >= 75"> -->
         <img src="/assets/images/happy_emoji.png" alt="happy" *ngIf="learnerSatisfaction >= 75">
@@ -32,7 +32,7 @@
         <img src="/assets/images/angry_emoji.png" alt="angry" *ngIf="learnerSatisfaction < 50">
       </div>
 
-      <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+      <div class="col-md-7 col-sm-7 col-xs-7 col-7">
         <div class="arrow-space">
           <span class="bigNumber" [ngClass]="{'positive-color': learnerSatisfaction >= 50, 'negative-color': learnerSatisfaction < 50}">
             {{learnerSatisfaction}}% </span>

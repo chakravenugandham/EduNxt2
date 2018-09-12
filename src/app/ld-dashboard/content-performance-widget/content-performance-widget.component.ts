@@ -1,21 +1,24 @@
-import { Component, OnInit } from "@angular/core";
-import { LdDashboardService } from "../services/ld-dashboard.service";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnInit } from '@angular/core';
+import { LdDashboardService } from '../services/ld-dashboard.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import * as jspdf from 'jspdf';
 
 import html2canvas from 'html2canvas';
 
-import { _ } from "underscore";
+import { _ } from 'underscore';
 
 @Component({
-  selector: "app-content-performance-widget",
-  templateUrl: "./content-performance-widget.component.html",
-  styleUrls: ["./content-performance-widget.component.scss"]
+  selector: 'app-content-performance-widget',
+  templateUrl: './content-performance-widget.component.html',
+  styleUrls: ['./content-performance-widget.component.scss']
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
 
-  sorting = {};
+  sorting = {
+    sortOrder: 'contentName',
+    order: 'desc'
+  };
 
   pagination = {
     page: 1,
@@ -25,29 +28,29 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   closeResult: string;
   filtersData = {
-    routeTo: "contentConsumptionFullView",
+    routeTo: 'contentConsumptionFullView',
     filters: true,
     search: false,
     viewDetails: true,
-    filterList: ["contentType"],
+    filterList: ['contentType'],
     viewDetailsFilters: false,
     appliedFilters: []
   };
 
   contentObject = {
-    filters: ["contentType"],
+    filters: ['contentType'],
     appliedFilters: [],
     responseData: []
-  }
-
-  searchFilterData = {
-    searchBy: "contentName"
   };
 
-  searchString: string = "";
+  searchFilterData = {
+    searchBy: 'contentName'
+  };
 
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
+  searchString = '';
+
+  spinner_loader = false;
+  noDataFlag = false;
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -69,7 +72,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   sortBy($event) {
     this.sorting = $event;
-    console.log(this.sorting)
+    console.log(this.sorting);
   }
 
   //, this.sorting['sortOrder'], this.sorting['order']
@@ -80,7 +83,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
       .subscribe((res: any) => {
         this.contentObject.responseData = res.data;
         this.spinner_loader = false;
-        this.noDataFlag = this.contentObject.responseData.length == 0 ? true : false;
+        this.noDataFlag = this.contentObject.responseData.length === 0 ? true : false;
       });
   }
 
@@ -97,29 +100,29 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
-      return "by pressing ESC";
+      return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return "by clicking on a backdrop";
+      return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
     }
   }
 
   downloadPdf() {
-    let htmlTemp = document.getElementById("content-consumption");
+    const htmlTemp = document.getElementById('content-consumption');
     html2canvas(htmlTemp).then(canvas => {
-      // Few necessary setting options  
-      let imgWidth = 208;
-      let pageHeight = 295;
-      let imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
+      // Few necessary setting options
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
 
       const contentDataURL = canvas.toDataURL('./');
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 0;
+      const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+      const position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
 
-      pdf.save('EduNxtReport.pdf'); // Generated PDF   
+      pdf.save('EduNxtReport.pdf'); // Generated PDF
     });
 
   }

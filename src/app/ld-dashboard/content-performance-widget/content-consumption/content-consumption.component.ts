@@ -20,6 +20,7 @@ export class ContentConsumptionComponent implements OnInit {
     this.order = this.sortFlag ? 'asc' : 'desc';
     this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
+
   constructor() { }
 
   ngOnInit() { }

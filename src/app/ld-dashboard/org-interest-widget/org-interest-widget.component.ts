@@ -65,7 +65,7 @@ export class OrgInterestWidgetComponent implements OnInit {
     this.orgData = [];
     this.dashboardService.getOrgInterestData().subscribe((res: any) => {
       this.orgData = this.actualResponseData = res.data;
-      this.constructNewArray();
+      // this.constructNewArray();
       this.spinner_loader = false;
       this.noDataFlag = this.orgData.length === 0 ? true : false;
     });
@@ -129,20 +129,20 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   getSearchItem($event) {
     this.filtersData.appliedFilters = $event;
-    this.constructNewArray();
+    // this.constructNewArray();
 
     // tslint:disable-next-line:forin
-    // for (const i in this.filtersData.appliedFilters) {
-    //   this.filtersData.appliedFilters[i]['new'] = true;
-    // }
+    for (const i in this.filtersData.appliedFilters) {
+      this.filtersData.appliedFilters[i]['new'] = true;
+    }
 
-    // this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
+    this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
 
-    // if (this.filtersData.appliedFilters.length > 0) {
-    //   this.orgData.splice(-this.filtersData.appliedFilters.length);
-    // }
+    if (this.filtersData.appliedFilters.length > 0) {
+      this.orgData.splice(-this.filtersData.appliedFilters.length);
+    }
 
-    // this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
+    this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
   }
 
   ngOnInit() {

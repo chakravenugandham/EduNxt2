@@ -151,8 +151,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     const request = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sorting['sortOrder'], this.sorting['order'])
       .subscribe(
         (response: any) => {
-          // this.responseData = this.displayData = this.actualResponseData = response.data;
-          this.responseData = this.actualResponseData = response.data;
+          this.responseData = this.displayData = this.actualResponseData = response.data;
+          // this.responseData = this.actualResponseData = response.data;
 
           this.constructNewArray();
           this.spinner_loader = false;
@@ -161,7 +161,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     // request.unsubscribe();
   }
 
-  constructNewArray() {
+  constructNewArrayTwo() {
     const tempArray = [];
     const firstArray = [];
     this.displayData = [];
@@ -207,6 +207,22 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     // }
 
 
+
+  }
+
+  constructNewArray() {
+
+    for (let i in this.filtersData.appliedFilters) {
+      this.filtersData.appliedFilters[i]["new"] = true;
+    }
+
+    this.displayData = [];
+    let tempArray = [];
+
+    for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
+      tempArray.push(this.responseData[i]);
+    }
+    this.displayData = tempArray.concat(this.filtersData.appliedFilters);
 
   }
 

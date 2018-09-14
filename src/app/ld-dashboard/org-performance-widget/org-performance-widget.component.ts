@@ -56,7 +56,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   noDataFlag = false;
 
   pagination = {
-    limitTo: 5
+    page: 1,
+    limitTo: 5,
+    total: 0
   };
 
   constructor(private dashboardService: LdDashboardService, private filterData: CommonService) {

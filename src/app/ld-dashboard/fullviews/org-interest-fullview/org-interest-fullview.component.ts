@@ -65,6 +65,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
+    window.scrollTo(0, 0);
     this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
       .subscribe((response: any) => {
         this.responseData = response.data;
@@ -91,7 +92,6 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
-    window.scrollTo(0, 0);
     if (this.sortOrder == sortByName) {
       if (this.order == 'asc') {
         this.order = 'desc';

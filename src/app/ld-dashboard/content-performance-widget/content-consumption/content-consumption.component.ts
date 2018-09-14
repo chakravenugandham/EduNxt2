@@ -9,7 +9,6 @@ export class ContentConsumptionComponent implements OnInit {
   @Input() contentData;
   @Output() sortBy = new EventEmitter<any>();
   sortOrder: string = 'contentName';
-  sortFlag: boolean = false;
   order: string = 'desc';
 
   // sortOrder: string = "contentName";
@@ -18,9 +17,18 @@ export class ContentConsumptionComponent implements OnInit {
   constructor() { }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
     this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
 

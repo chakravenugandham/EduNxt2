@@ -86,44 +86,56 @@
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
               </th>
-              <th scope="col" (click)="sortByFn('Progress')">Progress %
+              <th scope="col" (click)="sortByFn('Progress')">Exams Attempted
                 <span>
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
               </th>
+              <th scope="col" (click)="sortByFn('Progress')">Total Exams Count
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+                <!-- </th><th scope="col" (click)="sortByFn('Progress')">Progress %
+                <span>
+                  <i class="fa fa-sort" aria-hidden="true"></i>
+                </span>
+              </th> -->
             </tr>
           </thead>
           <tbody *ngIf="moduleName == 'test'">
-            <tr *ngFor="let testData of responseScoreDetails | orderBy: sortOrder : reverse">
+            <tr *ngFor="let testData of responseScoreDetails">
               <td class="">{{testData.learnerName}}</td>
               <td class="">{{testData.serialNumber}}</td>
               <td class="">{{testData.team}}</td>
               <td class="">{{testData.batchName}}</td>
               <td class="">{{testData.scoreAvg}}</td>
               <td class="">{{testData.noOfAttempts}}</td>
-              <td class="">{{testData.Progress}}</td>
+              <td class="">{{testData.examsAttempted}}</td>
+              <td class="">{{testData.totalExamsCount}}</td>
             </tr>
           </tbody>
           <tbody *ngIf="moduleName == 'quiz'">
-            <tr *ngFor="let quizData of responseScoreDetails | orderBy: sortOrder : reverse">
+            <tr *ngFor="let quizData of responseScoreDetails">
               <td class="">{{quizData.learnerName}}</td>
               <td class="">{{quizData.serialNumber}}</td>
               <td class="">{{quizData.team}}</td>
               <td class="">{{quizData.batchName}}</td>
               <td class="">{{quizData.scoreAvg}}</td>
               <td class="">{{quizData.noOfAttempts}}</td>
-              <td class="">{{quizData.Progress}}</td>
+              <td class="">{{testData.examsAttempted}}</td>
+              <td class="">{{testData.totalExamsCount}}</td>
             </tr>
           </tbody>
           <tbody *ngIf="moduleName == 'assignment'">
-            <tr *ngFor="let assignmentData of responseScoreDetails | orderBy: sortOrder : reverse">
+            <tr *ngFor="let assignmentData of responseScoreDetails">
               <td class="">{{assignmentData.learnerName}}</td>
               <td class="">{{assignmentData.serialNumber}}</td>
               <td class="">{{assignmentData.team}}</td>
               <td class="">{{assignmentData.batchName}}</td>
               <td class="">{{assignmentData.scoreAvg}}</td>
               <td class="">{{assignmentData.noOfAttempts}}</td>
-              <td class="">{{assignmentData.Progress}}</td>
+              <td class="">{{testData.examsAttempted}}</td>
+              <td class="">{{testData.totalExamsCount}}</td>
             </tr>
           </tbody>
         </table>

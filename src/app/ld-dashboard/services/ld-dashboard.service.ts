@@ -374,9 +374,8 @@ export class LdDashboardService implements OnInit {
   // csv converted apis
 
   // learner-track full details
-  getLearnerTrackDetailsCsv(componentName) {
-    const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + '/csv' + this.setDateObj + '&type=' + componentName + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT';
-    // "&displayFor=" + displayfor +
+  getLearnerTrackDetailsCsv(componentName, displayfor) {
+    const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + '/csv' + this.setDateObj + '&type=' + componentName + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + 'MAIT' + "&displayFor=" + displayfor;
     return this.http.post(url, null, { headers: this.headers });
   }
 

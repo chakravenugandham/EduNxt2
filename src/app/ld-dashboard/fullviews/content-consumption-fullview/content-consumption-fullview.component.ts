@@ -37,7 +37,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   sortOrder = 'contentName';
   order = 'asc';
-  sortFlag = false;
   searchBox = false;
 
   spinner_loader = false;
@@ -61,19 +60,12 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     });
   }
 
-  sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
-    this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
-    this.getDataFromService();
-  }
-
   getDataFromService() {
+    window.scrollTo(0, 0);
     this.spinner_loader = true;
     this.contentData = [];
     this.dashboardService
       .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
-
       .subscribe((response: any) => {
         this.contentData = response.data;
         this.pagination.total = response.pagination.total;
@@ -81,8 +73,22 @@ export class ContentConsumptionFullviewComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = response.data.length === 0 ? true : false;
       });
+  }
 
-    // result.unsubscribe();
+  sortByFn(sortByName) {
+    this.sortOrder = sortByName;
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
+    this.getDataFromService();
   }
 
   gotoPage($event) {

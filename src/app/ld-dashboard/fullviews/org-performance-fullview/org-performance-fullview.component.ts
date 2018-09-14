@@ -21,7 +21,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   checkBoxValue: boolean = false;
   sortOrder: string;
   order: string = 'desc';
-  sortFlag: boolean = false;
 
   searchBox: boolean = false;
 
@@ -54,34 +53,44 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
   }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.getDataFromService(sortByName);
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
+    this.getDataFromService();
   }
 
   //api calls for trainers ,teams and learner
-  getDataFromService(sortByName) {
+  getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
 
-    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order).subscribe((response: any) => {
+    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order).subscribe((response: any) => {
       this.responseData = response.data;
       this.pagination.total = response.pagination.total;
       this.pagination.total_pages = response.pagination.total_pages;
@@ -92,6 +101,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   setConfigObj() {
+    window.scrollTo(0, 0);
     if (this.componentName == "teams") {
       this.searchFilterData.searchComponent = "team-leaderboard";
       this.searchFilterData.searchBy = "teamName";
@@ -111,7 +121,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 
   selectToCompare(user) {
@@ -126,7 +136,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   clearSelected() {
     this.compareUsers = [];
     this.pagination.page = 1;
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 
   checkItemInApplied(item) {
@@ -141,13 +151,12 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   changeData(name) {
     this.componentName = name;
     this.dashboardService.changeLeaderBoard(name);
-    // this.dashboardService.changeInperformance$.next(name);
     localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];
     this.searchString = "";
     this.setConfigObj();
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 
   open(content, type, personId) {
@@ -197,6 +206,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   ngOnInit() {
     this.componentName = this.showDetails = localStorage.getItem('orgPerformaModule');
     this.setConfigObj();
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 }

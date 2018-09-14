@@ -21,7 +21,6 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   sortOrder = 'courseName';
   order = 'desc';
-  sortFlag = false;
   searchBox = false;
 
 
@@ -46,20 +45,35 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getDataFromService(this.sortOrder);
+      this.getDataFromService();
     });
+  }
+
+  // api call for orgDetails based on component
+  getDataFromService() {
+    this.spinner_loader = true;
+    this.responseData = [];
+    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length === 0 ? true : false;
+      });
   }
 
   searchFn() {
@@ -76,30 +90,25 @@ export class OrgInterestFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
-    this.getDataFromService(this.sortOrder);
-  }
-
-  // api call for orgDetails based on component
-  getDataFromService(sortByName) {
-    this.spinner_loader = true;
-    this.responseData = [];
-    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, sortByName, this.order)
-      .subscribe((response: any) => {
-        this.responseData = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-
-        this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length === 0 ? true : false;
-      });
+    window.scrollTo(0, 0);
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
+    this.getDataFromService();
   }
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getDataFromService(this.sortOrder);
+    this.getDataFromService();
   }
 
   ngOnInit() {

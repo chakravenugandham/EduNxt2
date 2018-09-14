@@ -28,7 +28,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   sortOrder: string = "learnerName";
   order: string = 'desc';
-  sortFlag: boolean = false;
   searchBox: boolean = false;
 
   spinner_loader: boolean = false;
@@ -53,23 +52,56 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails(this.sortOrder);
+      this.getScoreDetails();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails(this.sortOrder);
+      this.getScoreDetails();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails(this.sortOrder);
+      this.getScoreDetails();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getDataFromService();
-      this.getScoreDetails(this.sortOrder);
+      this.getScoreDetails();
     });
+  }
+
+  getDataFromService() {
+    this.spinner_loader_graph = true;
+    const request = this.dashboardService
+      .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
+      .subscribe((response: any) => {
+        this.responseGraphData = response.data;
+        this.spinner_loader_graph = false;
+
+        if (this.responseGraphData.length > 0) {
+          for (let i = 1; i <= this.responseGraphData.length; i++) {
+            this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
+          }
+          this.dataSet = [...this.dataSet];
+        }
+        this.noDataFlag_graph = this.responseGraphData.length == 0 ? true : false;
+      });
+  }
+
+  getScoreDetails() {
+    this.spinner_loader = true;
+    this.responseScoreDetails = [];
+    window.scrollTo(0, 0);
+    this.dashboardService
+      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
+      .subscribe((response: any) => {
+        this.responseScoreDetails = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+      });
   }
 
   setConfigModule() {
@@ -86,48 +118,25 @@ export class ScoresDistributionFullviewComponent implements OnInit {
       this.searchFilterData.component = "assignment"
     }
     this.getDataFromService();
-    this.getScoreDetails(this.sortOrder);
+    this.getScoreDetails();
   }
 
-  getDataFromService() {
-    // this.responseGraphData = [];
-    this.spinner_loader_graph = true;
-    const request = this.dashboardService
-      .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
-      .subscribe((response: any) => {
-        this.responseGraphData = response.data;
-        this.spinner_loader_graph = false;
 
-        if (this.responseGraphData.length > 0) {
-          for (let i = 1; i <= this.responseGraphData.length; i++) {
-            this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
-          }
-          this.dataSet = [...this.dataSet];
-        }
-        this.noDataFlag_graph = this.responseGraphData.length == 0 ? true : false;
-      });
-    // request.unsubscribe();
-  }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
-    this.getScoreDetails(sortByName);
-  }
-
-  getScoreDetails(sortByName) {
-    this.spinner_loader = true;
-    this.responseScoreDetails = [];
-    this.dashboardService
-      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortByName, this.order)
-      .subscribe((response: any) => {
-        this.responseScoreDetails = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-        this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-      });
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
+    this.getScoreDetails();
   }
 
   changeModule(module) {
@@ -152,13 +161,13 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   gotoPage($event) {
     this.pagination.page = $event;
-    this.getScoreDetails(this.sortOrder);
+    this.getScoreDetails();
   }
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
     this.getDataFromService();
-    this.getScoreDetails(this.sortOrder);
+    this.getScoreDetails();
   }
 
   //api call for score details based on component

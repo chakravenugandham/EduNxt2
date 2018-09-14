@@ -70,7 +70,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let content of contentData | orderBy: sortOrder: reverse">
+          <tr *ngFor="let content of contentData">
             <th scope="row"> {{content.contentName}} </th>
             <td> {{content.contentType}} </td>
             <td> {{content.courseName}} </td>

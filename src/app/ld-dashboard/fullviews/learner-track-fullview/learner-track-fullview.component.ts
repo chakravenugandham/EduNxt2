@@ -38,7 +38,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   performanceTrackValues = [];
 
   sortOrder: string = 'learnerName';
-  sortFlag: boolean = false;
+
 
   searchFilterData = {
     searchBy: "learnerName"
@@ -83,6 +83,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getModule() {
     this.filtersData.currentModule = localStorage.getItem('trackComponent');
+    window.scrollTo(0, 0);
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.displayfor);
@@ -150,9 +151,18 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
     this.getTableDataFromService(sortByName);
   }
 

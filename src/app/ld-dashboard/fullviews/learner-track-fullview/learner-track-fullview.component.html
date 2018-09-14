@@ -159,17 +159,17 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Score in course
+            <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Score in course
               <span (click)="sortByFn('scoreInCourse')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Score Avg.
+            <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Score Avg.
               <span (click)="sortByFn('scoreAvg')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Highest Score
+            <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Highest Score
               <span (click)="sortByFn('highestScore')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -178,7 +178,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of responseTrackDetails | orderBy: sortOrder : reverse">
+          <tr *ngFor="let data of responseTrackDetails">
             <th scope="row">
               <span>
                 <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
@@ -192,9 +192,9 @@
             <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examAccessed}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examPassed}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.scorePercentage}} </td>
-            <td class=""> {{data.scoreInCourse}} </td>
-            <td class=""> {{data.scoreAvg}} </td>
-            <td class=""> {{data.highestScore}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreInCourse}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreAvg}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.highestScore}} </td>
 
             <!-- <td>
               <span *ngIf="data.scoreAvg > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',data.person_id)">

@@ -16,7 +16,6 @@ export class LearnersComponent implements OnInit {
 
   @Output() sortBy = new EventEmitter<any>();
   sortOrder: string = "learnerName";
-  sortFlag: boolean = false;
   order: string = 'desc';
 
   closeResult: string;
@@ -79,9 +78,18 @@ export class LearnersComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
     this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
 

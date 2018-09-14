@@ -50,7 +50,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   scoreComponent: string;
   csvDownloadflag: boolean = false;
 
-  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Window) private _window: Window, @Inject(CommonService) private filterData: CommonService, @Inject(Router) private router: Router, @Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(NgbModal) private modalService: NgbModal) {
+  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Router) private router: Router, @Inject(NgbModal) private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getAllCourses();
     });

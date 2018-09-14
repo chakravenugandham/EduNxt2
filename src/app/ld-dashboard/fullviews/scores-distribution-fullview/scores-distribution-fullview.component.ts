@@ -101,6 +101,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
         this.pagination.total_pages = response.pagination.total_pages;
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+        console.log(this.moduleName, this.responseScoreDetails);
       });
   }
 

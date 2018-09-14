@@ -85,7 +85,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchComponent = 'team-leaderboard';
     this.searchFilterData.searchBy = 'teamName';
     this.filtersData.appliedFilters = this.teamsSearchItems;
-    // this.filtersData.appliedFilters = []
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.sorting = {
       sortOrder: 'teamName',
@@ -99,7 +98,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchComponent = 'trainer-leaderboard';
     this.searchFilterData.searchBy = 'trainerName';
     this.filtersData.appliedFilters = this.trainersSearchItems;
-    // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.sorting = {
       sortOrder: 'trainerName',
@@ -113,7 +111,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchComponent = 'learner-leaderboard';
     this.searchFilterData.searchBy = 'learnerName';
     this.filtersData.appliedFilters = this.learnersSearchItems;
-    // this.filtersData.appliedFilters = [];
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
     this.sorting = {
       sortOrder: 'learnerName',
@@ -154,13 +151,10 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.responseData = this.displayData = this.actualResponseData = response.data;
-          // this.responseData = this.actualResponseData = response.data;
-
           this.constructNewArray();
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length === 0 ? true : false;
         });
-    // request.unsubscribe();
   }
 
   constructNewArrayTwo() {

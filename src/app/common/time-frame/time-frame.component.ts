@@ -107,7 +107,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.dashboardService.getContentDetailsCsv().subscribe((res: any) => {
         this.downloadLink = res.data;
         window.open(res.data, "_self");
-        //console.log(this.downloadLink);
       });
     }
 
@@ -117,37 +116,46 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName, this.learnerDisplayFor).subscribe((res: any) => {
         this.downloadLink = res.data;
         window.open(res.data, "_self");
-        //console.log(this.downloadLink);
       });
     }
 
     else if (base == "scoreDistributionFullView") {
       this.scoreComponent = this.myStorage.getItem('scoreComponent');
-      this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
-        this.downloadLink = res.data;
-        window.open(res.data, "_self");
-        //console.log(this.downloadLink);
-      });
+      if (this.scoreComponent === 'test') {
+        this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+          this.downloadLink = res.data;
+          window.open(res.data, "_self");
+        });
+      }
+      else if (this.scoreComponent === 'quiz') {
+        this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+          this.downloadLink = res.data;
+          window.open(res.data, "_self");
+        });
+      }
+      else if (this.scoreComponent === 'assignment') {
+        this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+          this.downloadLink = res.data;
+          window.open(res.data, "_self");
+        });
+      }
     }
 
     else if (base == "orgPerformanceFullView") {
       this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformaModule');
       if (this.orgPerformanceComponentName === 'teams') {
-        //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");
         });
       }
       else if (this.orgPerformanceComponentName === 'trainers') {
-        //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");
         });
       }
       else if (this.orgPerformanceComponentName === 'learners') {
-        //this.dashboardService.changeInperformance$.next();
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");

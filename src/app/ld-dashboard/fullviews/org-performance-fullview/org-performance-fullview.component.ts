@@ -101,6 +101,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   setConfigObj() {
+    window.scrollTo(0, 0);
     if (this.componentName == "teams") {
       this.searchFilterData.searchComponent = "team-leaderboard";
       this.searchFilterData.searchBy = "teamName";
@@ -150,7 +151,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   changeData(name) {
     this.componentName = name;
     this.dashboardService.changeLeaderBoard(name);
-    // this.dashboardService.changeInperformance$.next(name);
     localStorage.setItem('orgPerformaModule', name);
     this.pagination.page = 1;
     this.compareUsers = [];

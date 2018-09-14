@@ -60,6 +60,21 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     });
   }
 
+  getDataFromService() {
+    window.scrollTo(0, 0);
+    this.spinner_loader = true;
+    this.contentData = [];
+    this.dashboardService
+      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
+      .subscribe((response: any) => {
+        this.contentData = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+        this.spinner_loader = false;
+        this.noDataFlag = response.data.length === 0 ? true : false;
+      });
+  }
+
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
     if (this.sortOrder == sortByName) {
@@ -74,23 +89,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
       this.order = 'asc';
     }
     this.getDataFromService();
-  }
-
-  getDataFromService() {
-    this.spinner_loader = true;
-    this.contentData = [];
-    this.dashboardService
-      .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
-
-      .subscribe((response: any) => {
-        this.contentData = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-        this.spinner_loader = false;
-        this.noDataFlag = response.data.length === 0 ? true : false;
-      });
-
-    // result.unsubscribe();
   }
 
   gotoPage($event) {

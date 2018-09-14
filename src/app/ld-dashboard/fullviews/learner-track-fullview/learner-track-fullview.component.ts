@@ -83,6 +83,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getModule() {
     this.filtersData.currentModule = localStorage.getItem('trackComponent');
+    window.scrollTo(0, 0);
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.displayfor);

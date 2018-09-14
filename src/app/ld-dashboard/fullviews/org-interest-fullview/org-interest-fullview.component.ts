@@ -61,6 +61,21 @@ export class OrgInterestFullviewComponent implements OnInit {
     });
   }
 
+  // api call for orgDetails based on component
+  getDataFromService() {
+    this.spinner_loader = true;
+    this.responseData = [];
+    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
+      .subscribe((response: any) => {
+        this.responseData = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length === 0 ? true : false;
+      });
+  }
+
   searchFn() {
     this.searchBox = true;
   }
@@ -76,6 +91,7 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
+    window.scrollTo(0, 0);
     if (this.sortOrder == sortByName) {
       if (this.order == 'asc') {
         this.order = 'desc';
@@ -88,21 +104,6 @@ export class OrgInterestFullviewComponent implements OnInit {
       this.order = 'asc';
     }
     this.getDataFromService();
-  }
-
-  // api call for orgDetails based on component
-  getDataFromService() {
-    this.spinner_loader = true;
-    this.responseData = [];
-    this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
-      .subscribe((response: any) => {
-        this.responseData = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-
-        this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length === 0 ? true : false;
-      });
   }
 
   gotoPage($event) {

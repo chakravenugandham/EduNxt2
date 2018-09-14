@@ -71,6 +71,39 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     });
   }
 
+  getDataFromService() {
+    this.spinner_loader_graph = true;
+    const request = this.dashboardService
+      .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
+      .subscribe((response: any) => {
+        this.responseGraphData = response.data;
+        this.spinner_loader_graph = false;
+
+        if (this.responseGraphData.length > 0) {
+          for (let i = 1; i <= this.responseGraphData.length; i++) {
+            this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
+          }
+          this.dataSet = [...this.dataSet];
+        }
+        this.noDataFlag_graph = this.responseGraphData.length == 0 ? true : false;
+      });
+  }
+
+  getScoreDetails() {
+    this.spinner_loader = true;
+    this.responseScoreDetails = [];
+    window.scrollTo(0, 0);
+    this.dashboardService
+      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
+      .subscribe((response: any) => {
+        this.responseScoreDetails = response.data;
+        this.pagination.total = response.pagination.total;
+        this.pagination.total_pages = response.pagination.total_pages;
+        this.spinner_loader = false;
+        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+      });
+  }
+
   setConfigModule() {
     if (this.moduleName == 'test') {
       this, this.filtersData.filterList = ["batch"];
@@ -88,25 +121,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.getScoreDetails();
   }
 
-  getDataFromService() {
-    // this.responseGraphData = [];
-    this.spinner_loader_graph = true;
-    const request = this.dashboardService
-      .getScoresDistrubution(this.moduleName, this.filtersData.appliedFilters)
-      .subscribe((response: any) => {
-        this.responseGraphData = response.data;
-        this.spinner_loader_graph = false;
 
-        if (this.responseGraphData.length > 0) {
-          for (let i = 1; i <= this.responseGraphData.length; i++) {
-            this.dataSet[i][1] = this.responseGraphData[i - 1].numberOfUsers;
-          }
-          this.dataSet = [...this.dataSet];
-        }
-        this.noDataFlag_graph = this.responseGraphData.length == 0 ? true : false;
-      });
-    // request.unsubscribe();
-  }
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
@@ -122,21 +137,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
       this.order = 'asc';
     }
     this.getScoreDetails();
-  }
-
-  getScoreDetails() {
-    this.spinner_loader = true;
-    this.responseScoreDetails = [];
-    //window.scrollTo(0, 0);
-    this.dashboardService
-      .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
-      .subscribe((response: any) => {
-        this.responseScoreDetails = response.data;
-        this.pagination.total = response.pagination.total;
-        this.pagination.total_pages = response.pagination.total_pages;
-        this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
-      });
   }
 
   changeModule(module) {

@@ -90,7 +90,6 @@ export class OrgInterestFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortOrder = sortByName;
     window.scrollTo(0, 0);
     if (this.sortOrder == sortByName) {
       if (this.order == 'asc') {
@@ -103,6 +102,7 @@ export class OrgInterestFullviewComponent implements OnInit {
     else {
       this.order = 'asc';
     }
+    this.sortOrder = sortByName;
     this.getDataFromService();
   }
 

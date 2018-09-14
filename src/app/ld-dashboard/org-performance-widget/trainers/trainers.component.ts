@@ -71,7 +71,6 @@ export class TrainersComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortOrder = sortByName;
     if (this.sortOrder == sortByName) {
       if (this.order == 'asc') {
         this.order = 'desc';
@@ -83,6 +82,7 @@ export class TrainersComponent implements OnInit {
     else {
       this.order = 'asc';
     }
+    this.sortOrder = sortByName;
     this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
   }
 

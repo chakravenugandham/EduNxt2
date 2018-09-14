@@ -76,7 +76,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortOrder = sortByName;
     if (this.sortOrder == sortByName) {
       if (this.order == 'asc') {
         this.order = 'desc';
@@ -88,6 +87,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     else {
       this.order = 'asc';
     }
+    this.sortOrder = sortByName;
     this.getDataFromService();
   }
 

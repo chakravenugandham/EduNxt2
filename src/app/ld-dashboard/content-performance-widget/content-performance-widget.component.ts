@@ -17,7 +17,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
 
   sorting = {
     sortOrder: 'contentName',
-    order: 'desc'
+    order: 'asc'
   };
 
   pagination = {

@@ -37,7 +37,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
 
   sortOrder = 'contentName';
   order = 'asc';
-  sortFlag = false;
   searchBox = false;
 
   spinner_loader = false;
@@ -62,9 +61,18 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    this.sortFlag = !this.sortFlag;
     this.sortOrder = sortByName;
-    this.order = this.sortFlag ? 'asc' : 'desc';
+    if (this.sortOrder == sortByName) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
     this.getDataFromService();
   }
 

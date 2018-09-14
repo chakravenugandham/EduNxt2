@@ -68,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let teamData of responseData | orderBy: sortOrder : reverse">
+          <tr *ngFor="let teamData of responseData">
             <th scope="row" (click)="selectToCompare(teamData)">
               <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(teamData)} "></span>
               <span class="imgActive">
@@ -135,7 +135,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let trainerData of responseData | orderBy: sortOrder : reverse ">
+          <tr *ngFor="let trainerData of responseData">
             <th scope="row " (click)="selectToCompare(trainerData) ">
               <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(trainerData)} "></span>
               <span class="imgActive ">
@@ -213,7 +213,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let learnerData of responseData| orderBy: sortOrder : reverse">
+          <tr *ngFor="let learnerData of responseData">
             <th scope="row " (click)="selectToCompare(learnerData) ">
               <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(learnerData)} "></span>
               <span class="imgActive ">

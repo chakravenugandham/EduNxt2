@@ -114,7 +114,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     else if (base == "learnerTrackFullView") {
       this.learnerTrackComponentName = this.myStorage.getItem('trackComponent');
       this.learnerDisplayFor = this.myStorage.getItem('trackDisplayFor');
-      this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName).subscribe((res: any) => {
+      this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName, this.learnerDisplayFor).subscribe((res: any) => {
         this.downloadLink = res.data;
         window.open(res.data, "_self");
         //console.log(this.downloadLink);

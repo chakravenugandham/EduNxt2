@@ -83,7 +83,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   getModule() {
     this.filtersData.currentModule = localStorage.getItem('trackComponent');
-    window.scrollTo(0, 0);
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.displayfor);
@@ -173,6 +172,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     // }
     this.spinner_loader = true;
     this.responseTrackDetails = [];
+    window.scrollTo(0, 0);
     this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortbyname, this.order)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
@@ -202,7 +202,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   gotoPage($event) {
-    window.scrollTo(0, 200);
+    // window.scrollTo(0, 200);
     this.pagination.page = $event;
     this.getTableDataFromService(this.sortOrder);
   }

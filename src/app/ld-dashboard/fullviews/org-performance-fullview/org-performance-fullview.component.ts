@@ -89,6 +89,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
+    window.scrollTo(0, 0);
 
     this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order).subscribe((response: any) => {
       this.responseData = response.data;
@@ -101,7 +102,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   setConfigObj() {
-    window.scrollTo(0, 0);
     if (this.componentName == "teams") {
       this.searchFilterData.searchComponent = "team-leaderboard";
       this.searchFilterData.searchBy = "teamName";

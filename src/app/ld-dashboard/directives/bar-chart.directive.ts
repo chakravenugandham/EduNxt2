@@ -156,8 +156,8 @@ export class BarChartDirective implements OnChanges {
         return d.valores;
       })
       .enter().append('rect')
-      // .attr('width', (x1.rangeBand() - 3))
-      .attr('width', '42')
+      .attr('width', (x1.rangeBand() - 3))
+      // .attr('width', '42')
       .attr('x', function (d) { return x1(d.name); })
       .attr('y', function (d) { return y(d.value); })
       .attr('value', function (d) { return d.name; })

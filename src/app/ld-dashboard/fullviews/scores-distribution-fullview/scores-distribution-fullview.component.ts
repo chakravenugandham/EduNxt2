@@ -124,7 +124,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
 
   sortByFn(sortByName) {
-    this.sortOrder = sortByName;
     if (this.sortOrder == sortByName) {
       if (this.order == 'asc') {
         this.order = 'desc';
@@ -136,6 +135,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     else {
       this.order = 'asc';
     }
+    this.sortOrder = sortByName;
     this.getScoreDetails();
   }
 

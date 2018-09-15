@@ -88,6 +88,9 @@ export class BarChartDirective implements OnChanges {
       if (d.label.length > 9) {
         label = d.label.slice(0, 3) + '...' + d.label.substr(d.label.length - 3);
       }
+      else {
+        label = d.label;
+      }
       orgLabels[label] = d.label;
       d.label = label;
       return d.label;

@@ -167,12 +167,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
 
   getTableDataFromService(sortbyname) {
-    // if (!this.displayfor) {
-    //   return;
-    // }
     this.spinner_loader = true;
     this.responseTrackDetails = [];
-    window.scrollTo(0, 0);
     this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortbyname, this.order)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
@@ -202,6 +198,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   gotoPage($event) {
+    window.scrollTo(0, 0);
     this.pagination.page = $event;
     this.getTableDataFromService(this.sortOrder);
   }
@@ -258,6 +255,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.getModule();
     //this.sortByFn(this.sortOrder);
   }

@@ -163,15 +163,12 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     for (const p in this.responseData) {
       tempArray.push(this.responseData[p]);
     }
-    console.log(tempArray);
 
     if (this.filtersData.appliedFilters.length > 0) {
       // tslint:disable-next-line:forin
       for (const i in this.filtersData.appliedFilters) {
         const foundAtIndex = _.findIndex(tempArray, this.filtersData.appliedFilters[i]);
         // tempArray = _.without(tempArray, this.filtersData.appliedFilters[i]);
-        console.log(this.filtersData.appliedFilters[i]);
-        console.log(foundAtIndex);
 
         if (foundAtIndex !== -1) {
           tempArray.splice(foundAtIndex, 1);

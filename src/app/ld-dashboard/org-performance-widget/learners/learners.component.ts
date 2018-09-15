@@ -78,7 +78,6 @@ export class LearnersComponent implements OnInit {
 
   sortByFn(sortByName) {
     this.sortOrder = sortByName;
-    console.log(this.sortOrder);
     this.sortBy.emit(this.sortOrder);
   }
 

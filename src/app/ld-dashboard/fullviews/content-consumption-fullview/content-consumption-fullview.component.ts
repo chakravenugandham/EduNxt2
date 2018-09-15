@@ -61,7 +61,6 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   getDataFromService() {
-    window.scrollTo(0, 0);
     this.spinner_loader = true;
     this.contentData = [];
     this.dashboardService
@@ -92,6 +91,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   gotoPage($event) {
+    window.scrollTo(0, 0);
     this.pagination.page = $event;
     this.getDataFromService();
   }
@@ -102,6 +102,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.getDataFromService();
   }
 }

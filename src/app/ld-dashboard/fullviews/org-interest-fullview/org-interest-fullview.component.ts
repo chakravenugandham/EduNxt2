@@ -65,7 +65,6 @@ export class OrgInterestFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    window.scrollTo(0, 0);
     this.dashboardService.getOrgInterestDetailsData(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
       .subscribe((response: any) => {
         this.responseData = response.data;
@@ -107,11 +106,13 @@ export class OrgInterestFullviewComponent implements OnInit {
   }
 
   gotoPage($event) {
+    window.scrollTo(0, 0);
     this.pagination.page = $event;
     this.getDataFromService();
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.sortByFn(this.sortOrder);
   }
 }

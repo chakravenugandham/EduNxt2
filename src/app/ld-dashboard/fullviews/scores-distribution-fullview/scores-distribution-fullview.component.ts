@@ -92,7 +92,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   getScoreDetails() {
     this.spinner_loader = true;
     this.responseScoreDetails = [];
-    window.scrollTo(0, 0);
     this.dashboardService
       .getScoresDetails(this.moduleName, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
       .subscribe((response: any) => {
@@ -160,6 +159,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   // }
 
   gotoPage($event) {
+    window.scrollTo(0, 0);
     this.pagination.page = $event;
     this.getScoreDetails();
   }
@@ -172,6 +172,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   //api call for score details based on component
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.moduleName = localStorage.getItem('scoreComponent');
     this.setConfigModule();
   }

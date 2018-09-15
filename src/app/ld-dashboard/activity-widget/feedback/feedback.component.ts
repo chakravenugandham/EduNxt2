@@ -51,16 +51,10 @@ export class FeedbackComponent implements OnInit {
       this.spinner_loader = false;
       this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-      this.learnerSatisfaction = Number(
-        this.responseData["learnerSatisfaction"]
-      ).toFixed(1);
+      this.learnerSatisfaction = Number(this.responseData["learnerSatisfaction"]);
 
-      this.trainerRating = Number(this.responseData["trainerRating"]).toFixed(
-        1
-      );
-      this.contentRating = Number(this.responseData["contentRating"]).toFixed(
-        2
-      );
+      this.trainerRating = Number(this.responseData["trainerRating"]);
+      this.contentRating = Number(this.responseData["contentRating"]);
 
       this.learnerSatisfationBy = Math.abs(
         Math.round(this.responseData["learnerSatisfationBy"])

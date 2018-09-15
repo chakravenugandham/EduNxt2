@@ -50,7 +50,17 @@
                 <img src="../../assets/images/download.png">
               </span>
               <span class="font-color p-l-10 cursor-pointer">
-                <b style="font-size:12px;">Download this report</b>
+                <b style="font-size:12px;">Download PDF</b>
+              </span>
+            </li>
+            <li class="list-inline-item cursor-pointer">
+              <span class="p-l-10">
+                <img src="../../assets/images/download.png">
+              </span>
+              <span class="font-color p-l-10 cursor-pointer">
+                <a style="font-size:12px;" *ngIf="csvDownloadflag" class="dropdown-item cursor-pointer" (click)="csvFormatFn()">Download
+                  CSV
+                </a>
               </span>
             </li>
           </ul>

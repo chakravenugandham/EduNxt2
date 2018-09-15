@@ -21,30 +21,13 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
+  csvDownloadflag: boolean = false;
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
-    // this.dashboardService.refreshAPI.subscribe(result => {
-    //   this.getActiveUsersData();
-    //   this.getModeOfDeliveryData();
-    // });
-
-    // this.dashboardService.dateChangeAPI.subscribe(result => {
-    //   this.getActiveUsersData();
-    //   this.getModeOfDeliveryData();
-    // });
-
-    // this.dashboardService.tenantNameAPI.subscribe(result => {
-    //   this.getActiveUsersData();
-    //   this.getModeOfDeliveryData();
-    // });
-
-    // this.dashboardService.refreshReportAPI.subscribe(result => {
-    //   this.getActiveUsersData();
-    //   this.getModeOfDeliveryData();
-    // });
   }
 
   tooltipText = 'Active users data';
+  downloadLink: string = '';
   closeResult: string;
 
   //fliter object for payload
@@ -60,14 +43,6 @@ export class ActiveUserWidgetComponent implements OnInit {
   };
 
   filterbody = {};
-
-  date;
-
-  customArray = [];
-
-  responseData = [];
-
-  chartData = [];
 
   usersChartRender(dataSet) {
     d3.select("#activeUserGraph svg").remove();
@@ -284,74 +259,22 @@ export class ActiveUserWidgetComponent implements OnInit {
     });
   }
 
-  // getActiveUsersData() {
-  //   this.spinner_loader = true
-  //   this.dashboardService.getActiveUsersData().subscribe((response: any) => {
-  //     this.responseData = response.data;
-  //     this.spinner_loader = false;
-  //     this.noDataFlag = this.responseData.length > 0 ? false : true;
-  //     for (var i = 0; i < this.responseData.length; i++) {
-  //       this.date = new Date(this.responseData[i].date);
-  //       var timeStamp = this.date.getTime();
-  //       var activeLearners = parseInt(this.responseData[i].learnerCount);
-  //       var activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount);
-  //       this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
-  //       this.usersChartRender(this.chartData);
-  //     }
-  //   });
-  // }
-
-  // getModeOfDeliveryData() {
-  //   this.spinner_loader = true;
-  //   this.dashboardService.getModeOfDeliveryData().subscribe((response: any) => {
-  //     this.responseData = response.data;
-  //     this.spinner_loader = false;
-  //     this.noDataFlag = this.responseData.length > 0 ? false : true;
-  //     for (var i = 0; i < this.responseData.length; i++) {
-  //       this.date = new Date(this.responseData[i].date);
-  //       var timeStamp = this.date.getTime();
-  //       var activeLearners = parseInt(this.responseData[i].onlineCount);
-  //       var activeFacultiesAndAdmins = this.responseData[i].offlineCount == null ? 0 : parseInt(this.responseData[i].offlineCount);
-  //       this.chartData.push([timeStamp, activeLearners, activeFacultiesAndAdmins]);
-  //     }
-  //     this.usersChartRender(this.chartData);
-  //   });
-  // }
-
-  // if (this.responseData.length == 1) {
-  //   this.date = new Date(this.responseData[i].date);
-
-  //   this.customArray.push(
-  //     [this.timeStamp = this.date.getTime() - 1,
-  //     this.activeLearners = 0,
-  //     this.activeFacultiesAndAdmins = 0],
-  //     [this.timeStamp = this.date.getTime(),
-  //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
-  //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
-  //     [this.timeStamp = this.date.getTime() + 1,
-  //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
-  //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
-  //   );
-
-  //   this.chartData = [...this.customArray];
-
-  // }
-
   activeUsersFn() {
     this.getTab = "activeUser";
     this.tooltipText = 'Active users data';
-    //this.getActiveUsersData();
+    this.csvFormatFn();
   }
 
   modeDeliveryFn() {
     this.getTab = "modeDelivery";
     this.tooltipText = 'View Online vs Offline delivery over the last 30 days';
-    //this.getModeOfDeliveryData();
+    this.csvFormatFn();
   }
 
   locationFn() {
     this.getTab = "location";
     this.tooltipText = 'Activity by Location';
+    this.csvFormatFn();
   }
 
   getFilterObject($event) {
@@ -379,6 +302,21 @@ export class ActiveUserWidgetComponent implements OnInit {
     }
   }
 
+  csvFormatFn() {
+    this.csvDownloadflag = this.getTab != '' ? true : false
+    if (this.getTab == 'activeUser') {
+      this.downloadLink = this.dashboardService.getActiveUsersCsv();
+
+    }
+    else if (this.getTab = "modeDelivery") {
+      this.downloadLink = this.dashboardService.getModeOfDeliveryCsv();
+    }
+    else if (this.getTab = "location") {
+      this.downloadLink = this.dashboardService.getLocationCsv();
+    }
+
+  }
+
   downloadPdf() {
     let htmlTemp = document.getElementById("active-users");
     html2canvas(htmlTemp).then(canvas => {
@@ -400,7 +338,6 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.tooltipText = 'Active users data';
-    //this.popclosing = false;
     this.activeUsersFn();
   }
 

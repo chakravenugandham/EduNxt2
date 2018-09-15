@@ -13,15 +13,6 @@ export class ActiveUsersComponent implements OnInit {
   // variable declaration
   chartData = [];
 
-  // dataSet = [
-  //     [1518307200000, 300, 400],
-  //     [1518393600000, 350, 550],
-  //     [1518480000000, 400, 600],
-  //     [1518566400000, 450, 650],
-  //     [1518652800000, 500, 700],
-  //     [1518739200000, 550, 750],
-  //     [1518825600000, 600, 800],
-  //   ];
   responseData = [];
   spinner_loader = false;
   noDataFlag = false;
@@ -340,11 +331,6 @@ export class ActiveUsersComponent implements OnInit {
     });
   }
 
-  // ngOnchanges(changes: any) {
-  //   if (changes.chartData.currentValue != changes.chartData.previousValue) {
-  //     this.getActiveUsersData();
-  //   }
-  // }
 
   ngOnInit() {
     // service call initiated

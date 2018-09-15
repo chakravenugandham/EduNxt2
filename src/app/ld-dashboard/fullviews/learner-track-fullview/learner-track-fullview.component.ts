@@ -26,7 +26,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     currentModule: '',
     appliedFilters: []
   };
-  order: string = 'desc';
+  order: string = 'asc';
 
   searchBox: boolean = false;
   componentName: string;
@@ -202,7 +202,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   gotoPage($event) {
-    // window.scrollTo(0, 200);
     this.pagination.page = $event;
     this.getTableDataFromService(this.sortOrder);
   }

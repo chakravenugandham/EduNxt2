@@ -16,7 +16,6 @@ export class LearnersComponent implements OnInit {
 
   @Output() sortBy = new EventEmitter<any>();
   sortOrder: string = "learnerName";
-  order: string = 'desc';
 
   closeResult: string;
   parseFloat = parseFloat;
@@ -78,19 +77,9 @@ export class LearnersComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    if (this.sortOrder == sortByName) {
-      if (this.order == 'asc') {
-        this.order = 'desc';
-      }
-      else if (this.order == 'desc') {
-        this.order = 'asc';
-      }
-    }
-    else {
-      this.order = 'asc';
-    }
     this.sortOrder = sortByName;
-    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
+    console.log(this.sortOrder);
+    this.sortBy.emit(this.sortOrder);
   }
 
   ngOnInit() {

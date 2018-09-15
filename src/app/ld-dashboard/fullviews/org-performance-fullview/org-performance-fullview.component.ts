@@ -20,7 +20,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   checkBoxValue: boolean = false;
   sortOrder: string;
-  order: string = 'desc';
+  order: string = 'asc';
 
   searchBox: boolean = false;
 

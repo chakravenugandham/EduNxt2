@@ -15,10 +15,8 @@ import { _ } from 'underscore';
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
 
-  sorting = {
-    sortOrder: 'contentName',
-    order: 'asc'
-  };
+  sortOrder = 'contentName';
+  order: string = 'asc';
 
   pagination = {
     page: 1,
@@ -71,7 +69,18 @@ export class ContentPerformanceWidgetComponent implements OnInit {
   }
 
   sortBy($event) {
-    this.sorting = $event;
+    if (this.sortOrder == $event) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
+    this.sortOrder = $event;
     this.getDataFromService();
   }
 
@@ -80,7 +89,7 @@ export class ContentPerformanceWidgetComponent implements OnInit {
     this.spinner_loader = true;
     this.dashboardService
       .getContentData(this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination,
-        this.sorting['sortOrder'], this.sorting['order'])
+        this.sortOrder, this.order)
       .subscribe((res: any) => {
         this.contentObject.responseData = res.data;
         this.spinner_loader = false;

@@ -12,7 +12,6 @@ export class TeamsComponent implements OnInit {
 
   @Output() sortBy = new EventEmitter<any>();
   sortOrder: string = "teamName";
-  order: string = 'desc';
 
   closeResult: string;
   sortType: string = "";
@@ -29,19 +28,8 @@ export class TeamsComponent implements OnInit {
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) { }
 
   sortByFn(sortByName) {
-    if (this.sortOrder == sortByName) {
-      if (this.order == 'asc') {
-        this.order = 'desc';
-      }
-      else if (this.order == 'desc') {
-        this.order = 'asc';
-      }
-    }
-    else {
-      this.order = 'asc';
-    }
     this.sortOrder = sortByName;
-    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
+    this.sortBy.emit(this.sortOrder);
   }
 
   open(content, type, personId) {

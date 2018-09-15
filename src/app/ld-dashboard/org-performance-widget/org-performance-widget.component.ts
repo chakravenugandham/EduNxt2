@@ -18,10 +18,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   tooltipText: string;
 
-  sorting = {
-    sortOrder: 'learnerName',
-    order: 'desc'
-  };
+  sortOrder = 'learnerName';
+  order = 'asc';
 
   // filters data
   filtersData = {
@@ -86,10 +84,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchBy = 'teamName';
     this.filtersData.appliedFilters = this.teamsSearchItems;
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
-    this.sorting = {
-      sortOrder: 'teamName',
-      order: 'desc'
-    };
+    this.sortOrder = 'teamName';
     this.getDataFromService();
   }
   trainersFn() {
@@ -99,10 +94,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchBy = 'trainerName';
     this.filtersData.appliedFilters = this.trainersSearchItems;
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
-    this.sorting = {
-      sortOrder: 'trainerName',
-      order: 'desc'
-    };
+    this.sortOrder = 'trainerName';
     this.getDataFromService();
   }
   learnersFn() {
@@ -112,10 +104,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchBy = 'learnerName';
     this.filtersData.appliedFilters = this.learnersSearchItems;
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
-    this.sorting = {
-      sortOrder: 'learnerName',
-      order: 'desc'
-    };
     this.getDataFromService();
   }
 
@@ -139,15 +127,25 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   }
 
   sortBy($event) {
-    this.sorting = $event;
+    if (this.sortOrder == $event) {
+      if (this.order == 'asc') {
+        this.order = 'desc';
+      }
+      else if (this.order == 'desc') {
+        this.order = 'asc';
+      }
+    }
+    else {
+      this.order = 'asc';
+    }
+    this.sortOrder = $event;
     this.getDataFromService();
   }
 
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-
-    const request = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sorting['sortOrder'], this.sorting['order'])
+    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
       .subscribe(
         (response: any) => {
           this.responseData = this.displayData = this.actualResponseData = response.data;

@@ -12,7 +12,6 @@ export class TrainersComponent implements OnInit {
 
   @Output() sortBy = new EventEmitter<any>();
   sortOrder: string = "trainerName";
-  order: string = 'desc';
 
   limitTo: number = 5;
   closeResult: string;
@@ -71,19 +70,8 @@ export class TrainersComponent implements OnInit {
   }
 
   sortByFn(sortByName) {
-    if (this.sortOrder == sortByName) {
-      if (this.order == 'asc') {
-        this.order = 'desc';
-      }
-      else if (this.order == 'desc') {
-        this.order = 'asc';
-      }
-    }
-    else {
-      this.order = 'asc';
-    }
     this.sortOrder = sortByName;
-    this.sortBy.emit({ sortOrder: this.sortOrder, order: this.order });
+    this.sortBy.emit(this.sortOrder);
   }
 
   ngOnInit() {

@@ -84,8 +84,6 @@ export class BarChartDirective implements OnChanges {
     const orgLabels = {};
 
     x0.domain(this.data.map(function (d) {
-      console.log(d.label.length);
-
       let label;
       if (d.label.length > 9) {
         label = d.label.slice(0, 3) + '...' + d.label.substr(d.label.length - 3);

@@ -89,8 +89,6 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    window.scrollTo(0, 0);
-
     this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order).subscribe((response: any) => {
       this.responseData = response.data;
       this.pagination.total = response.pagination.total;
@@ -120,6 +118,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   }
 
   gotoPage($event) {
+    window.scrollTo(0, 0);
     this.pagination.page = $event;
     this.getDataFromService();
   }
@@ -204,6 +203,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     }
   }
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.componentName = this.showDetails = localStorage.getItem('orgPerformaModule');
     this.setConfigObj();
     this.getDataFromService();

@@ -150,8 +150,6 @@ export class HalfdonutchartDirective implements OnChanges {
       //   .remove();
       this.data = this.data == Infinity ? 0 : this.data;
       this.data = this.data > 100 ? 100 : this.data;
-      console.log();
-
       this.chartRenderFn([this.data]);
     }
   }

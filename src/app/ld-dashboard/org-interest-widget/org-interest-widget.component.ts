@@ -104,7 +104,6 @@ export class OrgInterestWidgetComponent implements OnInit {
     for (const p in this.orgData) {
       tempArray.push(this.orgData[p]);
     }
-    console.log(tempArray);
 
     if (this.filtersData.appliedFilters.length > 0) {
       // tslint:disable-next-line:forin

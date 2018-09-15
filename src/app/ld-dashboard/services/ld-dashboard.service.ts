@@ -156,7 +156,6 @@ export class LdDashboardService implements OnInit {
   orgperformanceName = '';
   changeLeaderBoard(leaderBoardName) {
     this.orgperformanceName = leaderBoardName;
-    console.log(this.orgperformanceName);
     return this.orgperformanceName;
   }
 

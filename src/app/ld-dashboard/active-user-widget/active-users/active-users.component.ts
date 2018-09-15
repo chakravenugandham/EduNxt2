@@ -67,7 +67,8 @@ export class ActiveUsersComponent implements OnInit {
 
     // create yScale
     const yMax = d3.max(this.chartData, function (d) {
-      const max = d[1] > d[2] ? d[1] : d[2];
+      let max = d[1] > d[2] ? d[1] : d[2];
+      max = max < 2 ? 2 : max;
       return max;
     });
     const yScale = d3

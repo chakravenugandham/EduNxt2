@@ -30,8 +30,8 @@ export class BarChartDirective implements OnChanges {
     const calWidth = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
 
     // this.data = { label: "Data Structures", Group1: 60 };
-    const calculatedWidth =
-      this.data.length > 6 ? width + 36 * (this.data.length - 6) : width;
+    // const calculatedWidth = this.data.length > 6 ? width + 36 * (this.data.length - 6) : width;
+    const calculatedWidth = 120 * this.data.length;
 
     if (this.data.length > 6) {
       d3.select('.bar-chart-graph').attr('overflow-x', 'scroll');
@@ -57,9 +57,12 @@ export class BarChartDirective implements OnChanges {
     const y = d3.scale.linear()
       .range([h, 0]);
 
+    let tranlateDistance = -30;
+
     const xAxis = d3.svg.axis()
       .scale(x0)
       .orient('bottom');
+    // .attr('translate', 'translate(' + tranlateDistance + ',0')
 
     const yAxis = d3.svg.axis()
       .scale(y)
@@ -81,13 +84,19 @@ export class BarChartDirective implements OnChanges {
     const orgLabels = {};
 
     x0.domain(this.data.map(function (d) {
-      const label = d.label.slice(0, 5) + '...';
+      console.log(d.label.length);
+
+      let label;
+      if (d.label.length > 9) {
+        label = d.label.slice(0, 3) + '...' + d.label.substr(d.label.length - 3);
+      }
       orgLabels[label] = d.label;
       d.label = label;
       return d.label;
     }));
 
-    x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
+    // x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
+    x1.domain(options).rangeRoundBands([0, 100]);
     y.domain([0,
       d3.max(this.data, d => {
         const maxBar = Math.ceil(d.Group1);
@@ -111,14 +120,12 @@ export class BarChartDirective implements OnChanges {
       .attr('transform', 'rotate(-90)')
       .attr('y', 6);
 
-    // let tranlateDistance = -50;
-
     const bar = svg.selectAll('.bar')
       .data(this.data)
       .enter().append('g')
       .attr('class', 'rect')
       .attr('transform', function (d) { return 'translate(' + x0(d.label) + ',0)'; });
-    // .attr('transform', function (d) { tranlateDistance += 50; return 'translate(' + tranlateDistance + ',0)'; });
+    // .attr('transform', function (d) { tranlateDistance += 80; return 'translate(' + tranlateDistance + ',0)'; });
 
 
     const color = d3.scale.ordinal().range(['#5584FF']);

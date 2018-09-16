@@ -37,4 +37,22 @@ table tr {
 
 .f-12{
   font-size: 12px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.f-12:before{
+  content: "\f111";
+  font-family: "Font Awesome 5 Free";
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  font-weight: 400;
+  color: #5584ff;
+  background-color: #5584ff;
+  border-radius: 50%;
 }

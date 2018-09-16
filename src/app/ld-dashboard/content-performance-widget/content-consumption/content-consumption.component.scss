@@ -1,5 +1,10 @@
 table {
     table-layout: fixed;
+    thead{
+        th{
+            cursor: pointer;
+        }
+    }
     tbody {
         td {
             font-size: 12px;

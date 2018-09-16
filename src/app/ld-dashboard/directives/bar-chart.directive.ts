@@ -30,8 +30,8 @@ export class BarChartDirective implements OnChanges {
     const calWidth = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
 
     // this.data = { label: "Data Structures", Group1: 60 };
-    // const calculatedWidth = this.data.length > 6 ? width + 36 * (this.data.length - 6) : width;
-    const calculatedWidth = 120 * this.data.length;
+    const calculatedWidth = this.data.length > 6 ? width + 56 * (this.data.length - 6) : width;
+    // const calculatedWidth = 120 * this.data.length;
 
     if (this.data.length > 6) {
       d3.select('.bar-chart-graph').attr('overflow-x', 'scroll');

@@ -104,6 +104,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchBy = 'learnerName';
     this.filtersData.appliedFilters = this.learnersSearchItems;
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
+    this.sortOrder = 'learnerName';
     this.getDataFromService();
   }
 
@@ -149,55 +150,34 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.responseData = this.displayData = this.actualResponseData = response.data;
-          this.constructNewArray();
+          // this.constructNewArray();
+          this.constructNewArrayTwo();
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length === 0 ? true : false;
         });
   }
 
   constructNewArrayTwo() {
-    const tempArray = [];
-    const firstArray = [];
+    let tempArray = [];
+    let trueArray = [];
+    let falseArray = [];
     this.displayData = [];
-    // tslint:disable-next-line:forin
-    for (const p in this.responseData) {
-      tempArray.push(this.responseData[p]);
-    }
+    let f = JSON.parse(JSON.stringify(this.filtersData.appliedFilters));
+    tempArray = JSON.parse(JSON.stringify(this.responseData));
 
-    if (this.filtersData.appliedFilters.length > 0) {
-      // tslint:disable-next-line:forin
-      for (const i in this.filtersData.appliedFilters) {
-        const foundAtIndex = _.findIndex(tempArray, this.filtersData.appliedFilters[i]);
-        // tempArray = _.without(tempArray, this.filtersData.appliedFilters[i]);
+    falseArray = _.filter(tempArray, function (obj) {
+      return _.findIndex(f, obj) === -1;
+    })
 
-        if (foundAtIndex !== -1) {
-          tempArray.splice(foundAtIndex, 1);
-        }
-        this.filtersData.appliedFilters[i]['new'] = true;
-      }
-    }
+    f.forEach(function (obj) {
+      obj.new = true;
+      trueArray.push(obj);
+    })
 
-    // tslint:disable-next-line:forin
-    // for (const i in this.filtersData.appliedFilters) {
-    //   this.filtersData.appliedFilters[i]['new'] = true;
-    // }
-
-    // for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
-    //   tempArray.push(this.responseData[i]);
-    // }
-
-    for (let s = 0; s < (5 - this.filtersData.appliedFilters.length); s++) {
-      firstArray.push(tempArray[s]);
-    }
-    this.displayData = firstArray.concat(this.filtersData.appliedFilters);
-
-    // if (this.filtersData.appliedFilters.length === 0) {
-    //   this.displayData = tempArray;
-    // } else if (this.filtersData.appliedFilters.length > 1) {
-    //   this.displayData = tempArray.slice(0, -(this.filtersData.appliedFilters.length)).concat(this.filtersData.appliedFilters);
-    // }
-
-
+    let len = 5 - trueArray.length;
+    falseArray = falseArray.splice(falseArray.length - len);
+    tempArray = _.union(falseArray, trueArray);
+    this.displayData = tempArray;
 
   }
 
@@ -219,28 +199,8 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   getSearchItem($event) {
     this.filtersData.appliedFilters = $event;
-
-    this.constructNewArray();
-
-    // for (let i in this.filtersData.appliedFilters) {
-    //   this.filtersData.appliedFilters[i]["new"] = true;
-    // }
-
-    // this.responseData = JSON.parse(JSON.stringify(this.actualResponseData));
-
-    // if (this.filtersData.appliedFilters.length > 0)
-    //   this.responseData.splice(-this.filtersData.appliedFilters.length);
-
-    // this.displayData = [];
-    // let tempArray = [];
-
-    // for (let i = 0; i < (this.responseData.length - this.filtersData.appliedFilters.length); i++) {
-    //   tempArray.push(this.responseData[i]);
-    // }
-    // this.displayData = tempArray.concat(this.filtersData.appliedFilters);
-
-
-    // this.responseData = this.responseData.concat(this.filtersData.appliedFilters);
+    // this.constructNewArray();
+    this.constructNewArrayTwo();
   }
 
   ngOnInit() {

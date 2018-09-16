@@ -41,11 +41,13 @@
 
         <td class="arrow-space">{{tableData.pointsEarned | customNumber}}
           <span class="highNumber small" *ngIf="tableData.pointsEarned>=tableData.pointsEarnedSinceLastMonth">
-            <img src="/assets/images/up_arrow.png" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth | customNumber}}
+            <img src="/assets/images/up_arrow.png" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth |
+            customNumber}}
           </span>
 
           <span class="negative-color small" *ngIf="tableData.pointsEarned<tableData.pointsEarnedSinceLastMonth">
-            <img src="/assets/images/down_arrow.png" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth | customNumber}}
+            <img src="/assets/images/down_arrow.png" alt="up_arrow"> {{tableData.pointsEarnedSinceLastMonth |
+            customNumber}}
           </span>
 
         </td>
@@ -53,7 +55,7 @@
         <td>{{tableData.testPerformance | customNumber}}</td>
 
         <td>
-          {{parseFloat(tableData.examScore) | customNumber}}
+          {{tableData.examScore | customNumber}}
         </td>
 
         <td>
@@ -91,11 +93,11 @@
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
-            placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}"
+            readonly class="form-control" placeholder="enter
               an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea"></textarea>
@@ -118,10 +120,11 @@
       <div class="form-group ">
         <label for="dateOfBirth ">Send to</label>
         <div class="input-group ">
-          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
               an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea "></textarea>

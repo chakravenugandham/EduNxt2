@@ -110,7 +110,7 @@
               </span>
               <span>
                 <!-- <input type="text" placeholder="Trainer Name" (keyup)="searchItem($event)"> -->
-                <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="getDataFromService(sortOrder)">
+                <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('trainerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -264,11 +264,11 @@
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
-            placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}"
+            readonly class="form-control" placeholder="enter
             an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea"></textarea>
@@ -291,10 +291,11 @@
       <div class="form-group ">
         <label for="dateOfBirth ">Send to</label>
         <div class="input-group ">
-          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
             an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea "></textarea>

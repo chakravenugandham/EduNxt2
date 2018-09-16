@@ -101,6 +101,11 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
+  searchItem() {
+    this.pagination.page = 1;
+    this.getDataFromService();
+  }
+
   ngOnInit() {
     window.scrollTo(0, 0);
     this.getDataFromService();

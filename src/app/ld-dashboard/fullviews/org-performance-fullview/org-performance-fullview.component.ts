@@ -123,6 +123,11 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
+  searchItem() {
+    this.pagination.page = 1;
+    this.getDataFromService();
+  }
+
   selectToCompare(user) {
     if (_.findIndex(this.compareUsers, user) == -1) {
       this.compareUsers.push(user);

@@ -61,21 +61,21 @@ export class LearnerTrackFullviewComponent implements OnInit {
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService(this.sortOrder);
+      this.getTableDataFromService();
     });
     this.dashboardService.dateChangeAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService(this.sortOrder);
+      this.getTableDataFromService();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService(this.sortOrder);
+      this.getTableDataFromService();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
       this.getGraphDataFromService();
-      this.getTableDataFromService(this.sortOrder);
+      this.getTableDataFromService();
     });
 
     // this.filtersData.currentModule = this.myStorage.getItem('learnerTrackCurrentModule');
@@ -86,13 +86,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
       localStorage.setItem('trackDisplayFor', this.displayfor);
-      this.getTableDataFromService(this.sortOrder);
+      this.getTableDataFromService();
       this.getGraphDataFromService();
     }
     else if (this.filtersData.currentModule == "performance") {
       this.displayfor = "excelling";
       localStorage.setItem('trackDisplayFor', this.displayfor);
-      this.getTableDataFromService(this.sortOrder);
+      this.getTableDataFromService();
       this.getGraphDataFromService();
     }
   }
@@ -162,14 +162,14 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.order = 'asc';
     }
     this.sortOrder = sortByName;
-    this.getTableDataFromService(sortByName);
+    this.getTableDataFromService();
   }
 
 
-  getTableDataFromService(sortbyname) {
+  getTableDataFromService() {
     this.spinner_loader = true;
     this.responseTrackDetails = [];
-    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, sortbyname, this.order)
+    this.dashboardService.getLearnerTrackDetails(this.filtersData.currentModule, this.displayfor, this.searchFilterData, this.searchString, this.filtersData.appliedFilters, this.pagination, this.sortOrder, this.order)
       .subscribe((response: any) => {
         this.responseTrackDetails = response.data;
         this.pagination.total = response.pagination.total;
@@ -194,13 +194,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
     localStorage.setItem('trackDisplayFor', this.displayfor);
     this.pagination.page = 1;
     this.searchString = "";
-    this.getTableDataFromService(this.sortOrder);
+    this.getTableDataFromService();
   }
 
   gotoPage($event) {
     window.scrollTo(0, 0);
     this.pagination.page = $event;
-    this.getTableDataFromService(this.sortOrder);
+    this.getTableDataFromService();
   }
 
   open(content, type, personId) {
@@ -250,8 +250,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
 
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
-    this.getTableDataFromService(this.sortOrder);
+    this.getTableDataFromService();
     this.getGraphDataFromService();
+  }
+
+  searchItem() {
+    this.pagination.page = 1;
+    this.getTableDataFromService();
   }
 
   ngOnInit() {

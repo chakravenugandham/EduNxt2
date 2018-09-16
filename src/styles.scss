@@ -233,6 +233,19 @@ ul {
   .fa-times-circle {
     color: $lightBlue;
   }
+
+  .dropdown-menu-items{
+    padding: 4px 0px;
+    li{
+      margin: 0;
+      padding: 0;
+      img{
+        height: 10px;
+        width: 10px;
+        margin-right: 4px;
+        }
+      }
+    }
 }
 
 //date-picker CSS
@@ -783,6 +796,29 @@ ul {
     .widget-menu {
       position: absolute;
       right: 0;
+      .dropdown-menu{
+      ul {
+        li {
+          margin: 0;
+          padding: 0;
+          img{
+            height: 10px;
+            width: 10px;
+          }
+        }
+      }
+    }
+    .dropdown-menu-items{
+      li{
+        margin: 0;
+        padding: 0;
+        img{
+          height: 10px;
+          width: 10px;
+          margin-right: 4px;
+        }
+      }
+  }
     }
 
     ul li {

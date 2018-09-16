@@ -37,11 +37,17 @@
           <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
             <img src="../../assets/images/download.png"> Download this report
           </span>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item cursor-pointer" (click)="downloadPdf()">Download PDF</button>
-            <a *ngIf="csvDownloadflag" class="dropdown-item cursor-pointer" (click)="csvFormatFn()">Download CSV
-            </a>
-          </div>
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu-items">
+            <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
+              <!-- <button class="dropdown-item cursor-pointer" (click)="downloadPdf()">Download PDF</button> -->
+              <img src="../../assets/images/download.png">
+              <span>Download PDF</span>
+            </li>
+            <li class="list-inline-item cursor-pointer" *ngIf="csvDownloadflag" (click)="csvFormatFn()">
+              <img src="../../assets/images/download.png">
+              <span>Download CSV</span>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

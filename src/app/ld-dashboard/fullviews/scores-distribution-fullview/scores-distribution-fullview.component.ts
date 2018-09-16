@@ -164,6 +164,11 @@ export class ScoresDistributionFullviewComponent implements OnInit {
     this.getScoreDetails();
   }
 
+  searchItem() {
+    this.pagination.page = 1;
+    this.getScoreDetails();
+  }
+
   addFilters($event) {
     this.filtersData.appliedFilters = $event;
     this.getDataFromService();

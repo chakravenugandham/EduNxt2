@@ -28,14 +28,14 @@
         </span>
         <span class="p-l-20" ngbDropdown placement="bottom-right">
           <i class="fa fa-ellipsis-v ellipse" aria-hidden="true" ngbDropdownToggle></i>
-          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="list-inline">
+          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu-items">
             <!-- <li class="list-inline-item cursor-pointer">
                 <span>
                   <img src="../../assets/images/save.png">
                 </span>
                 <span class="font-color p-l-10 cursor-pointer">
                   <b>Save this view</b>
-                </span>
+                </span>`
               </li>
               <li class="list-inline-item cursor-pointer" (click)="open(followUpContent)">
                 <span>
@@ -53,15 +53,16 @@
                 <b style="font-size:12px;">Download PDF</b>
               </span>
             </li>
-            <li class="list-inline-item cursor-pointer">
+            <li class="list-inline-item cursor-pointer" (click)="csvFormatFn()">
               <span class="p-l-10">
                 <img src="../../assets/images/download.png">
               </span>
               <span class="font-color p-l-10 cursor-pointer">
-                <a style="font-size:12px;" class="dropdown-item cursor-pointer" (click)="csvFormatFn()">Download
-                  CSV
-                </a>
+                <b style="font-size:12px;">Download CSV</b>
               </span>
+              <!-- <a style="font-size:12px;" class="dropdown-item cursor-pointer">Download
+                  CSV
+                </a> -->
             </li>
           </ul>
         </span>

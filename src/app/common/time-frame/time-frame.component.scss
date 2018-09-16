@@ -74,6 +74,24 @@
   color: #5584ff;
 }
 
+.dropdown-menu-items{
+  padding: 4px 0px;
+  text-align: right;
+  li{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    
+    top: 22px !important;
+    left: 0 !important;
+    img{
+      height: 10px !important;
+      width: 10px !important;
+      margin-right: 4px;
+      }
+    }
+  }
+
 @media (max-width: 576px) {
   .time-frame {
     padding: 8px 16px;

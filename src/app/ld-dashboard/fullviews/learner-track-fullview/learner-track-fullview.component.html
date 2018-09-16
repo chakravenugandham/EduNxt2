@@ -118,7 +118,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="getTableDataFromService(sortOrder)">
+                <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('learnerName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -134,7 +134,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Team
+            <th scope="col">Section
               <span (click)="sortByFn('teamName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -236,11 +236,11 @@
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
-            placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}"
+            readonly class="form-control" placeholder="enter
               an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea"></textarea>
@@ -263,10 +263,11 @@
       <div class="form-group ">
         <label for="dateOfBirth ">Send to</label>
         <div class="input-group ">
-          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
               an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea "></textarea>

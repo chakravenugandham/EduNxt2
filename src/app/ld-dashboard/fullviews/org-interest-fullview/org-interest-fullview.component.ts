@@ -111,6 +111,11 @@ export class OrgInterestFullviewComponent implements OnInit {
     this.getDataFromService();
   }
 
+  searchItem() {
+    this.pagination.page = 1;
+    this.getDataFromService();
+  }
+
   ngOnInit() {
     window.scrollTo(0, 0);
     this.sortByFn(this.sortOrder);

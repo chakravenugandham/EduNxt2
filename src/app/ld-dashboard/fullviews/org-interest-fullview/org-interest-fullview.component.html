@@ -30,7 +30,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <input type="text" [(ngModel)]="searchString" placeholder="Interest / Topic" (keyup)="getDataFromService(sortOrder)">
+                <input type="text" [(ngModel)]="searchString" placeholder="Interest / Topic" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('courseName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>

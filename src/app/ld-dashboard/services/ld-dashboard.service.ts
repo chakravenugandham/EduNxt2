@@ -80,13 +80,17 @@ export class LdDashboardService implements OnInit {
   // baseURL from enviornment
   baseURL = environment.baseUrl;
 
-  // UserId = (this.cookieService.get('user_id') == '') ? '57142' : this.cookieService.get('user_id');
-  UserId = '57142';
+  UserId = (this.cookieService.get('user_id') == '') ? '57142' : this.cookieService.get('user_id');
+  tenantName = (this.cookieService.get('tenantName') == '') ? 'MAIT' : this.cookieService.get('tenantName');
+  // UserId = this.cookieService.get('user_id');
+  // tenantName = this.cookieService.get('tenantName');
+  // UserId = '57142';
+  // tenantName = 'MAIT';
 
   headers = new HttpHeaders()
     .set('user_id', this.UserId)
     .set('user_type', 'LND')
-    .set('tenant_name', 'MAIT');
+    .set('tenant_name', this.tenantName);
 
   selectTenantName(tenantName?: any) {
     if (tenantName === 'MAIT') {
@@ -322,7 +326,7 @@ export class LdDashboardService implements OnInit {
       filters = filtersList[0];
     }
 
-    const url = this.baseURL + APIURL.FILTERS + this.setDateObj + '&courseId=' + this.courseId + '&programId=' + this.programId + '&type=' + filters;
+    const url = this.baseURL + APIURL.FILTERS + this.setDateObj + this.program_course + '&type=' + filters;
     return this.http.get(url, { headers: this.headers });
   }
 

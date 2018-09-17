@@ -14,23 +14,20 @@ export class AuthGuard implements CanActivate {
             const decodedToken = helper.decodeToken(t);
             const expirationDate = helper.getTokenExpirationDate(t);
             const isExpired = helper.isTokenExpired(t);
-            console.log("---//Sddsds");
-            console.log(JSON.stringify(expirationDate));
-            console.log(JSON.stringify(isExpired));
-            console.log(JSON.stringify(decodedToken));
-            if(isExpired)
-            {
+            if (isExpired) {
                 localStorage.removeItem('t');
                 return false;
             }
-            else
-            {
+            else {
                 return true;
             }
         }
+        else {
+            // this.router.navigate(['/auth']);
+            this.router.navigate(['/LnD']);
+            return false;
+        }
 
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/']);
-        return false;
+
     }
 }

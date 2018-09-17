@@ -54,10 +54,17 @@
 .resol-header {
   padding: 4px 36px;
 
-  .custom-select {
+  .logout-menu {
     float: right;
     width: auto;
     margin-top: 7px;
+  }
+
+  .custom-test {
+    float: right;
+    width: auto;
+    vertical-align: middle;
+    margin-top: 11px;
   }
 }
 

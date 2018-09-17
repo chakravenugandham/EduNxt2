@@ -57,12 +57,29 @@
         <img src="https://edunxt.smude.edu.in/sites/all/themes/edunxt/images/edunxt-logo.png" alt="">
       </a>
     </div>
+
     <div class="col-8 resol_tenant">
-      <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"
-        style="padding: 2px 20px;height: 24px;">
-        <option class="course-item" *ngFor="let tenants of tenantsName" value="{{tenants}}">{{tenants}}</option>
-      </select>
+      <div class="logout-menu">
+
+        <div *ngIf="!cookieFound">
+          <select class="custom-select" [(ngModel)]="selectTenantName" (change)="changeCourse(selectTenantName)" id="selectCourse"
+            style="padding: 2px 20px;height: 24px;">
+            <option class="course-item" *ngFor="let tenants of tenantsName" value="{{tenants}}">{{tenants}}</option>
+          </select>
+        </div>
+
+        <div *ngIf="cookieFound">
+          <span class="text-primary"> {{userName}} </span>
+          <span> | </span>
+          <span class="cursor-pointer text-danger" (click)="logout()">
+            <i class="fas fa-power-off"></i>
+            Logout
+          </span>
+        </div>
+      </div>
+
     </div>
+
   </div>
 
   <div class="welcome-user">

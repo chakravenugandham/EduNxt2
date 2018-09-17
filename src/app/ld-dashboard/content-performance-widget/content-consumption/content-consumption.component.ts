@@ -10,8 +10,6 @@ export class ContentConsumptionComponent implements OnInit {
   @Output() sortBy = new EventEmitter<any>();
   sortOrder: string = 'contentName';
 
-  reverse: boolean = false;
-
   constructor() { }
 
   sortByFn(sortByName) {

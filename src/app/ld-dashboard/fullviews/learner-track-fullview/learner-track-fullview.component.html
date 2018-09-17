@@ -174,11 +174,11 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Highest Score
+            <!-- <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Highest Score
               <span (click)="sortByFn('highestScore')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
-            </th>
+            </th> -->
             <!-- <th scope="col">Action</th> -->
           </tr>
         </thead>
@@ -199,7 +199,7 @@
             <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.scorePercentage}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreInCourse}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreAvg}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.highestScore}} </td>
+            <!-- <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.highestScore}} </td> -->
 
             <!-- <td>
               <span *ngIf="data.scoreAvg > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',data.person_id)">
@@ -238,8 +238,8 @@
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
-            placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}"
+            readonly class="form-control" placeholder="enter
               an email ">
         </div>
         <br />
@@ -265,7 +265,8 @@
       <div class="form-group ">
         <label for="dateOfBirth ">Send to</label>
         <div class="input-group ">
-          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
               an email ">
         </div>
         <br />

@@ -27,7 +27,7 @@ export class ScoresDistributionFullviewComponent implements OnInit {
   dataSet = [[0, 0], [20], [40], [60], [80], [100]];
 
   sortOrder: string = "learnerName";
-  order: string = 'desc';
+  order: string = 'asc';
   searchBox: boolean = false;
 
   spinner_loader: boolean = false;

@@ -59,9 +59,7 @@ export class UsersComponent implements OnInit {
 
           numberChange: true,
 
-          usersSinceLastMonth: Number(
-            this.responseData["activeUsersSinceLastMonth"]
-          ),
+          usersSinceLastMonth: Number(this.responseData["activeUsersSinceLastMonth"]),
 
           Users: "Users",
           sinceLastMonth: "",
@@ -73,9 +71,7 @@ export class UsersComponent implements OnInit {
 
           numberChange: true,
 
-          usersSinceLastMonth: Number(
-            this.responseData["enrolledUsersSinceLastMonth"]
-          ),
+          usersSinceLastMonth: Number(this.responseData["enrolledUsersSinceLastMonth"]),
 
           Users: "Users",
           sinceLastMonth: "",
@@ -83,8 +79,6 @@ export class UsersComponent implements OnInit {
         };
       });
   }
-
-  ngOnChanges(changes: any) { }
 
   ngOnInit() {
     //service call initiated

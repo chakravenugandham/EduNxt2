@@ -47,19 +47,16 @@ export class ActiveUserWidgetComponent implements OnInit {
   activeUsersFn() {
     this.getTab = "activeUser";
     this.tooltipText = 'Active users data';
-    // this.csvFormatFn();
   }
 
   modeDeliveryFn() {
     this.getTab = "modeDelivery";
     this.tooltipText = 'View Online vs Offline delivery over the last 30 days';
-    // this.csvFormatFn();
   }
 
   locationFn() {
     this.getTab = "location";
     this.tooltipText = 'Activity by Location';
-    // this.csvFormatFn();
   }
 
   getFilterObject($event) {
@@ -88,7 +85,6 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
 
   csvFormatFn() {
-    // this.csvDownloadflag = this.getTab != '' ? true : false
     if (this.getTab == 'activeUser') {
       this.downloadLink = this.dashboardService.getActiveUsersCsv();
       window.open(this.downloadLink, "_self");

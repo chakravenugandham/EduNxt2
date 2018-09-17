@@ -88,12 +88,7 @@ export class DonutChartDirective implements OnChanges {
       .on('mouseover', function (d) {
         // var data = d3.select(d).data();
         tooltip.transition().style('opacity', 1);
-        tooltip.html(
-          '<div style=\'color:#0146F9\'>' +
-          d.label + '</div>' +
-          '<div style=\'color:#0146F9\'>' +
-          d.value + '</div>'
-        ).style('left', (d3.event.pageX) + 'px')
+        tooltip.html('<div style=\'color:#0146F9\'>' + d.label + '</div>' + '<div style=\'color:#0146F9\'>' + d.value + '</div>').style('left', (d3.event.pageX) + 'px')
           .style('top', (d3.event.pageY) + 'px');
       })
       .on('mouseout', function (d) {

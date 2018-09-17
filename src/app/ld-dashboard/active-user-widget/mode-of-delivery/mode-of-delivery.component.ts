@@ -272,7 +272,6 @@ export class ModeOfDeliveryComponent implements OnInit {
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length === 0 ? true : false;
       this.chartData = [];
-      // if (this.responseData.length > 0) {
       for (let i = 0; i < this.responseData.length; i++) {
         const date = new Date(this.responseData[i].date);
         const timeStamp = date.getTime();
@@ -289,7 +288,6 @@ export class ModeOfDeliveryComponent implements OnInit {
         this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0]);
       }
       this.usersChartRender();
-      // }
     });
   }
 

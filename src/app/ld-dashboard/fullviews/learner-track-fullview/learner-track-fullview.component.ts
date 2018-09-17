@@ -26,7 +26,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
     currentModule: '',
     appliedFilters: []
   };
-  order: string = 'asc';
 
   searchBox: boolean = false;
   componentName: string;
@@ -37,7 +36,8 @@ export class LearnerTrackFullviewComponent implements OnInit {
   paceTrackValues = [];
   performanceTrackValues = [];
 
-  sortOrder: string = 'learnerName';
+  sortOrder: string;
+  order: string = 'desc';
 
 
   searchFilterData = {
@@ -55,7 +55,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   emailData = {
     to: "",
     subject: "manipal user",
-    text: "Hi"
+    text: ""
   };
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
@@ -83,12 +83,14 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.filtersData.currentModule = localStorage.getItem('trackComponent');
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
+      this.sortOrder = 'scorePercentage';
       localStorage.setItem('trackDisplayFor', this.displayfor);
       this.getTableDataFromService();
       this.getGraphDataFromService();
     }
     else if (this.filtersData.currentModule == "performance") {
       this.displayfor = "excelling";
+      this.sortOrder = 'scoreAvg';
       localStorage.setItem('trackDisplayFor', this.displayfor);
       this.getTableDataFromService();
       this.getGraphDataFromService();

@@ -19,7 +19,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   tooltipText: string;
 
   sortOrder = 'learnerName';
-  order = 'asc';
+  order = 'desc';
 
   // filters data
   filtersData = {

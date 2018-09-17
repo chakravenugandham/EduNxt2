@@ -87,7 +87,8 @@
 
   <div class="widget-block">
     <div>
-      <b>Display data for </b>
+      <b *ngIf="filtersData.currentModule == 'pace'"> Display data for Learner Pace </b>
+      <b *ngIf="filtersData.currentModule == 'performance'"> Display data for Learner Performance </b>
       <span *ngIf="filtersData.currentModule == 'pace'">
         <select class="custom-select paceDataSelect" [(ngModel)]="displayfor" (change)="getDisplayObject(displayfor)">
           <option value="aheadschedule">Ahead of Schedule</option>
@@ -118,64 +119,74 @@
       <table class="table table-borderless">
         <thead>
           <tr>
-            <th scope="col" style="display:flex">
+            <th scope="col" style="display:flex" (click)="sortByFn('learnerName')">
               <span>
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="searchItem()">
               </span>
-              <span (click)="sortByFn('learnerName')">
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Sl. No.
-              <span (click)="sortByFn('serialNumber')">
+            <th scope="col" (click)="sortByFn('serialNumber')">
+              Sl. No.
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Course Name
-              <span (click)="sortByFn('courseName')">
+            <th scope="col" (click)="sortByFn('courseName')">
+              Course Name
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Section
-              <span (click)="sortByFn('teamName')">
+            <th scope="col" (click)="sortByFn('teamName')">
+              Section
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col">Batch
-              <span (click)="sortByFn('batchName')">
+            <th scope="col" (click)="sortByFn('batchName')">
+              Batch
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Exam Accessed
-              <span (click)="sortByFn('examAccessed')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('examAccessed')">
+              Exam Accessed
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Exam Passed
-              <span (click)="sortByFn('examPassed')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('examPassed')">
+              Exam Passed %
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'pace'">Progress
-              <span (click)="sortByFn('scorePercentage')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('scorePercentage')">
+              Progress %
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Score in course
-              <span (click)="sortByFn('scoreInCourse')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'performance'" (click)="sortByFn('scoreInCourse')">
+              Score in course
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Score Avg.
-              <span (click)="sortByFn('scoreAvg')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'performance'" (click)="sortByFn('scoreAvg')">
+              Score Avg %
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <!-- <th scope="col" *ngIf="filtersData.currentModule == 'performance'">Highest Score
-              <span (click)="sortByFn('highestScore')">
+            <!-- <th scope="col" *ngIf="filtersData.currentModule == 'performance'" (click)="sortByFn('highestScore')">
+              Highest Score
+              <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th> -->

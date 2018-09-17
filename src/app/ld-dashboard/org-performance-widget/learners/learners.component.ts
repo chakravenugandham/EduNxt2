@@ -15,7 +15,7 @@ export class LearnersComponent implements OnInit {
   @Input() LearnersData;
 
   @Output() sortBy = new EventEmitter<any>();
-  sortOrder: string = "learnerName";
+  sortOrder: string = "testPerformance";
 
   closeResult: string;
   parseFloat = parseFloat;

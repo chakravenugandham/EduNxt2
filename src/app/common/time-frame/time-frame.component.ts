@@ -66,11 +66,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._baseUrl = event.url.replace(/\//g, '');
-        this.csvDownloadflag = this._baseUrl != '' ? true : false;
-        if (this._baseUrl != '') {
-          // this.csvFormatFn();
-        }
-
+        this.csvDownloadflag = (this._baseUrl === '' || this._baseUrl === 'LnD') ? false : true;
       }
     });
   }

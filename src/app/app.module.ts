@@ -31,6 +31,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 
 import { AppComponent } from "./app.component";
 import { AuthComponent } from "./auth";
+import { ContentLayoutComponent } from "./containers/content-layout/content-layout.component";
 import { HeaderComponent } from "./common/header/header.component";
 import { TimeFrameComponent } from "./common/time-frame/time-frame.component";
 import { LdDashboardComponent } from "./ld-dashboard/ld-dashboard.component";
@@ -117,12 +118,14 @@ import { LearnerAvgCoursePerformanceComponent } from "./learner/learner-course-p
 import { CustomNumberPipe } from "../app/shared/custom-number.pipe";
 import { PaginateComponent } from './common/paginate/paginate.component';
 import { SpinnerComponent } from './common/spinner/spinner.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { GraphChartComponent } from './common/graph-chart/graph-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
+    ContentLayoutComponent,
     HeaderComponent,
     TimeFrameComponent,
     LdDashboardComponent,
@@ -222,7 +225,8 @@ import { GraphChartComponent } from './common/graph-chart/graph-chart.component'
     Daterangepicker,
     FormsModule,
     OrderModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    ReactiveFormsModule
   ],
   providers: [GoogleChartsBaseService, { provide: Window, useValue: window }, CookieService],
   bootstrap: [AppComponent]

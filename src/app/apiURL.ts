@@ -7,6 +7,7 @@ export class APIURL {
   public static BATCHES_DROPDOWN = "batches-dropdown";
   public static SECTIONS_DROPDOWN = "sections-dropdown";
   public static ACTIVE_USERS = "active-users";
+  public static AUTH_USER = "auth-user";
   public static LEARNER_ENGAGEMENT = "learner-engagement";
   public static LEARNER_PACE = "learner-pace";
   public static FEEDBACK = "feedback";

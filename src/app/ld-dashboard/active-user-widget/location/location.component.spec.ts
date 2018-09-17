@@ -4,6 +4,10 @@ import { By } from "@angular/platform-browser";
 
 import { LocationComponent } from './location.component';
 import { GoogleChartsBaseService } from "../../services/googleChartService";
+import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 
 fdescribe('LocationComponent', () => {
   let component: LocationComponent;
@@ -12,8 +16,9 @@ fdescribe('LocationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LocationComponent],
-      providers: [GoogleChartsBaseService]
+      declarations: [LocationComponent, SpinnerComponent],
+      providers: [GoogleChartsBaseService, LdDashboardService],
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));
@@ -25,12 +30,12 @@ fdescribe('LocationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   // it('should create', () => {
-  //   component.getLocationData();
-  //   expect(component.getLocationData).toBeDefined();
+  //   expect(component).toBeDefined();
   // });
+
+  it('should create', () => {
+    component.getLocationData();
+    expect(component.getLocationData).toBeDefined();
+  });
 });

@@ -59,6 +59,14 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.getAllCourses();
     });
 
+    this.dashboardService.dateChangeAPI.subscribe(result => {
+      this.getAllCourses();
+    });
+
+    this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.getAllCourses();
+    });
+
     this.dashboardService.changeInPerforamceAPI.subscribe(result => {
       // this.csvFormatFn();
     });
@@ -96,6 +104,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
         }
       }
     }
+    this.coursesData = [];
     this.dashboardService.courseAndProgram(this.programObj);
   }
 

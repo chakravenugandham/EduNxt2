@@ -150,6 +150,7 @@ export class LdDashboardService implements OnInit {
 
     this.program_course = '&programId=' + this.programObj.programId + '&courseId=' + this.programObj.courseId;
 
+    this.tenantName$.next();
     this.refreshAPI$.next();
   }
 
@@ -169,7 +170,7 @@ export class LdDashboardService implements OnInit {
   // courses dropdown
 
   getCoursesProgramData() {
-    const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN;
+    const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN + this.setDateObj;
     return this.http.get(url, { headers: this.headers });
   }
 

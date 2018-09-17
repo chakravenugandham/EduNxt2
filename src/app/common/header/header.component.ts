@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { CommonService } from "../../common-services/common.service";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 
 import { CookieService } from 'ngx-cookie-service';
@@ -33,7 +32,6 @@ export class HeaderComponent implements OnInit {
 
   changeCourse(selectTenantName) {
     this.dashboardService.selectTenantName(selectTenantName);
-    //this.dashboardService.selectTenantNameV2(this.tenantName, this.user_id);
   }
 
   logout() {

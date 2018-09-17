@@ -10,7 +10,10 @@ export class FacultylearnerprogressComponent implements OnInit {
   learnerProgressValues = [];
   graphSize = "smallGraph";
 
-  constructor() {}
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
+  constructor() { }
 
   ngOnInit() {
     this.learnerProgressValues = [

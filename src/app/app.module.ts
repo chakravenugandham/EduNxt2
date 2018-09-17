@@ -15,7 +15,7 @@ import "d3";
 import "nvd3";
 
 //word cloud component
-import { TagCloudComponent } from "angular-tag-cloud-module";
+import { TagCloudModule } from "angular-tag-cloud-module";
 
 //modules
 import { RoutingModule } from "./routing.module";
@@ -172,7 +172,6 @@ import { GraphChartComponent } from './common/graph-chart/graph-chart.component'
     OrgPerformanceFullviewComponent,
     NotificationPerformanceFullviewComponent,
     OrgInterestFullviewComponent,
-    TagCloudComponent,
     UsersDataComponent,
     HalfdonutchartDirective,
     DonutChartDirective,
@@ -225,6 +224,7 @@ import { GraphChartComponent } from './common/graph-chart/graph-chart.component'
     Daterangepicker,
     FormsModule,
     OrderModule,
+    TagCloudModule,
     ClickOutsideModule,
     ReactiveFormsModule
   ],

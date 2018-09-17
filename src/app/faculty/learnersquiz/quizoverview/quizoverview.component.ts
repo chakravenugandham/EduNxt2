@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizoverviewComponent implements OnInit {
 
+  teamsData: any[];
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

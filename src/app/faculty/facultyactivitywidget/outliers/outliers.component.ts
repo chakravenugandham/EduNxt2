@@ -9,7 +9,10 @@ export class OutliersComponent implements OnInit {
   outliersValues = [];
   graphSize = "smallGraph";
 
-  constructor() {}
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
+  constructor() { }
 
   ngOnInit() {
     this.outliersValues = [

@@ -6,7 +6,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./learner-score-card.component.scss"]
 })
 export class LearnerScoreCardComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
+  constructor() { }
+
+  ngOnInit() { }
 }

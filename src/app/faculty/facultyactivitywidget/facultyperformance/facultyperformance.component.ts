@@ -8,8 +8,8 @@ import { Config } from "../../../ld-dashboard/common/users-data/users-data.compo
 })
 export class FacultyperformanceComponent implements OnInit {
   config: Config;
-  // spinner_loader: boolean = false;
-  // noDataFlag: boolean = false;
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
   percentageChange: number;
   expectedChange: boolean;
 
@@ -26,7 +26,7 @@ export class FacultyperformanceComponent implements OnInit {
 
   filterbody = {};
 
-  constructor() {}
+  constructor() { }
 
   getFilterObject($event) {
     this.filterbody = $event;

@@ -18,6 +18,9 @@ export class ProgramstatusComponent implements OnInit {
   programStatusValues = [];
   graphSize = "smallGraph";
 
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   responseData = {};
 
   constructor(private dashboardService: LdDashboardService) {

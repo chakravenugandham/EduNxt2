@@ -9,6 +9,9 @@ export class FacultyAttentionWidgetCardComponent implements OnInit {
 
   @Input() config: Config;
 
+  spinner_loader: boolean = false;
+  noDataFlag: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

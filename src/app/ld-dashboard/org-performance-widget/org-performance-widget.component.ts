@@ -18,7 +18,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   tooltipText: string;
 
-  sortOrder = 'learnerName';
+  sortOrder = 'testPerformance';
   order = 'desc';
 
   // filters data
@@ -104,7 +104,7 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     this.searchFilterData.searchBy = 'learnerName';
     this.filtersData.appliedFilters = this.learnersSearchItems;
     localStorage.setItem('orgPerformaModule', this.filtersData.currentModule);
-    this.sortOrder = 'learnerName';
+    this.sortOrder = 'testPerformance';
     this.getDataFromService();
   }
 

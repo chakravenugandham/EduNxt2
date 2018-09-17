@@ -10,14 +10,7 @@ export class LdDashboardComponent implements OnInit {
   filtersList = [];
 
   loading: boolean = false;
-  constructor(private getDataService: LdDashboardService) {
-    //   this.getDataService.dateChange.subscribe(result => {
-    //     this.loading = true;
-    //     setTimeout(()=>{    
-    //       this.loading = false;
-    //  }, 3000);
-    //   })
-  }
+  constructor(private getDataService: LdDashboardService) { }
 
   ngOnInit() { }
 }

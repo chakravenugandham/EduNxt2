@@ -20,7 +20,7 @@
         <span>
           <b>Display Leaderboard for </b>
         </span>
-        <select class="custom-select w-90" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
+        <select class="custom-select w-140" [(ngModel)]="showDetails" (change)="changeData(showDetails)">
           <option [value]="'teams'">Teams</option>
           <option [value]="'trainers'">Trainers</option>
           <option [value]="'learners'">Learners</option>
@@ -42,7 +42,6 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <!-- <input type="text" placeholder="Team Name" (keyup)="searchItem($event)"> -->
                 <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('teamName')">
@@ -89,15 +88,6 @@
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
             </td>
-
-            <!-- <td>
-              <span *ngIf="teamData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',teamData.teamId)">
-                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
-              </span>
-              <span *ngIf="teamData.completion <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',teamData.teamId)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
-              </span>
-            </td> -->
           </tr>
         </tbody>
       </table>
@@ -109,7 +99,6 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <!-- <input type="text" placeholder="Trainer Name" (keyup)="searchItem($event)"> -->
                 <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('trainerName')">
@@ -161,15 +150,6 @@
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
             </td>
-
-            <!-- <td>
-              <span *ngIf="trainerData.avgRating> 3.5" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',trainerData.trainerId)">
-                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
-              </span>
-              <span class="negative-color cursor-pointer" *ngIf="trainerData.avgRating <= 3.5" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',trainerData.trainerId)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
-              </span>
-            </td> -->
           </tr>
         </tbody>
       </table>
@@ -181,7 +161,6 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
-                <!-- <input type="text" placeholder="Learner Name" (keyup)="searchItem($event)"> -->
                 <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('learnerName')">
@@ -235,15 +214,6 @@
                 <i class="fas fa-exclamation-triangle"></i> Follow up
               </span>
             </td>
-
-            <!-- <td>
-              <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="open(congratsContent,'congrats',learnerData.person_id)">
-                <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
-              </span>
-              <span *ngIf="learnerData.examScore <= 75" class="action_icon negative-color cursor-pointer" (click)="open(followUpContent,'followup',learnerData.person_id)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
-              </span>
-            </td> -->
           </tr>
         </tbody>
       </table>
@@ -255,9 +225,6 @@
 <ng-template #followUpContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Send an alert</h4>
-    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button> -->
   </div>
   <div class="modal-body">
     <form>

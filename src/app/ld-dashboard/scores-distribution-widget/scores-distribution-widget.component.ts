@@ -44,7 +44,6 @@ export class ScoresDistributionWidgetComponent implements OnInit {
   quizFilters = [];
   assignmentFilters = [];
 
-  // dataSet = [[0, 0], [20, 40], [40, 0], [60, 0], [80, 50], [100, 0], [110, 0]];
   dataSet = [[0, 0], [20], [40], [60], [80], [100]];
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;

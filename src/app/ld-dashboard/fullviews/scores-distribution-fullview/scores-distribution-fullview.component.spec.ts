@@ -31,9 +31,9 @@ describe('ScoresDistributionFullviewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create getFilterObject', () => {
-    let $event;
-    component.getFilterObject($event);
-    expect(component.getFilterObject).toBeTruthy();
-  });
+  // it('should create getFilterObject', () => {
+  //   let $event;
+  //   component.getFilterObject($event);
+  //   expect(component.getFilterObject).toBeTruthy();
+  // });
 });

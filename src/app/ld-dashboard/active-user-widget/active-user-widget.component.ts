@@ -1,8 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import * as moment from "moment";
-import * as d3 from "d3v4";
 import * as _ from "underscore";
 
 import * as jspdf from 'jspdf';
@@ -21,7 +19,6 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
-  // csvDownloadflag: boolean = false;
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
   }
@@ -47,19 +44,16 @@ export class ActiveUserWidgetComponent implements OnInit {
   activeUsersFn() {
     this.getTab = "activeUser";
     this.tooltipText = 'Active users data';
-    // this.csvFormatFn();
   }
 
   modeDeliveryFn() {
     this.getTab = "modeDelivery";
     this.tooltipText = 'View Online vs Offline delivery over the last 30 days';
-    // this.csvFormatFn();
   }
 
   locationFn() {
     this.getTab = "location";
     this.tooltipText = 'Activity by Location';
-    // this.csvFormatFn();
   }
 
   getFilterObject($event) {
@@ -88,7 +82,6 @@ export class ActiveUserWidgetComponent implements OnInit {
   }
 
   csvFormatFn() {
-    // this.csvDownloadflag = this.getTab != '' ? true : false
     if (this.getTab == 'activeUser') {
       this.downloadLink = this.dashboardService.getActiveUsersCsv();
       window.open(this.downloadLink, "_self");

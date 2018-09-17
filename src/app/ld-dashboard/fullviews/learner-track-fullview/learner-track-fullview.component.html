@@ -11,6 +11,11 @@
     </div>
   </div>
   <div class="row">
+
+    <div *ngIf="!checkObjEmpty(responseGraphDetails?.performanceData)" class="spinner_loading">
+      <app-spinner></app-spinner>
+    </div>
+
     <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
       <div class="widget-block text-center">
         <p>
@@ -227,17 +232,14 @@
 <ng-template #followUpContent let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Send an alert</h4>
-    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button> -->
   </div>
   <div class="modal-body">
     <form>
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}"
-            readonly class="form-control" placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
               an email ">
         </div>
         <br />
@@ -263,8 +265,7 @@
       <div class="form-group ">
         <label for="dateOfBirth ">Send to</label>
         <div class="input-group ">
-          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
-            placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
               an email ">
         </div>
         <br />

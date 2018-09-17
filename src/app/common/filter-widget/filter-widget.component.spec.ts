@@ -78,10 +78,10 @@ describe('FilterWidgetComponent', () => {
     expect(component.closeDropDown).toBeDefined();
   });
 
-  it('should define showFilter', () => {
-    let filterBodyName, index;
-    component.removeFromFilterBody(filterBodyName, index);
-    expect(component.removeFromFilterBody).toBeDefined();
-  });
+  // it('should define showFilter', () => {
+  //   let filterBodyName, index;
+  //   component.removeFromFilterBody(filterBodyName, index);
+  //   expect(component.removeFromFilterBody).toBeDefined();
+  // });
 
 });

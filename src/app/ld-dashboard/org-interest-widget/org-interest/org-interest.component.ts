@@ -31,7 +31,6 @@ export class OrgInterestComponent implements OnInit, OnChanges {
       this.wordData = [];
       // tslint:disable-next-line:forin
       for (const i in this.orgPopularData) {
-        // for (let i = 0; i < 5; i++) {
         this.wordData.push({
           text: this.orgPopularData[i].courseName.slice(0, 20) + '..',
           weight: this.orgPopularData[i].rank

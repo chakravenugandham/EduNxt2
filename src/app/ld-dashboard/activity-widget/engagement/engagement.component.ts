@@ -47,34 +47,20 @@ export class EngagementComponent implements OnInit {
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-        // this.engageUserChange =
-        //   this.responseData["usersCompletedPrograms"] <
-        //   this.responseData["completedProgramsSinceLastMonth"]
-        //     ? false
-        //     : true;
+        //this.engageUserChange = this.responseData["usersCompletedPrograms"] < this.responseData["completedProgramsSinceLastMonth"]? false: true;
 
-        this.percentageChange =
-          this.responseData["usersCompletedPrograms"] > 0
-            ? (this.responseData["usersCompletedPrograms"] * 100) /
-            this.responseData["enrolledUsers"]
-            : 0;
+        this.percentageChange = this.responseData["usersCompletedPrograms"] > 0 ? (this.responseData["usersCompletedPrograms"] * 100) / this.responseData["enrolledUsers"] : 0;
 
         this.config = {
-          peopleCurrentlyEnrolled: Math.round(
-            this.responseData["usersCompletedPrograms"]
-          ),
+          peopleCurrentlyEnrolled: Math.round(this.responseData["usersCompletedPrograms"]),
           numberChange: this.percentageChange < 50 ? false : true,
 
-          usersSinceLastMonth: Math.round(
-            this.responseData["completedProgramsSinceLastMonth"]
-          ),
+          usersSinceLastMonth: Math.round(this.responseData["completedProgramsSinceLastMonth"]),
 
           Users: "Users",
           sinceLastMonth: "",
           PeopleAreCurrentlyEnrolled: "People completed training programs"
         };
-
-        // this.expectedChange = this.percentageChange < 50 ? false : true;
       });
   }
 

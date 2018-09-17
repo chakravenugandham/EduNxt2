@@ -2,10 +2,7 @@
   <p>
     <b> View score distribution </b>
   </p>
-  <div *ngIf="testData.length<0" class="spinner_loading text-center">
-    <!-- <i class="fas fa-spinner fa-spin fa-3x align-middle"></i> -->
-    <p>No data found</p>
-  </div>
+
   <div appScoreChart [data]='testData'>
   </div>
 </div>

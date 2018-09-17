@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3v4';
 import * as _ from 'underscore';
-import * as moment from 'moment';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 
 @Component({
@@ -15,8 +14,6 @@ export class ModeOfDeliveryComponent implements OnInit {
   responseData = [];
   spinner_loader = false;
   noDataFlag = false;
-
-  @Input() usersData;
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {
@@ -272,7 +269,6 @@ export class ModeOfDeliveryComponent implements OnInit {
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length === 0 ? true : false;
       this.chartData = [];
-      // if (this.responseData.length > 0) {
       for (let i = 0; i < this.responseData.length; i++) {
         const date = new Date(this.responseData[i].date);
         const timeStamp = date.getTime();
@@ -289,7 +285,6 @@ export class ModeOfDeliveryComponent implements OnInit {
         this.chartData.unshift([(this.chartData[0][0] - 86400000), 0, 0]);
       }
       this.usersChartRender();
-      // }
     });
   }
 

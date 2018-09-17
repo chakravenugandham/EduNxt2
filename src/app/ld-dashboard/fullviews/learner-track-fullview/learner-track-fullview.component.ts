@@ -77,8 +77,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
       this.getGraphDataFromService();
       this.getTableDataFromService();
     });
-
-    // this.filtersData.currentModule = this.myStorage.getItem('learnerTrackCurrentModule');
   }
 
   getModule() {
@@ -262,6 +260,5 @@ export class LearnerTrackFullviewComponent implements OnInit {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.getModule();
-    //this.sortByFn(this.sortOrder);
   }
 }

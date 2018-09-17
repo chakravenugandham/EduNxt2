@@ -278,7 +278,6 @@ export class ActiveUsersComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   activeFacultiesAndAdmins: any;
 
-  // customArray = [];
   // service call for apis
   getActiveUsersData() {
     this.spinner_loader = true;
@@ -287,28 +286,7 @@ export class ActiveUsersComponent implements OnInit {
       this.responseData = response.data;
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length === 0 ? true : false;
-      // if (this.responseData.length > 0) {
       for (let i = 0; i < this.responseData.length; i++) {
-        this.date = new Date(this.responseData[i].date);
-        // if (this.responseData.length == 1) {
-        //   this.date = new Date(this.responseData[i].date);
-
-        //   this.customArray.push(
-        //     [this.timeStamp = this.date.getTime() - 1,
-        //     this.activeLearners = 0,
-        //     this.activeFacultiesAndAdmins = 0],
-        //     [this.timeStamp = this.date.getTime(),
-        //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
-        //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)],
-        //     [this.timeStamp = this.date.getTime() + 1,
-        //     this.activeLearners = parseInt(this.responseData[i].learnerCount),
-        //     this.activeFacultiesAndAdmins = parseInt(this.responseData[i].facultyCount)]
-        //   );
-
-        //   this.chartData = [...this.customArray];
-
-        // }
-
         this.date = new Date(this.responseData[i].date);
         this.timeStamp = this.date.getTime();
         // tslint:disable-next-line:radix

@@ -43,7 +43,7 @@
               </span>
               <span>
                 <!-- <input type="text" placeholder="Team Name" (keyup)="searchItem($event)"> -->
-                <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="getDataFromService(sortOrder)">
+                <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('teamName')">
                 <i class="fa fa-sort" aria-hidden="true"></i>

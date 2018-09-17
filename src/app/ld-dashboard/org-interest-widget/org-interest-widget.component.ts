@@ -37,8 +37,6 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   displayData: any[];
 
-  // searchFilterItem = [];
-
   spinner_loader = false;
   noDataFlag = false;
 
@@ -65,7 +63,6 @@ export class OrgInterestWidgetComponent implements OnInit {
     this.orgData = [];
     this.dashboardService.getOrgInterestData().subscribe((res: any) => {
       this.orgData = this.actualResponseData = res.data;
-      // this.constructNewArray();
       this.spinner_loader = false;
       this.noDataFlag = this.orgData.length === 0 ? true : false;
     });
@@ -128,8 +125,6 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   getSearchItem($event) {
     this.filtersData.appliedFilters = $event;
-    // this.constructNewArray();
-
     // tslint:disable-next-line:forin
     for (const i in this.filtersData.appliedFilters) {
       this.filtersData.appliedFilters[i]['new'] = true;

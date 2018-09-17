@@ -11,13 +11,7 @@ table {
         }
         i {
             color: #ffd630;
-        } // thead{
-        //   tr{
-        //     th:first-child{
-        //       width: 30%;
-        //     }
-        //   }
-        // }
+        } 
     }
 }
 
@@ -29,12 +23,5 @@ table tr td,
 .content-name {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; // width: 100%;
-    // overflow: hidden !important;
-    // display: -webkit-box !important;
-    // // display: -ms-flexbox !important;
-    // -webkit-line-clamp: 1 !important;
-    // -webkit-box-orient: vertical !important;
-    // height: 32px !important;
-    // word-break: break-all;
+    text-overflow: ellipsis; 
 }

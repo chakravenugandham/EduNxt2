@@ -47,29 +47,6 @@ export class LearnersTrackWidgetComponent implements OnInit {
     responseData: []
   }
 
-  // paceObject.appliedFilters = [
-  //   {
-  //     type: "batch",
-  //     id: 59,
-  //     name: "Batch1"
-  //   },
-  //   {
-  //     type: "quiz",
-  //     id: 109,
-  //     name: "Quiz1"
-  //   },
-  //   {
-  //     type: "batch",
-  //     id: 79,
-  //     name: "Batch2"
-  //   },
-  //   {
-  //     type: "quiz",
-  //     id: 143,
-  //     name: "Quiz2"
-  //   }
-  // ];
-
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 

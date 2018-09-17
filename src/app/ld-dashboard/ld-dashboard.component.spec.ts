@@ -10,8 +10,8 @@ import { PaceComponent } from "../ld-dashboard/activity-widget/pace/pace.compone
 import { TimespentComponent } from "../ld-dashboard/activity-widget/timespent/timespent.component";
 import { UsersComponent } from "../ld-dashboard/activity-widget/users/users.component";
 import { UserstrainedComponent } from "../ld-dashboard/activity-widget/userstrained/userstrained.component";
-import { HeaderComponent } from "../ld-dashboard/common/header/header.component";
-import { TimeFrameComponent } from "../ld-dashboard/common/time-frame/time-frame.component";
+import { HeaderComponent } from "../common/header/header.component";
+import { TimeFrameComponent } from "../common/time-frame/time-frame.component";
 import { ActiveUserWidgetComponent } from '../ld-dashboard/active-user-widget/active-user-widget.component';
 import { ActiveUsersComponent } from '../ld-dashboard/active-user-widget/active-users/active-users.component';
 import { ModeOfDeliveryComponent } from '../ld-dashboard/active-user-widget/mode-of-delivery/mode-of-delivery.component';
@@ -39,10 +39,10 @@ import { OrgInterestWidgetComponent } from '../ld-dashboard/org-interest-widget/
 import { OrgInterestComponent } from '../ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from '../ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from '../ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
-import { MpDatepickerRangeComponent } from '../ld-dashboard/common/mp-datepicker-range/mp-datepicker-range.component';
+import { MpDatepickerRangeComponent } from '../common/mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from '../ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
-import { FooterComponent } from '../ld-dashboard/common/footer/footer.component';
-import { FilterWidgetComponent } from '../ld-dashboard/common/filter-widget/filter-widget.component';
+import { FooterComponent } from '../common/footer/footer.component';
+import { FilterWidgetComponent } from '../common/filter-widget/filter-widget.component';
 import { LearnerPerformanceFullviewComponent } from '../ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component';
 import { ScoresDistributionFullviewComponent } from '../ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component';
 import { OrgPerformanceFullviewComponent } from '../ld-dashboard/fullviews/org-performance-fullview/org-performance-fullview.component';

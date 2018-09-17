@@ -278,7 +278,6 @@ export class ActiveUsersComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   activeFacultiesAndAdmins: any;
 
-  // customArray = [];
   // service call for apis
   getActiveUsersData() {
     this.spinner_loader = true;

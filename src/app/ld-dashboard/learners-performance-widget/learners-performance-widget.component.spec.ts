@@ -9,7 +9,7 @@ import { ProgressComponent } from "./progress/progress.component";
 import { BarChartDirective } from "../../ld-dashboard/directives/bar-chart.directive";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LearnersPerformanceWidgetComponent', () => {

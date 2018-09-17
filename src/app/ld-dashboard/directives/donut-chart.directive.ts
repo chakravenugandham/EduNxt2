@@ -115,11 +115,6 @@ export class DonutChartDirective implements OnChanges {
     }
   }
 
-  // @HostListener('window') onresize() {
-  //   console.log('resize');
-  //   this.chartRenderFn(this.data);
-  // }
-
   @HostListener('window:resize') onresize() {
     this.chartRenderFn(this.data);
   }

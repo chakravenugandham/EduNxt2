@@ -36,24 +36,19 @@ describe('ActiveUserWidgetComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should create getActiveUsersData', () => {
-  //   component.getActiveUsersData();
-  //   expect(component.getActiveUsersData).toBeTruthy();
-  // });
-
-  // it('should create getLocationData', () => {
-  //   component.getLocationData();
-  //   expect(component.getLocationData).toBeTruthy();
-  // });
+  it('should create getActiveUsersData', () => {
+    component.activeUsersFn();
+    expect(component.activeUsersFn).toBeTruthy();
+  });
 
   it('should create modeDeliveryFn', () => {
     component.modeDeliveryFn();
-    expect(component.modeDeliveryFn).toBeTruthy();
+    expect(component.modeDeliveryFn).toBeDefined();
   });
 
   it('should create locationFn', () => {
     component.locationFn();
-    expect(component.locationFn).toBeTruthy();
+    expect(component.locationFn).toBeDefined();
   });
 
 

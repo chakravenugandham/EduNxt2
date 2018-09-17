@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3v4';
 import * as _ from 'underscore';
-import * as moment from 'moment';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 
 @Component({
@@ -15,8 +14,6 @@ export class ModeOfDeliveryComponent implements OnInit {
   responseData = [];
   spinner_loader = false;
   noDataFlag = false;
-
-  @Input() usersData;
 
   constructor(private dashboardService: LdDashboardService) {
     this.dashboardService.refreshAPI.subscribe(result => {

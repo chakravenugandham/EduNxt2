@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { OrgInterestWidgetComponent } from './org-interest-widget.component';
 import { OrgInterestComponent } from "./org-interest/org-interest.component";
 import { LdDashboardService } from "../services/ld-dashboard.service";
-import { FilterWidgetComponent } from "../common/filter-widget/filter-widget.component";
+import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { TagCloudComponent } from "angular-tag-cloud-module";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

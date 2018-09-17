@@ -1,8 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import * as moment from "moment";
-import * as d3 from "d3v4";
 import * as _ from "underscore";
 
 import * as jspdf from 'jspdf';
@@ -21,7 +19,6 @@ export class ActiveUserWidgetComponent implements OnInit {
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
-  // csvDownloadflag: boolean = false;
 
   constructor(private dashboardService: LdDashboardService, private modalService: NgbModal) {
   }

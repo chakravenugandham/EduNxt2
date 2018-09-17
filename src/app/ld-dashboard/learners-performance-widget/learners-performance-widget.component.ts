@@ -119,30 +119,6 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
             });
           }
         }
-        // for (let i in this.responseData) {
-        //   let performancegroupValues = [];
-        //   let progressgroupValues = [];
-        //   for (let j in this.responseData[i].batches) {
-        //     performancegroupValues.push(
-        //       parseInt(this.responseData[i].batches[j].performance)
-        //     );
-        //     progressgroupValues.push(
-        //       parseInt(this.responseData[i].batches[j].progress)
-        //     );
-        //   }
-        //   this.performanceDataSet.push({
-        //     label: this.responseData[i].courseName,
-        //     Group1: performancegroupValues[0],
-        //     Group2: performancegroupValues[1],
-        //     Group3: performancegroupValues[2]
-        //   });
-        //   this.progressDataSet.push({
-        //     label: this.responseData[i].courseName,
-        //     Group1: progressgroupValues[0],
-        //     Group2: progressgroupValues[1],
-        //     Group3: progressgroupValues[2]
-        //   });
-        // }
       });
   }
   ngOnInit() {

@@ -93,7 +93,6 @@
     </div>
 
     <div *ngIf="responseData.length > 0" class="org-performance">
-      <!-- <div class="org-performance"> -->
 
       <app-teams *ngIf="filtersData.currentModule == 'teams'" [teamsData]="displayData" (sortBy)="sortBy($event)"></app-teams>
       <app-trainers *ngIf="filtersData.currentModule == 'trainers'" [trainersData]="displayData" (sortBy)="sortBy($event)"></app-trainers>

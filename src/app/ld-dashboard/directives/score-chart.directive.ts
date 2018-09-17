@@ -191,7 +191,6 @@ export class ScoreChartDirective implements OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.data && changes.data.currentValue) {
-      // this.data = changes.data.currentValue;
       this.chartRenderFn();
     }
   }

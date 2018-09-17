@@ -150,7 +150,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.responseData = this.displayData = this.actualResponseData = response.data;
-          // this.constructNewArray();
           this.constructNewArrayTwo();
           this.spinner_loader = false;
           this.noDataFlag = this.responseData.length === 0 ? true : false;
@@ -162,23 +161,23 @@ export class OrgPerformanceWidgetComponent implements OnInit {
     let trueArray = [];
     let falseArray = [];
     this.displayData = [];
-    let f = JSON.parse(JSON.stringify(this.filtersData.appliedFilters));
+    let searchData = JSON.parse(JSON.stringify(this.filtersData.appliedFilters));
     tempArray = JSON.parse(JSON.stringify(this.responseData));
+    if (searchData.length > 0) {
+      falseArray = _.filter(tempArray, function (obj) {
+        return _.findIndex(searchData, obj) === -1;
+      })
 
-    falseArray = _.filter(tempArray, function (obj) {
-      return _.findIndex(f, obj) === -1;
-    })
+      searchData.forEach(function (obj) {
+        obj.new = true;
+        trueArray.push(obj);
+      })
 
-    f.forEach(function (obj) {
-      obj.new = true;
-      trueArray.push(obj);
-    })
-
-    let len = 5 - trueArray.length;
-    falseArray = falseArray.splice(falseArray.length - len);
-    tempArray = _.union(falseArray, trueArray);
+      let len = 5 - trueArray.length;
+      falseArray = falseArray.splice(falseArray.length - len);
+      tempArray = _.union(falseArray, trueArray);
+    }
     this.displayData = tempArray;
-
   }
 
   constructNewArray() {
@@ -199,7 +198,6 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   getSearchItem($event) {
     this.filtersData.appliedFilters = $event;
-    // this.constructNewArray();
     this.constructNewArrayTwo();
   }
 

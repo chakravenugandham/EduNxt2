@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { LocationComponent } from './location.component';
 import { GoogleChartsBaseService } from "../../services/googleChartService";
 
-describe('LocationComponent', () => {
+fdescribe('LocationComponent', () => {
   let component: LocationComponent;
   let fixture: ComponentFixture<LocationComponent>;
   let inputEl: DebugElement;
@@ -21,11 +21,16 @@ describe('LocationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LocationComponent);
     component = fixture.componentInstance;
-    component.locationData = [];
+    component.responseData = [];
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should create', () => {
+  //   component.getLocationData();
+  //   expect(component.getLocationData).toBeDefined();
+  // });
 });

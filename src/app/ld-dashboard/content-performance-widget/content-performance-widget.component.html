@@ -47,7 +47,6 @@
     </div>
   </div>
 
-  <!-- <div class="content-perform" id="content-consumption" *ngIf="contentObject.responseData.length > 0"> -->
   <div id="content-consumption">
     <div *ngIf="spinner_loader" class="spinner_loading">
       <app-spinner></app-spinner>
@@ -58,8 +57,6 @@
     </div>
 
     <app-content-consumption [contentData]='contentObject.responseData' (sortBy)="sortBy($event)"></app-content-consumption>
-
-
 
     <app-filter-widget [filtersInfo]="filtersData" (addFilterEmit)="addFilters($event)"></app-filter-widget>
   </div>

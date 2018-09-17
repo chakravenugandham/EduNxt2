@@ -54,7 +54,7 @@ import { LdDashboardService } from "./services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TagCloudComponent } from "angular-tag-cloud-module";
+//import { TagCloudComponent } from "angular-tag-cloud-module";
 
 import { LdDashboardComponent } from './ld-dashboard.component';
 
@@ -87,7 +87,7 @@ describe('LdDashboardComponent', () => {
         TestScoresComponent,
         QuizComponent,
         AssignmentComponent,
-        TagCloudComponent,
+        //TagCloudComponent,
         OrgPerformanceWidgetComponent,
         TeamsComponent,
         TrainersComponent,

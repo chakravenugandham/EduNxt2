@@ -15,8 +15,8 @@ import { _ } from 'underscore';
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
 
-  sortOrder = 'contentName';
-  order: string = 'asc';
+  sortOrder = 'avgRating';
+  order: string = 'desc';
 
   pagination = {
     page: 1,

@@ -37,7 +37,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
 
   searchFilterData = {
     searchComponent: "learner-leaderboard",
-    searchBy: "learnerName"
+    searchBy: "avgTestPerformance"
   };
 
   searchString: string = "";
@@ -113,7 +113,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
     if (this.componentName == "learners") {
       this.searchFilterData.searchComponent = "learner-leaderboard";
       this.searchFilterData.searchBy = "learnerName";
-      this.sortOrder = 'learnerName';
+      this.sortOrder = 'avgTestPerformance';
     }
   }
 

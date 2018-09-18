@@ -3,6 +3,9 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { ActiveUsersComponent } from './active-users.component';
+import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('ActiveUsersComponent', () => {
   let component: ActiveUsersComponent;
@@ -11,7 +14,9 @@ describe('ActiveUsersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ActiveUsersComponent]
+      declarations: [ActiveUsersComponent, SpinnerComponent],
+      providers: [LdDashboardService],
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));
@@ -19,7 +24,6 @@ describe('ActiveUsersComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ActiveUsersComponent);
     component = fixture.componentInstance;
-    // component.usersData = [];
     fixture.detectChanges();
   });
 

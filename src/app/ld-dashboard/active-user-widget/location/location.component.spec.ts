@@ -9,7 +9,7 @@ import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
-fdescribe('LocationComponent', () => {
+describe('LocationComponent', () => {
   let component: LocationComponent;
   let fixture: ComponentFixture<LocationComponent>;
   let inputEl: DebugElement;

@@ -5,6 +5,10 @@ import { By } from "@angular/platform-browser";
 import { OrgInterestFullviewComponent } from './org-interest-fullview.component';
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { PaginateComponent } from "../../../common/paginate/paginate.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 describe('OrgInterestFullviewComponent', () => {
   let component: OrgInterestFullviewComponent;
@@ -13,7 +17,7 @@ describe('OrgInterestFullviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgInterestFullviewComponent],
+      declarations: [OrgInterestFullviewComponent, SpinnerComponent, PaginateComponent],
       providers: [LdDashboardService],
       imports: [HttpClientTestingModule]
     })
@@ -38,6 +42,6 @@ describe('OrgInterestFullviewComponent', () => {
 
   it('should create getDataFromService', () => {
     component.getDataFromService();
-    expect(component.getDataFromService).toBeTruthy();
+    expect(component.getDataFromService).toBeDefined();
   });
 });

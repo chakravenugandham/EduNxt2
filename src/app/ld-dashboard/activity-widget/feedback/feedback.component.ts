@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit
-} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 

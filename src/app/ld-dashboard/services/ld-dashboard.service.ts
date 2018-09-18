@@ -370,7 +370,7 @@ export class LdDashboardService implements OnInit {
 
   // csv converted apis
 
-  //active-users 
+  //active-users csv
 
   getActiveUsersCsv() {
     if (this.tenantName === 'MAIT') {
@@ -395,53 +395,92 @@ export class LdDashboardService implements OnInit {
     }
   }
 
-  //mode-of-delivery
+  //mode-of-delivery csv
   getModeOfDeliveryCsv() {
-    return this.baseURL + APIURL.MODE_OF_DELIVERY + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    if (this.tenantName === 'MAIT') {
+      this.UserId = '57142';
+      return this.baseURL + APIURL.MODE_OF_DELIVERY + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'MAB') {
+      this.UserId = '26642';
+      return this.baseURL + APIURL.MODE_OF_DELIVERY + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'HDFC') {
+      this.UserId = '2';
+      return this.baseURL + APIURL.MODE_OF_DELIVERY + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'SMUDE') {
+      this.UserId = '725440';
+      return this.baseURL + APIURL.MODE_OF_DELIVERY + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'PROLEARN') {
+      this.UserId = '95901';
+      return this.baseURL + APIURL.MODE_OF_DELIVERY + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
   }
 
-  //location details
+  //location details csv
   getLocationCsv() {
-    return this.baseURL + APIURL.LOCATION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+
+    if (this.tenantName === 'MAIT') {
+      this.UserId = '57142';
+      return this.baseURL + APIURL.LOCATION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'MAB') {
+      this.UserId = '26642';
+      return this.baseURL + APIURL.LOCATION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'HDFC') {
+      this.UserId = '2';
+      return this.baseURL + APIURL.LOCATION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'SMUDE') {
+      this.UserId = '725440';
+      return this.baseURL + APIURL.LOCATION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
+    if (this.tenantName === 'PROLEARN') {
+      this.UserId = '95901';
+      return this.baseURL + APIURL.LOCATION + '/csv' + this.setDateObj + this.program_course + '&user_id=' + this.UserId + '&user_type=' + 'LND' + '&tenant_name=' + this.tenantName;
+    }
   }
 
-  // learner-track full details
+  // learner-track full details csv
   getLearnerTrackDetailsCsv(componentName, displayfor) {
     const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + '/csv' + this.setDateObj + '&type=' + componentName + this.program_course + "&displayFor=" + displayfor;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //score-details full details
+  //score-details full details csv
   getScoresDetailsCsv(dropdownValue) {
     const url = this.baseURL + APIURL.SCORES_DISTRUBUTION_DETAILS + '/csv' + this.setDateObj + '&type=' + dropdownValue + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  //content-consumption full details
+  //content-consumption full details csv
   getContentDetailsCsv() {
     const url = this.baseURL + APIURL.CONTENT_CONSUMPTION + '/csv' + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  // org-interest full details
+  // org-interest full details csv
   getOrgInterestDetailsDataCsv() {
     const url = this.baseURL + APIURL.ORGANISATION_INTEREST_DETAILS + '/csv' + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  // org-performance trainers data
+  // org-performance trainers data csv
   getTeamDataCsv() {
     const url = this.baseURL + APIURL.TEAMS_LEADERBOARD + '/csv' + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  // org-performance teams data
+  // org-performance teams data csv
   getTrainersDataCsv() {
     const url = this.baseURL + APIURL.TRAINER_LEADERBOARD + '/csv' + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
   }
 
-  // org-performance leaners data
+  // org-performance leaners data csv
   getLearnerDataCsv() {
     const url = this.baseURL + APIURL.LEARNER_LEADERBOARD + '/csv' + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });

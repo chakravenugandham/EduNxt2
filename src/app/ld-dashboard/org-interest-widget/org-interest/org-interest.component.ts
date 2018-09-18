@@ -32,7 +32,7 @@ export class OrgInterestComponent implements OnInit, OnChanges {
       // tslint:disable-next-line:forin
       for (const i in this.orgPopularData) {
         this.wordData.push({
-          text: this.orgPopularData[i].courseName.slice(0, 20) + '..',
+          text: this.orgPopularData[i].interest.slice(0, 20) + '..',
           weight: this.orgPopularData[i].rank
         });
       }

@@ -12,10 +12,6 @@
   </div>
   <div class="row">
 
-    <div *ngIf="!checkObjEmpty(responseGraphDetails?.performanceData)" class="spinner_loading">
-      <app-spinner></app-spinner>
-    </div>
-
     <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6">
       <div class="widget-block text-center">
         <p>
@@ -23,7 +19,11 @@
           <span class="text-primary font-weight-bold"> Batch</span>
         </p>
 
-        <div *ngIf="!checkObjEmpty(responseGraphDetails?.performanceData)" class="spinner_loading">
+        <div *ngIf="spinner_loader_graph" class="spinner_loading">
+          <app-spinner></app-spinner>
+        </div>
+
+        <div *ngIf="!spinner_loader_graph && !checkObjEmpty(responseGraphDetails?.performanceData)" class="spinner_loading">
           <span class="spinner_inside">No data found</span>
         </div>
 
@@ -56,7 +56,11 @@
           <span class="text-primary font-weight-bold"> Batch</span>
         </p>
 
-        <div *ngIf="!checkObjEmpty(responseGraphDetails?.paceData)" class="spinner_loading">
+        <div *ngIf="spinner_loader_graph" class="spinner_loading">
+          <app-spinner></app-spinner>
+        </div>
+
+        <div *ngIf="!spinner_loader_graph && !checkObjEmpty(responseGraphDetails?.paceData)" class="spinner_loading">
           <span class="spinner_inside">No data found</span>
         </div>
 
@@ -142,7 +146,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" (click)="sortByFn('teamName')">
+            <th scope="col" (click)="sortByFn('sectionName')">
               Section
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -166,7 +170,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('scorePercentage')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('progressPercentage')">
               Progress %
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -203,13 +207,13 @@
             </th>
             <td class=""> {{data.serialNumber}} </td>
             <td class=""> {{data.courseName}} </td>
-            <td class=""> {{data.teamName}} </td>
+            <td class=""> {{data.sectionName}} </td>
             <td class=""> {{data.batchName}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examAccessed}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examPassed}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.scorePercentage}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreInCourse}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreAvg}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examAccessed | customNumber}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examPassed | customNumber}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.progressPercentage | customNumber}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreInCourse | customNumber}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreAvg | customNumber}} </td>
             <!-- <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.highestScore}} </td> -->
 
             <!-- <td>

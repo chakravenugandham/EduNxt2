@@ -140,7 +140,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     }
 
     onClickedOutside(e: Event) {
-        console.log('Clicked outside:', e);
         this.displayDropdown = false;
     }
 

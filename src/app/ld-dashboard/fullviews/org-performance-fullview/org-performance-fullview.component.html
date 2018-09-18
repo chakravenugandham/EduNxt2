@@ -58,7 +58,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" (click)="sortByFn('teamsize')">Team Size
+            <th scope="col" (click)="sortByFn('teamSize')">Team Size
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -78,7 +78,7 @@
             </th>
             <td class="">{{parseFloat(teamData.completion)}}</td>
             <td class="">{{teamData.completedProgram}}</td>
-            <td class="">{{teamData.teamsize}}</td>
+            <td class="">{{teamData.teamSize}}</td>
 
             <td>
               <span *ngIf="teamData.completion > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',teamData.teamId)">
@@ -167,7 +167,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" (click)="sortByFn('learnerSerialNumber')">
+            <th scope="col" (click)="sortByFn('serialNumber')">
               <span class="text">Serial No.</span>
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -201,10 +201,20 @@
               </span>
               <span class="userName ">{{learnerData.learnerName}}</span>
             </th>
-            <td>{{learnerData.learnerSerialNumber}}</td>
-            <td>{{learnerData.pointsEarned | customNumber}}</td>
-            <td>{{learnerData.avgTestPerformance}}</td>
-            <td>{{learnerData.examScore}}</td>
+            <td>{{learnerData.serialNumber}}</td>
+            <td>
+              {{learnerData.pointsEarned | customNumber}}
+              <span class="highNumber small arrow-space" *ngIf="learnerData.pointsEarned>=learnerData.pointsEarnedSinceLastMonth">
+                <img src="/assets/images/up_arrow.png" alt="up_arrow"> {{learnerData.pointsEarnedSinceLastMonth |
+                customNumber}}
+              </span>
+              <span class="negative-color small arrow-space" *ngIf="learnerData.pointsEarned<learnerData.pointsEarnedSinceLastMonth">
+                <img src="/assets/images/down_arrow.png" alt="up_arrow"> {{learnerData.pointsEarnedSinceLastMonth |
+                customNumber}}
+              </span>
+            </td>
+            <td>{{learnerData.avgTestPerformance | customNumber}}</td>
+            <td>{{learnerData.examScore | customNumber}}</td>
 
             <td>
               <span *ngIf="learnerData.examScore > 75" class="action_icon positive-color cursor-pointer" (click)="composeEmail('congrats',learnerData.person_id)">

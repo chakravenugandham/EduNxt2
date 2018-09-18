@@ -32,11 +32,11 @@
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Interest / Topic" (keyup)="searchItem()">
               </span>
-              <span (click)="sortByFn('courseName')">
+              <span (click)="sortByFn('interest')">
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" (click)="sortByFn('hits')">Total Hits
+            <th scope="col" (click)="sortByFn('totalHits')">Total Hits
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -51,7 +51,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" (click)="sortByFn('organizationInterets')">Article Tags
+            <th scope="col" (click)="sortByFn('articleTags')">Article Tags
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -65,9 +65,9 @@
         </thead>
         <tbody *ngFor="let data of responseData">
           <tr>
-            <td class="">{{data.courseName}}</td>
+            <td class="">{{data.interest}}</td>
             <td class="">
-              <span>{{data.hits}}</span>
+              <span>{{data.totalHits}}</span>
               <span class="small-text">
                 <span class="changeNumber">
                   <i class="fa fa-arrow-up" aria-hidden="true"></i>
@@ -87,7 +87,7 @@
               </span>
             </td>
             <td class="">{{data.videoTags}}</td>
-            <td class="">{{data.organizationInterets}}</td>
+            <td class="">{{data.articleTags}}</td>
             <td class="">{{data.avgRating}}</td>
           </tr>
         </tbody>

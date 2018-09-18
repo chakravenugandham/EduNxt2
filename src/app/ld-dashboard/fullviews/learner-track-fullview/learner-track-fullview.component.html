@@ -170,7 +170,7 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('progressPercentage')">
+            <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('progress')">
               Progress %
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
@@ -211,7 +211,7 @@
             <td class=""> {{data.batchName}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examAccessed | customNumber}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.examPassed | customNumber}} </td>
-            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.progressPercentage | customNumber}} </td>
+            <td class="" *ngIf="filtersData.currentModule == 'pace'"> {{data.progress | customNumber}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreInCourse | customNumber}} </td>
             <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.scoreAvg | customNumber}} </td>
             <!-- <td class="" *ngIf="filtersData.currentModule == 'performance'"> {{data.highestScore}} </td> -->

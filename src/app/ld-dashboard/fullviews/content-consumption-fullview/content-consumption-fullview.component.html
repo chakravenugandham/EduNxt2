@@ -62,7 +62,12 @@
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
-            <th scope="col" (click)="sortByFn('duration')">Duration (Min)
+            <th scope="col" (click)="sortByFn('avgDuration')">Avg Duration
+              <span>
+                <i class="fa fa-sort" aria-hidden="true"></i>
+              </span>
+            </th>
+            <th scope="col" (click)="sortByFn('duration')">Total Duration (Min)
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
@@ -82,6 +87,7 @@
               </span>
               <span> {{content.avgRating}} </span>
             </td>
+            <td> {{content.avgDuration}} </td>
             <td> {{content.duration}} </td>
           </tr>
         </tbody>

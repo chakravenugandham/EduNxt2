@@ -35,7 +35,7 @@ export class ContentConsumptionFullviewComponent implements OnInit {
     total_pages: 0
   };
 
-  sortOrder = 'duration';
+  sortOrder = 'views';
   order = 'desc';
   searchBox = false;
 

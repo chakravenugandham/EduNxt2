@@ -123,7 +123,6 @@ export class LdDashboardService implements OnInit {
         .set('user_type', 'LND')
         .set('tenant_name', tenantName);
     }
-    this.tenantName$.next();
     this.refreshAPI$.next();
   }
 
@@ -148,9 +147,7 @@ export class LdDashboardService implements OnInit {
 
     this.program_course = '&programId=' + this.programObj.programId + '&courseId=' + this.programObj.courseId;
 
-    this.tenantName$.next();
     this.refreshAPI$.next();
-    this.dateChange$.next();
   }
 
   orgperformanceName = '';

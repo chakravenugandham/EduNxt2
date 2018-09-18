@@ -23,7 +23,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   sectionsData = [];
 
   today: Date = new Date();
-  selectCourse: any = "All Courses";
+  selectCourse = "All Courses";
   selectProgram = "All Programs";
   selectBatch = "All Batches";
   selectSection = "All Sections";
@@ -64,6 +64,10 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
+      this.selectCourse = "All Courses";
+      this.programObj.programId = 0;
+      this.programObj.courseId = 0;
+      this.dashboardService.courseAndProgram(this.programObj);
       this.getAllCourses();
     });
 
@@ -82,6 +86,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   apiUrl = "learner-leaderboard";
 
   getAllCourses() {
+    this.coursesData = [];
     this.dashboardService.getCoursesProgramData().subscribe((res: any) => {
       this.coursesData = res.data;
     });
@@ -100,7 +105,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
         }
       }
     }
-    this.coursesData = [];
     this.dashboardService.courseAndProgram(this.programObj);
   }
 

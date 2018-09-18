@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  selectTenantName: string = "MAIT";
+  selectTenantName: string = "MAB";
   tenantsName = ["MAIT", "MAB", "HDFC", "SMUDE", "PROLEARN"];
 
   userName = (this.cookieService.get('user_name') == '') ? 'User' : this.cookieService.get('user_name');

@@ -1,8 +1,6 @@
 <div>
 
-  <span class="bigNumber float-left" [ngClass]="config.numberChange ? 'positive-color' : 'negative-color'">{{config.peopleCurrentlyEnrolled
-    | customNumber}} </span>
-
+  <span class="bigNumber float-left" [ngClass]="config.numberChange ? 'positive-color' : 'negative-color'">{{config.peopleCurrentlyEnrolled | customNumber}} </span>
 
   <div class="small-font">
 
@@ -12,7 +10,6 @@
     </span>
 
     <span class="changeInNumberText">
-      <!-- <span [ngClass]="{'changeNumber': numberFontColor, 'changeNumberLow': !numberFontColor}"> {{config.usersSinceLastMonth}} </span> -->
       <span [ngClass]="config.peopleCurrentlyEnrolled >= config.usersSinceLastMonth ? 'changeNumber' : 'changeNumberLow'"> {{config.usersSinceLastMonth
         | customNumber}} </span>
       <span class="font-color"> {{config.Users}} </span>

@@ -19,7 +19,7 @@ export class OrgInterestFullviewComponent implements OnInit {
     viewDetailsFilters: false
   };
 
-  sortOrder = 'courseName';
+  sortOrder = 'interest';
   order = 'desc';
   searchBox = false;
 
@@ -28,7 +28,7 @@ export class OrgInterestFullviewComponent implements OnInit {
   noDataFlag = false;
 
   searchFilterData = {
-    searchBy: 'courseName'
+    searchBy: 'interest'
   };
 
   searchString = '';

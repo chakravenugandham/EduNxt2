@@ -81,7 +81,7 @@
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
               </th>
-              <th scope="col" (click)="sortByFn('noOfAttempts')">Total Attempts
+              <th scope="col" (click)="sortByFn('totalAttempts')">Total Attempts
                 <span>
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
@@ -91,7 +91,7 @@
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
               </th>
-              <th scope="col" (click)="sortByFn('totalExamsCount')">Total Exams
+              <th scope="col" (click)="sortByFn('totalExams')">Total Exams
                 <span>
                   <i class="fa fa-sort" aria-hidden="true"></i>
                 </span>
@@ -104,9 +104,9 @@
               <td class="">{{testData.team}}</td>
               <td class="">{{testData.batchName}}</td>
               <td class="">{{testData.scoreAvg}}</td>
-              <td class="">{{testData.noOfAttempts}}</td>
+              <td class="">{{testData.totalAttempts}}</td>
               <td class="">{{testData.examsAttempted}}</td>
-              <td class="">{{testData.totalExamsCount}}</td>
+              <td class="">{{testData.totalExams}}</td>
             </tr>
           </tbody>
           <tbody *ngIf="moduleName == 'quiz'">
@@ -116,9 +116,9 @@
               <td class="">{{quizData.team}}</td>
               <td class="">{{quizData.batchName}}</td>
               <td class="">{{quizData.scoreAvg}}</td>
-              <td class="">{{quizData.noOfAttempts}}</td>
+              <td class="">{{quizData.totalAttempts}}</td>
               <td class="">{{quizData.examsAttempted}}</td>
-              <td class="">{{quizData.totalExamsCount}}</td>
+              <td class="">{{quizData.totalExams}}</td>
             </tr>
           </tbody>
           <tbody *ngIf="moduleName == 'assignment'">
@@ -128,9 +128,9 @@
               <td class="">{{assignmentData.team}}</td>
               <td class="">{{assignmentData.batchName}}</td>
               <td class="">{{assignmentData.scoreAvg}}</td>
-              <td class="">{{assignmentData.noOfAttempts}}</td>
+              <td class="">{{assignmentData.totalAttempts}}</td>
               <td class="">{{assignmentData.examsAttempted}}</td>
-              <td class="">{{assignmentData.totalExamsCount}}</td>
+              <td class="">{{assignmentData.totalExams}}</td>
             </tr>
           </tbody>
         </table>

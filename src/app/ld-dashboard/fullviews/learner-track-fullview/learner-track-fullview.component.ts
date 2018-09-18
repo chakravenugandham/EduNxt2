@@ -31,6 +31,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
   componentName: string;
 
   spinner_loader: boolean = false;
+  spinner_loader_graph: boolean = false;
   noDataFlag: boolean = false;
 
   paceTrackValues = [];
@@ -83,7 +84,7 @@ export class LearnerTrackFullviewComponent implements OnInit {
     this.filtersData.currentModule = localStorage.getItem('trackComponent');
     if (this.filtersData.currentModule == "pace") {
       this.displayfor = "aheadschedule";
-      this.sortOrder = 'scorePercentage';
+      this.sortOrder = 'progressPercentage';
       localStorage.setItem('trackDisplayFor', this.displayfor);
       this.getTableDataFromService();
       this.getGraphDataFromService();
@@ -98,10 +99,13 @@ export class LearnerTrackFullviewComponent implements OnInit {
   }
 
   getGraphDataFromService() {
+
+    this.spinner_loader_graph = true;
     this.dashboardService
       .getLearnerTrackData(this.filtersData.appliedFilters)
       .subscribe((res: any) => {
         this.responseGraphDetails = res.data;
+        this.spinner_loader_graph = false;
         this.paceTrackValues = [
           {
             color: "#23b14d",

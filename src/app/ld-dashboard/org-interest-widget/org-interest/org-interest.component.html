@@ -15,12 +15,12 @@
       </div>
       <div *ngFor="let orgInterest of orgInterestData" [ngClass]="{'new-interest': orgInterest.hasOwnProperty('new')}">
         <div class="card-block">
-          <p class="courseName bold-text" data-toggle="tooltip" data-placement="top" title="{{orgInterest.courseName}}">
-            {{orgInterest.courseName}}
+          <p class="courseName bold-text" data-toggle="tooltip" data-placement="top" title="{{orgInterest.interest}}">
+            {{orgInterest.interest}}
           </p>
           <p class="nop bold-text">
-            <span>{{orgInterest.hits | customNumber}}</span>
-            <span class="m-l-5">People</span>
+            <span> {{orgInterest.noOfFollowers | customNumber}} </span>
+            <span class="m-l-5"> People </span>
           </p>
           <p>
             <span class="changeNumber">

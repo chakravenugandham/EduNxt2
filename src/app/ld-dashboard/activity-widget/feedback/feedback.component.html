@@ -23,12 +23,10 @@
   <div *ngIf="!spinner_loader && !noDataFlag">
     <div class="row p-t-18">
       <div class="col-md-5 col-sm-5 col-xs-5 col-5 feedback-emoji">
-
-        <!-- <img src="/assets/IconsSVGs/happy_emoji.svg" alt="happy" *ngIf="learnerSatisfaction >= 75"> -->
         <img src="/assets/images/happy_emoji.png" alt="happy" *ngIf="learnerSatisfaction >= 75">
-        <!-- <img src="/assets/IconsSVGs/meh_emoji.svg" alt="meh" *ngIf="learnerSatisfaction >= 50 && learnerSatisfaction < 75"> -->
+        
         <img src="/assets/images/meh_emoji.png" alt="meh" *ngIf="learnerSatisfaction >= 50 && learnerSatisfaction < 75">
-        <!-- <img src="/assets/IconsSVGs/angry_emoji.svg" alt="angry" *ngIf="learnerSatisfaction < 50"> -->
+        
         <img src="/assets/images/angry_emoji.png" alt="angry" *ngIf="learnerSatisfaction < 50">
       </div>
 
@@ -47,7 +45,6 @@
         </div>
         <div class="m-t-10">Learner Satisfaction</div>
       </div>
-
     </div>
 
     <div class="row text-fix-bottom">

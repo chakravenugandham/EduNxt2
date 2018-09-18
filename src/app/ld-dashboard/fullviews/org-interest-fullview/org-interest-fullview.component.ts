@@ -19,7 +19,7 @@ export class OrgInterestFullviewComponent implements OnInit {
     viewDetailsFilters: false
   };
 
-  sortOrder = 'interest';
+  sortOrder = 'totalHits';
   order = 'desc';
   searchBox = false;
 
@@ -118,6 +118,7 @@ export class OrgInterestFullviewComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.sortByFn(this.sortOrder);
+    // this.sortByFn(this.sortOrder);
+    this.getDataFromService();
   }
 }

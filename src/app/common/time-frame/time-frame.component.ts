@@ -64,10 +64,10 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
-      this.selectCourse = "All Courses";
-      this.programObj.programId = 0;
-      this.programObj.courseId = 0;
-      this.dashboardService.courseAndProgram(this.programObj);
+      // this.selectCourse = "All Courses";
+      // this.programObj.programId = 0;
+      // this.programObj.courseId = 0;
+      // this.dashboardService.courseAndProgram(this.programObj);
       this.getAllCourses();
     });
 
@@ -86,7 +86,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   apiUrl = "learner-leaderboard";
 
   getAllCourses() {
-    this.coursesData = [];
+    // this.coursesData = [];
     this.dashboardService.getCoursesProgramData().subscribe((res: any) => {
       this.coursesData = res.data;
     });

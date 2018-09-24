@@ -27,9 +27,6 @@ export class LearnerTrackFullviewComponent implements OnInit {
     appliedFilters: []
   };
 
-  searchBox: boolean = false;
-  componentName: string;
-
   spinner_loader: boolean = false;
   spinner_loader_graph: boolean = false;
   noDataFlag: boolean = false;

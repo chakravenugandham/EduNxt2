@@ -28,7 +28,6 @@ export class ScoresDistributionFullviewComponent implements OnInit {
 
   sortOrder: string = "scoreAvg";
   order: string = 'desc';
-  searchBox: boolean = false;
 
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;

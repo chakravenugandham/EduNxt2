@@ -11,18 +11,12 @@ import { Subject } from "rxjs";
   styleUrls: ["./org-performance-fullview.component.scss"]
 })
 export class OrgPerformanceFullviewComponent implements OnInit {
-  // responseTeamsDetails: any;
-  // responseTrainersDetails: any;
-  // responseLeanersDetails: any;
 
   responseData: any[];
   closeResult: string;
 
-  checkBoxValue: boolean = false;
   sortOrder: string;
   order: string = 'desc';
-
-  searchBox: boolean = false;
 
   showDetails: string;
   componentName: string;

@@ -34,7 +34,6 @@ export class GraphChartComponent implements OnInit {
       .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function (d) {
-        console.log(d);
         return xScale(d[0]);
       })
       .attr("y", function (d) { return yScale(d[1]); })

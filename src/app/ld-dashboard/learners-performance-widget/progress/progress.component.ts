@@ -9,9 +9,8 @@ declare let d3: any;
 })
 export class ProgressComponent implements OnInit, OnChanges {
   @Input() progressData;
-  @Input() getTabValue;
   @Input() batches: string[];
-  barChartData;
+  barChartData: any;
   batchNames = [];
   getTab = '';
 

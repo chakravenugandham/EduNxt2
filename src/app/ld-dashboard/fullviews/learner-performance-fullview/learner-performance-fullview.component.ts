@@ -72,8 +72,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
           let performancegroupValues = [];
           let progressgroupValues = [];
           for (let j in this.responseData[i].batches) {
-            performancegroupValues.push(
-              parseInt(this.responseData[i].batches[j].performance)
+            performancegroupValues.push(parseInt(this.responseData[i].batches[j].performance)
             );
             progressgroupValues.push(
               parseInt(this.responseData[i].batches[j].progress)
@@ -94,10 +93,7 @@ export class LearnerPerformanceFullviewComponent implements OnInit {
           });
         }
 
-        this.graphData =
-          this.selectedGraph == "performance"
-            ? performanceDataSet
-            : progressDataSet;
+        this.graphData = this.selectedGraph == "performance" ? performanceDataSet : progressDataSet;
       });
   }
 

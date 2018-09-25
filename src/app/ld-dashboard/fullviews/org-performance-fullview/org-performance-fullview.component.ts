@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { CommonService } from "../../../common-services/common.service";
-import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { _ } from "underscore";
-import { Subject } from "rxjs";
+
 
 @Component({
   selector: "app-org-performance-fullview",

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { LdDashboardService } from "../services/ld-dashboard.service";
 

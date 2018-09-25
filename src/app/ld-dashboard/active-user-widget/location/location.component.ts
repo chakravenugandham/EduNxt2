@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { GoogleChartsBaseService } from "../../services/googleChartService";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 

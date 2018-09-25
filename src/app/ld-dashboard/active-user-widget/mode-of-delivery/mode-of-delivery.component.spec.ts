@@ -3,15 +3,21 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { ModeOfDeliveryComponent } from './mode-of-delivery.component';
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CookieService } from 'ngx-cookie-service';
 
-describe('ModeOfDeliveryComponent', () => {
+
+fdescribe('ModeOfDeliveryComponent', () => {
   let component: ModeOfDeliveryComponent;
   let fixture: ComponentFixture<ModeOfDeliveryComponent>;
   let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ModeOfDeliveryComponent]
+      declarations: [ModeOfDeliveryComponent, SpinnerComponent],
+      imports: [HttpClientTestingModule],
+      providers: [CookieService]
     })
       .compileComponents();
   }));
@@ -26,26 +32,8 @@ describe('ModeOfDeliveryComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should create ngOnChanges', () => {
-    //let usersData = {
-    // "graphData": [
-    //   {
-    //     "date": "2018-05-09T13:00:00.000Z",
-    //     "activeLearners": 150,
-    //     "activeFacultiesAndAdmins": 200,
-    //     "onlineDelivery": 100,
-    //     "offlineDelivery": 200
-    //   },
-    //   {
-    //     "date": "2018-05-10T13:00:00.000Z",
-    //     "activeLearners": 150,
-    //     "activeFacultiesAndAdmins": 200,
-    //     "onlineDelivery": 100,
-    //     "offlineDelivery": 200
-    //   }
-    // ]
-    //}
-    // fixture.detectChanges();
-    // expect(component).toBe({});
+  it('should create', () => {
+    component.getModeOfDeliveryData();
+    expect(component.getModeOfDeliveryData).toBeDefined();
   });
 });

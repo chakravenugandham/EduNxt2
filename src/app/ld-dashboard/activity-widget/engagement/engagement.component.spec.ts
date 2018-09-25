@@ -5,6 +5,10 @@ import { By } from "@angular/platform-browser";
 import { EngagementComponent } from './engagement.component';
 import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
 import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
+import { SpinnerComponent } from '../../../common/spinner/spinner.component';
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CookieService } from 'ngx-cookie-service';
 
 
 fdescribe('EngagementComponent', () => {
@@ -14,7 +18,9 @@ fdescribe('EngagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EngagementComponent, HalfdonutchartDirective, UsersDataComponent]
+      declarations: [EngagementComponent, HalfdonutchartDirective, UsersDataComponent, SpinnerComponent, CustomNumberPipe],
+      providers: [CookieService],
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));
@@ -25,7 +31,12 @@ fdescribe('EngagementComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should create getDataFromService', () => {
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
+  });
 });

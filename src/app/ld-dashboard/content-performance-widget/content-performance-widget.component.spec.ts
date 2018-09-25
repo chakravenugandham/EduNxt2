@@ -5,6 +5,10 @@ import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.
 import { ContentConsumptionComponent } from "./content-consumption/content-consumption.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SpinnerComponent } from '../../common/spinner/spinner.component';
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 fdescribe('ContentPerformanceComponent', () => {
   let component: ContentPerformanceWidgetComponent;
@@ -12,8 +16,9 @@ fdescribe('ContentPerformanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ContentPerformanceWidgetComponent, FilterWidgetComponent, ContentConsumptionComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])]
+      declarations: [ContentPerformanceWidgetComponent, FilterWidgetComponent, ContentConsumptionComponent, SpinnerComponent, CustomNumberPipe],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), FormsModule],
+      providers: [CookieService]
     })
       .compileComponents();
   }));
@@ -24,12 +29,12 @@ fdescribe('ContentPerformanceComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-  // it('should create getDataFromService', () => {
-  //   component.getDataFromService();
-  //   expect(component.getDataFromService).toBeTruthy();
-  // });
+  it('should create getDataFromService', () => {
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
+  });
 });

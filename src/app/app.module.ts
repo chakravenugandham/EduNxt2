@@ -14,6 +14,9 @@ import { NvD3Module } from "ng2-nvd3";
 import "d3";
 import "nvd3";
 
+//cookie
+import { CookieService } from 'ngx-cookie-service';
+
 //word cloud component
 import { TagCloudModule } from "angular-tag-cloud-module";
 
@@ -22,8 +25,6 @@ import { RoutingModule } from "./routing.module";
 
 // Pipe
 import { OrderModule } from "ngx-order-pipe";
-
-import { CookieService } from "ngx-cookie-service";
 
 //click outside detect
 import { ClickOutsideModule } from 'ng4-click-outside';

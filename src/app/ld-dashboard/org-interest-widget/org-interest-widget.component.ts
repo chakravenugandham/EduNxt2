@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../services/ld-dashboard.service';
 
 
@@ -123,20 +123,46 @@ export class OrgInterestWidgetComponent implements OnInit {
 
   }
 
+  // getSearchItem($event) {
+  //   this.filtersData.appliedFilters = $event;
+  //   // tslint:disable-next-line:forin
+  //   for (const i in this.filtersData.appliedFilters) {
+  //     this.filtersData.appliedFilters[i]['new'] = true;
+  //   }
+
+  //   this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
+
+  //   if (this.filtersData.appliedFilters.length > 0) {
+  //     this.orgData.splice(-this.filtersData.appliedFilters.length);
+  //   }
+
+  //   this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
+  // }
+
   getSearchItem($event) {
+    let tempArray = [];
+    let trueArray = [];
+    let falseArray = [];
+    this.displayData = [];
     this.filtersData.appliedFilters = $event;
-    // tslint:disable-next-line:forin
-    for (const i in this.filtersData.appliedFilters) {
-      this.filtersData.appliedFilters[i]['new'] = true;
+    let searchData = JSON.parse(JSON.stringify(this.filtersData.appliedFilters));
+    tempArray = JSON.parse(JSON.stringify(this.actualResponseData));
+
+    if (searchData.length > 0) {
+      falseArray = _.filter(tempArray, function (obj) {
+        return _.findIndex(searchData, obj) === -1;
+      })
+
+      searchData.forEach(function (obj) {
+        obj.new = true;
+        trueArray.push(obj);
+      })
+
+      let len = 3 - trueArray.length;
+      falseArray = falseArray.splice(falseArray.length - len);
+      tempArray = _.union(falseArray, trueArray);
     }
-
-    this.orgData = JSON.parse(JSON.stringify(this.actualResponseData));
-
-    if (this.filtersData.appliedFilters.length > 0) {
-      this.orgData.splice(-this.filtersData.appliedFilters.length);
-    }
-
-    this.orgData = this.orgData.concat(this.filtersData.appliedFilters);
+    this.orgData = tempArray;
   }
 
   ngOnInit() {

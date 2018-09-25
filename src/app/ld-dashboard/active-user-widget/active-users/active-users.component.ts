@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3v4';
 import * as _ from 'underscore';
 import { LdDashboardService } from '../../services/ld-dashboard.service';

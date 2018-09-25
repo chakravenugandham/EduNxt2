@@ -1,5 +1,4 @@
 import { Directive, ElementRef, Input, OnChanges, HostListener } from "@angular/core";
-//import * as d3 from "d3";
 import * as d3 from "d3v4";
 
 @Directive({

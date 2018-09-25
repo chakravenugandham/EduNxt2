@@ -51,10 +51,14 @@ import { OrgInterestFullviewComponent } from '../ld-dashboard/fullviews/org-inte
 // import { GoogleChartsBaseService } from "../ld-dashboard/services/googleChartService";
 import { UsersDataComponent } from '../ld-dashboard/common/users-data/users-data.component';
 import { LdDashboardService } from "./services/ld-dashboard.service";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-//import { TagCloudComponent } from "angular-tag-cloud-module";
+import { TagCloudComponent } from "angular-tag-cloud-module";
+import { SpinnerComponent } from '../common/spinner/spinner.component';
+import { CustomNumberPipe } from "../../app/shared/custom-number.pipe";
+import { PaginateComponent } from '../common/paginate/paginate.component';
+import { CookieService } from 'ngx-cookie-service';
 
 import { LdDashboardComponent } from './ld-dashboard.component';
 
@@ -87,7 +91,7 @@ describe('LdDashboardComponent', () => {
         TestScoresComponent,
         QuizComponent,
         AssignmentComponent,
-        //TagCloudComponent,
+        TagCloudComponent,
         OrgPerformanceWidgetComponent,
         TeamsComponent,
         TrainersComponent,
@@ -116,9 +120,12 @@ describe('LdDashboardComponent', () => {
         HalfdonutchartDirective,
         DonutChartDirective,
         BarChartDirective,
-        ScoreChartDirective
+        ScoreChartDirective,
+        SpinnerComponent,
+        CustomNumberPipe,
+        PaginateComponent
       ],
-      providers: [LdDashboardService],
+      providers: [LdDashboardService, CookieService],
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([])]
     })
       .compileComponents();

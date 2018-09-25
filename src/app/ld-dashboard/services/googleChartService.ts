@@ -1,9 +1,7 @@
 declare var google: any;
 
-import { Subject } from "rxjs";
-
 export class GoogleChartsBaseService {
-  constructor() {}
+  constructor() { }
 
   public setMap(someData: Array<any>) {
     google.charts.load("current", {

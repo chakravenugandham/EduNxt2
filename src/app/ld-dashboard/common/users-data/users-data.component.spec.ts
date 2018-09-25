@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersDataComponent } from './users-data.component';
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 
 describe('UsersDataComponent', () => {
   let component: UsersDataComponent;
@@ -8,9 +9,9 @@ describe('UsersDataComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersDataComponent ]
+      declarations: [UsersDataComponent, CustomNumberPipe]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

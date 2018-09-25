@@ -16,6 +16,11 @@ import { Config, UsersDataComponent } from "../../ld-dashboard/common/users-data
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
+import { SpinnerComponent } from "../../common/spinner/spinner.component";
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+
+
 fdescribe('ActivityWidgetComponent', () => {
   let component: ActivityWidgetComponent;
   let fixture: ComponentFixture<ActivityWidgetComponent>;
@@ -33,8 +38,8 @@ fdescribe('ActivityWidgetComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ActivityWidgetComponent, UsersComponent,
         EngagementComponent, PaceComponent, FeedbackComponent, TimespentComponent,
-        UserstrainedComponent, UsersDataComponent, HalfdonutchartDirective, DonutChartDirective],
-      providers: [LdDashboardService],
+        UserstrainedComponent, UsersDataComponent, HalfdonutchartDirective, DonutChartDirective, SpinnerComponent, CustomNumberPipe],
+      providers: [LdDashboardService, CookieService],
       imports: [HttpClientTestingModule]
     })
       .compileComponents();
@@ -47,8 +52,8 @@ fdescribe('ActivityWidgetComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
 });

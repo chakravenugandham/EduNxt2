@@ -1,7 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { observable } from "rxjs";
-
-import { LdDashboardService } from "../services/ld-dashboard.service";
 
 @Component({
   selector: "app-activity-widget",
@@ -10,7 +7,7 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 })
 export class ActivityWidgetComponent implements OnInit {
 
-  constructor(private getData: LdDashboardService) { }
+  constructor() { }
 
   ngOnInit() { }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, Inject } from "@angular/core";
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-import { CommonService } from "../../common-services/common.service";
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 
@@ -29,7 +28,7 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   selectSection = "All Sections";
   downloadLink: string;
   _baseUrl;
-  csvResponse = [];
+
   closeResult: string;
   programObj = {
     programId: 0,

@@ -1,6 +1,5 @@
 import { Directive, ElementRef, Input, OnChanges, HostListener } from "@angular/core";
 import * as d3 from "d3v4";
-// import * as _ from "underscore";
 
 @Directive({
   selector: "[appScoreChart]"

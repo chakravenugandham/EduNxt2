@@ -7,9 +7,10 @@ import { GoogleChartsBaseService } from "../../services/googleChartService";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CookieService } from 'ngx-cookie-service';
 
 
-describe('LocationComponent', () => {
+fdescribe('LocationComponent', () => {
   let component: LocationComponent;
   let fixture: ComponentFixture<LocationComponent>;
   let inputEl: DebugElement;
@@ -17,7 +18,7 @@ describe('LocationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LocationComponent, SpinnerComponent],
-      providers: [GoogleChartsBaseService, LdDashboardService],
+      providers: [GoogleChartsBaseService, LdDashboardService, CookieService],
       imports: [HttpClientTestingModule]
     })
       .compileComponents();
@@ -30,9 +31,9 @@ describe('LocationComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeDefined();
-  // });
+  it('should create', () => {
+    expect(component).toBeDefined();
+  });
 
   it('should create', () => {
     component.getLocationData();

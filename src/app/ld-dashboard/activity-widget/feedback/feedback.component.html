@@ -7,7 +7,8 @@
     </ul>
     <div>
       <span class="float-right widget-menu" data-toggle="tooltip" data-placement="top" title="Feedback">
-        <i class="fa fa-question-circle" aria-hidden="true"></i>
+        <!-- <i class="fa fa-question-circle" aria-hidden="true"></i> -->
+        <fa-icon [icon]="faQuestionCircle"></fa-icon>
       </span>
     </div>
   </div>
@@ -24,9 +25,9 @@
     <div class="row p-t-18">
       <div class="col-md-5 col-sm-5 col-xs-5 col-5 feedback-emoji">
         <img src="/assets/images/happy_emoji.png" alt="happy" *ngIf="learnerSatisfaction >= 75">
-        
+
         <img src="/assets/images/meh_emoji.png" alt="meh" *ngIf="learnerSatisfaction >= 50 && learnerSatisfaction < 75">
-        
+
         <img src="/assets/images/angry_emoji.png" alt="angry" *ngIf="learnerSatisfaction < 50">
       </div>
 

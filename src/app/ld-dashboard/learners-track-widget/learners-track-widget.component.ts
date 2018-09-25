@@ -3,12 +3,11 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 
+import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 import { _ } from "underscore";
-
-
-import * as jspdf from 'jspdf';
-
 import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
 
 
 @Component({
@@ -18,10 +17,13 @@ import html2canvas from 'html2canvas';
 })
 export class LearnersTrackWidgetComponent implements OnInit {
 
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
+  faEllipsisV = faEllipsisV;
+
   tooltipText: string = '';
 
   //filter object
-
   filtersData = {
     routeTo: "learnerTrackFullView",
     filters: true,

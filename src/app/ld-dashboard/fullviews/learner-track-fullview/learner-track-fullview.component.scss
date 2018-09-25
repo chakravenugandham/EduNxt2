@@ -1,56 +1,35 @@
-//pace batches
-.aheadOfSchedule {
-  color: #23b14d;
-  background-color: #23b14d;
-}
-
-.onTrack {
-  color: #5584ff;
-  background-color: #5584ff;
-}
-
-.behindSchedule {
-  color: #ffd630;
-  background-color: #ffd630;
-}
-
-.haveNotStarted {
-  color: #f77f6c;
-  background-color: #f77f6c;
-}
-
-//performance batches
+// badge colors
+.aheadOfSchedule,
 .excelling {
   color: #23b14d;
-  background-color: #23b14d;
 }
 
+.onTrack,
 .passing {
   color: #5584ff;
-  background-color: #5584ff;
 }
 
+.behindSchedule,
 .struggling {
   color: #ffd630;
-  background-color: #ffd630;
 }
 
+.haveNotStarted,
 .perfHaveNotStarted {
   color: #f77f6c;
-  background-color: #f77f6c;
 }
 
 .paceDataSelect {
-margin-left: 14px;
-padding: 4px 20px 4px 4px;
-border-radius: 3px;
-width: auto;
+  margin-left: 14px;
+  padding: 4px 20px 4px 4px;
+  border-radius: 3px;
+  width: auto;
 }
 
-.fullview-heading {
-  float: left;
-  margin-bottom: 20px;
-}
+// .fullview-heading {
+//   float: left;
+//   margin-bottom: 20px;
+// }
 
 .filterComponent {
   position: relative !important;
@@ -75,6 +54,7 @@ width: auto;
 
 .search-org-user {
   position: relative;
+
   input {
     padding: 6px 12px;
     color: #5584ff;
@@ -84,10 +64,12 @@ width: auto;
     border-left: none;
     border-right: none;
   }
+
   .search-icon {
     position: absolute;
     right: 10px;
     top: 7px;
+
     i {
       color: #2196f3a8;
     }
@@ -96,6 +78,7 @@ width: auto;
 
 .search-org-user {
   position: relative;
+
   input :focus {
     padding: 6px 12px;
     color: #5584ff;
@@ -108,11 +91,13 @@ width: auto;
 }
 
 table {
- th,
+
+  th,
   td {
     font-size: 11px;
     width: 11%;
   }
+
   .userName {
     font-weight: 600;
   }

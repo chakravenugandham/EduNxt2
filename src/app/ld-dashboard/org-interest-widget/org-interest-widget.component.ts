@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../services/ld-dashboard.service';
 
-
-import * as jspdf from 'jspdf';
-
-import html2canvas from 'html2canvas';
+import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 import { _ } from 'underscore';
+
+import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-org-interest-widget',
@@ -14,7 +14,11 @@ import { _ } from 'underscore';
   styleUrls: ['./org-interest-widget.component.scss']
 })
 export class OrgInterestWidgetComponent implements OnInit {
-  routePath = 'orgInterestFullView';
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
+  faEllipsisV = faEllipsisV;
+
   filtersData = {
     routeTo: 'orgInterestFullView',
     filters: false,

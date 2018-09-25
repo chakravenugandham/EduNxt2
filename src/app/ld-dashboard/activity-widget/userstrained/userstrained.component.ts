@@ -1,12 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: "app-userstrained",
   templateUrl: "./userstrained.component.html",
   styleUrls: ["./userstrained.component.scss"]
 })
 export class UserstrainedComponent implements OnInit {
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
 
   //variable declaration
   responseData: any = {};

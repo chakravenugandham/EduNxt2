@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+
+import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 import * as _ from "underscore";
 
 import * as jspdf from 'jspdf';
@@ -13,10 +16,15 @@ import html2canvas from 'html2canvas';
   styleUrls: ["./active-user-widget.component.scss"]
 })
 export class ActiveUserWidgetComponent implements OnInit {
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
+  faEllipsisV = faEllipsisV;
+
   getTab = "activeUser";
 
+  // flag declarations
   popclosing = false;
-
   spinner_loader: boolean = false;
   noDataFlag: boolean = false;
 

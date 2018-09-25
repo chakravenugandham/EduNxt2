@@ -5,14 +5,16 @@
       <li class="list-inline-item searchList" *ngIf="filtersInfo.search">
         <div class="search-org-user">
           <span class="search-icon">
-            <i class="fas fa-search"></i>
+            <!-- <i class="fas fa-search"></i> -->
+            <fa-icon [icon]="faSearch"></fa-icon>
           </span>
           <input type="text" [ngModel]="serachName" (keyup)="searchItem($event)" placeholder="Search">
         </div>
 
-        <div class="showFilter-list" *ngIf="displayDropdown" (clickOutside)="onClickedOutside($event)" [exclude]="'.searchList,.search-org-user, .search-icon,.fa-search'">
+        <div class="showFilter-list" *ngIf="displayDropdown" (clickOutside)="onClickedOutside($event)" [exclude]="'.searchList,.search-org-user, .search-icon,fa-icon'">
           <span class="closeDropdown text-warning" (click)="closeDropDown()">
-            <i class="far fa-times-circle fa-lg"></i>
+            <!-- <i class="far fa-times-circle fa-lg"></i> -->
+            <fa-icon [icon]="faTimesCircle" size="lg"></fa-icon>
           </span>
           <ul>
             <li class="list-unstyled">
@@ -24,7 +26,7 @@
                   <span class="check-box" [ngClass]="{'checked-box': checkItemInApplied(filtersInfo.appliedFilters,searchItem) }"></span>
                   <!-- <span class="check-box" [ngClass]="{'checked-box': searchNames.includes(searchItem)}"></span> -->
                   <!-- <span>{{searchItem.teamName}} </span> -->
-                  <span>{{searchItem[searchFilterData.searchBy]}} </span>
+                  <span> {{searchItem[searchFilterData.searchBy]}} </span>
                 </div>
               </div>
               <div *ngIf="noSearchResultFlag">
@@ -40,7 +42,8 @@
       <span *ngIf="filtersInfo.search">
         <li class="list-inline-item" *ngFor="let searchName of filtersInfo.appliedFilters; let i = index">
           <span>{{searchName[searchFilterData.searchBy]}} </span>
-          <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i);"></i>
+          <!-- <i class="far fa-times-circle cursor-pointer" (click)="removeSearchName(searchName,i)"></i> -->
+          <fa-icon [icon]="faTimesCircle" (click)="removeSearchName(searchName,i)"></fa-icon>
         </li>
       </span>
 
@@ -49,13 +52,15 @@
           <div class="getFilter" (click)="showFilter()">
             <span>{{filterDisplayName}}</span>
             <span>
-              <i class="fas fa-plus"></i>
+              <!-- <i class="fas fa-plus"></i> -->
+              <fa-icon [icon]="faPlus"></fa-icon>
             </span>
           </div>
-          <div *ngIf="displayDropdown" (clickOutside)="onClickedOutside($event)" [exclude]="'.filter,.filterSelect, .getFilter,.fa-plus'">
+          <div *ngIf="displayDropdown" (clickOutside)="onClickedOutside($event)" [exclude]="'.filter,.filterSelect, .getFilter,fa-icon'">
             <div class="showFilter-list">
               <span class="closeDropdown text-warning" (click)="closeDropDown()">
-                <i class="far fa-times-circle fa-lg"></i>
+                <!-- <i class="far fa-times-circle fa-lg"></i> -->
+                <fa-icon [icon]="faTimesCircle" size="lg"></fa-icon>
               </span>
               <ul>
                 <li class="list-unstyled" *ngFor="let filterType of filtersList; index as i">
@@ -75,7 +80,8 @@
 
         <li class="list-inline-item applied-filter" *ngFor="let filter of filtersInfo.appliedFilters">
           <span> {{filter.name}} </span>
-          <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
+          <!-- <i class="far fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i> -->
+          <fa-icon [icon]="faTimesCircle" (click)="removeFilter(filter)"></fa-icon>
         </li>
 
       </span>
@@ -85,7 +91,8 @@
     <div class="viewDetails" *ngIf="filtersInfo.viewDetails" (click)="routetoFullview()">
       <span class="text-primary float-right" class="cursor-pointer"> View Details</span>
       <span>
-        <i class="fas fa-angle-right"></i>
+        <!-- <i class="fas fa-angle-right"></i> -->
+        <fa-icon [icon]="faAngleRight"></fa-icon>
       </span>
     </div>
 

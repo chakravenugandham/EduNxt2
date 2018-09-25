@@ -21,9 +21,9 @@
       color: white;
       margin-right: 6px;
       // overflow: hidden;
-      i {
+      i, fa-icon {
         position: absolute;
-        top: 8px !important;
+        top: 6px !important;
         right: 8px;
       }
       .showFilter-list {
@@ -61,7 +61,7 @@
     color: $lightBlue;
     font-size: 12px;
     font-weight: 600;
-    i {
+    i, fa-icon {
       padding: 2px 4px 2px 4px;
       border: 1px solid $lightBlue;
       border-radius: 50%;
@@ -117,8 +117,8 @@
   .search-icon {
     position: absolute;
     right: 0px;
-    top: 3px;
-    i {
+    top: 2px;
+    i, fa-icon {
       color: $lightBlue;
     }
   }
@@ -156,11 +156,11 @@
 
 .getFilter {
   cursor: pointer;
-  i {
+  i, fa-icon {
     border-radius: 50%;
     border: 1px solid $lightBlue;
     padding: 2px;
-    font-size: 9px;
+    font-size: 8px;
     top: 7px !important;
   }
 }

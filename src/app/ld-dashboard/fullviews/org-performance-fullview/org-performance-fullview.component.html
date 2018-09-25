@@ -1,9 +1,12 @@
 <div class="dashboard fullviewComponent widget-row learner-track-fullview" id="lnd-complete-dashboard">
-  <div class="widget-heading row">
-    <span>
-      <i class="fas fa-angle-left" routerLink="/"></i>
-    </span>
-    <span> How is my organization performing? </span>
+  <div class="row">
+    <div class="widget-heading fullview-heading col-md-6">
+      <span>
+        <!-- <i class="fas fa-angle-left" routerLink="/"></i> -->
+        <fa-icon [icon]="faAngleLeft" routerLink="/"></fa-icon>
+      </span>
+      <span> How is my organization performing? </span>
+    </div>
   </div>
   <div class="widget-block">
 
@@ -39,28 +42,33 @@
           <tr>
             <th scope="col">
               <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSearch"></fa-icon>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Team Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('teamName')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('completion')">Completion %
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('completedProgram')">Completed Programs
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('teamSize')">Team Size
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col">Action</th>
@@ -72,7 +80,8 @@
               <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(teamData)} "></span>
               <span class="imgActive">
                 <img src="/assets/images/user.png" alt="userImg" height="20" width="20">
-                <i class="far fa-circle"></i>
+                <!-- <i class="far fa-circle"></i> -->
+                <fa-icon [icon]="faCircle"></fa-icon>
               </span>
               <span class="userName">{{teamData.teamName}}</span>
             </th>
@@ -85,7 +94,9 @@
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="teamData.completion <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',teamData.teamId)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
+                <!-- <i class="fas fa-exclamation-triangle"></i>  -->
+                <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+                Follow up
               </span>
             </td>
           </tr>
@@ -96,28 +107,33 @@
           <tr>
             <th scope="col">
               <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSearch"></fa-icon>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Trainer Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('trainerName')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('peopleTrained')">People Trained
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('avgRating')">Avg. Rating
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col">Action</th>
@@ -129,7 +145,8 @@
               <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(trainerData)} "></span>
               <span class="imgActive ">
                 <img src="/assets/images/user.png " alt="userImg " height="20 " width="20 ">
-                <i class="far fa-circle "></i>
+                <!-- <i class="far fa-circle "></i> -->
+                <fa-icon [icon]="faCircle"></fa-icon>
               </span>
               <span class="userName ">{{trainerData.trainerName}}</span>
             </th>
@@ -147,7 +164,9 @@
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="trainerData.avgRating <= 3.5" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',trainerData.trainerId)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
+                <!-- <i class="fas fa-exclamation-triangle"></i>  -->
+                <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+                Follow up
               </span>
             </td>
           </tr>
@@ -158,34 +177,40 @@
           <tr>
             <th scope="col">
               <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSearch"></fa-icon>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('learnerName')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('serialNumber')">
               <span class="text">Serial No.</span>
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('pointsEarned')">Points Earned
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('avgTestPerformance')">Avg. Test Performance
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('examScore')">Exam Score
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col">Action</th>
@@ -197,7 +222,8 @@
               <span class="m-l-47 check-box " [ngClass]="{ 'checked-box': checkItemInApplied(learnerData)} "></span>
               <span class="imgActive ">
                 <img src="/assets/images/user.png " alt="userImg " height="20 " width="20 ">
-                <i class="far fa-circle "></i>
+                <!-- <i class="far fa-circle "></i> -->
+                <fa-icon [icon]="faCircle"></fa-icon>
               </span>
               <span class="userName ">{{learnerData.learnerName}}</span>
             </th>
@@ -221,7 +247,9 @@
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="learnerData.examScore <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',learnerData.person_id)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
+                <!-- <i class="fas fa-exclamation-triangle"></i>  -->
+                <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+                Follow up
               </span>
             </td>
           </tr>

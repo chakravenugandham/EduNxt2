@@ -1,12 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 
+import { faAngleLeft, faSearch, faSort, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: 'app-org-interest-fullview',
   templateUrl: './org-interest-fullview.component.html',
   styleUrls: ['./org-interest-fullview.component.scss']
 })
 export class OrgInterestFullviewComponent implements OnInit {
+
+  //font-awesome classes
+  faAngleLeft = faAngleLeft;
+  faSearch = faSearch;
+  faSort = faSort;
+  faArrowUp = faArrowUp;
+
   // global variable declarations
   responseData = [];
   filtersData = {

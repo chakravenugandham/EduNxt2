@@ -2,12 +2,17 @@ import { Component, OnInit } from "@angular/core";
 import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: "app-users",
   templateUrl: "./users.component.html",
   styleUrls: ["./users.component.scss"]
 })
 export class UsersComponent implements OnInit {
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
 
   //custom component declaration
   activeUserCount: Config;

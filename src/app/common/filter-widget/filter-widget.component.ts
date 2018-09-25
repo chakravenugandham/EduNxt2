@@ -1,14 +1,9 @@
-import {
-    Component,
-    OnInit,
-    Input,
-    OnChanges,
-    EventEmitter,
-    Output
-} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { _ } from 'underscore';
 
+import { faPlus, faAngleRight, faTimesCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
+
+import { _ } from 'underscore';
 import { LdDashboardService } from '../../ld-dashboard/services/ld-dashboard.service';
 
 @Component({
@@ -40,6 +35,12 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
     @Output() searchEvent = new EventEmitter<any>();
     @Output() addFilterEmit = new EventEmitter<any>();
+
+    //font-awesome classes
+    faPlus = faPlus;
+    faAngleRight = faAngleRight;
+    faTimesCircle = faTimesCircle;
+    faSearch = faSearch;
 
     filtersList: any[];
     displayDropdown = false;

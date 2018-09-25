@@ -2,7 +2,8 @@
   <div class="widget-heading clearfix font-weight-bold">
     <p class="float-left">How active are the users?</p>
     <p class="float-right p-r-6" data-toggle="tooltip" data-placement="top" title="How active are the users?">
-      <i class="fa fa-question-circle" aria-hidden="true"></i>
+      <!-- <i class="fa fa-question-circle" aria-hidden="true"></i> -->
+      <fa-icon [icon]="faQuestionCircle"></fa-icon>
     </p>
   </div>
   <div class="widget-block">
@@ -23,10 +24,12 @@
       </ul>
       <div class="float-right widget-menu">
         <span data-toggle="tooltip" data-placement="top" title="{{tooltipText}}">
-          <i class="fa fa-question-circle" aria-hidden="true"></i>
+          <!-- <i class="fa fa-question-circle" aria-hidden="true"></i> -->
+          <fa-icon [icon]="faQuestionCircle"></fa-icon>
         </span>
         <span class="p-l-20" ngbDropdown placement="bottom-right">
-          <i class="fa fa-ellipsis-v ellipse" aria-hidden="true" ngbDropdownToggle></i>
+          <!-- <i class="fa fa-ellipsis-v ellipse" aria-hidden="true" ngbDropdownToggle></i> -->
+          <fa-icon [icon]="faEllipsisV" class="ellipse" ngbDropdownToggle></fa-icon>
           <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu-items">
             <!-- <li class="list-inline-item cursor-pointer">
                 <span>

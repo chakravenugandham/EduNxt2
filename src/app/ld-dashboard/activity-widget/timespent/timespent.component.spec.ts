@@ -8,8 +8,9 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { TimespentComponent } from './timespent.component';
 import { HalfdonutchartDirective } from "../../../ld-dashboard/directives/halfdonutchart.directive";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('TimespentComponent', () => {
+describe('TimespentComponent', () => {
   let component: TimespentComponent;
   let fixture: ComponentFixture<TimespentComponent>;
   let inputEl: DebugElement;
@@ -18,7 +19,7 @@ fdescribe('TimespentComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TimespentComponent, HalfdonutchartDirective, SpinnerComponent, CustomNumberPipe],
       providers: [CookieService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, FontAwesomeModule]
     })
       .compileComponents();
   }));

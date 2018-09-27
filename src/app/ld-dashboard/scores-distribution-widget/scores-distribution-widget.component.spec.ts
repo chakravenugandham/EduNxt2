@@ -21,8 +21,9 @@ import { PaginateComponent } from "../../common/paginate/paginate.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('ScoresDistributionWidgetComponent', () => {
+describe('ScoresDistributionWidgetComponent', () => {
   let component: ScoresDistributionWidgetComponent;
   let fixture: ComponentFixture<ScoresDistributionWidgetComponent>;
 
@@ -31,7 +32,7 @@ fdescribe('ScoresDistributionWidgetComponent', () => {
       declarations: [ScoresDistributionWidgetComponent, QuizComponent, AssignmentComponent,
         TestScoresComponent, FilterWidgetComponent, ScoreChartDirective, SpinnerComponent, CustomNumberPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
-      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })
       .compileComponents();
   }));

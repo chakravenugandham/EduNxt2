@@ -121,6 +121,7 @@ import { PaginateComponent } from './common/paginate/paginate.component';
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraphChartComponent } from './common/graph-chart/graph-chart.component';
+import { TextTransformPipe } from '../app/shared/text-transform.pipe'
 
 @NgModule({
   declarations: [
@@ -212,7 +213,8 @@ import { GraphChartComponent } from './common/graph-chart/graph-chart.component'
     CustomNumberPipe,
     PaginateComponent,
     SpinnerComponent,
-    GraphChartComponent
+    GraphChartComponent,
+    TextTransformPipe
   ],
   imports: [
     BrowserModule,

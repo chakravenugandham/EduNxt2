@@ -5,15 +5,17 @@ import { By } from "@angular/platform-browser";
 import { LearnerPerformanceComponent } from './learner-performance.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('LearnerPerformanceComponent', () => {
+describe('LearnerPerformanceComponent', () => {
   let component: LearnerPerformanceComponent;
   let fixture: ComponentFixture<LearnerPerformanceComponent>;
   let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LearnerPerformanceComponent, DonutChartDirective, CustomNumberPipe]
+      declarations: [LearnerPerformanceComponent, DonutChartDirective, CustomNumberPipe],
+      imports: [FontAwesomeModule]
     })
       .compileComponents();
   }));

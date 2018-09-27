@@ -12,8 +12,9 @@ import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widg
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('TeamsComponent', () => {
+describe('TeamsComponent', () => {
   let component: TeamsComponent;
   let fixture: ComponentFixture<TeamsComponent>;
 
@@ -21,7 +22,7 @@ fdescribe('TeamsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TeamsComponent, FilterWidgetComponent, CustomNumberPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule]
     })
       .compileComponents();
   }));

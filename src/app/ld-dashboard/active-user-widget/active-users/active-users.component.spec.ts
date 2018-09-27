@@ -7,8 +7,9 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('ActiveUsersComponent', () => {
+describe('ActiveUsersComponent', () => {
   let component: ActiveUsersComponent;
   let fixture: ComponentFixture<ActiveUsersComponent>;
   let inputEl: DebugElement;
@@ -17,7 +18,7 @@ fdescribe('ActiveUsersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ActiveUsersComponent, SpinnerComponent],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, FontAwesomeModule]
     })
       .compileComponents();
   }));
@@ -37,7 +38,7 @@ fdescribe('ActiveUsersComponent', () => {
     expect(component.getActiveUsersData).toBeTruthy();
   });
 
-  xit('should create usersChartRender', () => {
+  it('should create usersChartRender', () => {
     component.usersChartRender();
     expect(component.usersChartRender).toBeTruthy();
   });

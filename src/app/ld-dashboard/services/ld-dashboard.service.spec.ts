@@ -4,7 +4,7 @@ import { LdDashboardService } from './ld-dashboard.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 
-fdescribe('LdDashboardService', () => {
+describe('LdDashboardService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [LdDashboardService, CookieService],

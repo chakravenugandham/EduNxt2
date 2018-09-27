@@ -39,6 +39,8 @@ export class GraphChartComponent implements OnInit {
 
   constructGraph() {
 
+    d3.select("#barNewChart svg").remove();
+
     function rightRoundedRect(x, y, width, height, radius) {
       return "M" + x + "," + y
         + "h" + (width - radius)
@@ -55,7 +57,7 @@ export class GraphChartComponent implements OnInit {
       .attr("width", width + (margin * 2))
       .attr("height", height + (100 * 2))
       .append("g")
-      .attr("transform", "translate(" + margin + "," + (margin - 30) + ")");
+      .attr("transform", "translate(" + margin + "," + margin + ")");
     let x0 = d3.scale.ordinal()
       .rangeRoundBands([0, width], 0.5, 0.5);
     //.rangeRoundBands([0, width], .3);
@@ -80,7 +82,7 @@ export class GraphChartComponent implements OnInit {
     // y.domain([0, 100]);
     y.domain([0,
       d3.max(this.dataset, d => {
-        const maxBar = Math.ceil(d.Group1);
+        const maxBar = Math.ceil(d.Group2);
         if (maxBar <= 8) {
           return 8;
         } else {

@@ -17,8 +17,9 @@ import { PaginateComponent } from '../../common/paginate/paginate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('LearnersPerformanceWidgetComponent', () => {
+describe('LearnersPerformanceWidgetComponent', () => {
   let component: LearnersPerformanceWidgetComponent;
   let fixture: ComponentFixture<LearnersPerformanceWidgetComponent>;
 
@@ -26,7 +27,7 @@ fdescribe('LearnersPerformanceWidgetComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LearnersPerformanceWidgetComponent, PerformanceComponent, ProgressComponent, BarChartDirective, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule]
     })
       .compileComponents();
   }));

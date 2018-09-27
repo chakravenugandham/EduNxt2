@@ -4,11 +4,11 @@ import { By } from "@angular/platform-browser";
 
 import { ModeOfDeliveryComponent } from './mode-of-delivery.component';
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
-fdescribe('ModeOfDeliveryComponent', () => {
+describe('ModeOfDeliveryComponent', () => {
   let component: ModeOfDeliveryComponent;
   let fixture: ComponentFixture<ModeOfDeliveryComponent>;
   let inputEl: DebugElement;
@@ -16,7 +16,7 @@ fdescribe('ModeOfDeliveryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ModeOfDeliveryComponent, SpinnerComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, FontAwesomeModule],
       providers: [CookieService]
     })
       .compileComponents();
@@ -36,4 +36,10 @@ fdescribe('ModeOfDeliveryComponent', () => {
     component.getModeOfDeliveryData();
     expect(component.getModeOfDeliveryData).toBeDefined();
   });
+
+  it('should create usersChartRender', () => {
+    component.usersChartRender();
+    expect(component.usersChartRender).toBeTruthy();
+  });
+
 });

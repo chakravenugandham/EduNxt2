@@ -10,7 +10,6 @@ import { LocationComponent } from "./location/location.component";
 import { ModeOfDeliveryComponent } from "./mode-of-delivery/mode-of-delivery.component";
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { SpinnerComponent } from "../../common/spinner/spinner.component";
 import { FormsModule } from '@angular/forms';
@@ -20,8 +19,9 @@ import { PaginateComponent } from "../../common/paginate/paginate.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('ActiveUserWidgetComponent', () => {
+describe('ActiveUserWidgetComponent', () => {
   let component: ActiveUserWidgetComponent;
   let fixture: ComponentFixture<ActiveUserWidgetComponent>;
 
@@ -30,7 +30,7 @@ fdescribe('ActiveUserWidgetComponent', () => {
       declarations: [ActiveUserWidgetComponent, ActiveUsersComponent, LocationComponent,
         ModeOfDeliveryComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
-      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })
       .compileComponents();
   }));
@@ -65,11 +65,5 @@ fdescribe('ActiveUserWidgetComponent', () => {
     component.getFilterObject($event);
     expect(component.getFilterObject).toBeDefined();
   });
-
-  xit('should create csvFormatFn', () => {
-    component.csvFormatFn();
-    expect(component.csvFormatFn).toBeDefined();
-  });
-
 
 });

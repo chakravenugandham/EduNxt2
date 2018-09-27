@@ -8,8 +8,9 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { PaceComponent } from './pace.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('PaceComponent', () => {
+describe('PaceComponent', () => {
   let component: PaceComponent;
   let fixture: ComponentFixture<PaceComponent>;
   let inputEl: DebugElement;
@@ -18,7 +19,7 @@ fdescribe('PaceComponent', () => {
     TestBed.configureTestingModule({
       declarations: [PaceComponent, DonutChartDirective, SpinnerComponent, CustomNumberPipe],
       providers: [CookieService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, FontAwesomeModule]
     })
       .compileComponents();
   }));

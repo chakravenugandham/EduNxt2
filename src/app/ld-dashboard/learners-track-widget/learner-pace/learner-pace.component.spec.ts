@@ -5,15 +5,17 @@ import { By } from "@angular/platform-browser";
 import { LearnerPaceComponent } from './learner-pace.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('LearnerPaceComponent', () => {
+describe('LearnerPaceComponent', () => {
   let component: LearnerPaceComponent;
   let fixture: ComponentFixture<LearnerPaceComponent>;
   let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LearnerPaceComponent, DonutChartDirective, CustomNumberPipe]
+      declarations: [LearnerPaceComponent, DonutChartDirective, CustomNumberPipe],
+      imports: [FontAwesomeModule]
     })
       .compileComponents();
   }));

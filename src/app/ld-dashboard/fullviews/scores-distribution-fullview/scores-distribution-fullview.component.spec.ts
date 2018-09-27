@@ -17,8 +17,9 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('ScoresDistributionFullviewComponent', () => {
+describe('ScoresDistributionFullviewComponent', () => {
   let component: ScoresDistributionFullviewComponent;
   let fixture: ComponentFixture<ScoresDistributionFullviewComponent>;
 
@@ -26,7 +27,7 @@ fdescribe('ScoresDistributionFullviewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ScoresDistributionFullviewComponent, ScoreChartDirective, FilterWidgetComponent, PaginateComponent, CustomNumberPipe, SpinnerComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
-      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })
       .compileComponents();
   }));

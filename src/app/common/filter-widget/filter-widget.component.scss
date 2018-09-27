@@ -54,6 +54,15 @@
     }
   }
 
+  .searchText{
+    div {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    width: 100px;
+  }
+
   .viewDetails {
     position: absolute;
     right: 0;
@@ -206,4 +215,8 @@
   .fa-times-circle{
     right: 16px !important;
   }
+}
+
+.list-inline-item {
+  margin-bottom: 5px;
 }

@@ -15,8 +15,9 @@ import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 import { PaginateComponent } from "../../../common/paginate/paginate.component";
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('OrgPerformanceFullviewComponent', () => {
+describe('OrgPerformanceFullviewComponent', () => {
   let component: OrgPerformanceFullviewComponent;
   let fixture: ComponentFixture<OrgPerformanceFullviewComponent>;
   let inputEl: DebugElement;
@@ -25,7 +26,7 @@ fdescribe('OrgPerformanceFullviewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [OrgPerformanceFullviewComponent, , FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
-      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })
       .compileComponents();
   }));

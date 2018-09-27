@@ -16,8 +16,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TagCloudModule } from "angular-tag-cloud-module";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('OrgInterestWidgetComponent', () => {
+describe('OrgInterestWidgetComponent', () => {
   let component: OrgInterestWidgetComponent;
   let fixture: ComponentFixture<OrgInterestWidgetComponent>;
 
@@ -25,7 +26,7 @@ fdescribe('OrgInterestWidgetComponent', () => {
     TestBed.configureTestingModule({
       declarations: [OrgInterestWidgetComponent, OrgInterestComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), TagCloudModule]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), TagCloudModule, FontAwesomeModule]
     })
       .compileComponents();
   }));

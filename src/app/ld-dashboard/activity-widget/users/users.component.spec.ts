@@ -8,8 +8,9 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { UsersComponent } from './users.component';
 import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('UsersComponent', () => {
+describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
   let inputEl: DebugElement;
@@ -17,7 +18,7 @@ fdescribe('UsersComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UsersComponent, UsersDataComponent, SpinnerComponent, CustomNumberPipe],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, FontAwesomeModule],
       providers: [CookieService]
     })
       .compileComponents();

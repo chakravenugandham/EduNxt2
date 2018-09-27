@@ -13,15 +13,17 @@ import { UserstrainedComponent } from "./userstrained/userstrained.component";
 import { DonutChartDirective } from "../../ld-dashboard/directives/donut-chart.directive";
 import { HalfdonutchartDirective } from "../../ld-dashboard/directives/halfdonutchart.directive";
 import { Config, UsersDataComponent } from "../../ld-dashboard/common/users-data/users-data.component";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 
 import { SpinnerComponent } from "../../common/spinner/spinner.component";
 import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
 import { CookieService } from 'ngx-cookie-service';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('ActivityWidgetComponent', () => {
+
+describe('ActivityWidgetComponent', () => {
   let component: ActivityWidgetComponent;
   let fixture: ComponentFixture<ActivityWidgetComponent>;
   let inputEl: DebugElement;
@@ -40,7 +42,7 @@ fdescribe('ActivityWidgetComponent', () => {
         EngagementComponent, PaceComponent, FeedbackComponent, TimespentComponent,
         UserstrainedComponent, UsersDataComponent, HalfdonutchartDirective, DonutChartDirective, SpinnerComponent, CustomNumberPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule, FontAwesomeModule]
     })
       .compileComponents();
   }));

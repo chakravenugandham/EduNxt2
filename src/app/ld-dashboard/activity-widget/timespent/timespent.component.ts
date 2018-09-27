@@ -44,8 +44,6 @@ export class TimespentComponent implements OnInit {
       .subscribe((response: any) => {
         this.responseData = response.data;
         this.timeSpentPercent = response.data.timeSpent;
-        console.log(response);
-
 
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;

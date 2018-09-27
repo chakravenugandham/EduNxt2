@@ -116,12 +116,14 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
           if (this.getTab == "performance") {
             this.performanceDataSet.push({
               label: this.responseData[i].sectionName,
-              Group1: this.responseData[i].performance = this.responseData[i].performance > 100 ? 100 : this.responseData[i].performance
+              Group1: this.responseData[i].performance = this.responseData[i].performance > 100 ? 100 : this.responseData[i].performance,
+              Group2: 100
             });
           } else if (this.getTab == "progress") {
             this.progressDataSet.push({
               label: this.responseData[i].sectionName,
-              Group1: this.responseData[i].progress = this.responseData[i].progress > 100 ? 100 : this.responseData[i].progress
+              Group1: this.responseData[i].progress = this.responseData[i].progress > 100 ? 100 : this.responseData[i].progress,
+              Group2: 100
             });
           }
         }

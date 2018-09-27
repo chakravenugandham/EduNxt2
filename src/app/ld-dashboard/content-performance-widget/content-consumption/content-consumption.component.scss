@@ -1,27 +1,31 @@
 table {
-    table-layout: fixed;
-    thead{
-        th{
-            cursor: pointer;
-        }
+  table-layout: fixed;
+
+  thead {
+    th {
+      cursor: pointer;
     }
-    tbody {
-        td {
-            font-size: 12px;
-        }
-        i {
-            color: #ffd630;
-        } 
+  }
+
+  tbody {
+    td {
+      font-size: 12px;
     }
+
+    i,
+    fa-icon {
+      color: #ffd630 !important;
+    }
+  }
 }
 
 p {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 table tr td,
 .content-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

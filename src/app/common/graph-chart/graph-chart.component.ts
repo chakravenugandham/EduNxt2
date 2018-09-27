@@ -11,50 +11,111 @@ import * as d3 from 'd3v4';
 })
 export class GraphChartComponent implements OnInit {
 
+  dataArray = [
+    {
+      name: 'Family in feud with Zuckerbergs',
+      value: 17
+    },
+    {
+      name: 'Committed 671 birthdays to memory',
+      value: 19
+    },
+    {
+      name: 'Ex is doing too well',
+      value: 10
+    },
+    {
+      name: 'Discovered how to “like” things mentally',
+      value: 15
+    },
+  ]
   constructor() { }
 
   constructGraph() {
-    let w = 800;
-    let h = 500;
-    let p = 50;
-    let dataSet = [[0, 50], [50, 30], [100, 80], [200, 40], [250, 85], [300, 60], [400, 30], [480, 60], [500, 90], [550, 10]];
-    // let dataSet = [["Cryptography", 50], ["Cryptography Two", 30], ["Cryptography Three", 80]];
-    let xScale = d3.scaleLinear()
-      .domain([0, d3.max(dataSet, function (d) { return d[0]; })])
-      .range([p, w - p]);
-    let yScale = d3.scaleLinear()
-      .domain([0, d3.max(dataSet, function (d) { return d[1]; })])
-      .range([h - p, p]);
-    let svg = d3.select("#barNewChart")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h);
-    svg.selectAll(".bar")
-      .data(dataSet)
-      .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function (d) {
-        return xScale(d[0]);
-      })
-      .attr("y", function (d) { return yScale(d[1]); })
-      .attr("width", 20)
-      .attr("height", function (d) { return ((h - p) - yScale(d[1])); })
-    svg.append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(10," + (h - p) + ")")
-      .call(d3.axisBottom(xScale));
-    svg.append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(" + p + ", 0)")
-      .call(d3.axisLeft(yScale));
-    svg.append("text")
-      .text("Time")
-      .attr("transform", "translate(" + (w / 2) + "," + h + ")")
-    svg.append("text")
-      .text("Pulse")
-      .attr("transform", "rotate(-90)")
-      .attr("x", - (h / 2))
-      .attr("y", 20)
+    let margin = { top: 80, right: 180, bottom: 80, left: 180 },
+      width = 960 - margin.left - margin.right,
+      height = 500 - margin.top - margin.bottom;
+
+    let x = d3.scale.ordinal()
+      .rangeRoundBands([0, width], .1, .3);
+
+    let y = d3.scale.linear()
+      .range([height, 0]);
+
+    let xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+    let yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .ticks(8, "%");
+
+    let svg = d3.select("body #newBarGraph").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.data(this.dataArray, type, function (error, data) {
+      x.domain(data.map(function (d) { return d.name; }));
+      y.domain([0, d3.max(data, function (d) { return d.value; })]);
+
+      svg.append("text")
+        .attr("class", "title")
+        .attr("x", x(data[0].name))
+        .attr("y", -26)
+        .text("Why Are We Leaving Facebook?");
+
+      svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll(".tick text")
+        .call(wrap, x.rangeBand());
+
+      svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+      svg.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function (d) { return x(d.name); })
+        .attr("width", x.rangeBand())
+        .attr("y", function (d) { return y(d.value); })
+        .attr("height", function (d) { return height - y(d.value); });
+    });
+
+    function wrap(text, width) {
+      text.each(function () {
+        let text = d3.select(this),
+          words = text.text().split(/\s+/).reverse(),
+          word,
+          line = [],
+          lineNumber = 0,
+          lineHeight = 1.1, // ems
+          y = text.attr("y"),
+          dy = parseFloat(text.attr("dy")),
+          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
+            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+          }
+        }
+      });
+    }
+
+    function type(d) {
+      d.value = +d.value;
+      return d;
+    }
   }
 
   ngOnInit() {

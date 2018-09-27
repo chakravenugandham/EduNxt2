@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
-import {
-  NgbModal,
-  ModalDismissReasons,
-  NgbModalOptions
-} from "@ng-bootstrap/ng-bootstrap";
+
+import {NgbModal,ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
+
+import { faSort,faCircle,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-learners",
@@ -15,6 +14,12 @@ export class LearnersComponent implements OnInit {
   @Input() LearnersData;
 
   @Output() sortBy = new EventEmitter<any>();
+
+  //font-awesome classes
+  faSort = faSort;
+  faCircle = faCircle;
+  faExclamationTriangle = faExclamationTriangle;
+
   sortOrder: string = "testPerformance";
 
   closeResult: string;

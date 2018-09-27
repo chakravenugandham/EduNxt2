@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 import { faAngleLeft, faSearch, faSort, faArrowUp, faExclamationTriangle, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { _ } from "underscore";
 
 
@@ -19,6 +20,7 @@ export class OrgPerformanceFullviewComponent implements OnInit {
   faArrowUp = faArrowUp;
   faExclamationTriangle = faExclamationTriangle;
   faCircle = faCircle;
+  faStar = faStar;
 
   responseData: any[];
   closeResult: string;

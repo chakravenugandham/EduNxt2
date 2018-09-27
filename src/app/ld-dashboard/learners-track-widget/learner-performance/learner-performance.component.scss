@@ -1,6 +1,7 @@
 .graph-badges {
   text-align: center;
   margin-top: 12px;
+
   i {
     border-radius: 50%;
     border: none;
@@ -16,19 +17,20 @@
 //performance batches
 .excelling {
   color: #23b14d;
-  background-color: #23b14d;
+  // background-color: #23b14d;
 }
 
 .passing {
   color: #5584ff;
-  background-color: #5584ff;
+  // background-color: #5584ff;
 }
 
 .struggling {
   color: #ffd630;
-  background-color: #ffd630;
+  // background-color: #ffd630;
 }
+
 .haveNotStarted {
   color: #f77f6c;
-  background-color: #f77f6c;
+  // background-color: #f77f6c;
 }

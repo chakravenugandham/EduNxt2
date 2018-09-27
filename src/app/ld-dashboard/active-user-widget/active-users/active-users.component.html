@@ -55,10 +55,14 @@
     </div>
     <div *ngIf="responseData.length>0" class="row graph-badges">
       <div class="col-md-6 col-sm-6 col-6">
-        <i class="far fa-circle learner"></i> Learners
+        <!-- <i class="far fa-circle learner"></i>  -->
+        <fa-icon [icon]="faCircle" class="learner"></fa-icon>
+        Learners
       </div>
       <div class="col-md-6 col-sm-6 col-6">
-        <i class="far fa-circle faculty"></i> Faculty and Admins
+        <!-- <i class="far fa-circle faculty"></i>  -->
+        <fa-icon [icon]="faCircle" class="faculty"></fa-icon>
+        Faculty and Admins
       </div>
     </div>
   </div>

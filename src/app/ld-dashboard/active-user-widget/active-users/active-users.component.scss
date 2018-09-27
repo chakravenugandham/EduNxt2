@@ -29,11 +29,12 @@
 .graph-badges {
   .learner {
     color: #ff4e00;
-    background-color: #ff4e00;
+    // background-color: #ff4e00;
   }
+
   .faculty {
     color: #5584FF;
-    background-color: #5584FF;
+    // background-color: #5584FF;
   }
 }
 
@@ -49,13 +50,16 @@
   font-size: 12px;
   font-family: "Muli";
   width: 150px;
+
   table {
     width: 100%;
   }
+
   .ttip-div {
     padding: 5px;
     width: 70px;
   }
+
   .ttip-date {
     font-weight: bold !important;
   }

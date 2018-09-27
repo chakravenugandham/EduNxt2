@@ -5,6 +5,8 @@ import { of as observableOf } from 'rxjs';
 
 import { LdDashboardService } from '../../../ld-dashboard/services/ld-dashboard.service';
 
+import { faQuestionCircle, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: 'app-org-interest',
   templateUrl: './org-interest.component.html',
@@ -13,6 +15,10 @@ import { LdDashboardService } from '../../../ld-dashboard/services/ld-dashboard.
 export class OrgInterestComponent implements OnInit, OnChanges {
   @Input() orgInterestData: any[];
   @Input() orgPopularData: any[];
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
+  faArrowUp = faArrowUp;
 
   options: CloudOptions = {
     width: 400,

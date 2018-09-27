@@ -5,22 +5,26 @@
         <tr>
           <th scope="col" (click)="sortByFn('trainerName')">Trainer Name
             <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
+              <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+              <fa-icon [icon]="faSort"></fa-icon>
             </span>
           </th>
           <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
             <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
+              <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+              <fa-icon [icon]="faSort"></fa-icon>
             </span>
           </th>
           <th scope="col" (click)="sortByFn('peopleTrained')">People Trained
             <span>
-              <i class="far fa-question-circle questionmark"></i>
+              <!-- <i class="far fa-question-circle questionmark"></i> -->
+              <fa-icon [icon]="faSort"></fa-icon>
             </span>
           </th>
           <th scope="col" (click)="sortByFn('avgRating')">Avg. Rating
             <span>
-              <i class="fa fa-sort" aria-hidden="true"></i>
+              <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+              <fa-icon [icon]="faSort"></fa-icon>
             </span>
           </th>
           <th scope="col">
@@ -33,7 +37,8 @@
           <td scope="row">
             <span class="imgActive">
               <img src="/assets/images/user.png" alt="userImg">
-              <i class="far fa-circle"></i>
+              <!-- <i class="far fa-circle"></i> -->
+              <fa-icon [icon]="faCircle"></fa-icon>
             </span>
             <b class="userName">{{tableData.trainerName}}</b>
           </td>
@@ -41,7 +46,8 @@
           <td>{{tableData.peopleTrained | customNumber}}</td>
           <td>
             <span>
-              <i class="far fa-star text-warning"></i>
+              <!-- <i class="far fa-star text-warning"></i> -->
+              <fa-icon [icon]="faStar"></fa-icon>
             </span> {{tableData.avgRating | customNumber}}
           </td>
 
@@ -50,7 +56,9 @@
               <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
             </span>
             <span *ngIf="tableData.avgRating <= 3.5" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',tableData.trainerId)">
-              <i class="fas fa-exclamation-triangle"></i> Follow up
+              <!-- <i class="fas fa-exclamation-triangle"></i>  -->
+              <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+              Follow up
             </span>
           </td>
 

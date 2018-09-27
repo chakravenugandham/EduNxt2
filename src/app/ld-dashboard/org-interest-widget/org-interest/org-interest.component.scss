@@ -11,9 +11,11 @@
   border-top: none;
   box-shadow: 0px 2px 0px 1px #ddd;
   font-size: 11px;
+
   .nop {
     color: #5584ff;
   }
+
   p {
     margin-bottom: 0px;
     padding-top: 3px;
@@ -63,15 +65,25 @@
 .widget-heading {
   .heading {
     margin-bottom: 12px;
+
     p {
       margin-bottom: 0px;
       padding-left: 6px;
     }
-    i {
+
+    i,
+    fa-icon {
       color: #ff5722;
       right: 8px;
       top: 8px;
       font-size: 14px;
+    }
+  }
+
+  .changeNumber {
+    fa-icon {
+      color: #23b14d;
+      font-size: 12px;
     }
   }
 }

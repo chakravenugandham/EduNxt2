@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../services/ld-dashboard.service';
 import { CommonService } from '../../common-services/common.service';
 
-
-import * as jspdf from 'jspdf';
-
-import html2canvas from 'html2canvas';
+import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 import { _ } from 'underscore';
+
+import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: 'app-org-performance-widget',
@@ -15,6 +15,11 @@ import { _ } from 'underscore';
   styleUrls: ['./org-performance-widget.component.scss']
 })
 export class OrgPerformanceWidgetComponent implements OnInit {
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
+  faEllipsisV = faEllipsisV;
+
 
   tooltipText: string;
 

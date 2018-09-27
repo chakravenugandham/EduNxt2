@@ -1,12 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: "app-timespent",
   templateUrl: "./timespent.component.html",
   styleUrls: ["./timespent.component.scss"]
 })
 export class TimespentComponent implements OnInit {
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
 
   //variable declaration
   responseData = {};
@@ -38,7 +43,9 @@ export class TimespentComponent implements OnInit {
       .getTimeSpentWidgetData()
       .subscribe((response: any) => {
         this.responseData = response.data;
-        this.timeSpentPercent = response.timeSpent;
+        this.timeSpentPercent = response.data.timeSpent;
+        console.log(response);
+
 
         this.spinner_loader = false;
         this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;

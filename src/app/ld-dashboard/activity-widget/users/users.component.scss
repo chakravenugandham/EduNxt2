@@ -3,9 +3,11 @@
     margin-bottom: 8px;
     display: flex;
   }
+
   .imgActive {
     position: relative;
     float: left;
+
     img {
       height: 52px;
       width: 52px;
@@ -14,6 +16,7 @@
       border: 1px solid #fff;
       z-index: 0;
     }
+
     i {
       position: absolute;
       bottom: 0;
@@ -24,10 +27,20 @@
       color: #fff;
       font-size: 18px;
     }
+
+    fa-icon {
+      position: absolute;
+      bottom: -2px;
+      right: 4px;
+      color: #00ff00;
+      font-size: 16px;
+    }
   }
+
   .m-t-5 {
     margin-top: -5px !important;
   }
+
   .no-active-users {
     text-align: center;
     border: 1px solid #eee;

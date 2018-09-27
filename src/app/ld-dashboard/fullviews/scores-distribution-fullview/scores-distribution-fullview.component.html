@@ -2,7 +2,8 @@
   <div class="row">
     <div class="widget-heading fullview-heading col-md-6">
       <span>
-        <i class="fas fa-angle-left" routerLink="/"></i>
+        <!-- <i class="fas fa-angle-left" routerLink="/"></i> -->
+        <fa-icon [icon]="faAngleLeft" routerLink="/"></fa-icon>
       </span>
       <span> Score Distribution </span>
     </div>
@@ -52,48 +53,57 @@
             <tr>
               <th scope="col">
                 <span>
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSearch"></fa-icon>
                 </span>
                 <span>
                   <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="searchItem()">
                 </span>
                 <span (click)="sortByFn('learnerName')">
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('serialNumber')">Sl.No
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('team')">Team
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('batchName')">Batch
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('scoreAvg')">Score Avg %
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('totalAttempts')">Total Attempts
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('examsAttempted')">Exams Attempted
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
               </th>
               <th scope="col" (click)="sortByFn('totalExams')">Total Exams
                 <span>
-                  <i class="fa fa-sort" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faSort"></fa-icon>
                 </span>
             </tr>
           </thead>

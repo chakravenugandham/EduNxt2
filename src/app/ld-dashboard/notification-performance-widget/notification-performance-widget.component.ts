@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-notification-performance-widget",
@@ -6,7 +7,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./notification-performance-widget.component.scss"]
 })
 export class NotificationPerformanceWidgetComponent implements OnInit {
-  routePath: string = "notificationPerformanceFullView";
+
+  //font-awesome classes
+  faQuestionCircle = faQuestionCircle;
+  faEllipsisV = faEllipsisV;
 
   getTab: string = "schedule";
   filtersData = {
@@ -17,7 +21,7 @@ export class NotificationPerformanceWidgetComponent implements OnInit {
     filterList: ["zone"]
   };
   scheduled: boolean = true;
-  constructor() {}
+  constructor() { }
 
   scheduledFn() {
     this.getTab = "schedule";
@@ -26,5 +30,5 @@ export class NotificationPerformanceWidgetComponent implements OnInit {
     this.getTab = "seen";
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

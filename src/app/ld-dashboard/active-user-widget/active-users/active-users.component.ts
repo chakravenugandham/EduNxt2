@@ -3,12 +3,17 @@ import * as d3 from 'd3v4';
 import * as _ from 'underscore';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
+
 @Component({
   selector: 'app-active-users',
   templateUrl: './active-users.component.html',
   styleUrls: ['./active-users.component.scss']
 })
 export class ActiveUsersComponent implements OnInit {
+
+  //font-awesome classes
+  faCircle = faCircle;
 
   // variable declaration
   chartData = [];

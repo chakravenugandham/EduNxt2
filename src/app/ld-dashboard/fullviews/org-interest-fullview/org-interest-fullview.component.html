@@ -1,8 +1,9 @@
 <div class="dashboard fullviewComponent learner-performance-fullview" id="lnd-complete-dashboard">
   <div class="row">
-    <div class="widget-heading col-md-6">
+    <div class="widget-heading fullview-heading col-md-6">
       <span>
-        <i class="fas fa-angle-left" routerLink="/"></i>
+        <!-- <i class="fas fa-angle-left" routerLink="/"></i> -->
+        <fa-icon [icon]="faAngleLeft" routerLink="/"></fa-icon>
       </span>
       <span> What is my organization interested in?</span>
     </div>
@@ -27,38 +28,45 @@
 
             <th scope="col" style="width:35%">
               <span>
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSearch"></fa-icon>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Interest / Topic" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('interest')">
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('totalHits')">Total Hits
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('noOfFollowers')">Followers
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('videoTags')">Video Tags
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('articleTags')">Article Tags
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
               <span>
-                <i class="fa fa-sort" aria-hidden="true"></i>
+                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
+                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th>
           </tr>
@@ -70,7 +78,8 @@
               <span>{{data.totalHits}}</span>
               <span class="small-text">
                 <span class="changeNumber">
-                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-arrow-up" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faArrowUp"></fa-icon>
                   <span class="m-l-5">{{data.hitsSinceLastMonth}}</span>
                 </span>
                 <span> since last month </span>
@@ -80,7 +89,8 @@
               <span class="numberDisplay">{{data.noOfFollowers}}</span>
               <span class="small-text">
                 <span class="changeNumber">
-                  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-arrow-up" aria-hidden="true"></i> -->
+                  <fa-icon [icon]="faArrowUp"></fa-icon>
                   <span class="m-l-5">{{data.followersSinceLastMonth}}</span>
                 </span>
                 <span> since last month </span>

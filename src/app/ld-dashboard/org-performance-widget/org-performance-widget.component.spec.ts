@@ -7,20 +7,27 @@ import { LdDashboardService } from "../services/ld-dashboard.service";
 import { TeamsComponent } from "./teams/teams.component";
 import { TrainersComponent } from "./trainers/trainers.component";
 import { LearnersComponent } from "./learners/learners.component";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { SpinnerComponent } from "../../common/spinner/spinner.component";
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+import { PaginateComponent } from "../../common/paginate/paginate.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from "@angular/router";
+import { APP_BASE_HREF } from '@angular/common';
 
-describe('OrgPerformanceComponent', () => {
+fdescribe('OrgPerformanceComponent', () => {
   let component: OrgPerformanceWidgetComponent;
   let fixture: ComponentFixture<OrgPerformanceWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgPerformanceWidgetComponent, TeamsComponent, TrainersComponent, LearnersComponent, FilterWidgetComponent],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
+      declarations: [OrgPerformanceWidgetComponent, TeamsComponent, TrainersComponent, LearnersComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
     })
       .compileComponents();
   }));
@@ -59,6 +66,28 @@ describe('OrgPerformanceComponent', () => {
   it('should create getData', () => {
     component.getDataFromService();
     expect(component.getDataFromService).toBeTruthy();
+  });
+
+  it('should create sortByFn', () => {
+    let sortByName = '';
+    component.sortBy(sortByName);
+    expect(component.sortBy).toBeTruthy();
+  });
+
+  it('should create constructNewArrayTwo', () => {
+    component.constructNewArrayTwo();
+    expect(component.constructNewArrayTwo).toBeTruthy();
+  });
+
+  it('should create constructNewArray', () => {
+    component.constructNewArray();
+    expect(component.constructNewArray).toBeTruthy();
+  });
+
+  xit('should create getSearchItem', () => {
+    let $event;
+    component.getSearchItem($event);
+    expect(component.getSearchItem).toBeTruthy();
   });
 
 });

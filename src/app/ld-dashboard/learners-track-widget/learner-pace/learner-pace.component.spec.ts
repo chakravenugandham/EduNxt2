@@ -4,15 +4,16 @@ import { By } from "@angular/platform-browser";
 
 import { LearnerPaceComponent } from './learner-pace.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 
-describe('LearnerPaceComponent', () => {
+fdescribe('LearnerPaceComponent', () => {
   let component: LearnerPaceComponent;
   let fixture: ComponentFixture<LearnerPaceComponent>;
   let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LearnerPaceComponent, DonutChartDirective]
+      declarations: [LearnerPaceComponent, DonutChartDirective, CustomNumberPipe]
     })
       .compileComponents();
   }));

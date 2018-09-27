@@ -8,15 +8,24 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-describe('QuizComponent', () => {
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+import { PaginateComponent } from "../../../common/paginate/paginate.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from "@angular/router";
+import { APP_BASE_HREF } from '@angular/common';
+
+fdescribe('QuizComponent', () => {
   let component: QuizComponent;
   let fixture: ComponentFixture<QuizComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [QuizComponent, ScoreChartDirective, FilterWidgetComponent],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
+      declarations: [QuizComponent, ScoreChartDirective, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
     })
       .compileComponents();
   }));

@@ -111,21 +111,19 @@ export class LearnersTrackWidgetComponent implements OnInit {
   //service call for apis
   getDataFromService() {
     this.spinner_loader = true;
+    this.dashboardService.getLearnerTrackData(this.filtersData.appliedFilters).subscribe((response: any) => {
+      this.spinner_loader = false;
 
-    this.dashboardService
-      .getLearnerTrackData(this.filtersData.appliedFilters).subscribe((response: any) => {
-        this.spinner_loader = false;
+      this.paceObject.responseData = response.data.paceData;
+      this.performanceObject.responseData = response.data.performanceData;
 
-        this.paceObject.responseData = response.data.paceData;
-        this.performanceObject.responseData = response.data.performanceData;
-
-        if (this.filtersData.currentModule == "pace") {
-          this.noDataFlag = _.isEmpty(this.paceObject.responseData) ? true : false;
-        }
-        else if (this.filtersData.currentModule == "performance") {
-          this.noDataFlag = _.isEmpty(this.performanceObject.responseData) ? true : false;
-        }
-      });
+      if (this.filtersData.currentModule == "pace") {
+        this.noDataFlag = _.isEmpty(this.paceObject.responseData) ? true : false;
+      }
+      else if (this.filtersData.currentModule == "performance") {
+        this.noDataFlag = _.isEmpty(this.performanceObject.responseData) ? true : false;
+      }
+    });
   }
 
   //filters function

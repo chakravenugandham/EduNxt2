@@ -7,19 +7,25 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { PaginateComponent } from "../../../common/paginate/paginate.component";
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from "@angular/router";
+import { APP_BASE_HREF } from '@angular/common';
 
 
-describe('OrgInterestFullviewComponent', () => {
+fdescribe('OrgInterestFullviewComponent', () => {
   let component: OrgInterestFullviewComponent;
   let fixture: ComponentFixture<OrgInterestFullviewComponent>;
   let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgInterestFullviewComponent, SpinnerComponent, PaginateComponent],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule]
+      declarations: [OrgInterestFullviewComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
     })
       .compileComponents();
   }));
@@ -44,4 +50,32 @@ describe('OrgInterestFullviewComponent', () => {
     component.getDataFromService();
     expect(component.getDataFromService).toBeDefined();
   });
+
+  it('should create searchFn', () => {
+    component.searchFn();
+    expect(component.searchFn).toBeDefined();
+  });
+
+  it('should create closeSearchFn', () => {
+    component.closeSearchFn();
+    expect(component.closeSearchFn).toBeDefined();
+  });
+
+  it('should create sortByFn', () => {
+    let sortByName = '';
+    component.sortByFn(sortByName);
+    expect(component.sortByFn).toBeTruthy();
+  });
+
+  it('should create gotoPage', () => {
+    let $event;
+    component.gotoPage($event);
+    expect(component.gotoPage).toBeTruthy();
+  });
+
+  it('should create searchItem', () => {
+    component.searchItem();
+    expect(component.searchItem).toBeTruthy();
+  });
+
 });

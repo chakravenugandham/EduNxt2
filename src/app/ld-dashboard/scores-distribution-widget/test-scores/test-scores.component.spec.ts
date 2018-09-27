@@ -2,21 +2,29 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TestScoresComponent } from './test-scores.component';
 import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-describe('TestScoresComponent', () => {
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+import { PaginateComponent } from "../../../common/paginate/paginate.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from "@angular/router";
+import { APP_BASE_HREF } from '@angular/common';
+
+fdescribe('TestScoresComponent', () => {
   let component: TestScoresComponent;
   let fixture: ComponentFixture<TestScoresComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TestScoresComponent, ScoreChartDirective, FilterWidgetComponent],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
+      declarations: [TestScoresComponent, ScoreChartDirective, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
     })
       .compileComponents();
   }));

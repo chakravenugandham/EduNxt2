@@ -4,19 +4,29 @@ import { By } from "@angular/platform-browser";
 
 import { ScoresDistributionFullviewComponent } from './scores-distribution-fullview.component';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
+import { CookieService } from 'ngx-cookie-service';
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
+import { FormsModule } from '@angular/forms';
+import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 
-describe('ScoresDistributionFullviewComponent', () => {
+import { PaginateComponent } from "../../../common/paginate/paginate.component";
+import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from "@angular/router";
+import { APP_BASE_HREF } from '@angular/common';
+
+fdescribe('ScoresDistributionFullviewComponent', () => {
   let component: ScoresDistributionFullviewComponent;
   let fixture: ComponentFixture<ScoresDistributionFullviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ScoresDistributionFullviewComponent, ScoreChartDirective],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule]
+      declarations: [ScoresDistributionFullviewComponent, ScoreChartDirective, FilterWidgetComponent, PaginateComponent, CustomNumberPipe, SpinnerComponent],
+      providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
     })
       .compileComponents();
   }));
@@ -31,9 +41,47 @@ describe('ScoresDistributionFullviewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should create getFilterObject', () => {
+  it('should create getDataFromService', () => {
+    component.getDataFromService();
+    expect(component.getDataFromService).toBeTruthy();
+  });
+
+  it('should create getScoreDetails', () => {
+    component.getScoreDetails();
+    expect(component.getScoreDetails).toBeTruthy();
+  });
+
+  it('should create sortByFn', () => {
+    let sortByName = '';
+    component.sortByFn(sortByName);
+    expect(component.sortByFn).toBeTruthy();
+  });
+
+  it('should create changeModule', () => {
+    let moduleName = '';
+    component.changeModule(moduleName);
+    expect(component.changeModule).toBeTruthy();
+  });
+
+  it('should create gotoPage', () => {
+    let $event;
+    component.gotoPage($event);
+    expect(component.changeModule).toBeTruthy();
+  });
+
+  // it('should create setConfigModule', () => {
+  //   component.setConfigModule();
+  //   expect(component.setConfigModule).toBeTruthy();
+  // });
+
+  // it('should create searchItem', () => {
+  //   component.searchItem();
+  //   expect(component.searchItem).toBeTruthy();
+  // });
+
+  // it('should create addFilters', () => {
   //   let $event;
-  //   component.getFilterObject($event);
-  //   expect(component.getFilterObject).toBeTruthy();
+  //   component.addFilters($event);
+  //   expect(component.addFilters).toBeTruthy();
   // });
 });

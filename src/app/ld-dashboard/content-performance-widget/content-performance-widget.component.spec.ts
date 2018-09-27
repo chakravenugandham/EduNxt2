@@ -8,7 +8,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SpinnerComponent } from '../../common/spinner/spinner.component';
 import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
 import { CookieService } from 'ngx-cookie-service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 fdescribe('ContentPerformanceComponent', () => {
   let component: ContentPerformanceWidgetComponent;
@@ -17,7 +19,7 @@ fdescribe('ContentPerformanceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContentPerformanceWidgetComponent, FilterWidgetComponent, ContentConsumptionComponent, SpinnerComponent, CustomNumberPipe],
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), FormsModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), FormsModule, ClickOutsideModule, NgbModule.forRoot()],
       providers: [CookieService]
     })
       .compileComponents();
@@ -36,5 +38,22 @@ fdescribe('ContentPerformanceComponent', () => {
   it('should create getDataFromService', () => {
     component.getDataFromService();
     expect(component.getDataFromService).toBeTruthy();
+  });
+
+  it('should create sortByFn', () => {
+    let $event;
+    component.sortBy($event);
+    expect(component.sortBy).toBeTruthy();
+  });
+
+  it('should create addFilters', () => {
+    let $event;
+    component.addFilters($event);
+    expect(component.addFilters).toBeTruthy();
+  });
+
+  xit('should create downloadPdf', () => {
+    component.downloadPdf();
+    expect(component.downloadPdf).toBeTruthy();
   });
 });

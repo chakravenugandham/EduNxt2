@@ -13,16 +13,25 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { ScoreChartDirective } from "../../ld-dashboard/directives/score-chart.directive";
 
-describe('ScoresDistributionWidgetComponent', () => {
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { SpinnerComponent } from "../../common/spinner/spinner.component";
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { CookieService } from 'ngx-cookie-service';
+import { PaginateComponent } from "../../common/paginate/paginate.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule, Routes } from "@angular/router";
+import { APP_BASE_HREF } from '@angular/common';
+
+fdescribe('ScoresDistributionWidgetComponent', () => {
   let component: ScoresDistributionWidgetComponent;
   let fixture: ComponentFixture<ScoresDistributionWidgetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ScoresDistributionWidgetComponent, QuizComponent, AssignmentComponent,
-        TestScoresComponent, FilterWidgetComponent, ScoreChartDirective],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
+        TestScoresComponent, FilterWidgetComponent, ScoreChartDirective, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([])]
     })
       .compileComponents();
   }));
@@ -52,10 +61,10 @@ describe('ScoresDistributionWidgetComponent', () => {
     expect(component.assignmentFn).toBeTruthy();
   });
 
-  // it('should create getFilterObject', () => {
-  //   let $event;
-  //   component.getFilterObject($event);
-  //   expect(component.getFilterObject).toBeTruthy();
-  // });
+  it('should create addFilters', () => {
+    let $event;
+    component.addFilters($event);
+    expect(component.addFilters).toBeTruthy();
+  });
 
 });

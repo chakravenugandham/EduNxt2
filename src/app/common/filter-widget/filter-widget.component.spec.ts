@@ -63,7 +63,7 @@ describe('FilterWidgetComponent', () => {
     expect(component.showFilter).toBeDefined();
   });
 
-  xit('should define showFilter', () => {
+  it('should define showFilter', () => {
     component.selectFilter(filter, filterName);
     expect(component.selectFilter).toBeDefined();
   });

@@ -59,6 +59,7 @@ import { SpinnerComponent } from '../common/spinner/spinner.component';
 import { CustomNumberPipe } from "../../app/shared/custom-number.pipe";
 import { PaginateComponent } from '../common/paginate/paginate.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 import { LdDashboardComponent } from './ld-dashboard.component';
 
@@ -126,7 +127,7 @@ describe('LdDashboardComponent', () => {
         PaginateComponent
       ],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([])]
+      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule]
     })
       .compileComponents();
   }));

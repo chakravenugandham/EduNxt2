@@ -8,21 +8,27 @@ import { LearnerPaceComponent } from "./learner-pace/learner-pace.component";
 import { LearnerPerformanceComponent } from "./learner-performance/learner-performance.component";
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
 import { LdDashboardService } from "../services/ld-dashboard.service";
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SpinnerComponent } from '../../common/spinner/spinner.component';
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { PaginateComponent } from '../../common/paginate/paginate.component';
+import { CookieService } from 'ngx-cookie-service';
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
-describe('LearnersTrackWidgetComponent', () => {
+fdescribe('LearnersTrackWidgetComponent', () => {
   let component: LearnersTrackWidgetComponent;
   let fixture: ComponentFixture<LearnersTrackWidgetComponent>;
   let inputEl: DebugElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LearnersTrackWidgetComponent, DonutChartDirective, LearnerPaceComponent, LearnerPerformanceComponent, FilterWidgetComponent],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
+      declarations: [LearnersTrackWidgetComponent, DonutChartDirective, LearnerPaceComponent, LearnerPerformanceComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));
@@ -47,15 +53,15 @@ describe('LearnersTrackWidgetComponent', () => {
     expect(component.learnerPerfFn).toBeTruthy();
   });
 
-  it('should create getData', () => {
+  it('should create getDataFromService', () => {
     component.getDataFromService();
     expect(component.getDataFromService).toBeTruthy();
   });
 
-  // it('should create getFilterObject', () => {
-  //   let $event;
-  //   component.getFilterObject($event);
-  //   expect(component.getFilterObject).toBeTruthy();
-  // });
+  it('should create addFilters', () => {
+    let $event;
+    component.addFilters($event);
+    expect(component.addFilters).toBeTruthy();
+  });
 
 });

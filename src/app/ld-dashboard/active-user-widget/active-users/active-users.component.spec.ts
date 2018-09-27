@@ -36,4 +36,10 @@ fdescribe('ActiveUsersComponent', () => {
     component.getActiveUsersData();
     expect(component.getActiveUsersData).toBeTruthy();
   });
+
+  xit('should create usersChartRender', () => {
+    component.usersChartRender();
+    expect(component.usersChartRender).toBeTruthy();
+  });
+
 });

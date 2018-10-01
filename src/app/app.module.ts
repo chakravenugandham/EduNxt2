@@ -22,9 +22,6 @@ import { TagCloudModule } from "angular-tag-cloud-module";
 //modules
 import { RoutingModule } from "./routing.module";
 
-// Pipe
-import { OrderModule } from "ngx-order-pipe";
-
 //click outside detect
 import { ClickOutsideModule } from 'ng4-click-outside';
 
@@ -224,7 +221,6 @@ import { TextTransformPipe } from '../app/shared/text-transform.pipe'
     NgbModule.forRoot(),
     Daterangepicker,
     FormsModule,
-    OrderModule,
     TagCloudModule,
     ClickOutsideModule,
     ReactiveFormsModule

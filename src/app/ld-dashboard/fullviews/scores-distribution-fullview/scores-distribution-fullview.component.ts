@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { faAngleLeft, faSearch, faSort } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-scores-distribution-fullview",
@@ -8,11 +7,6 @@ import { faAngleLeft, faSearch, faSort } from "@fortawesome/free-solid-svg-icons
   styleUrls: ["./scores-distribution-fullview.component.scss"]
 })
 export class ScoresDistributionFullviewComponent implements OnInit {
-
-  //font-awesome classes
-  faAngleLeft = faAngleLeft;
-  faSearch = faSearch;
-  faSort = faSort;
 
   filtersData = {
     routeTo: "scoreDistributionFullView",

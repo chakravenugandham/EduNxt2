@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { faAngleLeft, faSearch, faSort, faArrowUp, faExclamationTriangle, faCircle } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+
 import { _ } from "underscore";
 
 
@@ -12,15 +11,6 @@ import { _ } from "underscore";
   styleUrls: ["./org-performance-fullview.component.scss"]
 })
 export class OrgPerformanceFullviewComponent implements OnInit {
-
-  //font-awesome classes
-  faAngleLeft = faAngleLeft;
-  faSearch = faSearch;
-  faSort = faSort;
-  faArrowUp = faArrowUp;
-  faExclamationTriangle = faExclamationTriangle;
-  faCircle = faCircle;
-  faStar = faStar;
 
   responseData: any[];
   closeResult: string;

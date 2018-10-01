@@ -4,26 +4,22 @@
       <tr>
         <th scope="col" (click)="sortByFn('teamName')">Team Name
           <span>
-            <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-            <fa-icon [icon]="faSort"></fa-icon>
+            <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
         <th scope="col" (click)="sortByFn('completion')">Completion %
           <span>
-            <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-            <fa-icon [icon]="faSort"></fa-icon>
+            <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
         <th scope="col" (click)="sortByFn('completedProgram')">Completed Programs
           <span>
-            <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-            <fa-icon [icon]="faSort"></fa-icon>
+            <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
         <th scope="col" (click)="sortByFn('teamSize')">Team Size
           <span>
-            <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-            <fa-icon [icon]="faSort"></fa-icon>
+            <i class="fa fa-sort" aria-hidden="true"></i>
           </span>
         </th>
         <th scope="col">
@@ -36,8 +32,7 @@
         <td scope="row">
           <span class="imgActive">
             <img src="/assets/images/user.png" alt="userImg">
-            <!-- <i class="far fa-circle"></i> -->
-            <fa-icon [icon]="faCircle"></fa-icon>
+            <i class="fa fa-circle-o"></i>
           </span>
           <span class="userName">
             <b>{{tableData.teamName}}</b>
@@ -52,8 +47,7 @@
             <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
           </span>
           <span *ngIf="tableData.completion <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',tableData.person_id)">
-            <!-- <i class="fas fa-exclamation-triangle"></i>  -->
-            <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+            <i class="fa fa-exclamation-triangle"></i>
             Follow up
           </span>
         </td>
@@ -66,6 +60,7 @@
             <i class="fas fa-exclamation-triangle"></i> Follow up
           </span>
         </td> -->
+
       </tr>
     </tbody>
   </table>

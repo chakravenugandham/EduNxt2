@@ -189,7 +189,7 @@ ul {
 .widget-heading {
   padding: 14px 0px;
 
-  fa-icon {
+  i {
     color: $orange;
     right: 8px;
     top: 8px;
@@ -229,8 +229,7 @@ ul {
     margin-right: 12px;
   }
 
-  i,
-  fa-icon {
+  i {
     color: $orange;
     border-radius: 50%;
     right: 8px;
@@ -404,19 +403,13 @@ ul {
 
       i {
         position: absolute;
-        bottom: -4px;
-        right: -4px;
-        background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%);
+        bottom: -6px;
+        right: -2px;
         border-radius: 50%;
-        color: #fff;
-        font-size: 14px;
-      }
-
-      fa-icon {
+        background: linear-gradient(to top left, #00ff00 0%, #ccff33 100%);
         color: #00ff00;
-        position: absolute;
-        right: -5px;
-        bottom: -8px;
+        font-size: 12px;
+        line-height: 12px;
       }
 
     }
@@ -545,7 +538,7 @@ ul {
 }
 
 // .graph-badges {
-//   i, fa-icon{
+//   i{
 //     border-radius: 50%;
 //     border: none;
 //   }
@@ -766,8 +759,8 @@ ul {
     margin-bottom: 10px;
     height: auto;
 
-    fa-icon {
-      padding-left: 4px;
+    i {
+      padding: 0px 4px 1px 3px;
       border: 1px solid $darkGray;
       border-radius: 50%;
     }

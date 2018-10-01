@@ -6,26 +6,22 @@
   <div *ngIf="!nodataFlag" appDonutChart [data]="chartValues"></div>
   <div *ngIf="!nodataFlag" class="row graph-badges">
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <!-- <i class="far fa-circle excelling"></i> -->
-      <fa-icon [icon]="faCircle" class="excelling"></fa-icon>
+      <i class="fa fa-circle excelling" aria-hidden="true"></i>
       <span class="text-font"> Excelling</span>
       <p> {{performanceData?.excelling | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <!-- <i class="far fa-circle passing"></i> -->
-      <fa-icon [icon]="faCircle" class="passing"></fa-icon>
+      <i class="fa fa-circle passing" aria-hidden="true"></i>
       <span class="text-font"> Passing</span>
       <p> {{performanceData?.passing | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <!-- <i class="far fa-circle struggling"></i> -->
-      <fa-icon [icon]="faCircle" class="struggling"></fa-icon>
+      <i class="fa fa-circle struggling" aria-hidden="true"></i>
       <span class="text-font"> Struggling</span>
       <p> {{performanceData?.struggling | customNumber}} </p>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-      <!-- <i class="far fa-circle haveNotStarted"></i> -->
-      <fa-icon [icon]="faCircle" class="haveNotStarted"></fa-icon>
+      <i class="fa fa-circle haveNotStarted" aria-hidden="true"></i>
       <span class="text-font"> Haven't Started</span>
       <p> {{performanceData?.haveNotStarted | customNumber}} </p>
     </div>

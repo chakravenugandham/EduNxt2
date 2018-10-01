@@ -8,26 +8,22 @@
   <div *ngIf="!nodataFlag">
     <div class="row graph-badges">
       <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-        <!-- <i class="far fa-circle aheadOfSchedule"></i> -->
-        <fa-icon [icon]="faCircle" class="aheadOfSchedule"></fa-icon>
+        <i class="fa fa-circle aheadOfSchedule" aria-hidden="true"></i>
         <span class="text-font">Ahead of Schedule</span>
         <p> {{paceData?.aheadSchedule | customNumber}} </p>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-        <!-- <i class="far fa-circle onTrack"></i> -->
-        <fa-icon [icon]="faCircle" class="onTrack"></fa-icon>
+        <i class="fa fa-circle onTrack" aria-hidden="true"></i>
         <span class="text-font"> On Track</span>
         <p> {{paceData?.onTrack | customNumber}} </p>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-        <!-- <i class="far fa-circle behindSchedule"></i> -->
-        <fa-icon [icon]="faCircle" class="behindSchedule"></fa-icon>
+        <i class="fa fa-circle behindSchedule" aria-hidden="true"></i>
         <span class="text-font"> Behind Schedule</span>
         <p> {{paceData?.behindSchedule | customNumber}} </p>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-        <!-- <i class="far fa-circle haveNotStarted"></i> -->
-        <fa-icon [icon]="faCircle" class="haveNotStarted"></fa-icon>
+        <i class="fa fa-circle haveNotStarted" aria-hidden="true"></i>
         <span class="text-font"> Haven't Started</span>
         <p> {{paceData?.haveNotStarted | customNumber}} </p>
       </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { faAngleLeft, faSearch, faSort } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-learner-performance-fullview",
@@ -8,11 +7,6 @@ import { faAngleLeft, faSearch, faSort } from "@fortawesome/free-solid-svg-icons
   styleUrls: ["./learner-performance-fullview.component.scss"]
 })
 export class LearnerPerformanceFullviewComponent implements OnInit {
-
-  //font-awesome classes
-  faAngleLeft = faAngleLeft;
-  faSearch = faSearch;
-  faSort = faSort;
 
   selectedGraph: string = "performance";
   learnerData = [];

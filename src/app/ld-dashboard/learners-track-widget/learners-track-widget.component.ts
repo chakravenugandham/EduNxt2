@@ -3,8 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 
-import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-
 import { _ } from "underscore";
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
@@ -16,10 +14,6 @@ import * as jspdf from 'jspdf';
   styleUrls: ["./learners-track-widget.component.scss"]
 })
 export class LearnersTrackWidgetComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
-  faEllipsisV = faEllipsisV;
 
   tooltipText: string = '';
 

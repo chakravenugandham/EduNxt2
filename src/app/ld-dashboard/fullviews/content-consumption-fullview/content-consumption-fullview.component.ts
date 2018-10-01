@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 import { ActivatedRoute } from '@angular/router';
-import { faAngleLeft, faSearch, faSort, faStar } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-content-consumption-fullview',
@@ -9,12 +8,6 @@ import { faAngleLeft, faSearch, faSort, faStar } from "@fortawesome/free-solid-s
   styleUrls: ['./content-consumption-fullview.component.scss']
 })
 export class ContentConsumptionFullviewComponent implements OnInit {
-
-  //font-awesome classes
-  faAngleLeft = faAngleLeft;
-  faSearch = faSearch;
-  faSort = faSort;
-  faStar = faStar;
 
   filtersData = {
     routeTo: 'contentConsumptionFullView',

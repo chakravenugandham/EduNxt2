@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 
-import { faAngleLeft, faCircle, faSort, faSearch } from "@fortawesome/free-solid-svg-icons";
-
 import { _ } from "underscore";
 
 @Component({
@@ -12,12 +10,6 @@ import { _ } from "underscore";
   styleUrls: ["./learner-track-fullview.component.scss"]
 })
 export class LearnerTrackFullviewComponent implements OnInit {
-
-  //font-awesome classes
-  faAngleLeft = faAngleLeft;
-  faCircle = faCircle;
-  faSort = faSort;
-  faSearch = faSearch;
 
   responseGraphDetails: any;
   responseTrackDetails = [];

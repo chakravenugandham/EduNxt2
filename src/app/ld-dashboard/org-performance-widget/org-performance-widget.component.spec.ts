@@ -13,6 +13,7 @@ import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { SpinnerComponent } from "../../common/spinner/spinner.component";
 import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../app/shared/text-transform.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { PaginateComponent } from "../../common/paginate/paginate.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,7 +27,7 @@ describe('OrgPerformanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgPerformanceWidgetComponent, TeamsComponent, TrainersComponent, LearnersComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      declarations: [OrgPerformanceWidgetComponent, TeamsComponent, TrainersComponent, LearnersComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
       imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })
@@ -58,21 +59,24 @@ describe('OrgPerformanceComponent', () => {
     expect(component.learnersFn).toBeTruthy();
   });
 
-  // it('should create getFilterObject', () => {
-  //   let $event;
-  //   component.getFilterObject($event);
-  //   expect(component.getFilterObject).toBeTruthy();
-  // });
-
   it('should create getData', () => {
     component.getDataFromService();
     expect(component.getDataFromService).toBeTruthy();
   });
 
-  it('should create sortByFn', () => {
-    let sortByName = '';
-    component.sortBy(sortByName);
-    expect(component.sortBy).toBeTruthy();
+  it('should create sortByFn asc', () => {
+    let $event = 'testPerformance';
+    component.sortBy($event);
+    expect(component.sortOrder).toBe($event);
+    expect(component.order).toBe('asc');
+  });
+
+  it('should create sortByFn desc', () => {
+    let $event = 'testPerformance';
+    component.order = 'asc';
+    component.sortBy($event);
+    expect(component.sortOrder).toBe($event);
+    expect(component.order).toBe('desc');
   });
 
   it('should create constructNewArrayTwo', () => {

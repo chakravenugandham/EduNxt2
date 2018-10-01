@@ -8,14 +8,16 @@ describe('GraphChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GraphChartComponent ]
+      declarations: [GraphChartComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GraphChartComponent);
     component = fixture.componentInstance;
+    component.dataset = [];
+    component.graphName = '';
     fixture.detectChanges();
   });
 

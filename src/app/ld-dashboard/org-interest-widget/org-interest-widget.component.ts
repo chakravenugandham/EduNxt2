@@ -143,7 +143,7 @@ export class OrgInterestWidgetComponent implements OnInit {
     let falseArray = [];
     this.displayData = [];
     this.filtersData.appliedFilters = $event;
-    let searchData = JSON.parse(JSON.stringify(this.filtersData.appliedFilters));
+    let searchData = JSON.parse(JSON.stringify(this.filtersData.appliedFilters || null));
     tempArray = JSON.parse(JSON.stringify(this.actualResponseData));
 
     if (searchData.length > 0) {

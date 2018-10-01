@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SpinnerComponent } from '../../common/spinner/spinner.component';
 import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../app/shared/text-transform.pipe';
 import { PaginateComponent } from '../../common/paginate/paginate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ClickOutsideModule } from 'ng4-click-outside';
@@ -24,7 +25,7 @@ describe('OrgInterestWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgInterestWidgetComponent, OrgInterestComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      declarations: [OrgInterestWidgetComponent, OrgInterestComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService],
       imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), TagCloudModule, FontAwesomeModule]
     })

@@ -10,6 +10,7 @@ import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widg
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { FormsModule } from '@angular/forms';
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../../app/shared/text-transform.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { PaginateComponent } from "../../../common/paginate/paginate.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,7 +25,7 @@ describe('ContentConsumptionFullviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ContentConsumptionFullviewComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, PaginateComponent],
+      declarations: [ContentConsumptionFullviewComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
       imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })

@@ -35,14 +35,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    //this.dashboardService.logout().subscribe(res => console.log(res));
-    //this.router.navigate();
     localStorage.removeItem('t');
     window.location.href = this.redirectUrl;
   }
 
   ngOnInit() {
-    //this.cookieService.set('user_name', "Praveen Kondani");
-    //this.dashboardService.selectTenantNameV2(this.tenantName, this.user_id);
   }
 }

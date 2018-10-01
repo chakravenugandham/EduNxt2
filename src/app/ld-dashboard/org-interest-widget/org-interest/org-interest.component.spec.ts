@@ -7,6 +7,7 @@ import { OrgInterestComponent } from './org-interest.component';
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../../app/shared/text-transform.pipe';
 //import { TagCloudComponent } from "angular-tag-cloud-module";
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +24,7 @@ describe('OrgInterestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgInterestComponent, FilterWidgetComponent, CustomNumberPipe],
+      declarations: [OrgInterestComponent, FilterWidgetComponent, CustomNumberPipe, TextTransformPipe],
       providers: [LdDashboardService, CookieService],
       imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), TagCloudModule, FontAwesomeModule]
     })

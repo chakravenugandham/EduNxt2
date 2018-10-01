@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { FormsModule } from '@angular/forms';
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
-
+import { TextTransformPipe } from '../../../../app/shared/text-transform.pipe';
 import { PaginateComponent } from "../../../common/paginate/paginate.component";
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
 import { ClickOutsideModule } from 'ng4-click-outside';
@@ -25,7 +25,7 @@ describe('ScoresDistributionFullviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ScoresDistributionFullviewComponent, ScoreChartDirective, FilterWidgetComponent, PaginateComponent, CustomNumberPipe, SpinnerComponent],
+      declarations: [ScoresDistributionFullviewComponent, ScoreChartDirective, FilterWidgetComponent, PaginateComponent, CustomNumberPipe, TextTransformPipe, SpinnerComponent],
       providers: [LdDashboardService, CookieService, { provide: APP_BASE_HREF, useValue: '/' }],
       imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), RouterModule.forRoot([]), FontAwesomeModule]
     })

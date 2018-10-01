@@ -8,6 +8,7 @@ import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { of } from 'rxjs/observable/of';
 
 describe('ActiveUsersComponent', () => {
   let component: ActiveUsersComponent;
@@ -42,5 +43,17 @@ describe('ActiveUsersComponent', () => {
     component.usersChartRender();
     expect(component.usersChartRender).toBeTruthy();
   });
+
+  // it("should call getActiveUsersData and return list of users", async(() => {
+  //   let  response: [];
+
+  //   spyOn(LdDashboardService, 'getActiveUsersData').and.returnValue(of(response))
+
+  //   component.getActiveUsersData();
+
+  //   fixture.detectChanges();
+
+  //   expect(component.responseData).toEqual(response);
+  // }));
 
 });

@@ -57,7 +57,7 @@ export class GraphChartComponent implements OnInit {
       .attr("width", width + (margin * 2))
       .attr("height", height + (100 * 1))
       .append("g")
-      .attr("transform", "translate(" + margin + "," + margin + ")");
+      .attr("transform", "translate(" + margin + "," + (margin - 20) + ")");
     let x0 = d3.scale.ordinal()
       .rangeRoundBands([0, width], 0.5, 0.5);
     //.rangeRoundBands([0, width], .3);

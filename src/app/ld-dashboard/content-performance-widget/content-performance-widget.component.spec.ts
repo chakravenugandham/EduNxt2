@@ -7,6 +7,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 import { SpinnerComponent } from '../../common/spinner/spinner.component';
 import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../app/shared/text-transform.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from 'ng4-click-outside';
@@ -19,7 +20,7 @@ describe('ContentPerformanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ContentPerformanceWidgetComponent, FilterWidgetComponent, ContentConsumptionComponent, SpinnerComponent, CustomNumberPipe],
+      declarations: [ContentPerformanceWidgetComponent, FilterWidgetComponent, ContentConsumptionComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe],
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), FormsModule, ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule],
       providers: [CookieService]
     })

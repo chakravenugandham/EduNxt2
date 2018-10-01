@@ -17,6 +17,7 @@ describe('UsersDataComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UsersDataComponent);
     component = fixture.componentInstance;
+    component.config;
     fixture.detectChanges();
   });
 

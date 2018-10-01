@@ -11,6 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../../app/shared/text-transform.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -20,7 +21,7 @@ describe('LearnersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LearnersComponent, FilterWidgetComponent, CustomNumberPipe],
+      declarations: [LearnersComponent, FilterWidgetComponent, CustomNumberPipe, TextTransformPipe],
       providers: [LdDashboardService, CookieService],
       imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule]
     })

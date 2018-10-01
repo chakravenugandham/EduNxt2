@@ -61,8 +61,8 @@ import { PaginateComponent } from '../common/paginate/paginate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { TextTransformPipe } from '../../app/shared/text-transform.pipe';
+import { DaterangePickerComponent } from "ng2-daterangepicker";
 
 import { LdDashboardComponent } from './ld-dashboard.component';
 
@@ -127,7 +127,8 @@ describe('LdDashboardComponent', () => {
         ScoreChartDirective,
         SpinnerComponent,
         CustomNumberPipe,
-        PaginateComponent
+        PaginateComponent,
+        TextTransformPipe, DaterangePickerComponent
       ],
       providers: [LdDashboardService, CookieService],
       imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, FontAwesomeModule]

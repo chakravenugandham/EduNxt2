@@ -4,6 +4,7 @@ import { By } from "@angular/platform-browser";
 
 import { PerformanceComponent } from './performance.component';
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
+import { GraphChartComponent } from '../../../common/graph-chart/graph-chart.component';
 
 describe('PerformanceComponent', () => {
   let component: PerformanceComponent;
@@ -12,7 +13,7 @@ describe('PerformanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PerformanceComponent, BarChartDirective]
+      declarations: [PerformanceComponent, BarChartDirective, GraphChartComponent]
     })
       .compileComponents();
   }));

@@ -4,6 +4,7 @@ import { By } from "@angular/platform-browser";
 
 import { ProgressComponent } from './progress.component';
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
+import { GraphChartComponent } from '../../../common/graph-chart/graph-chart.component';
 
 describe('ProgressComponent', () => {
   let component: ProgressComponent;
@@ -12,7 +13,7 @@ describe('ProgressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProgressComponent, BarChartDirective]
+      declarations: [ProgressComponent, BarChartDirective, GraphChartComponent]
     })
       .compileComponents();
   }));

@@ -8,7 +8,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-describe('ModeOfDeliveryComponent', () => {
+fdescribe('ModeOfDeliveryComponent', () => {
   let component: ModeOfDeliveryComponent;
   let fixture: ComponentFixture<ModeOfDeliveryComponent>;
   let inputEl: DebugElement;

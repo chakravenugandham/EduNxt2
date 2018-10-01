@@ -55,9 +55,9 @@ export class GraphChartComponent implements OnInit {
       width = this.dataset.length > 5 ? 500 + 104 * (this.dataset.length - 6) : 500;
     let svg = d3.select("#barNewChart").append("svg")
       .attr("width", width + (margin * 2))
-      .attr("height", height + (100 * 2))
+      .attr("height", height + 140)
       .append("g")
-      .attr("transform", "translate(" + margin + "," + margin + ")");
+      .attr("transform", "translate(" + margin + "," + (margin - 20) + ")");
     let x0 = d3.scale.ordinal()
       .rangeRoundBands([0, width], 0.5, 0.5);
     //.rangeRoundBands([0, width], .3);

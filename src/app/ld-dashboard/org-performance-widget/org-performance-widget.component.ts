@@ -151,14 +151,12 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order)
-      .subscribe(
-        (response: any) => {
-          this.responseData = this.displayData = this.actualResponseData = response.data;
-          this.constructNewArrayTwo();
-          this.spinner_loader = false;
-          this.noDataFlag = this.responseData.length === 0 ? true : false;
-        });
+    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order).subscribe((response: any) => {
+      this.responseData = this.displayData = this.actualResponseData = response.data;
+      this.constructNewArrayTwo();
+      this.spinner_loader = false;
+      this.noDataFlag = this.responseData.length === 0 ? true : false;
+    });
   }
 
   constructNewArrayTwo() {

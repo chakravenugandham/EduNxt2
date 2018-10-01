@@ -227,7 +227,10 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   }
 
   emailReport() {
-    this.emailData.text = document.getElementById("screenToCaputre").innerHTML;
+    if (document.getElementById("screenToCaputre") != null) {
+      this.emailData.text = document.getElementById("screenToCaputre").innerHTML;
+    }
+
     // this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
     //   console.log(response);
     // });

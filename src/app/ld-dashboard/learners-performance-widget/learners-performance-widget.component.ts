@@ -1,13 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
-import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-
-import * as jspdf from 'jspdf';
+import { _ } from "underscore";
 
 import html2canvas from 'html2canvas';
-
-import { _ } from "underscore";
+import * as jspdf from 'jspdf';
 
 @Component({
   selector: "app-learners-performance-widget",
@@ -15,10 +12,6 @@ import { _ } from "underscore";
   styleUrls: ["./learners-performance-widget.component.scss"]
 })
 export class LearnersPerformanceWidgetComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
-  faEllipsisV = faEllipsisV;
 
   tooltipText: string;
 

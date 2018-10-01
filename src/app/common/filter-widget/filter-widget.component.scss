@@ -1,17 +1,18 @@
 @import "../../../app/shared/variables.scss";
 
-.filter-widget{
+.filter-widget {
   position: absolute;
-  
+
   ul {
     padding: 0;
     margin: 0;
-    
+
     .filter {
       background-color: #fff;
       color: $lightBlue;
       cursor: pointer;
     }
+
     li {
       position: relative;
       font-size: 12px;
@@ -20,12 +21,15 @@
       background-color: $lightBlue;
       color: white;
       margin-right: 6px;
+
       // overflow: hidden;
-      i, fa-icon {
+      i {
         position: absolute;
-        top: 6px !important;
-        right: 8px;
+        top: 7px !important;
+        right: 6px;
+        font-size: 16px;
       }
+
       .showFilter-list {
         position: absolute;
         top: 32px;
@@ -34,16 +38,19 @@
         z-index: 1;
         width: 220px;
         box-shadow: 1px 1px 2px 0px $lightBlue;
+
         ul {
           max-height: 140px;
           padding: 0;
           overflow: scroll;
           overflow-x: hidden;
           margin-bottom: 6px;
+
           li {
             border: none;
             background-color: #fff;
             color: #333;
+
             input {
               margin-right: 4px;
               vertical-align: middle;
@@ -54,12 +61,13 @@
     }
   }
 
-  .searchText{
+  .searchText {
     div {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     width: 100px;
   }
 
@@ -70,8 +78,9 @@
     color: $lightBlue;
     font-size: 12px;
     font-weight: 600;
-    i, fa-icon {
-      padding: 2px 4px 2px 4px;
+
+    i {
+      padding: 0px 4px 2px 4px;
       border: 1px solid $lightBlue;
       border-radius: 50%;
       margin-left: 4px;
@@ -86,10 +95,12 @@
   bottom: 20px;
   padding-top: 12px;
   border-top: 1px dotted #ddd;
-  ul{
+
+  ul {
     padding-right: 72px;
-    li{
-      .showFilter-list{
+
+    li {
+      .showFilter-list {
         left: 0px;
       }
     }
@@ -98,13 +109,15 @@
 
 .filterComponentDetails {
   right: 0;
-  ul{
-    li{
-      .showFilter-list{
+
+  ul {
+    li {
+      .showFilter-list {
         right: 0px;
       }
     }
-    .filter{
+
+    .filter {
       background-color: $grayTwo;
     }
   }
@@ -117,27 +130,33 @@
 
 .search-org-user {
   position: relative;
+
   input {
     padding: 6px 12px;
     color: $lightBlue;
     border: 1px solid $lightBlue;
     width: 124px;
   }
+
   .search-icon {
     position: absolute;
     right: 0px;
-    top: 2px;
-    i, fa-icon {
+    top: 0px;
+
+    i {
       color: $lightBlue;
     }
   }
 }
+
 .search-org-user input::placeholder {
   color: $lightBlue;
 }
+
 .search-org-user input::-ms-input-placeholder {
   color: $lightBlue;
 }
+
 .search-org-user input::-ms-input-placeholder {
   color: $lightBlue;
 }
@@ -165,12 +184,14 @@
 
 .getFilter {
   cursor: pointer;
-  i, fa-icon {
+
+  i {
+    color: $lightBlue;
     border-radius: 50%;
     border: 1px solid $lightBlue;
-    padding: 2px;
-    font-size: 8px;
-    top: 7px !important;
+    padding: 3px;
+    font-size: 8px !important;
+    font-weight: 600;
   }
 }
 
@@ -178,9 +199,10 @@
   padding: 4px 0px;
 }
 
-.applied-filter{
+.applied-filter {
   margin-bottom: 2px;
 }
+
 .apply-filters {
   position: absolute;
   bottom: 0;
@@ -212,7 +234,8 @@
   right: 8px;
   z-index: 1;
   cursor: pointer;
-  .fa-times-circle{
+
+  .fa-times-circle {
     right: 16px !important;
   }
 }

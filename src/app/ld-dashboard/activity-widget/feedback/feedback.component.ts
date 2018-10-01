@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-feedback",
@@ -10,9 +7,6 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./feedback.component.scss"]
 })
 export class FeedbackComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
 
   //variable declaration
   learnerSatisfaction: any;
@@ -22,7 +16,7 @@ export class FeedbackComponent implements OnInit {
   contentRating: any;
   contentRatingBy: number;
   parseFloat = parseFloat;
-  faArrowUp = faArrowUp;
+
 
   responseData = {};
   spinner_loader: boolean = false;

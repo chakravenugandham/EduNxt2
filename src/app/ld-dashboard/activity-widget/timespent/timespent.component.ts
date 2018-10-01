@@ -1,17 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-
 @Component({
   selector: "app-timespent",
   templateUrl: "./timespent.component.html",
   styleUrls: ["./timespent.component.scss"]
 })
 export class TimespentComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
 
   //variable declaration
   responseData = {};

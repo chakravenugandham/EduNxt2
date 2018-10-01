@@ -2,8 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
-import { faSort,faCircle,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-
 @Component({
   selector: "app-teams",
   templateUrl: "./teams.component.html",
@@ -13,11 +11,6 @@ export class TeamsComponent implements OnInit {
   @Input() teamsData;
 
   @Output() sortBy = new EventEmitter<any>();
-
-  //font-awesome classes
-  faSort = faSort;
-  faCircle = faCircle;
-  faExclamationTriangle = faExclamationTriangle;
 
   sortOrder: string = "teamName";
 

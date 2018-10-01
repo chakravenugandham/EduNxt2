@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { _ } from "underscore";
 
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
-
 @Component({
   selector: "app-learner-performance",
   templateUrl: "./learner-performance.component.html",
@@ -10,9 +8,6 @@ import { faCircle } from "@fortawesome/free-solid-svg-icons";
 })
 export class LearnerPerformanceComponent implements OnInit {
   @Input() performanceData: any;
-
-  //font-awesome classes
-  faCircle = faCircle;
 
   chartValues = [];
   nodataFlag = false;

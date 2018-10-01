@@ -3,8 +3,6 @@ import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.
 
 import {NgbModal,ModalDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 
-import { faSort,faCircle,faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-
 @Component({
   selector: "app-learners",
   templateUrl: "./learners.component.html",
@@ -14,11 +12,6 @@ export class LearnersComponent implements OnInit {
   @Input() LearnersData;
 
   @Output() sortBy = new EventEmitter<any>();
-
-  //font-awesome classes
-  faSort = faSort;
-  faCircle = faCircle;
-  faExclamationTriangle = faExclamationTriangle;
 
   sortOrder: string = "testPerformance";
 

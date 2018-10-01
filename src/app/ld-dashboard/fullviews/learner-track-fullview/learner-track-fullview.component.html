@@ -2,8 +2,7 @@
   <div class="row">
     <div class="widget-heading fullview-heading col-md-6">
       <span>
-        <!-- <i class="fas fa-angle-left" routerLink="/"></i> -->
-        <fa-icon [icon]="faAngleLeft" routerLink="/"></fa-icon>
+        <i class="fa fa-angle-left" routerLink="/"></i>
       </span>
       <span> Are my learners on track? </span>
     </div>
@@ -32,26 +31,22 @@
 
         <div *ngIf="checkObjEmpty(responseGraphDetails?.performanceData)" class="row graph-badges">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle excelling"></i> -->
-            <fa-icon [icon]="faCircle" class="excelling"></fa-icon>
+            <i class="fa fa-circle excelling"></i>
             Excelling
             <div> {{responseGraphDetails?.performanceData.excelling}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle passing"></i> -->
-            <fa-icon [icon]="faCircle" class="passing"></fa-icon>
+            <i class="fa fa-circle passing"></i>
             Passing
             <div> {{responseGraphDetails?.performanceData.passing}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle struggling"></i> -->
-            <fa-icon [icon]="faCircle" class="struggling"></fa-icon>
+            <i class="fa fa-circle struggling"></i>
             Struggling
             <div> {{responseGraphDetails?.performanceData.struggling}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle perfHaveNotStarted"></i>  -->
-            <fa-icon [icon]="faCircle" class="perfHaveNotStarted"></fa-icon>
+            <i class="fa fa-circle perfHaveNotStarted"></i>
             Haven't Started
             <div> {{responseGraphDetails?.performanceData.haveNotStarted}} </div>
           </div>
@@ -77,26 +72,22 @@
 
         <div *ngIf="checkObjEmpty(responseGraphDetails?.paceData)" class="row graph-badges">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle aheadOfSchedule"></i>  -->
-            <fa-icon [icon]="faCircle" class="aheadOfSchedule"></fa-icon>
+            <i class="fa fa-circle aheadOfSchedule"></i>
             Ahead of Schedule
             <div> {{responseGraphDetails?.paceData.aheadSchedule}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle onTrack"></i>  -->
-            <fa-icon [icon]="faCircle" class="onTrack"></fa-icon>
+            <i class="fa fa-circle onTrack"></i>
             On Track
             <div> {{responseGraphDetails?.paceData.onTrack}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle behindSchedule"></i>  -->
-            <fa-icon [icon]="faCircle" class="behindSchedule"></fa-icon>
+            <i class="fa fa-circle behindSchedule"></i>
             Behind Schedule
             <div> {{responseGraphDetails?.paceData.behindSchedule}} </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-            <!-- <i class="far fa-circle haveNotStarted"></i>  -->
-            <fa-icon [icon]="faCircle" class="haveNotStarted"></fa-icon>
+            <i class="fa fa-circle haveNotStarted"></i>
             Haven't Started
             <div> {{responseGraphDetails?.paceData.haveNotStarted}} </div>
           </div>
@@ -142,85 +133,73 @@
           <tr>
             <th scope="col" style="display:flex" (click)="sortByFn('learnerName')">
               <span>
-                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSearch"></fa-icon>
+                <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" placeholder="Learner Name" (keyup)="searchItem()">
               </span>
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('serialNumber')">
               Sl. No.
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('courseName')">
               Course Name
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('sectionName')">
               Section
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('batchName')">
               Batch
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('examAccessed')">
               Exam Accessed %
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('examPassed')">
               Exam Passed %
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" *ngIf="filtersData.currentModule == 'pace'" (click)="sortByFn('progress')">
               Progress %
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" *ngIf="filtersData.currentModule == 'performance'" (click)="sortByFn('scoreInCourse')">
               Score in course
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" *ngIf="filtersData.currentModule == 'performance'" (click)="sortByFn('scoreAvg')">
               Score Avg %
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <!-- <th scope="col" *ngIf="filtersData.currentModule == 'performance'" (click)="sortByFn('highestScore')">
               Highest Score
               <span>
                 <i class="fa fa-sort" aria-hidden="true"></i>
-                <fa-icon [icon]="faSort"></fa-icon>
               </span>
             </th> -->
             <!-- <th scope="col">Action</th> -->
@@ -250,7 +229,7 @@
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="data.scoreAvg <= 75" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',data.person_id)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
+                <i class="fa fa-exclamation-triangle"></i> Follow up
               </span>
             </td> -->
 
@@ -259,7 +238,7 @@
                 <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
               </span>
               <span *ngIf="data.examScore <= 75" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',learnerData.person_id)">
-                <i class="fas fa-exclamation-triangle"></i> Follow up
+                <i class="fa fa-exclamation-triangle"></i> Follow up
               </span>
             </td> -->
 

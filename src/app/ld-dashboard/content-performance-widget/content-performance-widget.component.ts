@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LdDashboardService } from '../services/ld-dashboard.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
-import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-
 import * as jspdf from 'jspdf';
 
 import html2canvas from 'html2canvas';
@@ -16,10 +14,6 @@ import { _ } from 'underscore';
   styleUrls: ['./content-performance-widget.component.scss']
 })
 export class ContentPerformanceWidgetComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
-  faEllipsisV = faEllipsisV;
 
   sortOrder = 'views';
   order: string = 'desc';

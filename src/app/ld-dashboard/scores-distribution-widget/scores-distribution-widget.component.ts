@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
-import { faQuestionCircle, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-
 import { _ } from "underscore";
 
 import html2canvas from 'html2canvas';
@@ -14,10 +12,6 @@ import * as jspdf from 'jspdf';
   styleUrls: ["./scores-distribution-widget.component.scss"]
 })
 export class ScoresDistributionWidgetComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
-  faEllipsisV = faEllipsisV;
 
   tooltipText: string;
 

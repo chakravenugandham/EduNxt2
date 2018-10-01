@@ -1,9 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 
-import { FaIconService } from '@fortawesome/angular-fontawesome';
-import { faSort } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
-
 @Component({
     selector: "app-content-consumption",
     templateUrl: "./content-consumption.component.html",
@@ -13,15 +9,9 @@ export class ContentConsumptionComponent implements OnInit {
     @Input() contentData;
     @Output() sortBy = new EventEmitter<any>();
 
-    //font-awesome classes
-    faSort = faSort;
-    faStar = faStar;
-
     sortOrder: string = 'contentName';
 
-    constructor(private faIconService: FaIconService) {
-        this.faIconService.defaultPrefix = 'far';
-    }
+    constructor() { }
 
     sortByFn(sortByName) {
         this.sortOrder = sortByName;

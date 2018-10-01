@@ -5,26 +5,22 @@
         <tr>
           <th scope="col" (click)="sortByFn('trainerName')">Trainer Name
             <span>
-              <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-              <fa-icon [icon]="faSort"></fa-icon>
+              <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
           <th scope="col" (click)="sortByFn('trainingsConducted')">Trainings Conducted
             <span>
-              <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-              <fa-icon [icon]="faSort"></fa-icon>
+              <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
           <th scope="col" (click)="sortByFn('peopleTrained')">People Trained
             <span>
-              <!-- <i class="far fa-question-circle questionmark"></i> -->
-              <fa-icon [icon]="faSort"></fa-icon>
+              <i class="fa fa-question-circle questionmark"></i>
             </span>
           </th>
           <th scope="col" (click)="sortByFn('avgRating')">Avg. Rating
             <span>
-              <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-              <fa-icon [icon]="faSort"></fa-icon>
+              <i class="fa fa-sort" aria-hidden="true"></i>
             </span>
           </th>
           <th scope="col">
@@ -37,8 +33,7 @@
           <td scope="row">
             <span class="imgActive">
               <img src="/assets/images/user.png" alt="userImg">
-              <!-- <i class="far fa-circle"></i> -->
-              <fa-icon [icon]="faCircle"></fa-icon>
+              <i class="fa fa-circle"></i>
             </span>
             <b class="userName">{{tableData.trainerName}}</b>
           </td>
@@ -46,8 +41,7 @@
           <td>{{tableData.peopleTrained | customNumber}}</td>
           <td>
             <span>
-              <!-- <i class="far fa-star text-warning"></i> -->
-              <fa-icon [icon]="faStar"></fa-icon>
+              <i class="fa fa-star-o text-warning"></i>
             </span> {{tableData.avgRating | customNumber}}
           </td>
 
@@ -56,8 +50,7 @@
               <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
             </span>
             <span *ngIf="tableData.avgRating <= 3.5" class="action_icon negative-color cursor-pointer" (click)="composeEmail('followup',tableData.trainerId)">
-              <!-- <i class="fas fa-exclamation-triangle"></i>  -->
-              <fa-icon [icon]="faExclamationTriangle"></fa-icon>
+              <i class="fa fa-exclamation-triangle"></i>
               Follow up
             </span>
           </td>
@@ -67,7 +60,7 @@
               <img src="/assets/images/congradulate.png" alt="congrats" height="15" width="15"> Congratulate
             </span>
             <span class="negative-color cursor-pointer" *ngIf="tableData.avgRating <= 3.5" class="negative-color cursor-pointer" (click)="open(followUpContent,'followup',tableData.trainerId)">
-              <i class="fas fa-exclamation-triangle"></i> Follow up
+              <i class="fa fa-exclamation-triangle"></i> Follow up
             </span>
           </td> -->
 
@@ -89,11 +82,11 @@
       <div class="form-group">
         <label for="dateOfBirth">Send to</label>
         <div class="input-group">
-          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
-            placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" name="emailData.to" [ngModelOptions]="{standalone: true}"
+            readonly class="form-control" placeholder="enter
                 an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea"></textarea>
@@ -116,10 +109,11 @@
       <div class="form-group ">
         <label for="dateOfBirth ">Send to</label>
         <div class="input-group ">
-          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control" placeholder="enter
+          <input type="email" [(ngModel)]="emailData.to" [ngModelOptions]="{standalone: true}" readonly class="form-control"
+            placeholder="enter
                 an email ">
         </div>
-        <br/>
+        <br />
         <label for="dateOfBirth ">Message</label>
         <div class="input-group ">
           <textarea [(ngModel)]="emailData.text" [ngModelOptions]="{standalone: true}" class="form-control" aria-label="With textarea "></textarea>

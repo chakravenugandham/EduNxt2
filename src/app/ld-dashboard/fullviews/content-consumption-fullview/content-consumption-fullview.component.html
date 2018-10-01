@@ -2,8 +2,7 @@
   <div class="row">
     <div class="widget-heading fullview-heading col-md-6">
       <span>
-        <!-- <i class="fas fa-angle-left" routerLink="/"></i> -->
-        <fa-icon [icon]="faAngleLeft" routerLink="/"></fa-icon>
+        <i class="fa fa-angle-left" routerLink="/"></i>
       </span>
       <span> How is content being consumed? </span>
     </div>
@@ -29,57 +28,48 @@
           <tr>
             <th scope="col">
               <span>
-                <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSearch"></fa-icon>
+                <i class="fa fa-search" aria-hidden="true"></i>
               </span>
               <span>
                 <input type="text" [(ngModel)]="searchString" id="searchString" placeholder="Content Name" (keyup)="searchItem()">
               </span>
               <span (click)="sortByFn('contentName')">
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('contentType')">Content Type
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('courseName')">Course Name
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('author')">Author
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('views')">Views
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('avgRating')">Avg Rating
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('avgDuration')">Avg Duration
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
             <th scope="col" (click)="sortByFn('duration')">Total Duration (Min)
               <span>
-                <!-- <i class="fa fa-sort" aria-hidden="true"></i> -->
-                <fa-icon [icon]="faSort"></fa-icon>
+                <i class="fa fa-sort" aria-hidden="true"></i>
               </span>
             </th>
           </tr>
@@ -93,8 +83,7 @@
             <td> {{content.views | customNumber}} </td>
             <td>
               <span>
-                <!-- <i class="far fa-star text-warning"></i> -->
-                <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+                <i class="fa fa-star-o text-warning"></i>
               </span>
               <span> {{content.avgRating}} </span>
             </td>

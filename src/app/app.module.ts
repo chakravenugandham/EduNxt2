@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { Daterangepicker } from "ng2-daterangepicker";
 
@@ -22,9 +21,6 @@ import { TagCloudModule } from "angular-tag-cloud-module";
 
 //modules
 import { RoutingModule } from "./routing.module";
-
-// Pipe
-import { OrderModule } from "ngx-order-pipe";
 
 //click outside detect
 import { ClickOutsideModule } from 'ng4-click-outside';
@@ -223,10 +219,8 @@ import { TextTransformPipe } from '../app/shared/text-transform.pipe'
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    FontAwesomeModule,
     Daterangepicker,
     FormsModule,
-    OrderModule,
     TagCloudModule,
     ClickOutsideModule,
     ReactiveFormsModule

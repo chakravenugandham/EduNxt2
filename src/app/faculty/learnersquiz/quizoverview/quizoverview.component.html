@@ -34,7 +34,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tableData of teamsData | slice:0:4 | orderBy: 'teamId'">
+      <tr *ngFor="let tableData of teamsData | slice:0:4 ">
         <td scope="row">
 
           {{tableData.teamName}}

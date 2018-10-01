@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { Daterangepicker } from "ng2-daterangepicker";
 
@@ -223,7 +222,6 @@ import { TextTransformPipe } from '../app/shared/text-transform.pipe'
     HttpClientModule,
     RoutingModule,
     NgbModule.forRoot(),
-    FontAwesomeModule,
     Daterangepicker,
     FormsModule,
     OrderModule,

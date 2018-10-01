@@ -7,14 +7,14 @@
   <graph-chart [dataset]="barChartData" [graphName]="getTab"></graph-chart>
 
   <div class="row graph-badges">
-    <div *ngFor="let batch of batchNames" class="col-md">
+    <!-- <div *ngFor="let batch of batchNames" class="col-md">
       <i class="far fa-circle"></i> {{batch}}
+    </div> -->
+    <div class="col-md-6">
+      <i class="fa fa-circle actual-progress" aria-hidden="true"></i> Actual Progress
     </div>
-    <!-- <div class="col-md-4">
-      <i class="far fa-circle" style="color: #F77F6C; background-color: #F77F6C"></i> {{batchNames[1]}}
-    </div> -->
-    <!-- <div class="col-md-4">
-      <i class="far fa-circle" style="color: #5584FF; background-color: #5584FF"></i> {{batchNames[2]}}
-    </div> -->
+    <div class="col-md-6">
+      <i class="fa fa-circle expected-progress" aria-hidden="true"></i> Expected Progress
+    </div>
   </div>
 </div>

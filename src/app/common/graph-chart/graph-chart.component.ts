@@ -55,7 +55,7 @@ export class GraphChartComponent implements OnInit {
       width = this.dataset.length > 5 ? 500 + 104 * (this.dataset.length - 6) : 500;
     let svg = d3.select("#barNewChart").append("svg")
       .attr("width", width + (margin * 2))
-      .attr("height", height + (100 * 2))
+      .attr("height", height + (100 * 1))
       .append("g")
       .attr("transform", "translate(" + margin + "," + margin + ")");
     let x0 = d3.scale.ordinal()
@@ -80,6 +80,10 @@ export class GraphChartComponent implements OnInit {
     x0.domain(this.dataset.map(function (d) { return d.label; }));
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
     // y.domain([0, 100]);
+    let maxValue = d3.max(
+      d3.max(this.dataset, function (d) { return d.Group1 }),
+      d3.max(this.dataset, function (d) { return d.Group2 })
+    );
     y.domain([0,
       d3.max(this.dataset, d => {
         const maxBar = Math.ceil(d.Group2);

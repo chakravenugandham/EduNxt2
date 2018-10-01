@@ -1,17 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-
 @Component({
   selector: "app-pace",
   templateUrl: "./pace.component.html",
   styleUrls: ["./pace.component.scss"]
 })
 export class PaceComponent implements OnInit {
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
 
   //variable declaration
   paceTrackValues = [];

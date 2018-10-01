@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
 
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-
 @Component({
   selector: "app-engagement",
   templateUrl: "./engagement.component.html",
@@ -12,9 +10,6 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 export class EngagementComponent implements OnInit {
   //user data custom component
   config: Config;
-
-  //font-awesome classes
-  faQuestionCircle = faQuestionCircle;
 
   //variable declarations
   percentageChange: number;

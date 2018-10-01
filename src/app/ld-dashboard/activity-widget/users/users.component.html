@@ -7,8 +7,7 @@
     </ul>
     <div>
       <span class="float-right widget-menu" data-toggle="tooltip" data-placement="top" title="Active Users">
-        <!-- <i class="fa fa-question-circle" aria-hidden="true"></i> -->
-        <fa-icon [icon]="faQuestionCircle"></fa-icon>
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
       </span>
     </div>
   </div>
@@ -25,8 +24,7 @@
     <div *ngIf='responseData.activeUsers != 0' class="userImages">
       <div class="imgActive" *ngFor="let img of userImages">
         <img [src]="img" alt="user">
-        <!-- <i class="far fa-circle"></i> -->
-        <fa-icon [icon]="faCircle"></fa-icon>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
       </div>
     </div>
     <div *ngIf='responseData.activeUsers == 0'>

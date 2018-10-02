@@ -79,21 +79,24 @@ export class GraphChartComponent implements OnInit {
     });
     x0.domain(this.dataset.map(function (d) { return d.label; }));
     x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
-    // y.domain([0, 100]);
-    let maxValue = d3.max(
-      d3.max(this.dataset, function (d) { return d.Group1 }),
-      d3.max(this.dataset, function (d) { return d.Group2 })
-    );
-    y.domain([0,
-      d3.max(this.dataset, d => {
-        const maxBar = Math.ceil(d.Group2);
-        if (maxBar <= 8) {
-          return 8;
-        } else {
-          return maxBar;
-        }
-      })
-    ]);
+
+    let max_group1 = d3.max(this.dataset, function (d) { return +d.Group1; });
+    let max_group2 = d3.max(this.dataset, function (d) { return +d.Group2; });
+    let total_max = Math.max(max_group1, max_group2);
+
+    y.domain([0, total_max]);
+
+    // y.domain([0,
+    //   d3.max(this.dataset, d => {
+    //     const maxBar = Math.ceil(d.Group2);
+    //     if (maxBar <= 8) {
+    //       return 8;
+    //     } else {
+    //       return maxBar;
+    //     }
+    //   })
+    // ]);
+
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + (height) + ")")

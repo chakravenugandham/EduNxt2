@@ -60,9 +60,11 @@ import { CustomNumberPipe } from "../../app/shared/custom-number.pipe";
 import { PaginateComponent } from '../common/paginate/paginate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ClickOutsideModule } from 'ng4-click-outside';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TextTransformPipe } from '../../app/shared/text-transform.pipe';
 import { DaterangePickerComponent } from "ng2-daterangepicker";
+import { GraphChartComponent } from '../common/graph-chart/graph-chart.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LdDashboardComponent } from './ld-dashboard.component';
 
@@ -128,10 +130,11 @@ describe('LdDashboardComponent', () => {
         SpinnerComponent,
         CustomNumberPipe,
         PaginateComponent,
-        TextTransformPipe, DaterangePickerComponent
+        TextTransformPipe, DaterangePickerComponent,
+        GraphChartComponent
       ],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule, FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));

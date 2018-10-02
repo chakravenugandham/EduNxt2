@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { LearnerPaceComponent } from './learner-pace.component';
 import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('LearnerPaceComponent', () => {
   let component: LearnerPaceComponent;
@@ -15,7 +15,7 @@ describe('LearnerPaceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LearnerPaceComponent, DonutChartDirective, CustomNumberPipe],
-      imports: [FontAwesomeModule]
+      imports: []
     })
       .compileComponents();
   }));

@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('LearnerPerformanceFullviewComponent', () => {
   let component: LearnerPerformanceFullviewComponent;
@@ -26,7 +26,7 @@ describe('LearnerPerformanceFullviewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LearnerPerformanceFullviewComponent, PerformanceComponent, ProgressComponent, BarChartDirective, GraphChartComponent, PaginateComponent],
       providers: [LdDashboardService, { provide: APP_BASE_HREF, useValue: '/' }, CookieService],
-      imports: [HttpClientTestingModule, NgbModule.forRoot(), RouterModule.forRoot([]), FormsModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule, NgbModule.forRoot(), RouterModule.forRoot([]), FormsModule]
     })
       .compileComponents();
   }));

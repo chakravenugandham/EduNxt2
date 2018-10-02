@@ -6,9 +6,9 @@ import { ModeOfDeliveryComponent } from './mode-of-delivery.component';
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('ModeOfDeliveryComponent', () => {
+describe('ModeOfDeliveryComponent', () => {
   let component: ModeOfDeliveryComponent;
   let fixture: ComponentFixture<ModeOfDeliveryComponent>;
   let inputEl: DebugElement;
@@ -16,7 +16,7 @@ fdescribe('ModeOfDeliveryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ModeOfDeliveryComponent, SpinnerComponent],
-      imports: [HttpClientTestingModule, FontAwesomeModule],
+      imports: [HttpClientTestingModule],
       providers: [CookieService]
     })
       .compileComponents();

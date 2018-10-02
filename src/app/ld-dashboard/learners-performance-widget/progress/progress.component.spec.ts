@@ -6,7 +6,7 @@ import { ProgressComponent } from './progress.component';
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 import { GraphChartComponent } from '../../../common/graph-chart/graph-chart.component';
 
-describe('ProgressComponent', () => {
+fdescribe('ProgressComponent', () => {
   let component: ProgressComponent;
   let fixture: ComponentFixture<ProgressComponent>;
   let inputEl: DebugElement;
@@ -21,7 +21,8 @@ describe('ProgressComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProgressComponent);
     component = fixture.componentInstance;
-    component.progressData = {};
+    component.progressData = [];
+    component.batches = [];
     fixture.detectChanges();
   });
 

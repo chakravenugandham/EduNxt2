@@ -9,7 +9,7 @@ import { SpinnerComponent } from '../../../common/spinner/spinner.component';
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 describe('EngagementComponent', () => {
@@ -21,7 +21,7 @@ describe('EngagementComponent', () => {
     TestBed.configureTestingModule({
       declarations: [EngagementComponent, HalfdonutchartDirective, UsersDataComponent, SpinnerComponent, CustomNumberPipe],
       providers: [CookieService],
-      imports: [HttpClientTestingModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));

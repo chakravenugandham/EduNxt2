@@ -7,7 +7,7 @@ import { LdDashboardService } from "../../services/ld-dashboard.service";
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { of } from 'rxjs/observable/of';
 
 describe('ActiveUsersComponent', () => {
@@ -19,7 +19,7 @@ describe('ActiveUsersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ActiveUsersComponent, SpinnerComponent],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));

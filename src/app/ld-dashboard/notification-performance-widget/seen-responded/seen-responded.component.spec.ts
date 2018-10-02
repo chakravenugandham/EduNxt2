@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SeenRespondedComponent } from './seen-responded.component';
+import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 
 describe('SeenRespondedComponent', () => {
   let component: SeenRespondedComponent;
@@ -8,9 +9,9 @@ describe('SeenRespondedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeenRespondedComponent ]
+      declarations: [SeenRespondedComponent, BarChartDirective]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

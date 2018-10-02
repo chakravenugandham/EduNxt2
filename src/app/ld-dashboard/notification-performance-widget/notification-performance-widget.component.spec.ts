@@ -11,6 +11,14 @@ import { BarChartDirective } from "../../ld-dashboard/directives/bar-chart.direc
 import { ScheduledDeliveredComponent } from "./scheduled-delivered/scheduled-delivered.component";
 import { SeenRespondedComponent } from "./seen-responded/seen-responded.component";
 
+import { SpinnerComponent } from '../../common/spinner/spinner.component';
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { TextTransformPipe } from '../../../app/shared/text-transform.pipe';
+import { PaginateComponent } from '../../common/paginate/paginate.component';
+import { CookieService } from 'ngx-cookie-service';
+import { ClickOutsideModule } from 'ng4-click-outside';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 describe('NotificationPerformanceComponent', () => {
   let component: NotificationPerformanceWidgetComponent;
   let fixture: ComponentFixture<NotificationPerformanceWidgetComponent>;
@@ -18,9 +26,9 @@ describe('NotificationPerformanceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NotificationPerformanceWidgetComponent, FilterWidgetComponent, BarChartDirective,
-        ScheduledDeliveredComponent, SeenRespondedComponent],
-      providers: [LdDashboardService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])]
+        ScheduledDeliveredComponent, SeenRespondedComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe, PaginateComponent],
+      providers: [LdDashboardService, CookieService],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));
@@ -33,16 +41,6 @@ describe('NotificationPerformanceComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should create scheduledFn', () => {
-    component.scheduledFn();
-    expect(component.scheduledFn).toBeTruthy();
-  });
-
-  it('should create seenFn', () => {
-    component.seenFn();
-    expect(component.seenFn).toBeTruthy();
   });
 
 

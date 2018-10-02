@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('ContentPerformanceComponent', () => {
   let component: ContentPerformanceWidgetComponent;
@@ -21,7 +21,7 @@ describe('ContentPerformanceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContentPerformanceWidgetComponent, FilterWidgetComponent, ContentConsumptionComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe],
-      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), FormsModule, ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule],
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([]), FormsModule, ClickOutsideModule, NgbModule.forRoot()],
       providers: [CookieService]
     })
       .compileComponents();

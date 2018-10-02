@@ -20,7 +20,7 @@ import { SpinnerComponent } from "../../common/spinner/spinner.component";
 import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
 import { CookieService } from 'ngx-cookie-service';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 describe('ActivityWidgetComponent', () => {
@@ -42,7 +42,7 @@ describe('ActivityWidgetComponent', () => {
         EngagementComponent, PaceComponent, FeedbackComponent, TimespentComponent,
         UserstrainedComponent, UsersDataComponent, HalfdonutchartDirective, DonutChartDirective, SpinnerComponent, CustomNumberPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));

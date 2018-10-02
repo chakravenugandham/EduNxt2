@@ -24,7 +24,7 @@ ul {
 
   .dashboard {
     background-color: $grayTwo;
-    padding: 16px 36px;
+    padding: 0px 36px;
 
     .widget-row {
       margin: 0;
@@ -197,9 +197,9 @@ ul {
   }
 }
 
-.widget-row:first-child .widget-heading {
-  padding-top: 0px;
-}
+// .widget-row:first-child .widget-heading {
+//   padding-top: 0px;
+// }
 
 .headingText {
   border-left: 6px solid $lightOrange;
@@ -755,6 +755,8 @@ ul {
 }
 
 .fullviewComponent {
+  padding: 12px 36px !important;
+
   .fullview-heading {
     margin-bottom: 10px;
     height: auto;
@@ -791,7 +793,7 @@ ul {
 // samller devices
 @media (max-width: 576px) {
   .dashboard {
-    padding: 8px 16px !important;
+    padding: 0px 16px !important;
   }
 
   .dashboard .row .col-md-12 .widget-block {
@@ -882,7 +884,7 @@ ul {
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 768px) {
   .dashboard {
-    padding: 8px 16px;
+    padding: 0px 16px;
   }
 
   .dashboard .row .col-md-12 .widget-block {

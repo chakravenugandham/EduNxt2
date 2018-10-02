@@ -15,23 +15,14 @@ export class GraphChartComponent implements OnInit {
   @Input() dataset: any[];
   @Input() graphName: string;
 
-  newdataset = [
-    { label: "Module1", "Group1": 20, "Group2": 10 },
-    { label: "Module2", "Group1": 30, "Group2": 20 },
-    { label: "Module3", "Group1": 20, "Group2": 10 },
-    { label: "Module4", "Group1": 40, "Group2": 70 },
-    { label: "Module5", "Group1": 50, "Group2": 50 },
-    { label: "Module6", "Group1": 60, "Group2": 40 }
-  ];
-
   // dataset = [
-  // { Group1: 0, Group2: 10, label: "Software Engineering" },
-  // { label: "HTML CSS & JavaScript, Jquery Test", Group1: 0.25, Group2: 10.25 },
-  // { label: "SWE concepts - Test", Group1: 0, Group2: 10 },
-  // { label: "OOP  UML Test", Group1: 9.77, Group2: 19.77 },
-  // { label: "Cloud_Demo 2", Group1: 0, Group2: 10 },
-  // { label: "C Programming_Demo2", Group1: 2.5, Group2: 12.5 },
-  // { label: "Advanced C_Demo", Group1: 6.69, Group2: 16.69 },
+  //   { Group1: 0, Group2: 10, label: "Software Engineering" },
+  //   { label: "HTML CSS & JavaScript, Jquery Test", Group1: 0.25, Group2: 10.25 },
+  //   { label: "SWE concepts - Test", Group1: 0, Group2: 10 },
+  //   { label: "OOP  UML Test", Group1: 9.77, Group2: 19.77 },
+  //   { label: "Cloud_Demo 2", Group1: 0, Group2: 10 },
+  //   { label: "C Programming_Demo2", Group1: 2.5, Group2: 12.5 },
+  //   { label: "Advanced C_Demo", Group1: 6.69, Group2: 16.69 },
   //   { label: "Solution Architect Readiness Program - Demo", Group1: 8.89, Group2: 18.89 },
   //   { label: "Solution Architect Readiness Program - SARP.", Group1: 22.37, Group2: 32.370000000000005 }
   // ]
@@ -165,9 +156,7 @@ export class GraphChartComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.constructGraph();
-  }
+  ngOnInit() { }
 
   ngOnChanges(changes: any) {
     if (changes.dataset && changes.dataset.currentValue) {

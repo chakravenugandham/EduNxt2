@@ -112,7 +112,9 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
               Group1: this.responseData[i].actualPerformance = this.responseData[i].actualPerformance > 100 ? 100 : this.responseData[i].actualPerformance,
               Group2: this.responseData[i].expectedPerformance = this.responseData[i].expectedPerformance > 100 ? 100 : this.responseData[i].expectedPerformance
             });
-          } else if (this.getTab == "progress") {
+          }
+
+          else if (this.getTab == "progress") {
             this.progressDataSet.push({
               label: this.responseData[i].sectionName,
               Group1: this.responseData[i].actualProgress = this.responseData[i].actualProgress > 100 ? 100 : this.responseData[i].actualProgress,

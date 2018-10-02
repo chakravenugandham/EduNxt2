@@ -208,22 +208,33 @@ export class TimeFrameComponent implements OnInit, OnChanges {
   }
 
   downloadPdf() {
-    let htmlTemp = document.getElementById("lnd-complete-dashboard");
-    html2canvas(htmlTemp).then(canvas => {
-      // Few necessary setting options  
-      let imgWidth = 208;
-      let pageHeight = 295;
-      // let imgHeight = canvas.height * imgWidth / canvas.width;
-      let imgHeight = (canvas.height * imgWidth / canvas.width) >= 400 ? 280 : canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
 
-      const contentDataURL = canvas.toDataURL('./');
-      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 0;
+    // Few necessary setting options  
+    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
 
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('EduNxtReport.pdf'); // Generated PDF   
-    });
+    if (!this.csvDownloadflag) {
+      html2canvas(document.getElementById("dashboard_part_one")).then(canvas => {
+        let dashboard_part_one = canvas.toDataURL('./');
+        pdf.addImage(dashboard_part_one, 'JPEG', 0, 0, 210, 280);
+
+        html2canvas(document.getElementById("dashboard_part_two")).then(canvas => {
+          let dashboard_part_two = canvas.toDataURL('./');
+          pdf.addPage();
+          pdf.addImage(dashboard_part_two, 'JPEG', 0, 0, 210, 210);
+          pdf.save('EduNxtReport.pdf'); // Generated PDF  
+        });
+      });
+    }
+
+    if (this.csvDownloadflag) {
+      html2canvas(document.getElementById("dashboard_part_one")).then(canvas => {
+        let dashboard_part_one = canvas.toDataURL('./');
+        console.log(canvas.width)
+        pdf.addImage(dashboard_part_one, 'JPEG', 0, 0, 210, 280);
+        pdf.save('EduNxtReport.pdf'); // Generated PDF  
+      });
+    }
+
   }
 
   emailReport() {

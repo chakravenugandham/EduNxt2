@@ -6,24 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./notification-performance-widget.component.scss"]
 })
 export class NotificationPerformanceWidgetComponent implements OnInit {
-
-  getTab: string = "schedule";
-  filtersData = {
-    routeTo: "notificationPerformanceFullView",
-    filters: false,
-    search: false,
-    viewDetails: false,
-    filterList: ["zone"]
-  };
-  scheduled: boolean = true;
   constructor() { }
-
-  scheduledFn() {
-    this.getTab = "schedule";
-  }
-  seenFn() {
-    this.getTab = "seen";
-  }
 
   ngOnInit() { }
 }

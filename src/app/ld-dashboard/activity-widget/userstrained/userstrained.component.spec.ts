@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { UserstrainedComponent } from './userstrained.component';
 import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('UserstrainedComponent', () => {
   let component: UserstrainedComponent;
@@ -18,7 +18,7 @@ describe('UserstrainedComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UserstrainedComponent, HalfdonutchartDirective, SpinnerComponent, CustomNumberPipe],
       providers: [CookieService],
-      imports: [HttpClientTestingModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));

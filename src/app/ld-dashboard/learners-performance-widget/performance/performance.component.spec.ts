@@ -6,7 +6,7 @@ import { PerformanceComponent } from './performance.component';
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 import { GraphChartComponent } from '../../../common/graph-chart/graph-chart.component';
 
-describe('PerformanceComponent', () => {
+fdescribe('PerformanceComponent', () => {
   let component: PerformanceComponent;
   let fixture: ComponentFixture<PerformanceComponent>;
   let inputEl: DebugElement;
@@ -21,8 +21,8 @@ describe('PerformanceComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PerformanceComponent);
     component = fixture.componentInstance;
-    component.performanceData = {};
-    component.batches = [];
+    component.performanceData = [];
+    component.batches = ['org-head'];
     fixture.detectChanges();
   });
 

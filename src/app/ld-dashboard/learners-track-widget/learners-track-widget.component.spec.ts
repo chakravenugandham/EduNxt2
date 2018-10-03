@@ -18,7 +18,7 @@ import { PaginateComponent } from '../../common/paginate/paginate.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('LearnersTrackWidgetComponent', () => {
   let component: LearnersTrackWidgetComponent;
@@ -29,7 +29,7 @@ describe('LearnersTrackWidgetComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LearnersTrackWidgetComponent, DonutChartDirective, LearnerPaceComponent, LearnerPerformanceComponent, FilterWidgetComponent, SpinnerComponent, CustomNumberPipe, TextTransformPipe, PaginateComponent],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));

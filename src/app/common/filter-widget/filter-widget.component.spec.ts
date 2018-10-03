@@ -9,7 +9,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
@@ -37,7 +37,7 @@ describe('FilterWidgetComponent', () => {
     TestBed.configureTestingModule({
       declarations: [FilterWidgetComponent, CustomNumberPipe, TextTransformPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), FontAwesomeModule, ClickOutsideModule, NgbModule.forRoot()]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));

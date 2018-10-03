@@ -98,31 +98,28 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
     this.progressDataSet = [];
     this.spinner_loader = true;
 
-    this.dashboardService
-      .getLearnerPerformanceData(this.getTab).subscribe((response: any) => {
-        this.responseData = response.data;
+    this.dashboardService.getLearnerPerformanceData(this.getTab).subscribe((response: any) => {
+      this.responseData = response.data;
 
-        this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+      this.spinner_loader = false;
+      this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
 
-        for (let i in this.responseData) {
-          if (this.getTab == "performance") {
-            this.performanceDataSet.push({
-              label: this.responseData[i].sectionName,
-              Group1: this.responseData[i].actualPerformance = this.responseData[i].actualPerformance > 100 ? 100 : this.responseData[i].actualPerformance,
-              Group2: this.responseData[i].expectedPerformance = this.responseData[i].expectedPerformance > 100 ? 100 : this.responseData[i].expectedPerformance
-            });
-          }
-
-          else if (this.getTab == "progress") {
-            this.progressDataSet.push({
-              label: this.responseData[i].sectionName,
-              Group1: this.responseData[i].actualProgress = this.responseData[i].actualProgress > 100 ? 100 : this.responseData[i].actualProgress,
-              Group2: this.responseData[i].expectedProgress = this.responseData[i].expectedProgress > 100 ? 100 : this.responseData[i].expectedProgress
-            });
-          }
+      for (let i in this.responseData) {
+        if (this.getTab == "performance") {
+          this.performanceDataSet.push({
+            label: this.responseData[i].sectionName,
+            Group1: this.responseData[i].actualPerformance = this.responseData[i].actualPerformance > 100 ? 100 : this.responseData[i].actualPerformance,
+            Group2: this.responseData[i].expectedPerformance = this.responseData[i].expectedPerformance > 100 ? 100 : this.responseData[i].expectedPerformance
+          });
+        } else if (this.getTab == "progress") {
+          this.progressDataSet.push({
+            label: this.responseData[i].sectionName,
+            Group1: this.responseData[i].actualProgress = this.responseData[i].actualProgress > 100 ? 100 : this.responseData[i].actualProgress,
+            Group2: this.responseData[i].expectedProgress = this.responseData[i].expectedProgress > 100 ? 100 : this.responseData[i].expectedProgress
+          });
         }
-      });
+      }
+    });
   }
   ngOnInit() {
     this.progressFn();

@@ -18,7 +18,6 @@ export class PerformanceComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
-
     if (changes.performanceData) {
       this.barChartData = this.performanceData;
       this.batchNames = this.batches;

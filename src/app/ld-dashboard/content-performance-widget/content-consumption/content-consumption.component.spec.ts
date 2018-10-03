@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('ContentConsumptionComponent', () => {
   let component: ContentConsumptionComponent;
@@ -19,7 +19,7 @@ describe('ContentConsumptionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ContentConsumptionComponent, FilterWidgetComponent, CustomNumberPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule]
+      imports: [HttpClientTestingModule, FormsModule, ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));

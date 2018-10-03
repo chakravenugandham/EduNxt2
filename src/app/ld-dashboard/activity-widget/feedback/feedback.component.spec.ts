@@ -6,7 +6,7 @@ import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('FeedbackComponent', () => {
   let component: FeedbackComponent;
@@ -16,7 +16,7 @@ describe('FeedbackComponent', () => {
     TestBed.configureTestingModule({
       declarations: [FeedbackComponent, SpinnerComponent, CustomNumberPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FontAwesomeModule]
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));

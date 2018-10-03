@@ -13,7 +13,7 @@ import { ClickOutsideModule } from 'ng4-click-outside';
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
 import { TextTransformPipe } from '../../../../app/shared/text-transform.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('LearnersComponent', () => {
   let component: LearnersComponent;
@@ -23,7 +23,7 @@ describe('LearnersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LearnersComponent, FilterWidgetComponent, CustomNumberPipe, TextTransformPipe],
       providers: [LdDashboardService, CookieService],
-      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot(), FontAwesomeModule]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([]), ClickOutsideModule, NgbModule.forRoot()]
     })
       .compileComponents();
   }));

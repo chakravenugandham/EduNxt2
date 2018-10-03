@@ -6,7 +6,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from "@angular/cor
   styleUrls: ["./performance.component.scss"]
 })
 export class PerformanceComponent implements OnInit, OnChanges {
-  @Input() performanceData: [];
+  @Input() performanceData;
   @Input() batches: string[];
   barChartData;
   batchNames = [];

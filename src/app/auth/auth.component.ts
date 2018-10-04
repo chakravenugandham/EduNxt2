@@ -52,8 +52,8 @@ export class AuthComponent implements OnInit {
     this.createFormControls();
     this.createForm();
     this.issubmmited = false;
-    console.log(this.loginForm);
-    console.log(this.pass);
+    // console.log(this.loginForm);
+    // console.log(this.pass);
     if (localStorage.getItem('t')) {
       const t = localStorage.getItem('t');
       console.log(t);
@@ -123,7 +123,7 @@ export class AuthComponent implements OnInit {
         else {
 
         }
-        console.log(response);
+        // console.log(response);
       },
         error => {
           this._isvalid = "Invaild login details !";
@@ -132,12 +132,12 @@ export class AuthComponent implements OnInit {
     }
 
     //console.log(response);
-    console.log(this.loginForm);
-    console.log(this.pass);
-    console.log(this.pass.dirty);
-    console.log(this.loginForm.dirty);
-    console.log(this.loginForm.touched);
-    console.log(this.pass.touched);
+    // console.log(this.loginForm);
+    // console.log(this.pass);
+    // console.log(this.pass.dirty);
+    // console.log(this.loginForm.dirty);
+    // console.log(this.loginForm.touched);
+    // console.log(this.pass.touched);
   }
   get isvalid() {
     return this._isvalid;

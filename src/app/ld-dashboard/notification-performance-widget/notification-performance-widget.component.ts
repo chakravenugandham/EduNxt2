@@ -1,12 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-notification-performance-widget",
-  templateUrl: "./notification-performance-widget.component.html",
-  styleUrls: ["./notification-performance-widget.component.scss"]
+    selector: "app-notification-performance-widget",
+    templateUrl: "./notification-performance-widget.component.html",
+    styleUrls: ["./notification-performance-widget.component.scss"]
 })
 export class NotificationPerformanceWidgetComponent implements OnInit {
-  constructor() { }
+    getTab: string;
+    constructor() { }
 
-  ngOnInit() { }
+    scheduledFn() { }
+    seenFn() { }
+    ngOnInit() { }
 }

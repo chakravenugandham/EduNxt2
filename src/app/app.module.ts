@@ -225,7 +225,7 @@ import { TextTransformPipe } from '../app/shared/text-transform.pipe'
     ClickOutsideModule,
     ReactiveFormsModule
   ],
-  providers: [GoogleChartsBaseService, { provide: Window, useValue: window }, CookieService],
+  providers: [GoogleChartsBaseService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

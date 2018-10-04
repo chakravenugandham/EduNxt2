@@ -36,7 +36,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('t');
-    window.location.href = this.redirectUrl;
+    // window.location.href = this.redirectUrl;
+    this.router.navigate(['/auth']);
   }
 
   ngOnInit() {

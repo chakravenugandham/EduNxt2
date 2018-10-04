@@ -6,6 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./seen-responded.component.scss"]
 })
 export class SeenRespondedComponent implements OnInit {
+  barChartData: any[];
   constructor() { }
 
   ngOnInit() { }

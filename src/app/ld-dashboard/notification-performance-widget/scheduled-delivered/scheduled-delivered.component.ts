@@ -7,6 +7,7 @@ declare let d3: any;
   styleUrls: ["./scheduled-delivered.component.scss"]
 })
 export class ScheduledDeliveredComponent implements OnInit {
+  barChartData: any[];
   constructor() { }
 
   ngOnInit() {

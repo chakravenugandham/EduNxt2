@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement } from "@angular/core";
-import { By } from "@angular/platform-browser";
+import { Component, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { EngagementComponent } from './engagement.component';
 import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
 import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
 import { SpinnerComponent } from '../../../common/spinner/spinner.component';
-import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { CustomNumberPipe } from '../../../../app/shared/custom-number.pipe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

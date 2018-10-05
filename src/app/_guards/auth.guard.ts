@@ -17,12 +17,10 @@ export class AuthGuard implements CanActivate {
             if (isExpired) {
                 localStorage.removeItem('t');
                 return false;
-            }
-            else {
+            } else {
                 return true;
             }
-        }
-        else {
+        } else {
             // this.router.navigate(['/auth']);
             this.router.navigate(['/LnD']);
             return false;

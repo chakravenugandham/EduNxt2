@@ -1,15 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, DebugElement } from "@angular/core";
-import { By } from "@angular/platform-browser";
+import { Component, DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 import { FilterWidgetComponent } from './filter-widget.component';
-import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
+import { CustomNumberPipe } from '../../../app/shared/custom-number.pipe';
 import { TextTransformPipe } from '../../../app/shared/text-transform.pipe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LdDashboardService } from '../../ld-dashboard/services/ld-dashboard.service';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
@@ -19,15 +19,15 @@ describe('FilterWidgetComponent', () => {
   let fixture: ComponentFixture<FilterWidgetComponent>;
   let inputEl: DebugElement;
 
-  let filter = {
-    type: ""
+  const filter = {
+    type: ''
   };
-  let filterName = {
+  const filterName = {
     id: 123,
     name: filter
   };
 
-  let filterSelected: any = {
+  const filterSelected: any = {
     batchId: [],
     teamId: [],
     zoneId: []
@@ -63,7 +63,7 @@ describe('FilterWidgetComponent', () => {
   });
 
   it('should define showFilter', () => {
-    let filtersInfo = {
+    const filtersInfo = {
       'filterList': []
     };
     component.showFilter();
@@ -71,7 +71,7 @@ describe('FilterWidgetComponent', () => {
   });
 
   it('should define selectFilter', () => {
-    let filtersInfo = {
+    const filtersInfo = {
       'appliedFilters': []
     };
     component.selectFilter(filter, filterName);
@@ -94,7 +94,7 @@ describe('FilterWidgetComponent', () => {
   });
 
   it('should define filterDispalyNameFraming', () => {
-    let filtersInfo = {
+    const filtersInfo = {
       routeTo: 'string',
       filters: false,
       search: false,
@@ -109,7 +109,7 @@ describe('FilterWidgetComponent', () => {
   });
 
   it('should define filterDispalyNameFraming', () => {
-    let filtersInfo = {
+    const filtersInfo = {
       routeTo: 'string',
       filters: false,
       search: false,

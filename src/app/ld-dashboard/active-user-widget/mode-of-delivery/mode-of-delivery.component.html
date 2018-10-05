@@ -1,7 +1,8 @@
 <div>
   <div class="font-weight-normal mode-of-delivery">
     <p>
-      <b>View Online vs Offline delivery over the last 30 days</b>
+      <!-- <b>View Online vs Offline delivery over the last 30 days</b> -->
+      <b>View Online vs Offline delivery </b>
     </p>
   </div>
 
@@ -28,14 +29,24 @@
         </tr>
       </table>
     </div>
-    <div *ngIf="responseData.length>0" class="row graph-badges" style="margin-top:50px;">
-      <div class="col-md-6 col-sm-6 col-6">
-        <i class="fa fa-circle faculty" aria-hidden="true"></i>
-        Online Mode
+    <div *ngIf="responseData.length>0">
+
+      <div class="row graph-badges">
+        <div class="col-md-6 col-sm-6 col-6">
+          <i class="fa fa-circle faculty" aria-hidden="true"></i>
+          Online Mode
+        </div>
+        <div class="col-md-6 col-sm-6 col-6">
+          <i class="fa fa-circle learner" aria-hidden="true"></i>
+          Offline Mode
+        </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-6">
-        <i class="fa fa-circle learner" aria-hidden="true"></i>
-        Offline Mode
+
+      <div class="mode-dates">
+        <p> Mode of delivery counts from
+          <span class="date-class"> {{responseData[0].date | date}} </span> to
+          <span class="date-class"> {{responseData[responseData.length-1].date | date}} </span>
+        </p>
       </div>
     </div>
   </div>

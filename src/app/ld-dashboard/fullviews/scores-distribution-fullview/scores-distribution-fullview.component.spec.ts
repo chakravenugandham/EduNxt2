@@ -5,7 +5,7 @@ import { By } from "@angular/platform-browser";
 import { ScoresDistributionFullviewComponent } from './scores-distribution-fullview.component';
 import { LdDashboardService } from '../../services/ld-dashboard.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
+import { ScoreChartDirective } from "../../../directives/score-chart.directive";
 import { CookieService } from 'ngx-cookie-service';
 import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { FormsModule } from '@angular/forms';

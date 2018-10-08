@@ -3,7 +3,7 @@ import { Component, DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 import { PerformanceComponent } from './performance.component';
-import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
+import { BarChartDirective } from "../../../directives/bar-chart.directive";
 import { GraphChartComponent } from '../../../common/graph-chart/graph-chart.component';
 
 describe('PerformanceComponent', () => {

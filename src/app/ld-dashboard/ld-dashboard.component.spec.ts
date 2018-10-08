@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BarChartDirective } from "../ld-dashboard/directives/bar-chart.directive";
-import { DonutChartDirective } from "../ld-dashboard/directives/donut-chart.directive";
-import { HalfdonutchartDirective } from "../ld-dashboard/directives/halfdonutchart.directive";
-import { ScoreChartDirective } from "../ld-dashboard/directives/score-chart.directive";
+import { BarChartDirective } from "../directives/bar-chart.directive";
+import { DonutChartDirective } from "../directives/donut-chart.directive";
+import { HalfdonutchartDirective } from "../directives/halfdonutchart.directive";
+import { ScoreChartDirective } from "../directives/score-chart.directive";
 import { ActivityWidgetComponent } from "../ld-dashboard/activity-widget/activity-widget.component";
 import { EngagementComponent } from "../ld-dashboard/activity-widget/engagement/engagement.component";
 import { FeedbackComponent } from "../ld-dashboard/activity-widget/feedback/feedback.component";

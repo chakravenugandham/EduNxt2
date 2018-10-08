@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 
 import { PaceComponent } from './pace.component';
-import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
+import { DonutChartDirective } from "../../../directives/donut-chart.directive";
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('PaceComponent', () => {

@@ -77,10 +77,10 @@ import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullvie
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 import { GoogleChartsBaseService } from './ld-dashboard/services/googleChartService';
 import { UsersDataComponent } from './ld-dashboard/common/users-data/users-data.component';
-import { HalfdonutchartDirective } from './ld-dashboard/directives/halfdonutchart.directive';
-import { DonutChartDirective } from './ld-dashboard/directives/donut-chart.directive';
-import { BarChartDirective } from './ld-dashboard/directives/bar-chart.directive';
-import { ScoreChartDirective } from './ld-dashboard/directives/score-chart.directive';
+import { HalfdonutchartDirective } from './directives/halfdonutchart.directive';
+import { DonutChartDirective } from './directives/donut-chart.directive';
+import { BarChartDirective } from './directives/bar-chart.directive';
+import { ScoreChartDirective } from './directives/score-chart.directive';
 import { BestProgramsWidgetComponent } from './org-head/best-programs-widget/best-programs-widget.component';
 import { ProgramsComponent } from './org-head/best-programs-widget/programs/programs.component';
 import { TrackofgoalsComponent } from './org-head/trackofgoals/trackofgoals.component';
@@ -118,6 +118,7 @@ import { SpinnerComponent } from './common/spinner/spinner.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraphChartComponent } from './common/graph-chart/graph-chart.component';
 import { TextTransformPipe } from '../app/shared/text-transform.pipe';
+import { FullDonutDirective } from './directives/full-donut.directive';
 
 @NgModule({
   declarations: [
@@ -210,7 +211,8 @@ import { TextTransformPipe } from '../app/shared/text-transform.pipe';
     PaginateComponent,
     SpinnerComponent,
     GraphChartComponent,
-    TextTransformPipe
+    TextTransformPipe,
+    FullDonutDirective
   ],
   imports: [
     BrowserModule,

@@ -11,11 +11,11 @@ export class ProgramcardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnChanges(changes: any) {
-    if (changes.programdata && changes.programdata.currentValue) {
-      this.programdata = changes.programdata.currentValue;
-    }
-  }
+  // ngOnChanges(changes: any) {
+  //   if (changes.programdata && changes.programdata.currentValue) {
+  //     this.programdata = changes.programdata.currentValue;
+  //   }
+  // }
 
   ngOnInit() {
   }

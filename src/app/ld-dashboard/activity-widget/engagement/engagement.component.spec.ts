@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { EngagementComponent } from './engagement.component';
 import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
-import { HalfdonutchartDirective } from '../../../ld-dashboard/directives/halfdonutchart.directive';
+import { HalfdonutchartDirective } from '../../../directives/halfdonutchart.directive';
 import { SpinnerComponent } from '../../../common/spinner/spinner.component';
 import { CustomNumberPipe } from '../../../../app/shared/custom-number.pipe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

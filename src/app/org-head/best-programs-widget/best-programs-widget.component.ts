@@ -36,14 +36,12 @@ export class BestProgramsWidgetComponent implements OnInit {
   }
 
   getDataFromService() {
-    this.dashboardService
-      .getBestPrograms()
-      .subscribe((response: any) => {
-        this.responseData = response.data;
-      });
+    this.dashboardService.getBestPrograms().subscribe((response: any) => {
+      this.responseData = response.data;
+    });
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    //this.getDataFromService();
   }
 }

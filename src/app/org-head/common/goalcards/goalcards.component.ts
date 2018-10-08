@@ -17,8 +17,8 @@ export class GoalcardsComponent implements OnInit {
 
 export class Config {
   businessGoal: string;
-  objective: string;
+  objectiveNumber: number;
   peopleTrained: number;
-  timeRemaining: string;
+  timeRemaining: number;
   status: string;
 }

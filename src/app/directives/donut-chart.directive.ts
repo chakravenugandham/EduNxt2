@@ -82,13 +82,14 @@ export class DonutChartDirective implements OnChanges {
       .style('font-weight', 'bold')
       .text(function (d) {
         if (d.data.type === 'classC') {
+          console.log(d.data)
           return d.data.number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         }
       })
       .on('mouseover', function (d) {
-        // var data = d3.select(d).data();
+        var tooltipvalue = d.data.type === 'classC' ? 'Haven\'t Started' : ''
         tooltip.transition().style('opacity', 1);
-        tooltip.html('<div style=\'color:#0146F9\'>' + d.label + '</div>' + '<div style=\'color:#0146F9\'>' + d.value + '</div>').style('left', (d3.event.pageX) + 'px')
+        tooltip.html('<div style=\'color:#0146F9\'>' + tooltipvalue + '</div>' + '<div style=\'color:#0146F9\'>' + d.value + '</div>').style('left', (d3.event.pageX) + 'px')
           .style('top', (d3.event.pageY) + 'px');
       })
       .on('mouseout', function (d) {

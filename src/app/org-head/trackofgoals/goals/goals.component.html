@@ -1,15 +1,15 @@
 <div class='card-block row'>
-  <div class="col-md-9">
-    <app-goalcards></app-goalcards>
+  <div class="col-md-8">
+    <app-goalcards [config]='firstCard'></app-goalcards>
   </div>
-  <div class="col-md-3" appDonutChart [data]="paceTrackValues" [graphSize]="graphSize">
+  <div class="col-md-4" appFullDonut [data]="goalSize" [graphSize]="graphSize" [Schedule]='onSchedule'>
   </div>
 </div>
 
 <div class='card-block row'>
-  <div class="col-md-9">
-    <app-goalcards></app-goalcards>
+  <div class="col-md-8">
+    <app-goalcards [config]='secondCard'></app-goalcards>
   </div>
-  <div class="col-md-3" appDonutChart [data]="paceTrackValues" [graphSize]="graphSize">
+  <div class="col-md-4" appFullDonut [data]="goalSize" [graphSize]="graphSize" [Schedule]='behindSchedule'>
   </div>
 </div>

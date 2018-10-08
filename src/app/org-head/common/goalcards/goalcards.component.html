@@ -1,40 +1,41 @@
 <div class="goals-widget">
-  <div class="bold-text col-md-12">
-    <span class="text-primary font-size-14">
+  <div class="businessGoalHeadingText col-md-12">
+    <span class="fa-icons font-size-14">
       <i class="fa fa-crosshairs" aria-hidden="true"></i>
     </span>
-    <span class="heading-text m-l-5">Business Goals:</span>
-    <span class="font-size-12">Gain in</span>
-    <span class="font-size-12"> {{config?.businessGoal}}</span>
-    <span class="text-primary font-size-12">in Customer Satisfaction Scores</span>
+    <span class="m-l-5">Business Goals:</span>
+    <span>Gain a</span>
+    <span class="fa-icons"> {{config?.businessGoal}} </span>
+    <span>in </span>
+    <span class="fa-icons">Customer Satisfaction Scores</span>
   </div>
-  <div class="nop bold-text col-md-12 m-t-20">
+  <div class="nop objectiveHeadingText col-md-12 m-t-12">
     <span class="heading-text">Objective: </span>
-    <span class="font-size-12">Train</span>
-    <span> {{config?.objective}}</span>
-    <span class="font-size-12">people in</span>
-    <span class="text-primary" class="font-size-12">Customer Centricity</span>
+    <span>Train</span>
+    <span class="fa-icons"> {{config?.objectiveNumber}} </span>
+    <span>people in </span>
+    <span class="fa-icons">Customer Centricity</span>
   </div>
-  <div class="row m-t-20">
+  <div class="row m-t-12">
     <div class="col-md-4">
-      <span class="text-primary">
-        <i class="fa fa-user" aria-hidden="true"></i>
+      <span class="fa-icons font-size-12">
+        <i class="fa fa-user-o" aria-hidden="true"></i>
       </span>
-      <span>People Trained : </span>
+      <span class="p-l-7">People Trained : </span>
       <span>{{config?.peopleTrained}}</span>
     </div>
     <div class="col-md-4">
-      <span class="text-primary">
-        <i class="fa fa-clock" aria-hidden="true"></i>
+      <span class="fa-icons font-size-12">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
       </span>
-      <span>Time Remaining :</span>
-      <span> {{config?.timeRemaining}}</span>
+      <span class="p-l-7">Time Remaining :</span>
+      <span> {{config?.timeRemaining}} Days</span>
     </div>
     <div class="col-md-4">
-      <span>
-        <i class="fa fa-hourglass" aria-hidden="true"></i>
+      <span class="fa-icons font-size-12">
+        <i class="fa fa-hourglass-half" aria-hidden="true"></i>
       </span>
-      <span>Status :</span>
+      <span class="p-l-7">Status :</span>
       <span> {{config?.status}}</span>
     </div>
   </div>

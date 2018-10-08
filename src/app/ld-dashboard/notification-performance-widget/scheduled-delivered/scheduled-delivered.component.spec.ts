@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ScheduledDeliveredComponent } from './scheduled-delivered.component';
-import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
+import { BarChartDirective } from "../../../directives/bar-chart.directive";
 
 describe('ScheduledDeliveredComponent', () => {
   let component: ScheduledDeliveredComponent;

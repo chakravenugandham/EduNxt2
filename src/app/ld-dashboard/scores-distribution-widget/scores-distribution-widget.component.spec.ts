@@ -11,7 +11,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FilterWidgetComponent } from "../../common/filter-widget/filter-widget.component";
-import { ScoreChartDirective } from "../../ld-dashboard/directives/score-chart.directive";
+import { ScoreChartDirective } from "../../directives/score-chart.directive";
 
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { SpinnerComponent } from "../../common/spinner/spinner.component";

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TestScoresComponent } from './test-scores.component';
-import { ScoreChartDirective } from "../../../ld-dashboard/directives/score-chart.directive";
+import { ScoreChartDirective } from "../../../directives/score-chart.directive";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";

@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  UsersDataComponent,
-  Config
-} from "../../../ld-dashboard/common/users-data/users-data.component";
+import { UsersDataComponent, Config } from "../../../ld-dashboard/common/users-data/users-data.component";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({
@@ -42,33 +39,31 @@ export class ProgramstatusComponent implements OnInit {
   }
 
   getDataFromService() {
-    this.dashboardService
-      .getProgramStatus()
-      .subscribe((response: any) => {
-        this.responseData = response.data;
+    this.dashboardService.getProgramStatus().subscribe((response: any) => {
+      this.responseData = response.data;
 
-        this.programStatusProgressConfig = {
-          peopleCurrentlyEnrolled: this.responseData['inProgress'],
-          numberChange: true,
-          usersSinceLastMonth: this.responseData['inProgressSinceLastMonth'],
-          Users: "hours",
-          sinceLastMonth: "since last month",
-          PeopleAreCurrentlyEnrolled: "In progress"
-        };
+      this.programStatusProgressConfig = {
+        peopleCurrentlyEnrolled: this.responseData['inProgress'],
+        numberChange: true,
+        usersSinceLastMonth: this.responseData['inProgressSinceLastMonth'],
+        Users: "hours",
+        sinceLastMonth: "since last month",
+        PeopleAreCurrentlyEnrolled: "In progress"
+      };
 
-        this.programStatusBehindConfig = {
-          peopleCurrentlyEnrolled: this.responseData['behindSchedule'],
-          numberChange: true,
-          usersSinceLastMonth: this.responseData['behindScheduleSinceLasthMonth'],
-          Users: "programs",
-          sinceLastMonth: "since last month",
-          PeopleAreCurrentlyEnrolled: "Behind Schedule"
-        };
-      });
+      this.programStatusBehindConfig = {
+        peopleCurrentlyEnrolled: this.responseData['behindSchedule'],
+        numberChange: true,
+        usersSinceLastMonth: this.responseData['behindScheduleSinceLasthMonth'],
+        Users: "programs",
+        sinceLastMonth: "since last month",
+        PeopleAreCurrentlyEnrolled: "Behind Schedule"
+      };
+    });
   }
 
   ngOnInit() {
-    this.getDataFromService();
+    //this.getDataFromService();
     this.programStatusValues = [
       {
         color: "#F77F6C",
@@ -82,12 +77,21 @@ export class ProgramstatusComponent implements OnInit {
       }
     ];
     this.programStatusProgressConfig = {
-      peopleCurrentlyEnrolled: 42,
+      peopleCurrentlyEnrolled: 67,
       numberChange: true,
       usersSinceLastMonth: 54,
       Users: "hours",
       sinceLastMonth: "since last month",
       PeopleAreCurrentlyEnrolled: "In progress"
+    };
+
+    this.programStatusBehindConfig = {
+      peopleCurrentlyEnrolled: 25,
+      numberChange: false,
+      usersSinceLastMonth: 45,
+      Users: "hours",
+      sinceLastMonth: "since last month",
+      PeopleAreCurrentlyEnrolled: "Behind Schedule"
     };
 
   }

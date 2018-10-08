@@ -6,7 +6,7 @@ import { LearnerTrackFullviewComponent } from './learner-track-fullview.componen
 import { LearnerPaceComponent } from "../../learners-track-widget/learner-pace/learner-pace.component";
 import { LearnerPerformanceComponent } from "../../learners-track-widget/learner-performance/learner-performance.component";
 import { LdDashboardService } from "../../services/ld-dashboard.service";
-import { DonutChartDirective } from "../../../ld-dashboard/directives/donut-chart.directive";
+import { DonutChartDirective } from "../../../directives/donut-chart.directive";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FilterWidgetComponent } from "../../../common/filter-widget/filter-widget.component";
 import { ClickOutsideModule } from 'ng4-click-outside';

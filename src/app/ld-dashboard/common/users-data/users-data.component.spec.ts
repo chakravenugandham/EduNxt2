@@ -1,7 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsersDataComponent } from './users-data.component';
+import { SpinnerComponent } from "../../../common/spinner/spinner.component";
 import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CookieService } from 'ngx-cookie-service';
+
+import { UsersDataComponent, Config } from './users-data.component';
 
 describe('UsersDataComponent', () => {
   let component: UsersDataComponent;
@@ -9,7 +13,9 @@ describe('UsersDataComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UsersDataComponent, CustomNumberPipe]
+      declarations: [UsersDataComponent, Config, CustomNumberPipe, SpinnerComponent],
+      imports: [HttpClientTestingModule],
+      providers: [CookieService]
     })
       .compileComponents();
   }));

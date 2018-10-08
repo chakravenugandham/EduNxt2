@@ -6,7 +6,7 @@ import { ProgressComponent } from './progress.component';
 import { BarChartDirective } from "../../../ld-dashboard/directives/bar-chart.directive";
 import { GraphChartComponent } from '../../../common/graph-chart/graph-chart.component';
 
-fdescribe('ProgressComponent', () => {
+describe('ProgressComponent', () => {
   let component: ProgressComponent;
   let fixture: ComponentFixture<ProgressComponent>;
   let inputEl: DebugElement;

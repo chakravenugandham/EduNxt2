@@ -21,7 +21,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from '@angular/common';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-describe('OrgPerformanceComponent', () => {
+fdescribe('OrgPerformanceComponent', () => {
   let component: OrgPerformanceWidgetComponent;
   let fixture: ComponentFixture<OrgPerformanceWidgetComponent>;
 
@@ -89,7 +89,7 @@ describe('OrgPerformanceComponent', () => {
     expect(component.constructNewArray).toBeTruthy();
   });
 
-  xit('should create getSearchItem', () => {
+  it('should create getSearchItem', () => {
     let $event;
     component.getSearchItem($event);
     expect(component.getSearchItem).toBeTruthy();

@@ -1,22 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
-import { LdDashboardService } from "../../services/ld-dashboard.service";
+import { Component, OnInit } from '@angular/core';
+import { Config } from '../../../ld-dashboard/common/users-data/users-data.component';
+import { LdDashboardService } from '../../services/ld-dashboard.service';
 
 @Component({
-  selector: "app-engagement",
-  templateUrl: "./engagement.component.html",
-  styleUrls: ["./engagement.component.scss"]
+  selector: 'app-engagement',
+  templateUrl: './engagement.component.html',
+  styleUrls: ['./engagement.component.scss']
 })
 export class EngagementComponent implements OnInit {
-  //user data custom component
+  // user data custom component
   config: Config;
 
-  //variable declarations
+  // variable declarations
   percentageChange: number;
   expectedChange: boolean;
-  spinner_loader: boolean = false;
-  noDataFlag: boolean = false;
-  engageUserChange: boolean = false;
+  spinner_loader = false;
+  noDataFlag = false;
+  engageUserChange = false;
 
   responseData = {};
 
@@ -36,7 +36,7 @@ export class EngagementComponent implements OnInit {
   }
 
 
-  //service call for api
+  // service call for api
   getDataFromService() {
     this.spinner_loader = true;
     this.dashboardService
@@ -45,27 +45,27 @@ export class EngagementComponent implements OnInit {
         this.responseData = response.data;
 
         this.spinner_loader = false;
-        this.noDataFlag = Object.keys(response.data).length == 0 ? true : false;
+        this.noDataFlag = Object.keys(response.data).length === 0 ? true : false;
 
-        //this.engageUserChange = this.responseData["usersCompletedPrograms"] < this.responseData["completedProgramsSinceLastMonth"]? false: true;
+        // this.engageUserChange = this.responseData["usersCompletedPrograms"] < this.responseData["completedProgramsSinceLastMonth"]? false: true;
 
-        this.percentageChange = this.responseData["usersCompletedPrograms"] > 0 ? (this.responseData["usersCompletedPrograms"] * 100) / this.responseData["enrolledUsers"] : 0;
+        this.percentageChange = this.responseData['usersCompletedPrograms'] > 0 ? (this.responseData['usersCompletedPrograms'] * 100) / this.responseData['enrolledUsers'] : 0;
 
         this.config = {
-          peopleCurrentlyEnrolled: Math.round(this.responseData["usersCompletedPrograms"]),
+          peopleCurrentlyEnrolled: Math.round(this.responseData['usersCompletedPrograms']),
           numberChange: this.percentageChange < 50 ? false : true,
 
-          usersSinceLastMonth: Math.round(this.responseData["completedProgramsSinceLastMonth"]),
+          usersSinceLastMonth: Math.round(this.responseData['completedProgramsSinceLastMonth']),
 
-          Users: "Users",
-          sinceLastMonth: "",
-          PeopleAreCurrentlyEnrolled: "People completed training programs"
+          Users: 'Users',
+          sinceLastMonth: '',
+          PeopleAreCurrentlyEnrolled: 'People completed training programs'
         };
       });
   }
 
   ngOnInit() {
-    //service call initiated
+    // service call initiated
     this.getDataFromService();
   }
 }

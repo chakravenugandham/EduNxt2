@@ -38,6 +38,35 @@
   }
 }
 
+.active-dates {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 16px;
+
+  .date-class {
+    color: #5584FF;
+  }
+
+  // .fa-star {
+  //   color: #ffd630;
+  //   animation: blink 1s infinite;
+  // }
+}
+
+// @keyframes blink {
+//   0% {
+//     opacity: 0;
+//   }
+
+//   50% {
+//     opacity: .5;
+//   }
+
+//   100% {
+//     opacity: 1;
+//   }
+// }
+
 .tool-tip {
   position: absolute;
   z-index: 10;

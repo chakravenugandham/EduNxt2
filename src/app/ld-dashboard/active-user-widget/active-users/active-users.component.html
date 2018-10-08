@@ -53,17 +53,28 @@
         </tr>
       </table>
     </div>
-    <div *ngIf="responseData.length>0" class="row graph-badges">
-      <div class="col-md-6 col-sm-6 col-6">
-        <!-- <i class="fa fa-circle-o learner" aria-hidden="true"></i> -->
-        <i class="fa fa-circle learner" aria-hidden="true"></i>
-        Learners
+    <div *ngIf="responseData.length>0">
+
+      <div class="row graph-badges">
+        <div class="col-md-6 col-sm-6 col-6">
+          <i class="fa fa-circle learner" aria-hidden="true"></i>
+          Learners
+        </div>
+        <div class="col-md-6 col-sm-6 col-6">
+          <i class="fa fa-circle faculty" aria-hidden="true"></i>
+          Faculty and Admins
+        </div>
       </div>
-      <div class="col-md-6 col-sm-6 col-6">
-        <!-- <i class="fa fa-circle-o faculty" aria-hidden="true"></i> -->
-        <i class="fa fa-circle faculty" aria-hidden="true"></i>
-        Faculty and Admins
+
+      <div class="active-dates">
+        <p>
+          <!-- <i class="fa fa-star" aria-hidden="true"></i> -->
+          Active users count from
+          <span class="date-class"> {{responseData[0].date | date}} </span> to
+          <span class="date-class"> {{responseData[responseData.length-1].date | date}} </span>
+        </p>
       </div>
     </div>
+
   </div>
 </div>

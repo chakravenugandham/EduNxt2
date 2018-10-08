@@ -29,9 +29,9 @@
   }
 }
 
-#modeOfDeliveryGraph {
-  height: 200px !important;
-}
+// #modeOfDeliveryGraph {
+//   height: 200px !important;
+// }
 
 .graph-badges {
   .learner {
@@ -42,5 +42,15 @@
   .faculty {
     color: #ff4e00;
     // background-color: #ff4e00;
+  }
+}
+
+.mode-dates {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 16px;
+
+  .date-class {
+    color: #5584FF;
   }
 }

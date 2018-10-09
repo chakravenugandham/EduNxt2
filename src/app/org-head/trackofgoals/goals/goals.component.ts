@@ -13,6 +13,9 @@ export class GoalsComponent implements OnInit {
   graphSize = "smallGraph";
   goalSize: number;
 
+  onSchedule: any[];
+  behindSchedule: any[];
+
   constructor() { }
 
   paceTrackValues = [];

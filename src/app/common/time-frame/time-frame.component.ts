@@ -70,10 +70,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       this.getAllCourses();
     });
 
-    this.dashboardService.changeInPerforamceAPI.subscribe(result => {
-      // this.csvFormatFn();
-    });
-
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._baseUrl = event.url.replace(/\//g, '');
@@ -107,7 +103,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.dashboardService.courseAndProgram(this.programObj);
   }
 
-  dashboardName = '';
   csvFormatFn() {
     let base = this._baseUrl;
 

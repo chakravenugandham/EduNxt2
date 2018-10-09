@@ -17,7 +17,8 @@
       </div>
       <div class="col-md-4">
         <!-- This report was generated on 3/20/18 at 11:51:19 PM - -->
-        This report was generated on {{refreshTime | date:'medium'}} -
+        <span *ngIf="csvDownloadflag == false">This report was generated on {{refreshTime | date:'medium'}} -</span>
+        <span *ngIf="csvDownloadflag == true">This report was generated on {{refreshTime |date:'medium'}} -</span>
         <span class="cursor-pointer text-primary" (click)="refreshReportFn()"> Refresh Report </span>
       </div>
     </div>

@@ -30,7 +30,6 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
     start: this.dateTest.start_date,
     end: this.dateTest.end_date,
     label: ''
-    // maxDate: this.dateTest.end_date
   };
 
   dateFilterObj = {};
@@ -50,6 +49,5 @@ export class MpDatepickerRangeComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.picker.datePicker.setStartDate(new Date(this.daterange.start));
     this.picker.datePicker.setEndDate(new Date(this.daterange.end));
-    // this.picker.datePicker.setMaximumDate(new Date(this.daterange.end));
   }
 }

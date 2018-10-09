@@ -9,7 +9,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LdDashboardService } from '../../ld-dashboard/services/ld-dashboard.service';
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClickOutsideModule } from 'ng4-click-outside';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
@@ -77,11 +76,6 @@ describe('FilterWidgetComponent', () => {
     component.selectFilter(filter, filterName);
     expect(component.selectFilter).toBeDefined();
   });
-
-  // xit('should define showFilter', () => {
-  //   component.selectFilter(filter, filterName);
-  //   expect(!component.filterArray.includes(filterName.name)).toEqual(component.filterArray.push(filterName.name));
-  // });
 
   it('should define closeDropDown', () => {
     component.closeDropDown();
@@ -163,14 +157,6 @@ describe('FilterWidgetComponent', () => {
     component.onClickedOutside(e);
     expect(component.onClickedOutside).toBeDefined();
   });
-
-
-
-  // it('should define showFilter', () => {
-  //   let filterBodyName, index;
-  //   component.removeFromFilterBody(filterBodyName, index);
-  //   expect(component.removeFromFilterBody).toBeDefined();
-  // });
 
 });
 

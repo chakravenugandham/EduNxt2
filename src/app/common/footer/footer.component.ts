@@ -29,13 +29,10 @@ export class FooterComponent implements OnInit {
         }
         else if (!this.csvDownloadflag) {
           this.refreshTime = new Date();
-          // this.refreshReportFn();
         }
       }
     });
   }
-
-  // refreshTime = new Date();
 
   refreshReportFn() {
     this.refreshTime = new Date();

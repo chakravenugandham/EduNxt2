@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, Input, OnChanges } from '@angular/core';
 // import { d3 } from "d3v4";
-// import * as d3 from "d3";
 declare let d3: any;
 // import * as d3 from 'd3v4';
 
@@ -51,15 +50,12 @@ export class GraphChartComponent implements OnInit {
       .attr("transform", "translate(" + margin + "," + (margin - 20) + ")");
     let x0 = d3.scale.ordinal()
       .rangeRoundBands([0, width], 0.5, 0.5);
-    //.rangeRoundBands([0, width], .3);
-    //.paddingInner(0.4);
     let x1 = d3.scale.ordinal();
     let y = d3.scale.linear()
       .range([height, 0]);
     let xAxis = d3.svg.axis()
       .scale(x0)
-      .orient("bottom")
-    // .tickFormat(function (d) { return d.slice(0, 6) });
+      .orient("bottom");
     let yAxis = d3.svg.axis()
       .scale(y)
       .orient("left")
@@ -76,17 +72,6 @@ export class GraphChartComponent implements OnInit {
     let total_max = Math.max(max_group1, max_group2);
 
     y.domain([0, total_max]);
-
-    // y.domain([0,
-    //   d3.max(this.dataset, d => {
-    //     const maxBar = Math.ceil(d.Group2);
-    //     if (maxBar <= 8) {
-    //       return 8;
-    //     } else {
-    //       return maxBar;
-    //     }
-    //   })
-    // ]);
 
     svg.append("g")
       .attr("class", "x axis")

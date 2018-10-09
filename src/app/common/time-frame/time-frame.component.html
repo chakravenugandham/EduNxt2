@@ -32,14 +32,12 @@
             <img src="../../assets/images/mail.png"> Email this report</span>
         </li> -->
 
-        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom"
-          title="Download this report">
+        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Download this report">
           <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
             <img src="../../assets/images/download.png"> Download this report
           </span>
           <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu-items">
             <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
-              <!-- <button class="dropdown-item cursor-pointer" (click)="downloadPdf()">Download PDF</button> -->
               <img src="../../assets/images/download.png">
               <span>Download PDF</span>
             </li>

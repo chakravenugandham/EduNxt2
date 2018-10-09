@@ -12,8 +12,7 @@ import { LdDashboardService } from '../../ld-dashboard/services/ld-dashboard.ser
 
 export class FilterWidgetComponent implements OnInit, OnChanges {
 
-    @Input()
-    filtersInfo: {
+    @Input() filtersInfo: {
         routeTo: string,
         filters: boolean,
         search: boolean,
@@ -24,8 +23,7 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         appliedFilters: any[]
     };
 
-    @Input()
-    searchFilterData: {
+    @Input() searchFilterData: {
         searchComponent: string;
         searchBy: string;
         searchCount: number;
@@ -40,7 +38,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
     noSearchResultFlag = true;
 
     searchList = [];
-    // searchNames = [];
 
     filterDisplayName = 'Add a Filter';
 
@@ -60,12 +57,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
 
     showFilter() {
         this.filtersList = [];
-        this.server
-            .getFiltersData(this.filtersInfo.filterList)
-            .subscribe((response: any) => {
-                this.filtersList = response.data;
-                this.displayDropdown = this.filtersList.length > 0 ? true : false;
-            });
+        this.server.getFiltersData(this.filtersInfo.filterList).subscribe((response: any) => {
+            this.filtersList = response.data;
+            this.displayDropdown = this.filtersList.length > 0 ? true : false;
+        });
     }
 
     selectFilter(filterType, filterObj) {
@@ -83,7 +78,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
             this.filtersInfo.appliedFilters.splice(indexF, 1);
             this.addFilterEmit.emit(this.filtersInfo.appliedFilters);
         }
-        // this.displayDropdown = false;
     }
 
     removeFilter(filter) {
@@ -100,14 +94,10 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
             this.displayDropdown = true;
             this.searchList = [];
             this.noSearchResultFlag = false;
-            this.server
-                .getSearchFilterData(this.searchFilterData, $event.target.value)
-                .subscribe((response: any) => {
-                    this.searchList = response.data;
-                    this.noSearchResultFlag = this.searchList.length > 0 ? false : true;
-                });
-        } else {
-            // this.displayDropdown = false;
+            this.server.getSearchFilterData(this.searchFilterData, $event.target.value).subscribe((response: any) => {
+                this.searchList = response.data;
+                this.noSearchResultFlag = this.searchList.length > 0 ? false : true;
+            });
         }
     }
 
@@ -120,7 +110,6 @@ export class FilterWidgetComponent implements OnInit, OnChanges {
         }
 
         this.searchEvent.emit(this.filtersInfo.appliedFilters);
-        // this.displayDropdown = false;
     }
 
     removeSearchName(i) {

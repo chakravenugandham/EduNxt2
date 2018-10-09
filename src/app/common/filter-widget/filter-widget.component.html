@@ -16,7 +16,10 @@
             </span>
             <ul>
               <li class="list-unstyled">
-                <span>
+                <span *ngIf="searchFilterData.searchComponent=='organization-interests'">
+                  <b>Select for</b> (Upto {{searchFilterData.searchCount}} topics)
+                </span>
+                <span *ngIf="searchFilterData.searchComponent!='organization-interests'">
                   <b>Select for</b> (Upto {{searchFilterData.searchCount}} people)
                 </span>
                 <div *ngIf="searchList.length>0">
@@ -32,11 +35,9 @@
                 <div *ngIf="noSearchResultFlag">
                   <span>No search results found</span>
                 </div>
-
               </li>
             </ul>
           </div>
-
         </li>
       </span>
       <span *ngIf="filtersInfo.search">
@@ -75,10 +76,9 @@
         </li>
       </span>
       <span *ngIf="filtersInfo.filters">
-
-        <li class="list-inline-item applied-filter" *ngFor="let filter of filtersInfo.appliedFilters">
-          <span data-toggle="tooltip" data-placement="top" title="{{filter.name}}"> {{filter.name | textTransform}}
-          </span>
+        <li class="list-inline-item searchText" *ngFor="let filter of filtersInfo.appliedFilters">
+          <div data-toggle="tooltip" data-placement="top" title="{{filter.name}}"> {{filter.name}}
+          </div>
           <i class="fa fa-times-circle cursor-pointer" (click)="removeFilter(filter)"></i>
         </li>
 

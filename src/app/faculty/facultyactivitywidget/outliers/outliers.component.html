@@ -2,7 +2,7 @@
   <div class="headingText clearfix">
     <ul class="nav float-left">
       <li class="nav-item">
-        <a class="nav-link">Learner Progress</a>
+        <a class="nav-link">Outliers</a>
       </li>
     </ul>
     <div>
@@ -26,11 +26,15 @@
   <div *ngIf="!spinner_loader && !noDataFlag" class="m-t-16">
     <div class="text-fix-bottom row">
       <div class="col-md-6 col-sm-6 col-xs-6 col-6">
-        <p class="bigNumber behindSchedule">24</p>
+        <div class="col-md-12">
+          <div class="bigNumber behindSchedule col-md-1">24</div>
+          <div class="col-md-11" style="font-size:10px;">Performing significantly better than class avg</div>
+        </div>
         <p class="m-t-10">Behind Schedule</p>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6 col-6">
-        <p class="bigNumber aheadOfScheduleColor">30</p>
+        <span class="bigNumber aheadOfScheduleColor col-md-3">30</span><span class="col-md-3" style="font-size:10px;">Performing
+          significantly lesser than class avg</span>
         <p class="m-t-10 m-b-0">Ahead of Schedule</p>
       </div>
     </div>

@@ -46,7 +46,6 @@
       </div>
 
       <div class="b-t-2">
-
         <table class="table table-borderless">
           <thead>
             <tr>
@@ -134,11 +133,8 @@
             </tr>
           </tbody>
         </table>
-
         <app-paginate *ngIf="pagination.total_pages > 1" class="paginationSpace" [pageInfo]="pagination" (gotoPage)="gotoPage($event)"></app-paginate>
-
       </div>
-
     </div>
   </div>
 </div>

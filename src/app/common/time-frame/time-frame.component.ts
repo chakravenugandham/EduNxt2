@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas';
   templateUrl: "./time-frame.component.html",
   styleUrls: ["./time-frame.component.scss"]
 })
-export class TimeFrameComponent implements OnInit, OnChanges {
+export class TimeFrameComponent implements OnInit {
   @Output() filterEvent = new EventEmitter<any>();
 
   coursesData = [];
@@ -181,7 +181,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
       },
       reason => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        //console.log(this.closeResult);
       }
     );
   }
@@ -198,7 +197,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
 
   sendEmail() {
     this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-      //console.log(response);
     });
   }
 
@@ -305,11 +303,6 @@ export class TimeFrameComponent implements OnInit, OnChanges {
     this.filterEvent.emit(courseId);
   }
 
-  ngOnChanges(changes: any) {
-    if (changes.orgPerformtab.currentValue) {
-      // this.orgPerformtab = this.myStorage.getItem('orgPerformShowDetails');
-    }
-  }
 
   ngOnInit() {
     //this.getDataFromService();

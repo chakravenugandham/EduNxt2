@@ -15,7 +15,7 @@ describe('FooterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [FooterComponent],
-      imports: [HttpClientTestingModule, FormsModule],
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule.withRoutes([])],
       providers: [LdDashboardService, CookieService]
     })
       .compileComponents();

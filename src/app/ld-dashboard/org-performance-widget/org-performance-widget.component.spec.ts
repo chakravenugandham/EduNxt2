@@ -21,7 +21,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { APP_BASE_HREF } from '@angular/common';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-fdescribe('OrgPerformanceComponent', () => {
+describe('OrgPerformanceComponent', () => {
   let component: OrgPerformanceWidgetComponent;
   let fixture: ComponentFixture<OrgPerformanceWidgetComponent>;
 

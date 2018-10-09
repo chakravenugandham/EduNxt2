@@ -21,7 +21,7 @@ import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprograms
 import { AppComponent } from "./app.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'orgHead', pathMatch: 'full' },
+  { path: '', redirectTo: 'LnD', pathMatch: 'full' },
   { path: "auth", component: AuthComponent },
   {
     path: '',
@@ -96,8 +96,10 @@ const routes: Routes = [
     ]
   },
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
+
 export class RoutingModule { }

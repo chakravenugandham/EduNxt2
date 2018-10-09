@@ -33,6 +33,7 @@ export class APIURL {
   public static SCORES_FILTERS = "scores-distribution-filters";
   public static EMAIL_SERVICE = "email";
   public static GET_EMAIL = "get-person-email";
+  public static GET_TIME_STAMP = "get-report-generated-time";
 
 
   //Org-Head apis

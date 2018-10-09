@@ -21,7 +21,7 @@ import { BestprogramsfullviewComponent } from "./org-head/fullviews/bestprograms
 import { AppComponent } from "./app.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'orgHead', pathMatch: 'full' },
+  { path: '', redirectTo: 'LnD', pathMatch: 'full' },
   { path: "auth", component: AuthComponent },
   {
     path: '',

@@ -76,6 +76,12 @@ export class LdDashboardService implements OnInit {
     return this.dateChange$.asObservable();
   }
 
+  timeStamp$ = new Subject<any>();
+
+  get timeStampAPI() {
+    return this.timeStamp$.asObservable();
+  }
+
   // baseURL from enviornment
   baseURL = environment.baseUrl;
 
@@ -160,7 +166,6 @@ export class LdDashboardService implements OnInit {
     this.dateFilterObj.end_date = dateObj.end_date;
     this.setDateObj = '?start_date=' + this.dateFilterObj.start_date + '&end_date=' + this.dateFilterObj.end_date;
   }
-
 
   // courses dropdown
 
@@ -480,6 +485,13 @@ export class LdDashboardService implements OnInit {
   getLearnerDataCsv() {
     const url = this.baseURL + APIURL.LEARNER_LEADERBOARD + '/csv' + this.setDateObj + this.program_course;
     return this.http.post(url, null, { headers: this.headers });
+  }
+
+  //REFRESH time stamp 
+
+  getRefreshTimeStamp(routepath) {
+    const url = this.baseURL + APIURL.GET_TIME_STAMP + "?report=" + routepath;
+    return this.http.get(url, { headers: this.headers });
   }
 
   ngOnInit() { }

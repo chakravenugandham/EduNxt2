@@ -28,6 +28,7 @@ export class GraphChartComponent implements OnInit {
   constructor() { }
 
   constructGraph() {
+    console.log(this.dataset);
 
     d3.select("#barNewChart svg").remove();
 
@@ -95,6 +96,16 @@ export class GraphChartComponent implements OnInit {
 
     let color = d3.scale.ordinal().range(['#5584ff', '#ffd630']);
 
+
+    const tooltip = d3.select('body').append('div')
+      .style('position', 'absolute')
+      .style('background', '#fff')
+      .style('padding', '5px')
+      .style('border', '1px #5584ff solid')
+      .style('border-radius', '2px')
+      .style('opacity', '0')
+      .style('font-size', '12px');
+
     bar.selectAll("rect")
       .data(function (d) { return d.valores; })
       .enter().append("rect")
@@ -103,7 +114,23 @@ export class GraphChartComponent implements OnInit {
       .attr("y", function (d) { return y(d.value); })
       .attr("value", function (d) { return d.name; })
       .attr("height", function (d) { return height - y(d.value); })
-      .style("fill", function (d) { return color(d.name); });
+      .style("fill", function (d) { return color(d.name); })
+
+      .on('mouseover', function (d) {
+        console.log(d);
+        tooltip.transition().style('opacity', 1);
+        tooltip.html(
+          // '<div style=\'color:#0146F9\'>' +
+          // d.name + '</div>' +
+          '<div style=\'color:#0146F9\'>' +
+          d.value + '</div>'
+        ).style('left', (d3.event.pageX) + 'px')
+          .style('top', (d3.event.pageY) + 'px');
+      })
+      .on('mouseout', function (d) {
+        tooltip.transition()
+          .style('opacity', 0);
+      });
 
 
     let yLabelName = this.graphName.charAt(0).toUpperCase() + this.graphName.slice(1);

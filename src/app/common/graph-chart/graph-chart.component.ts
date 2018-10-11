@@ -141,7 +141,8 @@ export class GraphChartComponent implements OnInit {
     function wrap(text, width) {
       text.each(function () {
         let text = d3.select(this),
-          words = text.text().split(/\s+/).reverse(),
+          // words = text.text().split(/\s+/).reverse(),
+          words = text.text().split(/[ _]+/).reverse(),
           word,
           line = [],
           lineNumber = 0,

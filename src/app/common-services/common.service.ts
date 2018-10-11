@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Subject } from "rxjs";
 
 @Injectable({
@@ -7,6 +7,9 @@ import { Subject } from "rxjs";
 export class CommonService {
   filterbodyDetails = {};
   orgPerformanceData = {};
+
+  routeChanged = new EventEmitter<string>();
+
   constructor() { }
 
   dropdown$ = new Subject<any>();
@@ -31,4 +34,10 @@ export class CommonService {
   get orgPerformanceDetails() {
     return this.orgPerformanceData;
   }
+
+  changeRoute(route) {
+    console.log(route);
+    this.routeChanged.emit(route);
+  }
+
 }

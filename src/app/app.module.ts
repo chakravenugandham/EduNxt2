@@ -93,6 +93,7 @@ import { LearnersquizComponent } from './faculty/learnersquiz/learnersquiz.compo
 import { QuizoverviewComponent } from './faculty/learnersquiz/quizoverview/quizoverview.component';
 import { AssignmentoverviewComponent } from './faculty/learnersquiz/assignmentoverview/assignmentoverview.component';
 import { LearnersQuizFullviewComponent } from './faculty/fullviews/learners-quiz-fullview/learners-quiz-fullview.component';
+import { FacultyscoredistributionComponent } from './faculty/fullviews/facultyscoredistribution/facultyscoredistribution.component';
 import { OrgHeadComponent } from './org-head/org-head.component';
 import { FacultyComponent } from './faculty/faculty.component';
 import { ProgramcardComponent } from './org-head/common/programcard/programcard.component';
@@ -188,6 +189,7 @@ import { FullDonutDirective } from './directives/full-donut.directive';
     QuizoverviewComponent,
     AssignmentoverviewComponent,
     LearnersQuizFullviewComponent,
+    FacultyscoredistributionComponent,
     OrgHeadComponent,
     FacultyComponent,
     ProgramcardComponent,

@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, OnInit, Input, OnChanges } from '@angular/core';
-// import { d3 } from "d3v4";
 declare let d3: any;
 // import * as d3 from 'd3v4';
 
@@ -28,7 +27,6 @@ export class GraphChartComponent implements OnInit {
   constructor() { }
 
   constructGraph() {
-    console.log(this.dataset);
 
     d3.select("#barNewChart svg").remove();
 

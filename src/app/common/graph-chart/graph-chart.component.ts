@@ -28,7 +28,6 @@ export class GraphChartComponent implements OnInit {
   constructor() { }
 
   constructGraph() {
-    console.log(this.dataset);
 
     d3.select("#barNewChart svg").remove();
 
@@ -117,7 +116,6 @@ export class GraphChartComponent implements OnInit {
       .style("fill", function (d) { return color(d.name); })
 
       .on('mouseover', function (d) {
-        console.log(d);
         tooltip.transition().style('opacity', 1);
         tooltip.html(
           // '<div style=\'color:#0146F9\'>' +

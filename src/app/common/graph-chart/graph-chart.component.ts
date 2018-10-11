@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, OnInit, Input, OnChanges } from '@angular/core';
-// import { d3 } from "d3v4";
 declare let d3: any;
 // import * as d3 from 'd3v4';
 

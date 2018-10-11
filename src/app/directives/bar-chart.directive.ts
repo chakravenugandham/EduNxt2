@@ -1,6 +1,5 @@
 import { Directive, ElementRef, Input, OnChanges, HostListener } from '@angular/core';
 
-// import * as d3 from "d3v4";
 declare let d3: any;
 
 @Directive({
@@ -12,27 +11,17 @@ export class BarChartDirective implements OnChanges {
 
   constructor(private el: ElementRef) { }
 
-  // rightRoundedRect(x, y, width, height, radius) {
-  //   return ("M" + x + "," + y + "h" + (width - radius) + "a" + radius + "," + radius + " 0 0 1 " + radius + "," + radius + "v" +
-  // (height - 2 * radius) + "a" + radius + "," + radius + " 0 0 1 " + -radius + "," + radius + "h" + (radius - width) + "z"
-  //   );
-  // }
-
   // chart function
   performanceChart() {
     this.el.nativeElement.innerHTML = '';
 
     const margin = 50,
-      // width = 500,
       width = d3.select(this.el.nativeElement).node().getBoundingClientRect().width - 46,
       h = 220,
       p = 50;
     const calWidth = d3.select(this.el.nativeElement).node().getBoundingClientRect().width;
 
-    // this.data = { label: "Data Structures", Group1: 60 };
     const calculatedWidth = this.data.length > 6 ? width + 56 * (this.data.length - 6) : width;
-    // const calculatedWidth = 120 * this.data.length;
-
     if (this.data.length > 6) {
       d3.select('.bar-chart-graph').attr('overflow-x', 'scroll');
     }
@@ -41,7 +30,6 @@ export class BarChartDirective implements OnChanges {
     const svg = d3
       .select(this.el.nativeElement)
       .append('svg')
-      // .attr("min-width", width)
       .attr('width', calculatedWidth)
       .attr('height', h + margin * 2)
       .append('g')
@@ -49,8 +37,6 @@ export class BarChartDirective implements OnChanges {
 
     const x0 = d3.scale.ordinal()
       .rangeRoundBands([0, calculatedWidth], 0.5, 0.5);
-    // .rangeRoundBands([0, width], .3);
-    // .paddingInner(0.4);
 
     const x1 = d3.scale.ordinal();
 
@@ -62,7 +48,6 @@ export class BarChartDirective implements OnChanges {
     const xAxis = d3.svg.axis()
       .scale(x0)
       .orient('bottom');
-    // .attr('translate', 'translate(' + tranlateDistance + ',0')
 
     const yAxis = d3.svg.axis()
       .scale(y)
@@ -96,7 +81,6 @@ export class BarChartDirective implements OnChanges {
       return d.label;
     }));
 
-    // x1.domain(options).rangeRoundBands([0, x0.rangeBand()]);
     x1.domain(options).rangeRoundBands([0, 100]);
     y.domain([0,
       d3.max(this.data, d => {
@@ -126,8 +110,6 @@ export class BarChartDirective implements OnChanges {
       .enter().append('g')
       .attr('class', 'rect')
       .attr('transform', function (d) { return 'translate(' + x0(d.label) + ',0)'; });
-    // .attr('transform', function (d) { tranlateDistance += 80; return 'translate(' + tranlateDistance + ',0)'; });
-
 
     const color = d3.scale.ordinal().range(['#5584FF']);
 
@@ -164,13 +146,11 @@ export class BarChartDirective implements OnChanges {
         return d.valores;
       })
       .enter().append('rect')
-      // .attr('width', (x1.rangeBand() - 3))
       .attr('width', '42')
       .attr('x', function (d) { return x1(d.name); })
       .attr('y', function (d) { return y(d.value); })
       .attr('value', function (d) { return d.name; })
       .attr('height', function (d) { return h - y(d.value); })
-      // .attr("d", function (d, i) { return this.rightRoundedRect(10 + 40 * i, 100 - d, 20, d, 5) })
       .style('fill', function (d) { return color(d.name); })
       .on('mouseover', function (d) {
         tooltip.transition().style('opacity', 1);

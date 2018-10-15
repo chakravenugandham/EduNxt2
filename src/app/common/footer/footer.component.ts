@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 import { Router, NavigationEnd } from '@angular/router';
+
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
+import { CommonService } from "../../common-services/common.service";
 
 @Component({
   selector: "app-footer",
@@ -16,10 +18,12 @@ export class FooterComponent implements OnInit {
   learnerDisplayFor: string;
   scoreComponent: string;
   _baseUrl;
+
   csvDownloadflag: boolean = false;
   refreshTime: Date;
 
-  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Router) private router: Router, ) {
+  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Router) private router: Router, private commonService: CommonService) {
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._baseUrl = event.url.replace(/\//g, '');
@@ -32,6 +36,7 @@ export class FooterComponent implements OnInit {
         }
       }
     });
+
   }
 
   refreshReportFn() {
@@ -102,6 +107,8 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.commonService.routeChanged.subscribe((route: string) => {
+      console.log(route);
+    })
   }
 }

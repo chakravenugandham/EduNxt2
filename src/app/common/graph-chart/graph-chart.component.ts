@@ -115,7 +115,6 @@ export class GraphChartComponent implements OnInit {
       .style("fill", function (d) { return color(d.name); })
 
       .on('mouseover', function (d) {
-        console.log(d);
         tooltip.transition().style('opacity', 1);
         tooltip.html(
           // '<div style=\'color:#0146F9\'>' +
@@ -142,7 +141,8 @@ export class GraphChartComponent implements OnInit {
     function wrap(text, width) {
       text.each(function () {
         let text = d3.select(this),
-          words = text.text().split(/\s+/).reverse(),
+          // words = text.text().split(/\s+/).reverse(),
+          words = text.text().split(/[ _]+/).reverse(),
           word,
           line = [],
           lineNumber = 0,

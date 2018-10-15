@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, OnChanges, Inject } from "@angular/core";
-import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
+import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
+import { CommonService } from "../../common-services/common.service";
 
 import * as jspdf from 'jspdf';
 
@@ -49,7 +50,7 @@ export class TimeFrameComponent implements OnInit {
   scoreComponent: string;
   csvDownloadflag: boolean = false;
 
-  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Router) private router: Router, @Inject(NgbModal) private modalService: NgbModal) {
+  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Router) private router: Router, @Inject(NgbModal) private acivatedRoute: ActivatedRoute, @Inject(NgbModal) private modalService: NgbModal, private commonService: CommonService) {
     this.dashboardService.refreshAPI.subscribe(result => {
       this.getAllCourses();
     });
@@ -73,6 +74,7 @@ export class TimeFrameComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this._baseUrl = event.url.replace(/\//g, '');
+        this.commonService.changeRoute(this._baseUrl);
         this.csvDownloadflag = (this._baseUrl === '' || this._baseUrl === 'LnD') ? false : true;
       }
     });
@@ -222,7 +224,6 @@ export class TimeFrameComponent implements OnInit {
     if (this.csvDownloadflag) {
       html2canvas(document.getElementById("dashboard_part_one")).then(canvas => {
         let dashboard_part_one = canvas.toDataURL('./');
-        console.log(canvas.width)
         pdf.addImage(dashboard_part_one, 'JPEG', 0, 0, 210, 280);
         pdf.save('EduNxtReport.pdf'); // Generated PDF  
       });

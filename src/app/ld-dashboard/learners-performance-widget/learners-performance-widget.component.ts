@@ -75,8 +75,8 @@ export class LearnersPerformanceWidgetComponent implements OnInit {
     let htmlTemp = document.getElementById("learner-performance");
     html2canvas(htmlTemp).then(canvas => {
       // Few necessary setting options  
-      let imgWidth = 208;
-      let pageHeight = 295;
+      let imgWidth = 200;
+      let pageHeight = 200;
       let imgHeight = canvas.height * imgWidth / canvas.width;
       let heightLeft = imgHeight;
 

@@ -12,7 +12,7 @@ import { UsersComponent } from "./users/users.component";
 import { UserstrainedComponent } from "./userstrained/userstrained.component";
 import { DonutChartDirective } from "../../directives/donut-chart.directive";
 import { HalfdonutchartDirective } from "../../directives/halfdonutchart.directive";
-import { Config, UsersDataComponent } from "../../ld-dashboard/common/users-data/users-data.component";
+import { Config, UsersDataComponent } from "../../common/users-data/users-data.component";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 

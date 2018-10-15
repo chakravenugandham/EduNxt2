@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 
 import { UsersComponent } from './users.component';
-import { Config, UsersDataComponent } from '../../../ld-dashboard/common/users-data/users-data.component';
+import { Config, UsersDataComponent } from '../../../common/users-data/users-data.component';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('UsersComponent', () => {

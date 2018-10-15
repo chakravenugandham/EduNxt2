@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Config } from "../../../ld-dashboard/common/users-data/users-data.component";
+import { Config } from "../../../common/users-data/users-data.component";
 
 @Component({
   selector: "app-learner-pacer",
@@ -14,7 +14,7 @@ export class LearnerPacerComponent implements OnInit {
   noDataFlag: boolean = false;
   engageUserChange: boolean = false;
 
-  constructor() {}
+  constructor() { }
 
   getLeanerPacerData() {
     this.percentageChange = 56;

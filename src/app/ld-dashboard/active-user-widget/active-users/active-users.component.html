@@ -38,8 +38,9 @@
     <span class="spinner_inside">No data found</span>
   </div>
 
-  <div class="line-block" (window:resize)="usersChartRender()">
-    <div id="activeUserGraph"></div>
+  <div class="line-block">
+    <!-- <div id="activeUserGraph"></div> -->
+    <app-linegraph [lineGraphData]="chartData"></app-linegraph>
     <div class="tool-tip">
       <table>
         <tr>

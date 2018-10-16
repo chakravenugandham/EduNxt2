@@ -36,7 +36,6 @@ export class CommonService {
   }
 
   changeRoute(route) {
-    console.log(route);
     this.routeChanged.emit(route);
   }
 

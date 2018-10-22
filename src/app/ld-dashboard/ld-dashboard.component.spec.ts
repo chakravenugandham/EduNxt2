@@ -49,7 +49,7 @@ import { OrgPerformanceFullviewComponent } from '../ld-dashboard/fullviews/org-p
 import { NotificationPerformanceFullviewComponent } from '../ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
 import { OrgInterestFullviewComponent } from '../ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 // import { GoogleChartsBaseService } from "../ld-dashboard/services/googleChartService";
-import { UsersDataComponent, Config } from '../ld-dashboard/common/users-data/users-data.component';
+import { UsersDataComponent, Config } from '../common/users-data/users-data.component';
 import { LdDashboardService } from "./services/ld-dashboard.service";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

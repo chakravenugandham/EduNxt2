@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { UsersDataComponent, Config } from "../../../ld-dashboard/common/users-data/users-data.component";
+import { UsersDataComponent, Config } from "../../../common/users-data/users-data.component";
 import { LdDashboardService } from "../../../ld-dashboard/services/ld-dashboard.service";
 
 @Component({

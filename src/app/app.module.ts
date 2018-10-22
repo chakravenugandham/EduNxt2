@@ -76,7 +76,7 @@ import { OrgPerformanceFullviewComponent } from './ld-dashboard/fullviews/org-pe
 import { NotificationPerformanceFullviewComponent } from './ld-dashboard/fullviews/notification-performance-fullview/notification-performance-fullview.component';
 import { OrgInterestFullviewComponent } from './ld-dashboard/fullviews/org-interest-fullview/org-interest-fullview.component';
 import { GoogleChartsBaseService } from './ld-dashboard/services/googleChartService';
-import { UsersDataComponent } from './ld-dashboard/common/users-data/users-data.component';
+import { UsersDataComponent } from './common/users-data/users-data.component';
 import { HalfdonutchartDirective } from './directives/halfdonutchart.directive';
 import { DonutChartDirective } from './directives/donut-chart.directive';
 import { BarChartDirective } from './directives/bar-chart.directive';
@@ -120,6 +120,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GraphChartComponent } from './common/graph-chart/graph-chart.component';
 import { TextTransformPipe } from '../app/shared/text-transform.pipe';
 import { FullDonutDirective } from './directives/full-donut.directive';
+import { LinegraphComponent } from './common/linegraph/linegraph.component';
 
 @NgModule({
   declarations: [
@@ -214,7 +215,8 @@ import { FullDonutDirective } from './directives/full-donut.directive';
     SpinnerComponent,
     GraphChartComponent,
     TextTransformPipe,
-    FullDonutDirective
+    FullDonutDirective,
+    LinegraphComponent
   ],
   imports: [
     BrowserModule,

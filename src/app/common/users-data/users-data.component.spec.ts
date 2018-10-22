@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpinnerComponent } from "../../../common/spinner/spinner.component";
-import { CustomNumberPipe } from "../../../../app/shared/custom-number.pipe";
+import { SpinnerComponent } from "../../common/spinner/spinner.component";
+import { CustomNumberPipe } from "../../../app/shared/custom-number.pipe";
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CookieService } from 'ngx-cookie-service';
 

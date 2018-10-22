@@ -66,7 +66,7 @@ export class LocationComponent implements OnInit {
         for (let i in this.responseData) {
           this.someData.push([
             this.responseData[i]['location'],
-            Number(this.responseData[i]['learnerCount'])
+            +(this.responseData[i]['learnerCount'])
           ]);
         }
 

@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
+
 import { LdDashboardService } from "../services/ld-dashboard.service";
 
 import { _ } from "underscore";
@@ -11,9 +13,10 @@ import * as jspdf from 'jspdf';
   templateUrl: "./scores-distribution-widget.component.html",
   styleUrls: ["./scores-distribution-widget.component.scss"]
 })
-export class ScoresDistributionWidgetComponent implements OnInit {
+export class ScoresDistributionWidgetComponent implements OnInit, OnDestroy {
 
   tooltipText: string;
+  dataSubscription: Subscription;
 
   //filters data
   filtersData = {
@@ -94,6 +97,8 @@ export class ScoresDistributionWidgetComponent implements OnInit {
 
   downloadPdf() {
     let htmlTemp = document.getElementById("score-distribution");
+    console.log(htmlTemp);
+
     html2canvas(htmlTemp).then(canvas => {
       // Few necessary setting options  
       let imgWidth = 208;
@@ -116,7 +121,7 @@ export class ScoresDistributionWidgetComponent implements OnInit {
     this.responseData = [];
     this.spinner_loader = true;
 
-    this.dashboardService
+    this.dataSubscription = this.dashboardService
       .getScoresDistrubution(this.filtersData.currentModule, this.filtersData.appliedFilters).subscribe((response: any) => {
         this.responseData = response.data;
 
@@ -137,5 +142,9 @@ export class ScoresDistributionWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.testScoreFn();
+  }
+
+  ngOnDestroy() {
+    this.dataSubscription.unsubscribe();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LdDashboardService } from '../services/ld-dashboard.service';
 import { CommonService } from '../../common-services/common.service';
 
@@ -6,15 +6,17 @@ import { _ } from 'underscore';
 
 import html2canvas from 'html2canvas';
 import * as jspdf from 'jspdf';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-org-performance-widget',
   templateUrl: './org-performance-widget.component.html',
   styleUrls: ['./org-performance-widget.component.scss']
 })
-export class OrgPerformanceWidgetComponent implements OnInit {
+export class OrgPerformanceWidgetComponent implements OnInit, OnDestroy {
 
   tooltipText: string;
+  responseSubscriber: Subscription;
 
   sortOrder = 'testPerformance';
   order = 'desc';
@@ -144,12 +146,14 @@ export class OrgPerformanceWidgetComponent implements OnInit {
   getDataFromService() {
     this.spinner_loader = true;
     this.responseData = [];
-    this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order).subscribe((response: any) => {
-      this.responseData = this.displayData = this.actualResponseData = response.data;
+    this.responseSubscriber = this.dashboardService.getPerformanceDetails(this.searchFilterData, this.searchString, this.pagination, this.sortOrder, this.order).subscribe((response: any) => {
+      this.responseData = this.displayData = this.actualResponseData = [...response.data];
       this.constructNewArrayTwo();
       this.spinner_loader = false;
       this.noDataFlag = this.responseData.length === 0 ? true : false;
     });
+
+    // this.responseSubscriber.unsubscribe();
   }
 
   constructNewArrayTwo() {
@@ -199,5 +203,9 @@ export class OrgPerformanceWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.learnersFn();
+  }
+
+  ngOnDestroy() {
+    this.responseSubscriber.unsubscribe();
   }
 }

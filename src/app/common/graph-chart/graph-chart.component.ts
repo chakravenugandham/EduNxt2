@@ -75,16 +75,26 @@ export class GraphChartComponent implements OnInit {
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + (height) + ")")
+      // .style('stroke', '#707070')
+      .style('stroke-width', '2')
       .call(xAxis)
       .selectAll(".tick text")
+      .style('font-size', '10px')
+      .style('color', '#a9a9a9')
       .call(wrap, x0.rangeBand());
+
+    svg
+      .select('path')
+      .style('stroke-width', '2');
 
     svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
       .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6);
+      .attr("y", 6)
+      .style('font-size', '10px')
+      .style('stroke-width', '0');
 
     let bar = svg.selectAll(".bar")
       .data(this.dataset)
@@ -131,8 +141,8 @@ export class GraphChartComponent implements OnInit {
 
 
     let yLabelName = this.graphName.charAt(0).toUpperCase() + this.graphName.slice(1);
-    svg
-      .append('text')
+
+    svg.append('text')
       .text(yLabelName)
       .attr('transform', 'rotate(-90),translate( ' + height / 4 + ',-50 )')
       .attr('x', -(height / 2))

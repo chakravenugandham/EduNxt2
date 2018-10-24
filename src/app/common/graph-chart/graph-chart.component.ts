@@ -46,7 +46,7 @@ export class GraphChartComponent implements OnInit {
       .attr("width", width + (margin * 2))
       .attr("height", height + (100 * 1))
       .append("g")
-      .attr("transform", "translate(" + margin + "," + (margin - 20) + ")");
+      .attr("transform", "translate(" + (margin - 40) + "," + (margin - 20) + ")");
     let x0 = d3.scale.ordinal()
       .rangeRoundBands([0, width], 0.5, 0.5);
     let x1 = d3.scale.ordinal();
@@ -87,14 +87,14 @@ export class GraphChartComponent implements OnInit {
       .select('path')
       .style('stroke-width', '2');
 
-    svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-      .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .style('font-size', '10px')
-      .style('stroke-width', '0');
+    // svg.append("g")
+    //   .attr("class", "y axis")
+    //   .call(yAxis)
+    //   .append("text")
+    //   .attr("transform", "rotate(-90)")
+    //   .attr("y", 6)
+    //   .style('font-size', '10px')
+    //   .style('stroke-width', '0');
 
     let bar = svg.selectAll(".bar")
       .data(this.dataset)
@@ -140,13 +140,13 @@ export class GraphChartComponent implements OnInit {
       });
 
 
-    let yLabelName = this.graphName.charAt(0).toUpperCase() + this.graphName.slice(1);
+    // let yLabelName = this.graphName.charAt(0).toUpperCase() + this.graphName.slice(1);
 
-    svg.append('text')
-      .text(yLabelName)
-      .attr('transform', 'rotate(-90),translate( ' + height / 4 + ',-50 )')
-      .attr('x', -(height / 2))
-      .attr('y', 14);
+    // svg.append('text')
+    //   .text(yLabelName)
+    //   .attr('transform', 'rotate(-90),translate( ' + height / 4 + ',-50 )')
+    //   .attr('x', -(height / 2))
+    //   .attr('y', 14);
 
     function wrap(text, width) {
       text.each(function () {

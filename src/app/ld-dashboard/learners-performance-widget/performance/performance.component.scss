@@ -33,9 +33,18 @@
   stroke-width: 4;
 }
 
-.actual-performance{
+.actual-performance {
   color: #5584FF;
 }
-.expected-performance{
+
+.expected-performance {
   color: #ffd630;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+#y-axis {
+  float: left;
 }

@@ -1,27 +1,27 @@
-.graph-badges .col-md:nth-child(1) i {
-  color: #ffd630;
-  background-color: #ffd630;
-}
+// .graph-badges .col-md:nth-child(1) i {
+//   color: #ffd630;
+//   background-color: #ffd630;
+// }
 
-.graph-badges .col-md:nth-child(2) i {
-  color: #f77f6c;
-  background-color: #f77f6c;
-}
+// .graph-badges .col-md:nth-child(2) i {
+//   color: #f77f6c;
+//   background-color: #f77f6c;
+// }
 
-.graph-badges .col-md:nth-child(3) i {
-  color: #5584ff;
-  background-color: #5584ff;
-}
+// .graph-badges .col-md:nth-child(3) i {
+//   color: #5584ff;
+//   background-color: #5584ff;
+// }
 
-.stop-left {
-  stop-color: #3f51b5;
-  /* Indigo */
-}
+// .stop-left {
+//   stop-color: #3f51b5;
+//   /* Indigo */
+// }
 
-.stop-right {
-  stop-color: #009688;
-  /* Teal */
-}
+// .stop-right {
+//   stop-color: #009688;
+//   /* Teal */
+// }
 
 .filled {
   fill: url(#mainGradient);
@@ -39,4 +39,12 @@
 
 .expected-progress {
   color: #ffd630;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+#y-axis-one {
+  float: left;
 }

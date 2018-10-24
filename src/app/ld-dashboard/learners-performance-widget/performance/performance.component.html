@@ -1,9 +1,10 @@
 <div>
-  <div class="font-weight-bold">
+  <div class="font-weight-bold m-b-10">
     View Performance across courses
   </div>
 
   <!-- <div class="bar-chart-graph" appBarChart [data]="barChartData" [getTab]="getTab"></div> -->
+  <span id="y-axis"></span>
   <graph-chart [dataset]="barChartData" [graphName]="getTab"></graph-chart>
 
   <div class="row graph-badges">

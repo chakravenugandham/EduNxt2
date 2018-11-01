@@ -122,6 +122,9 @@ import { TextTransformPipe } from '../app/shared/text-transform.pipe';
 import { FullDonutDirective } from './directives/full-donut.directive';
 import { LinegraphComponent } from './common/linegraph/linegraph.component';
 
+import { TokenInterceptor } from './common-services/common.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -231,7 +234,11 @@ import { LinegraphComponent } from './common/linegraph/linegraph.component';
     ClickOutsideModule,
     ReactiveFormsModule
   ],
-  providers: [GoogleChartsBaseService, CookieService],
+  providers: [GoogleChartsBaseService, CookieService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

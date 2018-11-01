@@ -39,10 +39,10 @@ describe('ActiveUsersComponent', () => {
     expect(component.getActiveUsersData).toBeTruthy();
   });
 
-  it('should create usersChartRender', () => {
-    component.usersChartRender();
-    expect(component.usersChartRender).toBeTruthy();
-  });
+  // it('should create usersChartRender', () => {
+  //   component.usersChartRender();
+  //   expect(component.usersChartRender).toBeTruthy();
+  // });
 
   // it("should call getActiveUsersData and return list of users", async(() => {
   //   let  response: [];

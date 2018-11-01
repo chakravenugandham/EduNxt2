@@ -40,8 +40,11 @@ export class GraphChartComponent implements OnInit {
         + "z";
     }
 
+    const totalWidth = d3.select('#barNewChart').node().getBoundingClientRect().width - 50;
+    console.log(totalWidth);
     let margin = 50, height = 220, p = 50,
-      width = this.dataset.length > 5 ? 500 + 104 * (this.dataset.length - 6) : 500;
+      width = this.dataset.length > 6 ? totalWidth + 100 * (this.dataset.length - 6) : totalWidth;
+
     let svg = d3.select("#barNewChart").append("svg")
       .attr("width", width + (margin * 2))
       .attr("height", height + (100 * 1))

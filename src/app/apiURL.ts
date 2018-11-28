@@ -34,6 +34,8 @@ export class APIURL {
   public static EMAIL_SERVICE = "email";
   public static GET_EMAIL = "get-person-email";
   public static GET_TIME_STAMP = "get-report-generated-time";
+  public static ACTIVE_USERS_DETAILS = "active-users-details";
+  public static ACTIVE_USERS_SOURCE_DETAILS = "active-users-source-details"
 
 
   //Org-Head apis

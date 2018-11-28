@@ -1,0 +1,109 @@
+// badge colors
+.aheadOfSchedule,
+.excelling {
+  color: #23b14d;
+}
+
+.onTrack,
+.passing {
+  color: #5584ff;
+}
+
+.behindSchedule,
+.struggling {
+  color: #ffd630;
+}
+
+.haveNotStarted,
+.perfHaveNotStarted {
+  color: #f77f6c;
+}
+
+.paceDataSelect {
+  margin-left: 14px;
+  padding: 4px 20px 4px 4px;
+  border-radius: 3px;
+  width: auto;
+}
+
+// .fullview-heading {
+//   float: left;
+//   margin-bottom: 20px;
+// }
+
+.filterComponent {
+  position: relative !important;
+}
+
+.search-org-user input::placeholder {
+  color: #5584ff;
+}
+
+.search-org-user input::-ms-input-placeholder {
+  color: #5584ff;
+}
+
+.search-org-user input::-ms-input-placeholder {
+  color: #5584ff;
+}
+
+.searchList {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.search-org-user {
+  position: relative;
+
+  input {
+    padding: 6px 12px;
+    color: #5584ff;
+    border-bottom: 1px solid #5584ff;
+    width: 195px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+
+    i {
+      color: #2196f3a8;
+    }
+  }
+}
+
+.search-org-user {
+  position: relative;
+
+  input :focus {
+    padding: 6px 12px;
+    color: #5584ff;
+    border-bottom: 1px solid #5584ff;
+    width: 195px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+table {
+
+  th,
+  td {
+    font-size: 11px;
+    width: 11%;
+  }
+
+  .userName {
+    font-weight: 600;
+  }
+}
+
+.spinner_loading {
+  position: initial;
+  height: auto;
+}

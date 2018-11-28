@@ -64,6 +64,7 @@ import { OrgInterestWidgetComponent } from './ld-dashboard/org-interest-widget/o
 import { OrgInterestComponent } from './ld-dashboard/org-interest-widget/org-interest/org-interest.component';
 import { AttentionNeedWidgetComponent } from './ld-dashboard/attention-need-widget/attention-need-widget.component';
 import { LearnerTrackFullviewComponent } from './ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component';
+import { ActiveUserFullviewComponent } from './ld-dashboard/fullviews/active-users-fullview/active-users-fullview.component';
 import { MpDatepickerRangeComponent } from './common/mp-datepicker-range/mp-datepicker-range.component';
 import { ContentConsumptionFullviewComponent } from './ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component';
 import { FooterComponent } from './common/footer/footer.component';
@@ -165,6 +166,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     OrgInterestComponent,
     AttentionNeedWidgetComponent,
     LearnerTrackFullviewComponent,
+    ActiveUserFullviewComponent,
     MpDatepickerRangeComponent,
     ContentConsumptionFullviewComponent,
     FooterComponent,

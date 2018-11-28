@@ -2,13 +2,18 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from 'rxjs';
+import { map } from "rxjs/operators";
+// import 'rxjs/Rx';
+
 import { APIURL } from '../../apiURL';
 
 import { CookieService } from 'ngx-cookie-service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class LdDashboardService implements OnInit {
   dateFilterObj = {
     start_date: '',
@@ -171,7 +176,13 @@ export class LdDashboardService implements OnInit {
 
   getCoursesProgramData() {
     const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN + this.setDateObj;
-    return this.http.get(url, { headers: this.headers });
+    return this.http.get(url, { headers: this.headers })
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data
+        }
+      )
   }
 
   // getProgramData() {
@@ -252,6 +263,20 @@ export class LdDashboardService implements OnInit {
     const url = this.baseURL + APIURL.LEARNER_PACE_PERFORMANCE_DETAILS + this.setDateObj + this.program_course + '&displayFor=' + displayfor + '&type=' + componentName + '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm + '&page=' + pagination.page + '&limit=' + pagination.limitTo + '&sortBy=' + tracksortName + '&order=' + sort;
     return this.http.post(url, filterbody, { headers: this.headers });
   }
+
+  // learner-track widget & view details API
+
+  getActiveUserSourceDetails(filterbody) {
+    const url = this.baseURL + APIURL.ACTIVE_USERS_SOURCE_DETAILS + this.setDateObj + this.program_course;
+    return this.http.post(url, filterbody, { headers: this.headers });
+  }
+
+  //Active User Detailed View
+  getActiveUserDetails(componentName, displayfor, searchFilterData, searchTerm, filterbody, pagination, tracksortName, sort) {
+    const url = this.baseURL + APIURL.ACTIVE_USERS_DETAILS + this.setDateObj + this.program_course + '&displayFor=' + displayfor + '&type=' + componentName + '&searchBy=' + searchFilterData.searchBy + '&searchTerm=' + searchTerm + '&page=' + pagination.page + '&limit=' + pagination.limitTo + '&sortBy=' + tracksortName + '&order=' + sort;
+    return this.http.post(url, filterbody, { headers: this.headers });
+  }
+
 
   // learner-performance & view details API
   getLearnerPerformanceData(tab) {

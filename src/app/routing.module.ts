@@ -10,6 +10,7 @@ import { OrgHeadComponent } from "./org-head/org-head.component";
 import { LearnerComponent } from "./learner/learner.component";
 
 import { LearnerTrackFullviewComponent } from "./ld-dashboard/fullviews/learner-track-fullview/learner-track-fullview.component";
+import { ActiveUserFullviewComponent } from "./ld-dashboard/fullviews/active-users-fullview/active-users-fullview.component";
 import { ContentConsumptionFullviewComponent } from "./ld-dashboard/fullviews/content-consumption-fullview/content-consumption-fullview.component";
 import { LearnerPerformanceFullviewComponent } from "./ld-dashboard/fullviews/learner-performance-fullview/learner-performance-fullview.component";
 import { ScoresDistributionFullviewComponent } from "./ld-dashboard/fullviews/scores-distribution-fullview/scores-distribution-fullview.component";
@@ -50,6 +51,11 @@ const routes: Routes = [
       {
         path: "learnerTrackFullView",
         component: LearnerTrackFullviewComponent,
+        // canActivate: [AuthGuard]
+      },
+      {
+        path: "activeUsersFullView",
+        component: ActiveUserFullviewComponent,
         // canActivate: [AuthGuard]
       },
       {

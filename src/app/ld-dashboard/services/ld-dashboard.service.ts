@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from 'rxjs';
-import { map } from "rxjs/operators";
+// import { map } from "rxjs/operators";
 // import 'rxjs/Rx';
 
 import { APIURL } from '../../apiURL';
@@ -176,13 +176,13 @@ export class LdDashboardService implements OnInit {
 
   getCoursesProgramData() {
     const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN + this.setDateObj;
-    return this.http.get(url, { headers: this.headers })
-      .map(
-        (response: Response) => {
-          const data = response.json();
-          return data
-        }
-      )
+    return this.http.get(url, { headers: this.headers });
+      // .map(
+      //   (response: Response) => {
+      //     const data = response.json();
+      //     return data
+      //   }
+      // )
   }
 
   // getProgramData() {

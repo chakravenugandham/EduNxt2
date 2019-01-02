@@ -7,7 +7,7 @@
       <li class="list-inline-item">
         <app-mp-datepicker-range class="calender-font"></app-mp-datepicker-range>
       </li>
-      <li class="list-inline-item selectCourse">
+      <!-- <li class="list-inline-item selectCourse">
         <span class="labelName">
           <b>Course</b>
         </span>
@@ -15,7 +15,7 @@
           <option style="color: #5584ff" value="All Courses">All Courses</option>
           <option class="course-item" *ngFor="let course of coursesData" value="{{course.courseName}}">{{course.courseName}}</option>
         </select>
-      </li>
+      </li> -->
     </div>
     <div class="col-md-5 col-12 m-t-7">
       <ul class="list-inline report-menu">
@@ -32,7 +32,8 @@
             <img src="../../assets/images/mail.png"> Email this report</span>
         </li> -->
 
-        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Download this report">
+        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom"
+          title="Download this report">
           <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
             <img src="../../assets/images/download.png"> Download this report
           </span>
@@ -51,7 +52,7 @@
     </div>
   </div>
 
-  <!-- <div class="course-selection">
+  <div class="course-selection">
     <ul class="list-inline">
       <li class="list-inline-item selectCourse">
         <span class="labelName">
@@ -96,7 +97,7 @@
         <button class=" btn-primary" (click)="applyPrograms()">Apply</button>
       </li>
     </ul>
-  </div> -->
+  </div>
 </div>
 
 <ng-template #followUpContent let-c="close" let-d="dismiss">

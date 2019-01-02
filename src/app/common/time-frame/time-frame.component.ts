@@ -1,13 +1,20 @@
-import { Component, OnInit, Output, EventEmitter, OnChanges, Inject } from "@angular/core";
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnChanges,
+  Inject
+} from "@angular/core";
+import { Router, NavigationEnd, ActivatedRoute } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 import { LdDashboardService } from "../../ld-dashboard/services/ld-dashboard.service";
 import { CommonService } from "../../common-services/common.service";
 
-import * as jspdf from 'jspdf';
+import * as jspdf from "jspdf";
 
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 
 @Component({
   selector: "app-time-frame",
@@ -36,13 +43,13 @@ export class TimeFrameComponent implements OnInit {
     courseId: 0,
     batchId: 0,
     sectionId: 0
-  }
+  };
 
   emailData = {
     to: "",
     subject: "manipal user",
     text: ""
-  }
+  };
   myStorage = window.localStorage;
   orgPerformanceComponentName: string;
   learnerTrackComponentName: string;
@@ -50,17 +57,23 @@ export class TimeFrameComponent implements OnInit {
   scoreComponent: string;
   csvDownloadflag: boolean = false;
 
-  constructor(@Inject(LdDashboardService) private dashboardService: LdDashboardService, @Inject(Router) private router: Router, @Inject(NgbModal) private acivatedRoute: ActivatedRoute, @Inject(NgbModal) private modalService: NgbModal, private commonService: CommonService) {
+  constructor(
+    @Inject(LdDashboardService) private dashboardService: LdDashboardService,
+    @Inject(Router) private router: Router,
+    @Inject(NgbModal) private acivatedRoute: ActivatedRoute,
+    @Inject(NgbModal) private modalService: NgbModal,
+    private commonService: CommonService
+  ) {
     this.dashboardService.refreshAPI.subscribe(result => {
-      this.getAllCourses();
+      // this.getAllCourses();
     });
 
     this.dashboardService.refreshReportAPI.subscribe(result => {
-      this.getAllCourses();
+      // this.getAllCourses();
     });
 
     this.dashboardService.dateChangeAPI.subscribe(result => {
-      this.getAllCourses();
+      // this.getAllCourses();
     });
 
     this.dashboardService.tenantNameAPI.subscribe(result => {
@@ -68,33 +81,33 @@ export class TimeFrameComponent implements OnInit {
       // this.programObj.programId = 0;
       // this.programObj.courseId = 0;
       // this.dashboardService.courseAndProgram(this.programObj);
-      this.getAllCourses();
+      // this.getAllCourses();
     });
 
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this._baseUrl = event.url.replace(/\//g, '');
+        this._baseUrl = event.url.replace(/\//g, "");
         this.commonService.changeRoute(this._baseUrl);
-        this.csvDownloadflag = (this._baseUrl === '' || this._baseUrl === 'LnD') ? false : true;
+        this.csvDownloadflag =
+          this._baseUrl === "" || this._baseUrl === "LnD" ? false : true;
       }
     });
   }
 
   apiUrl = "learner-leaderboard";
 
-  getAllCourses() {
-    // this.coursesData = [];
-    this.dashboardService.getCoursesProgramData().subscribe((res: any) => {
-      this.coursesData = res.data;
-    });
-  }
+  // getAllCourses() {
+  //   // this.coursesData = [];
+  //   this.dashboardService.getCoursesProgramData().subscribe((res: any) => {
+  //     this.coursesData = res.data;
+  //   });
+  // }
 
   courseSelected(courseName) {
     if (courseName == "All Courses") {
       this.programObj.programId = 0;
       this.programObj.courseId = 0;
-    }
-    else {
+    } else {
       for (let i in this.coursesData) {
         if (courseName == this.coursesData[i].courseName) {
           this.programObj.programId = this.coursesData[i].programId;
@@ -113,66 +126,67 @@ export class TimeFrameComponent implements OnInit {
         this.downloadLink = res.data;
         window.open(res.data, "_self");
       });
-    }
-
-    else if (base == "learnerTrackFullView") {
-      this.learnerTrackComponentName = this.myStorage.getItem('trackComponent');
-      this.learnerDisplayFor = this.myStorage.getItem('trackDisplayFor');
-      this.dashboardService.getLearnerTrackDetailsCsv(this.learnerTrackComponentName, this.learnerDisplayFor).subscribe((res: any) => {
-        this.downloadLink = res.data;
-        window.open(res.data, "_self");
-      });
-    }
-
-    else if (base == "scoreDistributionFullView") {
-      this.scoreComponent = this.myStorage.getItem('scoreComponent');
-      if (this.scoreComponent === 'test') {
-        this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+    } else if (base == "learnerTrackFullView") {
+      this.learnerTrackComponentName = this.myStorage.getItem("trackComponent");
+      this.learnerDisplayFor = this.myStorage.getItem("trackDisplayFor");
+      this.dashboardService
+        .getLearnerTrackDetailsCsv(
+          this.learnerTrackComponentName,
+          this.learnerDisplayFor
+        )
+        .subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");
         });
+    } else if (base == "scoreDistributionFullView") {
+      this.scoreComponent = this.myStorage.getItem("scoreComponent");
+      if (this.scoreComponent === "test") {
+        this.dashboardService
+          .getScoresDetailsCsv(this.scoreComponent)
+          .subscribe((res: any) => {
+            this.downloadLink = res.data;
+            window.open(res.data, "_self");
+          });
       }
-      else if (this.scoreComponent === 'quiz') {
-        this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
-          this.downloadLink = res.data;
-          window.open(res.data, "_self");
-        });
-      }
-      else if (this.scoreComponent === 'assignment') {
-        this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
-          this.downloadLink = res.data;
-          window.open(res.data, "_self");
-        });
-      }
-    }
-
-    else if (base == "orgPerformanceFullView") {
-      this.orgPerformanceComponentName = this.myStorage.getItem('orgPerformaModule');
-      if (this.orgPerformanceComponentName === 'teams') {
+      // else if (this.scoreComponent === 'quiz') {
+      //   this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+      //     this.downloadLink = res.data;
+      //     window.open(res.data, "_self");
+      //   });
+      // }
+      // else if (this.scoreComponent === 'assignment') {
+      //   this.dashboardService.getScoresDetailsCsv(this.scoreComponent).subscribe((res: any) => {
+      //     this.downloadLink = res.data;
+      //     window.open(res.data, "_self");
+      //   });
+      // }
+    } else if (base == "orgPerformanceFullView") {
+      this.orgPerformanceComponentName = this.myStorage.getItem(
+        "orgPerformaModule"
+      );
+      if (this.orgPerformanceComponentName === "teams") {
         this.dashboardService.getTeamDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");
         });
-      }
-      else if (this.orgPerformanceComponentName === 'trainers') {
+      } else if (this.orgPerformanceComponentName === "trainers") {
         this.dashboardService.getTrainersDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");
         });
-      }
-      else if (this.orgPerformanceComponentName === 'learners') {
+      } else if (this.orgPerformanceComponentName === "learners") {
         this.dashboardService.getLearnerDataCsv().subscribe((res: any) => {
           this.downloadLink = res.data;
           window.open(res.data, "_self");
         });
       }
-    }
-
-    else if (base == "orgInterestFullView") {
-      this.dashboardService.getOrgInterestDetailsDataCsv().subscribe((res: any) => {
-        this.downloadLink = res.data;
-        window.open(res.data, "_self");
-      });
+    } else if (base == "orgInterestFullView") {
+      this.dashboardService
+        .getOrgInterestDetailsDataCsv()
+        .subscribe((res: any) => {
+          this.downloadLink = res.data;
+          window.open(res.data, "_self");
+        });
     }
   }
 
@@ -198,42 +212,49 @@ export class TimeFrameComponent implements OnInit {
   }
 
   sendEmail() {
-    this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
-    });
+    this.dashboardService
+      .emailReportService(this.emailData)
+      .subscribe((response: any) => {});
   }
 
   downloadPdf() {
-
-    // Few necessary setting options  
-    let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+    // Few necessary setting options
+    let pdf = new jspdf("p", "mm", "a4"); // A4 size page of PDF
 
     if (!this.csvDownloadflag) {
-      html2canvas(document.getElementById("dashboard_part_one")).then(canvas => {
-        let dashboard_part_one = canvas.toDataURL('./');
-        pdf.addImage(dashboard_part_one, 'JPEG', 0, 0, 210, 280);
+      html2canvas(document.getElementById("dashboard_part_one")).then(
+        canvas => {
+          let dashboard_part_one = canvas.toDataURL("./");
+          pdf.addImage(dashboard_part_one, "JPEG", 0, 0, 210, 280);
 
-        html2canvas(document.getElementById("dashboard_part_two")).then(canvas => {
-          let dashboard_part_two = canvas.toDataURL('./');
-          pdf.addPage();
-          pdf.addImage(dashboard_part_two, 'JPEG', 0, 0, 210, 210);
-          pdf.save('EduNxtReport.pdf'); // Generated PDF  
-        });
-      });
+          html2canvas(document.getElementById("dashboard_part_two")).then(
+            canvas => {
+              let dashboard_part_two = canvas.toDataURL("./");
+              pdf.addPage();
+              pdf.addImage(dashboard_part_two, "JPEG", 0, 0, 210, 210);
+              pdf.save("EduNxtReport.pdf"); // Generated PDF
+            }
+          );
+        }
+      );
     }
 
     if (this.csvDownloadflag) {
-      html2canvas(document.getElementById("dashboard_part_one")).then(canvas => {
-        let dashboard_part_one = canvas.toDataURL('./');
-        pdf.addImage(dashboard_part_one, 'JPEG', 0, 0, 210, 280);
-        pdf.save('EduNxtReport.pdf'); // Generated PDF  
-      });
+      html2canvas(document.getElementById("dashboard_part_one")).then(
+        canvas => {
+          let dashboard_part_one = canvas.toDataURL("./");
+          pdf.addImage(dashboard_part_one, "JPEG", 0, 0, 210, 280);
+          pdf.save("EduNxtReport.pdf"); // Generated PDF
+        }
+      );
     }
-
   }
 
   emailReport() {
     if (document.getElementById("screenToCaputre") != null) {
-      this.emailData.text = document.getElementById("screenToCaputre").innerHTML;
+      this.emailData.text = document.getElementById(
+        "screenToCaputre"
+      ).innerHTML;
     }
 
     // this.dashboardService.emailReportService(this.emailData).subscribe((response: any) => {
@@ -241,11 +262,11 @@ export class TimeFrameComponent implements OnInit {
     // });
   }
 
-  // getPrograms() {
-  //   this.dashboardService.getProgramData().subscribe((res: any) => {
-  //     this.programsData = res.data;
-  //   });
-  // }
+  getPrograms() {
+    this.dashboardService.getProgramData().subscribe((res: any) => {
+      this.programsData = res.data;
+    });
+  }
 
   // getCourses(programId) {
   //   this.dashboardService.getCoursesData(programId).subscribe((res: any) => {
@@ -304,11 +325,10 @@ export class TimeFrameComponent implements OnInit {
     this.filterEvent.emit(courseId);
   }
 
-
   ngOnInit() {
     //this.getDataFromService();
     //this.csvFormatFn();
-    this.getAllCourses();
+    // this.getAllCourses();
+    this.getPrograms();
   }
 }
-

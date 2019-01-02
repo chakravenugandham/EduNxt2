@@ -174,36 +174,30 @@ export class LdDashboardService implements OnInit {
 
   // courses dropdown
 
-  getCoursesProgramData() {
-    const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN + this.setDateObj;
+  // getCoursesProgramData() {
+  //   const url = this.baseURL + APIURL.COURSES_PROGRAM_DROPDOWN + this.setDateObj;
+  //   return this.http.get(url, { headers: this.headers });
+  // }
+
+  getProgramData() {
+    let url = this.baseURL + APIURL.PROGRAM_DROPDOWN + this.setDateObj;
     return this.http.get(url, { headers: this.headers });
-      // .map(
-      //   (response: Response) => {
-      //     const data = response.json();
-      //     return data
-      //   }
-      // )
   }
 
-  // getProgramData() {
-  //   let url = this.baseURL + APIURL.PROGRAM_DROPDOWN;
-  //   return this.http.get(url, { headers: this.headers });
-  // }
+  getCoursesData(programId) {
+    let url = this.baseURL + APIURL.COURSES_DROPDOWN + "?programId=" + programId;
+    return this.http.get(url, { headers: this.headers });
+  }
 
-  // getCoursesData(programId) {
-  //   let url = this.baseURL + APIURL.COURSES_DROPDOWN + "?programId=" + programId;
-  //   return this.http.get(url, { headers: this.headers });
-  // }
+  getBatchesData(programId, courseId) {
+    let url = this.baseURL + APIURL.BATCHES_DROPDOWN + "?programId=" + programId + "&courseId" + courseId;
+    return this.http.get(url, { headers: this.headers });
+  }
 
-  // getBatchesData(programId, courseId) {
-  //   let url = this.baseURL + APIURL.BATCHES_DROPDOWN + "?programId=" + programId + "&courseId" + courseId;
-  //   return this.http.get(url, { headers: this.headers });
-  // }
-
-  // getSectionsData(programId, courseId, batchId) {
-  //   let url = this.baseURL + APIURL.SECTIONS_DROPDOWN + "?programId=" + programId + "&courseId" + courseId + "&batch=" + batchId + this.setDateObj;
-  //   return this.http.get(url, { headers: this.headers });
-  // }
+  getSectionsData(programId, courseId, batchId) {
+    let url = this.baseURL + APIURL.SECTIONS_DROPDOWN + "?programId=" + programId + "&courseId" + courseId + "&batch=" + batchId + this.setDateObj;
+    return this.http.get(url, { headers: this.headers });
+  }
 
   getActiveUsersWidgetData() {
     const url = this.baseURL + APIURL.ACTIVE_USERS + this.setDateObj + this.program_course;

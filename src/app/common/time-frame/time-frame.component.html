@@ -1,13 +1,13 @@
 <div class="time-frame">
-  <div class="row select-time-frame">
-    <div class="col-md-7 col-12">
-      <li class="list-inline-item select-time-frame">
-        <b> Select a Time Frame </b>
-      </li>
-      <li class="list-inline-item">
-        <app-mp-datepicker-range class="calender-font"></app-mp-datepicker-range>
-      </li>
-      <!-- <li class="list-inline-item selectCourse">
+    <div class="row select-time-frame">
+        <div class="col-md-7 col-12">
+            <li class="list-inline-item select-time-frame">
+                <b> Select a Time Frame </b>
+            </li>
+            <li class="list-inline-item">
+                <app-mp-datepicker-range class="calender-font"></app-mp-datepicker-range>
+            </li>
+            <!-- <li class="list-inline-item selectCourse">
         <span class="labelName">
           <b>Course</b>
         </span>
@@ -16,116 +16,115 @@
           <option class="course-item" *ngFor="let course of coursesData" value="{{course.courseName}}">{{course.courseName}}</option>
         </select>
       </li> -->
-    </div>
-    <div class="col-md-5 col-12 m-t-7">
-      <ul class="list-inline report-menu">
+        </div>
+        <div class="col-md-5 col-12 m-t-7">
+            <ul class="list-inline report-menu">
 
-        <!-- <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Save this view">
+                <!-- <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Save this view">
           <span>
             <img src="../../assets/images/save.png">
           </span>
           <span class="font-color">Save this view</span>
         </li> -->
 
-        <!-- <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Email this report">
+                <!-- <li class="list-inline-item cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Email this report">
           <span (click)="open(followUpContent)">
             <img src="../../assets/images/mail.png"> Email this report</span>
         </li> -->
 
-        <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom"
-          title="Download this report">
-          <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
-            <img src="../../assets/images/download.png"> Download this report
-          </span>
-          <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu-items">
-            <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
-              <img src="../../assets/images/download.png">
-              <span>Download PDF</span>
-            </li>
-            <li class="list-inline-item cursor-pointer" *ngIf="csvDownloadflag" (click)="csvFormatFn()">
-              <img src="../../assets/images/download.png">
-              <span>Download CSV</span>
-            </li>
-          </ul>
-        </li>
-      </ul>
+                <li ngbDropdown class="list-inline-item cursor-pointer d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Download this report">
+                    <span class="font-color" id="dropdownBasic1" ngbDropdownToggle>
+                        <img src="../../assets/images/download.png"> Download this report
+                    </span>
+                    <ul ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu-items">
+                        <li class="list-inline-item cursor-pointer" (click)="downloadPdf()">
+                            <img src="../../assets/images/download.png">
+                            <span>Download PDF</span>
+                        </li>
+                        <li class="list-inline-item cursor-pointer" *ngIf="csvDownloadflag" (click)="csvFormatFn()">
+                            <img src="../../assets/images/download.png">
+                            <span>Download CSV</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
+    <br/>
+    <div class="course-selection">
+        <ul class="list-inline">
+            <li class="list-inline-item selectCourse">
+                <span class="labelName">
+                    <b>Program</b>
+                </span>
+                <select class="custom-select" [(ngModel)]="selectProgram" (change)="changeProgram(selectProgram)" id="selectProgram">
+                    <option class="options-text-color" value="All Programs">All Programs</option>
+                    <option class="course-item" *ngFor="let program of programsData" value="{{program.programId}}">{{program.programName}}</option>
+                </select>
+            </li>
 
-  <div class="course-selection">
-    <ul class="list-inline">
-      <li class="list-inline-item selectCourse">
-        <span class="labelName">
-          <b>Program</b>
-        </span>
-        <select class="custom-select" [(ngModel)]="selectProgram" (change)="changeProgram(selectProgram)" id="selectProgram">
-          <option class="options-text-color" value="All Programs">All Programs</option>
-          <option class="course-item" *ngFor="let program of programsData" value="{{program.id}}">{{program.name}}</option>
-        </select>
-      </li>
+            <li class="list-inline-item selectCourse">
+                <span class="labelName">
+                    <b>Course</b>
+                </span>
+                <select [disabled]="!isProgramselected" class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
+                    <option class="options-text-color" value="All Courses">All Courses</option>
+                    <option class="course-item" *ngFor="let course of coursesData" value="{{course.courseId}}">{{course.courseName}}</option>
+                </select>
+            </li>
 
-      <li class="list-inline-item selectCourse">
-        <span class="labelName">
-          <b>Course</b>
-        </span>
-        <select class="custom-select" [(ngModel)]="selectCourse" (change)="changeCourse(selectCourse)" id="selectCourse">
-          <option class="options-text-color" value="All Courses">All Courses</option>
-          <option class="course-item" *ngFor="let course of coursesData" value="{{course.id}}">{{course.name}}</option>
-        </select>
-      </li>
+            <li class="list-inline-item selectCourse">
+                <span class="labelName">
+                    <b>Batch</b>
+                </span>
+                <select [disabled]="!isCourseselected" class="custom-select" [(ngModel)]="selectBatch" (change)="changeBatch(selectBatch)" id="selectBatch">
+                    <option class="options-text-color" value="All Batches">All Batches</option>
+                    <option class="course-item" *ngFor="let batch of batchesData" value="{{batch.batchId}}">{{batch.batchName}}</option>
+                </select>
+            </li>
 
-      <li class="list-inline-item selectCourse">
-        <span class="labelName">
-          <b>Batch</b>
-        </span>
-        <select class="custom-select" [(ngModel)]="selectBatch" (change)="changeBatch(selectBatch)" id="selectBatch">
-          <option class="options-text-color" value="All Batches">All Batches</option>
-          <option class="course-item" *ngFor="let batch of batchesData" value="{{batch.id}}">{{batch.name}}</option>
-        </select>
-      </li>
-
-      <li class="list-inline-item selectCourse">
-        <span class="labelName">
-          <b>Section</b>
-        </span>
-        <select class="custom-select" [(ngModel)]="selectSection" (change)="changeSection(selectSection)" id="selectSection">
-          <option class="options-text-color" value="All Sections">All Sections</option>
-          <option class="course-item" *ngFor="let section of sectionsData" value="{{section.id}}">{{section.name}}</option>
-        </select>
-      </li>
-      <li class="list-inline-item selectCourse">
-        <button class=" btn-primary" (click)="applyPrograms()">Apply</button>
-      </li>
-    </ul>
-  </div>
+            <li class="list-inline-item selectCourse">
+                <span class="labelName">
+                    <b>Section</b>
+                </span>
+                <select [disabled]="!isBatchselected" class="custom-select" [(ngModel)]="selectSection" (change)="changeSection(selectSection)" id="selectSection">
+                    <option class="options-text-color" value="All Sections">All Sections</option>
+                    <option class="course-item" *ngFor="let section of sectionsData" value="{{section.sectionId}}">{{section.sectionName}}</option>
+                </select>
+            </li>
+            <li class="list-inline-item selectCourse">
+                <button class=" btn-primary" (click)="applyPrograms()">Apply</button>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <ng-template #followUpContent let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Send a new message</h4>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="dateOfBirth">Send to</label>
-        <div class="input-group">
-          <input type="email" class="form-control" placeholder="enter an email">
-        </div>
-        <br />
-        <label for="dateOfBirth">Subject</label>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Subject">
-        </div>
-        <br />
-        <label for="dateOfBirth">Message</label>
-        <div class="input-group">
-          <textarea class="form-control" aria-label="With textarea"></textarea>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="sendEmail()">Send Mail</button>
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
-  </div>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Send a new message</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="dateOfBirth">Send to</label>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="enter an email">
+                </div>
+                <br />
+                <label for="dateOfBirth">Subject</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Subject">
+                </div>
+                <br />
+                <label for="dateOfBirth">Message</label>
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="sendEmail()">Send Mail</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cancel</button>
+    </div>
 </ng-template>

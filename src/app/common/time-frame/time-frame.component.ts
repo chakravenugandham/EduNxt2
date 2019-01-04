@@ -34,7 +34,7 @@ export class TimeFrameComponent implements OnInit {
     selectBatch = "All Batches";
     selectSection = "All Sections";
     downloadLink: string;
-    _baseUrl;
+    _baseUrl: string;
 
     closeResult: string;
     programObj = {
@@ -72,7 +72,7 @@ export class TimeFrameComponent implements OnInit {
 
         this.dashboardService.refreshReportAPI.subscribe(result => {
             // this.getAllCourses();
-             this.getPrograms();
+            this.getPrograms();
         });
 
         this.dashboardService.dateChangeAPI.subscribe(result => {

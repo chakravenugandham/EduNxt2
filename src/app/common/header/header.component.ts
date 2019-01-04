@@ -5,41 +5,43 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-header",
-  templateUrl: "./header.component.html",
-  styleUrls: ["./header.component.scss"]
+    selector: "app-header",
+    templateUrl: "./header.component.html",
+    styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit {
-  selectTenantName: string = "MAIT";
-  tenantsName = ["MAIT", "MAB", "HDFC", "SMUDE", "PROLEARN"];
+    selectTenantName: string = "ANALYTICS";
+    tenantsName = ["ANALYTICS", "MAIT", "MAB", "HDFC", "SMUDE", "PROLEARN"];
 
-  userName = (this.cookieService.get('user_name') == '') ? 'User' : this.cookieService.get('user_name');
-  tenantName = (this.cookieService.get('tenantName') == '') ? 'MAIT' : this.cookieService.get('tenantName');
-  redirectUrl = (this.cookieService.get('redirectUrl') == '') ? '/' : this.cookieService.get('redirectUrl');
-  user_id = (this.cookieService.get('user_id') == '') ? '0' : this.cookieService.get('user_id');
-  cookieFound = (this.cookieService.get('user_name') == '') ? false : true;
+    userName = (this.cookieService.get('user_name') == '') ? 'User' : this.cookieService.get('user_name');
+    tenantName = (this.cookieService.get('tenantName') == '') ? 'ANALYTICS' : this.cookieService.get('tenantName');
+    redirectUrl = (this.cookieService.get('redirectUrl') == '') ? '/' : this.cookieService.get('redirectUrl');
+    user_id = (this.cookieService.get('user_id') == '') ? '0' : this.cookieService.get('user_id');
+    cookieFound = (this.cookieService.get('user_name') == '') ? false : true;
 
-  // userName = this.cookieService.get('user_name');
-  // cookieFound = true;
+    // userName = this.cookieService.get('user_name');
+    // cookieFound = true;
 
-  constructor(
-    private dashboardService: LdDashboardService,
-    private cookieService: CookieService,
-    private router: Router
-  ) {
+    constructor(
+        private dashboardService: LdDashboardService,
+        private cookieService: CookieService,
+        private router: Router
+    ) {
 
-  }
+    }
 
-  changeCourse(selectTenantName) {
-    this.dashboardService.selectTenantName(selectTenantName);
-  }
+    changeCourse(selectTenantName) {
+        this.dashboardService.selectTenantName(selectTenantName);
+        this.dashboardService.tenantName$.next(selectTenantName);
+    }
 
-  logout() {
-    localStorage.removeItem('t');
-    // window.location.href = this.redirectUrl;
-    this.router.navigate(['/auth']);
-  }
+    logout() {
+        localStorage.removeItem('t');
+        // window.location.href = this.redirectUrl;
+        this.router.navigate(['/auth']);
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.changeCourse(this.selectTenantName)
+    }
 }

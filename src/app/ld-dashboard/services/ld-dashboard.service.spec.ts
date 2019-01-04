@@ -31,10 +31,10 @@ describe('LdDashboardService', () => {
     expect(service.selectTenantNameV2).toBeTruthy();
   }));
 
-  xit('should be created courseAndProgram', inject([LdDashboardService], (service: LdDashboardService) => {
+/*   xit('should be created courseAndProgram', inject([LdDashboardService], (service: LdDashboardService) => {
     service.courseAndProgram();
     expect(service.courseAndProgram).toBeTruthy();
-  }));
+  })); */
 
   it('should be created changeLeaderBoard', inject([LdDashboardService], (service: LdDashboardService) => {
     let leaderBoardName;
@@ -51,10 +51,10 @@ describe('LdDashboardService', () => {
     expect(service.changeDate).toBeTruthy();
   }));
 
-  it('should be created getCoursesProgramData', inject([LdDashboardService], (service: LdDashboardService) => {
+  /* it('should be created getCoursesProgramData', inject([LdDashboardService], (service: LdDashboardService) => {
     service.getCoursesProgramData();
     expect(service.getCoursesProgramData).toBeTruthy();
-  }));
+  })); */
 
   it('should be created getLearnerPerformanceDetails', inject([LdDashboardService], (service: LdDashboardService) => {
     let filterbody;
